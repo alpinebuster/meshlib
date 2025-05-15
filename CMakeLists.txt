@@ -257,6 +257,7 @@ IF(MESHLIB_BUILD_MRVIEWER)
 
   add_subdirectory(${PROJECT_SOURCE_DIR}/imgui ./imgui)
   add_subdirectory(${PROJECT_SOURCE_DIR}/MRViewer ./MRViewer)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/MRJavascript ./MRJavascript)
   add_subdirectory(${PROJECT_SOURCE_DIR}/MRCommonPlugins ./MRCommonPlugins)
 
   IF(MESHLIB_BUILD_MESHVIEWER)
