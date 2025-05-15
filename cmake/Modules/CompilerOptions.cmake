@@ -171,6 +171,7 @@ IF(MR_EMSCRIPTEN)
     "-s USE_GLFW=3"
     "-s USE_ZLIB=1"
     "-s FULL_ES3=1"
+    # "-s EXPORT_ES6=1"
     "-s USE_LIBPNG=1"
   )
 

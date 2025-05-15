@@ -8,7 +8,7 @@ file(GLOB SOURCES "*.cpp")
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 IF(MR_EMSCRIPTEN)
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --emrun")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
   target_link_libraries(${PROJECT_NAME} PRIVATE
     zip
     gtest
