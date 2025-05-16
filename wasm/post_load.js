@@ -1,6 +1,8 @@
 var postWasmLoad = function () {
     setTimeout(registerResize);
-    //setupColorTheme();
+    setupColorTheme();
     updateCalculateMouseEvent();
     registerErrorHandling();
+
+    Module.ccall('printtt', 'void', [], []);
 };
