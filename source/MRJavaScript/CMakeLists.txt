@@ -1,0 +1,51 @@
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+set(CMAKE_CXX_STANDARD ${MR_CXX_STANDARD})
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+project(MRJavaScript CXX)
+
+option(MRJS_NO_VOXELS "Disable voxels support" OFF)
+IF(NOT MESHLIB_BUILD_VOXELS)
+  set(MRJS_NO_VOXELS ON)
+ENDIF()
+set(MRJS_OPTIONAL_DEPENDENCIES "")
+IF(NOT MRJS_NO_VOXELS)
+  list(APPEND MRJS_OPTIONAL_DEPENDENCIES MRVoxels)
+  list(APPEND MRJS_OPTIONAL_DEPENDENCIES openvdb)
+ENDIF()
+
+file(GLOB HEADERS "*.h")
+file(GLOB SOURCES "*.cpp")
+IF(MR_EMSCRIPTEN)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_BOOST_HEADERS=1")
+ENDIF() # MR_EMSCRIPTEN
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config_cmake.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config_cmake.h)
+
+IF(MR_EMSCRIPTEN)
+  add_executable(${PROJECT_NAME} ${SOURCES})
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind")
+  target_link_libraries(${PROJECT_NAME} PRIVATE
+    tbb
+    zip
+    gtest
+    -Wl,--whole-archive
+    MRMesh
+    MRIOExtras
+    MRSymbolMesh
+    MRVoxels
+    -Wl,--no-whole-archive
+    ${MRJS_OPTIONAL_DEPENDENCIES}
+  )
+ELSE() # NOT MR_EMSCRIPTEN
+  add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
+  target_link_libraries(${PROJECT_NAME} PRIVATE
+    MRMesh
+  )
+ENDIF() # MR_EMSCRIPTEN
+
+install(TARGETS ${PROJECT_NAME} DESTINATION "${MR_BIN_DIR}")
+install(FILES ${LIB_LIST} DESTINATION "${MR_RESOURCES_DIR}")
+
+IF(MR_PCH)
+  TARGET_PRECOMPILE_HEADERS(${PROJECT_NAME} REUSE_FROM MRPch)
+ENDIF()

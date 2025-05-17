@@ -3,6 +3,4 @@ var postWasmLoad = function () {
     setupColorTheme();
     updateCalculateMouseEvent();
     registerErrorHandling();
-
-    Module.ccall('printtt', 'void', [], []);
 };
