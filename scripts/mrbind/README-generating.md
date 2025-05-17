@@ -107,6 +107,23 @@ Then generate the bindings:
 
 * **On MacOS:** Same as on Linux, but before running that you must adjust the PATH. On Arm Macs: `export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"`, and on x86 Macs `/usr/local/...` instead of `/opt/homebrew/...`. This adds the version of Make installed in Homebrew to PATH, because the default one is outdated. Confirm the version with `make --version`, must be 4.x or newer.
 
+Create and fix Wheel:
+
+```sh
+# This will generate the `meshlib` wheel to `./scripts/wheel/meshlib`
+python ./scripts/wheel/build_wheel.py --version 'v0.0.0.1'
+```
+
+Install the built `meshlib`:
+
+```sh
+cd  ./scripts/wheel/meshlib
+pip install .
+
+# Check the installed `meshlib`
+pip list | grep meshlib
+```
+
 ### Some common flags:
 
 * **`--trace` — enable verbose logs.**

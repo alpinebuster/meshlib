@@ -5,9 +5,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(MRJavascript CXX)
 
 file(GLOB SOURCES "*.cpp")
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 IF(MR_EMSCRIPTEN)
+  add_executable(${PROJECT_NAME} ${SOURCES})
+
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
   target_link_libraries(${PROJECT_NAME} PRIVATE
     zip
