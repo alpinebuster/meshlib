@@ -212,7 +212,7 @@ private:
     PythonExport() = default;
     ~PythonExport() = default;
 
-     std::unordered_map<std::string, ModuleData> moduleData_;
+    std::unordered_map<std::string, ModuleData> moduleData_;
 };
 
 struct PythonFunctionAdder

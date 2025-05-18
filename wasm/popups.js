@@ -21,7 +21,7 @@ var addKeyboardEvents = function () {
         setTimeout(function () { Module.ccall('emsPostEmptyEvent', 'void', ['number'], [1]); }, i);
 };
 
-var curentCancelCb = function(){};
+var currentCancelCb = function(){};
 
 var createPopup = function (closeId, label, width, height, center = true, showCloseButton = true, oncancel = function(){}) {
     var isLightThemeEnabled = getColorTheme();
@@ -47,12 +47,12 @@ var createPopup = function (closeId, label, width, height, center = true, showCl
     var bgColor = isLightThemeEnabled ? "#fff" : "#1c1f24";
     popup.setAttribute('style', 'width:' + width + 'px;height:' + height + 'px;border-radius: 4px;background:' + bgColor + ';position:absolute;' + positionStyle);
 
-    curentCancelCb = oncancel;
+    currentCancelCb = oncancel;
     var close = document.createElement('div');
     close.setAttribute('class', 'unselectable');
     close.innerHTML = '&#x2715;';
     close.setAttribute('style', 'margin-left:' + (width - 26) + 'px;width:24;height:24px;margin-top:7px;cursor:pointer;color:#5f6369;display: inline-block;');
-    close.setAttribute('onclick', 'curentCancelCb();document.getElementById(\'' + closeId + '\').remove();addKeyboardEvents()');
+    close.setAttribute('onclick', 'currentCancelCb();document.getElementById(\'' + closeId + '\').remove();addKeyboardEvents()');
     if (!showCloseButton)
         close.setAttribute('style', 'visibility: hidden;');
 

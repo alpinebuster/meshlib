@@ -4,12 +4,12 @@ var notEnoughMemoryError = function () {
     unexpectedErrorIsNotEnoughMemoryError = true;
 };
 
-var isUnexpectedErrorOccured = false;
+var isUnexpectedErrorOccurred = false;
 
 var unexpectedError = function () {
-    if (isUnexpectedErrorOccured)
+    if (isUnexpectedErrorOccurred)
         return;
-    isUnexpectedErrorOccured = true;
+    isUnexpectedErrorOccurred = true;
 
     // Remove event listeners introduced in resize.js otherwise we will see canvas again on resize
     window.removeEventListener('resize', resizeCallBack);

@@ -16,14 +16,13 @@ ENDIF()
 
 file(GLOB HEADERS "*.h")
 file(GLOB SOURCES "*.cpp")
-IF(MR_EMSCRIPTEN)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_BOOST_HEADERS=1")
-ENDIF() # MR_EMSCRIPTEN
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config_cmake.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config_cmake.h)
 
 IF(MR_EMSCRIPTEN)
   add_executable(${PROJECT_NAME} ${SOURCES})
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind")
+
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_BOOST_HEADERS=1")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind --emit-tsd ${PROJECT_NAME}.d.ts")
   target_link_libraries(${PROJECT_NAME} PRIVATE
     tbb
     zip

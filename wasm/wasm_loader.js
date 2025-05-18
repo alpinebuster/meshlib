@@ -10,10 +10,10 @@ var clearWasmLoadProgress = function () {
     progressHolder.setAttribute('style', 'visibility: hidden');
 }
 
-var statusElement = document.getElementById("status")
-    , logoElement = document.getElementById("logo")
-    , spinnerElement = document.getElementById("spinner")
-    , Module = {
+var statusElement = document.getElementById("status"),
+    logoElement = document.getElementById("logo"),
+    spinnerElement = document.getElementById("spinner"),
+    Module = {
         preRun: [],
         postRun: [],
         print: function () {
@@ -28,47 +28,63 @@ var statusElement = document.getElementById("status")
         }(),
         canvas: function () {
             var e = document.getElementById("canvas");
-            return e.addEventListener("webglcontextlost", (function (e) {
-                unexpectedError(),
-                    e.preventDefault()
-            }
-            ), !1),
-                e
+            return e.addEventListener(
+                "webglcontextlost",
+                (function (e) {
+                    unexpectedError();
+                    e.preventDefault();
+                }),
+                !1
+            ),
+            e
         }(),
         setStatus: function (e) {
-            if (Module.setStatus.last || (Module.setStatus.last = {
-                time: Date.now(),
-                text: ""
-            }),
-                e !== Module.setStatus.last.text) {
-                var t = e.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/)
-                    , n = Date.now();
-                t && n - Module.setStatus.last.time < 30 || (Module.setStatus.last.time = n,
+            if (
+                Module.setStatus.last ||
+                (
+                    Module.setStatus.last = {
+                        time: Date.now(),
+                        text: ""
+                    }
+                ),
+                e !== Module.setStatus.last.text
+            ) {
+                var t = e.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/),
+                    n = Date.now();
+
+                t && n - Module.setStatus.last.time < 30 || (
+                    Module.setStatus.last.time = n,
                     Module.setStatus.last.text = e,
-                    t ? (e = t[1],
+                    t ? (
+                        e = t[1],
                         setWasmLoadProgress(100 * parseInt(t[2]) / parseInt(t[4])),
-                        spinnerElement.hidden = !1) : (
-                            e || (spinnerElement.style.display = "none",
-                                statusElement.style.display = "none",
-                                logoElement.style.display = "none",
-                                clearWasmLoadProgress(),
-                                postWasmLoad()
-                            )),
-                    statusElement.innerHTML = e)
+                        spinnerElement.hidden = !1
+                    ) : (
+                        e || (
+                            spinnerElement.style.display = "none",
+                            statusElement.style.display = "none",
+                            logoElement.style.display = "none",
+                            clearWasmLoadProgress(),
+                            postWasmLoad()
+                        )
+                    ),
+                    statusElement.innerHTML = e
+                )
             }
         },
         totalDependencies: 0,
         monitorRunDependencies: function (e) {
-            this.totalDependencies = Math.max(this.totalDependencies, e),
-                Module.setStatus(e ? "Preparing... (" + (this.totalDependencies - e) + "/" + this.totalDependencies + ")" : "All downloads complete.")
+            this.totalDependencies = Math.max(this.totalDependencies, e);
+            Module.setStatus(e ? "Preparing... (" + (this.totalDependencies - e) + "/" + this.totalDependencies + ")" : "All downloads complete.");
         }
     };
-Module.setStatus("Downloading..."),
-    window.onerror = function (e) {
-        Module.setStatus("Exception thrown, see JavaScript console"),
-            spinnerElement.style.display = "none",
-            statusElement.style.display = "none",
-            Module.setStatus = function (e) {
-                e && Module.printErr("[post-exception status] " + e)
-            }
+
+Module.setStatus("Downloading...");
+window.onerror = function (e) {
+    Module.setStatus("Exception thrown, see JavaScript console");
+    spinnerElement.style.display = "none";
+    statusElement.style.display = "none";
+    Module.setStatus = function (e) {
+        e && Module.printErr("[post-exception status] " + e);
     }
+}
