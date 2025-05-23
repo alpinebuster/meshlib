@@ -107,7 +107,7 @@ TEST( MRMesh, weightedMeshShell )
     for ( auto& pt : cube.points )
         pt = rot * pt;
 
-    auto offCube = weightedMeshShell( cube, WeightedPointsShellParametersRegions{ { 0.08f, 0.04f, 3.f }, {}, 0.f, false } );
+    auto offCube = WeightedShell::meshShell( cube, WeightedShell::ParametersRegions{ { 0.08f, 0.04f, 3.f }, {}, 0.f, false } );
     ASSERT_TRUE( offCube );
     EXPECT_EQ( MeshComponents::getNumComponents( *offCube ), 1 );
     EXPECT_EQ( offCube->topology.findNumHoles(), 0 );
@@ -214,6 +214,44 @@ TEST( MRMesh, WeightedClosed )
     for ( float z = -1; z <= 4; z += 0.1f )
         maxDiff = std::max( maxDiff, std::abs( smartDistance( Vector3f{ 0.f, 0.f, z - 0.5f } ) - smartDistance( Vector3f{ 0.f, 0.f, z + 0.5f } ) ) );
     ASSERT_FLOAT_EQ( maxDiff, 1.f );
+}
+
+TEST( MRMesh, findClosestWeightedMeshPointSharpAngle )
+{
+    Triangulation t{
+        { 0_v, 2_v, 1_v },
+        { 0_v, 1_v, 3_v }
+    };
+    VertCoords vs{
+        { 1, 0, 0 },        //0_v
+        { 0, 0, 0 },        //1_v
+        { 0.5, 0.5, 1 },    //2_v
+        { -0.5, -0.5, 1 }   //3_v
+    };
+    auto mesh = Mesh::fromTriangles( std::move( vs ), t );
+
+    DistanceFromWeightedPointsComputeParams params;
+    VertScalars weights{ 0.2f, 0.4f, 0.1f, 0.3f };
+    params.pointWeight = [&]( VertId v ) { return weights[v]; };
+    params.maxWeight = 0;
+    params.bidirectionalMode = false;
+
+    auto smartDistance = [&]( Vector3f loc )
+    {
+        auto pd = findClosestWeightedMeshPoint( loc, mesh, params );
+        return pd.dist();
+    };
+
+//    std::ofstream f( "/tmp/test.csv" );
+//    f << "z,d\n";
+//    for ( float z = -0.5; z <= 0.5; z += 0.05f )
+//        f << z << ',' << smartDistance( Vector3f( 0.1, 0.1, z ) ) << '\n';
+//    f.close();
+
+    float maxDiff = 0.f;
+    for ( float z = -0.5f; z <= 0.5f; z += 0.05f )
+        maxDiff = std::max( maxDiff, std::abs( smartDistance( Vector3f{ 0.1f, 0.1f, z - 0.025f } ) - smartDistance( Vector3f{ 0.1f, 0.1f, z + 0.025f } ) ) );
+    ASSERT_LE( maxDiff, 0.05f );
 }
 
 } //namespace MR

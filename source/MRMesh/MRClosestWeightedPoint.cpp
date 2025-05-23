@@ -163,12 +163,13 @@ MeshPointAndDistance findClosestWeightedMeshPoint( const Vector3f& loc,
         const auto mtp = MeshTriPoint{ mesh.topology.edgeWithLeft( f ), c->tp };
         const MeshPointAndDistance candidate
         {
+            .loc = loc,
             .mtp = mtp,
             .eucledeanDist = distance( loc, c->pos ),
             .w = c->w,
             .bidirectionalOrOutside = params.bidirectionalMode || dot( mesh.pseudonormal( mtp ), loc - c->pos ) >= 0
         };
-        if ( candidate.innerDist() < res.innerDist() )
+        if ( candidate < res )
         {
             assert( candidate.bidirDist() < params.maxBidirDist );
             res = candidate;

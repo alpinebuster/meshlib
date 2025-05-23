@@ -440,12 +440,13 @@ public:
     /// appends mesh topology (from) in addition to the current topology: creates new edges, faces, verts;
     /// \param rearrangeTriangles if true then the order of triangles is selected according to the order of their vertices,
     /// please call rotateTriangles() first
-    /// \param outFmap,outVmap,outEmap (optionally) returns mappings: from.id -> this.id
+    MRMESH_API void addPart( const MeshTopology & from, const PartMapping & map = {}, bool rearrangeTriangles = false );
     MRMESH_API void addPart( const MeshTopology & from,
-        FaceMap * outFmap = nullptr, VertMap * outVmap = nullptr, WholeEdgeMap * outEmap = nullptr, bool rearrangeTriangles = false );
+        FaceMap * outFmap = nullptr, VertMap * outVmap = nullptr, WholeEdgeMap * outEmap = nullptr, ///< returns mappings: from.id -> this.id
+        bool rearrangeTriangles = false );
 
     /// the same but copies only portion of (from) specified by fromFaces,
-    MRMESH_API void addPartByMask( const MeshTopology & from, const FaceBitSet & fromFaces, const PartMapping & map );
+    MRMESH_API void addPartByMask( const MeshTopology & from, const FaceBitSet & fromFaces, const PartMapping & map = {} );
 
     /// this version has more parameters
     /// \param flipOrientation if true then every from triangle is inverted before adding
@@ -561,14 +562,11 @@ private:
         explicit HalfEdgeRecord( NoInit ) noexcept : next( noInit ), prev( noInit ), org( noInit ), left( noInit ) {}
     };
     /// translates all fields in the record for this edge given maps
-    void translateNoFlip_( HalfEdgeRecord & r,
-        const FaceMap & fmap, const VertMap & vmap, const WholeEdgeMap & emap ) const;
+    template<typename FM, typename VM, typename WEM>
+    void translateNoFlip_( HalfEdgeRecord & r, const FM & fmap, const VM & vmap, const WEM & emap ) const;
+    template<typename FM, typename VM, typename WEM>
     void translate_( HalfEdgeRecord & r, HalfEdgeRecord & rsym,
-        const FaceMap & fmap, const VertMap & vmap, const WholeEdgeMap & emap, bool flipOrientation ) const;
-    void translateNoFlip_( HalfEdgeRecord & r,
-        const FaceHashMap & fmap, const VertHashMap & vmap, const WholeEdgeHashMap & emap ) const;
-    void translate_( HalfEdgeRecord & r, HalfEdgeRecord & rsym,
-        const FaceHashMap & fmap, const VertHashMap & vmap, const WholeEdgeHashMap & emap, bool flipOrientation ) const;
+        const FM & fmap, const VM & vmap, const WEM & emap, bool flipOrientation ) const;
 
     /// edges_: EdgeId -> edge data
     Vector<HalfEdgeRecord, EdgeId> edges_;

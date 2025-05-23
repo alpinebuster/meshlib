@@ -411,13 +411,13 @@ std::shared_ptr<ObjectMesh> merge( const std::vector<std::shared_ptr<ObjectMesh>
 
 std::shared_ptr<MR::ObjectMesh> cloneRegion( const std::shared_ptr<ObjectMesh>& objMesh, const FaceBitSet& region, bool copyTexture /*= true */ )
 {
-    VertMap vertMap;
-    FaceMap faceMap;
+    VertMapOrHashMap vertMap;
+    FaceMapOrHashMap faceMap;
     PartMapping partMapping;
     if ( !objMesh->getVertsColorMap().empty() || !objMesh->getUVCoords().empty() )
-        partMapping.tgt2srcVertMap = &vertMap;
+        partMapping.tgt2srcVerts = &vertMap;
     if ( !objMesh->getFacesColorMap().empty() || !objMesh->getTexturePerFace().empty() )
-        partMapping.tgt2srcFaceMap = &faceMap;
+        partMapping.tgt2srcFaces = &faceMap;
     std::shared_ptr<Mesh> newMesh = std::make_shared<Mesh>( objMesh->mesh()->cloneRegion( region, false, partMapping ) );
     std::shared_ptr<ObjectMesh> newObj = std::make_shared<ObjectMesh>();
     newObj->setFrontColor( objMesh->getFrontColor( true ), true );
@@ -427,11 +427,11 @@ std::shared_ptr<MR::ObjectMesh> cloneRegion( const std::shared_ptr<ObjectMesh>& 
     newObj->setAllVisualizeProperties( objMesh->getAllVisualizeProperties() );
     if ( copyTexture )
     {
-        newObj->copyTextureAndColors( *objMesh, vertMap, faceMap );
+        newObj->copyTextureAndColors( *objMesh, *vertMap.getMap(), *faceMap.getMap() );
     }
     else
     {
-        newObj->copyColors( *objMesh, vertMap, faceMap );
+        newObj->copyColors( *objMesh, *vertMap.getMap(), *faceMap.getMap() );
         newObj->setVisualizePropertyMask( MeshVisualizePropertyType::Texture, ViewportMask( 0 ) );
     }
     newObj->setName( objMesh->name() + "_part" );

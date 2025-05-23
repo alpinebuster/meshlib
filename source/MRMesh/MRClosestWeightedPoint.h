@@ -23,7 +23,10 @@ struct PointAndDistance
 
 struct MeshPointAndDistance
 {
-    /// a point on mesh in barycentric representation
+    /// point location
+    Vector3f loc;
+
+    /// the corresponding point on mesh in barycentric representation
     MeshTriPoint mtp;
 
     /// euclidean distance from input location to mtp
@@ -35,6 +38,7 @@ struct MeshPointAndDistance
     /// either
     /// 1) bidirectional distances are computed, or
     /// 2) input location is locally outside of the surface (by pseudonormal)
+    /// used for optimization
     bool bidirectionalOrOutside = true;
 
     /// bidirectional distance from input location to mtp considering point's weight
@@ -51,11 +55,15 @@ struct MeshPointAndDistance
         return ( bidirectionalOrOutside ? eucledeanDist : -eucledeanDist ) - w;
     }
 
-    /// this distance is used internally to find the best surface point, which has the smallest inner distance;
-    /// innerDist() grows in both directions of the surface unlike weightedDist()
-    [[nodiscard]] float innerDist() const
+    /// comparison telling which point is closer to the location
+    auto operator <=> ( const MeshPointAndDistance& other ) const
     {
-        return eucledeanDist + ( bidirectionalOrOutside ? -w : w );
+        if ( bidirectionalOrOutside && other.bidirectionalOrOutside  )
+            return eucledeanDist - w <=> other.eucledeanDist - other.w;
+        if ( bidirectionalOrOutside != other.bidirectionalOrOutside )
+            return eucledeanDist <=> other.eucledeanDist;
+        return eucledeanDist + ( bidirectionalOrOutside ? -w : w ) <=>
+                other.eucledeanDist + ( other.bidirectionalOrOutside ? -other.w : other.w );
     }
 
     /// check for validity, otherwise there is no point closer than maxBidirDist
