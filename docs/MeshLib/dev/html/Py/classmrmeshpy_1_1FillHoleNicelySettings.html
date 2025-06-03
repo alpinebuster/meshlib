@@ -1,0 +1,1186 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.FillHoleNicelySettings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1FillHoleNicelySettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1FillHoleNicelySettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.FillHoleNicelySettings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae6ea8ac79fa3e78fc50502640af68e2a" id="r_ae6ea8ac79fa3e78fc50502640af68e2a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6ea8ac79fa3e78fc50502640af68e2a">__init__</a> (self)</td></tr>
+<tr class="separator:ae6ea8ac79fa3e78fc50502640af68e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5e3498c40d977fe9fde7f527d77942b" id="r_ac5e3498c40d977fe9fde7f527d77942b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e3498c40d977fe9fde7f527d77942b">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1FillHoleNicelySettings.html">FillHoleNicelySettings</a> arg0)</td></tr>
+<tr class="separator:ac5e3498c40d977fe9fde7f527d77942b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a722066d43db8a1fab0b68cc702674b19" id="r_a722066d43db8a1fab0b68cc702674b19"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a722066d43db8a1fab0b68cc702674b19">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a> <a class="el" href="#a83a699ace555f0b3b450777d1f59788f">triangulateParams</a>, bool <a class="el" href="#a9b6b87c63c230d483ff8874ec0b316ca">triangulateOnly</a>, float <a class="el" href="#a36fd5ac316ea771331116b7d59692fff">maxEdgeLen</a>, int <a class="el" href="#a0c715f42e85c9f9e9f3e270f4185bff9">maxEdgeSplits</a>, float <a class="el" href="#a04a189c6920cda6cf7f9a8308c77d7c0">maxAngleChangeAfterFlip</a>, bool <a class="el" href="#a72e52ea4b95f57b6395f38dbf4ab3e52">smoothCurvature</a>, bool <a class="el" href="#a4f9790015b39b79102c9bf84b5053a85">naturalSmooth</a>, <a class="el" href="classmrmeshpy_1_1func__bool__from__Id__EdgeTag.html">func_bool_from_Id_EdgeTag</a> <a class="el" href="#a50ccd6545e4fb0876ea176d9ef42a5eb">beforeEdgeSplit</a>, <a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a> <a class="el" href="#a333dc620d66a4b111aa4b5303db118f3">onEdgeSplit</a>, <a class="el" href="classmrmeshpy_1_1EdgeWeights.html">EdgeWeights</a> <a class="el" href="#a8822bddbb915ef20c02959eea1331678">edgeWeights</a>, <a class="el" href="classmrmeshpy_1_1VertexMass.html">VertexMass</a> <a class="el" href="#a819b7a5abd8495cff22d5747d59c6fca">vmass</a>, <a class="el" href="classmrmeshpy_1_1VertCoords2.html">VertCoords2</a> <a class="el" href="#a649f69ba4aa89e6ece41acd18a141338">uvCoords</a>, <a class="el" href="classmrmeshpy_1_1VertColors.html">VertColors</a> <a class="el" href="#a15568bc243eb26da530f3b659b07cf94">colorMap</a>)</td></tr>
+<tr class="separator:a722066d43db8a1fab0b68cc702674b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50ccd6545e4fb0876ea176d9ef42a5eb" id="r_a50ccd6545e4fb0876ea176d9ef42a5eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__bool__from__Id__EdgeTag.html">func_bool_from_Id_EdgeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50ccd6545e4fb0876ea176d9ef42a5eb">beforeEdgeSplit</a> (self)</td></tr>
+<tr class="separator:a50ccd6545e4fb0876ea176d9ef42a5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a163fee0fdff0c18290cae488bb309f83" id="r_a163fee0fdff0c18290cae488bb309f83"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a163fee0fdff0c18290cae488bb309f83">beforeEdgeSplit</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__Id__EdgeTag.html">func_bool_from_Id_EdgeTag</a> arg1)</td></tr>
+<tr class="separator:a163fee0fdff0c18290cae488bb309f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15568bc243eb26da530f3b659b07cf94" id="r_a15568bc243eb26da530f3b659b07cf94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertColors.html">VertColors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15568bc243eb26da530f3b659b07cf94">colorMap</a> (self)</td></tr>
+<tr class="separator:a15568bc243eb26da530f3b659b07cf94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eba5f9b6b0c5f633f710db16714b689" id="r_a2eba5f9b6b0c5f633f710db16714b689"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2eba5f9b6b0c5f633f710db16714b689">colorMap</a> (self, <a class="el" href="classmrmeshpy_1_1VertColors.html">VertColors</a> arg1)</td></tr>
+<tr class="separator:a2eba5f9b6b0c5f633f710db16714b689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8822bddbb915ef20c02959eea1331678" id="r_a8822bddbb915ef20c02959eea1331678"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1EdgeWeights.html">EdgeWeights</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8822bddbb915ef20c02959eea1331678">edgeWeights</a> (self)</td></tr>
+<tr class="separator:a8822bddbb915ef20c02959eea1331678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb3b8fe51ebf8ee95504d2c874979da" id="r_abdb3b8fe51ebf8ee95504d2c874979da"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdb3b8fe51ebf8ee95504d2c874979da">edgeWeights</a> (self, <a class="el" href="classmrmeshpy_1_1EdgeWeights.html">EdgeWeights</a> arg1)</td></tr>
+<tr class="separator:abdb3b8fe51ebf8ee95504d2c874979da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a189c6920cda6cf7f9a8308c77d7c0" id="r_a04a189c6920cda6cf7f9a8308c77d7c0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04a189c6920cda6cf7f9a8308c77d7c0">maxAngleChangeAfterFlip</a> (self)</td></tr>
+<tr class="separator:a04a189c6920cda6cf7f9a8308c77d7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1254a38f4f3280d14bda8ad4b6e49a2" id="r_aa1254a38f4f3280d14bda8ad4b6e49a2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1254a38f4f3280d14bda8ad4b6e49a2">maxAngleChangeAfterFlip</a> (self, float arg1)</td></tr>
+<tr class="separator:aa1254a38f4f3280d14bda8ad4b6e49a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36fd5ac316ea771331116b7d59692fff" id="r_a36fd5ac316ea771331116b7d59692fff"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36fd5ac316ea771331116b7d59692fff">maxEdgeLen</a> (self)</td></tr>
+<tr class="separator:a36fd5ac316ea771331116b7d59692fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11c25fbcb7e5cf9495a538a372de5ae9" id="r_a11c25fbcb7e5cf9495a538a372de5ae9"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11c25fbcb7e5cf9495a538a372de5ae9">maxEdgeLen</a> (self, float arg1)</td></tr>
+<tr class="separator:a11c25fbcb7e5cf9495a538a372de5ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c715f42e85c9f9e9f3e270f4185bff9" id="r_a0c715f42e85c9f9e9f3e270f4185bff9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c715f42e85c9f9e9f3e270f4185bff9">maxEdgeSplits</a> (self)</td></tr>
+<tr class="separator:a0c715f42e85c9f9e9f3e270f4185bff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af36ac1e88ae1ea680850f7ceaba917ba" id="r_af36ac1e88ae1ea680850f7ceaba917ba"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af36ac1e88ae1ea680850f7ceaba917ba">maxEdgeSplits</a> (self, int arg1)</td></tr>
+<tr class="separator:af36ac1e88ae1ea680850f7ceaba917ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f9790015b39b79102c9bf84b5053a85" id="r_a4f9790015b39b79102c9bf84b5053a85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f9790015b39b79102c9bf84b5053a85">naturalSmooth</a> (self)</td></tr>
+<tr class="separator:a4f9790015b39b79102c9bf84b5053a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea1a068e3151e72af656da23eb5c5b75" id="r_aea1a068e3151e72af656da23eb5c5b75"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea1a068e3151e72af656da23eb5c5b75">naturalSmooth</a> (self, bool arg1)</td></tr>
+<tr class="separator:aea1a068e3151e72af656da23eb5c5b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a333dc620d66a4b111aa4b5303db118f3" id="r_a333dc620d66a4b111aa4b5303db118f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a333dc620d66a4b111aa4b5303db118f3">onEdgeSplit</a> (self)</td></tr>
+<tr class="separator:a333dc620d66a4b111aa4b5303db118f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84f1d76e26ae5f45c57c734d5119bfa8" id="r_a84f1d76e26ae5f45c57c734d5119bfa8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84f1d76e26ae5f45c57c734d5119bfa8">onEdgeSplit</a> (self, <a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a> arg1)</td></tr>
+<tr class="separator:a84f1d76e26ae5f45c57c734d5119bfa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e52ea4b95f57b6395f38dbf4ab3e52" id="r_a72e52ea4b95f57b6395f38dbf4ab3e52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72e52ea4b95f57b6395f38dbf4ab3e52">smoothCurvature</a> (self)</td></tr>
+<tr class="separator:a72e52ea4b95f57b6395f38dbf4ab3e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8957b49b65eaf94bed0b2b0c4ff4b23" id="r_ab8957b49b65eaf94bed0b2b0c4ff4b23"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8957b49b65eaf94bed0b2b0c4ff4b23">smoothCurvature</a> (self, bool arg1)</td></tr>
+<tr class="separator:ab8957b49b65eaf94bed0b2b0c4ff4b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6b87c63c230d483ff8874ec0b316ca" id="r_a9b6b87c63c230d483ff8874ec0b316ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b6b87c63c230d483ff8874ec0b316ca">triangulateOnly</a> (self)</td></tr>
+<tr class="separator:a9b6b87c63c230d483ff8874ec0b316ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0742be373854745970a4a67452c921ba" id="r_a0742be373854745970a4a67452c921ba"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0742be373854745970a4a67452c921ba">triangulateOnly</a> (self, bool arg1)</td></tr>
+<tr class="separator:a0742be373854745970a4a67452c921ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83a699ace555f0b3b450777d1f59788f" id="r_a83a699ace555f0b3b450777d1f59788f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83a699ace555f0b3b450777d1f59788f">triangulateParams</a> (self)</td></tr>
+<tr class="separator:a83a699ace555f0b3b450777d1f59788f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d13716844e77567127449b2a17bab8" id="r_a19d13716844e77567127449b2a17bab8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19d13716844e77567127449b2a17bab8">triangulateParams</a> (self, <a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a> arg1)</td></tr>
+<tr class="separator:a19d13716844e77567127449b2a17bab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a649f69ba4aa89e6ece41acd18a141338" id="r_a649f69ba4aa89e6ece41acd18a141338"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertCoords2.html">VertCoords2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a649f69ba4aa89e6ece41acd18a141338">uvCoords</a> (self)</td></tr>
+<tr class="separator:a649f69ba4aa89e6ece41acd18a141338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02303fed26e0d9482f829286352a8bc9" id="r_a02303fed26e0d9482f829286352a8bc9"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02303fed26e0d9482f829286352a8bc9">uvCoords</a> (self, <a class="el" href="classmrmeshpy_1_1VertCoords2.html">VertCoords2</a> arg1)</td></tr>
+<tr class="separator:a02303fed26e0d9482f829286352a8bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a819b7a5abd8495cff22d5747d59c6fca" id="r_a819b7a5abd8495cff22d5747d59c6fca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertexMass.html">VertexMass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a819b7a5abd8495cff22d5747d59c6fca">vmass</a> (self)</td></tr>
+<tr class="separator:a819b7a5abd8495cff22d5747d59c6fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0576ab29afb6d6f04c1a94a80401c3a" id="r_ac0576ab29afb6d6f04c1a94a80401c3a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0576ab29afb6d6f04c1a94a80401c3a">vmass</a> (self, <a class="el" href="classmrmeshpy_1_1VertexMass.html">VertexMass</a> arg1)</td></tr>
+<tr class="separator:ac0576ab29afb6d6f04c1a94a80401c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a7addf7df5a2d7d1857db3ed004c5c3f0" id="r_a7addf7df5a2d7d1857db3ed004c5c3f0"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7addf7df5a2d7d1857db3ed004c5c3f0">_offsetof_beforeEdgeSplit</a> = 152</td></tr>
+<tr class="separator:a7addf7df5a2d7d1857db3ed004c5c3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4efdc1289f247a832b0e02f815916d" id="r_a4f4efdc1289f247a832b0e02f815916d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f4efdc1289f247a832b0e02f815916d">_offsetof_colorMap</a> = 232</td></tr>
+<tr class="separator:a4f4efdc1289f247a832b0e02f815916d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58214a0e2c794d56c2dc72e7d7ebc2e" id="r_ad58214a0e2c794d56c2dc72e7d7ebc2e"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad58214a0e2c794d56c2dc72e7d7ebc2e">_offsetof_edgeWeights</a> = 216</td></tr>
+<tr class="separator:ad58214a0e2c794d56c2dc72e7d7ebc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61fb99db6371fd1b119a550cc99d7f8c" id="r_a61fb99db6371fd1b119a550cc99d7f8c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61fb99db6371fd1b119a550cc99d7f8c">_offsetof_maxAngleChangeAfterFlip</a> = 140</td></tr>
+<tr class="separator:a61fb99db6371fd1b119a550cc99d7f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc166097a979decee64b540bfbe6724d" id="r_abc166097a979decee64b540bfbe6724d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc166097a979decee64b540bfbe6724d">_offsetof_maxEdgeLen</a> = 132</td></tr>
+<tr class="separator:abc166097a979decee64b540bfbe6724d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e7e6fcdc0af482b55eb9a121aacd74" id="r_a48e7e6fcdc0af482b55eb9a121aacd74"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48e7e6fcdc0af482b55eb9a121aacd74">_offsetof_maxEdgeSplits</a> = 136</td></tr>
+<tr class="separator:a48e7e6fcdc0af482b55eb9a121aacd74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120ad01e45123482c22aa634d312e1da" id="r_a120ad01e45123482c22aa634d312e1da"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a120ad01e45123482c22aa634d312e1da">_offsetof_naturalSmooth</a> = 145</td></tr>
+<tr class="separator:a120ad01e45123482c22aa634d312e1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d728f63f002368ac1d00d952453d868" id="r_a4d728f63f002368ac1d00d952453d868"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d728f63f002368ac1d00d952453d868">_offsetof_onEdgeSplit</a> = 184</td></tr>
+<tr class="separator:a4d728f63f002368ac1d00d952453d868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fbe0c03266a5fdbf8949c0f27232986" id="r_a2fbe0c03266a5fdbf8949c0f27232986"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fbe0c03266a5fdbf8949c0f27232986">_offsetof_smoothCurvature</a> = 144</td></tr>
+<tr class="separator:a2fbe0c03266a5fdbf8949c0f27232986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a488026c4090daa2db94609788871c4a9" id="r_a488026c4090daa2db94609788871c4a9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a488026c4090daa2db94609788871c4a9">_offsetof_triangulateOnly</a> = 128</td></tr>
+<tr class="separator:a488026c4090daa2db94609788871c4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab959619e95adc31a0002fb915d5f6969" id="r_ab959619e95adc31a0002fb915d5f6969"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab959619e95adc31a0002fb915d5f6969">_offsetof_triangulateParams</a> = 0</td></tr>
+<tr class="separator:ab959619e95adc31a0002fb915d5f6969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27108d2ea91dfdfe952311916e2f3a06" id="r_a27108d2ea91dfdfe952311916e2f3a06"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27108d2ea91dfdfe952311916e2f3a06">_offsetof_uvCoords</a> = 224</td></tr>
+<tr class="separator:a27108d2ea91dfdfe952311916e2f3a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4484ca9796f7c09b1136c6b261f2755e" id="r_a4484ca9796f7c09b1136c6b261f2755e"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4484ca9796f7c09b1136c6b261f2755e">_offsetof_vmass</a> = 220</td></tr>
+<tr class="separator:a4484ca9796f7c09b1136c6b261f2755e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::FillHoleNicelySettings
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae6ea8ac79fa3e78fc50502640af68e2a" name="ae6ea8ac79fa3e78fc50502640af68e2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6ea8ac79fa3e78fc50502640af68e2a">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="ac5e3498c40d977fe9fde7f527d77942b" name="ac5e3498c40d977fe9fde7f527d77942b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5e3498c40d977fe9fde7f527d77942b">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FillHoleNicelySettings.html">FillHoleNicelySettings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a722066d43db8a1fab0b68cc702674b19" name="a722066d43db8a1fab0b68cc702674b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a722066d43db8a1fab0b68cc702674b19">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a></td>          <td class="paramname"><span class="paramname"><em>triangulateParams</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>triangulateOnly</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxEdgeLen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxEdgeSplits</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxAngleChangeAfterFlip</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>smoothCurvature</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>naturalSmooth</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__Id__EdgeTag.html">func_bool_from_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>beforeEdgeSplit</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>onEdgeSplit</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1EdgeWeights.html">EdgeWeights</a></td>          <td class="paramname"><span class="paramname"><em>edgeWeights</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertexMass.html">VertexMass</a></td>          <td class="paramname"><span class="paramname"><em>vmass</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertCoords2.html">VertCoords2</a></td>          <td class="paramname"><span class="paramname"><em>uvCoords</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertColors.html">VertColors</a></td>          <td class="paramname"><span class="paramname"><em>colorMap</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a50ccd6545e4fb0876ea176d9ef42a5eb" name="a50ccd6545e4fb0876ea176d9ef42a5eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50ccd6545e4fb0876ea176d9ef42a5eb">&#9670;&#160;</a></span>beforeEdgeSplit() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__bool__from__Id__EdgeTag.html">func_bool_from_Id_EdgeTag</a> mrmeshpy.FillHoleNicelySettings.beforeEdgeSplit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">(If this is set) this function is called in subdivision each time edge (e) is going to split, if it returns false then this split will be skipped
+</pre> 
+</div>
+</div>
+<a id="a163fee0fdff0c18290cae488bb309f83" name="a163fee0fdff0c18290cae488bb309f83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a163fee0fdff0c18290cae488bb309f83">&#9670;&#160;</a></span>beforeEdgeSplit() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.beforeEdgeSplit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__Id__EdgeTag.html">func_bool_from_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15568bc243eb26da530f3b659b07cf94" name="a15568bc243eb26da530f3b659b07cf94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15568bc243eb26da530f3b659b07cf94">&#9670;&#160;</a></span>colorMap() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertColors.html">VertColors</a> mrmeshpy.FillHoleNicelySettings.colorMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">optional colors of vertices; if provided then elements corresponding to new vertices will be added there
+</pre> 
+</div>
+</div>
+<a id="a2eba5f9b6b0c5f633f710db16714b689" name="a2eba5f9b6b0c5f633f710db16714b689"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eba5f9b6b0c5f633f710db16714b689">&#9670;&#160;</a></span>colorMap() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.colorMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertColors.html">VertColors</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8822bddbb915ef20c02959eea1331678" name="a8822bddbb915ef20c02959eea1331678"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8822bddbb915ef20c02959eea1331678">&#9670;&#160;</a></span>edgeWeights() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1EdgeWeights.html">EdgeWeights</a> mrmeshpy.FillHoleNicelySettings.edgeWeights </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">edge weighting scheme for smoothCurvature mode
+</pre> 
+</div>
+</div>
+<a id="abdb3b8fe51ebf8ee95504d2c874979da" name="abdb3b8fe51ebf8ee95504d2c874979da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb3b8fe51ebf8ee95504d2c874979da">&#9670;&#160;</a></span>edgeWeights() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.edgeWeights </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1EdgeWeights.html">EdgeWeights</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04a189c6920cda6cf7f9a8308c77d7c0" name="a04a189c6920cda6cf7f9a8308c77d7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a189c6920cda6cf7f9a8308c77d7c0">&#9670;&#160;</a></span>maxAngleChangeAfterFlip() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.FillHoleNicelySettings.maxAngleChangeAfterFlip </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Improves local mesh triangulation by doing edge flips if it does not change dihedral angle more than on this value (in radians)
+</pre> 
+</div>
+</div>
+<a id="aa1254a38f4f3280d14bda8ad4b6e49a2" name="aa1254a38f4f3280d14bda8ad4b6e49a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1254a38f4f3280d14bda8ad4b6e49a2">&#9670;&#160;</a></span>maxAngleChangeAfterFlip() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.maxAngleChangeAfterFlip </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36fd5ac316ea771331116b7d59692fff" name="a36fd5ac316ea771331116b7d59692fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36fd5ac316ea771331116b7d59692fff">&#9670;&#160;</a></span>maxEdgeLen() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.FillHoleNicelySettings.maxEdgeLen </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Subdivision is stopped when all edges inside or on the boundary of the region are not longer than this value
+</pre> 
+</div>
+</div>
+<a id="a11c25fbcb7e5cf9495a538a372de5ae9" name="a11c25fbcb7e5cf9495a538a372de5ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c25fbcb7e5cf9495a538a372de5ae9">&#9670;&#160;</a></span>maxEdgeLen() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.maxEdgeLen </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c715f42e85c9f9e9f3e270f4185bff9" name="a0c715f42e85c9f9e9f3e270f4185bff9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c715f42e85c9f9e9f3e270f4185bff9">&#9670;&#160;</a></span>maxEdgeSplits() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.FillHoleNicelySettings.maxEdgeSplits </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Maximum number of edge splits allowed during subdivision
+</pre> 
+</div>
+</div>
+<a id="af36ac1e88ae1ea680850f7ceaba917ba" name="af36ac1e88ae1ea680850f7ceaba917ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af36ac1e88ae1ea680850f7ceaba917ba">&#9670;&#160;</a></span>maxEdgeSplits() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.maxEdgeSplits </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f9790015b39b79102c9bf84b5053a85" name="a4f9790015b39b79102c9bf84b5053a85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f9790015b39b79102c9bf84b5053a85">&#9670;&#160;</a></span>naturalSmooth() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.FillHoleNicelySettings.naturalSmooth </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Additionally smooth 3 layers of vertices near hole boundary both inside and outside of the hole
+</pre> 
+</div>
+</div>
+<a id="aea1a068e3151e72af656da23eb5c5b75" name="aea1a068e3151e72af656da23eb5c5b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea1a068e3151e72af656da23eb5c5b75">&#9670;&#160;</a></span>naturalSmooth() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.naturalSmooth </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a333dc620d66a4b111aa4b5303db118f3" name="a333dc620d66a4b111aa4b5303db118f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333dc620d66a4b111aa4b5303db118f3">&#9670;&#160;</a></span>onEdgeSplit() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a> mrmeshpy.FillHoleNicelySettings.onEdgeSplit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">(If this is set) this function is called in subdivision each time edge (e) is split into (e1-&gt;e), but before the ring is made Delone
+</pre> 
+</div>
+</div>
+<a id="a84f1d76e26ae5f45c57c734d5119bfa8" name="a84f1d76e26ae5f45c57c734d5119bfa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84f1d76e26ae5f45c57c734d5119bfa8">&#9670;&#160;</a></span>onEdgeSplit() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.onEdgeSplit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72e52ea4b95f57b6395f38dbf4ab3e52" name="a72e52ea4b95f57b6395f38dbf4ab3e52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e52ea4b95f57b6395f38dbf4ab3e52">&#9670;&#160;</a></span>smoothCurvature() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.FillHoleNicelySettings.smoothCurvature </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Whether to make patch over the hole smooth both inside and on its boundary with existed surface
+</pre> 
+</div>
+</div>
+<a id="ab8957b49b65eaf94bed0b2b0c4ff4b23" name="ab8957b49b65eaf94bed0b2b0c4ff4b23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8957b49b65eaf94bed0b2b0c4ff4b23">&#9670;&#160;</a></span>smoothCurvature() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.smoothCurvature </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b6b87c63c230d483ff8874ec0b316ca" name="a9b6b87c63c230d483ff8874ec0b316ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6b87c63c230d483ff8874ec0b316ca">&#9670;&#160;</a></span>triangulateOnly() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.FillHoleNicelySettings.triangulateOnly </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">If false then additional vertices are created inside the patch for best mesh quality
+</pre> 
+</div>
+</div>
+<a id="a0742be373854745970a4a67452c921ba" name="a0742be373854745970a4a67452c921ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0742be373854745970a4a67452c921ba">&#9670;&#160;</a></span>triangulateOnly() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.triangulateOnly </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83a699ace555f0b3b450777d1f59788f" name="a83a699ace555f0b3b450777d1f59788f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83a699ace555f0b3b450777d1f59788f">&#9670;&#160;</a></span>triangulateParams() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a> mrmeshpy.FillHoleNicelySettings.triangulateParams </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">how to triangulate the hole, must be specified by the user
+</pre> 
+</div>
+</div>
+<a id="a19d13716844e77567127449b2a17bab8" name="a19d13716844e77567127449b2a17bab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d13716844e77567127449b2a17bab8">&#9670;&#160;</a></span>triangulateParams() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.triangulateParams </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a649f69ba4aa89e6ece41acd18a141338" name="a649f69ba4aa89e6ece41acd18a141338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a649f69ba4aa89e6ece41acd18a141338">&#9670;&#160;</a></span>uvCoords() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertCoords2.html">VertCoords2</a> mrmeshpy.FillHoleNicelySettings.uvCoords </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">optional uv-coordinates of vertices; if provided then elements corresponding to new vertices will be added there
+</pre> 
+</div>
+</div>
+<a id="a02303fed26e0d9482f829286352a8bc9" name="a02303fed26e0d9482f829286352a8bc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02303fed26e0d9482f829286352a8bc9">&#9670;&#160;</a></span>uvCoords() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.uvCoords </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertCoords2.html">VertCoords2</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a819b7a5abd8495cff22d5747d59c6fca" name="a819b7a5abd8495cff22d5747d59c6fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a819b7a5abd8495cff22d5747d59c6fca">&#9670;&#160;</a></span>vmass() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertexMass.html">VertexMass</a> mrmeshpy.FillHoleNicelySettings.vmass </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">vertex mass scheme for smoothCurvature mode
+</pre> 
+</div>
+</div>
+<a id="ac0576ab29afb6d6f04c1a94a80401c3a" name="ac0576ab29afb6d6f04c1a94a80401c3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0576ab29afb6d6f04c1a94a80401c3a">&#9670;&#160;</a></span>vmass() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleNicelySettings.vmass </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertexMass.html">VertexMass</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7addf7df5a2d7d1857db3ed004c5c3f0" name="a7addf7df5a2d7d1857db3ed004c5c3f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7addf7df5a2d7d1857db3ed004c5c3f0">&#9670;&#160;</a></span>_offsetof_beforeEdgeSplit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_beforeEdgeSplit = 152</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f4efdc1289f247a832b0e02f815916d" name="a4f4efdc1289f247a832b0e02f815916d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4efdc1289f247a832b0e02f815916d">&#9670;&#160;</a></span>_offsetof_colorMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_colorMap = 232</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad58214a0e2c794d56c2dc72e7d7ebc2e" name="ad58214a0e2c794d56c2dc72e7d7ebc2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad58214a0e2c794d56c2dc72e7d7ebc2e">&#9670;&#160;</a></span>_offsetof_edgeWeights</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_edgeWeights = 216</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61fb99db6371fd1b119a550cc99d7f8c" name="a61fb99db6371fd1b119a550cc99d7f8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61fb99db6371fd1b119a550cc99d7f8c">&#9670;&#160;</a></span>_offsetof_maxAngleChangeAfterFlip</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_maxAngleChangeAfterFlip = 140</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc166097a979decee64b540bfbe6724d" name="abc166097a979decee64b540bfbe6724d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc166097a979decee64b540bfbe6724d">&#9670;&#160;</a></span>_offsetof_maxEdgeLen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_maxEdgeLen = 132</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48e7e6fcdc0af482b55eb9a121aacd74" name="a48e7e6fcdc0af482b55eb9a121aacd74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48e7e6fcdc0af482b55eb9a121aacd74">&#9670;&#160;</a></span>_offsetof_maxEdgeSplits</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_maxEdgeSplits = 136</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a120ad01e45123482c22aa634d312e1da" name="a120ad01e45123482c22aa634d312e1da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120ad01e45123482c22aa634d312e1da">&#9670;&#160;</a></span>_offsetof_naturalSmooth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_naturalSmooth = 145</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d728f63f002368ac1d00d952453d868" name="a4d728f63f002368ac1d00d952453d868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d728f63f002368ac1d00d952453d868">&#9670;&#160;</a></span>_offsetof_onEdgeSplit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_onEdgeSplit = 184</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2fbe0c03266a5fdbf8949c0f27232986" name="a2fbe0c03266a5fdbf8949c0f27232986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fbe0c03266a5fdbf8949c0f27232986">&#9670;&#160;</a></span>_offsetof_smoothCurvature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_smoothCurvature = 144</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a488026c4090daa2db94609788871c4a9" name="a488026c4090daa2db94609788871c4a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a488026c4090daa2db94609788871c4a9">&#9670;&#160;</a></span>_offsetof_triangulateOnly</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_triangulateOnly = 128</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab959619e95adc31a0002fb915d5f6969" name="ab959619e95adc31a0002fb915d5f6969"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab959619e95adc31a0002fb915d5f6969">&#9670;&#160;</a></span>_offsetof_triangulateParams</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_triangulateParams = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27108d2ea91dfdfe952311916e2f3a06" name="a27108d2ea91dfdfe952311916e2f3a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27108d2ea91dfdfe952311916e2f3a06">&#9670;&#160;</a></span>_offsetof_uvCoords</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_uvCoords = 224</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4484ca9796f7c09b1136c6b261f2755e" name="a4484ca9796f7c09b1136c6b261f2755e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4484ca9796f7c09b1136c6b261f2755e">&#9670;&#160;</a></span>_offsetof_vmass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleNicelySettings._offsetof_vmass = 220</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1FillHoleNicelySettings.html">FillHoleNicelySettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

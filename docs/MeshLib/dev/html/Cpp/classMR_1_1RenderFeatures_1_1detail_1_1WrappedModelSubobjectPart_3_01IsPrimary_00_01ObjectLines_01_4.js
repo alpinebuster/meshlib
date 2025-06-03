@@ -1,0 +1,5 @@
+var classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectLines_01_4 =
+[
+    [ "getGlobalAlphaForAllViewports", "classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectLines_01_4.html#a48dad745c5bdddfbcba217404855ef25", null ],
+    [ "getLineWidth", "classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectLines_01_4.html#a9e22538e171b9585e1f1b983e11c34c9", null ]
+];

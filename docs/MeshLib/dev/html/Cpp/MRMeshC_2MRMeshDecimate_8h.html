@@ -1,0 +1,468 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRMeshDecimate.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRMeshDecimate_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MRMeshDecimate.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="MRMeshC_2MRMeshFwd_8h_source.html">MRMeshFwd.h</a>&quot;</code><br />
+</div>
+<p><a href="MRMeshC_2MRMeshDecimate_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMRDecimateSettings.html">MRDecimateSettings</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters for <a class="el" href="#af881cb4a934603f2a5e6ab9d168ee56b">mrDecimateMesh</a>  <a href="structMRDecimateSettings.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMRDecimateResult.html">MRDecimateResult</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">results of mrDecimateMesh  <a href="structMRDecimateResult.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMRResolveMeshDegenSettings.html">MRResolveMeshDegenSettings</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters for <a class="el" href="#aadc6a32244f132e4d8e98d95bb6fdbea">mrResolveMeshDegenerations</a>  <a href="structMRResolveMeshDegenSettings.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMRRemeshSettings.html">MRRemeshSettings</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters for <a class="el" href="#a7d789c63c5d58eca429db9be9fecf8d0">mrRemesh</a>  <a href="structMRRemeshSettings.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:af1fedec926397e131e90c020bc20dd90" id="r_af1fedec926397e131e90c020bc20dd90"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a17d13395034488689778042547b7ff1a">MRDecimateStrategy</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1fedec926397e131e90c020bc20dd90">MRDecimateStrategy</a></td></tr>
+<tr class="memdesc:af1fedec926397e131e90c020bc20dd90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the order of edge collapses inside Decimate algorithm.  <br /></td></tr>
+<tr class="separator:af1fedec926397e131e90c020bc20dd90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99a5cbe5418155f78f0098ba06ee87d6" id="r_a99a5cbe5418155f78f0098ba06ee87d6"><td class="memItemLeft" align="right" valign="top">typedef struct MRDecimateSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99a5cbe5418155f78f0098ba06ee87d6">MRDecimateSettings</a></td></tr>
+<tr class="memdesc:a99a5cbe5418155f78f0098ba06ee87d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters for <a class="el" href="MRMeshC_8h.html#af881cb4a934603f2a5e6ab9d168ee56b">mrDecimateMesh</a>  <br /></td></tr>
+<tr class="separator:a99a5cbe5418155f78f0098ba06ee87d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34fe1bc0fa3d190d8af42139a6ee7c36" id="r_a34fe1bc0fa3d190d8af42139a6ee7c36"><td class="memItemLeft" align="right" valign="top">typedef struct MRDecimateResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34fe1bc0fa3d190d8af42139a6ee7c36">MRDecimateResult</a></td></tr>
+<tr class="memdesc:a34fe1bc0fa3d190d8af42139a6ee7c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">results of mrDecimateMesh  <br /></td></tr>
+<tr class="separator:a34fe1bc0fa3d190d8af42139a6ee7c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ebe613ca2c482fde49670ce5f1dbf2" id="r_a28ebe613ca2c482fde49670ce5f1dbf2"><td class="memItemLeft" align="right" valign="top">typedef struct MRResolveMeshDegenSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28ebe613ca2c482fde49670ce5f1dbf2">MRResolveMeshDegenSettings</a></td></tr>
+<tr class="memdesc:a28ebe613ca2c482fde49670ce5f1dbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters for <a class="el" href="MRMeshC_8h.html#aadc6a32244f132e4d8e98d95bb6fdbea">mrResolveMeshDegenerations</a>  <br /></td></tr>
+<tr class="separator:a28ebe613ca2c482fde49670ce5f1dbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bd5dbcf55b5b8178f0d130cdf8902ca" id="r_a4bd5dbcf55b5b8178f0d130cdf8902ca"><td class="memItemLeft" align="right" valign="top">typedef struct MRRemeshSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bd5dbcf55b5b8178f0d130cdf8902ca">MRRemeshSettings</a></td></tr>
+<tr class="memdesc:a4bd5dbcf55b5b8178f0d130cdf8902ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters for <a class="el" href="#a7d789c63c5d58eca429db9be9fecf8d0">mrRemesh</a>  <br /></td></tr>
+<tr class="separator:a4bd5dbcf55b5b8178f0d130cdf8902ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a17d13395034488689778042547b7ff1a" id="r_a17d13395034488689778042547b7ff1a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17d13395034488689778042547b7ff1a">MRDecimateStrategy</a> { <a class="el" href="#a17d13395034488689778042547b7ff1aafec0f5b1956d0b99efc97ae9f66abfa2">MRDecimateStrategyMinimizeError</a> = 0
+, <a class="el" href="#a17d13395034488689778042547b7ff1aacd39dfcd6c0f1a6b49d6dd906582d684">MRDecimateStrategyShortestEdgeFirst</a>
+ }</td></tr>
+<tr class="memdesc:a17d13395034488689778042547b7ff1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the order of edge collapses inside Decimate algorithm.  <a href="#a17d13395034488689778042547b7ff1a">More...</a><br /></td></tr>
+<tr class="separator:a17d13395034488689778042547b7ff1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aba95592a0a2c2bf95d3097513e3ec108" id="r_aba95592a0a2c2bf95d3097513e3ec108"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRDecimateSettings.html">MRDecimateSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba95592a0a2c2bf95d3097513e3ec108">mrDecimateSettingsNew</a> (void)</td></tr>
+<tr class="memdesc:aba95592a0a2c2bf95d3097513e3ec108"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a default instance  <br /></td></tr>
+<tr class="separator:aba95592a0a2c2bf95d3097513e3ec108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af881cb4a934603f2a5e6ab9d168ee56b" id="r_af881cb4a934603f2a5e6ab9d168ee56b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRDecimateResult.html">MRDecimateResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af881cb4a934603f2a5e6ab9d168ee56b">mrDecimateMesh</a> (<a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *mesh, const <a class="el" href="structMRDecimateSettings.html">MRDecimateSettings</a> *settings)</td></tr>
+<tr class="memdesc:af881cb4a934603f2a5e6ab9d168ee56b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collapse edges in mesh region according to the settings.  <br /></td></tr>
+<tr class="separator:af881cb4a934603f2a5e6ab9d168ee56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba8d0edb7c30fddc489973af94c5248" id="r_acba8d0edb7c30fddc489973af94c5248"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRResolveMeshDegenSettings.html">MRResolveMeshDegenSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acba8d0edb7c30fddc489973af94c5248">mrResolveMeshDegenSettingsNew</a> (void)</td></tr>
+<tr class="memdesc:acba8d0edb7c30fddc489973af94c5248"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a default instance  <br /></td></tr>
+<tr class="separator:acba8d0edb7c30fddc489973af94c5248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadc6a32244f132e4d8e98d95bb6fdbea" id="r_aadc6a32244f132e4d8e98d95bb6fdbea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadc6a32244f132e4d8e98d95bb6fdbea">mrResolveMeshDegenerations</a> (<a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *mesh, const <a class="el" href="structMRResolveMeshDegenSettings.html">MRResolveMeshDegenSettings</a> *settings)</td></tr>
+<tr class="separator:aadc6a32244f132e4d8e98d95bb6fdbea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c577504793b5fdc9f0781aec73c62df" id="r_a9c577504793b5fdc9f0781aec73c62df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRRemeshSettings.html">MRRemeshSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c577504793b5fdc9f0781aec73c62df">mrRemeshSettingsNew</a> (void)</td></tr>
+<tr class="memdesc:a9c577504793b5fdc9f0781aec73c62df"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a default instance  <br /></td></tr>
+<tr class="separator:a9c577504793b5fdc9f0781aec73c62df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d789c63c5d58eca429db9be9fecf8d0" id="r_a7d789c63c5d58eca429db9be9fecf8d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d789c63c5d58eca429db9be9fecf8d0">mrRemesh</a> (<a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *mesh, const <a class="el" href="structMRRemeshSettings.html">MRRemeshSettings</a> *settings)</td></tr>
+<tr class="memdesc:a7d789c63c5d58eca429db9be9fecf8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits too long and eliminates too short edges from the mesh.  <br /></td></tr>
+<tr class="separator:a7d789c63c5d58eca429db9be9fecf8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a34fe1bc0fa3d190d8af42139a6ee7c36" name="a34fe1bc0fa3d190d8af42139a6ee7c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34fe1bc0fa3d190d8af42139a6ee7c36">&#9670;&#160;</a></span>MRDecimateResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRDecimateResult MRDecimateResult</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>results of mrDecimateMesh </p>
+
+</div>
+</div>
+<a id="a99a5cbe5418155f78f0098ba06ee87d6" name="a99a5cbe5418155f78f0098ba06ee87d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99a5cbe5418155f78f0098ba06ee87d6">&#9670;&#160;</a></span>MRDecimateSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRDecimateSettings MRDecimateSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>parameters for <a class="el" href="MRMeshC_8h.html#af881cb4a934603f2a5e6ab9d168ee56b">mrDecimateMesh</a> </p>
+
+</div>
+</div>
+<a id="af1fedec926397e131e90c020bc20dd90" name="af1fedec926397e131e90c020bc20dd90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1fedec926397e131e90c020bc20dd90">&#9670;&#160;</a></span>MRDecimateStrategy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a17d13395034488689778042547b7ff1a">MRDecimateStrategy</a> <a class="el" href="#a17d13395034488689778042547b7ff1a">MRDecimateStrategy</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Defines the order of edge collapses inside Decimate algorithm. </p>
+
+</div>
+</div>
+<a id="a4bd5dbcf55b5b8178f0d130cdf8902ca" name="a4bd5dbcf55b5b8178f0d130cdf8902ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bd5dbcf55b5b8178f0d130cdf8902ca">&#9670;&#160;</a></span>MRRemeshSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRRemeshSettings MRRemeshSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>parameters for <a class="el" href="#a7d789c63c5d58eca429db9be9fecf8d0">mrRemesh</a> </p>
+
+</div>
+</div>
+<a id="a28ebe613ca2c482fde49670ce5f1dbf2" name="a28ebe613ca2c482fde49670ce5f1dbf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28ebe613ca2c482fde49670ce5f1dbf2">&#9670;&#160;</a></span>MRResolveMeshDegenSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRResolveMeshDegenSettings MRResolveMeshDegenSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>parameters for <a class="el" href="MRMeshC_8h.html#aadc6a32244f132e4d8e98d95bb6fdbea">mrResolveMeshDegenerations</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a17d13395034488689778042547b7ff1a" name="a17d13395034488689778042547b7ff1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17d13395034488689778042547b7ff1a">&#9670;&#160;</a></span>MRDecimateStrategy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a17d13395034488689778042547b7ff1a">MRDecimateStrategy</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Defines the order of edge collapses inside Decimate algorithm. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a17d13395034488689778042547b7ff1aafec0f5b1956d0b99efc97ae9f66abfa2" name="a17d13395034488689778042547b7ff1aafec0f5b1956d0b99efc97ae9f66abfa2"></a>MRDecimateStrategyMinimizeError&#160;</td><td class="fielddoc"><p>the next edge to collapse will be the one that introduced minimal error to the surface </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a17d13395034488689778042547b7ff1aacd39dfcd6c0f1a6b49d6dd906582d684" name="a17d13395034488689778042547b7ff1aacd39dfcd6c0f1a6b49d6dd906582d684"></a>MRDecimateStrategyShortestEdgeFirst&#160;</td><td class="fielddoc"><p>the next edge to collapse will be the shortest one </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="af881cb4a934603f2a5e6ab9d168ee56b" name="af881cb4a934603f2a5e6ab9d168ee56b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af881cb4a934603f2a5e6ab9d168ee56b">&#9670;&#160;</a></span>mrDecimateMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRDecimateResult.html">MRDecimateResult</a> mrDecimateMesh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRDecimateSettings.html">MRDecimateSettings</a> *</td>          <td class="paramname"><span class="paramname"><em>settings</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Collapse edges in mesh region according to the settings. </p>
+
+</div>
+</div>
+<a id="aba95592a0a2c2bf95d3097513e3ec108" name="aba95592a0a2c2bf95d3097513e3ec108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba95592a0a2c2bf95d3097513e3ec108">&#9670;&#160;</a></span>mrDecimateSettingsNew()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRDecimateSettings.html">MRDecimateSettings</a> mrDecimateSettingsNew </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initializes a default instance </p>
+
+</div>
+</div>
+<a id="a7d789c63c5d58eca429db9be9fecf8d0" name="a7d789c63c5d58eca429db9be9fecf8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d789c63c5d58eca429db9be9fecf8d0">&#9670;&#160;</a></span>mrRemesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> bool mrRemesh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRRemeshSettings.html">MRRemeshSettings</a> *</td>          <td class="paramname"><span class="paramname"><em>settings</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Splits too long and eliminates too short edges from the mesh. </p>
+
+</div>
+</div>
+<a id="a9c577504793b5fdc9f0781aec73c62df" name="a9c577504793b5fdc9f0781aec73c62df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c577504793b5fdc9f0781aec73c62df">&#9670;&#160;</a></span>mrRemeshSettingsNew()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRRemeshSettings.html">MRRemeshSettings</a> mrRemeshSettingsNew </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initializes a default instance </p>
+
+</div>
+</div>
+<a id="aadc6a32244f132e4d8e98d95bb6fdbea" name="aadc6a32244f132e4d8e98d95bb6fdbea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadc6a32244f132e4d8e98d95bb6fdbea">&#9670;&#160;</a></span>mrResolveMeshDegenerations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> bool mrResolveMeshDegenerations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRResolveMeshDegenSettings.html">MRResolveMeshDegenSettings</a> *</td>          <td class="paramname"><span class="paramname"><em>settings</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Resolves degenerate triangles in given mesh This function performs decimation, so it can affect topology </p><dl class="section return"><dt>Returns</dt><dd>true if the mesh has been changed </dd></dl>
+
+</div>
+</div>
+<a id="acba8d0edb7c30fddc489973af94c5248" name="acba8d0edb7c30fddc489973af94c5248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba8d0edb7c30fddc489973af94c5248">&#9670;&#160;</a></span>mrResolveMeshDegenSettingsNew()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRResolveMeshDegenSettings.html">MRResolveMeshDegenSettings</a> mrResolveMeshDegenSettingsNew </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initializes a default instance </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRMeshDecimate_8h.html">MRMeshDecimate.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

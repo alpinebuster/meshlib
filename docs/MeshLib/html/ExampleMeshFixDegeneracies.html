@@ -1,0 +1,334 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/ExampleMeshFixDegeneracies.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<!-- No Index Part -->
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Documentation: Fixing Mesh Degeneracies</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Documentation
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('ExampleMeshFixDegeneracies.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Fixing Mesh Degeneracies</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Example of fixing degenerated faces</p>
+<div class="tabbed"></div><div class="tabbed"><ul>
+<li><b class="tab-title">C++</b> <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;MRMesh/MRMesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRMeshLoad.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRBox.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRMeshFixer.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">auto</span> mesh = <a class="code hl_functionRef" href="./Cpp/group__MeshLoadGroup.html#gac9118492a6cd095ff8e563c0987fc477">MR::MeshLoad::fromAnySupportedFormat</a>( <span class="stringliteral">&quot;mesh.stl&quot;</span> );</div>
+<div class="line">    <span class="keywordflow">if</span> ( !mesh )</div>
+<div class="line">    {</div>
+<div class="line">        std::cerr &lt;&lt; mesh.error() &lt;&lt; std::endl;</div>
+<div class="line">        <span class="keywordflow">return</span> 1;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// you can set various parameters for the resolving process; see the documentation for more info</span></div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/group__MeshFixerGroup.html#gad11bed424b514b2e835eb9ba644dd4eb">MR::fixMeshDegeneracies</a>( *mesh, {</div>
+<div class="line">        .maxDeviation = 1e-5f * mesh-&gt;computeBoundingBox().diagonal(),</div>
+<div class="line">        .tinyEdgeLength = 1e-3f,</div>
+<div class="line">    } );</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__MeshFixerGroup_html_gad11bed424b514b2e835eb9ba644dd4eb"><div class="ttname"><a href="./Cpp/group__MeshFixerGroup.html#gad11bed424b514b2e835eb9ba644dd4eb">MR::fixMeshDegeneracies</a></div><div class="ttdeci">MRMESH_API Expected&lt; void &gt; fixMeshDegeneracies(Mesh &amp;mesh, const FixMeshDegeneraciesParams &amp;params)</div></div>
+<div class="ttc" id="agroup__MeshLoadGroup_html_gac9118492a6cd095ff8e563c0987fc477"><div class="ttname"><a href="./Cpp/group__MeshLoadGroup.html#gac9118492a6cd095ff8e563c0987fc477">MR::MeshLoad::fromAnySupportedFormat</a></div><div class="ttdeci">MRMESH_API Expected&lt; Mesh &gt; fromAnySupportedFormat(const std::filesystem::path &amp;file, const MeshLoadSettings &amp;settings={})</div></div>
+</div><!-- fragment --></li>
+<li><b class="tab-title">Python</b> <div class="fragment"><div class="line"><span class="keyword">import</span> sys</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">import</span> meshlib.mrmeshpy <span class="keyword">as</span> mrmeshpy</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Load mesh</span></div>
+<div class="line">mesh = <a class="code hl_functionRef" href="./Py/namespacemrmeshpy.html#ac870d6fee4e3b3e3dcf73bc12a21d0f5">mrmeshpy.loadMesh</a>(<span class="stringliteral">&quot;mesh.stl&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># you can set various parameters for the resolving process; see the documentation for more info</span></div>
+<div class="line">params = <a class="code hl_classRef" href="./Py/classmrmeshpy_1_1FixMeshDegeneraciesParams.html">mrmeshpy.FixMeshDegeneraciesParams</a>()</div>
+<div class="line">params.maxDeviation = 1e-5 * mesh.computeBoundingBox().diagonal()</div>
+<div class="line">params.tinyEdgeLength = 1e-3</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_functionRef" href="./Py/namespacemrmeshpy.html#a6f6958e6ed7efb9519b486db18ad036e">mrmeshpy.fixMeshDegeneracies</a>(mesh, params)</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_functionRef" href="./Py/namespacemrmeshpy.html#a0f6b2b16672621f1c75bbd082c1ca388">mrmeshpy.saveMesh</a>(mesh, <span class="stringliteral">&quot;fixed_mesh.stl&quot;</span>)</div>
+<div class="ttc" id="aclassmrmeshpy_1_1FixMeshDegeneraciesParams_html"><div class="ttname"><a href="./Py/classmrmeshpy_1_1FixMeshDegeneraciesParams.html">mrmeshpy::FixMeshDegeneraciesParams</a></div></div>
+<div class="ttc" id="anamespacemrmeshpy_html_a0f6b2b16672621f1c75bbd082c1ca388"><div class="ttname"><a href="./Py/namespacemrmeshpy.html#a0f6b2b16672621f1c75bbd082c1ca388">mrmeshpy::saveMesh</a></div><div class="ttdeci">None saveMesh(Mesh mesh, os.PathLike|str|bytes file, SaveSettings settings='{}')</div></div>
+<div class="ttc" id="anamespacemrmeshpy_html_a6f6958e6ed7efb9519b486db18ad036e"><div class="ttname"><a href="./Py/namespacemrmeshpy.html#a6f6958e6ed7efb9519b486db18ad036e">mrmeshpy::fixMeshDegeneracies</a></div><div class="ttdeci">None fixMeshDegeneracies(Mesh mesh, FixMeshDegeneraciesParams params)</div></div>
+<div class="ttc" id="anamespacemrmeshpy_html_ac870d6fee4e3b3e3dcf73bc12a21d0f5"><div class="ttname"><a href="./Py/namespacemrmeshpy.html#ac870d6fee4e3b3e3dcf73bc12a21d0f5">mrmeshpy::loadMesh</a></div><div class="ttdeci">Mesh loadMesh(os.PathLike|str|bytes file, MeshLoadSettings settings='{}')</div></div>
+</div><!-- fragment --></li>
+<li><b class="tab-title">C</b> <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMeshFixer.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMeshLoad.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMeshSave.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRString.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> rc = EXIT_FAILURE;</div>
+<div class="line">    <span class="keywordflow">if</span> ( argc != 2 &amp;&amp; argc != 3 )</div>
+<div class="line">    {</div>
+<div class="line">        fprintf( stderr, <span class="stringliteral">&quot;Usage: %s INPUT [OUTPUT]&quot;</span>, argv[0] );</div>
+<div class="line">        <span class="keywordflow">goto</span> out;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* input = argv[1];</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* output = ( argc == 2 ) ? argv[1] : argv[2];</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// error messages will be stored here</span></div>
+<div class="line">    <a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a>* errorString = NULL;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMeshLoad_8h.html#a704835da8dd3d463cc476961c6d7e5bb">mrMeshLoadFromAnySupportedFormat</a>( input, &amp;errorString );</div>
+<div class="line">    <span class="keywordflow">if</span> ( errorString )</div>
+<div class="line">    {</div>
+<div class="line">        fprintf( stderr, <span class="stringliteral">&quot;Failed to load mesh: %s&quot;</span>, <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRString_8h.html#a76ec6c7635ff332a9e166e4e5d3ba3c6">mrStringData</a>( errorString ) );</div>
+<div class="line">        <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRString_8h.html#a6c06174923fa27502a2633fd5791047d">mrStringFree</a>( errorString );</div>
+<div class="line">        <span class="keywordflow">goto</span> out;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// you can set various parameters for the resolving process; see the documentation for more info</span></div>
+<div class="line">    <a class="code hl_structRef" href="./Cpp/structMRFixMeshDegeneraciesParams.html">MRFixMeshDegeneraciesParams</a> params = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMeshFixer_8h.html#a1c2e4540df1f4d0517fe8adf422f5b7f">mrFixMeshDegeneraciesParamsNew</a>();</div>
+<div class="line">    <span class="comment">// maximum permitted deviation</span></div>
+<div class="line">    <span class="keyword">const</span> <a class="code hl_structRef" href="./Cpp/structMRBox3f.html">MRBox3f</a> bbox = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMesh_8h.html#acb9cd8a62b754d8dfc405c983dbd5034">mrMeshComputeBoundingBox</a>( mesh, NULL );</div>
+<div class="line">    params.<a class="code hl_variableRef" href="./Cpp/structMRFixMeshDegeneraciesParams.html#a6ae51556ecb7da197778471e3a10a0c2">maxDeviation</a> = 1e-5f * <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRBox_8h.html#a699388955b5907eea309e33d62a358d0">mrBox3fDiagonal</a>( &amp;bbox );</div>
+<div class="line">    <span class="comment">// maximum length of edges to be collapsed</span></div>
+<div class="line">    params.<a class="code hl_variableRef" href="./Cpp/structMRFixMeshDegeneraciesParams.html#a4f27ee78591d8af798d6f11a38bb7c8c">tinyEdgeLength</a> = 1e-3f;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMeshFixer_8h.html#a64519ddab92a18a6247058431fd9ea2f">mrFixMeshDegeneracies</a>( mesh, &amp;params, &amp;errorString );</div>
+<div class="line">    <span class="keywordflow">if</span> ( errorString )</div>
+<div class="line">    {</div>
+<div class="line">        fprintf( stderr, <span class="stringliteral">&quot;Failed to fix mesh degeneracies: %s&quot;</span>, <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRString_8h.html#a76ec6c7635ff332a9e166e4e5d3ba3c6">mrStringData</a>( errorString ) );</div>
+<div class="line">        <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRString_8h.html#a6c06174923fa27502a2633fd5791047d">mrStringFree</a>( errorString );</div>
+<div class="line">        <span class="keywordflow">goto</span> out_mesh;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_structRef" href="./Cpp/structMRSaveSettings.html">MRSaveSettings</a> saveSettings = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRSaveSettings_8h.html#a756130ec0ffb3b0c1dde997339d1d39e">mrSaveSettingsNew</a>();</div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMeshSave_8h.html#a71b21c5fc445077f0a812d5b3991dd0b">mrMeshSaveToAnySupportedFormat</a>( mesh, output, &amp;saveSettings, &amp;errorString);</div>
+<div class="line">    <span class="keywordflow">if</span> ( errorString )</div>
+<div class="line">    {</div>
+<div class="line">        fprintf( stderr, <span class="stringliteral">&quot;Failed to save mesh: %s&quot;</span>, <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRString_8h.html#a76ec6c7635ff332a9e166e4e5d3ba3c6">mrStringData</a>( errorString ) );</div>
+<div class="line">        <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRString_8h.html#a6c06174923fa27502a2633fd5791047d">mrStringFree</a>( errorString );</div>
+<div class="line">        <span class="keywordflow">goto</span> out_mesh;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    rc = EXIT_SUCCESS;</div>
+<div class="line">out_mesh:</div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMesh_8h.html#ae5d22b5eec3af73293e031ea6346310d">mrMeshFree</a>( mesh );</div>
+<div class="line">out:</div>
+<div class="line">    <span class="keywordflow">return</span> rc;</div>
+<div class="line">}</div>
+<div class="ttc" id="aMRMeshC_2MRBox_8h_html_a699388955b5907eea309e33d62a358d0"><div class="ttname"><a href="./Cpp/MRMeshC_2MRBox_8h.html#a699388955b5907eea309e33d62a358d0">mrBox3fDiagonal</a></div><div class="ttdeci">MRMESHC_API float mrBox3fDiagonal(const MRBox3f *box)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFixer_8h_html_a1c2e4540df1f4d0517fe8adf422f5b7f"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFixer_8h.html#a1c2e4540df1f4d0517fe8adf422f5b7f">mrFixMeshDegeneraciesParamsNew</a></div><div class="ttdeci">MRMESHC_API MRFixMeshDegeneraciesParams mrFixMeshDegeneraciesParamsNew(void)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFixer_8h_html_a64519ddab92a18a6247058431fd9ea2f"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFixer_8h.html#a64519ddab92a18a6247058431fd9ea2f">mrFixMeshDegeneracies</a></div><div class="ttdeci">MRMESHC_API void mrFixMeshDegeneracies(MRMesh *mesh, const MRFixMeshDegeneraciesParams *params, MRString **errorString)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a7b372c6d0fd65239f731902623e752c5"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a></div><div class="ttdeci">struct MRMesh MRMesh</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a89b45a4728b7f2a3281d78d9164162fe"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a></div><div class="ttdeci">typedefMR_EXTERN_C_BEGIN struct MRString MRString</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshLoad_8h_html_a704835da8dd3d463cc476961c6d7e5bb"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshLoad_8h.html#a704835da8dd3d463cc476961c6d7e5bb">mrMeshLoadFromAnySupportedFormat</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN MRMESHC_API MRMesh * mrMeshLoadFromAnySupportedFormat(const char *file, MRString **errorStr)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshSave_8h_html_a71b21c5fc445077f0a812d5b3991dd0b"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshSave_8h.html#a71b21c5fc445077f0a812d5b3991dd0b">mrMeshSaveToAnySupportedFormat</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN MRMESHC_API void mrMeshSaveToAnySupportedFormat(const MRMesh *mesh, const char *file, const MRSaveSettings *settings, MRString **errorStr)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMesh_8h_html_acb9cd8a62b754d8dfc405c983dbd5034"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMesh_8h.html#acb9cd8a62b754d8dfc405c983dbd5034">mrMeshComputeBoundingBox</a></div><div class="ttdeci">MRMESHC_API MRBox3f mrMeshComputeBoundingBox(const MRMesh *mesh, const MRAffineXf3f *toWorld)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMesh_8h_html_ae5d22b5eec3af73293e031ea6346310d"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMesh_8h.html#ae5d22b5eec3af73293e031ea6346310d">mrMeshFree</a></div><div class="ttdeci">MRMESHC_API void mrMeshFree(MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRSaveSettings_8h_html_a756130ec0ffb3b0c1dde997339d1d39e"><div class="ttname"><a href="./Cpp/MRMeshC_2MRSaveSettings_8h.html#a756130ec0ffb3b0c1dde997339d1d39e">mrSaveSettingsNew</a></div><div class="ttdeci">MRMESHC_API MRSaveSettings mrSaveSettingsNew(void)</div></div>
+<div class="ttc" id="aMRMeshC_2MRString_8h_html_a6c06174923fa27502a2633fd5791047d"><div class="ttname"><a href="./Cpp/MRMeshC_2MRString_8h.html#a6c06174923fa27502a2633fd5791047d">mrStringFree</a></div><div class="ttdeci">MRMESHC_API void mrStringFree(MRString *str)</div></div>
+<div class="ttc" id="aMRMeshC_2MRString_8h_html_a76ec6c7635ff332a9e166e4e5d3ba3c6"><div class="ttname"><a href="./Cpp/MRMeshC_2MRString_8h.html#a76ec6c7635ff332a9e166e4e5d3ba3c6">mrStringData</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN MRMESHC_API const char * mrStringData(const MRString *str)</div></div>
+<div class="ttc" id="astructMRBox3f_html"><div class="ttname"><a href="./Cpp/structMRBox3f.html">MRBox3f</a></div></div>
+<div class="ttc" id="astructMRFixMeshDegeneraciesParams_html"><div class="ttname"><a href="./Cpp/structMRFixMeshDegeneraciesParams.html">MRFixMeshDegeneraciesParams</a></div></div>
+<div class="ttc" id="astructMRFixMeshDegeneraciesParams_html_a4f27ee78591d8af798d6f11a38bb7c8c"><div class="ttname"><a href="./Cpp/structMRFixMeshDegeneraciesParams.html#a4f27ee78591d8af798d6f11a38bb7c8c">MRFixMeshDegeneraciesParams::tinyEdgeLength</a></div><div class="ttdeci">float tinyEdgeLength</div></div>
+<div class="ttc" id="astructMRFixMeshDegeneraciesParams_html_a6ae51556ecb7da197778471e3a10a0c2"><div class="ttname"><a href="./Cpp/structMRFixMeshDegeneraciesParams.html#a6ae51556ecb7da197778471e3a10a0c2">MRFixMeshDegeneraciesParams::maxDeviation</a></div><div class="ttdeci">float maxDeviation</div></div>
+<div class="ttc" id="astructMRSaveSettings_html"><div class="ttname"><a href="./Cpp/structMRSaveSettings.html">MRSaveSettings</a></div></div>
+</div><!-- fragment --></li>
+<li><b class="tab-title">C#</b> <div class="fragment"><div class="line"><span class="keyword">using </span>System.Reflection;</div>
+<div class="line"><span class="keyword">using </span>static <a class="code hl_namespaceRef" href="./Cpp/namespaceMR.html">MR</a>.DotNet;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>MeshFixDegeneraciesExample</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Run(<span class="keywordtype">string</span>[] args)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">try</span></div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">if</span> (args.Length != 2 &amp;&amp; args.Length != 3)</div>
+<div class="line">            {</div>
+<div class="line">                Console.WriteLine(<span class="stringliteral">&quot;Usage: {0} MeshFixDegeneraciesExample INPUT [OUTPUT]&quot;</span>, Assembly.GetExecutingAssembly().GetName().Name);</div>
+<div class="line">                <span class="keywordflow">return</span>;</div>
+<div class="line">            }</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordtype">string</span> inputFile = args[1];</div>
+<div class="line">            <span class="keywordtype">string</span> outputFile = args.Length == 3 ? args[2] : inputFile;</div>
+<div class="line"> </div>
+<div class="line">            var mesh = MeshLoad.FromAnySupportedFormat(inputFile);</div>
+<div class="line">            var parameters = <span class="keyword">new</span> FixMeshDegeneraciesParams();</div>
+<div class="line">            parameters.maxDeviation = mesh.BoundingBox.Diagonal() * 1e-5f;</div>
+<div class="line">            parameters.tinyEdgeLength = 1e-3f;</div>
+<div class="line"> </div>
+<div class="line">            FixMeshDegeneracies(ref mesh, parameters);</div>
+<div class="line">            MeshSave.ToAnySupportedFormat(mesh, outputFile);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line">        {</div>
+<div class="line">            Console.WriteLine(<span class="stringliteral">&quot;Error: {0}&quot;</span>, e.Message);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="./Cpp/namespaceMR.html">MR</a></div></div>
+</div><!-- fragment --></li>
+</ul>
+</div><div class="tabbed"></div> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

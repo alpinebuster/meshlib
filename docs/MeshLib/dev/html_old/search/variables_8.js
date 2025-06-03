@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['hardsmoothtetrahedrons_0',['hardSmoothTetrahedrons',['../structMR_1_1MeshRelaxParams.html#aeb8c3fee03385430c013562e6fafb17e',1,'MR::MeshRelaxParams']]],
+  ['hash_1',['Hash',['../namespaceMR.html#a3e65b1f56010b420ea87dd02dfa0ec19',1,'MR']]],
+  ['header_2',['header',['../structMR_1_1RibbonNotification.html#ae5f28ba6936128a2d39825de578e9bb2',1,'MR::RibbonNotification::header'],['../structMR_1_1UI_1_1SaveChangesPopupSettings.html#a229fd015ed069a04dae134c45b2ed91d',1,'MR::UI::SaveChangesPopupSettings::header']]],
+  ['headerquickaccesslist_3',['headerQuickAccessList',['../structMR_1_1RibbonSchema.html#aff336be3c724c96b01194c689d9bdac9',1,'MR::RibbonSchema']]],
+  ['height_4',['height',['../classMR_1_1Cone3.html#a1837f049b2e30d91b8cc20a4109d7e87',1,'MR::Cone3::height'],['../structImGui_1_1CustomStatePluginWindowParameters.html#a1f70e63acc39d4e06bd02168e934b9d0',1,'ImGui::CustomStatePluginWindowParameters::height'],['../structMR_1_1LaunchParams.html#aa761ccae3c2bc953581b4731e0ed39e4',1,'MR::LaunchParams::height']]],
+  ['helpbtnfn_5',['helpBtnFn',['../structImGui_1_1CustomStatePluginWindowParameters.html#a03c3bb1a741563a7f133d3da8f2b6d98',1,'ImGui::CustomStatePluginWindowParameters']]],
+  ['helperlinecolor_6',['helperLineColor',['../structMR_1_1TransformControls_1_1VisualParams.html#a5de0577e4227b12317f5bd798b77fbec',1,'MR::TransformControls::VisualParams']]],
+  ['helplink_7',['helpLink',['../structMR_1_1MenuItemInfo.html#a4a18cee73e324a82d8e83c0849ee1c16',1,'MR::MenuItemInfo']]],
+  ['hemispheresearchphiresolution_8',['hemisphereSearchPhiResolution',['../structMR_1_1Cone3ApproximationParams.html#a5b47cd0b4ce1e73f079a35fdc80d2850',1,'MR::Cone3ApproximationParams']]],
+  ['hemispheresearchthetaresolution_9',['hemisphereSearchThetaResolution',['../structMR_1_1Cone3ApproximationParams.html#a0c389ccce5e8616195da9e724505f8c2',1,'MR::Cone3ApproximationParams']]],
+  ['hideinit_10',['HideInit',['../structMR_1_1LaunchParams.html#adf7ca51c8109714e1b6bbe600ab207fe',1,'MR::LaunchParams']]],
+  ['hidpi_5fscaling_5f_11',['hidpi_scaling_',['../classMR_1_1ImGuiMenu.html#a56862fe69e7b443b52c3ec99d13981a0',1,'MR::ImGuiMenu']]],
+  ['hintdirection_12',['hintDirection',['../structMR_1_1FixUndercuts_1_1ImproveDirectionParameters.html#ab5009f894a6360e076076d4379d340f2',1,'MR::FixUndercuts::ImproveDirectionParameters']]],
+  ['historynamesuffix_13',['historyNameSuffix',['../structMR_1_1PickPointManager_1_1Params.html#afe6cd509f46b4a6314633f8438729160',1,'MR::PickPointManager::Params']]],
+  ['holeidx_14',['holeIdx',['../structMR_1_1HoleEdgePoint.html#a540414cc7fb82e34d5a10d971449fc9d',1,'MR::HoleEdgePoint']]],
+  ['hollow_15',['hollow',['../structMR_1_1Features_1_1Primitives_1_1ConeSegment.html#aed7a509cc23a908a6cf803007694eabf',1,'MR::Features::Primitives::ConeSegment']]],
+  ['home_16',['home',['../structMR_1_1EmbeddedPython_1_1Config.html#a172af80d129ecab54d4c310e812523a5',1,'MR::EmbeddedPython::Config']]],
+  ['hops_17',['hops',['../structMR_1_1FindOverhangsSettings.html#ad8a04bc86c5792e55e9c000d38d5e42b',1,'MR::FindOverhangsSettings']]],
+  ['horizontalresolution_18',['horizontalResolution',['../structMRMakeUVSphereParameters.html#ad8c1e08a0f485ea2145d4e2125289750',1,'MRMakeUVSphereParameters']]],
+  ['hoveredcolor_19',['hoveredColor',['../structMR_1_1BoundarySelectionWidget_1_1BoundarySelectionWidgetParams.html#a381406ff0c17d87e6508cfcd62e20f05',1,'MR::BoundarySelectionWidget::BoundarySelectionWidgetParams::hoveredColor'],['../structMR_1_1SurfacePointWidget_1_1Parameters.html#a9c25cb2f8938a8568eaa3c712452b7f0',1,'MR::SurfacePointWidget::Parameters::hoveredColor']]],
+  ['hoveredlinewidth_20',['hoveredLineWidth',['../structMR_1_1BoundarySelectionWidget_1_1BoundarySelectionWidgetParams.html#af1899a0952daad52f5218d45bf7d61a9',1,'MR::BoundarySelectionWidget::BoundarySelectionWidgetParams']]]
+];

@@ -22,7 +22,7 @@ IF(MR_EMSCRIPTEN)
   add_executable(${PROJECT_NAME} ${SOURCES})
 
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_BOOST_HEADERS=1")
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind --emit-tsd ${PROJECT_NAME}.d.ts")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s ENVIRONMENT=${MR_EMSCRIPTEN_ENVIRONMENT} -lembind --emit-tsd ${PROJECT_NAME}.d.ts")
   target_link_libraries(${PROJECT_NAME} PRIVATE
     tbb
     zip

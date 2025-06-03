@@ -1,0 +1,499 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/structMR_1_1PickPointManager_1_1Params.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MR::PickPointManager::Params Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('structMR_1_1PickPointManager_1_1Params.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structMR_1_1PickPointManager_1_1Params-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MR::PickPointManager::Params Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="MRPickPointManager_8h_source.html">MRPickPointManager.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a5fea1d890a42ca21cec4e297bf2ae7ed" id="r_a5fea1d890a42ca21cec4e297bf2ae7ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fea1d890a42ca21cec4e297bf2ae7ed">widgetContourCloseMod</a> = GLFW_MOD_CONTROL</td></tr>
+<tr class="memdesc:a5fea1d890a42ca21cec4e297bf2ae7ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifier key for closing a contour (ordered vector of points) using the widget.  <br /></td></tr>
+<tr class="separator:a5fea1d890a42ca21cec4e297bf2ae7ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a190ae905fd433a574393eca3095af" id="r_a53a190ae905fd433a574393eca3095af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53a190ae905fd433a574393eca3095af">widgetDeletePointMod</a> = GLFW_MOD_SHIFT</td></tr>
+<tr class="memdesc:a53a190ae905fd433a574393eca3095af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifier key for deleting a point using the widget.  <br /></td></tr>
+<tr class="separator:a53a190ae905fd433a574393eca3095af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ecbe3e82d23360d9534372520dbb5d8" id="r_a2ecbe3e82d23360d9534372520dbb5d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ecbe3e82d23360d9534372520dbb5d8">writeHistory</a> = true</td></tr>
+<tr class="memdesc:a2ecbe3e82d23360d9534372520dbb5d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to write undo history of all operations including public modifying functions and user actions.  <br /></td></tr>
+<tr class="separator:a2ecbe3e82d23360d9534372520dbb5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6cd509f46b4a6314633f8438729160" id="r_afe6cd509f46b4a6314633f8438729160"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe6cd509f46b4a6314633f8438729160">historyNameSuffix</a></td></tr>
+<tr class="memdesc:afe6cd509f46b4a6314633f8438729160"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is appended to the names of all undo/redo actions.  <br /></td></tr>
+<tr class="separator:afe6cd509f46b4a6314633f8438729160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af54f28c00b155e235b24194892d305e2" id="r_af54f28c00b155e235b24194892d305e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af54f28c00b155e235b24194892d305e2">startDraggingJustAddedPoint</a> = true</td></tr>
+<tr class="memdesc:af54f28c00b155e235b24194892d305e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to activate dragging new point immediately after its creation on mouse down.  <br /></td></tr>
+<tr class="separator:af54f28c00b155e235b24194892d305e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d35a20b9e47119564dff212d893abb7" id="r_a5d35a20b9e47119564dff212d893abb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMR_1_1SurfacePointWidget_1_1Parameters.html">SurfacePointWidget::Parameters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d35a20b9e47119564dff212d893abb7">surfacePointParams</a></td></tr>
+<tr class="separator:a5d35a20b9e47119564dff212d893abb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a102e46b3888698c0b6f7dd2903516f25" id="r_a102e46b3888698c0b6f7dd2903516f25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMR_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a102e46b3888698c0b6f7dd2903516f25">ordinaryPointColor</a> = <a class="el" href="structMR_1_1Color.html#ab2d02b3c25652081a0b2f9c3f4de388f">Color::gray</a>()</td></tr>
+<tr class="memdesc:a102e46b3888698c0b6f7dd2903516f25"><td class="mdescLeft">&#160;</td><td class="mdescRight">The color of all pick spheres except the one with the largest index on each object.  <br /></td></tr>
+<tr class="separator:a102e46b3888698c0b6f7dd2903516f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8322f01c1fe98d959fc28c58ff04416" id="r_aa8322f01c1fe98d959fc28c58ff04416"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMR_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8322f01c1fe98d959fc28c58ff04416">lastPointColor</a> = <a class="el" href="structMR_1_1Color.html#a07d25f841350c5a6eeca781f6dcd0fda">Color::green</a>()</td></tr>
+<tr class="memdesc:aa8322f01c1fe98d959fc28c58ff04416"><td class="mdescLeft">&#160;</td><td class="mdescRight">The color of last by index pick sphere in open contour.  <br /></td></tr>
+<tr class="separator:aa8322f01c1fe98d959fc28c58ff04416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9530ff46e6ad646ba04ba4460b560bca" id="r_a9530ff46e6ad646ba04ba4460b560bca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMR_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9530ff46e6ad646ba04ba4460b560bca">closeContourPointColor</a> = <a class="el" href="structMR_1_1Color.html#a059a69f5238fa686b0c063d87ebecf40">Color::transparent</a>()</td></tr>
+<tr class="memdesc:a9530ff46e6ad646ba04ba4460b560bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The color of last by index pick sphere in closed contour, which coincides in position with the first pick sphere.  <br /></td></tr>
+<tr class="separator:a9530ff46e6ad646ba04ba4460b560bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acca15c3df6d4a2c610e3ecd95dbb1c71" id="r_acca15c3df6d4a2c610e3ecd95dbb1c71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1Viewport.html#a2ee75851f20f8798cdefa740b799b467">Viewport::PickRenderObjectPredicate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acca15c3df6d4a2c610e3ecd95dbb1c71">pickPredicate</a></td></tr>
+<tr class="memdesc:acca15c3df6d4a2c610e3ecd95dbb1c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Predicate to additionally filter objects that should be treated as pickable.  <br /></td></tr>
+<tr class="separator:acca15c3df6d4a2c610e3ecd95dbb1c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2fa5fa03ddcb2645c4f22130a4a50da" id="r_af2fa5fa03ddcb2645c4f22130a4a50da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1PickPointManager.html#adffaab931d52fa647870ad0274b3166f">AllowCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2fa5fa03ddcb2645c4f22130a4a50da">canAddPoint</a></td></tr>
+<tr class="separator:af2fa5fa03ddcb2645c4f22130a4a50da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a648a0ae70816ba38a53eb3e858578152" id="r_a648a0ae70816ba38a53eb3e858578152"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a648a0ae70816ba38a53eb3e858578152">onPointAdd</a></td></tr>
+<tr class="memdesc:a648a0ae70816ba38a53eb3e858578152"><td class="mdescLeft">&#160;</td><td class="mdescRight">This callback is invoked after a point is added with its index.  <br /></td></tr>
+<tr class="separator:a648a0ae70816ba38a53eb3e858578152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecc58a961497595f91a31e0ba17b453b" id="r_aecc58a961497595f91a31e0ba17b453b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecc58a961497595f91a31e0ba17b453b">onPointMoveStart</a></td></tr>
+<tr class="memdesc:aecc58a961497595f91a31e0ba17b453b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This callback is invoked when a point starts being dragged.  <br /></td></tr>
+<tr class="separator:aecc58a961497595f91a31e0ba17b453b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad997221c3784992d7685e6445516f107" id="r_ad997221c3784992d7685e6445516f107"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad997221c3784992d7685e6445516f107">onPointMove</a></td></tr>
+<tr class="memdesc:ad997221c3784992d7685e6445516f107"><td class="mdescLeft">&#160;</td><td class="mdescRight">This callback is invoked every time after currently dragged point is moved (in between onPointMoveStart and onPointMoveFinish)  <br /></td></tr>
+<tr class="separator:ad997221c3784992d7685e6445516f107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239dfe513b8ad0546f097fe848b07926" id="r_a239dfe513b8ad0546f097fe848b07926"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a239dfe513b8ad0546f097fe848b07926">onPointMoveFinish</a></td></tr>
+<tr class="memdesc:a239dfe513b8ad0546f097fe848b07926"><td class="mdescLeft">&#160;</td><td class="mdescRight">This callback is invoked when point's dragging is completed.  <br /></td></tr>
+<tr class="separator:a239dfe513b8ad0546f097fe848b07926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b9a3031b99f0632ee1bf07f5fcb4de6" id="r_a1b9a3031b99f0632ee1bf07f5fcb4de6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1PickPointManager.html#adffaab931d52fa647870ad0274b3166f">AllowCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b9a3031b99f0632ee1bf07f5fcb4de6">canRemovePoint</a></td></tr>
+<tr class="separator:a1b9a3031b99f0632ee1bf07f5fcb4de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29da52a2e4e00f22aa0e7206a5ca2819" id="r_a29da52a2e4e00f22aa0e7206a5ca2819"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29da52a2e4e00f22aa0e7206a5ca2819">onPointRemove</a></td></tr>
+<tr class="memdesc:a29da52a2e4e00f22aa0e7206a5ca2819"><td class="mdescLeft">&#160;</td><td class="mdescRight">This callback is invoked when a point is removed with its index before deletion.  <br /></td></tr>
+<tr class="separator:a29da52a2e4e00f22aa0e7206a5ca2819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af2fa5fa03ddcb2645c4f22130a4a50da" name="af2fa5fa03ddcb2645c4f22130a4a50da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2fa5fa03ddcb2645c4f22130a4a50da">&#9670;&#160;</a></span>canAddPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PickPointManager.html#adffaab931d52fa647870ad0274b3166f">AllowCallBack</a> MR::PickPointManager::Params::canAddPoint</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This callback is invoked before addition of new point (with index=-1) by mouse (but not from API or history), the addition is canceled if this callback returns false </p>
+
+</div>
+</div>
+<a id="a1b9a3031b99f0632ee1bf07f5fcb4de6" name="a1b9a3031b99f0632ee1bf07f5fcb4de6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b9a3031b99f0632ee1bf07f5fcb4de6">&#9670;&#160;</a></span>canRemovePoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PickPointManager.html#adffaab931d52fa647870ad0274b3166f">AllowCallBack</a> MR::PickPointManager::Params::canRemovePoint</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This callback is invoked before removal of some point by mouse (but not from API or history), the removal is canceled if this callback returns false </p>
+
+</div>
+</div>
+<a id="a9530ff46e6ad646ba04ba4460b560bca" name="a9530ff46e6ad646ba04ba4460b560bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9530ff46e6ad646ba04ba4460b560bca">&#9670;&#160;</a></span>closeContourPointColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMR_1_1Color.html">Color</a> MR::PickPointManager::Params::closeContourPointColor = <a class="el" href="structMR_1_1Color.html#a059a69f5238fa686b0c063d87ebecf40">Color::transparent</a>()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The color of last by index pick sphere in closed contour, which coincides in position with the first pick sphere. </p>
+
+</div>
+</div>
+<a id="afe6cd509f46b4a6314633f8438729160" name="afe6cd509f46b4a6314633f8438729160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe6cd509f46b4a6314633f8438729160">&#9670;&#160;</a></span>historyNameSuffix</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string MR::PickPointManager::Params::historyNameSuffix</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This is appended to the names of all undo/redo actions. </p>
+
+</div>
+</div>
+<a id="aa8322f01c1fe98d959fc28c58ff04416" name="aa8322f01c1fe98d959fc28c58ff04416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8322f01c1fe98d959fc28c58ff04416">&#9670;&#160;</a></span>lastPointColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMR_1_1Color.html">Color</a> MR::PickPointManager::Params::lastPointColor = <a class="el" href="structMR_1_1Color.html#a07d25f841350c5a6eeca781f6dcd0fda">Color::green</a>()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The color of last by index pick sphere in open contour. </p>
+
+</div>
+</div>
+<a id="a648a0ae70816ba38a53eb3e858578152" name="a648a0ae70816ba38a53eb3e858578152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a648a0ae70816ba38a53eb3e858578152">&#9670;&#160;</a></span>onPointAdd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a> MR::PickPointManager::Params::onPointAdd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This callback is invoked after a point is added with its index. </p>
+
+</div>
+</div>
+<a id="ad997221c3784992d7685e6445516f107" name="ad997221c3784992d7685e6445516f107"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad997221c3784992d7685e6445516f107">&#9670;&#160;</a></span>onPointMove</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a> MR::PickPointManager::Params::onPointMove</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This callback is invoked every time after currently dragged point is moved (in between onPointMoveStart and onPointMoveFinish) </p>
+
+</div>
+</div>
+<a id="a239dfe513b8ad0546f097fe848b07926" name="a239dfe513b8ad0546f097fe848b07926"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a239dfe513b8ad0546f097fe848b07926">&#9670;&#160;</a></span>onPointMoveFinish</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a> MR::PickPointManager::Params::onPointMoveFinish</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This callback is invoked when point's dragging is completed. </p>
+
+</div>
+</div>
+<a id="aecc58a961497595f91a31e0ba17b453b" name="aecc58a961497595f91a31e0ba17b453b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecc58a961497595f91a31e0ba17b453b">&#9670;&#160;</a></span>onPointMoveStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a> MR::PickPointManager::Params::onPointMoveStart</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This callback is invoked when a point starts being dragged. </p>
+
+</div>
+</div>
+<a id="a29da52a2e4e00f22aa0e7206a5ca2819" name="a29da52a2e4e00f22aa0e7206a5ca2819"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29da52a2e4e00f22aa0e7206a5ca2819">&#9670;&#160;</a></span>onPointRemove</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PickPointManager.html#af5dd9ce5eda38d70eb2e0c789aa3e06c">PickerPointCallBack</a> MR::PickPointManager::Params::onPointRemove</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This callback is invoked when a point is removed with its index before deletion. </p>
+
+</div>
+</div>
+<a id="a102e46b3888698c0b6f7dd2903516f25" name="a102e46b3888698c0b6f7dd2903516f25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a102e46b3888698c0b6f7dd2903516f25">&#9670;&#160;</a></span>ordinaryPointColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMR_1_1Color.html">Color</a> MR::PickPointManager::Params::ordinaryPointColor = <a class="el" href="structMR_1_1Color.html#ab2d02b3c25652081a0b2f9c3f4de388f">Color::gray</a>()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The color of all pick spheres except the one with the largest index on each object. </p>
+
+</div>
+</div>
+<a id="acca15c3df6d4a2c610e3ecd95dbb1c71" name="acca15c3df6d4a2c610e3ecd95dbb1c71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acca15c3df6d4a2c610e3ecd95dbb1c71">&#9670;&#160;</a></span>pickPredicate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1Viewport.html#a2ee75851f20f8798cdefa740b799b467">Viewport::PickRenderObjectPredicate</a> MR::PickPointManager::Params::pickPredicate</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicate to additionally filter objects that should be treated as pickable. </p>
+
+</div>
+</div>
+<a id="af54f28c00b155e235b24194892d305e2" name="af54f28c00b155e235b24194892d305e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af54f28c00b155e235b24194892d305e2">&#9670;&#160;</a></span>startDraggingJustAddedPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::PickPointManager::Params::startDraggingJustAddedPoint = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether to activate dragging new point immediately after its creation on mouse down. </p>
+
+</div>
+</div>
+<a id="a5d35a20b9e47119564dff212d893abb7" name="a5d35a20b9e47119564dff212d893abb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d35a20b9e47119564dff212d893abb7">&#9670;&#160;</a></span>surfacePointParams</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMR_1_1SurfacePointWidget_1_1Parameters.html">SurfacePointWidget::Parameters</a> MR::PickPointManager::Params::surfacePointParams</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parameters for configuring the surface point widget Parameters affect to future points only </p>
+
+</div>
+</div>
+<a id="a5fea1d890a42ca21cec4e297bf2ae7ed" name="a5fea1d890a42ca21cec4e297bf2ae7ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fea1d890a42ca21cec4e297bf2ae7ed">&#9670;&#160;</a></span>widgetContourCloseMod</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MR::PickPointManager::Params::widgetContourCloseMod = GLFW_MOD_CONTROL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifier key for closing a contour (ordered vector of points) using the widget. </p>
+
+</div>
+</div>
+<a id="a53a190ae905fd433a574393eca3095af" name="a53a190ae905fd433a574393eca3095af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a190ae905fd433a574393eca3095af">&#9670;&#160;</a></span>widgetDeletePointMod</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MR::PickPointManager::Params::widgetDeletePointMod = GLFW_MOD_SHIFT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifier key for deleting a point using the widget. </p>
+
+</div>
+</div>
+<a id="a2ecbe3e82d23360d9534372520dbb5d8" name="a2ecbe3e82d23360d9534372520dbb5d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ecbe3e82d23360d9534372520dbb5d8">&#9670;&#160;</a></span>writeHistory</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::PickPointManager::Params::writeHistory = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether to write undo history of all operations including public modifying functions and user actions. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="MRPickPointManager_8h_source.html">MRPickPointManager.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceMR.html">MR</a></li><li class="navelem"><a class="el" href="classMR_1_1PickPointManager.html">PickPointManager</a></li><li class="navelem"><a class="el" href="structMR_1_1PickPointManager_1_1Params.html">Params</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

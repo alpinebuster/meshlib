@@ -1,0 +1,601 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRRegionBoundary.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRRegionBoundary_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MRRegionBoundary.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="MRMeshC_2MRMeshFwd_8h_source.html">MRMeshFwd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MRMeshC_2MRId_8h_source.html">MRId.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MRMeshC_2MRMeshTopology_8h_source.html">MRMeshTopology.h</a>&quot;</code><br />
+</div>
+<p><a href="MRMeshC_2MRRegionBoundary_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ae14b44105f37e53baed3085de87bf0bc" id="r_ae14b44105f37e53baed3085de87bf0bc"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a></td></tr>
+<tr class="separator:ae14b44105f37e53baed3085de87bf0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a7a37cf8d75508dbdad119e0397388040" id="r_a7a37cf8d75508dbdad119e0397388040"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshTopology_8h.html#a2a05aa7e35717e1896c31ed45a955a02">MREdgeLoop</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a37cf8d75508dbdad119e0397388040">mrTrackRightBoundaryLoop</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, <a class="el" href="structMREdgeId.html">MREdgeId</a> e0, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *region)</td></tr>
+<tr class="separator:a7a37cf8d75508dbdad119e0397388040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c559613c4f76ad8087f17c24b2726cb" id="r_a4c559613c4f76ad8087f17c24b2726cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshTopology_8h.html#a2a05aa7e35717e1896c31ed45a955a02">MREdgeLoop</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c559613c4f76ad8087f17c24b2726cb">mrEdgeLoopsGet</a> (const <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> *loops, size_t index)</td></tr>
+<tr class="separator:a4c559613c4f76ad8087f17c24b2726cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a672d565e63eb4dc61582a232bb6c29dd" id="r_a672d565e63eb4dc61582a232bb6c29dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a672d565e63eb4dc61582a232bb6c29dd">mrEdgeLoopsSize</a> (const <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> *loops)</td></tr>
+<tr class="separator:a672d565e63eb4dc61582a232bb6c29dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8899be933e84f30d5641eb3f6822879a" id="r_a8899be933e84f30d5641eb3f6822879a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8899be933e84f30d5641eb3f6822879a">mrEdgeLoopsFree</a> (<a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> *loops)</td></tr>
+<tr class="separator:a8899be933e84f30d5641eb3f6822879a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf6e4582c1abd205b103a98d6f7e046" id="r_a6bf6e4582c1abd205b103a98d6f7e046"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bf6e4582c1abd205b103a98d6f7e046">mrFindRightBoundary</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *region)</td></tr>
+<tr class="separator:a6bf6e4582c1abd205b103a98d6f7e046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b9dc318cb1f90665f7770fe2f0575ad" id="r_a5b9dc318cb1f90665f7770fe2f0575ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b9dc318cb1f90665f7770fe2f0575ad">mrGetIncidentFacesFromVerts</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *region)</td></tr>
+<tr class="memdesc:a5b9dc318cb1f90665f7770fe2f0575ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all faces incident to given vertices  <br /></td></tr>
+<tr class="separator:a5b9dc318cb1f90665f7770fe2f0575ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba8fd90f6beeffdeee4b3bc207136cc" id="r_a5ba8fd90f6beeffdeee4b3bc207136cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ba8fd90f6beeffdeee4b3bc207136cc">mrGetIncidentFacesFromEdges</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *region)</td></tr>
+<tr class="memdesc:a5ba8fd90f6beeffdeee4b3bc207136cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all faces incident to given edges  <br /></td></tr>
+<tr class="separator:a5ba8fd90f6beeffdeee4b3bc207136cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6083573f89219e6d74bcfa82efefd4ef" id="r_a6083573f89219e6d74bcfa82efefd4ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6083573f89219e6d74bcfa82efefd4ef">mrGetIncidentVertsFromFaces</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *faces)</td></tr>
+<tr class="memdesc:a6083573f89219e6d74bcfa82efefd4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all vertices incident to given faces  <br /></td></tr>
+<tr class="separator:a6083573f89219e6d74bcfa82efefd4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fdc708f2761455e26e8e543377b3f07" id="r_a7fdc708f2761455e26e8e543377b3f07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fdc708f2761455e26e8e543377b3f07">mrGetIncidentVertsFromEdges</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *edges)</td></tr>
+<tr class="memdesc:a7fdc708f2761455e26e8e543377b3f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all vertices incident to given edges  <br /></td></tr>
+<tr class="separator:a7fdc708f2761455e26e8e543377b3f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bfe6123ceeb52d7a2f064dabea6aa23" id="r_a2bfe6123ceeb52d7a2f064dabea6aa23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bfe6123ceeb52d7a2f064dabea6aa23">mrGetInnerVertsFromFaces</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *region)</td></tr>
+<tr class="memdesc:a2bfe6123ceeb52d7a2f064dabea6aa23"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all vertices not on the boundary of a hole and with all their adjacent faces in given set  <br /></td></tr>
+<tr class="separator:a2bfe6123ceeb52d7a2f064dabea6aa23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9195080a7aded2f4f65baedbd5661cf0" id="r_a9195080a7aded2f4f65baedbd5661cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9195080a7aded2f4f65baedbd5661cf0">mrGetInnerVertsFromEdges</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *edges)</td></tr>
+<tr class="memdesc:a9195080a7aded2f4f65baedbd5661cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all vertices with all their edges in given set  <br /></td></tr>
+<tr class="separator:a9195080a7aded2f4f65baedbd5661cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9270480945bd5de3f120f4a03cdce4df" id="r_a9270480945bd5de3f120f4a03cdce4df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9270480945bd5de3f120f4a03cdce4df">mrGetInnerFacesFromVerts</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *verts)</td></tr>
+<tr class="memdesc:a9270480945bd5de3f120f4a03cdce4df"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all faces with all their vertices in given set  <br /></td></tr>
+<tr class="separator:a9270480945bd5de3f120f4a03cdce4df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c7df45ac5f3b9e1ea616f370f4d4528" id="r_a3c7df45ac5f3b9e1ea616f370f4d4528"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c7df45ac5f3b9e1ea616f370f4d4528">mrGetIncidentEdgesFromFaces</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *faces)</td></tr>
+<tr class="memdesc:a3c7df45ac5f3b9e1ea616f370f4d4528"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all undirected edges, having a face from given set from one of two sides  <br /></td></tr>
+<tr class="separator:a3c7df45ac5f3b9e1ea616f370f4d4528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad08e67c36a7d246c429d47056fb85b6e" id="r_ad08e67c36a7d246c429d47056fb85b6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad08e67c36a7d246c429d47056fb85b6e">mrGetIncidentEdgesFromEdges</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *edges)</td></tr>
+<tr class="memdesc:ad08e67c36a7d246c429d47056fb85b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all undirected edges, having at least one common vertex with an edge from given set  <br /></td></tr>
+<tr class="separator:ad08e67c36a7d246c429d47056fb85b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21c0fbf21c9f7317f09e1cef98bec750" id="r_a21c0fbf21c9f7317f09e1cef98bec750"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21c0fbf21c9f7317f09e1cef98bec750">mrGetInnerEdgesFromVerts</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *verts)</td></tr>
+<tr class="memdesc:a21c0fbf21c9f7317f09e1cef98bec750"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all edges with all their vertices in given set  <br /></td></tr>
+<tr class="separator:a21c0fbf21c9f7317f09e1cef98bec750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c402f631e91302f4f37e7c6cd754e54" id="r_a9c402f631e91302f4f37e7c6cd754e54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c402f631e91302f4f37e7c6cd754e54">mrGetInnerEdgesFromFaces</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *topology, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *region)</td></tr>
+<tr class="memdesc:a9c402f631e91302f4f37e7c6cd754e54"><td class="mdescLeft">&#160;</td><td class="mdescRight">composes the set of all edges having both left and right in given region  <br /></td></tr>
+<tr class="separator:a9c402f631e91302f4f37e7c6cd754e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ae14b44105f37e53baed3085de87bf0bc" name="ae14b44105f37e53baed3085de87bf0bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae14b44105f37e53baed3085de87bf0bc">&#9670;&#160;</a></span>MREdgeLoops</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a8899be933e84f30d5641eb3f6822879a" name="a8899be933e84f30d5641eb3f6822879a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8899be933e84f30d5641eb3f6822879a">&#9670;&#160;</a></span>mrEdgeLoopsFree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void mrEdgeLoopsFree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> *</td>          <td class="paramname"><span class="paramname"><em>loops</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c559613c4f76ad8087f17c24b2726cb" name="a4c559613c4f76ad8087f17c24b2726cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c559613c4f76ad8087f17c24b2726cb">&#9670;&#160;</a></span>mrEdgeLoopsGet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshTopology_8h.html#a2a05aa7e35717e1896c31ed45a955a02">MREdgeLoop</a> mrEdgeLoopsGet </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> *</td>          <td class="paramname"><span class="paramname"><em>loops</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a672d565e63eb4dc61582a232bb6c29dd" name="a672d565e63eb4dc61582a232bb6c29dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a672d565e63eb4dc61582a232bb6c29dd">&#9670;&#160;</a></span>mrEdgeLoopsSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> size_t mrEdgeLoopsSize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> *</td>          <td class="paramname"><span class="paramname"><em>loops</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6bf6e4582c1abd205b103a98d6f7e046" name="a6bf6e4582c1abd205b103a98d6f7e046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf6e4582c1abd205b103a98d6f7e046">&#9670;&#160;</a></span>mrFindRightBoundary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="#ae14b44105f37e53baed3085de87bf0bc">MREdgeLoops</a> * mrFindRightBoundary </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>region</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>returns all region boundary loops; every loop has region faces on the right, and not-region faces or holes on the left </p>
+
+</div>
+</div>
+<a id="ad08e67c36a7d246c429d47056fb85b6e" name="ad08e67c36a7d246c429d47056fb85b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad08e67c36a7d246c429d47056fb85b6e">&#9670;&#160;</a></span>mrGetIncidentEdgesFromEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> * mrGetIncidentEdgesFromEdges </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>edges</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all undirected edges, having at least one common vertex with an edge from given set </p>
+
+</div>
+</div>
+<a id="a3c7df45ac5f3b9e1ea616f370f4d4528" name="a3c7df45ac5f3b9e1ea616f370f4d4528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c7df45ac5f3b9e1ea616f370f4d4528">&#9670;&#160;</a></span>mrGetIncidentEdgesFromFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> * mrGetIncidentEdgesFromFaces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>faces</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all undirected edges, having a face from given set from one of two sides </p>
+
+</div>
+</div>
+<a id="a5ba8fd90f6beeffdeee4b3bc207136cc" name="a5ba8fd90f6beeffdeee4b3bc207136cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ba8fd90f6beeffdeee4b3bc207136cc">&#9670;&#160;</a></span>mrGetIncidentFacesFromEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> * mrGetIncidentFacesFromEdges </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>region</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all faces incident to given edges </p>
+
+</div>
+</div>
+<a id="a5b9dc318cb1f90665f7770fe2f0575ad" name="a5b9dc318cb1f90665f7770fe2f0575ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b9dc318cb1f90665f7770fe2f0575ad">&#9670;&#160;</a></span>mrGetIncidentFacesFromVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> * mrGetIncidentFacesFromVerts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>region</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all faces incident to given vertices </p>
+
+</div>
+</div>
+<a id="a7fdc708f2761455e26e8e543377b3f07" name="a7fdc708f2761455e26e8e543377b3f07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fdc708f2761455e26e8e543377b3f07">&#9670;&#160;</a></span>mrGetIncidentVertsFromEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> * mrGetIncidentVertsFromEdges </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>edges</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all vertices incident to given edges </p>
+
+</div>
+</div>
+<a id="a6083573f89219e6d74bcfa82efefd4ef" name="a6083573f89219e6d74bcfa82efefd4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6083573f89219e6d74bcfa82efefd4ef">&#9670;&#160;</a></span>mrGetIncidentVertsFromFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> * mrGetIncidentVertsFromFaces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>faces</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all vertices incident to given faces </p>
+
+</div>
+</div>
+<a id="a9c402f631e91302f4f37e7c6cd754e54" name="a9c402f631e91302f4f37e7c6cd754e54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c402f631e91302f4f37e7c6cd754e54">&#9670;&#160;</a></span>mrGetInnerEdgesFromFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> * mrGetInnerEdgesFromFaces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>region</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all edges having both left and right in given region </p>
+
+</div>
+</div>
+<a id="a21c0fbf21c9f7317f09e1cef98bec750" name="a21c0fbf21c9f7317f09e1cef98bec750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21c0fbf21c9f7317f09e1cef98bec750">&#9670;&#160;</a></span>mrGetInnerEdgesFromVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> * mrGetInnerEdgesFromVerts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>verts</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all edges with all their vertices in given set </p>
+
+</div>
+</div>
+<a id="a9270480945bd5de3f120f4a03cdce4df" name="a9270480945bd5de3f120f4a03cdce4df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9270480945bd5de3f120f4a03cdce4df">&#9670;&#160;</a></span>mrGetInnerFacesFromVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> * mrGetInnerFacesFromVerts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>verts</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all faces with all their vertices in given set </p>
+
+</div>
+</div>
+<a id="a9195080a7aded2f4f65baedbd5661cf0" name="a9195080a7aded2f4f65baedbd5661cf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9195080a7aded2f4f65baedbd5661cf0">&#9670;&#160;</a></span>mrGetInnerVertsFromEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> * mrGetInnerVertsFromEdges </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>edges</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all vertices with all their edges in given set </p>
+
+</div>
+</div>
+<a id="a2bfe6123ceeb52d7a2f064dabea6aa23" name="a2bfe6123ceeb52d7a2f064dabea6aa23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bfe6123ceeb52d7a2f064dabea6aa23">&#9670;&#160;</a></span>mrGetInnerVertsFromFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> * mrGetInnerVertsFromFaces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>region</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>composes the set of all vertices not on the boundary of a hole and with all their adjacent faces in given set </p>
+
+</div>
+</div>
+<a id="a7a37cf8d75508dbdad119e0397388040" name="a7a37cf8d75508dbdad119e0397388040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a37cf8d75508dbdad119e0397388040">&#9670;&#160;</a></span>mrTrackRightBoundaryLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshTopology_8h.html#a2a05aa7e35717e1896c31ed45a955a02">MREdgeLoop</a> * mrTrackRightBoundaryLoop </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> *</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structMREdgeId.html">MREdgeId</a></td>          <td class="paramname"><span class="paramname"><em>e0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>region</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>returns closed loop of region boundary starting from given region boundary edge (region faces on the right, and not-region faces or holes on the left); if more than two boundary edges connect in one vertex, then the function makes the most abrupt turn to left </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRRegionBoundary_8h.html">MRRegionBoundary.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

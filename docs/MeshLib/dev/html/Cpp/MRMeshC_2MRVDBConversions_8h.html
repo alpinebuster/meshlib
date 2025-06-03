@@ -1,0 +1,415 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRVDBConversions.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRVDBConversions_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MRVDBConversions.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="MRMeshC_2MRVoxelsFwd_8h_source.html">MRVoxelsFwd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MRMeshC_2MRAffineXf_8h_source.html">MRAffineXf.h</a>&quot;</code><br />
+</div>
+<p><a href="MRMeshC_2MRVDBConversions_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters of OpenVDB Grid to Mesh conversion using Dual Marching Cubes algorithm  <a href="structMRGridToMeshSettings.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a21f688bf9fdb189b7d53d814297049a0" id="r_a21f688bf9fdb189b7d53d814297049a0"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21f688bf9fdb189b7d53d814297049a0">MRMeshToVolumeSettingsType</a></td></tr>
+<tr class="separator:a21f688bf9fdb189b7d53d814297049a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59f460f86cc5f5cfbdccc88afb9425a" id="r_af59f460f86cc5f5cfbdccc88afb9425a"><td class="memItemLeft" align="right" valign="top">typedef struct MRMeshToVolumeSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af59f460f86cc5f5cfbdccc88afb9425a">MRMeshToVolumeSettings</a></td></tr>
+<tr class="separator:af59f460f86cc5f5cfbdccc88afb9425a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b32ebfac5b30064a910551cb205f8f3" id="r_a9b32ebfac5b30064a910551cb205f8f3"><td class="memItemLeft" align="right" valign="top">typedef struct MRGridToMeshSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b32ebfac5b30064a910551cb205f8f3">MRGridToMeshSettings</a></td></tr>
+<tr class="memdesc:a9b32ebfac5b30064a910551cb205f8f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">parameters of OpenVDB Grid to Mesh conversion using Dual Marching Cubes algorithm  <br /></td></tr>
+<tr class="separator:a9b32ebfac5b30064a910551cb205f8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a7c5a04688d4449870c8b2c5260cf5f66" id="r_a7c5a04688d4449870c8b2c5260cf5f66"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a> { <a class="el" href="#a7c5a04688d4449870c8b2c5260cf5f66a8da60118239ad7b7baba1daa7f251437">MRMeshToVolumeSettingsTypeSigned</a>
+, <a class="el" href="#a7c5a04688d4449870c8b2c5260cf5f66ad09687fd330b69f9f92b925324c122d1">MRMeshToVolumeSettingsTypeUnsigned</a>
+ }</td></tr>
+<tr class="separator:a7c5a04688d4449870c8b2c5260cf5f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5588d14e5872e6fddc5fdfd3f1b4ff71" id="r_a5588d14e5872e6fddc5fdfd3f1b4ff71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5588d14e5872e6fddc5fdfd3f1b4ff71">mrVdbConversionsMeshToVolumeSettingsNew</a> (void)</td></tr>
+<tr class="separator:a5588d14e5872e6fddc5fdfd3f1b4ff71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b51c2f5ff47083ac363add98127c62f" id="r_a2b51c2f5ff47083ac363add98127c62f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b51c2f5ff47083ac363add98127c62f">mrVdbConversionsEvalGridMinMax</a> (const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, float *min, float *max)</td></tr>
+<tr class="separator:a2b51c2f5ff47083ac363add98127c62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb35123b366bfc825528bae62105af05" id="r_aeb35123b366bfc825528bae62105af05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRVdbVolume.html">MRVdbVolume</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb35123b366bfc825528bae62105af05">mrVdbConversionsMeshToVolume</a> (const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *mesh, const <a class="el" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a> *settings, <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a> **errorStr)</td></tr>
+<tr class="separator:aeb35123b366bfc825528bae62105af05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac51b5972a98776adb6111a1ba2be4b8d" id="r_ac51b5972a98776adb6111a1ba2be4b8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRVdbVolume.html">MRVdbVolume</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac51b5972a98776adb6111a1ba2be4b8d">mrVdbConversionsFloatGridToVdbVolume</a> (const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid)</td></tr>
+<tr class="separator:ac51b5972a98776adb6111a1ba2be4b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aeec2f03120c5296c5a04bba0718de9" id="r_a8aeec2f03120c5296c5a04bba0718de9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8aeec2f03120c5296c5a04bba0718de9">mrVdbConversionsGridToMeshSettingsNew</a> (void)</td></tr>
+<tr class="separator:a8aeec2f03120c5296c5a04bba0718de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb0060e1c24f897daac93765fb7cbbac" id="r_acb0060e1c24f897daac93765fb7cbbac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb0060e1c24f897daac93765fb7cbbac">mrVdbConversionsGridToMesh</a> (const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, const <a class="el" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a> *settings, <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a> **errorStr)</td></tr>
+<tr class="memdesc:acb0060e1c24f897daac93765fb7cbbac"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts OpenVDB Grid into mesh using Dual Marching Cubes algorithm  <br /></td></tr>
+<tr class="separator:acb0060e1c24f897daac93765fb7cbbac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a9b32ebfac5b30064a910551cb205f8f3" name="a9b32ebfac5b30064a910551cb205f8f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b32ebfac5b30064a910551cb205f8f3">&#9670;&#160;</a></span>MRGridToMeshSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRGridToMeshSettings MRGridToMeshSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>parameters of OpenVDB Grid to Mesh conversion using Dual Marching Cubes algorithm </p>
+
+</div>
+</div>
+<a id="af59f460f86cc5f5cfbdccc88afb9425a" name="af59f460f86cc5f5cfbdccc88afb9425a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59f460f86cc5f5cfbdccc88afb9425a">&#9670;&#160;</a></span>MRMeshToVolumeSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRMeshToVolumeSettings MRMeshToVolumeSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21f688bf9fdb189b7d53d814297049a0" name="a21f688bf9fdb189b7d53d814297049a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21f688bf9fdb189b7d53d814297049a0">&#9670;&#160;</a></span>MRMeshToVolumeSettingsType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a> <a class="el" href="#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a7c5a04688d4449870c8b2c5260cf5f66" name="a7c5a04688d4449870c8b2c5260cf5f66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c5a04688d4449870c8b2c5260cf5f66">&#9670;&#160;</a></span>MRMeshToVolumeSettingsType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7c5a04688d4449870c8b2c5260cf5f66a8da60118239ad7b7baba1daa7f251437" name="a7c5a04688d4449870c8b2c5260cf5f66a8da60118239ad7b7baba1daa7f251437"></a>MRMeshToVolumeSettingsTypeSigned&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7c5a04688d4449870c8b2c5260cf5f66ad09687fd330b69f9f92b925324c122d1" name="a7c5a04688d4449870c8b2c5260cf5f66ad09687fd330b69f9f92b925324c122d1"></a>MRMeshToVolumeSettingsTypeUnsigned&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a2b51c2f5ff47083ac363add98127c62f" name="a2b51c2f5ff47083ac363add98127c62f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b51c2f5ff47083ac363add98127c62f">&#9670;&#160;</a></span>mrVdbConversionsEvalGridMinMax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void mrVdbConversionsEvalGridMinMax </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac51b5972a98776adb6111a1ba2be4b8d" name="ac51b5972a98776adb6111a1ba2be4b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac51b5972a98776adb6111a1ba2be4b8d">&#9670;&#160;</a></span>mrVdbConversionsFloatGridToVdbVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRVdbVolume.html">MRVdbVolume</a> mrVdbConversionsFloatGridToVdbVolume </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb0060e1c24f897daac93765fb7cbbac" name="acb0060e1c24f897daac93765fb7cbbac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0060e1c24f897daac93765fb7cbbac">&#9670;&#160;</a></span>mrVdbConversionsGridToMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> * mrVdbConversionsGridToMesh </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a> *</td>          <td class="paramname"><span class="paramname"><em>settings</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a> **</td>          <td class="paramname"><span class="paramname"><em>errorStr</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>converts OpenVDB Grid into mesh using Dual Marching Cubes algorithm </p>
+
+</div>
+</div>
+<a id="a8aeec2f03120c5296c5a04bba0718de9" name="a8aeec2f03120c5296c5a04bba0718de9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aeec2f03120c5296c5a04bba0718de9">&#9670;&#160;</a></span>mrVdbConversionsGridToMeshSettingsNew()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a> mrVdbConversionsGridToMeshSettingsNew </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb35123b366bfc825528bae62105af05" name="aeb35123b366bfc825528bae62105af05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb35123b366bfc825528bae62105af05">&#9670;&#160;</a></span>mrVdbConversionsMeshToVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRVdbVolume.html">MRVdbVolume</a> mrVdbConversionsMeshToVolume </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a> *</td>          <td class="paramname"><span class="paramname"><em>settings</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a> **</td>          <td class="paramname"><span class="paramname"><em>errorStr</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5588d14e5872e6fddc5fdfd3f1b4ff71" name="a5588d14e5872e6fddc5fdfd3f1b4ff71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5588d14e5872e6fddc5fdfd3f1b4ff71">&#9670;&#160;</a></span>mrVdbConversionsMeshToVolumeSettingsNew()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a> mrVdbConversionsMeshToVolumeSettingsNew </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRVDBConversions_8h.html">MRVDBConversions.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

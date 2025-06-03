@@ -1,0 +1,453 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1FlowAggregator.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.FlowAggregator Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1FlowAggregator.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1FlowAggregator-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.FlowAggregator Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1FlowAggregator_1_1Flows.html">Flows</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab021f0edced20e493266e08c11c886e9" id="r_ab021f0edced20e493266e08c11c886e9"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab021f0edced20e493266e08c11c886e9">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Mesh.html">Mesh</a> mesh, <a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a> heights)</td></tr>
+<tr class="separator:ab021f0edced20e493266e08c11c886e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a085847a42b39cf0cca1785e84208d85a" id="r_a085847a42b39cf0cca1785e84208d85a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a085847a42b39cf0cca1785e84208d85a">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1FlowAggregator.html">FlowAggregator</a> arg0)</td></tr>
+<tr class="separator:a085847a42b39cf0cca1785e84208d85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85139beb870cc0e93eb54c47ad83bb86" id="r_a85139beb870cc0e93eb54c47ad83bb86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85139beb870cc0e93eb54c47ad83bb86">computeCatchmentDelineation</a> (self)</td></tr>
+<tr class="separator:a85139beb870cc0e93eb54c47ad83bb86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7e3cde36b9f3a158b5856523663d2c" id="r_a5c7e3cde36b9f3a158b5856523663d2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c7e3cde36b9f3a158b5856523663d2c">computeFlow</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__FlowOrigin.html">std_vector_FlowOrigin</a> starts, <a class="el" href="classmrmeshpy_1_1OutputFlows.html">OutputFlows</a> out='{}')</td></tr>
+<tr class="separator:a5c7e3cde36b9f3a158b5856523663d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e66e56b298d395ad7b88d7282fefd07" id="r_a3e66e56b298d395ad7b88d7282fefd07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e66e56b298d395ad7b88d7282fefd07">computeFlow</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__MeshTriPoint.html">std_vector_MeshTriPoint</a> starts, <a class="el" href="classmrmeshpy_1_1OutputFlows.html">OutputFlows</a> out='{}')</td></tr>
+<tr class="separator:a3e66e56b298d395ad7b88d7282fefd07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d17caaab2c7b26f792a306645ac540" id="r_ae5d17caaab2c7b26f792a306645ac540"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5d17caaab2c7b26f792a306645ac540">computeFlow</a> (self, int numStarts, <a class="el" href="classmrmeshpy_1_1func__MeshTriPoint__from__unsigned__long.html">func_MeshTriPoint_from_unsigned_long</a> startById, <a class="el" href="classmrmeshpy_1_1func__float__from__unsigned__long.html">func_float_from_unsigned_long</a> amountById, <a class="el" href="classmrmeshpy_1_1func__TaggedBitSet__FaceTag__const__from__unsigned__long.html">func_TaggedBitSet_FaceTag_const_from_unsigned_long</a> regionById, <a class="el" href="classmrmeshpy_1_1OutputFlows.html">OutputFlows</a> out='{}')</td></tr>
+<tr class="separator:ae5d17caaab2c7b26f792a306645ac540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6acdfdf82fcaff04e03a0a2e0340899" id="r_ad6acdfdf82fcaff04e03a0a2e0340899"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__FlowAggregator__Flows.html">phmap_flat_hash_map_Id_VertTag_FlowAggregator_Flows</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6acdfdf82fcaff04e03a0a2e0340899">computeFlowsPerBasin</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__FlowOrigin.html">std_vector_FlowOrigin</a> starts)</td></tr>
+<tr class="separator:ad6acdfdf82fcaff04e03a0a2e0340899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4b199014b955fd39b0f10057da2f2e7" id="r_ad4b199014b955fd39b0f10057da2f2e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__FlowAggregator__Flows.html">phmap_flat_hash_map_Id_VertTag_FlowAggregator_Flows</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4b199014b955fd39b0f10057da2f2e7">computeFlowsPerBasin</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__MeshTriPoint.html">std_vector_MeshTriPoint</a> starts)</td></tr>
+<tr class="separator:ad4b199014b955fd39b0f10057da2f2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce86ef5823edc67abca2f693b31c3ce" id="r_a8ce86ef5823edc67abca2f693b31c3ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__FlowAggregator__Flows.html">phmap_flat_hash_map_Id_VertTag_FlowAggregator_Flows</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ce86ef5823edc67abca2f693b31c3ce">computeFlowsPerBasin</a> (self, int numStarts, <a class="el" href="classmrmeshpy_1_1func__MeshTriPoint__from__unsigned__long.html">func_MeshTriPoint_from_unsigned_long</a> startById, <a class="el" href="classmrmeshpy_1_1func__float__from__unsigned__long.html">func_float_from_unsigned_long</a> amountById)</td></tr>
+<tr class="separator:a8ce86ef5823edc67abca2f693b31c3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::FlowAggregator
+
+this class can track multiple flows and find in each mesh vertex the amount of water reached it
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab021f0edced20e493266e08c11c886e9" name="ab021f0edced20e493266e08c11c886e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab021f0edced20e493266e08c11c886e9">&#9670;&#160;</a></span>__init__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FlowAggregator.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Mesh.html">Mesh</a></td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a></td>          <td class="paramname"><span class="paramname"><em>heights</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">prepares the processing of given mesh with given height in each vertex
+</pre> 
+</div>
+</div>
+<a id="a085847a42b39cf0cca1785e84208d85a" name="a085847a42b39cf0cca1785e84208d85a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a085847a42b39cf0cca1785e84208d85a">&#9670;&#160;</a></span>__init__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FlowAggregator.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FlowAggregator.html">FlowAggregator</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a85139beb870cc0e93eb54c47ad83bb86" name="a85139beb870cc0e93eb54c47ad83bb86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85139beb870cc0e93eb54c47ad83bb86">&#9670;&#160;</a></span>computeCatchmentDelineation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a> mrmeshpy.FlowAggregator.computeCatchmentDelineation </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">finds the edges on the mesh that divides catchment basin
+(every triangle is attributed to the final destination point based on the path originated from its centroid)
+</pre> 
+</div>
+</div>
+<a id="ae5d17caaab2c7b26f792a306645ac540" name="ae5d17caaab2c7b26f792a306645ac540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d17caaab2c7b26f792a306645ac540">&#9670;&#160;</a></span>computeFlow() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a> mrmeshpy.FlowAggregator.computeFlow </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numStarts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__MeshTriPoint__from__unsigned__long.html">func_MeshTriPoint_from_unsigned_long</a></td>          <td class="paramname"><span class="paramname"><em>startById</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__float__from__unsigned__long.html">func_float_from_unsigned_long</a></td>          <td class="paramname"><span class="paramname"><em>amountById</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__TaggedBitSet__FaceTag__const__from__unsigned__long.html">func_TaggedBitSet_FaceTag_const_from_unsigned_long</a></td>          <td class="paramname"><span class="paramname"><em>regionById</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OutputFlows.html">OutputFlows</a> </td>          <td class="paramname"><span class="paramname"><em>out</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">general version that supplies starts in a functional way
+</pre> 
+</div>
+</div>
+<a id="a5c7e3cde36b9f3a158b5856523663d2c" name="a5c7e3cde36b9f3a158b5856523663d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c7e3cde36b9f3a158b5856523663d2c">&#9670;&#160;</a></span>computeFlow() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a> mrmeshpy.FlowAggregator.computeFlow </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__FlowOrigin.html">std_vector_FlowOrigin</a></td>          <td class="paramname"><span class="paramname"><em>starts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OutputFlows.html">OutputFlows</a> </td>          <td class="paramname"><span class="paramname"><em>out</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">tracks multiple flows
+\\param starts the origin of each flow (should be uniformly sampled over the terrain)
+\\return the flow reached each mesh vertex
+</pre> 
+</div>
+</div>
+<a id="a3e66e56b298d395ad7b88d7282fefd07" name="a3e66e56b298d395ad7b88d7282fefd07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e66e56b298d395ad7b88d7282fefd07">&#9670;&#160;</a></span>computeFlow() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertScalars.html">VertScalars</a> mrmeshpy.FlowAggregator.computeFlow </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__MeshTriPoint.html">std_vector_MeshTriPoint</a></td>          <td class="paramname"><span class="paramname"><em>starts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OutputFlows.html">OutputFlows</a> </td>          <td class="paramname"><span class="paramname"><em>out</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">same with all amounts equal to 1
+</pre> 
+</div>
+</div>
+<a id="a8ce86ef5823edc67abca2f693b31c3ce" name="a8ce86ef5823edc67abca2f693b31c3ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ce86ef5823edc67abca2f693b31c3ce">&#9670;&#160;</a></span>computeFlowsPerBasin() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__FlowAggregator__Flows.html">phmap_flat_hash_map_Id_VertTag_FlowAggregator_Flows</a> mrmeshpy.FlowAggregator.computeFlowsPerBasin </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numStarts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__MeshTriPoint__from__unsigned__long.html">func_MeshTriPoint_from_unsigned_long</a></td>          <td class="paramname"><span class="paramname"><em>startById</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__float__from__unsigned__long.html">func_float_from_unsigned_long</a></td>          <td class="paramname"><span class="paramname"><em>amountById</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">general version that supplies starts in a functional way
+</pre> 
+</div>
+</div>
+<a id="ad6acdfdf82fcaff04e03a0a2e0340899" name="ad6acdfdf82fcaff04e03a0a2e0340899"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6acdfdf82fcaff04e03a0a2e0340899">&#9670;&#160;</a></span>computeFlowsPerBasin() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__FlowAggregator__Flows.html">phmap_flat_hash_map_Id_VertTag_FlowAggregator_Flows</a> mrmeshpy.FlowAggregator.computeFlowsPerBasin </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__FlowOrigin.html">std_vector_FlowOrigin</a></td>          <td class="paramname"><span class="paramname"><em>starts</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">tracks multiple flows
+\\param starts the origin of each flow (should be uniformly sampled over the terrain)
+\\return the flows grouped by the final destination vertex
+</pre> 
+</div>
+</div>
+<a id="ad4b199014b955fd39b0f10057da2f2e7" name="ad4b199014b955fd39b0f10057da2f2e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4b199014b955fd39b0f10057da2f2e7">&#9670;&#160;</a></span>computeFlowsPerBasin() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__FlowAggregator__Flows.html">phmap_flat_hash_map_Id_VertTag_FlowAggregator_Flows</a> mrmeshpy.FlowAggregator.computeFlowsPerBasin </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__MeshTriPoint.html">std_vector_MeshTriPoint</a></td>          <td class="paramname"><span class="paramname"><em>starts</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">same with all amounts equal to 1
+</pre> 
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1FlowAggregator.html">FlowAggregator</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

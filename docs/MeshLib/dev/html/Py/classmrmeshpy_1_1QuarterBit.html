@@ -1,0 +1,741 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.QuarterBit Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1QuarterBit.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1QuarterBit-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.QuarterBit Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aab1bc70720809764d46e05739304767c" id="r_aab1bc70720809764d46e05739304767c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab1bc70720809764d46e05739304767c">__and__</a> (self, <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> b)</td></tr>
+<tr class="separator:aab1bc70720809764d46e05739304767c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afff6abd1a21da88400a4525529c1b129" id="r_afff6abd1a21da88400a4525529c1b129"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afff6abd1a21da88400a4525529c1b129">__eq__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:afff6abd1a21da88400a4525529c1b129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b39c5cc41a9fe59a2a7ef7083965dc3" id="r_a9b39c5cc41a9fe59a2a7ef7083965dc3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b39c5cc41a9fe59a2a7ef7083965dc3">__getstate__</a> (self)</td></tr>
+<tr class="separator:a9b39c5cc41a9fe59a2a7ef7083965dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6073db1308827f4f80cafd3a67352a23" id="r_a6073db1308827f4f80cafd3a67352a23"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6073db1308827f4f80cafd3a67352a23">__hash__</a> (self)</td></tr>
+<tr class="separator:a6073db1308827f4f80cafd3a67352a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77e39586d828a0aa983c02c8dd76500e" id="r_a77e39586d828a0aa983c02c8dd76500e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77e39586d828a0aa983c02c8dd76500e">__iand__</a> (self, <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> b)</td></tr>
+<tr class="separator:a77e39586d828a0aa983c02c8dd76500e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d3fb4fd240f91b33fc8b73e71ac761e" id="r_a3d3fb4fd240f91b33fc8b73e71ac761e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d3fb4fd240f91b33fc8b73e71ac761e">__imatmul__</a> (self, bool b)</td></tr>
+<tr class="separator:a3d3fb4fd240f91b33fc8b73e71ac761e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34f99b36fd737c3ec3ff05163d66b424" id="r_a34f99b36fd737c3ec3ff05163d66b424"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34f99b36fd737c3ec3ff05163d66b424">__index__</a> (self)</td></tr>
+<tr class="separator:a34f99b36fd737c3ec3ff05163d66b424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1316dfa9017296433e732a2cb202c9e1" id="r_a1316dfa9017296433e732a2cb202c9e1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1316dfa9017296433e732a2cb202c9e1">__init__</a> (self, int <a class="el" href="#a529bcc572ae157410dc4649354eacba0">value</a>)</td></tr>
+<tr class="separator:a1316dfa9017296433e732a2cb202c9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82d55d389eb6c0cd7d7e33e646459294" id="r_a82d55d389eb6c0cd7d7e33e646459294"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82d55d389eb6c0cd7d7e33e646459294">__int__</a> (self)</td></tr>
+<tr class="separator:a82d55d389eb6c0cd7d7e33e646459294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f917c9d975fe13725cdc70e1cb059f8" id="r_a8f917c9d975fe13725cdc70e1cb059f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f917c9d975fe13725cdc70e1cb059f8">__invert__</a> (self)</td></tr>
+<tr class="separator:a8f917c9d975fe13725cdc70e1cb059f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8794270a4aa5ff927b4a7c5680137056" id="r_a8794270a4aa5ff927b4a7c5680137056"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8794270a4aa5ff927b4a7c5680137056">__ior__</a> (self, <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> b)</td></tr>
+<tr class="separator:a8794270a4aa5ff927b4a7c5680137056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76f1f44c78b13d584e16420d73ac0668" id="r_a76f1f44c78b13d584e16420d73ac0668"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76f1f44c78b13d584e16420d73ac0668">__mul__</a> (self, bool b)</td></tr>
+<tr class="separator:a76f1f44c78b13d584e16420d73ac0668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66d373534918f2954acffd3e37cdf16e" id="r_a66d373534918f2954acffd3e37cdf16e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66d373534918f2954acffd3e37cdf16e">__ne__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:a66d373534918f2954acffd3e37cdf16e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d8be992bc54969032f47622a8c59b2" id="r_a91d8be992bc54969032f47622a8c59b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91d8be992bc54969032f47622a8c59b2">__or__</a> (self, <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> b)</td></tr>
+<tr class="separator:a91d8be992bc54969032f47622a8c59b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a140c6a2e23ef7816bc2f2b8cea6acbe8" id="r_a140c6a2e23ef7816bc2f2b8cea6acbe8"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a140c6a2e23ef7816bc2f2b8cea6acbe8">__repr__</a> (self)</td></tr>
+<tr class="separator:a140c6a2e23ef7816bc2f2b8cea6acbe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a799a0b3517838ab72f1f27b5d0b8a11b" id="r_a799a0b3517838ab72f1f27b5d0b8a11b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a799a0b3517838ab72f1f27b5d0b8a11b">__rmul__</a> (self, bool b)</td></tr>
+<tr class="separator:a799a0b3517838ab72f1f27b5d0b8a11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbde39eb77ed65491035802bce2ccc86" id="r_acbde39eb77ed65491035802bce2ccc86"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbde39eb77ed65491035802bce2ccc86">__setstate__</a> (self, int state)</td></tr>
+<tr class="separator:acbde39eb77ed65491035802bce2ccc86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a23de305c0dec0fe46d14d1b3fdaabc" id="r_a9a23de305c0dec0fe46d14d1b3fdaabc"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a23de305c0dec0fe46d14d1b3fdaabc">__str__</a> (self)</td></tr>
+<tr class="separator:a9a23de305c0dec0fe46d14d1b3fdaabc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d7fd54b6b161cf8bc1265af1729b3ea" id="r_a7d7fd54b6b161cf8bc1265af1729b3ea"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d7fd54b6b161cf8bc1265af1729b3ea">name</a> (self)</td></tr>
+<tr class="separator:a7d7fd54b6b161cf8bc1265af1729b3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a529bcc572ae157410dc4649354eacba0" id="r_a529bcc572ae157410dc4649354eacba0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a529bcc572ae157410dc4649354eacba0">value</a> (self)</td></tr>
+<tr class="separator:a529bcc572ae157410dc4649354eacba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a0ac3850e0555d719ec2b08fa4db2bf9f" id="r_a0ac3850e0555d719ec2b08fa4db2bf9f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ac3850e0555d719ec2b08fa4db2bf9f">All</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td></tr>
+<tr class="separator:a0ac3850e0555d719ec2b08fa4db2bf9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbcce32fbb5b07d6d3a9eaf40f61354b" id="r_afbcce32fbb5b07d6d3a9eaf40f61354b"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbcce32fbb5b07d6d3a9eaf40f61354b">LeftLeft</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td></tr>
+<tr class="separator:afbcce32fbb5b07d6d3a9eaf40f61354b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb8c8aeb8f011c1aa620260c4df9e323" id="r_aeb8c8aeb8f011c1aa620260c4df9e323"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb8c8aeb8f011c1aa620260c4df9e323">LeftRight</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td></tr>
+<tr class="separator:aeb8c8aeb8f011c1aa620260c4df9e323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ad18c2ecb8f22e2aa47c16e4943108" id="r_aa4ad18c2ecb8f22e2aa47c16e4943108"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4ad18c2ecb8f22e2aa47c16e4943108">RightLeft</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td></tr>
+<tr class="separator:aa4ad18c2ecb8f22e2aa47c16e4943108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa48661bad4e58c7f678d86e7ebef4c31" id="r_aa48661bad4e58c7f678d86e7ebef4c31"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa48661bad4e58c7f678d86e7ebef4c31">RightRight</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td></tr>
+<tr class="separator:aa48661bad4e58c7f678d86e7ebef4c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Members:
+
+  LeftLeft
+
+  LeftRight
+
+  RightLeft
+
+  RightRight
+
+  All
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1316dfa9017296433e732a2cb202c9e1" name="a1316dfa9017296433e732a2cb202c9e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1316dfa9017296433e732a2cb202c9e1">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.QuarterBit.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aab1bc70720809764d46e05739304767c" name="aab1bc70720809764d46e05739304767c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab1bc70720809764d46e05739304767c">&#9670;&#160;</a></span>__and__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__and__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afff6abd1a21da88400a4525529c1b129" name="afff6abd1a21da88400a4525529c1b129"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afff6abd1a21da88400a4525529c1b129">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.QuarterBit.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b39c5cc41a9fe59a2a7ef7083965dc3" name="a9b39c5cc41a9fe59a2a7ef7083965dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b39c5cc41a9fe59a2a7ef7083965dc3">&#9670;&#160;</a></span>__getstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.QuarterBit.__getstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6073db1308827f4f80cafd3a67352a23" name="a6073db1308827f4f80cafd3a67352a23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6073db1308827f4f80cafd3a67352a23">&#9670;&#160;</a></span>__hash__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.QuarterBit.__hash__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77e39586d828a0aa983c02c8dd76500e" name="a77e39586d828a0aa983c02c8dd76500e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77e39586d828a0aa983c02c8dd76500e">&#9670;&#160;</a></span>__iand__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__iand__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d3fb4fd240f91b33fc8b73e71ac761e" name="a3d3fb4fd240f91b33fc8b73e71ac761e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d3fb4fd240f91b33fc8b73e71ac761e">&#9670;&#160;</a></span>__imatmul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__imatmul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34f99b36fd737c3ec3ff05163d66b424" name="a34f99b36fd737c3ec3ff05163d66b424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34f99b36fd737c3ec3ff05163d66b424">&#9670;&#160;</a></span>__index__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.QuarterBit.__index__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82d55d389eb6c0cd7d7e33e646459294" name="a82d55d389eb6c0cd7d7e33e646459294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82d55d389eb6c0cd7d7e33e646459294">&#9670;&#160;</a></span>__int__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.QuarterBit.__int__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f917c9d975fe13725cdc70e1cb059f8" name="a8f917c9d975fe13725cdc70e1cb059f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f917c9d975fe13725cdc70e1cb059f8">&#9670;&#160;</a></span>__invert__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__invert__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8794270a4aa5ff927b4a7c5680137056" name="a8794270a4aa5ff927b4a7c5680137056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8794270a4aa5ff927b4a7c5680137056">&#9670;&#160;</a></span>__ior__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__ior__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76f1f44c78b13d584e16420d73ac0668" name="a76f1f44c78b13d584e16420d73ac0668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f1f44c78b13d584e16420d73ac0668">&#9670;&#160;</a></span>__mul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__mul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66d373534918f2954acffd3e37cdf16e" name="a66d373534918f2954acffd3e37cdf16e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66d373534918f2954acffd3e37cdf16e">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.QuarterBit.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91d8be992bc54969032f47622a8c59b2" name="a91d8be992bc54969032f47622a8c59b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d8be992bc54969032f47622a8c59b2">&#9670;&#160;</a></span>__or__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__or__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a140c6a2e23ef7816bc2f2b8cea6acbe8" name="a140c6a2e23ef7816bc2f2b8cea6acbe8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a140c6a2e23ef7816bc2f2b8cea6acbe8">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.QuarterBit.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a799a0b3517838ab72f1f27b5d0b8a11b" name="a799a0b3517838ab72f1f27b5d0b8a11b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a799a0b3517838ab72f1f27b5d0b8a11b">&#9670;&#160;</a></span>__rmul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a> mrmeshpy.QuarterBit.__rmul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbde39eb77ed65491035802bce2ccc86" name="acbde39eb77ed65491035802bce2ccc86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbde39eb77ed65491035802bce2ccc86">&#9670;&#160;</a></span>__setstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.QuarterBit.__setstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a23de305c0dec0fe46d14d1b3fdaabc" name="a9a23de305c0dec0fe46d14d1b3fdaabc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a23de305c0dec0fe46d14d1b3fdaabc">&#9670;&#160;</a></span>__str__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.QuarterBit.__str__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d7fd54b6b161cf8bc1265af1729b3ea" name="a7d7fd54b6b161cf8bc1265af1729b3ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d7fd54b6b161cf8bc1265af1729b3ea">&#9670;&#160;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.QuarterBit.name </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a529bcc572ae157410dc4649354eacba0" name="a529bcc572ae157410dc4649354eacba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a529bcc572ae157410dc4649354eacba0">&#9670;&#160;</a></span>value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.QuarterBit.value </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0ac3850e0555d719ec2b08fa4db2bf9f" name="a0ac3850e0555d719ec2b08fa4db2bf9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ac3850e0555d719ec2b08fa4db2bf9f">&#9670;&#160;</a></span>All</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.QuarterBit.All .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afbcce32fbb5b07d6d3a9eaf40f61354b" name="afbcce32fbb5b07d6d3a9eaf40f61354b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbcce32fbb5b07d6d3a9eaf40f61354b">&#9670;&#160;</a></span>LeftLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.QuarterBit.LeftLeft .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb8c8aeb8f011c1aa620260c4df9e323" name="aeb8c8aeb8f011c1aa620260c4df9e323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb8c8aeb8f011c1aa620260c4df9e323">&#9670;&#160;</a></span>LeftRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.QuarterBit.LeftRight .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4ad18c2ecb8f22e2aa47c16e4943108" name="aa4ad18c2ecb8f22e2aa47c16e4943108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4ad18c2ecb8f22e2aa47c16e4943108">&#9670;&#160;</a></span>RightLeft</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.QuarterBit.RightLeft .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa48661bad4e58c7f678d86e7ebef4c31" name="aa48661bad4e58c7f678d86e7ebef4c31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa48661bad4e58c7f678d86e7ebef4c31">&#9670;&#160;</a></span>RightRight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.QuarterBit.RightRight .ClassVar[<a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1QuarterBit.html">QuarterBit</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

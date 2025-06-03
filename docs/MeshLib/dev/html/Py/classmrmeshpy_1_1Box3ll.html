@@ -1,0 +1,1044 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.Box3ll Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1Box3ll.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1Box3ll-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.Box3ll Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5811b9a4886d485d37255df37488371d" id="r_a5811b9a4886d485d37255df37488371d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5811b9a4886d485d37255df37488371d">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> a)</td></tr>
+<tr class="separator:a5811b9a4886d485d37255df37488371d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29ba99c6fec3552e08d1f804b1864b8" id="r_ac29ba99c6fec3552e08d1f804b1864b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac29ba99c6fec3552e08d1f804b1864b8">__getitem__</a> (self, int e)</td></tr>
+<tr class="separator:ac29ba99c6fec3552e08d1f804b1864b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29ba99c6fec3552e08d1f804b1864b8" id="r_ac29ba99c6fec3552e08d1f804b1864b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac29ba99c6fec3552e08d1f804b1864b8">__getitem__</a> (self, int e)</td></tr>
+<tr class="separator:ac29ba99c6fec3552e08d1f804b1864b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab58f71b7f1df9871adb62b6fca597e75" id="r_ab58f71b7f1df9871adb62b6fca597e75"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab58f71b7f1df9871adb62b6fca597e75">__init__</a> (self)</td></tr>
+<tr class="separator:ab58f71b7f1df9871adb62b6fca597e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd60e5f98faa3b73f59ed0f576c5de07" id="r_afd60e5f98faa3b73f59ed0f576c5de07"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd60e5f98faa3b73f59ed0f576c5de07">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> min, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> max)</td></tr>
+<tr class="separator:afd60e5f98faa3b73f59ed0f576c5de07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa702b6d83ccbc4f0322aea9fce8e1930" id="r_aa702b6d83ccbc4f0322aea9fce8e1930"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa702b6d83ccbc4f0322aea9fce8e1930">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> arg0)</td></tr>
+<tr class="separator:aa702b6d83ccbc4f0322aea9fce8e1930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad06991454fbecea7b29cc075ff30b5a3" id="r_ad06991454fbecea7b29cc075ff30b5a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad06991454fbecea7b29cc075ff30b5a3">__ne__</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> a)</td></tr>
+<tr class="separator:ad06991454fbecea7b29cc075ff30b5a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0655447890fd032ee654436a11274903" id="r_a0655447890fd032ee654436a11274903"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0655447890fd032ee654436a11274903">__repr__</a> (self)</td></tr>
+<tr class="separator:a0655447890fd032ee654436a11274903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf2f20f4bd5891c2605a2c37ca640d38" id="r_adf2f20f4bd5891c2605a2c37ca640d38"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf2f20f4bd5891c2605a2c37ca640d38">__setitem__</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> arg1)</td></tr>
+<tr class="separator:adf2f20f4bd5891c2605a2c37ca640d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4750628a9ad811442d02f68215f15175" id="r_a4750628a9ad811442d02f68215f15175"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4750628a9ad811442d02f68215f15175">center</a> (self)</td></tr>
+<tr class="separator:a4750628a9ad811442d02f68215f15175"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b32cb924119af4f9f648ce7452e80b4" id="r_a7b32cb924119af4f9f648ce7452e80b4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b32cb924119af4f9f648ce7452e80b4">contains</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> pt)</td></tr>
+<tr class="separator:a7b32cb924119af4f9f648ce7452e80b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc97911007c5ec09e679bf2ab0d5c42c" id="r_adc97911007c5ec09e679bf2ab0d5c42c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc97911007c5ec09e679bf2ab0d5c42c">contains</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> otherbox)</td></tr>
+<tr class="separator:adc97911007c5ec09e679bf2ab0d5c42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee0241b26bcf572a6b3bbaaa435ec87" id="r_a5ee0241b26bcf572a6b3bbaaa435ec87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ee0241b26bcf572a6b3bbaaa435ec87">corner</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3b.html">Vector3b</a> c)</td></tr>
+<tr class="separator:a5ee0241b26bcf572a6b3bbaaa435ec87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a654ebe0fd4e9d3602325546e0f3c53f4" id="r_a654ebe0fd4e9d3602325546e0f3c53f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a654ebe0fd4e9d3602325546e0f3c53f4">diagonal</a> (self)</td></tr>
+<tr class="separator:a654ebe0fd4e9d3602325546e0f3c53f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1d58a50dca7e9610b83f942973231fb" id="r_ad1d58a50dca7e9610b83f942973231fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1d58a50dca7e9610b83f942973231fb">expanded</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> expansion)</td></tr>
+<tr class="separator:ad1d58a50dca7e9610b83f942973231fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a559f3a7bfc8cc5628536eb2c899d4909" id="r_a559f3a7bfc8cc5628536eb2c899d4909"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a559f3a7bfc8cc5628536eb2c899d4909">getBoxClosestPointTo</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> pt)</td></tr>
+<tr class="separator:a559f3a7bfc8cc5628536eb2c899d4909"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5db6a265e52f9638b2ee972d90b2ac2" id="r_ac5db6a265e52f9638b2ee972d90b2ac2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5db6a265e52f9638b2ee972d90b2ac2">getDistanceSq</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> b)</td></tr>
+<tr class="separator:ac5db6a265e52f9638b2ee972d90b2ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13242a0139c85f33c419f098ea397d0c" id="r_a13242a0139c85f33c419f098ea397d0c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13242a0139c85f33c419f098ea397d0c">getDistanceSq</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> pt)</td></tr>
+<tr class="separator:a13242a0139c85f33c419f098ea397d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa896a57a5251087d6dd3ba6ed1d989c8" id="r_aa896a57a5251087d6dd3ba6ed1d989c8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa896a57a5251087d6dd3ba6ed1d989c8">include</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> pt)</td></tr>
+<tr class="separator:aa896a57a5251087d6dd3ba6ed1d989c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcafc1ebaa416b8dcfb4854f1fe200f2" id="r_afcafc1ebaa416b8dcfb4854f1fe200f2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcafc1ebaa416b8dcfb4854f1fe200f2">include</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> b)</td></tr>
+<tr class="separator:afcafc1ebaa416b8dcfb4854f1fe200f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c4ebf988d0ed2afc413dd617f3265e1" id="r_a8c4ebf988d0ed2afc413dd617f3265e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c4ebf988d0ed2afc413dd617f3265e1">insignificantlyExpanded</a> (self)</td></tr>
+<tr class="separator:a8c4ebf988d0ed2afc413dd617f3265e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91989b9e8c3246b0d4a89c43adcc1a0d" id="r_a91989b9e8c3246b0d4a89c43adcc1a0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91989b9e8c3246b0d4a89c43adcc1a0d">intersect</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> b)</td></tr>
+<tr class="separator:a91989b9e8c3246b0d4a89c43adcc1a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960891be32ff78c582354fc52c04aea0" id="r_a960891be32ff78c582354fc52c04aea0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a960891be32ff78c582354fc52c04aea0">intersection</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> b)</td></tr>
+<tr class="separator:a960891be32ff78c582354fc52c04aea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a858f3598b8d6b6d417fec452bf104bf4" id="r_a858f3598b8d6b6d417fec452bf104bf4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a858f3598b8d6b6d417fec452bf104bf4">intersects</a> (self, <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> b)</td></tr>
+<tr class="separator:a858f3598b8d6b6d417fec452bf104bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94e153e3dcffa6a4e03387ece2d8723" id="r_ac94e153e3dcffa6a4e03387ece2d8723"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac94e153e3dcffa6a4e03387ece2d8723">size</a> (self)</td></tr>
+<tr class="separator:ac94e153e3dcffa6a4e03387ece2d8723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee7a86329d32bdbae156cd2866e670f" id="r_a9ee7a86329d32bdbae156cd2866e670f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ee7a86329d32bdbae156cd2866e670f">valid</a> (self)</td></tr>
+<tr class="separator:a9ee7a86329d32bdbae156cd2866e670f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bf2335d5b22b852540eefe9f00f9be2" id="r_a9bf2335d5b22b852540eefe9f00f9be2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bf2335d5b22b852540eefe9f00f9be2">volume</a> (self)</td></tr>
+<tr class="separator:a9bf2335d5b22b852540eefe9f00f9be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a9ddc1391ab3494233ac44ebb22e9b502" id="r_a9ddc1391ab3494233ac44ebb22e9b502"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ddc1391ab3494233ac44ebb22e9b502">__init__</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a9ddc1391ab3494233ac44ebb22e9b502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ddc1391ab3494233ac44ebb22e9b502" id="r_a9ddc1391ab3494233ac44ebb22e9b502"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ddc1391ab3494233ac44ebb22e9b502">__init__</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a9ddc1391ab3494233ac44ebb22e9b502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cd6694d2577b1006d7af06dde5e29d8" id="r_a1cd6694d2577b1006d7af06dde5e29d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cd6694d2577b1006d7af06dde5e29d8">fromMinAndSize</a> (<a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> min, <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> <a class="el" href="#ac94e153e3dcffa6a4e03387ece2d8723">size</a>)</td></tr>
+<tr class="separator:a1cd6694d2577b1006d7af06dde5e29d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc3c6fd7b380294466b44a1ef1c9d0c8" id="r_afc3c6fd7b380294466b44a1ef1c9d0c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3b.html">Vector3b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc3c6fd7b380294466b44a1ef1c9d0c8">getMaxBoxCorner</a> (<a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> n)</td></tr>
+<tr class="separator:afc3c6fd7b380294466b44a1ef1c9d0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6d7178ddd81b845081dcece2bd8bd38" id="r_aa6d7178ddd81b845081dcece2bd8bd38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3b.html">Vector3b</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6d7178ddd81b845081dcece2bd8bd38">getMinBoxCorner</a> (<a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> n)</td></tr>
+<tr class="separator:aa6d7178ddd81b845081dcece2bd8bd38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a2ebd1da3c8f0f09c8f43234a6bafa396" id="r_a2ebd1da3c8f0f09c8f43234a6bafa396"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ebd1da3c8f0f09c8f43234a6bafa396">elements</a> = 3</td></tr>
+<tr class="separator:a2ebd1da3c8f0f09c8f43234a6bafa396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a6552f170da58ba41c61a99c42f0e4c88" id="r_a6552f170da58ba41c61a99c42f0e4c88"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6552f170da58ba41c61a99c42f0e4c88">_offsetof_max</a> = 24</td></tr>
+<tr class="separator:a6552f170da58ba41c61a99c42f0e4c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2c0b8277289ecfac4ccb6ea98d4baa" id="r_adc2c0b8277289ecfac4ccb6ea98d4baa"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc2c0b8277289ecfac4ccb6ea98d4baa">_offsetof_min</a> = 0</td></tr>
+<tr class="separator:adc2c0b8277289ecfac4ccb6ea98d4baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::Box3ll
+
+Box given by its min- and max- corners
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9ddc1391ab3494233ac44ebb22e9b502" name="a9ddc1391ab3494233ac44ebb22e9b502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ddc1391ab3494233ac44ebb22e9b502">&#9670;&#160;</a></span>__init__() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">skip initialization of min/max
+</pre> 
+</div>
+</div>
+<a id="a9ddc1391ab3494233ac44ebb22e9b502" name="a9ddc1391ab3494233ac44ebb22e9b502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ddc1391ab3494233ac44ebb22e9b502">&#9670;&#160;</a></span>__init__() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab58f71b7f1df9871adb62b6fca597e75" name="ab58f71b7f1df9871adb62b6fca597e75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab58f71b7f1df9871adb62b6fca597e75">&#9670;&#160;</a></span>__init__() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">create invalid box by default
+</pre> 
+</div>
+</div>
+<a id="afd60e5f98faa3b73f59ed0f576c5de07" name="afd60e5f98faa3b73f59ed0f576c5de07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd60e5f98faa3b73f59ed0f576c5de07">&#9670;&#160;</a></span>__init__() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa702b6d83ccbc4f0322aea9fce8e1930" name="aa702b6d83ccbc4f0322aea9fce8e1930"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa702b6d83ccbc4f0322aea9fce8e1930">&#9670;&#160;</a></span>__init__() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5811b9a4886d485d37255df37488371d" name="a5811b9a4886d485d37255df37488371d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5811b9a4886d485d37255df37488371d">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Box3ll.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>a</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac29ba99c6fec3552e08d1f804b1864b8" name="ac29ba99c6fec3552e08d1f804b1864b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29ba99c6fec3552e08d1f804b1864b8">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> mrmeshpy.Box3ll.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">min/max access by 0/1 index
+</pre> 
+</div>
+</div>
+<a id="ac29ba99c6fec3552e08d1f804b1864b8" name="ac29ba99c6fec3552e08d1f804b1864b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29ba99c6fec3552e08d1f804b1864b8">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> mrmeshpy.Box3ll.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad06991454fbecea7b29cc075ff30b5a3" name="ad06991454fbecea7b29cc075ff30b5a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad06991454fbecea7b29cc075ff30b5a3">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Box3ll.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>a</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0655447890fd032ee654436a11274903" name="a0655447890fd032ee654436a11274903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0655447890fd032ee654436a11274903">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.Box3ll.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf2f20f4bd5891c2605a2c37ca640d38" name="adf2f20f4bd5891c2605a2c37ca640d38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf2f20f4bd5891c2605a2c37ca640d38">&#9670;&#160;</a></span>__setitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4750628a9ad811442d02f68215f15175" name="a4750628a9ad811442d02f68215f15175"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4750628a9ad811442d02f68215f15175">&#9670;&#160;</a></span>center()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> mrmeshpy.Box3ll.center </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes center of the box
+</pre> 
+</div>
+</div>
+<a id="adc97911007c5ec09e679bf2ab0d5c42c" name="adc97911007c5ec09e679bf2ab0d5c42c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc97911007c5ec09e679bf2ab0d5c42c">&#9670;&#160;</a></span>contains() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Box3ll.contains </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>otherbox</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">checks whether given box is fully inside (the surfaces may touch) of this box
+</pre> 
+</div>
+</div>
+<a id="a7b32cb924119af4f9f648ce7452e80b4" name="a7b32cb924119af4f9f648ce7452e80b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b32cb924119af4f9f648ce7452e80b4">&#9670;&#160;</a></span>contains() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Box3ll.contains </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>pt</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">checks whether given point is inside (including the surface) of this box
+</pre> 
+</div>
+</div>
+<a id="a5ee0241b26bcf572a6b3bbaaa435ec87" name="a5ee0241b26bcf572a6b3bbaaa435ec87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee0241b26bcf572a6b3bbaaa435ec87">&#9670;&#160;</a></span>corner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> mrmeshpy.Box3ll.corner </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3b.html">Vector3b</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the corner of this box as specified by given bool-vector:
+1 element in (c) means take min's coordinate,
+0 element in (c) means take max's coordinate
+</pre> 
+</div>
+</div>
+<a id="a654ebe0fd4e9d3602325546e0f3c53f4" name="a654ebe0fd4e9d3602325546e0f3c53f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a654ebe0fd4e9d3602325546e0f3c53f4">&#9670;&#160;</a></span>diagonal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Box3ll.diagonal </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes length from min to max
+</pre> 
+</div>
+</div>
+<a id="ad1d58a50dca7e9610b83f942973231fb" name="ad1d58a50dca7e9610b83f942973231fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1d58a50dca7e9610b83f942973231fb">&#9670;&#160;</a></span>expanded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> mrmeshpy.Box3ll.expanded </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>expansion</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">decreases min and increased max on given value
+</pre> 
+</div>
+</div>
+<a id="a1cd6694d2577b1006d7af06dde5e29d8" name="a1cd6694d2577b1006d7af06dde5e29d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cd6694d2577b1006d7af06dde5e29d8">&#9670;&#160;</a></span>fromMinAndSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> mrmeshpy.Box3ll.fromMinAndSize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a559f3a7bfc8cc5628536eb2c899d4909" name="a559f3a7bfc8cc5628536eb2c899d4909"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a559f3a7bfc8cc5628536eb2c899d4909">&#9670;&#160;</a></span>getBoxClosestPointTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> mrmeshpy.Box3ll.getBoxClosestPointTo </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>pt</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns closest point in the box to given point
+</pre> 
+</div>
+</div>
+<a id="ac5db6a265e52f9638b2ee972d90b2ac2" name="ac5db6a265e52f9638b2ee972d90b2ac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5db6a265e52f9638b2ee972d90b2ac2">&#9670;&#160;</a></span>getDistanceSq() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Box3ll.getDistanceSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns squared distance between this box and given one;
+returns zero if the boxes touch or intersect
+</pre> 
+</div>
+</div>
+<a id="a13242a0139c85f33c419f098ea397d0c" name="a13242a0139c85f33c419f098ea397d0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13242a0139c85f33c419f098ea397d0c">&#9670;&#160;</a></span>getDistanceSq() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Box3ll.getDistanceSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>pt</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns squared distance between this box and given point;
+returns zero if the point is inside or on the boundary of the box
+</pre> 
+</div>
+</div>
+<a id="afc3c6fd7b380294466b44a1ef1c9d0c8" name="afc3c6fd7b380294466b44a1ef1c9d0c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc3c6fd7b380294466b44a1ef1c9d0c8">&#9670;&#160;</a></span>getMaxBoxCorner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3b.html">Vector3b</a> mrmeshpy.Box3ll.getMaxBoxCorner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">considering all planes with given normal and arbitrary shift: dot(n,x) = d
+finds the box's corner for which d is maximal
+</pre> 
+</div>
+</div>
+<a id="aa6d7178ddd81b845081dcece2bd8bd38" name="aa6d7178ddd81b845081dcece2bd8bd38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6d7178ddd81b845081dcece2bd8bd38">&#9670;&#160;</a></span>getMinBoxCorner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3b.html">Vector3b</a> mrmeshpy.Box3ll.getMinBoxCorner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">considering all planes with given normal and arbitrary shift: dot(n,x) = d
+finds the box's corner for which d is minimal
+</pre> 
+</div>
+</div>
+<a id="afcafc1ebaa416b8dcfb4854f1fe200f2" name="afcafc1ebaa416b8dcfb4854f1fe200f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcafc1ebaa416b8dcfb4854f1fe200f2">&#9670;&#160;</a></span>include() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.include </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">minimally increases the box to include another box
+</pre> 
+</div>
+</div>
+<a id="aa896a57a5251087d6dd3ba6ed1d989c8" name="aa896a57a5251087d6dd3ba6ed1d989c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa896a57a5251087d6dd3ba6ed1d989c8">&#9670;&#160;</a></span>include() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Box3ll.include </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a></td>          <td class="paramname"><span class="paramname"><em>pt</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">minimally increases the box to include given point
+</pre> 
+</div>
+</div>
+<a id="a8c4ebf988d0ed2afc413dd617f3265e1" name="a8c4ebf988d0ed2afc413dd617f3265e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c4ebf988d0ed2afc413dd617f3265e1">&#9670;&#160;</a></span>insignificantlyExpanded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> mrmeshpy.Box3ll.insignificantlyExpanded </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">decreases min and increases max to their closest representable value
+</pre> 
+</div>
+</div>
+<a id="a91989b9e8c3246b0d4a89c43adcc1a0d" name="a91989b9e8c3246b0d4a89c43adcc1a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91989b9e8c3246b0d4a89c43adcc1a0d">&#9670;&#160;</a></span>intersect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> mrmeshpy.Box3ll.intersect </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a960891be32ff78c582354fc52c04aea0" name="a960891be32ff78c582354fc52c04aea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960891be32ff78c582354fc52c04aea0">&#9670;&#160;</a></span>intersection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a> mrmeshpy.Box3ll.intersection </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes intersection between this and other box
+</pre> 
+</div>
+</div>
+<a id="a858f3598b8d6b6d417fec452bf104bf4" name="a858f3598b8d6b6d417fec452bf104bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a858f3598b8d6b6d417fec452bf104bf4">&#9670;&#160;</a></span>intersects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Box3ll.intersects </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">checks whether this box intersects or touches given box
+</pre> 
+</div>
+</div>
+<a id="ac94e153e3dcffa6a4e03387ece2d8723" name="ac94e153e3dcffa6a4e03387ece2d8723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac94e153e3dcffa6a4e03387ece2d8723">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3ll.html">Vector3ll</a> mrmeshpy.Box3ll.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes size of the box in all dimensions
+</pre> 
+</div>
+</div>
+<a id="a9ee7a86329d32bdbae156cd2866e670f" name="a9ee7a86329d32bdbae156cd2866e670f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee7a86329d32bdbae156cd2866e670f">&#9670;&#160;</a></span>valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Box3ll.valid </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">true if the box contains at least one point
+</pre> 
+</div>
+</div>
+<a id="a9bf2335d5b22b852540eefe9f00f9be2" name="a9bf2335d5b22b852540eefe9f00f9be2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bf2335d5b22b852540eefe9f00f9be2">&#9670;&#160;</a></span>volume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Box3ll.volume </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes the volume of this box
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6552f170da58ba41c61a99c42f0e4c88" name="a6552f170da58ba41c61a99c42f0e4c88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6552f170da58ba41c61a99c42f0e4c88">&#9670;&#160;</a></span>_offsetof_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.Box3ll._offsetof_max = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc2c0b8277289ecfac4ccb6ea98d4baa" name="adc2c0b8277289ecfac4ccb6ea98d4baa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc2c0b8277289ecfac4ccb6ea98d4baa">&#9670;&#160;</a></span>_offsetof_min</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.Box3ll._offsetof_min = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ebd1da3c8f0f09c8f43234a6bafa396" name="a2ebd1da3c8f0f09c8f43234a6bafa396"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ebd1da3c8f0f09c8f43234a6bafa396">&#9670;&#160;</a></span>elements</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.Box3ll.elements = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1Box3ll.html">Box3ll</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

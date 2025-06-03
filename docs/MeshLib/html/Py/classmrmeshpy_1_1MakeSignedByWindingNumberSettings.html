@@ -1,0 +1,487 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1MakeSignedByWindingNumberSettings.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.MakeSignedByWindingNumberSettings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1MakeSignedByWindingNumberSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1MakeSignedByWindingNumberSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.MakeSignedByWindingNumberSettings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9ccfab58f7d8a756c7a21a68def7f8d6" id="r_a9ccfab58f7d8a756c7a21a68def7f8d6"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ccfab58f7d8a756c7a21a68def7f8d6">__init__</a> (self)</td></tr>
+<tr class="separator:a9ccfab58f7d8a756c7a21a68def7f8d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab189609b41b31eb4fe1a0e21b5453433" id="r_ab189609b41b31eb4fe1a0e21b5453433"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab189609b41b31eb4fe1a0e21b5453433">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1MakeSignedByWindingNumberSettings.html">MakeSignedByWindingNumberSettings</a> arg0)</td></tr>
+<tr class="separator:ab189609b41b31eb4fe1a0e21b5453433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b047b73d409b1c81efb7f6b1e8e99f0" id="r_a5b047b73d409b1c81efb7f6b1e8e99f0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b047b73d409b1c81efb7f6b1e8e99f0">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a> <a class="el" href="#aaa1bfb235faaaf5670b4dabee9c27081">meshToGridXf</a>, <a class="el" href="classmrmeshpy_1_1IFastWindingNumber.html">IFastWindingNumber</a> <a class="el" href="#adcddfedc59758f271d7cbaa89a82ecfa">fwn</a>, float <a class="el" href="#af72afe147c4ba5d8e4982e88fb461e25">windingNumberThreshold</a>, float <a class="el" href="#ad49c8639a787397bf2fe29090a9210b0">windingNumberBeta</a>, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> <a class="el" href="#ac83cb7aa9a55db761f4da48c417db9da">progress</a>)</td></tr>
+<tr class="separator:a5b047b73d409b1c81efb7f6b1e8e99f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcddfedc59758f271d7cbaa89a82ecfa" id="r_adcddfedc59758f271d7cbaa89a82ecfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1IFastWindingNumber.html">IFastWindingNumber</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcddfedc59758f271d7cbaa89a82ecfa">fwn</a> (self)</td></tr>
+<tr class="separator:adcddfedc59758f271d7cbaa89a82ecfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88f32da2a45d05842834a584e2bf5e59" id="r_a88f32da2a45d05842834a584e2bf5e59"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88f32da2a45d05842834a584e2bf5e59">fwn</a> (self, <a class="el" href="classmrmeshpy_1_1IFastWindingNumber.html">IFastWindingNumber</a> arg1)</td></tr>
+<tr class="separator:a88f32da2a45d05842834a584e2bf5e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1bfb235faaaf5670b4dabee9c27081" id="r_aaa1bfb235faaaf5670b4dabee9c27081"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa1bfb235faaaf5670b4dabee9c27081">meshToGridXf</a> (self)</td></tr>
+<tr class="separator:aaa1bfb235faaaf5670b4dabee9c27081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91fd75763c85954d435510f9516ed33" id="r_ab91fd75763c85954d435510f9516ed33"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab91fd75763c85954d435510f9516ed33">meshToGridXf</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a> arg1)</td></tr>
+<tr class="separator:ab91fd75763c85954d435510f9516ed33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac83cb7aa9a55db761f4da48c417db9da" id="r_ac83cb7aa9a55db761f4da48c417db9da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac83cb7aa9a55db761f4da48c417db9da">progress</a> (self)</td></tr>
+<tr class="separator:ac83cb7aa9a55db761f4da48c417db9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8c00448dc82cc91e6d1785d883607fb" id="r_ac8c00448dc82cc91e6d1785d883607fb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8c00448dc82cc91e6d1785d883607fb">progress</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> arg1)</td></tr>
+<tr class="separator:ac8c00448dc82cc91e6d1785d883607fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad49c8639a787397bf2fe29090a9210b0" id="r_ad49c8639a787397bf2fe29090a9210b0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad49c8639a787397bf2fe29090a9210b0">windingNumberBeta</a> (self)</td></tr>
+<tr class="separator:ad49c8639a787397bf2fe29090a9210b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ce39f3ca5b2f41c8089840739a1a9c" id="r_a75ce39f3ca5b2f41c8089840739a1a9c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75ce39f3ca5b2f41c8089840739a1a9c">windingNumberBeta</a> (self, float arg1)</td></tr>
+<tr class="separator:a75ce39f3ca5b2f41c8089840739a1a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72afe147c4ba5d8e4982e88fb461e25" id="r_af72afe147c4ba5d8e4982e88fb461e25"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af72afe147c4ba5d8e4982e88fb461e25">windingNumberThreshold</a> (self)</td></tr>
+<tr class="separator:af72afe147c4ba5d8e4982e88fb461e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f2f981932f2c886eca6a6faec52b7a" id="r_a01f2f981932f2c886eca6a6faec52b7a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01f2f981932f2c886eca6a6faec52b7a">windingNumberThreshold</a> (self, float arg1)</td></tr>
+<tr class="separator:a01f2f981932f2c886eca6a6faec52b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::MakeSignedByWindingNumberSettings
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9ccfab58f7d8a756c7a21a68def7f8d6" name="a9ccfab58f7d8a756c7a21a68def7f8d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ccfab58f7d8a756c7a21a68def7f8d6">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="ab189609b41b31eb4fe1a0e21b5453433" name="ab189609b41b31eb4fe1a0e21b5453433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab189609b41b31eb4fe1a0e21b5453433">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MakeSignedByWindingNumberSettings.html">MakeSignedByWindingNumberSettings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a5b047b73d409b1c81efb7f6b1e8e99f0" name="a5b047b73d409b1c81efb7f6b1e8e99f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b047b73d409b1c81efb7f6b1e8e99f0">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a></td>          <td class="paramname"><span class="paramname"><em>meshToGridXf</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1IFastWindingNumber.html">IFastWindingNumber</a></td>          <td class="paramname"><span class="paramname"><em>fwn</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>windingNumberThreshold</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>windingNumberBeta</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>progress</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="adcddfedc59758f271d7cbaa89a82ecfa" name="adcddfedc59758f271d7cbaa89a82ecfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcddfedc59758f271d7cbaa89a82ecfa">&#9670;&#160;</a></span>fwn() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1IFastWindingNumber.html">IFastWindingNumber</a> mrmeshpy.MakeSignedByWindingNumberSettings.fwn </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">defines particular implementation of IFastWindingNumber interface that will compute windings. If it is not specified, default FastWindingNumber is used
+</pre> 
+</div>
+</div>
+<a id="a88f32da2a45d05842834a584e2bf5e59" name="a88f32da2a45d05842834a584e2bf5e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88f32da2a45d05842834a584e2bf5e59">&#9670;&#160;</a></span>fwn() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.fwn </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1IFastWindingNumber.html">IFastWindingNumber</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa1bfb235faaaf5670b4dabee9c27081" name="aaa1bfb235faaaf5670b4dabee9c27081"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1bfb235faaaf5670b4dabee9c27081">&#9670;&#160;</a></span>meshToGridXf() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a> mrmeshpy.MakeSignedByWindingNumberSettings.meshToGridXf </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">defines the mapping from mesh reference from to grid reference frame
+</pre> 
+</div>
+</div>
+<a id="ab91fd75763c85954d435510f9516ed33" name="ab91fd75763c85954d435510f9516ed33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91fd75763c85954d435510f9516ed33">&#9670;&#160;</a></span>meshToGridXf() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.meshToGridXf </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac83cb7aa9a55db761f4da48c417db9da" name="ac83cb7aa9a55db761f4da48c417db9da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac83cb7aa9a55db761f4da48c417db9da">&#9670;&#160;</a></span>progress() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> mrmeshpy.MakeSignedByWindingNumberSettings.progress </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">to report algorithm's progress and to cancel it
+</pre> 
+</div>
+</div>
+<a id="ac8c00448dc82cc91e6d1785d883607fb" name="ac8c00448dc82cc91e6d1785d883607fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8c00448dc82cc91e6d1785d883607fb">&#9670;&#160;</a></span>progress() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.progress </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad49c8639a787397bf2fe29090a9210b0" name="ad49c8639a787397bf2fe29090a9210b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad49c8639a787397bf2fe29090a9210b0">&#9670;&#160;</a></span>windingNumberBeta() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.MakeSignedByWindingNumberSettings.windingNumberBeta </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">determines the precision of fast approximation: the more the better, minimum value is 1
+</pre> 
+</div>
+</div>
+<a id="a75ce39f3ca5b2f41c8089840739a1a9c" name="a75ce39f3ca5b2f41c8089840739a1a9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ce39f3ca5b2f41c8089840739a1a9c">&#9670;&#160;</a></span>windingNumberBeta() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.windingNumberBeta </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af72afe147c4ba5d8e4982e88fb461e25" name="af72afe147c4ba5d8e4982e88fb461e25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72afe147c4ba5d8e4982e88fb461e25">&#9670;&#160;</a></span>windingNumberThreshold() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.MakeSignedByWindingNumberSettings.windingNumberThreshold </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">positive distance if winding number below or equal this threshold;
+ideal threshold: 0.5 for closed meshes; 0.0 for planar meshes
+</pre> 
+</div>
+</div>
+<a id="a01f2f981932f2c886eca6a6faec52b7a" name="a01f2f981932f2c886eca6a6faec52b7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f2f981932f2c886eca6a6faec52b7a">&#9670;&#160;</a></span>windingNumberThreshold() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MakeSignedByWindingNumberSettings.windingNumberThreshold </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1MakeSignedByWindingNumberSettings.html">MakeSignedByWindingNumberSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

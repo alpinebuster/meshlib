@@ -1,0 +1,1367 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1RegionBitSet.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.RegionBitSet Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1RegionBitSet.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1RegionBitSet-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.RegionBitSet Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.RegionBitSet:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1RegionBitSet.png" usemap="#mrmeshpy.RegionBitSet_map" alt=""/>
+  <map id="mrmeshpy.RegionBitSet_map" name="mrmeshpy.RegionBitSet_map">
+<area href="classmrmeshpy_1_1BitSet.html" alt="mrmeshpy.BitSet" shape="rect" coords="0,0,144,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ac643a5826f25c6ecaa6f6be3150cbff3" id="r_ac643a5826f25c6ecaa6f6be3150cbff3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac643a5826f25c6ecaa6f6be3150cbff3">__and__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:ac643a5826f25c6ecaa6f6be3150cbff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adde407913076c7b8ff9fd6aacaf7460f" id="r_adde407913076c7b8ff9fd6aacaf7460f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adde407913076c7b8ff9fd6aacaf7460f">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> pos)</td></tr>
+<tr class="separator:adde407913076c7b8ff9fd6aacaf7460f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b7c4a98a4dc61239836f3b103d7d856" id="r_a6b7c4a98a4dc61239836f3b103d7d856"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b7c4a98a4dc61239836f3b103d7d856">__iand__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:a6b7c4a98a4dc61239836f3b103d7d856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ccc448813e1f64fcf1e64cbf03eace3" id="r_a3ccc448813e1f64fcf1e64cbf03eace3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ccc448813e1f64fcf1e64cbf03eace3">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1BitSet.html">BitSet</a> src)</td></tr>
+<tr class="separator:a3ccc448813e1f64fcf1e64cbf03eace3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ccc448813e1f64fcf1e64cbf03eace3" id="r_a3ccc448813e1f64fcf1e64cbf03eace3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ccc448813e1f64fcf1e64cbf03eace3">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1BitSet.html">BitSet</a> src)</td></tr>
+<tr class="separator:a3ccc448813e1f64fcf1e64cbf03eace3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a859c6a6b1edf5d2245373d455cdee147" id="r_a859c6a6b1edf5d2245373d455cdee147"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a859c6a6b1edf5d2245373d455cdee147">__init__</a> (self)</td></tr>
+<tr class="separator:a859c6a6b1edf5d2245373d455cdee147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a904c4f7896e71a3ada36ff5b9ccb5cd3" id="r_a904c4f7896e71a3ada36ff5b9ccb5cd3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a904c4f7896e71a3ada36ff5b9ccb5cd3">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> arg0)</td></tr>
+<tr class="separator:a904c4f7896e71a3ada36ff5b9ccb5cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8d3f732c4431adeeaabf9ceed77246f" id="r_aa8d3f732c4431adeeaabf9ceed77246f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8d3f732c4431adeeaabf9ceed77246f">__ior__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:aa8d3f732c4431adeeaabf9ceed77246f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a647c331e395572e18714ac4cfc319b91" id="r_a647c331e395572e18714ac4cfc319b91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a647c331e395572e18714ac4cfc319b91">__isub__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:a647c331e395572e18714ac4cfc319b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a287c34fb36db3294d722437711dc05ea" id="r_a287c34fb36db3294d722437711dc05ea"><td class="memItemLeft" align="right" valign="top">typing.Iterator[<a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a287c34fb36db3294d722437711dc05ea">__iter__</a> (self)</td></tr>
+<tr class="separator:a287c34fb36db3294d722437711dc05ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a191ded296c733a7de15f8374f3b79ff0" id="r_a191ded296c733a7de15f8374f3b79ff0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a191ded296c733a7de15f8374f3b79ff0">__ixor__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:a191ded296c733a7de15f8374f3b79ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4dacc0f017749b4dae8db84c098c058" id="r_aa4dacc0f017749b4dae8db84c098c058"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4dacc0f017749b4dae8db84c098c058">__or__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:aa4dacc0f017749b4dae8db84c098c058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ae781ec49a10782dd62aa870b928e6b" id="r_a9ae781ec49a10782dd62aa870b928e6b"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ae781ec49a10782dd62aa870b928e6b">__repr__</a> (self)</td></tr>
+<tr class="separator:a9ae781ec49a10782dd62aa870b928e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c6df59da4e2a891fcada1a328dd0a0" id="r_a15c6df59da4e2a891fcada1a328dd0a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15c6df59da4e2a891fcada1a328dd0a0">__sub__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:a15c6df59da4e2a891fcada1a328dd0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc2f297651bf40ee89dc1bf3f0ef255" id="r_a9bc2f297651bf40ee89dc1bf3f0ef255"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bc2f297651bf40ee89dc1bf3f0ef255">__xor__</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b)</td></tr>
+<tr class="separator:a9bc2f297651bf40ee89dc1bf3f0ef255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d2d593d0edbbc43971d25aa44668a90" id="r_a7d2d593d0edbbc43971d25aa44668a90"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d2d593d0edbbc43971d25aa44668a90">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> pos, int len, bool val=True)</td></tr>
+<tr class="separator:a7d2d593d0edbbc43971d25aa44668a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8f7a7a686fdab752b49992691d4e770" id="r_ae8f7a7a686fdab752b49992691d4e770"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8f7a7a686fdab752b49992691d4e770">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> pos, bool val=True)</td></tr>
+<tr class="separator:ae8f7a7a686fdab752b49992691d4e770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cd390901e8a567b94eafe4d3804de60" id="r_a7cd390901e8a567b94eafe4d3804de60"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cd390901e8a567b94eafe4d3804de60">autoResizeTestSet</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> pos, bool val=True)</td></tr>
+<tr class="separator:a7cd390901e8a567b94eafe4d3804de60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a135e9513f357655f9c0fcc12435373e5" id="r_a135e9513f357655f9c0fcc12435373e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a135e9513f357655f9c0fcc12435373e5">backId</a> (self)</td></tr>
+<tr class="separator:a135e9513f357655f9c0fcc12435373e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a2fb5d45243b095a1b3f509ba13428" id="r_a91a2fb5d45243b095a1b3f509ba13428"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91a2fb5d45243b095a1b3f509ba13428">endId</a> (self)</td></tr>
+<tr class="separator:a91a2fb5d45243b095a1b3f509ba13428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f2708058301ac55a96bbbd7bff95d7e" id="r_a9f2708058301ac55a96bbbd7bff95d7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f2708058301ac55a96bbbd7bff95d7e">find_first</a> (self)</td></tr>
+<tr class="separator:a9f2708058301ac55a96bbbd7bff95d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf402872183efd9c4c820c114c5c6f10" id="r_adf402872183efd9c4c820c114c5c6f10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf402872183efd9c4c820c114c5c6f10">find_last</a> (self)</td></tr>
+<tr class="separator:adf402872183efd9c4c820c114c5c6f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca5ffcd03be461170f51aa406295386" id="r_abca5ffcd03be461170f51aa406295386"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abca5ffcd03be461170f51aa406295386">find_next</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> pos)</td></tr>
+<tr class="separator:abca5ffcd03be461170f51aa406295386"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac464d1b34d70235453a9e49da1b162a4" id="r_ac464d1b34d70235453a9e49da1b162a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac464d1b34d70235453a9e49da1b162a4">flip</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n, int len)</td></tr>
+<tr class="separator:ac464d1b34d70235453a9e49da1b162a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701f2ec627025c1cbab5b4a35c9f0fbc" id="r_a701f2ec627025c1cbab5b4a35c9f0fbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a701f2ec627025c1cbab5b4a35c9f0fbc">flip</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n)</td></tr>
+<tr class="separator:a701f2ec627025c1cbab5b4a35c9f0fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fde3c09eee409dcd546a7873b1db8e3" id="r_a4fde3c09eee409dcd546a7873b1db8e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fde3c09eee409dcd546a7873b1db8e3">flip</a> (self)</td></tr>
+<tr class="separator:a4fde3c09eee409dcd546a7873b1db8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b6bd2f5cdc5144eabfe138253e267e7" id="r_a6b6bd2f5cdc5144eabfe138253e267e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b6bd2f5cdc5144eabfe138253e267e7">getMapping</a> (self, <a class="el" href="classmrmeshpy_1_1Vector__RegionId__RegionId.html">Vector_RegionId_RegionId</a> map)</td></tr>
+<tr class="separator:a6b6bd2f5cdc5144eabfe138253e267e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcd69690eff4ca1bac418d4b99367ccf" id="r_abcd69690eff4ca1bac418d4b99367ccf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcd69690eff4ca1bac418d4b99367ccf">getMapping</a> (self, <a class="el" href="classmrmeshpy_1_1BMap__RegionId__RegionId.html">BMap_RegionId_RegionId</a> map)</td></tr>
+<tr class="separator:abcd69690eff4ca1bac418d4b99367ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31c2a8134685f367503b47bc67c5938b" id="r_a31c2a8134685f367503b47bc67c5938b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31c2a8134685f367503b47bc67c5938b">getMapping</a> (self, <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__RegionTag__Id__RegionTag.html">phmap_flat_hash_map_Id_RegionTag_Id_RegionTag</a> map)</td></tr>
+<tr class="separator:a31c2a8134685f367503b47bc67c5938b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8055182a404c3ad1a83f003475116f82" id="r_a8055182a404c3ad1a83f003475116f82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8055182a404c3ad1a83f003475116f82">getMapping</a> (self, <a class="el" href="classmrmeshpy_1_1Vector__RegionId__RegionId.html">Vector_RegionId_RegionId</a> map, int resSize)</td></tr>
+<tr class="separator:a8055182a404c3ad1a83f003475116f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3df5e67545023ea40b3761cd3e6465a0" id="r_a3df5e67545023ea40b3761cd3e6465a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3df5e67545023ea40b3761cd3e6465a0">getMapping</a> (self, <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__RegionTag__Id__RegionTag.html">phmap_flat_hash_map_Id_RegionTag_Id_RegionTag</a> map, int resSize)</td></tr>
+<tr class="separator:a3df5e67545023ea40b3761cd3e6465a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07dcb7b6a37fba61f1afca6ce0d199e1" id="r_a07dcb7b6a37fba61f1afca6ce0d199e1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07dcb7b6a37fba61f1afca6ce0d199e1">intersects</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> a)</td></tr>
+<tr class="separator:a07dcb7b6a37fba61f1afca6ce0d199e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a057a966139f4077c36947410fdf20b59" id="r_a057a966139f4077c36947410fdf20b59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a057a966139f4077c36947410fdf20b59">is_proper_subset_of</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> a)</td></tr>
+<tr class="separator:a057a966139f4077c36947410fdf20b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073e500b5dd574982e909a3cd93e0c83" id="r_a073e500b5dd574982e909a3cd93e0c83"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a073e500b5dd574982e909a3cd93e0c83">is_subset_of</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> a)</td></tr>
+<tr class="separator:a073e500b5dd574982e909a3cd93e0c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34ba92a868db9a7f984be8a559a9fc17" id="r_a34ba92a868db9a7f984be8a559a9fc17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34ba92a868db9a7f984be8a559a9fc17">nthSetBit</a> (self, int n)</td></tr>
+<tr class="separator:a34ba92a868db9a7f984be8a559a9fc17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb51825e616359a74fdc569ec342fa2" id="r_a0fb51825e616359a74fdc569ec342fa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fb51825e616359a74fdc569ec342fa2">reset</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n, int len)</td></tr>
+<tr class="separator:a0fb51825e616359a74fdc569ec342fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf6003aa8256f941fb1b16d61abd73dc" id="r_aaf6003aa8256f941fb1b16d61abd73dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf6003aa8256f941fb1b16d61abd73dc">reset</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n)</td></tr>
+<tr class="separator:aaf6003aa8256f941fb1b16d61abd73dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9b2e2f1797d700874509f4ebace46e" id="r_a1e9b2e2f1797d700874509f4ebace46e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e9b2e2f1797d700874509f4ebace46e">reset</a> (self)</td></tr>
+<tr class="separator:a1e9b2e2f1797d700874509f4ebace46e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30864a371dd6aae217db248075a0edaf" id="r_a30864a371dd6aae217db248075a0edaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30864a371dd6aae217db248075a0edaf">set</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n, int len, bool val)</td></tr>
+<tr class="separator:a30864a371dd6aae217db248075a0edaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3456c0839a2c9bcb2106a5db35fa494" id="r_af3456c0839a2c9bcb2106a5db35fa494"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3456c0839a2c9bcb2106a5db35fa494">set</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n, bool val=True)</td></tr>
+<tr class="separator:af3456c0839a2c9bcb2106a5db35fa494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa812d71c465e235e3973b907afd521a6" id="r_aa812d71c465e235e3973b907afd521a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa812d71c465e235e3973b907afd521a6">set</a> (self)</td></tr>
+<tr class="separator:aa812d71c465e235e3973b907afd521a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42dc7ca258e5196db1626054aa36c673" id="r_a42dc7ca258e5196db1626054aa36c673"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42dc7ca258e5196db1626054aa36c673">subtract</a> (self, <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> b, int bShiftInBlocks)</td></tr>
+<tr class="separator:a42dc7ca258e5196db1626054aa36c673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a03fe62e5050217e18ea2c29d8fe9c1" id="r_a9a03fe62e5050217e18ea2c29d8fe9c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a03fe62e5050217e18ea2c29d8fe9c1">test</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n)</td></tr>
+<tr class="separator:a9a03fe62e5050217e18ea2c29d8fe9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb79c2f0725c29504f972177441f9da1" id="r_adb79c2f0725c29504f972177441f9da1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb79c2f0725c29504f972177441f9da1">test_set</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> n, bool val=True)</td></tr>
+<tr class="separator:adb79c2f0725c29504f972177441f9da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1BitSet"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1BitSet')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1BitSet.html">mrmeshpy.BitSet</a></td></tr>
+<tr class="memitem:af06e5b8bd598633ae38015e4ef438a97 inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_af06e5b8bd598633ae38015e4ef438a97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#af06e5b8bd598633ae38015e4ef438a97">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1BitSet.html">BitSet</a> b)</td></tr>
+<tr class="separator:af06e5b8bd598633ae38015e4ef438a97 inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a640d1f443a7ea30d50a532de2cdf90b4 inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_a640d1f443a7ea30d50a532de2cdf90b4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#a640d1f443a7ea30d50a532de2cdf90b4">clear</a> (self)</td></tr>
+<tr class="separator:a640d1f443a7ea30d50a532de2cdf90b4 inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b8a47eb3cd9dc19a7448b1a3b1765e2 inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_a4b8a47eb3cd9dc19a7448b1a3b1765e2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#a4b8a47eb3cd9dc19a7448b1a3b1765e2">count</a> (self)</td></tr>
+<tr class="separator:a4b8a47eb3cd9dc19a7448b1a3b1765e2 inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10adcfbaa8c04e4fbb97920b8a7bd60a inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_a10adcfbaa8c04e4fbb97920b8a7bd60a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#a10adcfbaa8c04e4fbb97920b8a7bd60a">heapBytes</a> (self)</td></tr>
+<tr class="separator:a10adcfbaa8c04e4fbb97920b8a7bd60a inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204e188214d1fd66553951c4a6c9888b inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_a204e188214d1fd66553951c4a6c9888b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#a204e188214d1fd66553951c4a6c9888b">pop_back</a> (self)</td></tr>
+<tr class="separator:a204e188214d1fd66553951c4a6c9888b inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4d5474ec92367e79783e43f3eb28603 inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_af4d5474ec92367e79783e43f3eb28603"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#af4d5474ec92367e79783e43f3eb28603">push_back</a> (self, bool bit)</td></tr>
+<tr class="separator:af4d5474ec92367e79783e43f3eb28603 inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b609ff7927c085c41c17661939d9f1b inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_a5b609ff7927c085c41c17661939d9f1b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#a5b609ff7927c085c41c17661939d9f1b">resize</a> (self, int num_bits, bool value=False)</td></tr>
+<tr class="separator:a5b609ff7927c085c41c17661939d9f1b inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f011a2d79e0769e54a51148de3d2dec inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_a8f011a2d79e0769e54a51148de3d2dec"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#a8f011a2d79e0769e54a51148de3d2dec">resizeWithReserve</a> (self, int newSize)</td></tr>
+<tr class="separator:a8f011a2d79e0769e54a51148de3d2dec inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae04e046bab014f7e687c1010d5386eb inherit pub_methods_classmrmeshpy_1_1BitSet" id="r_aae04e046bab014f7e687c1010d5386eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1BitSet.html#aae04e046bab014f7e687c1010d5386eb">size</a> (self)</td></tr>
+<tr class="separator:aae04e046bab014f7e687c1010d5386eb inherit pub_methods_classmrmeshpy_1_1BitSet"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:afb3839290e4ff71541fb7b4c3f0fbe51" id="r_afb3839290e4ff71541fb7b4c3f0fbe51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb3839290e4ff71541fb7b4c3f0fbe51">beginId</a> ()</td></tr>
+<tr class="separator:afb3839290e4ff71541fb7b4c3f0fbe51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::RegionBitSet
+
+container of bits representing specific indices (faces, verts or edges)
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3ccc448813e1f64fcf1e64cbf03eace3" name="a3ccc448813e1f64fcf1e64cbf03eace3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ccc448813e1f64fcf1e64cbf03eace3">&#9670;&#160;</a></span>__init__() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RegionBitSet.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1BitSet.html">BitSet</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">copies all bits from another BitSet (or a descending class, e.g. TaggedBitSet&lt;U&gt;)
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#add2f29feda355ce9e68c600bae93a2eb">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a3ccc448813e1f64fcf1e64cbf03eace3" name="a3ccc448813e1f64fcf1e64cbf03eace3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ccc448813e1f64fcf1e64cbf03eace3">&#9670;&#160;</a></span>__init__() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RegionBitSet.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1BitSet.html">BitSet</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">moves all bits from another BitSet (or a descending class, e.g. TaggedBitSet&lt;U&gt;)
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#add2f29feda355ce9e68c600bae93a2eb">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a859c6a6b1edf5d2245373d455cdee147" name="a859c6a6b1edf5d2245373d455cdee147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a859c6a6b1edf5d2245373d455cdee147">&#9670;&#160;</a></span>__init__() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RegionBitSet.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#add2f29feda355ce9e68c600bae93a2eb">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a904c4f7896e71a3ada36ff5b9ccb5cd3" name="a904c4f7896e71a3ada36ff5b9ccb5cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904c4f7896e71a3ada36ff5b9ccb5cd3">&#9670;&#160;</a></span>__init__() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RegionBitSet.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#add2f29feda355ce9e68c600bae93a2eb">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac643a5826f25c6ecaa6f6be3150cbff3" name="ac643a5826f25c6ecaa6f6be3150cbff3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac643a5826f25c6ecaa6f6be3150cbff3">&#9670;&#160;</a></span>__and__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__and__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a5d5a1bb5839863d7c2b6c396ee4d6ec2">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="adde407913076c7b8ff9fd6aacaf7460f" name="adde407913076c7b8ff9fd6aacaf7460f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adde407913076c7b8ff9fd6aacaf7460f">&#9670;&#160;</a></span>__getitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RegionBitSet.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b7c4a98a4dc61239836f3b103d7d856" name="a6b7c4a98a4dc61239836f3b103d7d856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b7c4a98a4dc61239836f3b103d7d856">&#9670;&#160;</a></span>__iand__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__iand__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a6c0e67571d2dda445e00a7a3f0b8fa03">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="aa8d3f732c4431adeeaabf9ceed77246f" name="aa8d3f732c4431adeeaabf9ceed77246f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8d3f732c4431adeeaabf9ceed77246f">&#9670;&#160;</a></span>__ior__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__ior__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a7925948c890b93c25339224dac3d62b5">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a647c331e395572e18714ac4cfc319b91" name="a647c331e395572e18714ac4cfc319b91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a647c331e395572e18714ac4cfc319b91">&#9670;&#160;</a></span>__isub__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__isub__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a929da8ae8fc04abf1bc5844cec7f2a2f">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a287c34fb36db3294d722437711dc05ea" name="a287c34fb36db3294d722437711dc05ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a287c34fb36db3294d722437711dc05ea">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[<a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>] mrmeshpy.RegionBitSet.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#ab27310e0d97ac0e5d5d6eb3cf73d5702">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a191ded296c733a7de15f8374f3b79ff0" name="a191ded296c733a7de15f8374f3b79ff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a191ded296c733a7de15f8374f3b79ff0">&#9670;&#160;</a></span>__ixor__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__ixor__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a02b92f6054c36b6fe27b4b8063e999ed">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="aa4dacc0f017749b4dae8db84c098c058" name="aa4dacc0f017749b4dae8db84c098c058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4dacc0f017749b4dae8db84c098c058">&#9670;&#160;</a></span>__or__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__or__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a6080707aa8d309a258a5f70519543e50">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a9ae781ec49a10782dd62aa870b928e6b" name="a9ae781ec49a10782dd62aa870b928e6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ae781ec49a10782dd62aa870b928e6b">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.RegionBitSet.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a04fe2114fcc0ece2af5b884855857feb">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a15c6df59da4e2a891fcada1a328dd0a0" name="a15c6df59da4e2a891fcada1a328dd0a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15c6df59da4e2a891fcada1a328dd0a0">&#9670;&#160;</a></span>__sub__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__sub__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a770c5dfc082a8ca3befff15e617900e7">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a9bc2f297651bf40ee89dc1bf3f0ef255" name="a9bc2f297651bf40ee89dc1bf3f0ef255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bc2f297651bf40ee89dc1bf3f0ef255">&#9670;&#160;</a></span>__xor__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.__xor__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#adda895cc3e159e7135adb63efdc4e5d7">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="ae8f7a7a686fdab752b49992691d4e770" name="ae8f7a7a686fdab752b49992691d4e770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8f7a7a686fdab752b49992691d4e770">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RegionBitSet.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>len</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets elements [pos, pos+len) to given value, adjusting the size of the set to include new elements
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#acab8dde45127ba4019a41145736df7e0">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a7d2d593d0edbbc43971d25aa44668a90" name="a7d2d593d0edbbc43971d25aa44668a90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d2d593d0edbbc43971d25aa44668a90">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RegionBitSet.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>val</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets elements [pos, pos+len) to given value, adjusting the size of the set to include new elements
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#acab8dde45127ba4019a41145736df7e0">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a7cd390901e8a567b94eafe4d3804de60" name="a7cd390901e8a567b94eafe4d3804de60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cd390901e8a567b94eafe4d3804de60">&#9670;&#160;</a></span>autoResizeTestSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RegionBitSet.autoResizeTestSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>val</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">same as \\ref autoResizeSet and returns previous value of pos-bit
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#ad1d43b5793a3dce9511fd445d695aa83">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a135e9513f357655f9c0fcc12435373e5" name="a135e9513f357655f9c0fcc12435373e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a135e9513f357655f9c0fcc12435373e5">&#9670;&#160;</a></span>backId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.RegionBitSet.backId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the back() element
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a71d144899c501363ec1fc3aa7f745b2d">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="afb3839290e4ff71541fb7b4c3f0fbe51" name="afb3839290e4ff71541fb7b4c3f0fbe51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb3839290e4ff71541fb7b4c3f0fbe51">&#9670;&#160;</a></span>beginId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.RegionBitSet.beginId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">[beginId(), endId()) is the range of all bits in the set
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#ae529e168da2a1905ad02819146ae8274">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a91a2fb5d45243b095a1b3f509ba13428" name="a91a2fb5d45243b095a1b3f509ba13428"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91a2fb5d45243b095a1b3f509ba13428">&#9670;&#160;</a></span>endId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.RegionBitSet.endId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a9f71200c981f11d2ec5f7c797de269e5">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a9f2708058301ac55a96bbbd7bff95d7e" name="a9f2708058301ac55a96bbbd7bff95d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f2708058301ac55a96bbbd7bff95d7e">&#9670;&#160;</a></span>find_first()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.RegionBitSet.find_first </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf402872183efd9c4c820c114c5c6f10" name="adf402872183efd9c4c820c114c5c6f10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf402872183efd9c4c820c114c5c6f10">&#9670;&#160;</a></span>find_last()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.RegionBitSet.find_last </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">return the highest index i such as bit i is set, or npos if *this has no on bits.
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a4ab474551b7e0e4e7daab1c8b5eefa77">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="abca5ffcd03be461170f51aa406295386" name="abca5ffcd03be461170f51aa406295386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca5ffcd03be461170f51aa406295386">&#9670;&#160;</a></span>find_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.RegionBitSet.find_next </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fde3c09eee409dcd546a7873b1db8e3" name="a4fde3c09eee409dcd546a7873b1db8e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fde3c09eee409dcd546a7873b1db8e3">&#9670;&#160;</a></span>flip() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.flip </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#aa40c92a91b8d1c7040d794c24ad648f2">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a701f2ec627025c1cbab5b4a35c9f0fbc" name="a701f2ec627025c1cbab5b4a35c9f0fbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a701f2ec627025c1cbab5b4a35c9f0fbc">&#9670;&#160;</a></span>flip() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.flip </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#aa40c92a91b8d1c7040d794c24ad648f2">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="ac464d1b34d70235453a9e49da1b162a4" name="ac464d1b34d70235453a9e49da1b162a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac464d1b34d70235453a9e49da1b162a4">&#9670;&#160;</a></span>flip() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.flip </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#aa40c92a91b8d1c7040d794c24ad648f2">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="abcd69690eff4ca1bac418d4b99367ccf" name="abcd69690eff4ca1bac418d4b99367ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcd69690eff4ca1bac418d4b99367ccf">&#9670;&#160;</a></span>getMapping() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.getMapping </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1BMap__RegionId__RegionId.html">BMap_RegionId_RegionId</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31c2a8134685f367503b47bc67c5938b" name="a31c2a8134685f367503b47bc67c5938b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31c2a8134685f367503b47bc67c5938b">&#9670;&#160;</a></span>getMapping() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.getMapping </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__RegionTag__Id__RegionTag.html">phmap_flat_hash_map_Id_RegionTag_Id_RegionTag</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3df5e67545023ea40b3761cd3e6465a0" name="a3df5e67545023ea40b3761cd3e6465a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3df5e67545023ea40b3761cd3e6465a0">&#9670;&#160;</a></span>getMapping() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.getMapping </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__RegionTag__Id__RegionTag.html">phmap_flat_hash_map_Id_RegionTag_Id_RegionTag</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>resSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6b6bd2f5cdc5144eabfe138253e267e7" name="a6b6bd2f5cdc5144eabfe138253e267e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b6bd2f5cdc5144eabfe138253e267e7">&#9670;&#160;</a></span>getMapping() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.getMapping </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector__RegionId__RegionId.html">Vector_RegionId_RegionId</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8055182a404c3ad1a83f003475116f82" name="a8055182a404c3ad1a83f003475116f82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8055182a404c3ad1a83f003475116f82">&#9670;&#160;</a></span>getMapping() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.getMapping </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector__RegionId__RegionId.html">Vector_RegionId_RegionId</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>resSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07dcb7b6a37fba61f1afca6ce0d199e1" name="a07dcb7b6a37fba61f1afca6ce0d199e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07dcb7b6a37fba61f1afca6ce0d199e1">&#9670;&#160;</a></span>intersects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RegionBitSet.intersects </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>a</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if, there is a bit which is set in this bitset, such that the corresponding bit in bitset a is also set. Otherwise this function returns false.
+</pre> 
+</div>
+</div>
+<a id="a057a966139f4077c36947410fdf20b59" name="a057a966139f4077c36947410fdf20b59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a057a966139f4077c36947410fdf20b59">&#9670;&#160;</a></span>is_proper_subset_of()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RegionBitSet.is_proper_subset_of </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>a</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if, for every bit that is set in this bitset, the corresponding bit in bitset a is also set and if this-&gt;count() &lt; a.count(). Otherwise this function returns false.
+</pre> 
+</div>
+</div>
+<a id="a073e500b5dd574982e909a3cd93e0c83" name="a073e500b5dd574982e909a3cd93e0c83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a073e500b5dd574982e909a3cd93e0c83">&#9670;&#160;</a></span>is_subset_of()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RegionBitSet.is_subset_of </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>a</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if, for every bit that is set in this bitset, the corresponding bit in bitset a is also set. Otherwise this function returns false.
+</pre> 
+</div>
+</div>
+<a id="a34ba92a868db9a7f984be8a559a9fc17" name="a34ba92a868db9a7f984be8a559a9fc17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34ba92a868db9a7f984be8a559a9fc17">&#9670;&#160;</a></span>nthSetBit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.RegionBitSet.nthSetBit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the location of nth set bit (where the first bit corresponds to n=0) or IndexType(npos) if there are less bit set
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#ad25bdd5a49f4648994cef1ae56864c3f">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a1e9b2e2f1797d700874509f4ebace46e" name="a1e9b2e2f1797d700874509f4ebace46e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e9b2e2f1797d700874509f4ebace46e">&#9670;&#160;</a></span>reset() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.reset </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#af98c3b02672e1af82543a359566a1d78">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="aaf6003aa8256f941fb1b16d61abd73dc" name="aaf6003aa8256f941fb1b16d61abd73dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf6003aa8256f941fb1b16d61abd73dc">&#9670;&#160;</a></span>reset() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.reset </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#af98c3b02672e1af82543a359566a1d78">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a0fb51825e616359a74fdc569ec342fa2" name="a0fb51825e616359a74fdc569ec342fa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb51825e616359a74fdc569ec342fa2">&#9670;&#160;</a></span>reset() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.reset </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#af98c3b02672e1af82543a359566a1d78">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="aa812d71c465e235e3973b907afd521a6" name="aa812d71c465e235e3973b907afd521a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa812d71c465e235e3973b907afd521a6">&#9670;&#160;</a></span>set() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.set </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a0f413602e83efc97d701b2c004092fdf">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="af3456c0839a2c9bcb2106a5db35fa494" name="af3456c0839a2c9bcb2106a5db35fa494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3456c0839a2c9bcb2106a5db35fa494">&#9670;&#160;</a></span>set() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.set </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>val</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a0f413602e83efc97d701b2c004092fdf">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a30864a371dd6aae217db248075a0edaf" name="a30864a371dd6aae217db248075a0edaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30864a371dd6aae217db248075a0edaf">&#9670;&#160;</a></span>set() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.set </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a0f413602e83efc97d701b2c004092fdf">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a42dc7ca258e5196db1626054aa36c673" name="a42dc7ca258e5196db1626054aa36c673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42dc7ca258e5196db1626054aa36c673">&#9670;&#160;</a></span>subtract()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a> mrmeshpy.RegionBitSet.subtract </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>bShiftInBlocks</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">subtracts b from this, considering that bits in b are shifted right on bShiftInBlocks*bits_per_block
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#a7435650982cc9c6c561ddf84cccd998d">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="a9a03fe62e5050217e18ea2c29d8fe9c1" name="a9a03fe62e5050217e18ea2c29d8fe9c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a03fe62e5050217e18ea2c29d8fe9c1">&#9670;&#160;</a></span>test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RegionBitSet.test </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">all bits after size() we silently consider as not-set
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#afe9b7c78f712014eb7a54b278d4fdc27">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<a id="adb79c2f0725c29504f972177441f9da1" name="adb79c2f0725c29504f972177441f9da1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb79c2f0725c29504f972177441f9da1">&#9670;&#160;</a></span>test_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RegionBitSet.test_set </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>val</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1BitSet.html#ad708e93308d23ed9afd87e0f31acfda3">mrmeshpy.BitSet</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1RegionBitSet.html">RegionBitSet</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/MRParallelMinMax_8h_source.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRParallelMinMax.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRParallelMinMax_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRParallelMinMax.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRParallelMinMax_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRParallelFor_8h.html">MRParallelFor.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRMinMaxArg_8h.html">MRMinMaxArg.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRBitSet_8h.html">MRBitSet.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceMR.html">MR</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="namespaceMR.html#a76ba72400c108fa8da0ade91509a4215">   14</a></span><a class="code hl_struct" href="structMR_1_1MinMaxArg.html">MinMaxArg&lt;T, size_t&gt;</a> <a class="code hl_function" href="namespaceMR.html#a76ba72400c108fa8da0ade91509a4215">parallelMinMaxArg</a>( <span class="keyword">const</span> T* data, <span class="keywordtype">size_t</span> <a class="code hl_function" href="namespaceMR.html#a306ff1f62992b3eb33c446913b64188a">size</a>, <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1BitSet.html">BitSet</a>* region = <span class="keyword">nullptr</span>, <span class="keyword">const</span> T* topExcluding = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">using </span><a class="code hl_variable" href="namespaceMR.html#aae89e209e34f26d7ae6dcc7b5e7d2851">I</a> = size_t;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">return</span> tbb::parallel_reduce( tbb::blocked_range&lt;I&gt;( <a class="code hl_variable" href="namespaceMR.html#aae89e209e34f26d7ae6dcc7b5e7d2851">I</a>(0), <a class="code hl_function" href="namespaceMR.html#a306ff1f62992b3eb33c446913b64188a">size</a> ), <a class="code hl_struct" href="structMR_1_1MinMaxArg.html">MinMaxArg&lt;T, I&gt;</a>{},</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    [&amp;] ( <span class="keyword">const</span> tbb::blocked_range&lt;I&gt; range, <a class="code hl_struct" href="structMR_1_1MinMaxArg.html">MinMaxArg&lt;T, I&gt;</a> curr )</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">for</span> ( <a class="code hl_variable" href="namespaceMR.html#aae89e209e34f26d7ae6dcc7b5e7d2851">I</a> i = range.begin(); i &lt; range.end(); i++ )</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordflow">if</span> ( region &amp;&amp; !region-&gt;test( i ) )</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            T val = data[i];</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordflow">if</span> ( topExcluding )</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                T absVal = val;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span> ( !std::is_unsigned_v&lt;T&gt; )</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                    absVal = (T)std::abs( val );</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                <span class="keywordflow">if</span> ( absVal &gt;= *topExcluding )</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            curr.include( val, i );</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">return</span> curr;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    },</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    [&amp;] ( <a class="code hl_struct" href="structMR_1_1MinMaxArg.html">MinMaxArg&lt;T, I&gt;</a> a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MinMaxArg.html">MinMaxArg&lt;T, I&gt;</a>&amp; b )</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        a.<a class="code hl_function" href="structMR_1_1MinMaxArg.html#aecc5a502b2649c84a49a95f5429ba1cd">include</a>( b );</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">return</span> a;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    } );</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Itag&gt;</div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespaceMR.html#a2abd5d87d7473042366051414d91e416">   48</a></span><a class="code hl_struct" href="structMR_1_1MinMaxArg.html">MinMaxArg&lt;T, Id&lt;Itag&gt;</a>&gt; <a class="code hl_function" href="namespaceMR.html#a76ba72400c108fa8da0ade91509a4215">parallelMinMaxArg</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1Vector.html">Vector</a>&lt;T, <a class="code hl_class" href="classMR_1_1Id.html">Id&lt;Itag&gt;</a>&gt;&amp; vec, <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1TaggedBitSet.html">TaggedBitSet&lt;Itag&gt;</a>* region = <span class="keyword">nullptr</span>, <span class="keyword">const</span> T* topExcluding = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">auto</span> mma = <a class="code hl_function" href="namespaceMR.html#a76ba72400c108fa8da0ade91509a4215">parallelMinMaxArg</a>( vec.data(), vec.size(), region, topExcluding );</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        .min = mma.min,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        .max = mma.max,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        .minArg = <a class="code hl_class" href="classMR_1_1Id.html">Id&lt;Itag&gt;</a>( mma.minArg ),</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        .maxArg = <a class="code hl_class" href="classMR_1_1Id.html">Id&lt;Itag&gt;</a>( mma.maxArg )</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    };</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="namespaceMR.html#a5de91105f52c153a74baec119d5e3d89">   64</a></span>std::pair&lt;T, T&gt; <a class="code hl_function" href="namespaceMR.html#a5de91105f52c153a74baec119d5e3d89">parallelMinMax</a>( <span class="keyword">const</span> T* data, <span class="keywordtype">size_t</span> <a class="code hl_function" href="namespaceMR.html#a306ff1f62992b3eb33c446913b64188a">size</a>, <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1BitSet.html">BitSet</a>* region = <span class="keyword">nullptr</span>, <span class="keyword">const</span> T * topExcluding = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">auto</span> mma = <a class="code hl_function" href="namespaceMR.html#a76ba72400c108fa8da0ade91509a4215">parallelMinMaxArg</a>( data, <a class="code hl_function" href="namespaceMR.html#a306ff1f62992b3eb33c446913b64188a">size</a>, region, topExcluding );</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> { mma.min, mma.max };</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="namespaceMR.html#a37052239684b8d892b2c4bdfcff0c7f8">   74</a></span>std::pair&lt;T, T&gt; <a class="code hl_function" href="namespaceMR.html#a5de91105f52c153a74baec119d5e3d89">parallelMinMax</a>( <span class="keyword">const</span> std::vector&lt;T&gt;&amp; vec, <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1BitSet.html">BitSet</a>* region = <span class="keyword">nullptr</span>, <span class="keyword">const</span> T * topExcluding = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a5de91105f52c153a74baec119d5e3d89">parallelMinMax</a>( vec.data(), vec.size(), region, topExcluding );</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Itag&gt;</div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="namespaceMR.html#a7cb753b06674c4abe1896e2c91e743dd">   83</a></span>std::pair&lt;T, T&gt; <a class="code hl_function" href="namespaceMR.html#a5de91105f52c153a74baec119d5e3d89">parallelMinMax</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1Vector.html">Vector</a>&lt;T, <a class="code hl_class" href="classMR_1_1Id.html">Id&lt;Itag&gt;</a>&gt;&amp; vec, <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1TaggedBitSet.html">TaggedBitSet&lt;Itag&gt;</a>* region = <span class="keyword">nullptr</span>, <span class="keyword">const</span> T* topExcluding = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a5de91105f52c153a74baec119d5e3d89">parallelMinMax</a>( vec.data(), vec.size(), region, topExcluding );</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>} <span class="comment">//namespace MR</span></div>
+<div class="ttc" id="aMRMesh_2MRBitSet_8h_html"><div class="ttname"><a href="MRMesh_2MRBitSet_8h.html">MRBitSet.h</a></div></div>
+<div class="ttc" id="aMRMinMaxArg_8h_html"><div class="ttname"><a href="MRMinMaxArg_8h.html">MRMinMaxArg.h</a></div></div>
+<div class="ttc" id="aMRParallelFor_8h_html"><div class="ttname"><a href="MRParallelFor_8h.html">MRParallelFor.h</a></div></div>
+<div class="ttc" id="aclassMR_1_1BitSet_html"><div class="ttname"><a href="classMR_1_1BitSet.html">MR::BitSet</a></div><div class="ttdoc">container of bits</div><div class="ttdef"><b>Definition</b> MRMesh/MRBitSet.h:27</div></div>
+<div class="ttc" id="aclassMR_1_1Id_html"><div class="ttname"><a href="classMR_1_1Id.html">MR::Id</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRId.h:13</div></div>
+<div class="ttc" id="aclassMR_1_1TaggedBitSet_html"><div class="ttname"><a href="classMR_1_1TaggedBitSet.html">MR::TaggedBitSet</a></div><div class="ttdoc">container of bits representing specific indices (faces, verts or edges)</div><div class="ttdef"><b>Definition</b> MRMesh/MRBitSet.h:127</div></div>
+<div class="ttc" id="aclassMR_1_1Vector_html"><div class="ttname"><a href="classMR_1_1Vector.html">MR::Vector</a></div><div class="ttdoc">std::vector&lt;T&gt;-like container that requires specific indexing type,</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector.h:20</div></div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="namespaceMR.html">MR</a></div></div>
+<div class="ttc" id="anamespaceMR_html_a306ff1f62992b3eb33c446913b64188a"><div class="ttname"><a href="namespaceMR.html#a306ff1f62992b3eb33c446913b64188a">MR::size</a></div><div class="ttdeci">ImVec2 size(const ViewportRectangle &amp;rect)</div><div class="ttdef"><b>Definition</b> MRViewport.h:29</div></div>
+<div class="ttc" id="anamespaceMR_html_a5de91105f52c153a74baec119d5e3d89"><div class="ttname"><a href="namespaceMR.html#a5de91105f52c153a74baec119d5e3d89">MR::parallelMinMax</a></div><div class="ttdeci">std::pair&lt; T, T &gt; parallelMinMax(const T *data, size_t size, const BitSet *region=nullptr, const T *topExcluding=nullptr)</div><div class="ttdef"><b>Definition</b> MRParallelMinMax.h:64</div></div>
+<div class="ttc" id="anamespaceMR_html_a76ba72400c108fa8da0ade91509a4215"><div class="ttname"><a href="namespaceMR.html#a76ba72400c108fa8da0ade91509a4215">MR::parallelMinMaxArg</a></div><div class="ttdeci">MinMaxArg&lt; T, size_t &gt; parallelMinMaxArg(const T *data, size_t size, const BitSet *region=nullptr, const T *topExcluding=nullptr)</div><div class="ttdef"><b>Definition</b> MRParallelMinMax.h:14</div></div>
+<div class="ttc" id="anamespaceMR_html_aae89e209e34f26d7ae6dcc7b5e7d2851"><div class="ttname"><a href="namespaceMR.html#aae89e209e34f26d7ae6dcc7b5e7d2851">MR::I</a></div><div class="ttdeci">I</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:121</div></div>
+<div class="ttc" id="astructMR_1_1MinMaxArg_html"><div class="ttname"><a href="structMR_1_1MinMaxArg.html">MR::MinMaxArg</a></div><div class="ttdef"><b>Definition</b> MRMinMaxArg.h:13</div></div>
+<div class="ttc" id="astructMR_1_1MinMaxArg_html_aecc5a502b2649c84a49a95f5429ba1cd"><div class="ttname"><a href="structMR_1_1MinMaxArg.html#aecc5a502b2649c84a49a95f5429ba1cd">MR::MinMaxArg::include</a></div><div class="ttdeci">void include(const std::pair&lt; T, I &gt; &amp;p)</div><div class="ttdoc">changes min(Arg) and max(Arg) if necessary to include given point</div><div class="ttdef"><b>Definition</b> MRMinMaxArg.h:22</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRParallelMinMax_8h.html">MRParallelMinMax.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

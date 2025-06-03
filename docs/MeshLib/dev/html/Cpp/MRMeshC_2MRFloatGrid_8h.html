@@ -1,0 +1,357 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRFloatGrid.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRFloatGrid_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MRFloatGrid.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="MRMeshC_2MRVoxelsFwd_8h_source.html">MRVoxelsFwd.h</a>&quot;</code><br />
+</div>
+<p><a href="MRMeshC_2MRFloatGrid_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a489ccd1b1c2611dbc75756815af8569a" id="r_a489ccd1b1c2611dbc75756815af8569a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a489ccd1b1c2611dbc75756815af8569a">mrFloatGridResampledUniformly</a> (const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, float voxelScale, <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a> cb)</td></tr>
+<tr class="memdesc:a489ccd1b1c2611dbc75756815af8569a"><td class="mdescLeft">&#160;</td><td class="mdescRight">resample this grid with voxel size uniformly scaled by voxelScale  <br /></td></tr>
+<tr class="separator:a489ccd1b1c2611dbc75756815af8569a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b8d23f4cba0861f868fc13a6745629" id="r_ad1b8d23f4cba0861f868fc13a6745629"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1b8d23f4cba0861f868fc13a6745629">mrFloatGridResampled</a> (const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, const <a class="el" href="structMRVector3f.html">MRVector3f</a> *voxelScale, <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a> cb)</td></tr>
+<tr class="memdesc:ad1b8d23f4cba0861f868fc13a6745629"><td class="mdescLeft">&#160;</td><td class="mdescRight">resample this grid with voxel size scaled by voxelScale in each dimension  <br /></td></tr>
+<tr class="separator:ad1b8d23f4cba0861f868fc13a6745629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5e5669c333acf93208bdc16ccb0a94" id="r_a5d5e5669c333acf93208bdc16ccb0a94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d5e5669c333acf93208bdc16ccb0a94">mrFloatGridCropped</a> (const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, const <a class="el" href="structMRBox3i.html">MRBox3i</a> *box, <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a> cb)</td></tr>
+<tr class="memdesc:a5d5e5669c333acf93208bdc16ccb0a94"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns cropped grid  <br /></td></tr>
+<tr class="separator:a5d5e5669c333acf93208bdc16ccb0a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be02844cf7b2cbe11d0dbf961a7c6a2" id="r_a6be02844cf7b2cbe11d0dbf961a7c6a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6be02844cf7b2cbe11d0dbf961a7c6a2">mrFloatGridGetValue</a> (const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, const <a class="el" href="structMRVector3i.html">MRVector3i</a> *p)</td></tr>
+<tr class="memdesc:a6be02844cf7b2cbe11d0dbf961a7c6a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the value at given voxel  <br /></td></tr>
+<tr class="separator:a6be02844cf7b2cbe11d0dbf961a7c6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6156083a66fd17e7a35f9e56de14543" id="r_ab6156083a66fd17e7a35f9e56de14543"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6156083a66fd17e7a35f9e56de14543">mrFloatGridSetValue</a> (<a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, const <a class="el" href="structMRVector3i.html">MRVector3i</a> *p, float value)</td></tr>
+<tr class="memdesc:ab6156083a66fd17e7a35f9e56de14543"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets given voxel  <br /></td></tr>
+<tr class="separator:ab6156083a66fd17e7a35f9e56de14543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb9107790eceedf79f9ff552273ce5dd" id="r_acb9107790eceedf79f9ff552273ce5dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb9107790eceedf79f9ff552273ce5dd">mrFloatGridSetValueForRegion</a> (<a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *grid, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#af7dcb20cfb7d62569e4fa66321b6c35a">MRVoxelBitSet</a> *region, float value)</td></tr>
+<tr class="separator:acb9107790eceedf79f9ff552273ce5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a5d5e5669c333acf93208bdc16ccb0a94" name="a5d5e5669c333acf93208bdc16ccb0a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d5e5669c333acf93208bdc16ccb0a94">&#9670;&#160;</a></span>mrFloatGridCropped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> * mrFloatGridCropped </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRBox3i.html">MRBox3i</a> *</td>          <td class="paramname"><span class="paramname"><em>box</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a></td>          <td class="paramname"><span class="paramname"><em>cb</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns cropped grid </p>
+
+</div>
+</div>
+<a id="a6be02844cf7b2cbe11d0dbf961a7c6a2" name="a6be02844cf7b2cbe11d0dbf961a7c6a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be02844cf7b2cbe11d0dbf961a7c6a2">&#9670;&#160;</a></span>mrFloatGridGetValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> float mrFloatGridGetValue </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRVector3i.html">MRVector3i</a> *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the value at given voxel </p>
+
+</div>
+</div>
+<a id="ad1b8d23f4cba0861f868fc13a6745629" name="ad1b8d23f4cba0861f868fc13a6745629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b8d23f4cba0861f868fc13a6745629">&#9670;&#160;</a></span>mrFloatGridResampled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> * mrFloatGridResampled </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRVector3f.html">MRVector3f</a> *</td>          <td class="paramname"><span class="paramname"><em>voxelScale</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a></td>          <td class="paramname"><span class="paramname"><em>cb</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>resample this grid with voxel size scaled by voxelScale in each dimension </p>
+
+</div>
+</div>
+<a id="a489ccd1b1c2611dbc75756815af8569a" name="a489ccd1b1c2611dbc75756815af8569a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a489ccd1b1c2611dbc75756815af8569a">&#9670;&#160;</a></span>mrFloatGridResampledUniformly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> * mrFloatGridResampledUniformly </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>voxelScale</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a></td>          <td class="paramname"><span class="paramname"><em>cb</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>resample this grid with voxel size uniformly scaled by voxelScale </p>
+
+</div>
+</div>
+<a id="ab6156083a66fd17e7a35f9e56de14543" name="ab6156083a66fd17e7a35f9e56de14543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6156083a66fd17e7a35f9e56de14543">&#9670;&#160;</a></span>mrFloatGridSetValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void mrFloatGridSetValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRVector3i.html">MRVector3i</a> *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets given voxel </p>
+
+</div>
+</div>
+<a id="acb9107790eceedf79f9ff552273ce5dd" name="acb9107790eceedf79f9ff552273ce5dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb9107790eceedf79f9ff552273ce5dd">&#9670;&#160;</a></span>mrFloatGridSetValueForRegion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void mrFloatGridSetValueForRegion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a> *</td>          <td class="paramname"><span class="paramname"><em>grid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#af7dcb20cfb7d62569e4fa66321b6c35a">MRVoxelBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>region</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>sets given region voxels value </p><dl class="section note"><dt>Note</dt><dd>region is in grid space (0 voxel id is minimum active voxel in grid) </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRFloatGrid_8h.html">MRFloatGrid.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,832 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.PolylineSubdivideSettings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1PolylineSubdivideSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1PolylineSubdivideSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.PolylineSubdivideSettings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a82fdc678e5527882194618385687812c" id="r_a82fdc678e5527882194618385687812c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82fdc678e5527882194618385687812c">__init__</a> (self)</td></tr>
+<tr class="separator:a82fdc678e5527882194618385687812c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c563a78795e98e972a7171427fa9261" id="r_a2c563a78795e98e972a7171427fa9261"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c563a78795e98e972a7171427fa9261">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1PolylineSubdivideSettings.html">PolylineSubdivideSettings</a> arg0)</td></tr>
+<tr class="separator:a2c563a78795e98e972a7171427fa9261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78fe777cc3feb93b0b614571cd7f7028" id="r_a78fe777cc3feb93b0b614571cd7f7028"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78fe777cc3feb93b0b614571cd7f7028">__init__</a> (self, float <a class="el" href="#a28eb7a84285b8ebe39d67368a0d3ac4f">maxEdgeLen</a>, int <a class="el" href="#a2ad28af449203592f53f90b369f4a5e3">maxEdgeSplits</a>, <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> <a class="el" href="#a6be52e6c390705b75ed3bfea2f622fef">region</a>, <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> <a class="el" href="#ab1f56e6072bc45c5b778a81ca5c6d318">newVerts</a>, bool <a class="el" href="#a3aa56b6be8285f9553da864fc8b283b5">useCurvature</a>, <a class="el" href="classmrmeshpy_1_1func__void__from__Id__VertTag.html">func_void_from_Id_VertTag</a> <a class="el" href="#a97b559714d080e65b870dcc840eac56f">onVertCreated</a>, <a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a> <a class="el" href="#a532f5b387c4f00988a4ad2db3a34700e">onEdgeSplit</a>, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> <a class="el" href="#a955282a93e28d2c75aaca5468d0d4aa2">progressCallback</a>)</td></tr>
+<tr class="separator:a78fe777cc3feb93b0b614571cd7f7028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28eb7a84285b8ebe39d67368a0d3ac4f" id="r_a28eb7a84285b8ebe39d67368a0d3ac4f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28eb7a84285b8ebe39d67368a0d3ac4f">maxEdgeLen</a> (self)</td></tr>
+<tr class="separator:a28eb7a84285b8ebe39d67368a0d3ac4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed099f29be5db5ec1b190d5d1a362e72" id="r_aed099f29be5db5ec1b190d5d1a362e72"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed099f29be5db5ec1b190d5d1a362e72">maxEdgeLen</a> (self, float arg1)</td></tr>
+<tr class="separator:aed099f29be5db5ec1b190d5d1a362e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ad28af449203592f53f90b369f4a5e3" id="r_a2ad28af449203592f53f90b369f4a5e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ad28af449203592f53f90b369f4a5e3">maxEdgeSplits</a> (self)</td></tr>
+<tr class="separator:a2ad28af449203592f53f90b369f4a5e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d2529f28271270178bcaf887fdc2a4" id="r_a72d2529f28271270178bcaf887fdc2a4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d2529f28271270178bcaf887fdc2a4">maxEdgeSplits</a> (self, int arg1)</td></tr>
+<tr class="separator:a72d2529f28271270178bcaf887fdc2a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1f56e6072bc45c5b778a81ca5c6d318" id="r_ab1f56e6072bc45c5b778a81ca5c6d318"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1f56e6072bc45c5b778a81ca5c6d318">newVerts</a> (self)</td></tr>
+<tr class="separator:ab1f56e6072bc45c5b778a81ca5c6d318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a509f5ea5db2b68d71ceb79d63dc85b85" id="r_a509f5ea5db2b68d71ceb79d63dc85b85"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a509f5ea5db2b68d71ceb79d63dc85b85">newVerts</a> (self, <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> arg1)</td></tr>
+<tr class="separator:a509f5ea5db2b68d71ceb79d63dc85b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a532f5b387c4f00988a4ad2db3a34700e" id="r_a532f5b387c4f00988a4ad2db3a34700e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a532f5b387c4f00988a4ad2db3a34700e">onEdgeSplit</a> (self)</td></tr>
+<tr class="separator:a532f5b387c4f00988a4ad2db3a34700e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5dd76daaf44c8e09e043a31883cd00c" id="r_aa5dd76daaf44c8e09e043a31883cd00c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5dd76daaf44c8e09e043a31883cd00c">onEdgeSplit</a> (self, <a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a> arg1)</td></tr>
+<tr class="separator:aa5dd76daaf44c8e09e043a31883cd00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97b559714d080e65b870dcc840eac56f" id="r_a97b559714d080e65b870dcc840eac56f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__VertTag.html">func_void_from_Id_VertTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97b559714d080e65b870dcc840eac56f">onVertCreated</a> (self)</td></tr>
+<tr class="separator:a97b559714d080e65b870dcc840eac56f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51c5f9f47022cbdc346495f899eb7014" id="r_a51c5f9f47022cbdc346495f899eb7014"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51c5f9f47022cbdc346495f899eb7014">onVertCreated</a> (self, <a class="el" href="classmrmeshpy_1_1func__void__from__Id__VertTag.html">func_void_from_Id_VertTag</a> arg1)</td></tr>
+<tr class="separator:a51c5f9f47022cbdc346495f899eb7014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a955282a93e28d2c75aaca5468d0d4aa2" id="r_a955282a93e28d2c75aaca5468d0d4aa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a955282a93e28d2c75aaca5468d0d4aa2">progressCallback</a> (self)</td></tr>
+<tr class="separator:a955282a93e28d2c75aaca5468d0d4aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42395eb28387ab71b400baeeef85071f" id="r_a42395eb28387ab71b400baeeef85071f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42395eb28387ab71b400baeeef85071f">progressCallback</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> arg1)</td></tr>
+<tr class="separator:a42395eb28387ab71b400baeeef85071f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be52e6c390705b75ed3bfea2f622fef" id="r_a6be52e6c390705b75ed3bfea2f622fef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6be52e6c390705b75ed3bfea2f622fef">region</a> (self)</td></tr>
+<tr class="separator:a6be52e6c390705b75ed3bfea2f622fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26c6c0f6cad8b14447347dfb79914f36" id="r_a26c6c0f6cad8b14447347dfb79914f36"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26c6c0f6cad8b14447347dfb79914f36">region</a> (self, <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> arg1)</td></tr>
+<tr class="separator:a26c6c0f6cad8b14447347dfb79914f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aa56b6be8285f9553da864fc8b283b5" id="r_a3aa56b6be8285f9553da864fc8b283b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3aa56b6be8285f9553da864fc8b283b5">useCurvature</a> (self)</td></tr>
+<tr class="separator:a3aa56b6be8285f9553da864fc8b283b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5edc353904b07a2e362d0fd12bb79972" id="r_a5edc353904b07a2e362d0fd12bb79972"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5edc353904b07a2e362d0fd12bb79972">useCurvature</a> (self, bool arg1)</td></tr>
+<tr class="separator:a5edc353904b07a2e362d0fd12bb79972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:addc14db2c45419c1a13174aeec91d37a" id="r_addc14db2c45419c1a13174aeec91d37a"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addc14db2c45419c1a13174aeec91d37a">_offsetof_maxEdgeLen</a> = 0</td></tr>
+<tr class="separator:addc14db2c45419c1a13174aeec91d37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c7649abbf53f5ad0f6b3f66883886d" id="r_ac9c7649abbf53f5ad0f6b3f66883886d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9c7649abbf53f5ad0f6b3f66883886d">_offsetof_maxEdgeSplits</a> = 4</td></tr>
+<tr class="separator:ac9c7649abbf53f5ad0f6b3f66883886d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36551377c2186ead263b85bc21f2f96d" id="r_a36551377c2186ead263b85bc21f2f96d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36551377c2186ead263b85bc21f2f96d">_offsetof_newVerts</a> = 16</td></tr>
+<tr class="separator:a36551377c2186ead263b85bc21f2f96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a532c06d9a859098cd8addcc03ab6148d" id="r_a532c06d9a859098cd8addcc03ab6148d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a532c06d9a859098cd8addcc03ab6148d">_offsetof_onEdgeSplit</a> = 64</td></tr>
+<tr class="separator:a532c06d9a859098cd8addcc03ab6148d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09f73733e50392312176651fb3235ee2" id="r_a09f73733e50392312176651fb3235ee2"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09f73733e50392312176651fb3235ee2">_offsetof_onVertCreated</a> = 32</td></tr>
+<tr class="separator:a09f73733e50392312176651fb3235ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3d1cc34665cab5adce9ac64ba1b633c" id="r_af3d1cc34665cab5adce9ac64ba1b633c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3d1cc34665cab5adce9ac64ba1b633c">_offsetof_progressCallback</a> = 96</td></tr>
+<tr class="separator:af3d1cc34665cab5adce9ac64ba1b633c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5cf627e4557f8ac150600274d7afc63" id="r_aa5cf627e4557f8ac150600274d7afc63"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5cf627e4557f8ac150600274d7afc63">_offsetof_region</a> = 8</td></tr>
+<tr class="separator:aa5cf627e4557f8ac150600274d7afc63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b8755baf375ec4083ad59054207d2c" id="r_a64b8755baf375ec4083ad59054207d2c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64b8755baf375ec4083ad59054207d2c">_offsetof_useCurvature</a> = 24</td></tr>
+<tr class="separator:a64b8755baf375ec4083ad59054207d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::PolylineSubdivideSettings
+
+\\defgroup PolylineSubdivideGroup Polyline Subdivide
+\\ingroup PolylineAlgorithmGroup
+\\{
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a82fdc678e5527882194618385687812c" name="a82fdc678e5527882194618385687812c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82fdc678e5527882194618385687812c">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a2c563a78795e98e972a7171427fa9261" name="a2c563a78795e98e972a7171427fa9261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c563a78795e98e972a7171427fa9261">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PolylineSubdivideSettings.html">PolylineSubdivideSettings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a78fe777cc3feb93b0b614571cd7f7028" name="a78fe777cc3feb93b0b614571cd7f7028"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78fe777cc3feb93b0b614571cd7f7028">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxEdgeLen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxEdgeSplits</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a></td>          <td class="paramname"><span class="paramname"><em>region</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a></td>          <td class="paramname"><span class="paramname"><em>newVerts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>useCurvature</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__VertTag.html">func_void_from_Id_VertTag</a></td>          <td class="paramname"><span class="paramname"><em>onVertCreated</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>onEdgeSplit</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>progressCallback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a28eb7a84285b8ebe39d67368a0d3ac4f" name="a28eb7a84285b8ebe39d67368a0d3ac4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28eb7a84285b8ebe39d67368a0d3ac4f">&#9670;&#160;</a></span>maxEdgeLen() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.PolylineSubdivideSettings.maxEdgeLen </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Subdivision is stopped when all edges are not longer than this value
+</pre> 
+</div>
+</div>
+<a id="aed099f29be5db5ec1b190d5d1a362e72" name="aed099f29be5db5ec1b190d5d1a362e72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed099f29be5db5ec1b190d5d1a362e72">&#9670;&#160;</a></span>maxEdgeLen() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.maxEdgeLen </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ad28af449203592f53f90b369f4a5e3" name="a2ad28af449203592f53f90b369f4a5e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ad28af449203592f53f90b369f4a5e3">&#9670;&#160;</a></span>maxEdgeSplits() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.PolylineSubdivideSettings.maxEdgeSplits </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Maximum number of edge splits allowed
+</pre> 
+</div>
+</div>
+<a id="a72d2529f28271270178bcaf887fdc2a4" name="a72d2529f28271270178bcaf887fdc2a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d2529f28271270178bcaf887fdc2a4">&#9670;&#160;</a></span>maxEdgeSplits() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.maxEdgeSplits </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1f56e6072bc45c5b778a81ca5c6d318" name="ab1f56e6072bc45c5b778a81ca5c6d318"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1f56e6072bc45c5b778a81ca5c6d318">&#9670;&#160;</a></span>newVerts() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> mrmeshpy.PolylineSubdivideSettings.newVerts </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">New vertices appeared during subdivision will be added here
+</pre> 
+</div>
+</div>
+<a id="a509f5ea5db2b68d71ceb79d63dc85b85" name="a509f5ea5db2b68d71ceb79d63dc85b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a509f5ea5db2b68d71ceb79d63dc85b85">&#9670;&#160;</a></span>newVerts() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.newVerts </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a532f5b387c4f00988a4ad2db3a34700e" name="a532f5b387c4f00988a4ad2db3a34700e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a532f5b387c4f00988a4ad2db3a34700e">&#9670;&#160;</a></span>onEdgeSplit() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a> mrmeshpy.PolylineSubdivideSettings.onEdgeSplit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">this function is called each time edge (e) is split into (e1-&gt;e)
+</pre> 
+</div>
+</div>
+<a id="aa5dd76daaf44c8e09e043a31883cd00c" name="aa5dd76daaf44c8e09e043a31883cd00c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5dd76daaf44c8e09e043a31883cd00c">&#9670;&#160;</a></span>onEdgeSplit() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.onEdgeSplit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__EdgeTag__Id__EdgeTag.html">func_void_from_Id_EdgeTag_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a97b559714d080e65b870dcc840eac56f" name="a97b559714d080e65b870dcc840eac56f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97b559714d080e65b870dcc840eac56f">&#9670;&#160;</a></span>onVertCreated() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__void__from__Id__VertTag.html">func_void_from_Id_VertTag</a> mrmeshpy.PolylineSubdivideSettings.onVertCreated </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">this function is called each time a new vertex has been created
+</pre> 
+</div>
+</div>
+<a id="a51c5f9f47022cbdc346495f899eb7014" name="a51c5f9f47022cbdc346495f899eb7014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51c5f9f47022cbdc346495f899eb7014">&#9670;&#160;</a></span>onVertCreated() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.onVertCreated </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__VertTag.html">func_void_from_Id_VertTag</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a955282a93e28d2c75aaca5468d0d4aa2" name="a955282a93e28d2c75aaca5468d0d4aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a955282a93e28d2c75aaca5468d0d4aa2">&#9670;&#160;</a></span>progressCallback() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> mrmeshpy.PolylineSubdivideSettings.progressCallback </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">callback to report algorithm progress and cancel it by user request
+</pre> 
+</div>
+</div>
+<a id="a42395eb28387ab71b400baeeef85071f" name="a42395eb28387ab71b400baeeef85071f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42395eb28387ab71b400baeeef85071f">&#9670;&#160;</a></span>progressCallback() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.progressCallback </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6be52e6c390705b75ed3bfea2f622fef" name="a6be52e6c390705b75ed3bfea2f622fef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be52e6c390705b75ed3bfea2f622fef">&#9670;&#160;</a></span>region() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> mrmeshpy.PolylineSubdivideSettings.region </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Region on polyline to be subdivided: both edge vertices must be there to allow spitting,
+it is updated during the operation
+</pre> 
+</div>
+</div>
+<a id="a26c6c0f6cad8b14447347dfb79914f36" name="a26c6c0f6cad8b14447347dfb79914f36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26c6c0f6cad8b14447347dfb79914f36">&#9670;&#160;</a></span>region() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.region </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3aa56b6be8285f9553da864fc8b283b5" name="a3aa56b6be8285f9553da864fc8b283b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa56b6be8285f9553da864fc8b283b5">&#9670;&#160;</a></span>useCurvature() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.PolylineSubdivideSettings.useCurvature </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">This option works best for natural lines, where all segments have similar size,
+and no sharp angles in between
+</pre> 
+</div>
+</div>
+<a id="a5edc353904b07a2e362d0fd12bb79972" name="a5edc353904b07a2e362d0fd12bb79972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5edc353904b07a2e362d0fd12bb79972">&#9670;&#160;</a></span>useCurvature() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PolylineSubdivideSettings.useCurvature </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="addc14db2c45419c1a13174aeec91d37a" name="addc14db2c45419c1a13174aeec91d37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addc14db2c45419c1a13174aeec91d37a">&#9670;&#160;</a></span>_offsetof_maxEdgeLen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_maxEdgeLen = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9c7649abbf53f5ad0f6b3f66883886d" name="ac9c7649abbf53f5ad0f6b3f66883886d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9c7649abbf53f5ad0f6b3f66883886d">&#9670;&#160;</a></span>_offsetof_maxEdgeSplits</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_maxEdgeSplits = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36551377c2186ead263b85bc21f2f96d" name="a36551377c2186ead263b85bc21f2f96d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36551377c2186ead263b85bc21f2f96d">&#9670;&#160;</a></span>_offsetof_newVerts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_newVerts = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a532c06d9a859098cd8addcc03ab6148d" name="a532c06d9a859098cd8addcc03ab6148d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a532c06d9a859098cd8addcc03ab6148d">&#9670;&#160;</a></span>_offsetof_onEdgeSplit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_onEdgeSplit = 64</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09f73733e50392312176651fb3235ee2" name="a09f73733e50392312176651fb3235ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09f73733e50392312176651fb3235ee2">&#9670;&#160;</a></span>_offsetof_onVertCreated</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_onVertCreated = 32</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3d1cc34665cab5adce9ac64ba1b633c" name="af3d1cc34665cab5adce9ac64ba1b633c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3d1cc34665cab5adce9ac64ba1b633c">&#9670;&#160;</a></span>_offsetof_progressCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_progressCallback = 96</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa5cf627e4557f8ac150600274d7afc63" name="aa5cf627e4557f8ac150600274d7afc63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5cf627e4557f8ac150600274d7afc63">&#9670;&#160;</a></span>_offsetof_region</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_region = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64b8755baf375ec4083ad59054207d2c" name="a64b8755baf375ec4083ad59054207d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64b8755baf375ec4083ad59054207d2c">&#9670;&#160;</a></span>_offsetof_useCurvature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PolylineSubdivideSettings._offsetof_useCurvature = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1PolylineSubdivideSettings.html">PolylineSubdivideSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

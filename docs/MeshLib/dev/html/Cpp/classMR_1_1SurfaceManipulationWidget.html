@@ -1,0 +1,2476 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MR::SurfaceManipulationWidget Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classMR_1_1SurfaceManipulationWidget.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="classMR_1_1SurfaceManipulationWidget-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MR::SurfaceManipulationWidget Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>widget for surface modifying @detail available 3 modes: add (move surface region in direction of normal) remove (move surface region in opposite direction to normal) relax (relax surface region)  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="MRSurfaceManipulationWidget_8h_source.html">MRSurfaceManipulationWidget.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for MR::SurfaceManipulationWidget:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classMR_1_1SurfaceManipulationWidget.png" usemap="#MR::SurfaceManipulationWidget_map" alt=""/>
+  <map id="MR::SurfaceManipulationWidget_map" name="MR::SurfaceManipulationWidget_map">
+<area href="structMR_1_1MultiListener.html" alt="MR::MultiListener&lt; MouseDownListener, MouseMoveListener, MouseUpListener, PostDrawListener &gt;" shape="rect" coords="0,56,587,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html">Settings</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structMR_1_1Mesh.html">Mesh</a> change settings.  <a href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aaf2bf24fbfd2017b8037ed9cab3df93c" id="r_aaf2bf24fbfd2017b8037ed9cab3df93c"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf2bf24fbfd2017b8037ed9cab3df93c">WorkMode</a> { <br />
+&#160;&#160;<a class="el" href="#aaf2bf24fbfd2017b8037ed9cab3df93caec211f7c20af43e742bf2570c3cb84f9">Add</a>
+, <a class="el" href="#aaf2bf24fbfd2017b8037ed9cab3df93ca1063e38cb53d94d386f21227fcd84717">Remove</a>
+, <a class="el" href="#aaf2bf24fbfd2017b8037ed9cab3df93caf2901a893d204f609b9d6d6b11a481b4">Relax</a>
+, <a class="el" href="#aaf2bf24fbfd2017b8037ed9cab3df93ca799723f39baf497704a3d39e7c03555f">Laplacian</a>
+, <br />
+&#160;&#160;<a class="el" href="#aaf2bf24fbfd2017b8037ed9cab3df93ca156e10596fdc76ee5300bab931d89c0f">Patch</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:aaf2bf24fbfd2017b8037ed9cab3df93c"><td class="mdescLeft">&#160;</td><td class="mdescRight">widget work modes  <a href="#aaf2bf24fbfd2017b8037ed9cab3df93c">More...</a><br /></td></tr>
+<tr class="separator:aaf2bf24fbfd2017b8037ed9cab3df93c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07fc1d71375854270d1a16b8d06209f4" id="r_a07fc1d71375854270d1a16b8d06209f4"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">DeviationCalculationMethod</a> { <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4acabf254f8195fce8d901b3cce7092ea9">PointToPoint</a>
+, <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4a621eeaff7db1283a0db27b4e7233a8ed">PointToPlane</a>
+, <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4ac93a47dc243a30fb1778ef562c03732c">ExactDistance</a>
+ }</td></tr>
+<tr class="memdesc:a07fc1d71375854270d1a16b8d06209f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method for calculating mesh changes.  <a href="#a07fc1d71375854270d1a16b8d06209f4">More...</a><br /></td></tr>
+<tr class="separator:a07fc1d71375854270d1a16b8d06209f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5e42cf09e263f1d12221d3ac465d7d1e" id="r_a5e42cf09e263f1d12221d3ac465d7d1e"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e42cf09e263f1d12221d3ac465d7d1e">SurfaceManipulationWidget</a> ()</td></tr>
+<tr class="separator:a5e42cf09e263f1d12221d3ac465d7d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae10a540d1dd7c3a27ad59f51e774c2c4" id="r_ae10a540d1dd7c3a27ad59f51e774c2c4"><td class="memItemLeft" align="right" valign="top">virtual MRVIEWER_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae10a540d1dd7c3a27ad59f51e774c2c4">~SurfaceManipulationWidget</a> ()</td></tr>
+<tr class="separator:ae10a540d1dd7c3a27ad59f51e774c2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aed52f4737f381cd25e1431f64076b9" id="r_a3aed52f4737f381cd25e1431f64076b9"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3aed52f4737f381cd25e1431f64076b9">init</a> (const std::shared_ptr&lt; <a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a> &gt; &amp;objectMesh)</td></tr>
+<tr class="memdesc:a3aed52f4737f381cd25e1431f64076b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize widget according <a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a>  <br /></td></tr>
+<tr class="separator:a3aed52f4737f381cd25e1431f64076b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb57f3a962333b146ea7b607f88fc8e" id="r_a5cb57f3a962333b146ea7b607f88fc8e"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cb57f3a962333b146ea7b607f88fc8e">reset</a> ()</td></tr>
+<tr class="memdesc:a5cb57f3a962333b146ea7b607f88fc8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset widget state  <br /></td></tr>
+<tr class="separator:a5cb57f3a962333b146ea7b607f88fc8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93366e4a5e29c99eca29d636b62f11f8" id="r_a93366e4a5e29c99eca29d636b62f11f8"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93366e4a5e29c99eca29d636b62f11f8">setFixedRegion</a> (const FaceBitSet &amp;region)</td></tr>
+<tr class="separator:a93366e4a5e29c99eca29d636b62f11f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a080d25b56fe008a5917ca1d4ccc0b4d3" id="r_a080d25b56fe008a5917ca1d4ccc0b4d3"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a080d25b56fe008a5917ca1d4ccc0b4d3">setSettings</a> (const <a class="el" href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html">Settings</a> &amp;settings)</td></tr>
+<tr class="memdesc:a080d25b56fe008a5917ca1d4ccc0b4d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">set widget settings (mesh change settings)  <br /></td></tr>
+<tr class="separator:a080d25b56fe008a5917ca1d4ccc0b4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c3f5f93d6cfba31ce7a84815bebb22" id="r_a81c3f5f93d6cfba31ce7a84815bebb22"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API const <a class="el" href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html">Settings</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81c3f5f93d6cfba31ce7a84815bebb22">getSettings</a> ()</td></tr>
+<tr class="memdesc:a81c3f5f93d6cfba31ce7a84815bebb22"><td class="mdescLeft">&#160;</td><td class="mdescRight">get widget settings  <br /></td></tr>
+<tr class="separator:a81c3f5f93d6cfba31ce7a84815bebb22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad230b880c3a56720a1b95832f33ad364" id="r_ad230b880c3a56720a1b95832f33ad364"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad230b880c3a56720a1b95832f33ad364">getMinRadius</a> ()</td></tr>
+<tr class="memdesc:ad230b880c3a56720a1b95832f33ad364"><td class="mdescLeft">&#160;</td><td class="mdescRight">mimum radius of editing area.  <br /></td></tr>
+<tr class="separator:ad230b880c3a56720a1b95832f33ad364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac630e539a99b5bafb846ed70cae75f35" id="r_ac630e539a99b5bafb846ed70cae75f35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMR_1_1Palette.html">Palette</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac630e539a99b5bafb846ed70cae75f35">palette</a> ()</td></tr>
+<tr class="memdesc:ac630e539a99b5bafb846ed70cae75f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">get palette used for visualization point shifts  <br /></td></tr>
+<tr class="separator:ac630e539a99b5bafb846ed70cae75f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60bdd11677d2000b6deeb48ddfe3d6f" id="r_ae60bdd11677d2000b6deeb48ddfe3d6f"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae60bdd11677d2000b6deeb48ddfe3d6f">updateTexture</a> ()</td></tr>
+<tr class="memdesc:ae60bdd11677d2000b6deeb48ddfe3d6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">update texture used for colorize surface (use after change colorMap in palette)  <br /></td></tr>
+<tr class="separator:ae60bdd11677d2000b6deeb48ddfe3d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac926b09e4e210e422759de45d1bf1524" id="r_ac926b09e4e210e422759de45d1bf1524"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac926b09e4e210e422759de45d1bf1524">updateUVs</a> ()</td></tr>
+<tr class="memdesc:ac926b09e4e210e422759de45d1bf1524"><td class="mdescLeft">&#160;</td><td class="mdescRight">update texture uv coords used for colorize surface (use after change ranges in palette)  <br /></td></tr>
+<tr class="separator:ac926b09e4e210e422759de45d1bf1524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd4d3e29bc38873330fb5027d094047" id="r_adfd4d3e29bc38873330fb5027d094047"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfd4d3e29bc38873330fb5027d094047">enableDeviationVisualization</a> (bool enable)</td></tr>
+<tr class="memdesc:adfd4d3e29bc38873330fb5027d094047"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable visualization of mesh deviations  <br /></td></tr>
+<tr class="separator:adfd4d3e29bc38873330fb5027d094047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae948213111d10c051644135fdc8202ee" id="r_ae948213111d10c051644135fdc8202ee"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae948213111d10c051644135fdc8202ee">setDeviationCalculationMethod</a> (<a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">DeviationCalculationMethod</a> method)</td></tr>
+<tr class="memdesc:ae948213111d10c051644135fdc8202ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">set method for calculating mesh changes  <br /></td></tr>
+<tr class="separator:ae948213111d10c051644135fdc8202ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa487fd48c518601775f073d134a6c8dc" id="r_aa487fd48c518601775f073d134a6c8dc"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">DeviationCalculationMethod</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa487fd48c518601775f073d134a6c8dc">deviationCalculationMethod</a> () const</td></tr>
+<tr class="memdesc:aa487fd48c518601775f073d134a6c8dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">get method for calculating mesh changes  <br /></td></tr>
+<tr class="separator:aa487fd48c518601775f073d134a6c8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e49cf9c1e37ef211bba3608e20b972" id="r_a25e49cf9c1e37ef211bba3608e20b972"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25e49cf9c1e37ef211bba3608e20b972">sameValidVerticesAsInOriginMesh</a> () const</td></tr>
+<tr class="memdesc:a25e49cf9c1e37ef211bba3608e20b972"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks for a one-to-one correspondence between the vertices of the original grid and the modified one  <br /></td></tr>
+<tr class="separator:a25e49cf9c1e37ef211bba3608e20b972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac635419fd9d47ae6f1f285cec8699a52" id="r_ac635419fd9d47ae6f1f285cec8699a52"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac635419fd9d47ae6f1f285cec8699a52">getMinMax</a> ()</td></tr>
+<tr class="memdesc:ac635419fd9d47ae6f1f285cec8699a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">get min / max point shifts for (usefull for setup palette)  <br /></td></tr>
+<tr class="separator:ac635419fd9d47ae6f1f285cec8699a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd5d519105a1e182ae6cf1677ea9d415" id="r_afd5d519105a1e182ae6cf1677ea9d415"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd5d519105a1e182ae6cf1677ea9d415">setIgnoreOcclusion</a> (bool ignore)</td></tr>
+<tr class="memdesc:afd5d519105a1e182ae6cf1677ea9d415"><td class="mdescLeft">&#160;</td><td class="mdescRight">allow the user to edit parts of object that are hidden in the current view by other objects  <br /></td></tr>
+<tr class="separator:afd5d519105a1e182ae6cf1677ea9d415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1d225be203cab7da3f671f7238ec0db" id="r_ad1d225be203cab7da3f671f7238ec0db"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1d225be203cab7da3f671f7238ec0db">ignoreOcclusion</a> () const</td></tr>
+<tr class="separator:ad1d225be203cab7da3f671f7238ec0db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18aa909790d847163a6e7d2ad4ed145a" id="r_a18aa909790d847163a6e7d2ad4ed145a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18aa909790d847163a6e7d2ad4ed145a">setEditOnlyCodirectedSurface</a> (bool edit)</td></tr>
+<tr class="memdesc:a18aa909790d847163a6e7d2ad4ed145a"><td class="mdescLeft">&#160;</td><td class="mdescRight">restricts editable area to vertices whose normals look into the same half-space as normal under cursor  <br /></td></tr>
+<tr class="separator:a18aa909790d847163a6e7d2ad4ed145a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2b38b4c5264c1e038e71ddbea2b4e19" id="r_ad2b38b4c5264c1e038e71ddbea2b4e19"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2b38b4c5264c1e038e71ddbea2b4e19">isEditOnlyCodirectedSurface</a> () const</td></tr>
+<tr class="memdesc:ad2b38b4c5264c1e038e71ddbea2b4e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">get state of an editable region restriction  <br /></td></tr>
+<tr class="separator:ad2b38b4c5264c1e038e71ddbea2b4e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_structMR_1_1MultiListener"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_structMR_1_1MultiListener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structMR_1_1MultiListener.html">MR::MultiListener&lt; MouseDownListener, MouseMoveListener, MouseUpListener, PostDrawListener &gt;</a></td></tr>
+<tr class="memitem:a726f5e2601b7f25e31824a0cac630fb2 inherit pub_methods_structMR_1_1MultiListener" id="r_a726f5e2601b7f25e31824a0cac630fb2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMR_1_1MultiListener.html#a726f5e2601b7f25e31824a0cac630fb2">~MultiListener</a> ()=default</td></tr>
+<tr class="separator:a726f5e2601b7f25e31824a0cac630fb2 inherit pub_methods_structMR_1_1MultiListener"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3312c12e653a48eaee4680364e72f27 inherit pub_methods_structMR_1_1MultiListener" id="r_af3312c12e653a48eaee4680364e72f27"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMR_1_1MultiListener.html#af3312c12e653a48eaee4680364e72f27">connect</a> (<a class="el" href="classMR_1_1Viewer.html">Viewer</a> *viewer, int group=0, boost::signals2::connect_position pos=boost::signals2::connect_position::at_back)</td></tr>
+<tr class="separator:af3312c12e653a48eaee4680364e72f27 inherit pub_methods_structMR_1_1MultiListener"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfa598489bfbc3b88c84b029213d042c inherit pub_methods_structMR_1_1MultiListener" id="r_acfa598489bfbc3b88c84b029213d042c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMR_1_1MultiListener.html#acfa598489bfbc3b88c84b029213d042c">disconnect</a> ()</td></tr>
+<tr class="separator:acfa598489bfbc3b88c84b029213d042c inherit pub_methods_structMR_1_1MultiListener"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a33c798997c7d3436ab160f4c1dc6009e" id="r_a33c798997c7d3436ab160f4c1dc6009e"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33c798997c7d3436ab160f4c1dc6009e">onMouseDown_</a> (<a class="elRef" href="../namespaceMR.html#a13f98b7840e7298925ef1770b7cdb62d">MouseButton</a> button, int modifiers) override</td></tr>
+<tr class="memdesc:a33c798997c7d3436ab160f4c1dc6009e"><td class="mdescLeft">&#160;</td><td class="mdescRight">start modifying mesh surface  <br /></td></tr>
+<tr class="separator:a33c798997c7d3436ab160f4c1dc6009e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a6ffbc1bd572579e06797db251f2859" id="r_a5a6ffbc1bd572579e06797db251f2859"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a6ffbc1bd572579e06797db251f2859">onMouseUp_</a> (<a class="elRef" href="../namespaceMR.html#a13f98b7840e7298925ef1770b7cdb62d">MouseButton</a> button, int modifiers) override</td></tr>
+<tr class="memdesc:a5a6ffbc1bd572579e06797db251f2859"><td class="mdescLeft">&#160;</td><td class="mdescRight">stop modifying mesh surface, generate history action  <br /></td></tr>
+<tr class="separator:a5a6ffbc1bd572579e06797db251f2859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e117d491cc1bbee8e7a16a851943c8" id="r_ab7e117d491cc1bbee8e7a16a851943c8"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7e117d491cc1bbee8e7a16a851943c8">onMouseMove_</a> (int mouse_x, int mouse_y) override</td></tr>
+<tr class="memdesc:ab7e117d491cc1bbee8e7a16a851943c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">update  <br /></td></tr>
+<tr class="separator:ab7e117d491cc1bbee8e7a16a851943c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96de0be0839e0a27813a5cf42983d280" id="r_a96de0be0839e0a27813a5cf42983d280"><td class="memItemLeft" align="right" valign="top">MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96de0be0839e0a27813a5cf42983d280">postDraw_</a> () override</td></tr>
+<tr class="memdesc:a96de0be0839e0a27813a5cf42983d280"><td class="mdescLeft">&#160;</td><td class="mdescRight">need to visualize bad region (draw grey circle)  <br /></td></tr>
+<tr class="separator:a96de0be0839e0a27813a5cf42983d280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01b688fc30d608be61aa23e4cba46c6a" id="r_a01b688fc30d608be61aa23e4cba46c6a"><td class="memItemLeft" align="right" valign="top">virtual MRVIEWER_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01b688fc30d608be61aa23e4cba46c6a">appendMeshChangeHistory_</a> (std::shared_ptr&lt; <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &gt; newMesh, const FaceBitSet &amp;newFaces)</td></tr>
+<tr class="separator:a01b688fc30d608be61aa23e4cba46c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf4b908832273c2d2b0dff19ba3eddc" id="r_a6bf4b908832273c2d2b0dff19ba3eddc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bf4b908832273c2d2b0dff19ba3eddc">reallocData_</a> (size_t <a class="elRef" href="../namespaceMR.html#a306ff1f62992b3eb33c446913b64188a">size</a>)</td></tr>
+<tr class="separator:a6bf4b908832273c2d2b0dff19ba3eddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f27b490ad008b35fb24b4fb9d4ae8da" id="r_a2f27b490ad008b35fb24b4fb9d4ae8da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f27b490ad008b35fb24b4fb9d4ae8da">clearData_</a> ()</td></tr>
+<tr class="separator:a2f27b490ad008b35fb24b4fb9d4ae8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a959fcbd7bbe023bb87adc1de1a8dda45" id="r_a959fcbd7bbe023bb87adc1de1a8dda45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a959fcbd7bbe023bb87adc1de1a8dda45">initConnections_</a> ()</td></tr>
+<tr class="separator:a959fcbd7bbe023bb87adc1de1a8dda45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87e780495d7aae0fc12390c68b58631d" id="r_a87e780495d7aae0fc12390c68b58631d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87e780495d7aae0fc12390c68b58631d">resetConnections_</a> ()</td></tr>
+<tr class="separator:a87e780495d7aae0fc12390c68b58631d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e617c68f73988a733f41d84e9f780ec" id="r_a5e617c68f73988a733f41d84e9f780ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e617c68f73988a733f41d84e9f780ec">changeSurface_</a> ()</td></tr>
+<tr class="separator:a5e617c68f73988a733f41d84e9f780ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b9515fa9dae25aae35292c7e2b87e6" id="r_ae4b9515fa9dae25aae35292c7e2b87e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4b9515fa9dae25aae35292c7e2b87e6">updateUVmap_</a> (bool set, bool wholeMesh=false)</td></tr>
+<tr class="separator:ae4b9515fa9dae25aae35292c7e2b87e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2e20a55a28b2f567d2c8197674fd9d" id="r_abf2e20a55a28b2f567d2c8197674fd9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf2e20a55a28b2f567d2c8197674fd9d">updateRegion_</a> (const Vector2f &amp;mousePos)</td></tr>
+<tr class="separator:abf2e20a55a28b2f567d2c8197674fd9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0ddfdc3b43ddc99dec3be877b7a919" id="r_add0ddfdc3b43ddc99dec3be877b7a919"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add0ddfdc3b43ddc99dec3be877b7a919">abortEdit_</a> ()</td></tr>
+<tr class="separator:add0ddfdc3b43ddc99dec3be877b7a919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad41aeaafb3e4c8632a313f4d729c3561" id="r_ad41aeaafb3e4c8632a313f4d729c3561"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad41aeaafb3e4c8632a313f4d729c3561">laplacianPickVert_</a> (const <a class="el" href="structMR_1_1PointOnFace.html">PointOnFace</a> &amp;pick)</td></tr>
+<tr class="memdesc:ad41aeaafb3e4c8632a313f4d729c3561"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMR_1_1Laplacian.html">Laplacian</a>.  <br /></td></tr>
+<tr class="separator:ad41aeaafb3e4c8632a313f4d729c3561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a297618816e83dce980de3f9075d4657a" id="r_a297618816e83dce980de3f9075d4657a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a297618816e83dce980de3f9075d4657a">laplacianMoveVert_</a> (const Vector2f &amp;mousePos)</td></tr>
+<tr class="separator:a297618816e83dce980de3f9075d4657a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd37fd93e8c51f4037dda6a9b72ee3d7" id="r_afd37fd93e8c51f4037dda6a9b72ee3d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd37fd93e8c51f4037dda6a9b72ee3d7">updateVizualizeSelection_</a> ()</td></tr>
+<tr class="separator:afd37fd93e8c51f4037dda6a9b72ee3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b4a6109c413aa4b50e445d75db016a" id="r_a48b4a6109c413aa4b50e445d75db016a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48b4a6109c413aa4b50e445d75db016a">updateRegionUVs_</a> (const VertBitSet &amp;region)</td></tr>
+<tr class="separator:a48b4a6109c413aa4b50e445d75db016a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d43ee87f7e0a5475028a3d1b0ba4940" id="r_a8d43ee87f7e0a5475028a3d1b0ba4940"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d43ee87f7e0a5475028a3d1b0ba4940">updateValueChanges_</a> (const VertBitSet &amp;region)</td></tr>
+<tr class="separator:a8d43ee87f7e0a5475028a3d1b0ba4940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad651996bd721dcebc5e4a9da9d307617" id="r_ad651996bd721dcebc5e4a9da9d307617"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad651996bd721dcebc5e4a9da9d307617">updateValueChangesPointToPoint_</a> (const VertBitSet &amp;region)</td></tr>
+<tr class="separator:ad651996bd721dcebc5e4a9da9d307617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d88774175c7d5272ce114c8f7ec8d4" id="r_af7d88774175c7d5272ce114c8f7ec8d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7d88774175c7d5272ce114c8f7ec8d4">updateValueChangesPointToPlane_</a> (const VertBitSet &amp;region)</td></tr>
+<tr class="separator:af7d88774175c7d5272ce114c8f7ec8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa523360f594c4085afd84c62654681d4" id="r_aa523360f594c4085afd84c62654681d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa523360f594c4085afd84c62654681d4">updateValueChangesExactDistance_</a> (const VertBitSet &amp;region)</td></tr>
+<tr class="separator:aa523360f594c4085afd84c62654681d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ec79535e6a70009906b9e2f0008cb22" id="r_a1ec79535e6a70009906b9e2f0008cb22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ec79535e6a70009906b9e2f0008cb22">createLastStableObjMesh_</a> ()</td></tr>
+<tr class="separator:a1ec79535e6a70009906b9e2f0008cb22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b49dc6133efe789f4fa17bb75f3641c" id="r_a8b49dc6133efe789f4fa17bb75f3641c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b49dc6133efe789f4fa17bb75f3641c">removeLastStableObjMesh_</a> ()</td></tr>
+<tr class="separator:a8b49dc6133efe789f4fa17bb75f3641c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1d907cbe938c1010826d617b7b662e8" id="r_ad1d907cbe938c1010826d617b7b662e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1d907cbe938c1010826d617b7b662e8">compressChangePointsAction_</a> ()</td></tr>
+<tr class="separator:ad1d907cbe938c1010826d617b7b662e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70ba5734344437097ab6791ef9f24943" id="r_a70ba5734344437097ab6791ef9f24943"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70ba5734344437097ab6791ef9f24943">updateDistancesAndRegion_</a> (const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;mesh, const VertBitSet &amp;start, VertScalars &amp;distances, VertBitSet &amp;region, const VertBitSet *untouchable)</td></tr>
+<tr class="separator:a70ba5734344437097ab6791ef9f24943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a1470ce9a66bc6a7554b36d69c81102e1" id="r_a1470ce9a66bc6a7554b36d69c81102e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html">Settings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1470ce9a66bc6a7554b36d69c81102e1">settings_</a></td></tr>
+<tr class="separator:a1470ce9a66bc6a7554b36d69c81102e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f58ee4ef74ddd5127a9de59ad0658e" id="r_a83f58ee4ef74ddd5127a9de59ad0658e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83f58ee4ef74ddd5127a9de59ad0658e">obj_</a></td></tr>
+<tr class="separator:a83f58ee4ef74ddd5127a9de59ad0658e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0fd16498ab8c5a8415556c1e670724b" id="r_aa0fd16498ab8c5a8415556c1e670724b"><td class="memItemLeft" align="right" valign="top">VertBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0fd16498ab8c5a8415556c1e670724b">unchangeableVerts_</a></td></tr>
+<tr class="separator:aa0fd16498ab8c5a8415556c1e670724b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c9ed0bdb3a5f708f5d1da2cc0ab3c4f" id="r_a3c9ed0bdb3a5f708f5d1da2cc0ab3c4f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c9ed0bdb3a5f708f5d1da2cc0ab3c4f">minRadius_</a> = 1.f</td></tr>
+<tr class="separator:a3c9ed0bdb3a5f708f5d1da2cc0ab3c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9cf7388fbbb8c4053cd1f1403584d2d" id="r_af9cf7388fbbb8c4053cd1f1403584d2d"><td class="memItemLeft" align="right" valign="top">Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9cf7388fbbb8c4053cd1f1403584d2d">mousePos_</a></td></tr>
+<tr class="memdesc:af9cf7388fbbb8c4053cd1f1403584d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">mouse position of last updateRegion_  <br /></td></tr>
+<tr class="separator:af9cf7388fbbb8c4053cd1f1403584d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99fb8181934e4dd3ab25d74b4a21de94" id="r_a99fb8181934e4dd3ab25d74b4a21de94"><td class="memItemLeft" align="right" valign="top">VertBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99fb8181934e4dd3ab25d74b4a21de94">activePickedVertices_</a></td></tr>
+<tr class="memdesc:a99fb8181934e4dd3ab25d74b4a21de94"><td class="mdescLeft">&#160;</td><td class="mdescRight">vertices that are considered under mouse in curernt frame (could be many in case of fast mouse mouvement)  <br /></td></tr>
+<tr class="separator:a99fb8181934e4dd3ab25d74b4a21de94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bb3cc2556966f7a514fefa8774cf9b9" id="r_a2bb3cc2556966f7a514fefa8774cf9b9"><td class="memItemLeft" align="right" valign="top">VertBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bb3cc2556966f7a514fefa8774cf9b9">singleEditingRegion_</a></td></tr>
+<tr class="memdesc:a2bb3cc2556966f7a514fefa8774cf9b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">current (under the cursor) region of tool application  <br /></td></tr>
+<tr class="separator:a2bb3cc2556966f7a514fefa8774cf9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56cce88aefa27259841a2dee896b8812" id="r_a56cce88aefa27259841a2dee896b8812"><td class="memItemLeft" align="right" valign="top">VertBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56cce88aefa27259841a2dee896b8812">visualizationRegion_</a></td></tr>
+<tr class="memdesc:a56cce88aefa27259841a2dee896b8812"><td class="mdescLeft">&#160;</td><td class="mdescRight">vertices of triangles partially or fully highlighted with red  <br /></td></tr>
+<tr class="separator:a56cce88aefa27259841a2dee896b8812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7693d8223133cb63b0540ec58107aa" id="r_acc7693d8223133cb63b0540ec58107aa"><td class="memItemLeft" align="right" valign="top">VertBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc7693d8223133cb63b0540ec58107aa">generalEditingRegion_</a></td></tr>
+<tr class="memdesc:acc7693d8223133cb63b0540ec58107aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">united region of tool application since the last mouse down  <br /></td></tr>
+<tr class="separator:acc7693d8223133cb63b0540ec58107aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f9a86b24ef8363fa101445a7131338" id="r_a36f9a86b24ef8363fa101445a7131338"><td class="memItemLeft" align="right" valign="top">VertScalars&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36f9a86b24ef8363fa101445a7131338">pointsShift_</a></td></tr>
+<tr class="separator:a36f9a86b24ef8363fa101445a7131338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb48658b014a85090a083256f594b26" id="r_aefb48658b014a85090a083256f594b26"><td class="memItemLeft" align="right" valign="top">VertScalars&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefb48658b014a85090a083256f594b26">editingDistanceMap_</a></td></tr>
+<tr class="separator:aefb48658b014a85090a083256f594b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47cba96ac32e05d6105943185dc431b" id="r_af47cba96ac32e05d6105943185dc431b"><td class="memItemLeft" align="right" valign="top">VertScalars&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af47cba96ac32e05d6105943185dc431b">visualizationDistanceMap_</a></td></tr>
+<tr class="separator:af47cba96ac32e05d6105943185dc431b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acea1c4613933b5524111e4ac139eb1c9" id="r_acea1c4613933b5524111e4ac139eb1c9"><td class="memItemLeft" align="right" valign="top">VertBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acea1c4613933b5524111e4ac139eb1c9">changedRegion_</a></td></tr>
+<tr class="separator:acea1c4613933b5524111e4ac139eb1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a448684abe0f6d4ad9d419eed84251565" id="r_a448684abe0f6d4ad9d419eed84251565"><td class="memItemLeft" align="right" valign="top">VertScalars&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a448684abe0f6d4ad9d419eed84251565">valueChanges_</a></td></tr>
+<tr class="separator:a448684abe0f6d4ad9d419eed84251565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4636a687b93fa094ea26c634950fee2a" id="r_a4636a687b93fa094ea26c634950fee2a"><td class="memItemLeft" align="right" valign="top">VertScalars&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4636a687b93fa094ea26c634950fee2a">lastStableValueChanges_</a></td></tr>
+<tr class="separator:a4636a687b93fa094ea26c634950fee2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d7a49981ff378d5f791c4ec36bc73b" id="r_ac6d7a49981ff378d5f791c4ec36bc73b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6d7a49981ff378d5f791c4ec36bc73b">originalMesh_</a></td></tr>
+<tr class="memdesc:ac6d7a49981ff378d5f791c4ec36bc73b"><td class="mdescLeft">&#160;</td><td class="mdescRight">original input mesh  <br /></td></tr>
+<tr class="separator:ac6d7a49981ff378d5f791c4ec36bc73b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7a2498fe16f6962cd02e3789909ab03" id="r_ac7a2498fe16f6962cd02e3789909ab03"><td class="memItemLeft" align="right" valign="top">VertBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7a2498fe16f6962cd02e3789909ab03">unknownSign_</a></td></tr>
+<tr class="memdesc:ac7a2498fe16f6962cd02e3789909ab03"><td class="mdescLeft">&#160;</td><td class="mdescRight">cached data to avoid reallocating memory  <br /></td></tr>
+<tr class="separator:ac7a2498fe16f6962cd02e3789909ab03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4fd8214477b4cb504db49be1146ed47" id="r_aa4fd8214477b4cb504db49be1146ed47"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4fd8214477b4cb504db49be1146ed47">lastStableObjMesh_</a></td></tr>
+<tr class="separator:aa4fd8214477b4cb504db49be1146ed47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76be206635ab7abc679ccdad3f0ab7e8" id="r_a76be206635ab7abc679ccdad3f0ab7e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76be206635ab7abc679ccdad3f0ab7e8">firstInit_</a> = true</td></tr>
+<tr class="separator:a76be206635ab7abc679ccdad3f0ab7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab29aa143377b68d247fab12b0da55a6a" id="r_ab29aa143377b68d247fab12b0da55a6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab29aa143377b68d247fab12b0da55a6a">badRegion_</a> = false</td></tr>
+<tr class="memdesc:ab29aa143377b68d247fab12b0da55a6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">need to save settings in re-initial  <br /></td></tr>
+<tr class="separator:ab29aa143377b68d247fab12b0da55a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bce77a98a1b42394a4f68d72bcb1637" id="r_a2bce77a98a1b42394a4f68d72bcb1637"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bce77a98a1b42394a4f68d72bcb1637">mousePressed_</a> = false</td></tr>
+<tr class="memdesc:a2bce77a98a1b42394a4f68d72bcb1637"><td class="mdescLeft">&#160;</td><td class="mdescRight">in selected region less than 3 points  <br /></td></tr>
+<tr class="separator:a2bce77a98a1b42394a4f68d72bcb1637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49f49c64ee7dbba1fc0f33d9b4710f54" id="r_a49f49c64ee7dbba1fc0f33d9b4710f54"><td class="memItemLeft" align="right" valign="top">std::chrono::time_point&lt; std::chrono::high_resolution_clock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f49c64ee7dbba1fc0f33d9b4710f54">timePoint_</a></td></tr>
+<tr class="separator:a49f49c64ee7dbba1fc0f33d9b4710f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19b5f418f871baaab19f8b61b09a900a" id="r_a19b5f418f871baaab19f8b61b09a900a"><td class="memItemLeft" align="right" valign="top">boost::signals2::scoped_connection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19b5f418f871baaab19f8b61b09a900a">meshChangedConnection_</a></td></tr>
+<tr class="separator:a19b5f418f871baaab19f8b61b09a900a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab48b92dfb4eab8bf8e44861c6b4d3751" id="r_ab48b92dfb4eab8bf8e44861c6b4d3751"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab48b92dfb4eab8bf8e44861c6b4d3751">ownMeshChangedSignal_</a> = false</td></tr>
+<tr class="separator:ab48b92dfb4eab8bf8e44861c6b4d3751"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a184c41be698549192241c93c8cb1a573" id="r_a184c41be698549192241c93c8cb1a573"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a184c41be698549192241c93c8cb1a573">connectionsInitialized_</a> = false</td></tr>
+<tr class="separator:a184c41be698549192241c93c8cb1a573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fb404481401039261c3c4d8d7272b08" id="r_a3fb404481401039261c3c4d8d7272b08"><td class="memItemLeft" align="right" valign="top">VertId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fb404481401039261c3c4d8d7272b08">touchVertId_</a></td></tr>
+<tr class="memdesc:a3fb404481401039261c3c4d8d7272b08"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classMR_1_1Laplacian.html">Laplacian</a>.  <br /></td></tr>
+<tr class="separator:a3fb404481401039261c3c4d8d7272b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ca984430afc6677edfa65a39a5d5bb" id="r_a90ca984430afc6677edfa65a39a5d5bb"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90ca984430afc6677edfa65a39a5d5bb">touchVertIniPos_</a></td></tr>
+<tr class="memdesc:a90ca984430afc6677edfa65a39a5d5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">we fix this vertex in <a class="el" href="classMR_1_1Laplacian.html">Laplacian</a> and move it manually  <br /></td></tr>
+<tr class="separator:a90ca984430afc6677edfa65a39a5d5bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07b29d80acee8bb71f3b36cf6f3c61d3" id="r_a07b29d80acee8bb71f3b36cf6f3c61d3"><td class="memItemLeft" align="right" valign="top">Vector2i&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07b29d80acee8bb71f3b36cf6f3c61d3">storedDown_</a></td></tr>
+<tr class="memdesc:a07b29d80acee8bb71f3b36cf6f3c61d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial position of fixed vertex  <br /></td></tr>
+<tr class="separator:a07b29d80acee8bb71f3b36cf6f3c61d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45c714522ca37331bf7eef51f07139fd" id="r_a45c714522ca37331bf7eef51f07139fd"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classMR_1_1Laplacian.html">Laplacian</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45c714522ca37331bf7eef51f07139fd">laplacian_</a></td></tr>
+<tr class="separator:a45c714522ca37331bf7eef51f07139fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646602a8d3e1d1781c7aa8ed9b2050e3" id="r_a646602a8d3e1d1781c7aa8ed9b2050e3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; SmartChangeMeshPointsAction &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a646602a8d3e1d1781c7aa8ed9b2050e3">historyAction_</a></td></tr>
+<tr class="separator:a646602a8d3e1d1781c7aa8ed9b2050e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c56116fa4c39bcc7554e4142816027" id="r_a09c56116fa4c39bcc7554e4142816027"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09c56116fa4c39bcc7554e4142816027">appendHistoryAction_</a> = false</td></tr>
+<tr class="memdesc:a09c56116fa4c39bcc7554e4142816027"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if historyAction_ is prepared but not yet appended to <a class="el" href="classMR_1_1HistoryStore.html" title="This class stores history stack for undo/redo.">HistoryStore</a>, which is done on first mouse move  <br /></td></tr>
+<tr class="separator:a09c56116fa4c39bcc7554e4142816027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3853225f96fef25c2dbce20227c54c7d" id="r_a3853225f96fef25c2dbce20227c54c7d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classMR_1_1Palette.html">Palette</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3853225f96fef25c2dbce20227c54c7d">palette_</a></td></tr>
+<tr class="separator:a3853225f96fef25c2dbce20227c54c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08839c74598549c345ed5f06ffaa769f" id="r_a08839c74598549c345ed5f06ffaa769f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08839c74598549c345ed5f06ffaa769f">enableDeviationTexture_</a> = false</td></tr>
+<tr class="separator:a08839c74598549c345ed5f06ffaa769f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f7ed13fa0a8080d470fade319e360f7" id="r_a4f7ed13fa0a8080d470fade319e360f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">DeviationCalculationMethod</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f7ed13fa0a8080d470fade319e360f7">deviationCalculationMethod_</a> = <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4ac93a47dc243a30fb1778ef562c03732c">DeviationCalculationMethod::ExactDistance</a></td></tr>
+<tr class="separator:a4f7ed13fa0a8080d470fade319e360f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93cf79c946234166435c0c26b7334a74" id="r_a93cf79c946234166435c0c26b7334a74"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93cf79c946234166435c0c26b7334a74">sameValidVerticesAsInOriginMesh_</a> = true</td></tr>
+<tr class="separator:a93cf79c946234166435c0c26b7334a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c958ed29a4e3f960ce7aab676126adb" id="r_a8c958ed29a4e3f960ce7aab676126adb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c958ed29a4e3f960ce7aab676126adb">ignoreOcclusion_</a> = false</td></tr>
+<tr class="memdesc:a8c958ed29a4e3f960ce7aab676126adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">allow the user to edit parts of object that are hidden in the current view by other objects  <br /></td></tr>
+<tr class="separator:a8c958ed29a4e3f960ce7aab676126adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03c8e502f4a92fa8e57e0d50ed97524a" id="r_a03c8e502f4a92fa8e57e0d50ed97524a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03c8e502f4a92fa8e57e0d50ed97524a">editOnlyCodirectedSurface_</a> = true</td></tr>
+<tr class="separator:a03c8e502f4a92fa8e57e0d50ed97524a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>widget for surface modifying @detail available 3 modes: add (move surface region in direction of normal) remove (move surface region in opposite direction to normal) relax (relax surface region) </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a07fc1d71375854270d1a16b8d06209f4" name="a07fc1d71375854270d1a16b8d06209f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07fc1d71375854270d1a16b8d06209f4">&#9670;&#160;</a></span>DeviationCalculationMethod</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">MR::SurfaceManipulationWidget::DeviationCalculationMethod</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Method for calculating mesh changes. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a07fc1d71375854270d1a16b8d06209f4acabf254f8195fce8d901b3cce7092ea9" name="a07fc1d71375854270d1a16b8d06209f4acabf254f8195fce8d901b3cce7092ea9"></a>PointToPoint&#160;</td><td class="fielddoc"><p>distance between the start and end points </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a07fc1d71375854270d1a16b8d06209f4a621eeaff7db1283a0db27b4e7233a8ed" name="a07fc1d71375854270d1a16b8d06209f4a621eeaff7db1283a0db27b4e7233a8ed"></a>PointToPlane&#160;</td><td class="fielddoc"><p>distance between the initial plane (starting point and normal to it) and the end point </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a07fc1d71375854270d1a16b8d06209f4ac93a47dc243a30fb1778ef562c03732c" name="a07fc1d71375854270d1a16b8d06209f4ac93a47dc243a30fb1778ef562c03732c"></a>ExactDistance&#160;</td><td class="fielddoc"><p>distance between the start and end meshes </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="aaf2bf24fbfd2017b8037ed9cab3df93c" name="aaf2bf24fbfd2017b8037ed9cab3df93c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2bf24fbfd2017b8037ed9cab3df93c">&#9670;&#160;</a></span>WorkMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#aaf2bf24fbfd2017b8037ed9cab3df93c">MR::SurfaceManipulationWidget::WorkMode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>widget work modes </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aaf2bf24fbfd2017b8037ed9cab3df93caec211f7c20af43e742bf2570c3cb84f9" name="aaf2bf24fbfd2017b8037ed9cab3df93caec211f7c20af43e742bf2570c3cb84f9"></a>Add&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf2bf24fbfd2017b8037ed9cab3df93ca1063e38cb53d94d386f21227fcd84717" name="aaf2bf24fbfd2017b8037ed9cab3df93ca1063e38cb53d94d386f21227fcd84717"></a>Remove&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf2bf24fbfd2017b8037ed9cab3df93caf2901a893d204f609b9d6d6b11a481b4" name="aaf2bf24fbfd2017b8037ed9cab3df93caf2901a893d204f609b9d6d6b11a481b4"></a>Relax&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf2bf24fbfd2017b8037ed9cab3df93ca799723f39baf497704a3d39e7c03555f" name="aaf2bf24fbfd2017b8037ed9cab3df93ca799723f39baf497704a3d39e7c03555f"></a>Laplacian&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aaf2bf24fbfd2017b8037ed9cab3df93ca156e10596fdc76ee5300bab931d89c0f" name="aaf2bf24fbfd2017b8037ed9cab3df93ca156e10596fdc76ee5300bab931d89c0f"></a>Patch&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5e42cf09e263f1d12221d3ac465d7d1e" name="a5e42cf09e263f1d12221d3ac465d7d1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e42cf09e263f1d12221d3ac465d7d1e">&#9670;&#160;</a></span>SurfaceManipulationWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API MR::SurfaceManipulationWidget::SurfaceManipulationWidget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae10a540d1dd7c3a27ad59f51e774c2c4" name="ae10a540d1dd7c3a27ad59f51e774c2c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae10a540d1dd7c3a27ad59f51e774c2c4">&#9670;&#160;</a></span>~SurfaceManipulationWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual MRVIEWER_API MR::SurfaceManipulationWidget::~SurfaceManipulationWidget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="add0ddfdc3b43ddc99dec3be877b7a919" name="add0ddfdc3b43ddc99dec3be877b7a919"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add0ddfdc3b43ddc99dec3be877b7a919">&#9670;&#160;</a></span>abortEdit_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::abortEdit_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01b688fc30d608be61aa23e4cba46c6a" name="a01b688fc30d608be61aa23e4cba46c6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01b688fc30d608be61aa23e4cba46c6a">&#9670;&#160;</a></span>appendMeshChangeHistory_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual MRVIEWER_API void MR::SurfaceManipulationWidget::appendMeshChangeHistory_ </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>newMesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FaceBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>newFaces</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>called to change mesh with history record newFaces seems to be useful </p>
+
+</div>
+</div>
+<a id="a5e617c68f73988a733f41d84e9f780ec" name="a5e617c68f73988a733f41d84e9f780ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e617c68f73988a733f41d84e9f780ec">&#9670;&#160;</a></span>changeSurface_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::changeSurface_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f27b490ad008b35fb24b4fb9d4ae8da" name="a2f27b490ad008b35fb24b4fb9d4ae8da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f27b490ad008b35fb24b4fb9d4ae8da">&#9670;&#160;</a></span>clearData_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::clearData_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1d907cbe938c1010826d617b7b662e8" name="ad1d907cbe938c1010826d617b7b662e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1d907cbe938c1010826d617b7b662e8">&#9670;&#160;</a></span>compressChangePointsAction_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::compressChangePointsAction_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>this function is called after all modifications are finished; if we previously appended SmartChangeMeshPointsAction, then switch it from uncompressed to compressed format to occupy less amount of memory </p>
+
+</div>
+</div>
+<a id="a1ec79535e6a70009906b9e2f0008cb22" name="a1ec79535e6a70009906b9e2f0008cb22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec79535e6a70009906b9e2f0008cb22">&#9670;&#160;</a></span>createLastStableObjMesh_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::createLastStableObjMesh_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa487fd48c518601775f073d134a6c8dc" name="aa487fd48c518601775f073d134a6c8dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa487fd48c518601775f073d134a6c8dc">&#9670;&#160;</a></span>deviationCalculationMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">DeviationCalculationMethod</a> MR::SurfaceManipulationWidget::deviationCalculationMethod </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get method for calculating mesh changes </p>
+
+</div>
+</div>
+<a id="adfd4d3e29bc38873330fb5027d094047" name="adfd4d3e29bc38873330fb5027d094047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfd4d3e29bc38873330fb5027d094047">&#9670;&#160;</a></span>enableDeviationVisualization()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::enableDeviationVisualization </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enable visualization of mesh deviations </p>
+
+</div>
+</div>
+<a id="ac635419fd9d47ae6f1f285cec8699a52" name="ac635419fd9d47ae6f1f285cec8699a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac635419fd9d47ae6f1f285cec8699a52">&#9670;&#160;</a></span>getMinMax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API Vector2f MR::SurfaceManipulationWidget::getMinMax </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get min / max point shifts for (usefull for setup palette) </p>
+
+</div>
+</div>
+<a id="ad230b880c3a56720a1b95832f33ad364" name="ad230b880c3a56720a1b95832f33ad364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad230b880c3a56720a1b95832f33ad364">&#9670;&#160;</a></span>getMinRadius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API float MR::SurfaceManipulationWidget::getMinRadius </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>mimum radius of editing area. </p>
+
+</div>
+</div>
+<a id="a81c3f5f93d6cfba31ce7a84815bebb22" name="a81c3f5f93d6cfba31ce7a84815bebb22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c3f5f93d6cfba31ce7a84815bebb22">&#9670;&#160;</a></span>getSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API const <a class="el" href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html">Settings</a> &amp; MR::SurfaceManipulationWidget::getSettings </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get widget settings </p>
+
+</div>
+</div>
+<a id="ad1d225be203cab7da3f671f7238ec0db" name="ad1d225be203cab7da3f671f7238ec0db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1d225be203cab7da3f671f7238ec0db">&#9670;&#160;</a></span>ignoreOcclusion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API bool MR::SurfaceManipulationWidget::ignoreOcclusion </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3aed52f4737f381cd25e1431f64076b9" name="a3aed52f4737f381cd25e1431f64076b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aed52f4737f381cd25e1431f64076b9">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::init </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>objectMesh</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialize widget according <a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a> </p>
+
+</div>
+</div>
+<a id="a959fcbd7bbe023bb87adc1de1a8dda45" name="a959fcbd7bbe023bb87adc1de1a8dda45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a959fcbd7bbe023bb87adc1de1a8dda45">&#9670;&#160;</a></span>initConnections_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::initConnections_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2b38b4c5264c1e038e71ddbea2b4e19" name="ad2b38b4c5264c1e038e71ddbea2b4e19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2b38b4c5264c1e038e71ddbea2b4e19">&#9670;&#160;</a></span>isEditOnlyCodirectedSurface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::isEditOnlyCodirectedSurface </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get state of an editable region restriction </p>
+
+</div>
+</div>
+<a id="a297618816e83dce980de3f9075d4657a" name="a297618816e83dce980de3f9075d4657a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a297618816e83dce980de3f9075d4657a">&#9670;&#160;</a></span>laplacianMoveVert_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::laplacianMoveVert_ </td>
+          <td>(</td>
+          <td class="paramtype">const Vector2f &amp;</td>          <td class="paramname"><span class="paramname"><em>mousePos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad41aeaafb3e4c8632a313f4d729c3561" name="ad41aeaafb3e4c8632a313f4d729c3561"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad41aeaafb3e4c8632a313f4d729c3561">&#9670;&#160;</a></span>laplacianPickVert_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::laplacianPickVert_ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointOnFace.html">PointOnFace</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pick</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classMR_1_1Laplacian.html">Laplacian</a>. </p>
+
+</div>
+</div>
+<a id="a33c798997c7d3436ab160f4c1dc6009e" name="a33c798997c7d3436ab160f4c1dc6009e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33c798997c7d3436ab160f4c1dc6009e">&#9670;&#160;</a></span>onMouseDown_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API bool MR::SurfaceManipulationWidget::onMouseDown_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../namespaceMR.html#a13f98b7840e7298925ef1770b7cdb62d">MouseButton</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>modifiers</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>start modifying mesh surface </p>
+
+</div>
+</div>
+<a id="ab7e117d491cc1bbee8e7a16a851943c8" name="ab7e117d491cc1bbee8e7a16a851943c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7e117d491cc1bbee8e7a16a851943c8">&#9670;&#160;</a></span>onMouseMove_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API bool MR::SurfaceManipulationWidget::onMouseMove_ </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>mouse_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>mouse_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>update </p>
+
+</div>
+</div>
+<a id="a5a6ffbc1bd572579e06797db251f2859" name="a5a6ffbc1bd572579e06797db251f2859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a6ffbc1bd572579e06797db251f2859">&#9670;&#160;</a></span>onMouseUp_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API bool MR::SurfaceManipulationWidget::onMouseUp_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" href="../namespaceMR.html#a13f98b7840e7298925ef1770b7cdb62d">MouseButton</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>modifiers</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stop modifying mesh surface, generate history action </p>
+
+</div>
+</div>
+<a id="ac630e539a99b5bafb846ed70cae75f35" name="ac630e539a99b5bafb846ed70cae75f35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac630e539a99b5bafb846ed70cae75f35">&#9670;&#160;</a></span>palette()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1Palette.html">Palette</a> &amp; MR::SurfaceManipulationWidget::palette </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get palette used for visualization point shifts </p>
+
+</div>
+</div>
+<a id="a96de0be0839e0a27813a5cf42983d280" name="a96de0be0839e0a27813a5cf42983d280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96de0be0839e0a27813a5cf42983d280">&#9670;&#160;</a></span>postDraw_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::postDraw_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>need to visualize bad region (draw grey circle) </p>
+
+</div>
+</div>
+<a id="a6bf4b908832273c2d2b0dff19ba3eddc" name="a6bf4b908832273c2d2b0dff19ba3eddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf4b908832273c2d2b0dff19ba3eddc">&#9670;&#160;</a></span>reallocData_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::reallocData_ </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b49dc6133efe789f4fa17bb75f3641c" name="a8b49dc6133efe789f4fa17bb75f3641c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b49dc6133efe789f4fa17bb75f3641c">&#9670;&#160;</a></span>removeLastStableObjMesh_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::removeLastStableObjMesh_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5cb57f3a962333b146ea7b607f88fc8e" name="a5cb57f3a962333b146ea7b607f88fc8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cb57f3a962333b146ea7b607f88fc8e">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::reset </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reset widget state </p>
+
+</div>
+</div>
+<a id="a87e780495d7aae0fc12390c68b58631d" name="a87e780495d7aae0fc12390c68b58631d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87e780495d7aae0fc12390c68b58631d">&#9670;&#160;</a></span>resetConnections_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::resetConnections_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25e49cf9c1e37ef211bba3608e20b972" name="a25e49cf9c1e37ef211bba3608e20b972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e49cf9c1e37ef211bba3608e20b972">&#9670;&#160;</a></span>sameValidVerticesAsInOriginMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API bool MR::SurfaceManipulationWidget::sameValidVerticesAsInOriginMesh </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>checks for a one-to-one correspondence between the vertices of the original grid and the modified one </p>
+
+</div>
+</div>
+<a id="ae948213111d10c051644135fdc8202ee" name="ae948213111d10c051644135fdc8202ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae948213111d10c051644135fdc8202ee">&#9670;&#160;</a></span>setDeviationCalculationMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::setDeviationCalculationMethod </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">DeviationCalculationMethod</a></td>          <td class="paramname"><span class="paramname"><em>method</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set method for calculating mesh changes </p>
+
+</div>
+</div>
+<a id="a18aa909790d847163a6e7d2ad4ed145a" name="a18aa909790d847163a6e7d2ad4ed145a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18aa909790d847163a6e7d2ad4ed145a">&#9670;&#160;</a></span>setEditOnlyCodirectedSurface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::setEditOnlyCodirectedSurface </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>edit</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>restricts editable area to vertices whose normals look into the same half-space as normal under cursor </p>
+
+</div>
+</div>
+<a id="a93366e4a5e29c99eca29d636b62f11f8" name="a93366e4a5e29c99eca29d636b62f11f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93366e4a5e29c99eca29d636b62f11f8">&#9670;&#160;</a></span>setFixedRegion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::setFixedRegion </td>
+          <td>(</td>
+          <td class="paramtype">const FaceBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>region</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>lock the mesh region (vertices in this region cannot be moved, added or deleted) </p><dl class="section note"><dt>Note</dt><dd>boundary edges can be splitted to improve quality of the patch </dd></dl>
+
+</div>
+</div>
+<a id="afd5d519105a1e182ae6cf1677ea9d415" name="afd5d519105a1e182ae6cf1677ea9d415"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd5d519105a1e182ae6cf1677ea9d415">&#9670;&#160;</a></span>setIgnoreOcclusion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::setIgnoreOcclusion </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>ignore</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>allow the user to edit parts of object that are hidden in the current view by other objects </p>
+
+</div>
+</div>
+<a id="a080d25b56fe008a5917ca1d4ccc0b4d3" name="a080d25b56fe008a5917ca1d4ccc0b4d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a080d25b56fe008a5917ca1d4ccc0b4d3">&#9670;&#160;</a></span>setSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::setSettings </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html">Settings</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>settings</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set widget settings (mesh change settings) </p>
+
+</div>
+</div>
+<a id="a70ba5734344437097ab6791ef9f24943" name="a70ba5734344437097ab6791ef9f24943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70ba5734344437097ab6791ef9f24943">&#9670;&#160;</a></span>updateDistancesAndRegion_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateDistancesAndRegion_ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertScalars &amp;</td>          <td class="paramname"><span class="paramname"><em>distances</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>region</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VertBitSet *</td>          <td class="paramname"><span class="paramname"><em>untouchable</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abf2e20a55a28b2f567d2c8197674fd9d" name="abf2e20a55a28b2f567d2c8197674fd9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2e20a55a28b2f567d2c8197674fd9d">&#9670;&#160;</a></span>updateRegion_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateRegion_ </td>
+          <td>(</td>
+          <td class="paramtype">const Vector2f &amp;</td>          <td class="paramname"><span class="paramname"><em>mousePos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48b4a6109c413aa4b50e445d75db016a" name="a48b4a6109c413aa4b50e445d75db016a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48b4a6109c413aa4b50e445d75db016a">&#9670;&#160;</a></span>updateRegionUVs_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateRegionUVs_ </td>
+          <td>(</td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>region</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae60bdd11677d2000b6deeb48ddfe3d6f" name="ae60bdd11677d2000b6deeb48ddfe3d6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae60bdd11677d2000b6deeb48ddfe3d6f">&#9670;&#160;</a></span>updateTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::updateTexture </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>update texture used for colorize surface (use after change colorMap in palette) </p>
+
+</div>
+</div>
+<a id="ae4b9515fa9dae25aae35292c7e2b87e6" name="ae4b9515fa9dae25aae35292c7e2b87e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4b9515fa9dae25aae35292c7e2b87e6">&#9670;&#160;</a></span>updateUVmap_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateUVmap_ </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>set</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>wholeMesh</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac926b09e4e210e422759de45d1bf1524" name="ac926b09e4e210e422759de45d1bf1524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac926b09e4e210e422759de45d1bf1524">&#9670;&#160;</a></span>updateUVs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRVIEWER_API void MR::SurfaceManipulationWidget::updateUVs </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>update texture uv coords used for colorize surface (use after change ranges in palette) </p>
+
+</div>
+</div>
+<a id="a8d43ee87f7e0a5475028a3d1b0ba4940" name="a8d43ee87f7e0a5475028a3d1b0ba4940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d43ee87f7e0a5475028a3d1b0ba4940">&#9670;&#160;</a></span>updateValueChanges_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateValueChanges_ </td>
+          <td>(</td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>region</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa523360f594c4085afd84c62654681d4" name="aa523360f594c4085afd84c62654681d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa523360f594c4085afd84c62654681d4">&#9670;&#160;</a></span>updateValueChangesExactDistance_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateValueChangesExactDistance_ </td>
+          <td>(</td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>region</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7d88774175c7d5272ce114c8f7ec8d4" name="af7d88774175c7d5272ce114c8f7ec8d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d88774175c7d5272ce114c8f7ec8d4">&#9670;&#160;</a></span>updateValueChangesPointToPlane_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateValueChangesPointToPlane_ </td>
+          <td>(</td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>region</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad651996bd721dcebc5e4a9da9d307617" name="ad651996bd721dcebc5e4a9da9d307617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad651996bd721dcebc5e4a9da9d307617">&#9670;&#160;</a></span>updateValueChangesPointToPoint_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateValueChangesPointToPoint_ </td>
+          <td>(</td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>region</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd37fd93e8c51f4037dda6a9b72ee3d7" name="afd37fd93e8c51f4037dda6a9b72ee3d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd37fd93e8c51f4037dda6a9b72ee3d7">&#9670;&#160;</a></span>updateVizualizeSelection_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MR::SurfaceManipulationWidget::updateVizualizeSelection_ </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a99fb8181934e4dd3ab25d74b4a21de94" name="a99fb8181934e4dd3ab25d74b4a21de94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99fb8181934e4dd3ab25d74b4a21de94">&#9670;&#160;</a></span>activePickedVertices_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertBitSet MR::SurfaceManipulationWidget::activePickedVertices_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>vertices that are considered under mouse in curernt frame (could be many in case of fast mouse mouvement) </p>
+
+</div>
+</div>
+<a id="a09c56116fa4c39bcc7554e4142816027" name="a09c56116fa4c39bcc7554e4142816027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c56116fa4c39bcc7554e4142816027">&#9670;&#160;</a></span>appendHistoryAction_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::appendHistoryAction_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>true if historyAction_ is prepared but not yet appended to <a class="el" href="classMR_1_1HistoryStore.html" title="This class stores history stack for undo/redo.">HistoryStore</a>, which is done on first mouse move </p>
+
+</div>
+</div>
+<a id="ab29aa143377b68d247fab12b0da55a6a" name="ab29aa143377b68d247fab12b0da55a6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab29aa143377b68d247fab12b0da55a6a">&#9670;&#160;</a></span>badRegion_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::badRegion_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>need to save settings in re-initial </p>
+
+</div>
+</div>
+<a id="acea1c4613933b5524111e4ac139eb1c9" name="acea1c4613933b5524111e4ac139eb1c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acea1c4613933b5524111e4ac139eb1c9">&#9670;&#160;</a></span>changedRegion_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertBitSet MR::SurfaceManipulationWidget::changedRegion_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a184c41be698549192241c93c8cb1a573" name="a184c41be698549192241c93c8cb1a573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a184c41be698549192241c93c8cb1a573">&#9670;&#160;</a></span>connectionsInitialized_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::connectionsInitialized_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f7ed13fa0a8080d470fade319e360f7" name="a4f7ed13fa0a8080d470fade319e360f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f7ed13fa0a8080d470fade319e360f7">&#9670;&#160;</a></span>deviationCalculationMethod_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a07fc1d71375854270d1a16b8d06209f4">DeviationCalculationMethod</a> MR::SurfaceManipulationWidget::deviationCalculationMethod_ = <a class="el" href="#a07fc1d71375854270d1a16b8d06209f4ac93a47dc243a30fb1778ef562c03732c">DeviationCalculationMethod::ExactDistance</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aefb48658b014a85090a083256f594b26" name="aefb48658b014a85090a083256f594b26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefb48658b014a85090a083256f594b26">&#9670;&#160;</a></span>editingDistanceMap_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertScalars MR::SurfaceManipulationWidget::editingDistanceMap_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03c8e502f4a92fa8e57e0d50ed97524a" name="a03c8e502f4a92fa8e57e0d50ed97524a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03c8e502f4a92fa8e57e0d50ed97524a">&#9670;&#160;</a></span>editOnlyCodirectedSurface_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::editOnlyCodirectedSurface_ = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08839c74598549c345ed5f06ffaa769f" name="a08839c74598549c345ed5f06ffaa769f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08839c74598549c345ed5f06ffaa769f">&#9670;&#160;</a></span>enableDeviationTexture_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::enableDeviationTexture_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76be206635ab7abc679ccdad3f0ab7e8" name="a76be206635ab7abc679ccdad3f0ab7e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76be206635ab7abc679ccdad3f0ab7e8">&#9670;&#160;</a></span>firstInit_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::firstInit_ = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc7693d8223133cb63b0540ec58107aa" name="acc7693d8223133cb63b0540ec58107aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7693d8223133cb63b0540ec58107aa">&#9670;&#160;</a></span>generalEditingRegion_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertBitSet MR::SurfaceManipulationWidget::generalEditingRegion_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>united region of tool application since the last mouse down </p>
+
+</div>
+</div>
+<a id="a646602a8d3e1d1781c7aa8ed9b2050e3" name="a646602a8d3e1d1781c7aa8ed9b2050e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a646602a8d3e1d1781c7aa8ed9b2050e3">&#9670;&#160;</a></span>historyAction_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;SmartChangeMeshPointsAction&gt; MR::SurfaceManipulationWidget::historyAction_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c958ed29a4e3f960ce7aab676126adb" name="a8c958ed29a4e3f960ce7aab676126adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c958ed29a4e3f960ce7aab676126adb">&#9670;&#160;</a></span>ignoreOcclusion_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::ignoreOcclusion_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>allow the user to edit parts of object that are hidden in the current view by other objects </p>
+
+</div>
+</div>
+<a id="a45c714522ca37331bf7eef51f07139fd" name="a45c714522ca37331bf7eef51f07139fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45c714522ca37331bf7eef51f07139fd">&#9670;&#160;</a></span>laplacian_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classMR_1_1Laplacian.html">Laplacian</a>&gt; MR::SurfaceManipulationWidget::laplacian_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4fd8214477b4cb504db49be1146ed47" name="aa4fd8214477b4cb504db49be1146ed47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4fd8214477b4cb504db49be1146ed47">&#9670;&#160;</a></span>lastStableObjMesh_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a>&gt; MR::SurfaceManipulationWidget::lastStableObjMesh_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4636a687b93fa094ea26c634950fee2a" name="a4636a687b93fa094ea26c634950fee2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4636a687b93fa094ea26c634950fee2a">&#9670;&#160;</a></span>lastStableValueChanges_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertScalars MR::SurfaceManipulationWidget::lastStableValueChanges_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19b5f418f871baaab19f8b61b09a900a" name="a19b5f418f871baaab19f8b61b09a900a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19b5f418f871baaab19f8b61b09a900a">&#9670;&#160;</a></span>meshChangedConnection_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::signals2::scoped_connection MR::SurfaceManipulationWidget::meshChangedConnection_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c9ed0bdb3a5f708f5d1da2cc0ab3c4f" name="a3c9ed0bdb3a5f708f5d1da2cc0ab3c4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c9ed0bdb3a5f708f5d1da2cc0ab3c4f">&#9670;&#160;</a></span>minRadius_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MR::SurfaceManipulationWidget::minRadius_ = 1.f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9cf7388fbbb8c4053cd1f1403584d2d" name="af9cf7388fbbb8c4053cd1f1403584d2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9cf7388fbbb8c4053cd1f1403584d2d">&#9670;&#160;</a></span>mousePos_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2f MR::SurfaceManipulationWidget::mousePos_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>mouse position of last updateRegion_ </p>
+
+</div>
+</div>
+<a id="a2bce77a98a1b42394a4f68d72bcb1637" name="a2bce77a98a1b42394a4f68d72bcb1637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bce77a98a1b42394a4f68d72bcb1637">&#9670;&#160;</a></span>mousePressed_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::mousePressed_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>in selected region less than 3 points </p>
+
+</div>
+</div>
+<a id="a83f58ee4ef74ddd5127a9de59ad0658e" name="a83f58ee4ef74ddd5127a9de59ad0658e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f58ee4ef74ddd5127a9de59ad0658e">&#9670;&#160;</a></span>obj_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classMR_1_1ObjectMesh.html">ObjectMesh</a>&gt; MR::SurfaceManipulationWidget::obj_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6d7a49981ff378d5f791c4ec36bc73b" name="ac6d7a49981ff378d5f791c4ec36bc73b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6d7a49981ff378d5f791c4ec36bc73b">&#9670;&#160;</a></span>originalMesh_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="structMR_1_1Mesh.html">Mesh</a>&gt; MR::SurfaceManipulationWidget::originalMesh_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>original input mesh </p>
+
+</div>
+</div>
+<a id="ab48b92dfb4eab8bf8e44861c6b4d3751" name="ab48b92dfb4eab8bf8e44861c6b4d3751"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab48b92dfb4eab8bf8e44861c6b4d3751">&#9670;&#160;</a></span>ownMeshChangedSignal_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::ownMeshChangedSignal_ = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3853225f96fef25c2dbce20227c54c7d" name="a3853225f96fef25c2dbce20227c54c7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3853225f96fef25c2dbce20227c54c7d">&#9670;&#160;</a></span>palette_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classMR_1_1Palette.html">Palette</a>&gt; MR::SurfaceManipulationWidget::palette_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36f9a86b24ef8363fa101445a7131338" name="a36f9a86b24ef8363fa101445a7131338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f9a86b24ef8363fa101445a7131338">&#9670;&#160;</a></span>pointsShift_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertScalars MR::SurfaceManipulationWidget::pointsShift_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93cf79c946234166435c0c26b7334a74" name="a93cf79c946234166435c0c26b7334a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93cf79c946234166435c0c26b7334a74">&#9670;&#160;</a></span>sameValidVerticesAsInOriginMesh_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MR::SurfaceManipulationWidget::sameValidVerticesAsInOriginMesh_ = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1470ce9a66bc6a7554b36d69c81102e1" name="a1470ce9a66bc6a7554b36d69c81102e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1470ce9a66bc6a7554b36d69c81102e1">&#9670;&#160;</a></span>settings_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMR_1_1SurfaceManipulationWidget_1_1Settings.html">Settings</a> MR::SurfaceManipulationWidget::settings_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2bb3cc2556966f7a514fefa8774cf9b9" name="a2bb3cc2556966f7a514fefa8774cf9b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bb3cc2556966f7a514fefa8774cf9b9">&#9670;&#160;</a></span>singleEditingRegion_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertBitSet MR::SurfaceManipulationWidget::singleEditingRegion_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>current (under the cursor) region of tool application </p>
+
+</div>
+</div>
+<a id="a07b29d80acee8bb71f3b36cf6f3c61d3" name="a07b29d80acee8bb71f3b36cf6f3c61d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07b29d80acee8bb71f3b36cf6f3c61d3">&#9670;&#160;</a></span>storedDown_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2i MR::SurfaceManipulationWidget::storedDown_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>initial position of fixed vertex </p>
+
+</div>
+</div>
+<a id="a49f49c64ee7dbba1fc0f33d9b4710f54" name="a49f49c64ee7dbba1fc0f33d9b4710f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49f49c64ee7dbba1fc0f33d9b4710f54">&#9670;&#160;</a></span>timePoint_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::time_point&lt;std::chrono::high_resolution_clock&gt; MR::SurfaceManipulationWidget::timePoint_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3fb404481401039261c3c4d8d7272b08" name="a3fb404481401039261c3c4d8d7272b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fb404481401039261c3c4d8d7272b08">&#9670;&#160;</a></span>touchVertId_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertId MR::SurfaceManipulationWidget::touchVertId_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classMR_1_1Laplacian.html">Laplacian</a>. </p>
+
+</div>
+</div>
+<a id="a90ca984430afc6677edfa65a39a5d5bb" name="a90ca984430afc6677edfa65a39a5d5bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90ca984430afc6677edfa65a39a5d5bb">&#9670;&#160;</a></span>touchVertIniPos_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3f MR::SurfaceManipulationWidget::touchVertIniPos_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>we fix this vertex in <a class="el" href="classMR_1_1Laplacian.html">Laplacian</a> and move it manually </p>
+
+</div>
+</div>
+<a id="aa0fd16498ab8c5a8415556c1e670724b" name="aa0fd16498ab8c5a8415556c1e670724b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0fd16498ab8c5a8415556c1e670724b">&#9670;&#160;</a></span>unchangeableVerts_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertBitSet MR::SurfaceManipulationWidget::unchangeableVerts_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7a2498fe16f6962cd02e3789909ab03" name="ac7a2498fe16f6962cd02e3789909ab03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7a2498fe16f6962cd02e3789909ab03">&#9670;&#160;</a></span>unknownSign_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertBitSet MR::SurfaceManipulationWidget::unknownSign_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>cached data to avoid reallocating memory </p>
+
+</div>
+</div>
+<a id="a448684abe0f6d4ad9d419eed84251565" name="a448684abe0f6d4ad9d419eed84251565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a448684abe0f6d4ad9d419eed84251565">&#9670;&#160;</a></span>valueChanges_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertScalars MR::SurfaceManipulationWidget::valueChanges_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af47cba96ac32e05d6105943185dc431b" name="af47cba96ac32e05d6105943185dc431b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af47cba96ac32e05d6105943185dc431b">&#9670;&#160;</a></span>visualizationDistanceMap_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertScalars MR::SurfaceManipulationWidget::visualizationDistanceMap_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56cce88aefa27259841a2dee896b8812" name="a56cce88aefa27259841a2dee896b8812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56cce88aefa27259841a2dee896b8812">&#9670;&#160;</a></span>visualizationRegion_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertBitSet MR::SurfaceManipulationWidget::visualizationRegion_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>vertices of triangles partially or fully highlighted with red </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="MRSurfaceManipulationWidget_8h_source.html">MRSurfaceManipulationWidget.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>MR</b></li><li class="navelem"><a class="el" href="classMR_1_1SurfaceManipulationWidget.html">SurfaceManipulationWidget</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

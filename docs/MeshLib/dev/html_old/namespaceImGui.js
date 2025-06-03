@@ -1,0 +1,47 @@
+var namespaceImGui =
+[
+    [ "CustomStatePluginWindowParameters", "structImGui_1_1CustomStatePluginWindowParameters.html", "structImGui_1_1CustomStatePluginWindowParameters" ],
+    [ "HistogramGridLine", "structImGui_1_1HistogramGridLine.html", "structImGui_1_1HistogramGridLine" ],
+    [ "MultiDragRes", "structImGui_1_1MultiDragRes.html", "structImGui_1_1MultiDragRes" ],
+    [ "PaletteChanges", "namespaceImGui.html#a27ee05a9e60f4c26c369f0331134f682", [
+      [ "None", "namespaceImGui.html#a27ee05a9e60f4c26c369f0331134f682a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "Texture", "namespaceImGui.html#a27ee05a9e60f4c26c369f0331134f682aa3e8ae43188ae76d38f414b2bdb0077b", null ],
+      [ "Ranges", "namespaceImGui.html#a27ee05a9e60f4c26c369f0331134f682a92711ef5b0215a076fef4a3abbfc2258", null ],
+      [ "All", "namespaceImGui.html#a27ee05a9e60f4c26c369f0331134f682ab1c94ca2fbc3e78fc30069c8d0f01680", null ]
+    ] ],
+    [ "PlaneWidgetFlags", "namespaceImGui.html#a265e606cad7268f09dacbeeb9b6be3d5", [
+      [ "None", "namespaceImGui.html#a265e606cad7268f09dacbeeb9b6be3d5a6adf97f83acf6453d4a6a4b1070f3754", null ],
+      [ "DisableVisibility", "namespaceImGui.html#a265e606cad7268f09dacbeeb9b6be3d5a34b1ae6edf2999f3e5089ef71bd49dac", null ]
+    ] ],
+    [ "BeginCustomStatePlugin", "namespaceImGui.html#a8686baf36ce377f9e5cd6aea4b1d4005", null ],
+    [ "BeginModalNoAnimation", "namespaceImGui.html#a959274b0c45550ab3c50db7f9fbb2628", null ],
+    [ "BeginStatePlugin", "namespaceImGui.html#a23ae6006298ef80c1e04a1ea1b49dabf", null ],
+    [ "Checkbox", "namespaceImGui.html#a01e8908c9ff42e3510168251a97f1d48", null ],
+    [ "Combo", "namespaceImGui.html#ad58fef2244057ff2ad7eb1877f3b813a", null ],
+    [ "Combo", "namespaceImGui.html#a023d8107acf5b52a1594c2b935b824f0", null ],
+    [ "DragFloatValid", "namespaceImGui.html#a28e1c155304849c7d19acd541112fd83", null ],
+    [ "DragFloatValid2", "namespaceImGui.html#af6cde4f0c7ce90fbd8f1e25123620cca", null ],
+    [ "DragFloatValid3", "namespaceImGui.html#a1518948fa064c73b105776a73da476dc", null ],
+    [ "DragFloatValidLineWidth", "namespaceImGui.html#a65c23b1e96e6b6498e84ce4cc36c8b0a", null ],
+    [ "DragInputInt", "namespaceImGui.html#a2e673d54604370c06cb076d0449831a3", null ],
+    [ "DragIntValid", "namespaceImGui.html#aed7e188bef741b7dadcd0903a2453748", null ],
+    [ "DragIntValid3", "namespaceImGui.html#a05c747c1c3e6b5e5f9435452360a521f", null ],
+    [ "EndCustomStatePlugin", "namespaceImGui.html#a7e59143b9ee934b74838c5c3b80c6559", null ],
+    [ "GetDownPosition", "namespaceImGui.html#a6dfe914b3199c96486e9fc7b82138777", null ],
+    [ "getExpSpeed", "namespaceImGui.html#a22263f205e7e3988ff6be4e152a963a6", null ],
+    [ "GetImagePointerCoord", "namespaceImGui.html#a1fb7653d1377ce1f2dd7a8f9d1057615", null ],
+    [ "GetTitleBarHeght", "namespaceImGui.html#a660b386cc39248222a1d8dd3eec60024", null ],
+    [ "Image", "namespaceImGui.html#ad271bb43979f12d68480619505b2900f", null ],
+    [ "Image", "namespaceImGui.html#a35ab4450ec9a2caa24b029e5c5c11ecb", null ],
+    [ "InputIntBitSet", "namespaceImGui.html#acd8cc938250148aa8872b289ee37a885", null ],
+    [ "InputIntValid", "namespaceImGui.html#a4e3833bf7761da4ac20ca9397fbdbc16", null ],
+    [ "InputText", "namespaceImGui.html#a392168d28bc4973532ead37f8061121e", null ],
+    [ "Link", "namespaceImGui.html#aabb908deed7006b50c7ad6ec124126a7", null ],
+    [ "ListBox", "namespaceImGui.html#a378834d8803566841b144ddf878ef623", null ],
+    [ "ModalBigTitle", "namespaceImGui.html#a5e04ca06524f269a621e6ca35c63d70a", null ],
+    [ "ModalExitButton", "namespaceImGui.html#a39a8802226377b3d155788257f848b1a", null ],
+    [ "Palette", "namespaceImGui.html#a57a1654a1953301d7dca389a0dba5215", null ],
+    [ "Plane", "namespaceImGui.html#af082cf53c058ecd0adf21f0115b11121", null ],
+    [ "PlotCustomHistogram", "namespaceImGui.html#aab9ea83bb6bf2bc7f7bb8d0c582bd9a9", null ],
+    [ "Spinner", "namespaceImGui.html#a2965953a64a756c9e40bf0c620028b06", null ]
+];

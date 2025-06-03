@@ -1,0 +1,267 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRPartMapping.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRPartMapping_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRPartMapping.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRPartMapping_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMapOrHashMap_8h.html">MRMapOrHashMap.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespaceRef" href="../namespaceMR.html">MR</a></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html">    9</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1PartMapping.html">PartMapping</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">// source.id -&gt; target.id</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// each map here can be either dense vector or hash map, the type is set by the user and preserved by mesh copying functions;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// dense maps are better by speed and memory when source mesh is packed and must be copied entirely;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">// hash maps minimize memory consumption when only a small portion of source mesh is copied</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html#a73600646d6908faffc3c59ca5ad651ea">   15</a></span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">FaceMapOrHashMap</a> * <a class="code hl_variable" href="structMR_1_1PartMapping.html#a73600646d6908faffc3c59ca5ad651ea">src2tgtFaces</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html#af1b1858f450332378241a632d9186e89">   16</a></span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">VertMapOrHashMap</a> * <a class="code hl_variable" href="structMR_1_1PartMapping.html#af1b1858f450332378241a632d9186e89">src2tgtVerts</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html#a6c8e68b66d8c5359cbbd8724f09c6340">   17</a></span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">WholeEdgeMapOrHashMap</a> * <a class="code hl_variable" href="structMR_1_1PartMapping.html#a6c8e68b66d8c5359cbbd8724f09c6340">src2tgtEdges</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// target.id -&gt; source.id</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// dense vectors are better by speed and memory when target mesh was empty before copying</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html#af69dd39f60abdd4b769bb948a49a0737">   21</a></span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">FaceMapOrHashMap</a> * <a class="code hl_variable" href="structMR_1_1PartMapping.html#af69dd39f60abdd4b769bb948a49a0737">tgt2srcFaces</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html#a6061a5bd3cb7c34a5548ea2fd5bb23cc">   22</a></span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">VertMapOrHashMap</a> * <a class="code hl_variable" href="structMR_1_1PartMapping.html#a6061a5bd3cb7c34a5548ea2fd5bb23cc">tgt2srcVerts</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html#ad04e1ef358a87463840701926e9856c1">   23</a></span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">WholeEdgeMapOrHashMap</a> * <a class="code hl_variable" href="structMR_1_1PartMapping.html#ad04e1ef358a87463840701926e9856c1">tgt2srcEdges</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structMR_1_1PartMapping.html#a11973c92bf543a36396d98ec83d6ca52">   26</a></span>    <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="structMR_1_1PartMapping.html#a11973c92bf543a36396d98ec83d6ca52">clear</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classMR_1_1Src2TgtMaps.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="classMR_1_1Src2TgtMaps.html">Src2TgtMaps</a></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classMR_1_1Src2TgtMaps.html#a8c21977780c1e2b5edad83656984e28e">   33</a></span>    <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_function" href="classMR_1_1Src2TgtMaps.html#a8c21977780c1e2b5edad83656984e28e">Src2TgtMaps</a>( FaceMap * outFmap, VertMap * outVmap, WholeEdgeMap * outEmap );</div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classMR_1_1Src2TgtMaps.html#adbdef2e4700ebf96a48c69476a982066">   34</a></span>    [[deprecated]] <a class="code hl_function" href="classMR_1_1Src2TgtMaps.html#adbdef2e4700ebf96a48c69476a982066">Src2TgtMaps</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;, FaceMap * outFmap, VertMap * outVmap, WholeEdgeMap * outEmap )</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        : <a class="code hl_class" href="classMR_1_1Src2TgtMaps.html">Src2TgtMaps</a>( outFmap, outVmap, outEmap ) {}</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classMR_1_1Src2TgtMaps.html#a88278ec852d61abb0ae5c42168d73175">   36</a></span>    <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_function" href="classMR_1_1Src2TgtMaps.html#a88278ec852d61abb0ae5c42168d73175">~Src2TgtMaps</a>(); <span class="comment">// maps are moved back to user here</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classMR_1_1Src2TgtMaps.html#abeb0d23b26b0870de6d5b09538295e27">   38</a></span>    <span class="keyword">operator</span> <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1PartMapping.html">PartMapping</a> &amp;() <span class="keyword">const</span> { <span class="keywordflow">return</span> map_; }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classMR_1_1Src2TgtMaps.html#a1408fe5390b44910ee7b305971ff1943">   39</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1PartMapping.html">PartMapping</a> &amp; <a class="code hl_function" href="classMR_1_1Src2TgtMaps.html#a1408fe5390b44910ee7b305971ff1943">getPartMapping</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> map_; }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    FaceMap * outFmap_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    VertMap * outVmap_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    WholeEdgeMap * outEmap_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_struct" href="structMR_1_1PartMapping.html">PartMapping</a> map_;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">FaceMapOrHashMap</a> src2tgtFaces_;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">VertMapOrHashMap</a> src2tgtVerts_;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">WholeEdgeMapOrHashMap</a> src2tgtEdges_;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">using </span>HashToVectorMappingConverter [[deprecated]] = Src2TgtMaps;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="};">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classMR_1_1Tgt2SrcMaps.html">   54</a></span><span class="keyword">class </span><a class="code hl_class" href="classMR_1_1Tgt2SrcMaps.html">Tgt2SrcMaps</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classMR_1_1Tgt2SrcMaps.html#aa3682117ec9b9d0ef8ecb9b276b92eb9">   57</a></span>    <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_function" href="classMR_1_1Tgt2SrcMaps.html#aa3682117ec9b9d0ef8ecb9b276b92eb9">Tgt2SrcMaps</a>( FaceMap * outFmap, VertMap * outVmap, WholeEdgeMap * outEmap );</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classMR_1_1Tgt2SrcMaps.html#a14c3003ffc8403f5dea22328cb1eb28e">   58</a></span>    <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_function" href="classMR_1_1Tgt2SrcMaps.html#a14c3003ffc8403f5dea22328cb1eb28e">~Tgt2SrcMaps</a>(); <span class="comment">// maps are moved back to user here</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classMR_1_1Tgt2SrcMaps.html#a725d82739c07f928cd88750f4d3d6583">   60</a></span>    <span class="keyword">operator</span> <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1PartMapping.html">PartMapping</a> &amp;() <span class="keyword">const</span> { <span class="keywordflow">return</span> map_; }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classMR_1_1Tgt2SrcMaps.html#a8266fef859ccf3d06f819a2681185063">   61</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1PartMapping.html">PartMapping</a> &amp; <a class="code hl_function" href="classMR_1_1Tgt2SrcMaps.html#a8266fef859ccf3d06f819a2681185063">getPartMapping</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> map_; }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    FaceMap * outFmap_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    VertMap * outVmap_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    WholeEdgeMap * outEmap_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_struct" href="structMR_1_1PartMapping.html">PartMapping</a> map_;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">FaceMapOrHashMap</a> tgt2srcFaces_;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">VertMapOrHashMap</a> tgt2srcVerts_;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_class" href="structMR_1_1MapOrHashMap.html">WholeEdgeMapOrHashMap</a> tgt2srcEdges_;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <span class="comment">//namespace MR</span></div>
+<div class="ttc" id="aMRMapOrHashMap_8h_html"><div class="ttname"><a href="MRMapOrHashMap_8h.html">MRMapOrHashMap.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRMeshFwd_8h_html_a08ff09fd7e75c029b08cc255b0734300"><div class="ttname"><a href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a></div><div class="ttdeci">#define MRMESH_API</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:79</div></div>
+<div class="ttc" id="aclassMR_1_1MeshTopology_html"><div class="ttname"><a href="classMR_1_1MeshTopology.html">MR::MeshTopology</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTopology.h:18</div></div>
+<div class="ttc" id="aclassMR_1_1Src2TgtMaps_html"><div class="ttname"><a href="classMR_1_1Src2TgtMaps.html">MR::Src2TgtMaps</a></div><div class="ttdoc">use this adapter to call functions expecting PartMapping parameter to receive src2tgt dense maps</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:31</div></div>
+<div class="ttc" id="aclassMR_1_1Src2TgtMaps_html_a1408fe5390b44910ee7b305971ff1943"><div class="ttname"><a href="classMR_1_1Src2TgtMaps.html#a1408fe5390b44910ee7b305971ff1943">MR::Src2TgtMaps::getPartMapping</a></div><div class="ttdeci">const PartMapping &amp; getPartMapping() const</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:39</div></div>
+<div class="ttc" id="aclassMR_1_1Src2TgtMaps_html_a88278ec852d61abb0ae5c42168d73175"><div class="ttname"><a href="classMR_1_1Src2TgtMaps.html#a88278ec852d61abb0ae5c42168d73175">MR::Src2TgtMaps::~Src2TgtMaps</a></div><div class="ttdeci">MRMESH_API ~Src2TgtMaps()</div></div>
+<div class="ttc" id="aclassMR_1_1Src2TgtMaps_html_a8c21977780c1e2b5edad83656984e28e"><div class="ttname"><a href="classMR_1_1Src2TgtMaps.html#a8c21977780c1e2b5edad83656984e28e">MR::Src2TgtMaps::Src2TgtMaps</a></div><div class="ttdeci">MRMESH_API Src2TgtMaps(FaceMap *outFmap, VertMap *outVmap, WholeEdgeMap *outEmap)</div></div>
+<div class="ttc" id="aclassMR_1_1Src2TgtMaps_html_adbdef2e4700ebf96a48c69476a982066"><div class="ttname"><a href="classMR_1_1Src2TgtMaps.html#adbdef2e4700ebf96a48c69476a982066">MR::Src2TgtMaps::Src2TgtMaps</a></div><div class="ttdeci">Src2TgtMaps(const MeshTopology &amp;, FaceMap *outFmap, VertMap *outVmap, WholeEdgeMap *outEmap)</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:34</div></div>
+<div class="ttc" id="aclassMR_1_1Tgt2SrcMaps_html"><div class="ttname"><a href="classMR_1_1Tgt2SrcMaps.html">MR::Tgt2SrcMaps</a></div><div class="ttdoc">use this adapter to call functions expecting PartMapping parameter to receive tgt2src dense maps</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:55</div></div>
+<div class="ttc" id="aclassMR_1_1Tgt2SrcMaps_html_a14c3003ffc8403f5dea22328cb1eb28e"><div class="ttname"><a href="classMR_1_1Tgt2SrcMaps.html#a14c3003ffc8403f5dea22328cb1eb28e">MR::Tgt2SrcMaps::~Tgt2SrcMaps</a></div><div class="ttdeci">MRMESH_API ~Tgt2SrcMaps()</div></div>
+<div class="ttc" id="aclassMR_1_1Tgt2SrcMaps_html_a8266fef859ccf3d06f819a2681185063"><div class="ttname"><a href="classMR_1_1Tgt2SrcMaps.html#a8266fef859ccf3d06f819a2681185063">MR::Tgt2SrcMaps::getPartMapping</a></div><div class="ttdeci">const PartMapping &amp; getPartMapping() const</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:61</div></div>
+<div class="ttc" id="aclassMR_1_1Tgt2SrcMaps_html_aa3682117ec9b9d0ef8ecb9b276b92eb9"><div class="ttname"><a href="classMR_1_1Tgt2SrcMaps.html#aa3682117ec9b9d0ef8ecb9b276b92eb9">MR::Tgt2SrcMaps::Tgt2SrcMaps</a></div><div class="ttdeci">MRMESH_API Tgt2SrcMaps(FaceMap *outFmap, VertMap *outVmap, WholeEdgeMap *outEmap)</div></div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="../namespaceMR.html">MR</a></div></div>
+<div class="ttc" id="astructMR_1_1MapOrHashMap_html"><div class="ttname"><a href="structMR_1_1MapOrHashMap.html">MR::MapOrHashMap&lt; FaceId, FaceId &gt;</a></div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html"><div class="ttname"><a href="structMR_1_1PartMapping.html">MR::PartMapping</a></div><div class="ttdoc">mapping among elements of source mesh, from which a part is taken, and target mesh</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:10</div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html_a11973c92bf543a36396d98ec83d6ca52"><div class="ttname"><a href="structMR_1_1PartMapping.html#a11973c92bf543a36396d98ec83d6ca52">MR::PartMapping::clear</a></div><div class="ttdeci">MRMESH_API void clear()</div><div class="ttdoc">clears all member maps</div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html_a6061a5bd3cb7c34a5548ea2fd5bb23cc"><div class="ttname"><a href="structMR_1_1PartMapping.html#a6061a5bd3cb7c34a5548ea2fd5bb23cc">MR::PartMapping::tgt2srcVerts</a></div><div class="ttdeci">VertMapOrHashMap * tgt2srcVerts</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:22</div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html_a6c8e68b66d8c5359cbbd8724f09c6340"><div class="ttname"><a href="structMR_1_1PartMapping.html#a6c8e68b66d8c5359cbbd8724f09c6340">MR::PartMapping::src2tgtEdges</a></div><div class="ttdeci">WholeEdgeMapOrHashMap * src2tgtEdges</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:17</div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html_a73600646d6908faffc3c59ca5ad651ea"><div class="ttname"><a href="structMR_1_1PartMapping.html#a73600646d6908faffc3c59ca5ad651ea">MR::PartMapping::src2tgtFaces</a></div><div class="ttdeci">FaceMapOrHashMap * src2tgtFaces</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:15</div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html_ad04e1ef358a87463840701926e9856c1"><div class="ttname"><a href="structMR_1_1PartMapping.html#ad04e1ef358a87463840701926e9856c1">MR::PartMapping::tgt2srcEdges</a></div><div class="ttdeci">WholeEdgeMapOrHashMap * tgt2srcEdges</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:23</div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html_af1b1858f450332378241a632d9186e89"><div class="ttname"><a href="structMR_1_1PartMapping.html#af1b1858f450332378241a632d9186e89">MR::PartMapping::src2tgtVerts</a></div><div class="ttdeci">VertMapOrHashMap * src2tgtVerts</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:16</div></div>
+<div class="ttc" id="astructMR_1_1PartMapping_html_af69dd39f60abdd4b769bb948a49a0737"><div class="ttname"><a href="structMR_1_1PartMapping.html#af69dd39f60abdd4b769bb948a49a0737">MR::PartMapping::tgt2srcFaces</a></div><div class="ttdeci">FaceMapOrHashMap * tgt2srcFaces</div><div class="ttdef"><b>Definition</b> MRPartMapping.h:21</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRPartMapping_8h.html">MRPartMapping.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

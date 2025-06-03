@@ -1,0 +1,663 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.FillHoleParams Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1FillHoleParams.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1FillHoleParams-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.FillHoleParams Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1FillHoleParams_1_1MultipleEdgesResolveMode.html">MultipleEdgesResolveMode</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a6d100544ab02d1306844a3bc88aa502f" id="r_a6d100544ab02d1306844a3bc88aa502f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d100544ab02d1306844a3bc88aa502f">__init__</a> (self)</td></tr>
+<tr class="separator:a6d100544ab02d1306844a3bc88aa502f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ea60fb20536d5583c2926e150e9969b" id="r_a6ea60fb20536d5583c2926e150e9969b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ea60fb20536d5583c2926e150e9969b">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a> arg0)</td></tr>
+<tr class="separator:a6ea60fb20536d5583c2926e150e9969b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad97444f5fcc995296ff47af3acbabb5d" id="r_ad97444f5fcc995296ff47af3acbabb5d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad97444f5fcc995296ff47af3acbabb5d">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1FillHoleMetric.html">FillHoleMetric</a> <a class="el" href="#a8cd42154ff75ddd4ec91336d84716e7a">metric</a>, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> <a class="el" href="#a7c1e16ffc92fc76725b31d7450c23715">outNewFaces</a>, <a class="el" href="classmrmeshpy_1_1FillHoleParams_1_1MultipleEdgesResolveMode.html">FillHoleParams.MultipleEdgesResolveMode</a> <a class="el" href="#ac513e8639f3912c1eea0342af851ef62">multipleEdgesResolveMode</a>, bool <a class="el" href="#a24efeb586d736e95d23aa978bf229bde">makeDegenerateBand</a>, int <a class="el" href="#a1bc9c3f29de00e541e9f197aca75bdf7">maxPolygonSubdivisions</a>, <a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a> <a class="el" href="#a820474505533e74bf774d617d017df9b">stopBeforeBadTriangulation</a>)</td></tr>
+<tr class="separator:ad97444f5fcc995296ff47af3acbabb5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24efeb586d736e95d23aa978bf229bde" id="r_a24efeb586d736e95d23aa978bf229bde"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24efeb586d736e95d23aa978bf229bde">makeDegenerateBand</a> (self)</td></tr>
+<tr class="separator:a24efeb586d736e95d23aa978bf229bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3910a3a9e928527abc669454450d2927" id="r_a3910a3a9e928527abc669454450d2927"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3910a3a9e928527abc669454450d2927">makeDegenerateBand</a> (self, bool arg1)</td></tr>
+<tr class="separator:a3910a3a9e928527abc669454450d2927"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc9c3f29de00e541e9f197aca75bdf7" id="r_a1bc9c3f29de00e541e9f197aca75bdf7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bc9c3f29de00e541e9f197aca75bdf7">maxPolygonSubdivisions</a> (self)</td></tr>
+<tr class="separator:a1bc9c3f29de00e541e9f197aca75bdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c500d9b33dbffdbf9c3fb1836d6c8b7" id="r_a6c500d9b33dbffdbf9c3fb1836d6c8b7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c500d9b33dbffdbf9c3fb1836d6c8b7">maxPolygonSubdivisions</a> (self, int arg1)</td></tr>
+<tr class="separator:a6c500d9b33dbffdbf9c3fb1836d6c8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd42154ff75ddd4ec91336d84716e7a" id="r_a8cd42154ff75ddd4ec91336d84716e7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FillHoleMetric.html">FillHoleMetric</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cd42154ff75ddd4ec91336d84716e7a">metric</a> (self)</td></tr>
+<tr class="separator:a8cd42154ff75ddd4ec91336d84716e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b958606e3b0a79096f8e31eee880280" id="r_a5b958606e3b0a79096f8e31eee880280"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b958606e3b0a79096f8e31eee880280">metric</a> (self, <a class="el" href="classmrmeshpy_1_1FillHoleMetric.html">FillHoleMetric</a> arg1)</td></tr>
+<tr class="separator:a5b958606e3b0a79096f8e31eee880280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1e16ffc92fc76725b31d7450c23715" id="r_a7c1e16ffc92fc76725b31d7450c23715"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c1e16ffc92fc76725b31d7450c23715">outNewFaces</a> (self)</td></tr>
+<tr class="separator:a7c1e16ffc92fc76725b31d7450c23715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b1955dd009c972cae6589fb15731dd8" id="r_a2b1955dd009c972cae6589fb15731dd8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b1955dd009c972cae6589fb15731dd8">outNewFaces</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> arg1)</td></tr>
+<tr class="separator:a2b1955dd009c972cae6589fb15731dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a820474505533e74bf774d617d017df9b" id="r_a820474505533e74bf774d617d017df9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a820474505533e74bf774d617d017df9b">stopBeforeBadTriangulation</a> (self)</td></tr>
+<tr class="separator:a820474505533e74bf774d617d017df9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b9ce0146c7bb1f9abe344f521616fef" id="r_a3b9ce0146c7bb1f9abe344f521616fef"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b9ce0146c7bb1f9abe344f521616fef">stopBeforeBadTriangulation</a> (self, <a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a> arg1)</td></tr>
+<tr class="separator:a3b9ce0146c7bb1f9abe344f521616fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ac513e8639f3912c1eea0342af851ef62" id="r_ac513e8639f3912c1eea0342af851ef62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac513e8639f3912c1eea0342af851ef62">multipleEdgesResolveMode</a> .<a class="el" href="classmrmeshpy_1_1FillHoleParams_1_1MultipleEdgesResolveMode.html">MultipleEdgesResolveMode</a></td></tr>
+<tr class="separator:ac513e8639f3912c1eea0342af851ef62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a813121f8d0d1d1709c9dcc2299e88dae" id="r_a813121f8d0d1d1709c9dcc2299e88dae"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a813121f8d0d1d1709c9dcc2299e88dae">_offsetof_maxPolygonSubdivisions</a> = 112</td></tr>
+<tr class="separator:a813121f8d0d1d1709c9dcc2299e88dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a665b307ab2f3af91bd15decd11c5d76a" id="r_a665b307ab2f3af91bd15decd11c5d76a"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a665b307ab2f3af91bd15decd11c5d76a">_offsetof_metric</a> = 0</td></tr>
+<tr class="separator:a665b307ab2f3af91bd15decd11c5d76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a29eac524bac140a6f38c760093f69d" id="r_a6a29eac524bac140a6f38c760093f69d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a29eac524bac140a6f38c760093f69d">_offsetof_multipleEdgesResolveMode</a> = 104</td></tr>
+<tr class="separator:a6a29eac524bac140a6f38c760093f69d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af49215e2e15fcbd1772d5daa79c3c95d" id="r_af49215e2e15fcbd1772d5daa79c3c95d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af49215e2e15fcbd1772d5daa79c3c95d">_offsetof_outNewFaces</a> = 96</td></tr>
+<tr class="separator:af49215e2e15fcbd1772d5daa79c3c95d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a261661c3afcdacc0ef86c7fc087151b9" id="r_a261661c3afcdacc0ef86c7fc087151b9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a261661c3afcdacc0ef86c7fc087151b9">_offsetof_stopBeforeBadTriangulation</a> = 120</td></tr>
+<tr class="separator:a261661c3afcdacc0ef86c7fc087151b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::FillHoleParams
+
+\\struct MR::FillHoleParams
+\\brief Parameters structure for MR::fillHole\\n
+Structure has some options to control MR::fillHole
+
+\\sa \\ref fillHole
+\\sa \\ref FillHoleMetric
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6d100544ab02d1306844a3bc88aa502f" name="a6d100544ab02d1306844a3bc88aa502f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d100544ab02d1306844a3bc88aa502f">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a6ea60fb20536d5583c2926e150e9969b" name="a6ea60fb20536d5583c2926e150e9969b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ea60fb20536d5583c2926e150e9969b">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="ad97444f5fcc995296ff47af3acbabb5d" name="ad97444f5fcc995296ff47af3acbabb5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad97444f5fcc995296ff47af3acbabb5d">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FillHoleMetric.html">FillHoleMetric</a></td>          <td class="paramname"><span class="paramname"><em>metric</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>outNewFaces</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FillHoleParams_1_1MultipleEdgesResolveMode.html">FillHoleParams.MultipleEdgesResolveMode</a></td>          <td class="paramname"><span class="paramname"><em>multipleEdgesResolveMode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>makeDegenerateBand</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxPolygonSubdivisions</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a></td>          <td class="paramname"><span class="paramname"><em>stopBeforeBadTriangulation</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a24efeb586d736e95d23aa978bf229bde" name="a24efeb586d736e95d23aa978bf229bde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24efeb586d736e95d23aa978bf229bde">&#9670;&#160;</a></span>makeDegenerateBand() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.FillHoleParams.makeDegenerateBand </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">If true creates degenerate faces band around hole to have sharp angle visualization
+\\warning This flag bad for result topology, most likely you do not need it
+</pre> 
+</div>
+</div>
+<a id="a3910a3a9e928527abc669454450d2927" name="a3910a3a9e928527abc669454450d2927"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3910a3a9e928527abc669454450d2927">&#9670;&#160;</a></span>makeDegenerateBand() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.makeDegenerateBand </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1bc9c3f29de00e541e9f197aca75bdf7" name="a1bc9c3f29de00e541e9f197aca75bdf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bc9c3f29de00e541e9f197aca75bdf7">&#9670;&#160;</a></span>maxPolygonSubdivisions() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.FillHoleParams.maxPolygonSubdivisions </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">The maximum number of polygon subdivisions on a triangle and two smaller polygons,
+must be 2 or larger
+</pre> 
+</div>
+</div>
+<a id="a6c500d9b33dbffdbf9c3fb1836d6c8b7" name="a6c500d9b33dbffdbf9c3fb1836d6c8b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c500d9b33dbffdbf9c3fb1836d6c8b7">&#9670;&#160;</a></span>maxPolygonSubdivisions() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.maxPolygonSubdivisions </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8cd42154ff75ddd4ec91336d84716e7a" name="a8cd42154ff75ddd4ec91336d84716e7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cd42154ff75ddd4ec91336d84716e7a">&#9670;&#160;</a></span>metric() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FillHoleMetric.html">FillHoleMetric</a> mrmeshpy.FillHoleParams.metric </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Specifies triangulation metric\\n
+default for MR::fillHole: getCircumscribedFillMetric\\n
+\\sa \\ref FillHoleMetric
+</pre> 
+</div>
+</div>
+<a id="a5b958606e3b0a79096f8e31eee880280" name="a5b958606e3b0a79096f8e31eee880280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b958606e3b0a79096f8e31eee880280">&#9670;&#160;</a></span>metric() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.metric </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FillHoleMetric.html">FillHoleMetric</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c1e16ffc92fc76725b31d7450c23715" name="a7c1e16ffc92fc76725b31d7450c23715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c1e16ffc92fc76725b31d7450c23715">&#9670;&#160;</a></span>outNewFaces() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> mrmeshpy.FillHoleParams.outNewFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">If not nullptr accumulate new faces
+</pre> 
+</div>
+</div>
+<a id="a2b1955dd009c972cae6589fb15731dd8" name="a2b1955dd009c972cae6589fb15731dd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b1955dd009c972cae6589fb15731dd8">&#9670;&#160;</a></span>outNewFaces() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.outNewFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a820474505533e74bf774d617d017df9b" name="a820474505533e74bf774d617d017df9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a820474505533e74bf774d617d017df9b">&#9670;&#160;</a></span>stopBeforeBadTriangulation() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.FillHoleParams.stopBeforeBadTriangulation </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Input/output value, if it is present: 
+returns true if triangulation was bad and do not actually fill hole, 
+if triangulation is ok returns false; 
+if it is not present fill hole trivially in case of bad triangulation, (or leaves bad triangulation, depending on metric)
+</pre> 
+</div>
+</div>
+<a id="a3b9ce0146c7bb1f9abe344f521616fef" name="a3b9ce0146c7bb1f9abe344f521616fef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b9ce0146c7bb1f9abe344f521616fef">&#9670;&#160;</a></span>stopBeforeBadTriangulation() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FillHoleParams.stopBeforeBadTriangulation </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a813121f8d0d1d1709c9dcc2299e88dae" name="a813121f8d0d1d1709c9dcc2299e88dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a813121f8d0d1d1709c9dcc2299e88dae">&#9670;&#160;</a></span>_offsetof_maxPolygonSubdivisions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleParams._offsetof_maxPolygonSubdivisions = 112</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a665b307ab2f3af91bd15decd11c5d76a" name="a665b307ab2f3af91bd15decd11c5d76a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a665b307ab2f3af91bd15decd11c5d76a">&#9670;&#160;</a></span>_offsetof_metric</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleParams._offsetof_metric = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a29eac524bac140a6f38c760093f69d" name="a6a29eac524bac140a6f38c760093f69d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a29eac524bac140a6f38c760093f69d">&#9670;&#160;</a></span>_offsetof_multipleEdgesResolveMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleParams._offsetof_multipleEdgesResolveMode = 104</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af49215e2e15fcbd1772d5daa79c3c95d" name="af49215e2e15fcbd1772d5daa79c3c95d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49215e2e15fcbd1772d5daa79c3c95d">&#9670;&#160;</a></span>_offsetof_outNewFaces</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleParams._offsetof_outNewFaces = 96</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a261661c3afcdacc0ef86c7fc087151b9" name="a261661c3afcdacc0ef86c7fc087151b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a261661c3afcdacc0ef86c7fc087151b9">&#9670;&#160;</a></span>_offsetof_stopBeforeBadTriangulation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FillHoleParams._offsetof_stopBeforeBadTriangulation = 120</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac513e8639f3912c1eea0342af851ef62" name="ac513e8639f3912c1eea0342af851ef62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac513e8639f3912c1eea0342af851ef62">&#9670;&#160;</a></span>multipleEdgesResolveMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a> mrmeshpy.FillHoleParams.multipleEdgesResolveMode .<a class="el" href="classmrmeshpy_1_1FillHoleParams_1_1MultipleEdgesResolveMode.html">MultipleEdgesResolveMode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1FillHoleParams.html">FillHoleParams</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

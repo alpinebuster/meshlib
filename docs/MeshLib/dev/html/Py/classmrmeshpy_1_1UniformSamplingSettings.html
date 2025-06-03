@@ -1,0 +1,614 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.UniformSamplingSettings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1UniformSamplingSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1UniformSamplingSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.UniformSamplingSettings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aa03dc8eb800c97a2bcbd69a1d2c8a8a7" id="r_aa03dc8eb800c97a2bcbd69a1d2c8a8a7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa03dc8eb800c97a2bcbd69a1d2c8a8a7">__init__</a> (self)</td></tr>
+<tr class="separator:aa03dc8eb800c97a2bcbd69a1d2c8a8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae2232b588499a6b1891206b3509a4ac" id="r_aae2232b588499a6b1891206b3509a4ac"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae2232b588499a6b1891206b3509a4ac">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1UniformSamplingSettings.html">UniformSamplingSettings</a> arg0)</td></tr>
+<tr class="separator:aae2232b588499a6b1891206b3509a4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014cacc388325791df951302ce8747e2" id="r_a014cacc388325791df951302ce8747e2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a014cacc388325791df951302ce8747e2">__init__</a> (self, float <a class="el" href="#ade6b6811f1592b85cb1facad976585f5">distance</a>, float <a class="el" href="#a3dce5fe7218bdb14fa190d84eb51bd7e">minNormalDot</a>, bool <a class="el" href="#a1cb1d1c7a9fef08102b0ffd6833fc74c">lexicographicalOrder</a>, <a class="el" href="classmrmeshpy_1_1VertCoords.html">VertCoords</a> <a class="el" href="#a9394da7f287dc9eb4417b70f9007ec6e">pNormals</a>, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> <a class="el" href="#a2945404c0fd53be88dba78a6edb5deb4">progress</a>)</td></tr>
+<tr class="separator:a014cacc388325791df951302ce8747e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade6b6811f1592b85cb1facad976585f5" id="r_ade6b6811f1592b85cb1facad976585f5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade6b6811f1592b85cb1facad976585f5">distance</a> (self)</td></tr>
+<tr class="separator:ade6b6811f1592b85cb1facad976585f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f450a54cfe259bc7d69298eaf8e71ec" id="r_a5f450a54cfe259bc7d69298eaf8e71ec"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f450a54cfe259bc7d69298eaf8e71ec">distance</a> (self, float arg1)</td></tr>
+<tr class="separator:a5f450a54cfe259bc7d69298eaf8e71ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb1d1c7a9fef08102b0ffd6833fc74c" id="r_a1cb1d1c7a9fef08102b0ffd6833fc74c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cb1d1c7a9fef08102b0ffd6833fc74c">lexicographicalOrder</a> (self)</td></tr>
+<tr class="separator:a1cb1d1c7a9fef08102b0ffd6833fc74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7ce976698e9971ce6162648d7bcfb37" id="r_af7ce976698e9971ce6162648d7bcfb37"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7ce976698e9971ce6162648d7bcfb37">lexicographicalOrder</a> (self, bool arg1)</td></tr>
+<tr class="separator:af7ce976698e9971ce6162648d7bcfb37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dce5fe7218bdb14fa190d84eb51bd7e" id="r_a3dce5fe7218bdb14fa190d84eb51bd7e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3dce5fe7218bdb14fa190d84eb51bd7e">minNormalDot</a> (self)</td></tr>
+<tr class="separator:a3dce5fe7218bdb14fa190d84eb51bd7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac71204b875ff3b80ff67df015d5e5166" id="r_ac71204b875ff3b80ff67df015d5e5166"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac71204b875ff3b80ff67df015d5e5166">minNormalDot</a> (self, float arg1)</td></tr>
+<tr class="separator:ac71204b875ff3b80ff67df015d5e5166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9394da7f287dc9eb4417b70f9007ec6e" id="r_a9394da7f287dc9eb4417b70f9007ec6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertCoords.html">VertCoords</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9394da7f287dc9eb4417b70f9007ec6e">pNormals</a> (self)</td></tr>
+<tr class="separator:a9394da7f287dc9eb4417b70f9007ec6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e85f45fb9266f95bc01968a878abda" id="r_a02e85f45fb9266f95bc01968a878abda"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02e85f45fb9266f95bc01968a878abda">pNormals</a> (self, <a class="el" href="classmrmeshpy_1_1VertCoords.html">VertCoords</a> arg1)</td></tr>
+<tr class="separator:a02e85f45fb9266f95bc01968a878abda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2945404c0fd53be88dba78a6edb5deb4" id="r_a2945404c0fd53be88dba78a6edb5deb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2945404c0fd53be88dba78a6edb5deb4">progress</a> (self)</td></tr>
+<tr class="separator:a2945404c0fd53be88dba78a6edb5deb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf2a38c47a574dbde22ae99fbf8d9340" id="r_aaf2a38c47a574dbde22ae99fbf8d9340"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf2a38c47a574dbde22ae99fbf8d9340">progress</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> arg1)</td></tr>
+<tr class="separator:aaf2a38c47a574dbde22ae99fbf8d9340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a5abc3a5bdc1346389cc87f42b694c4ae" id="r_a5abc3a5bdc1346389cc87f42b694c4ae"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5abc3a5bdc1346389cc87f42b694c4ae">_offsetof_distance</a> = 0</td></tr>
+<tr class="separator:a5abc3a5bdc1346389cc87f42b694c4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a78b319a0b4705682e2114417497b57" id="r_a3a78b319a0b4705682e2114417497b57"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a78b319a0b4705682e2114417497b57">_offsetof_lexicographicalOrder</a> = 8</td></tr>
+<tr class="separator:a3a78b319a0b4705682e2114417497b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a2e03b7643420759fb66ad951404551" id="r_a6a2e03b7643420759fb66ad951404551"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a2e03b7643420759fb66ad951404551">_offsetof_minNormalDot</a> = 4</td></tr>
+<tr class="separator:a6a2e03b7643420759fb66ad951404551"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29ec7842b984882ed1ddec51d248858a" id="r_a29ec7842b984882ed1ddec51d248858a"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29ec7842b984882ed1ddec51d248858a">_offsetof_pNormals</a> = 16</td></tr>
+<tr class="separator:a29ec7842b984882ed1ddec51d248858a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf2cb7fd786989f404ee12196b35364d" id="r_acf2cb7fd786989f404ee12196b35364d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf2cb7fd786989f404ee12196b35364d">_offsetof_progress</a> = 24</td></tr>
+<tr class="separator:acf2cb7fd786989f404ee12196b35364d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::UniformSamplingSettings
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa03dc8eb800c97a2bcbd69a1d2c8a8a7" name="aa03dc8eb800c97a2bcbd69a1d2c8a8a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa03dc8eb800c97a2bcbd69a1d2c8a8a7">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="aae2232b588499a6b1891206b3509a4ac" name="aae2232b588499a6b1891206b3509a4ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae2232b588499a6b1891206b3509a4ac">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1UniformSamplingSettings.html">UniformSamplingSettings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a014cacc388325791df951302ce8747e2" name="a014cacc388325791df951302ce8747e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a014cacc388325791df951302ce8747e2">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>distance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>minNormalDot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>lexicographicalOrder</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertCoords.html">VertCoords</a></td>          <td class="paramname"><span class="paramname"><em>pNormals</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>progress</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ade6b6811f1592b85cb1facad976585f5" name="ade6b6811f1592b85cb1facad976585f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade6b6811f1592b85cb1facad976585f5">&#9670;&#160;</a></span>distance() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.UniformSamplingSettings.distance </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">minimal distance between samples
+</pre> 
+</div>
+</div>
+<a id="a5f450a54cfe259bc7d69298eaf8e71ec" name="a5f450a54cfe259bc7d69298eaf8e71ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f450a54cfe259bc7d69298eaf8e71ec">&#9670;&#160;</a></span>distance() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.distance </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1cb1d1c7a9fef08102b0ffd6833fc74c" name="a1cb1d1c7a9fef08102b0ffd6833fc74c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb1d1c7a9fef08102b0ffd6833fc74c">&#9670;&#160;</a></span>lexicographicalOrder() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.UniformSamplingSettings.lexicographicalOrder </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">if true process the points in lexicographical order, which gives tighter and more uniform samples;
+if false process the points according to their ids, which is faster
+</pre> 
+</div>
+</div>
+<a id="af7ce976698e9971ce6162648d7bcfb37" name="af7ce976698e9971ce6162648d7bcfb37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7ce976698e9971ce6162648d7bcfb37">&#9670;&#160;</a></span>lexicographicalOrder() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.lexicographicalOrder </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3dce5fe7218bdb14fa190d84eb51bd7e" name="a3dce5fe7218bdb14fa190d84eb51bd7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dce5fe7218bdb14fa190d84eb51bd7e">&#9670;&#160;</a></span>minNormalDot() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.UniformSamplingSettings.minNormalDot </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">if point cloud has normals then automatically decreases local distance to make sure that all points inside have absolute normal dot product not less than this value;
+this is to make sampling denser in the regions of high curvature;
+value &lt;=0 means ignore normals;
+value &gt;=1 means select all points (practically useless)
+</pre> 
+</div>
+</div>
+<a id="ac71204b875ff3b80ff67df015d5e5166" name="ac71204b875ff3b80ff67df015d5e5166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac71204b875ff3b80ff67df015d5e5166">&#9670;&#160;</a></span>minNormalDot() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.minNormalDot </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9394da7f287dc9eb4417b70f9007ec6e" name="a9394da7f287dc9eb4417b70f9007ec6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9394da7f287dc9eb4417b70f9007ec6e">&#9670;&#160;</a></span>pNormals() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertCoords.html">VertCoords</a> mrmeshpy.UniformSamplingSettings.pNormals </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">if not nullptr then these normals will be used during sampling instead of normals in the cloud itself
+</pre> 
+</div>
+</div>
+<a id="a02e85f45fb9266f95bc01968a878abda" name="a02e85f45fb9266f95bc01968a878abda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02e85f45fb9266f95bc01968a878abda">&#9670;&#160;</a></span>pNormals() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.pNormals </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertCoords.html">VertCoords</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2945404c0fd53be88dba78a6edb5deb4" name="a2945404c0fd53be88dba78a6edb5deb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2945404c0fd53be88dba78a6edb5deb4">&#9670;&#160;</a></span>progress() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> mrmeshpy.UniformSamplingSettings.progress </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">to report progress and cancel processing
+</pre> 
+</div>
+</div>
+<a id="aaf2a38c47a574dbde22ae99fbf8d9340" name="aaf2a38c47a574dbde22ae99fbf8d9340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2a38c47a574dbde22ae99fbf8d9340">&#9670;&#160;</a></span>progress() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.UniformSamplingSettings.progress </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5abc3a5bdc1346389cc87f42b694c4ae" name="a5abc3a5bdc1346389cc87f42b694c4ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5abc3a5bdc1346389cc87f42b694c4ae">&#9670;&#160;</a></span>_offsetof_distance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.UniformSamplingSettings._offsetof_distance = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a78b319a0b4705682e2114417497b57" name="a3a78b319a0b4705682e2114417497b57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a78b319a0b4705682e2114417497b57">&#9670;&#160;</a></span>_offsetof_lexicographicalOrder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.UniformSamplingSettings._offsetof_lexicographicalOrder = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a2e03b7643420759fb66ad951404551" name="a6a2e03b7643420759fb66ad951404551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a2e03b7643420759fb66ad951404551">&#9670;&#160;</a></span>_offsetof_minNormalDot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.UniformSamplingSettings._offsetof_minNormalDot = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29ec7842b984882ed1ddec51d248858a" name="a29ec7842b984882ed1ddec51d248858a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29ec7842b984882ed1ddec51d248858a">&#9670;&#160;</a></span>_offsetof_pNormals</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.UniformSamplingSettings._offsetof_pNormals = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf2cb7fd786989f404ee12196b35364d" name="acf2cb7fd786989f404ee12196b35364d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf2cb7fd786989f404ee12196b35364d">&#9670;&#160;</a></span>_offsetof_progress</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.UniformSamplingSettings._offsetof_progress = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1UniformSamplingSettings.html">UniformSamplingSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

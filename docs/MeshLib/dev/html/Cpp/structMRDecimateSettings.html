@@ -1,0 +1,564 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRDecimateSettings Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('structMRDecimateSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structMRDecimateSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MRDecimateSettings Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>parameters for <a class="el" href="MRMeshC_2MRMeshDecimate_8h.html#af881cb4a934603f2a5e6ab9d168ee56b">mrDecimateMesh</a>  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="MRMeshC_2MRMeshDecimate_8h_source.html">MRMeshDecimate.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a679658d2e5a069713519041347304233" id="r_a679658d2e5a069713519041347304233"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshDecimate_8h.html#a17d13395034488689778042547b7ff1a">MRDecimateStrategy</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a679658d2e5a069713519041347304233">strategy</a></td></tr>
+<tr class="separator:a679658d2e5a069713519041347304233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ba243d3dc1eb29fedfedf12821f808b" id="r_a0ba243d3dc1eb29fedfedf12821f808b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ba243d3dc1eb29fedfedf12821f808b">maxError</a></td></tr>
+<tr class="separator:a0ba243d3dc1eb29fedfedf12821f808b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c349e24d60412eb6b16ab1d98e8074e" id="r_a2c349e24d60412eb6b16ab1d98e8074e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c349e24d60412eb6b16ab1d98e8074e">maxEdgeLen</a></td></tr>
+<tr class="memdesc:a2c349e24d60412eb6b16ab1d98e8074e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximal possible edge length created during decimation.  <br /></td></tr>
+<tr class="separator:a2c349e24d60412eb6b16ab1d98e8074e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafb6028ee59303a8ee4ec69083b50f4c" id="r_aafb6028ee59303a8ee4ec69083b50f4c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafb6028ee59303a8ee4ec69083b50f4c">maxBdShift</a></td></tr>
+<tr class="memdesc:aafb6028ee59303a8ee4ec69083b50f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximal shift of a boundary during one edge collapse.  <br /></td></tr>
+<tr class="separator:aafb6028ee59303a8ee4ec69083b50f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6752b8883770f758f44fc5956c8238c4" id="r_a6752b8883770f758f44fc5956c8238c4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6752b8883770f758f44fc5956c8238c4">maxTriangleAspectRatio</a></td></tr>
+<tr class="memdesc:a6752b8883770f758f44fc5956c8238c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximal possible aspect ratio of a triangle introduced during decimation.  <br /></td></tr>
+<tr class="separator:a6752b8883770f758f44fc5956c8238c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a868cd45481f4a69102b4ca7467320dde" id="r_a868cd45481f4a69102b4ca7467320dde"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a868cd45481f4a69102b4ca7467320dde">criticalTriAspectRatio</a></td></tr>
+<tr class="separator:a868cd45481f4a69102b4ca7467320dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b5b07423ef64eadeec3662a51a57bba" id="r_a6b5b07423ef64eadeec3662a51a57bba"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b5b07423ef64eadeec3662a51a57bba">tinyEdgeLength</a></td></tr>
+<tr class="memdesc:a6b5b07423ef64eadeec3662a51a57bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">edges not longer than this value will be collapsed even if it results in appearance of a triangle with high aspect ratio  <br /></td></tr>
+<tr class="separator:a6b5b07423ef64eadeec3662a51a57bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad80f5a2ff69a7fe804e27ce7a20ba275" id="r_ad80f5a2ff69a7fe804e27ce7a20ba275"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad80f5a2ff69a7fe804e27ce7a20ba275">stabilizer</a></td></tr>
+<tr class="separator:ad80f5a2ff69a7fe804e27ce7a20ba275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac280387b37c574d825a5dae4e745b550" id="r_ac280387b37c574d825a5dae4e745b550"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac280387b37c574d825a5dae4e745b550">optimizeVertexPos</a></td></tr>
+<tr class="separator:ac280387b37c574d825a5dae4e745b550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d0329e1a12b385130c9098ca1cde327" id="r_a1d0329e1a12b385130c9098ca1cde327"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d0329e1a12b385130c9098ca1cde327">maxDeletedVertices</a></td></tr>
+<tr class="memdesc:a1d0329e1a12b385130c9098ca1cde327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limit on the number of deleted vertices.  <br /></td></tr>
+<tr class="separator:a1d0329e1a12b385130c9098ca1cde327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c31da100d3cc2b0dc612fe3342cebb6" id="r_a3c31da100d3cc2b0dc612fe3342cebb6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c31da100d3cc2b0dc612fe3342cebb6">maxDeletedFaces</a></td></tr>
+<tr class="memdesc:a3c31da100d3cc2b0dc612fe3342cebb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limit on the number of deleted faces.  <br /></td></tr>
+<tr class="separator:a3c31da100d3cc2b0dc612fe3342cebb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1e58750f155e9e45c27770c31ebe6f8" id="r_ad1e58750f155e9e45c27770c31ebe6f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1e58750f155e9e45c27770c31ebe6f8">region</a></td></tr>
+<tr class="memdesc:ad1e58750f155e9e45c27770c31ebe6f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Region on mesh to be decimated, it is updated during the operation.  <br /></td></tr>
+<tr class="separator:ad1e58750f155e9e45c27770c31ebe6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1059a2ea3dd3750396c012134de9ad56" id="r_a1059a2ea3dd3750396c012134de9ad56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1059a2ea3dd3750396c012134de9ad56">collapseNearNotFlippable</a></td></tr>
+<tr class="separator:a1059a2ea3dd3750396c012134de9ad56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43c7ad0a3072a5a93ec8e44e56be28a" id="r_ad43c7ad0a3072a5a93ec8e44e56be28a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad43c7ad0a3072a5a93ec8e44e56be28a">touchNearBdEdges</a></td></tr>
+<tr class="memdesc:ad43c7ad0a3072a5a93ec8e44e56be28a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to allow collapsing or flipping edges having at least one vertex on (region) boundary.  <br /></td></tr>
+<tr class="separator:ad43c7ad0a3072a5a93ec8e44e56be28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b4ec1883fa5a1aa043899f0151b85ea" id="r_a9b4ec1883fa5a1aa043899f0151b85ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b4ec1883fa5a1aa043899f0151b85ea">touchBdVerts</a></td></tr>
+<tr class="separator:a9b4ec1883fa5a1aa043899f0151b85ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74c3f1a345b8010234658a32c8f29cb2" id="r_a74c3f1a345b8010234658a32c8f29cb2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74c3f1a345b8010234658a32c8f29cb2">maxAngleChange</a></td></tr>
+<tr class="separator:a74c3f1a345b8010234658a32c8f29cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e04ee54a67240824fcf155e24e679b6" id="r_a4e04ee54a67240824fcf155e24e679b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e04ee54a67240824fcf155e24e679b6">packMesh</a></td></tr>
+<tr class="memdesc:a4e04ee54a67240824fcf155e24e679b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether to pack mesh at the end  <br /></td></tr>
+<tr class="separator:a4e04ee54a67240824fcf155e24e679b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58a10c0e7e72a5fd0b9159736c8faaa" id="r_af58a10c0e7e72a5fd0b9159736c8faaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af58a10c0e7e72a5fd0b9159736c8faaa">progressCallback</a></td></tr>
+<tr class="memdesc:af58a10c0e7e72a5fd0b9159736c8faaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">callback to report algorithm progress and cancel it by user request  <br /></td></tr>
+<tr class="separator:af58a10c0e7e72a5fd0b9159736c8faaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af30ab932574161654a545582168d7f23" id="r_af30ab932574161654a545582168d7f23"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af30ab932574161654a545582168d7f23">subdivideParts</a></td></tr>
+<tr class="separator:af30ab932574161654a545582168d7f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a332cd2d944c5ad67cfc87294c22dc628" id="r_a332cd2d944c5ad67cfc87294c22dc628"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a332cd2d944c5ad67cfc87294c22dc628">decimateBetweenParts</a></td></tr>
+<tr class="separator:a332cd2d944c5ad67cfc87294c22dc628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a772d763e2025022e8ecad5e0df7081ee" id="r_a772d763e2025022e8ecad5e0df7081ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a772d763e2025022e8ecad5e0df7081ee">minFacesInPart</a></td></tr>
+<tr class="memdesc:a772d763e2025022e8ecad5e0df7081ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">minimum number of faces in one subdivision part for ( subdivideParts &gt; 1 ) mode  <br /></td></tr>
+<tr class="separator:a772d763e2025022e8ecad5e0df7081ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>parameters for <a class="el" href="MRMeshC_2MRMeshDecimate_8h.html#af881cb4a934603f2a5e6ab9d168ee56b">mrDecimateMesh</a> </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1059a2ea3dd3750396c012134de9ad56" name="a1059a2ea3dd3750396c012134de9ad56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1059a2ea3dd3750396c012134de9ad56">&#9670;&#160;</a></span>collapseNearNotFlippable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRDecimateSettings::collapseNearNotFlippable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to allow collapse of edges incident to notFlippable edges, which can move vertices of notFlippable edges unless they are fixed </p>
+
+</div>
+</div>
+<a id="a868cd45481f4a69102b4ca7467320dde" name="a868cd45481f4a69102b4ca7467320dde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a868cd45481f4a69102b4ca7467320dde">&#9670;&#160;</a></span>criticalTriAspectRatio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::criticalTriAspectRatio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>the algorithm will ignore dihedral angle check if one of triangles had aspect ratio equal or more than this value; and the algorithm will permit temporary increase in aspect ratio after collapse, if before collapse one of the triangles had larger aspect ratio </p>
+
+</div>
+</div>
+<a id="a332cd2d944c5ad67cfc87294c22dc628" name="a332cd2d944c5ad67cfc87294c22dc628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a332cd2d944c5ad67cfc87294c22dc628">&#9670;&#160;</a></span>decimateBetweenParts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRDecimateSettings::decimateBetweenParts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>After parallel decimation of all mesh parts is done, whether to perform final decimation of whole mesh region to eliminate small edges near the border of individual parts </p>
+
+</div>
+</div>
+<a id="a74c3f1a345b8010234658a32c8f29cb2" name="a74c3f1a345b8010234658a32c8f29cb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74c3f1a345b8010234658a32c8f29cb2">&#9670;&#160;</a></span>maxAngleChange</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::maxAngleChange</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Permit edge flips (in addition to collapsing) to improve Delone quality of the mesh if it does not change dihedral angle more than on this value (negative value prohibits any edge flips) </p>
+
+</div>
+</div>
+<a id="aafb6028ee59303a8ee4ec69083b50f4c" name="aafb6028ee59303a8ee4ec69083b50f4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafb6028ee59303a8ee4ec69083b50f4c">&#9670;&#160;</a></span>maxBdShift</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::maxBdShift</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximal shift of a boundary during one edge collapse. </p>
+
+</div>
+</div>
+<a id="a3c31da100d3cc2b0dc612fe3342cebb6" name="a3c31da100d3cc2b0dc612fe3342cebb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c31da100d3cc2b0dc612fe3342cebb6">&#9670;&#160;</a></span>maxDeletedFaces</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRDecimateSettings::maxDeletedFaces</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Limit on the number of deleted faces. </p>
+
+</div>
+</div>
+<a id="a1d0329e1a12b385130c9098ca1cde327" name="a1d0329e1a12b385130c9098ca1cde327"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d0329e1a12b385130c9098ca1cde327">&#9670;&#160;</a></span>maxDeletedVertices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRDecimateSettings::maxDeletedVertices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Limit on the number of deleted vertices. </p>
+
+</div>
+</div>
+<a id="a2c349e24d60412eb6b16ab1d98e8074e" name="a2c349e24d60412eb6b16ab1d98e8074e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c349e24d60412eb6b16ab1d98e8074e">&#9670;&#160;</a></span>maxEdgeLen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::maxEdgeLen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximal possible edge length created during decimation. </p>
+
+</div>
+</div>
+<a id="a0ba243d3dc1eb29fedfedf12821f808b" name="a0ba243d3dc1eb29fedfedf12821f808b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ba243d3dc1eb29fedfedf12821f808b">&#9670;&#160;</a></span>maxError</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::maxError</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>for DecimateStrategy::MinimizeError: stop the decimation as soon as the estimated distance deviation from the original mesh is more than this value for DecimateStrategy::ShortestEdgeFirst only: stop the decimation as soon as the shortest edge in the mesh is greater than this value </p>
+
+</div>
+</div>
+<a id="a6752b8883770f758f44fc5956c8238c4" name="a6752b8883770f758f44fc5956c8238c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6752b8883770f758f44fc5956c8238c4">&#9670;&#160;</a></span>maxTriangleAspectRatio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::maxTriangleAspectRatio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximal possible aspect ratio of a triangle introduced during decimation. </p>
+
+</div>
+</div>
+<a id="a772d763e2025022e8ecad5e0df7081ee" name="a772d763e2025022e8ecad5e0df7081ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a772d763e2025022e8ecad5e0df7081ee">&#9670;&#160;</a></span>minFacesInPart</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRDecimateSettings::minFacesInPart</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>minimum number of faces in one subdivision part for ( subdivideParts &gt; 1 ) mode </p>
+
+</div>
+</div>
+<a id="ac280387b37c574d825a5dae4e745b550" name="ac280387b37c574d825a5dae4e745b550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac280387b37c574d825a5dae4e745b550">&#9670;&#160;</a></span>optimizeVertexPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRDecimateSettings::optimizeVertexPos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>if true then after each edge collapse the position of remaining vertex is optimized to minimize local shape change, if false then the edge is collapsed in one of its vertices, which keeps its position </p>
+
+</div>
+</div>
+<a id="a4e04ee54a67240824fcf155e24e679b6" name="a4e04ee54a67240824fcf155e24e679b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e04ee54a67240824fcf155e24e679b6">&#9670;&#160;</a></span>packMesh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRDecimateSettings::packMesh</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>whether to pack mesh at the end </p>
+
+</div>
+</div>
+<a id="af58a10c0e7e72a5fd0b9159736c8faaa" name="af58a10c0e7e72a5fd0b9159736c8faaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af58a10c0e7e72a5fd0b9159736c8faaa">&#9670;&#160;</a></span>progressCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a> MRDecimateSettings::progressCallback</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>callback to report algorithm progress and cancel it by user request </p>
+
+</div>
+</div>
+<a id="ad1e58750f155e9e45c27770c31ebe6f8" name="ad1e58750f155e9e45c27770c31ebe6f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1e58750f155e9e45c27770c31ebe6f8">&#9670;&#160;</a></span>region</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a>* MRDecimateSettings::region</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Region on mesh to be decimated, it is updated during the operation. </p>
+
+</div>
+</div>
+<a id="ad80f5a2ff69a7fe804e27ce7a20ba275" name="ad80f5a2ff69a7fe804e27ce7a20ba275"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad80f5a2ff69a7fe804e27ce7a20ba275">&#9670;&#160;</a></span>stabilizer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::stabilizer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Small stabilizer is important to achieve good results on completely planar mesh parts, if your mesh is not-planer everywhere, then you can set it to zero </p>
+
+</div>
+</div>
+<a id="a679658d2e5a069713519041347304233" name="a679658d2e5a069713519041347304233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a679658d2e5a069713519041347304233">&#9670;&#160;</a></span>strategy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshDecimate_8h.html#a17d13395034488689778042547b7ff1a">MRDecimateStrategy</a> MRDecimateSettings::strategy</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af30ab932574161654a545582168d7f23" name="af30ab932574161654a545582168d7f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af30ab932574161654a545582168d7f23">&#9670;&#160;</a></span>subdivideParts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRDecimateSettings::subdivideParts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>If this value is more than 1, then virtually subdivides the mesh on given number of parts to process them in parallel (using many threads); unlike mrDecimateParallelMesh it does not create copies of mesh regions, so may take less memory to operate; IMPORTANT: please call mrMeshPackOptimally before calling decimating with subdivideParts &gt; 1, otherwise performance will be bad </p>
+
+</div>
+</div>
+<a id="a6b5b07423ef64eadeec3662a51a57bba" name="a6b5b07423ef64eadeec3662a51a57bba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b5b07423ef64eadeec3662a51a57bba">&#9670;&#160;</a></span>tinyEdgeLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRDecimateSettings::tinyEdgeLength</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>edges not longer than this value will be collapsed even if it results in appearance of a triangle with high aspect ratio </p>
+
+</div>
+</div>
+<a id="a9b4ec1883fa5a1aa043899f0151b85ea" name="a9b4ec1883fa5a1aa043899f0151b85ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b4ec1883fa5a1aa043899f0151b85ea">&#9670;&#160;</a></span>touchBdVerts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRDecimateSettings::touchBdVerts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>touchBdVerts=true: allow moving and eliminating boundary vertices during edge collapses; touchBdVerts=false: allow only collapsing an edge having only one boundary vertex in that vertex, so position and count of boundary vertices do not change; this setting is ignored if touchNearBdEdges=false </p>
+
+</div>
+</div>
+<a id="ad43c7ad0a3072a5a93ec8e44e56be28a" name="ad43c7ad0a3072a5a93ec8e44e56be28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad43c7ad0a3072a5a93ec8e44e56be28a">&#9670;&#160;</a></span>touchNearBdEdges</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRDecimateSettings::touchNearBdEdges</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether to allow collapsing or flipping edges having at least one vertex on (region) boundary. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="MRMeshC_2MRMeshDecimate_8h_source.html">MRMeshC/MRMeshDecimate.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structMRDecimateSettings.html">MRDecimateSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

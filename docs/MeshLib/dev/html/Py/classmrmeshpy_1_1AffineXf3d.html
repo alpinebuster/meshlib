@@ -1,0 +1,583 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.AffineXf3d Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1AffineXf3d.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1AffineXf3d-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.AffineXf3d Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a13234664efed98b790077d9bdc2614c9" id="r_a13234664efed98b790077d9bdc2614c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13234664efed98b790077d9bdc2614c9">__call__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> x)</td></tr>
+<tr class="separator:a13234664efed98b790077d9bdc2614c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae42b81b3e1968262e8d8d1202c39873b" id="r_ae42b81b3e1968262e8d8d1202c39873b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae42b81b3e1968262e8d8d1202c39873b">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> b)</td></tr>
+<tr class="separator:ae42b81b3e1968262e8d8d1202c39873b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a9d4f92e1e340a3c3f9573c88e5ee18" id="r_a6a9d4f92e1e340a3c3f9573c88e5ee18"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a9d4f92e1e340a3c3f9573c88e5ee18">__init__</a> (self)</td></tr>
+<tr class="separator:a6a9d4f92e1e340a3c3f9573c88e5ee18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f358e5a465f67952810e5bb80a57bdb" id="r_a5f358e5a465f67952810e5bb80a57bdb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f358e5a465f67952810e5bb80a57bdb">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3d.html">Matrix3d</a> A, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> b)</td></tr>
+<tr class="separator:a5f358e5a465f67952810e5bb80a57bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe61bc9fbce982c31d1b643581647c8b" id="r_afe61bc9fbce982c31d1b643581647c8b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe61bc9fbce982c31d1b643581647c8b">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> arg0)</td></tr>
+<tr class="separator:afe61bc9fbce982c31d1b643581647c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eeb5e4d06ce3b39ace67521a833af50" id="r_a2eeb5e4d06ce3b39ace67521a833af50"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2eeb5e4d06ce3b39ace67521a833af50">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix4d.html">Matrix4d</a> arg0)</td></tr>
+<tr class="separator:a2eeb5e4d06ce3b39ace67521a833af50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bbe5943006ac51a74a803edd4c001a0" id="r_a2bbe5943006ac51a74a803edd4c001a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bbe5943006ac51a74a803edd4c001a0">__mul__</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> v)</td></tr>
+<tr class="separator:a2bbe5943006ac51a74a803edd4c001a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3dec4598d5738fb4581804f98afeb82" id="r_ae3dec4598d5738fb4581804f98afeb82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3dec4598d5738fb4581804f98afeb82">__ne__</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> b)</td></tr>
+<tr class="separator:ae3dec4598d5738fb4581804f98afeb82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82acc70268928017914c197a685923f2" id="r_a82acc70268928017914c197a685923f2"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82acc70268928017914c197a685923f2">__repr__</a> (self)</td></tr>
+<tr class="separator:a82acc70268928017914c197a685923f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4336bc15bbfb3aab662581b5862cc84e" id="r_a4336bc15bbfb3aab662581b5862cc84e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4336bc15bbfb3aab662581b5862cc84e">inverse</a> (self)</td></tr>
+<tr class="separator:a4336bc15bbfb3aab662581b5862cc84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f41b7726a364dfd9e655a5e3154202a" id="r_a5f41b7726a364dfd9e655a5e3154202a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f41b7726a364dfd9e655a5e3154202a">linearOnly</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> x)</td></tr>
+<tr class="separator:a5f41b7726a364dfd9e655a5e3154202a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:acdf4b43c6f58f86ea8bf46716aca3d8c" id="r_acdf4b43c6f58f86ea8bf46716aca3d8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdf4b43c6f58f86ea8bf46716aca3d8c">linear</a> (<a class="el" href="classmrmeshpy_1_1Matrix3d.html">Matrix3d</a> A)</td></tr>
+<tr class="separator:acdf4b43c6f58f86ea8bf46716aca3d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad113e73d0252e947ff654760c9e4bb46" id="r_ad113e73d0252e947ff654760c9e4bb46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad113e73d0252e947ff654760c9e4bb46">translation</a> (<a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> b)</td></tr>
+<tr class="separator:ad113e73d0252e947ff654760c9e4bb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba6ed602b6f8e3cd605f33461f35623" id="r_acba6ed602b6f8e3cd605f33461f35623"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acba6ed602b6f8e3cd605f33461f35623">xfAround</a> (<a class="el" href="classmrmeshpy_1_1Matrix3d.html">Matrix3d</a> A, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> stable)</td></tr>
+<tr class="separator:acba6ed602b6f8e3cd605f33461f35623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:ad28a31f139018e47e5b672187ebb909a" id="r_ad28a31f139018e47e5b672187ebb909a"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad28a31f139018e47e5b672187ebb909a">_offsetof_A</a> = 0</td></tr>
+<tr class="separator:ad28a31f139018e47e5b672187ebb909a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea312f483c73ff8f3a90bbe03096be4a" id="r_aea312f483c73ff8f3a90bbe03096be4a"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea312f483c73ff8f3a90bbe03096be4a">_offsetof_b</a> = 72</td></tr>
+<tr class="separator:aea312f483c73ff8f3a90bbe03096be4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::AffineXf3d
+
+affine transformation: y = A*x + b, where A in VxV, and b in V
+\\ingroup MathGroup
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6a9d4f92e1e340a3c3f9573c88e5ee18" name="a6a9d4f92e1e340a3c3f9573c88e5ee18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a9d4f92e1e340a3c3f9573c88e5ee18">&#9670;&#160;</a></span>__init__() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AffineXf3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f358e5a465f67952810e5bb80a57bdb" name="a5f358e5a465f67952810e5bb80a57bdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f358e5a465f67952810e5bb80a57bdb">&#9670;&#160;</a></span>__init__() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AffineXf3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3d.html">Matrix3d</a></td>          <td class="paramname"><span class="paramname"><em>A</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe61bc9fbce982c31d1b643581647c8b" name="afe61bc9fbce982c31d1b643581647c8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe61bc9fbce982c31d1b643581647c8b">&#9670;&#160;</a></span>__init__() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AffineXf3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a2eeb5e4d06ce3b39ace67521a833af50" name="a2eeb5e4d06ce3b39ace67521a833af50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eeb5e4d06ce3b39ace67521a833af50">&#9670;&#160;</a></span>__init__() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AffineXf3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix4d.html">Matrix4d</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a13234664efed98b790077d9bdc2614c9" name="a13234664efed98b790077d9bdc2614c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13234664efed98b790077d9bdc2614c9">&#9670;&#160;</a></span>__call__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> mrmeshpy.AffineXf3d.__call__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">application of the transformation to a point
+</pre> 
+</div>
+</div>
+<a id="ae42b81b3e1968262e8d8d1202c39873b" name="ae42b81b3e1968262e8d8d1202c39873b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42b81b3e1968262e8d8d1202c39873b">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.AffineXf3d.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2bbe5943006ac51a74a803edd4c001a0" name="a2bbe5943006ac51a74a803edd4c001a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bbe5943006ac51a74a803edd4c001a0">&#9670;&#160;</a></span>__mul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> mrmeshpy.AffineXf3d.__mul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">composition of two transformations:
+\\f( y = (u * v) ( x ) = u( v( x ) ) = ( u.A * ( v.A * x + v.b ) + u.b ) = ( u.A * v.A ) * x + ( u.A * v.b + u.b ) \\f)
+</pre> 
+</div>
+</div>
+<a id="ae3dec4598d5738fb4581804f98afeb82" name="ae3dec4598d5738fb4581804f98afeb82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3dec4598d5738fb4581804f98afeb82">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.AffineXf3d.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82acc70268928017914c197a685923f2" name="a82acc70268928017914c197a685923f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82acc70268928017914c197a685923f2">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.AffineXf3d.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4336bc15bbfb3aab662581b5862cc84e" name="a4336bc15bbfb3aab662581b5862cc84e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4336bc15bbfb3aab662581b5862cc84e">&#9670;&#160;</a></span>inverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> mrmeshpy.AffineXf3d.inverse </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes inverse transformation
+</pre> 
+</div>
+</div>
+<a id="acdf4b43c6f58f86ea8bf46716aca3d8c" name="acdf4b43c6f58f86ea8bf46716aca3d8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdf4b43c6f58f86ea8bf46716aca3d8c">&#9670;&#160;</a></span>linear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> mrmeshpy.AffineXf3d.linear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3d.html">Matrix3d</a></td>          <td class="paramname"><span class="paramname"><em>A</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">creates linear-only transformation (without translation)
+</pre> 
+</div>
+</div>
+<a id="a5f41b7726a364dfd9e655a5e3154202a" name="a5f41b7726a364dfd9e655a5e3154202a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f41b7726a364dfd9e655a5e3154202a">&#9670;&#160;</a></span>linearOnly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> mrmeshpy.AffineXf3d.linearOnly </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">applies only linear part of the transformation to given vector (e.g. to normal) skipping adding shift (b)
+for example if this is a rigid transformation, then only rotates input vector
+</pre> 
+</div>
+</div>
+<a id="ad113e73d0252e947ff654760c9e4bb46" name="ad113e73d0252e947ff654760c9e4bb46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad113e73d0252e947ff654760c9e4bb46">&#9670;&#160;</a></span>translation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> mrmeshpy.AffineXf3d.translation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">creates translation-only transformation (with identity linear component)
+</pre> 
+</div>
+</div>
+<a id="acba6ed602b6f8e3cd605f33461f35623" name="acba6ed602b6f8e3cd605f33461f35623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba6ed602b6f8e3cd605f33461f35623">&#9670;&#160;</a></span>xfAround()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a> mrmeshpy.AffineXf3d.xfAround </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3d.html">Matrix3d</a></td>          <td class="paramname"><span class="paramname"><em>A</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>stable</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">creates transformation with given linear part with given stable point
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad28a31f139018e47e5b672187ebb909a" name="ad28a31f139018e47e5b672187ebb909a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28a31f139018e47e5b672187ebb909a">&#9670;&#160;</a></span>_offsetof_A</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.AffineXf3d._offsetof_A = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea312f483c73ff8f3a90bbe03096be4a" name="aea312f483c73ff8f3a90bbe03096be4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea312f483c73ff8f3a90bbe03096be4a">&#9670;&#160;</a></span>_offsetof_b</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.AffineXf3d._offsetof_b = 72</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1AffineXf3d.html">AffineXf3d</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

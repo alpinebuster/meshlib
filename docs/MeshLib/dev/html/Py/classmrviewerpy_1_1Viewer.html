@@ -1,0 +1,538 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrviewerpy.Viewer Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrviewerpy_1_1Viewer.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrviewerpy_1_1Viewer-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrviewerpy.Viewer Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a1c020e866f8141a1664924407ae4c9fc" id="r_a1c020e866f8141a1664924407ae4c9fc"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c020e866f8141a1664924407ae4c9fc">__init__</a> (self)</td></tr>
+<tr class="separator:a1c020e866f8141a1664924407ae4c9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e52ba6ee6800cfd900832f9511f5869" id="r_a3e52ba6ee6800cfd900832f9511f5869"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e52ba6ee6800cfd900832f9511f5869">captureScreenShot</a> (self, str path)</td></tr>
+<tr class="separator:a3e52ba6ee6800cfd900832f9511f5869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab90b1173bbd8f268990a363817078cd" id="r_aab90b1173bbd8f268990a363817078cd"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab90b1173bbd8f268990a363817078cd">captureUIScreenShot</a> (self, str path)</td></tr>
+<tr class="separator:aab90b1173bbd8f268990a363817078cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af589978c833603eb4a95bab3e2d16f98" id="r_af589978c833603eb4a95bab3e2d16f98"><td class="memItemLeft" align="right" valign="top">meshlib.mrmeshpy.Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af589978c833603eb4a95bab3e2d16f98">getMousePos</a> (self)</td></tr>
+<tr class="separator:af589978c833603eb4a95bab3e2d16f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecfd05e024c397cc4b21f2f3d60987ae" id="r_aecfd05e024c397cc4b21f2f3d60987ae"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecfd05e024c397cc4b21f2f3d60987ae">incrementForceRedrawFrames</a> (self, int num=1, bool swapOnLastOnly=False)</td></tr>
+<tr class="separator:aecfd05e024c397cc4b21f2f3d60987ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcb12b9129b8f6a1324c555b5cbce6ba" id="r_abcb12b9129b8f6a1324c555b5cbce6ba"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcb12b9129b8f6a1324c555b5cbce6ba">mouseDown</a> (self, <a class="el" href="classmrviewerpy_1_1MouseButton.html">MouseButton</a> button, <a class="el" href="classmrviewerpy_1_1KeyMod.html">KeyMod</a> modifier=...)</td></tr>
+<tr class="separator:abcb12b9129b8f6a1324c555b5cbce6ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac150d6740c2bcdac6bd930c7d314e547" id="r_ac150d6740c2bcdac6bd930c7d314e547"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac150d6740c2bcdac6bd930c7d314e547">mouseMove</a> (self, int x, int y)</td></tr>
+<tr class="separator:ac150d6740c2bcdac6bd930c7d314e547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0260b73bc9b46e1fe08612553d6e9b4" id="r_ac0260b73bc9b46e1fe08612553d6e9b4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0260b73bc9b46e1fe08612553d6e9b4">mouseUp</a> (self, <a class="el" href="classmrviewerpy_1_1MouseButton.html">MouseButton</a> button, <a class="el" href="classmrviewerpy_1_1KeyMod.html">KeyMod</a> modifier=...)</td></tr>
+<tr class="separator:ac0260b73bc9b46e1fe08612553d6e9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a730f9ae2d9580f5715274f72068df9e3" id="r_a730f9ae2d9580f5715274f72068df9e3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a730f9ae2d9580f5715274f72068df9e3">preciseFitDataViewport</a> (self, meshlib.mrmeshpy.ViewportMask vpList=..., <a class="el" href="classmrviewerpy_1_1ViewportFitDataParams.html">ViewportFitDataParams</a> params=...)</td></tr>
+<tr class="separator:a730f9ae2d9580f5715274f72068df9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d029ac75c94841747bb951a4473e47" id="r_a90d029ac75c94841747bb951a4473e47"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90d029ac75c94841747bb951a4473e47">showSceneTree</a> (self, bool show)</td></tr>
+<tr class="separator:a90d029ac75c94841747bb951a4473e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b409f65dbd238d9b62f8e759dddfa4" id="r_a57b409f65dbd238d9b62f8e759dddfa4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57b409f65dbd238d9b62f8e759dddfa4">shutdown</a> (self)</td></tr>
+<tr class="separator:a57b409f65dbd238d9b62f8e759dddfa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f35c7bfcda30c6a8d8bc57755f7039" id="r_ac2f35c7bfcda30c6a8d8bc57755f7039"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2f35c7bfcda30c6a8d8bc57755f7039">skipFrames</a> (self, int frames)</td></tr>
+<tr class="separator:ac2f35c7bfcda30c6a8d8bc57755f7039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71e1baaf8deab7b37fed0b3d5e741f4f" id="r_a71e1baaf8deab7b37fed0b3d5e741f4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrviewerpy_1_1Viewport.html">Viewport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71e1baaf8deab7b37fed0b3d5e741f4f">viewport</a> (self, meshlib.mrmeshpy.ViewportId viewportId=...)</td></tr>
+<tr class="separator:a71e1baaf8deab7b37fed0b3d5e741f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a666c97d674b522e05582ead580d28b" id="r_a4a666c97d674b522e05582ead580d28b"><td class="memItemLeft" align="right" valign="top">meshlib.mrmeshpy.Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a666c97d674b522e05582ead580d28b">viewportToScreen</a> (self, meshlib.mrmeshpy.Vector3f arg0, meshlib.mrmeshpy.ViewportId arg1)</td></tr>
+<tr class="separator:a4a666c97d674b522e05582ead580d28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">GLFW-based mesh viewer
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1c020e866f8141a1664924407ae4c9fc" name="a1c020e866f8141a1664924407ae4c9fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c020e866f8141a1664924407ae4c9fc">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3e52ba6ee6800cfd900832f9511f5869" name="a3e52ba6ee6800cfd900832f9511f5869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e52ba6ee6800cfd900832f9511f5869">&#9670;&#160;</a></span>captureScreenShot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.captureScreenShot </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Captures part of window (redraw 3d scene over UI (without redrawing UI))
+</pre> 
+</div>
+</div>
+<a id="aab90b1173bbd8f268990a363817078cd" name="aab90b1173bbd8f268990a363817078cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab90b1173bbd8f268990a363817078cd">&#9670;&#160;</a></span>captureUIScreenShot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.captureUIScreenShot </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Captures full window screenshot with UI
+</pre> 
+</div>
+</div>
+<a id="af589978c833603eb4a95bab3e2d16f98" name="af589978c833603eb4a95bab3e2d16f98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af589978c833603eb4a95bab3e2d16f98">&#9670;&#160;</a></span>getMousePos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> meshlib.mrmeshpy.Vector2f mrviewerpy.Viewer.getMousePos </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Get the current mouse position.
+</pre> 
+</div>
+</div>
+<a id="aecfd05e024c397cc4b21f2f3d60987ae" name="aecfd05e024c397cc4b21f2f3d60987ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecfd05e024c397cc4b21f2f3d60987ae">&#9670;&#160;</a></span>incrementForceRedrawFrames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.incrementForceRedrawFrames </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>num</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>swapOnLastOnly</em></span><span class="paramdefsep"> = </span><span class="paramdefval">False</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Increment number of forced frames to redraw in event loop
+if `swapOnLastOnly` only last forced frame will be present on screen and all previous will not
+</pre> 
+</div>
+</div>
+<a id="abcb12b9129b8f6a1324c555b5cbce6ba" name="abcb12b9129b8f6a1324c555b5cbce6ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcb12b9129b8f6a1324c555b5cbce6ba">&#9670;&#160;</a></span>mouseDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.mouseDown </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrviewerpy_1_1MouseButton.html">MouseButton</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrviewerpy_1_1KeyMod.html">KeyMod</a> </td>          <td class="paramname"><span class="paramname"><em>modifier</em></span><span class="paramdefsep"> = </span><span class="paramdefval">...</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Simulate mouse down event.
+</pre> 
+</div>
+</div>
+<a id="ac150d6740c2bcdac6bd930c7d314e547" name="ac150d6740c2bcdac6bd930c7d314e547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac150d6740c2bcdac6bd930c7d314e547">&#9670;&#160;</a></span>mouseMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.mouseMove </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Simulate mouse move event.
+NOTE: Some plugins need at least TWO `mouseMove()`s in a row (possibly with the same position). If you're having issues, try sending two events.
+</pre> 
+</div>
+</div>
+<a id="ac0260b73bc9b46e1fe08612553d6e9b4" name="ac0260b73bc9b46e1fe08612553d6e9b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0260b73bc9b46e1fe08612553d6e9b4">&#9670;&#160;</a></span>mouseUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.mouseUp </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrviewerpy_1_1MouseButton.html">MouseButton</a></td>          <td class="paramname"><span class="paramname"><em>button</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrviewerpy_1_1KeyMod.html">KeyMod</a> </td>          <td class="paramname"><span class="paramname"><em>modifier</em></span><span class="paramdefsep"> = </span><span class="paramdefval">...</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Simulate mouse up event.
+</pre> 
+</div>
+</div>
+<a id="a730f9ae2d9580f5715274f72068df9e3" name="a730f9ae2d9580f5715274f72068df9e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730f9ae2d9580f5715274f72068df9e3">&#9670;&#160;</a></span>preciseFitDataViewport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.preciseFitDataViewport </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">meshlib.mrmeshpy.ViewportMask </td>          <td class="paramname"><span class="paramname"><em>vpList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">...</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrviewerpy_1_1ViewportFitDataParams.html">ViewportFitDataParams</a> </td>          <td class="paramname"><span class="paramname"><em>params</em></span><span class="paramdefsep"> = </span><span class="paramdefval">...</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Calls fitData and change FOV to match the screen size then
+params - params fit data
+</pre> 
+</div>
+</div>
+<a id="a90d029ac75c94841747bb951a4473e47" name="a90d029ac75c94841747bb951a4473e47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90d029ac75c94841747bb951a4473e47">&#9670;&#160;</a></span>showSceneTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.showSceneTree </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>show</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Shows or hide scene tree
+</pre> 
+</div>
+</div>
+<a id="a57b409f65dbd238d9b62f8e759dddfa4" name="a57b409f65dbd238d9b62f8e759dddfa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57b409f65dbd238d9b62f8e759dddfa4">&#9670;&#160;</a></span>shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.shutdown </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets stop event loop flag (this flag is glfwShouldWindowClose equivalent)
+</pre> 
+</div>
+</div>
+<a id="ac2f35c7bfcda30c6a8d8bc57755f7039" name="ac2f35c7bfcda30c6a8d8bc57755f7039"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f35c7bfcda30c6a8d8bc57755f7039">&#9670;&#160;</a></span>skipFrames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrviewerpy.Viewer.skipFrames </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>frames</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a71e1baaf8deab7b37fed0b3d5e741f4f" name="a71e1baaf8deab7b37fed0b3d5e741f4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71e1baaf8deab7b37fed0b3d5e741f4f">&#9670;&#160;</a></span>viewport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrviewerpy_1_1Viewport.html">Viewport</a> mrviewerpy.Viewer.viewport </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">meshlib.mrmeshpy.ViewportId </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">...</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return the current viewport, or the viewport corresponding to a given unique identifier
+    viewportId - unique identifier corresponding to the desired viewport (current viewport if 0)
+</pre> 
+</div>
+</div>
+<a id="a4a666c97d674b522e05582ead580d28b" name="a4a666c97d674b522e05582ead580d28b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a666c97d674b522e05582ead580d28b">&#9670;&#160;</a></span>viewportToScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> meshlib.mrmeshpy.Vector3f mrviewerpy.Viewer.viewportToScreen </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">meshlib.mrmeshpy.Vector3f</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">meshlib.mrmeshpy.ViewportId</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Convert viewport coordinates to to screen coordinates
+</pre> 
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrviewerpy_8pyi.html">mrviewerpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrviewerpy.html">mrviewerpy</a></li><li class="navelem"><a class="el" href="classmrviewerpy_1_1Viewer.html">Viewer</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

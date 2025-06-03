@@ -1,0 +1,1101 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1Face2RegionMap.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.Face2RegionMap Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1Face2RegionMap.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1Face2RegionMap-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.Face2RegionMap Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a882c50857da100814bb80f3b945489c4" id="r_a882c50857da100814bb80f3b945489c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a882c50857da100814bb80f3b945489c4">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a> b)</td></tr>
+<tr class="separator:a882c50857da100814bb80f3b945489c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bc2a8f9e43a22e5debf4ca93abf2fa4" id="r_a4bc2a8f9e43a22e5debf4ca93abf2fa4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bc2a8f9e43a22e5debf4ca93abf2fa4">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> i)</td></tr>
+<tr class="separator:a4bc2a8f9e43a22e5debf4ca93abf2fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bc2a8f9e43a22e5debf4ca93abf2fa4" id="r_a4bc2a8f9e43a22e5debf4ca93abf2fa4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bc2a8f9e43a22e5debf4ca93abf2fa4">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> i)</td></tr>
+<tr class="separator:a4bc2a8f9e43a22e5debf4ca93abf2fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce65923f8f9bdb0180a1588bc2a371d" id="r_acce65923f8f9bdb0180a1588bc2a371d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acce65923f8f9bdb0180a1588bc2a371d">__init__</a> (self)</td></tr>
+<tr class="separator:acce65923f8f9bdb0180a1588bc2a371d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a231610cc644f3f650fcea9a11382c89f" id="r_a231610cc644f3f650fcea9a11382c89f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a231610cc644f3f650fcea9a11382c89f">__init__</a> (self, int <a class="el" href="#a43694d26d3db91fa44b0cd6b2b1c8d86">size</a>)</td></tr>
+<tr class="separator:a231610cc644f3f650fcea9a11382c89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73d0124e009e55078e7932a896c9c78e" id="r_a73d0124e009e55078e7932a896c9c78e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73d0124e009e55078e7932a896c9c78e">__init__</a> (self, int <a class="el" href="#a43694d26d3db91fa44b0cd6b2b1c8d86">size</a>, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> val)</td></tr>
+<tr class="separator:a73d0124e009e55078e7932a896c9c78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28773325ddb56814fcad028f3a185fe9" id="r_a28773325ddb56814fcad028f3a185fe9"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28773325ddb56814fcad028f3a185fe9">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__Id__RegionTag.html">std_vector_Id_RegionTag</a> vec)</td></tr>
+<tr class="separator:a28773325ddb56814fcad028f3a185fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3501b1cc244356d806d375b1fc09e11e" id="r_a3501b1cc244356d806d375b1fc09e11e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3501b1cc244356d806d375b1fc09e11e">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a> arg0)</td></tr>
+<tr class="separator:a3501b1cc244356d806d375b1fc09e11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901b641d788b79a16f0ef6762c8583ec" id="r_a901b641d788b79a16f0ef6762c8583ec"><td class="memItemLeft" align="right" valign="top">typing.Iterator[<a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a901b641d788b79a16f0ef6762c8583ec">__iter__</a> (self)</td></tr>
+<tr class="separator:a901b641d788b79a16f0ef6762c8583ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8672a7e5d0e084605bfb227b78e46a" id="r_a8c8672a7e5d0e084605bfb227b78e46a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c8672a7e5d0e084605bfb227b78e46a">__ne__</a> (self, <a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a> b)</td></tr>
+<tr class="separator:a8c8672a7e5d0e084605bfb227b78e46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e6ed1d1934c083cb78903cd62b9fb39" id="r_a1e6ed1d1934c083cb78903cd62b9fb39"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e6ed1d1934c083cb78903cd62b9fb39">__setitem__</a> (self, <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> arg0, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> arg1)</td></tr>
+<tr class="separator:a1e6ed1d1934c083cb78903cd62b9fb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0fc67dd6bfb914938a02d3196c26372" id="r_ab0fc67dd6bfb914938a02d3196c26372"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0fc67dd6bfb914938a02d3196c26372">autoResizeAt</a> (self, <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> i)</td></tr>
+<tr class="separator:ab0fc67dd6bfb914938a02d3196c26372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24573c46943ff05b5f49d2fdc75cbf0d" id="r_a24573c46943ff05b5f49d2fdc75cbf0d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24573c46943ff05b5f49d2fdc75cbf0d">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> pos, int len, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> val)</td></tr>
+<tr class="separator:a24573c46943ff05b5f49d2fdc75cbf0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c996d14758dbf00646d27ac715728a0" id="r_a4c996d14758dbf00646d27ac715728a0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c996d14758dbf00646d27ac715728a0">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> i, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> val)</td></tr>
+<tr class="separator:a4c996d14758dbf00646d27ac715728a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e4bfdb4364d2b54575f02e239c9a402" id="r_a8e4bfdb4364d2b54575f02e239c9a402"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e4bfdb4364d2b54575f02e239c9a402">back</a> (self)</td></tr>
+<tr class="separator:a8e4bfdb4364d2b54575f02e239c9a402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e4bfdb4364d2b54575f02e239c9a402" id="r_a8e4bfdb4364d2b54575f02e239c9a402"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e4bfdb4364d2b54575f02e239c9a402">back</a> (self)</td></tr>
+<tr class="separator:a8e4bfdb4364d2b54575f02e239c9a402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a401c793e6b1854be790ecaa2597fccaa" id="r_a401c793e6b1854be790ecaa2597fccaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a401c793e6b1854be790ecaa2597fccaa">backId</a> (self)</td></tr>
+<tr class="separator:a401c793e6b1854be790ecaa2597fccaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52f954fe2385ce733d296073f9fce3ff" id="r_a52f954fe2385ce733d296073f9fce3ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52f954fe2385ce733d296073f9fce3ff">beginId</a> (self)</td></tr>
+<tr class="separator:a52f954fe2385ce733d296073f9fce3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45bdbc26df1060b2654608a5d549427e" id="r_a45bdbc26df1060b2654608a5d549427e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45bdbc26df1060b2654608a5d549427e">capacity</a> (self)</td></tr>
+<tr class="separator:a45bdbc26df1060b2654608a5d549427e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80228a89eea6e8bf6157b5bab033e71b" id="r_a80228a89eea6e8bf6157b5bab033e71b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80228a89eea6e8bf6157b5bab033e71b">clear</a> (self)</td></tr>
+<tr class="separator:a80228a89eea6e8bf6157b5bab033e71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b5088a5dc4a675f7558f869babd3c81" id="r_a7b5088a5dc4a675f7558f869babd3c81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b5088a5dc4a675f7558f869babd3c81">data</a> (self)</td></tr>
+<tr class="separator:a7b5088a5dc4a675f7558f869babd3c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b5088a5dc4a675f7558f869babd3c81" id="r_a7b5088a5dc4a675f7558f869babd3c81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b5088a5dc4a675f7558f869babd3c81">data</a> (self)</td></tr>
+<tr class="separator:a7b5088a5dc4a675f7558f869babd3c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56dbd1613ac2573b707e400dab0bc4d9" id="r_a56dbd1613ac2573b707e400dab0bc4d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56dbd1613ac2573b707e400dab0bc4d9">emplace_back</a> (self)</td></tr>
+<tr class="separator:a56dbd1613ac2573b707e400dab0bc4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d7e6a26236163df25ce54b34cfdfc99" id="r_a2d7e6a26236163df25ce54b34cfdfc99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d7e6a26236163df25ce54b34cfdfc99">empty</a> (self)</td></tr>
+<tr class="separator:a2d7e6a26236163df25ce54b34cfdfc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab09410ca3aec69d9981b697fe6593055" id="r_ab09410ca3aec69d9981b697fe6593055"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab09410ca3aec69d9981b697fe6593055">endId</a> (self)</td></tr>
+<tr class="separator:ab09410ca3aec69d9981b697fe6593055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3de653a9815f8c7dfff62006915d60b5" id="r_a3de653a9815f8c7dfff62006915d60b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3de653a9815f8c7dfff62006915d60b5">front</a> (self)</td></tr>
+<tr class="separator:a3de653a9815f8c7dfff62006915d60b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3de653a9815f8c7dfff62006915d60b5" id="r_a3de653a9815f8c7dfff62006915d60b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3de653a9815f8c7dfff62006915d60b5">front</a> (self)</td></tr>
+<tr class="separator:a3de653a9815f8c7dfff62006915d60b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed56276c9b249d8e79f744728ae4c46f" id="r_aed56276c9b249d8e79f744728ae4c46f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed56276c9b249d8e79f744728ae4c46f">heapBytes</a> (self)</td></tr>
+<tr class="separator:aed56276c9b249d8e79f744728ae4c46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92bb9c949db80b1147b256459aa7dfda" id="r_a92bb9c949db80b1147b256459aa7dfda"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92bb9c949db80b1147b256459aa7dfda">pop_back</a> (self)</td></tr>
+<tr class="separator:a92bb9c949db80b1147b256459aa7dfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd4d6f9ee5f25571d83bdda76e7593d4" id="r_afd4d6f9ee5f25571d83bdda76e7593d4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd4d6f9ee5f25571d83bdda76e7593d4">push_back</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> t)</td></tr>
+<tr class="separator:afd4d6f9ee5f25571d83bdda76e7593d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd4d6f9ee5f25571d83bdda76e7593d4" id="r_afd4d6f9ee5f25571d83bdda76e7593d4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd4d6f9ee5f25571d83bdda76e7593d4">push_back</a> (self, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> t)</td></tr>
+<tr class="separator:afd4d6f9ee5f25571d83bdda76e7593d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4d7853a9f05e42eee7b78bdaa73cdd5" id="r_af4d7853a9f05e42eee7b78bdaa73cdd5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4d7853a9f05e42eee7b78bdaa73cdd5">reserve</a> (self, int <a class="el" href="#a45bdbc26df1060b2654608a5d549427e">capacity</a>)</td></tr>
+<tr class="separator:af4d7853a9f05e42eee7b78bdaa73cdd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4cc8b0439a47da14ae6b6e6c4bae22e" id="r_ab4cc8b0439a47da14ae6b6e6c4bae22e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4cc8b0439a47da14ae6b6e6c4bae22e">resize</a> (self, int newSize)</td></tr>
+<tr class="separator:ab4cc8b0439a47da14ae6b6e6c4bae22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bc533118f0bc5370d77bc4068418d71" id="r_a5bc533118f0bc5370d77bc4068418d71"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bc533118f0bc5370d77bc4068418d71">resize</a> (self, int newSize, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> t)</td></tr>
+<tr class="separator:a5bc533118f0bc5370d77bc4068418d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7867592a19f1c21c8a5301344207b7eb" id="r_a7867592a19f1c21c8a5301344207b7eb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7867592a19f1c21c8a5301344207b7eb">resizeNoInit</a> (self, int targetSize)</td></tr>
+<tr class="separator:a7867592a19f1c21c8a5301344207b7eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7200f9f7529a239786f62e283e53e8d7" id="r_a7200f9f7529a239786f62e283e53e8d7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7200f9f7529a239786f62e283e53e8d7">resizeWithReserve</a> (self, int newSize)</td></tr>
+<tr class="separator:a7200f9f7529a239786f62e283e53e8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76ce1dc1d9acd1a74657e1542bdf824" id="r_ae76ce1dc1d9acd1a74657e1542bdf824"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae76ce1dc1d9acd1a74657e1542bdf824">resizeWithReserve</a> (self, int newSize, <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> value)</td></tr>
+<tr class="separator:ae76ce1dc1d9acd1a74657e1542bdf824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43694d26d3db91fa44b0cd6b2b1c8d86" id="r_a43694d26d3db91fa44b0cd6b2b1c8d86"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43694d26d3db91fa44b0cd6b2b1c8d86">size</a> (self)</td></tr>
+<tr class="separator:a43694d26d3db91fa44b0cd6b2b1c8d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fd5591d36f54e37cd80c0241448f764" id="r_a6fd5591d36f54e37cd80c0241448f764"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fd5591d36f54e37cd80c0241448f764">swap</a> (self, <a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a> b)</td></tr>
+<tr class="separator:a6fd5591d36f54e37cd80c0241448f764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d2148ba11784f24ce21307816c0acc" id="r_a04d2148ba11784f24ce21307816c0acc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__Id__RegionTag.html">std_vector_Id_RegionTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04d2148ba11784f24ce21307816c0acc">vec_</a> (self)</td></tr>
+<tr class="separator:a04d2148ba11784f24ce21307816c0acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb03928ffff5aab0cf103f68d2fb77a" id="r_afcb03928ffff5aab0cf103f68d2fb77a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcb03928ffff5aab0cf103f68d2fb77a">vec_</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__Id__RegionTag.html">std_vector_Id_RegionTag</a> arg1)</td></tr>
+<tr class="separator:afcb03928ffff5aab0cf103f68d2fb77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::Face2RegionMap
+
+
+ \\brief std::vector&lt;T&gt;-like container that requires specific indexing type,
+ \\tparam T type of stored elements
+ \\tparam I type of index (shall be convertible to size_t)
+ \\ingroup BasicGroup</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="acce65923f8f9bdb0180a1588bc2a371d" name="acce65923f8f9bdb0180a1588bc2a371d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce65923f8f9bdb0180a1588bc2a371d">&#9670;&#160;</a></span>__init__() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a231610cc644f3f650fcea9a11382c89f" name="a231610cc644f3f650fcea9a11382c89f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a231610cc644f3f650fcea9a11382c89f">&#9670;&#160;</a></span>__init__() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73d0124e009e55078e7932a896c9c78e" name="a73d0124e009e55078e7932a896c9c78e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73d0124e009e55078e7932a896c9c78e">&#9670;&#160;</a></span>__init__() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28773325ddb56814fcad028f3a185fe9" name="a28773325ddb56814fcad028f3a185fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28773325ddb56814fcad028f3a185fe9">&#9670;&#160;</a></span>__init__() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__Id__RegionTag.html">std_vector_Id_RegionTag</a></td>          <td class="paramname"><span class="paramname"><em>vec</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3501b1cc244356d806d375b1fc09e11e" name="a3501b1cc244356d806d375b1fc09e11e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3501b1cc244356d806d375b1fc09e11e">&#9670;&#160;</a></span>__init__() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a882c50857da100814bb80f3b945489c4" name="a882c50857da100814bb80f3b945489c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a882c50857da100814bb80f3b945489c4">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Face2RegionMap.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4bc2a8f9e43a22e5debf4ca93abf2fa4" name="a4bc2a8f9e43a22e5debf4ca93abf2fa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bc2a8f9e43a22e5debf4ca93abf2fa4">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4bc2a8f9e43a22e5debf4ca93abf2fa4" name="a4bc2a8f9e43a22e5debf4ca93abf2fa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bc2a8f9e43a22e5debf4ca93abf2fa4">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a901b641d788b79a16f0ef6762c8583ec" name="a901b641d788b79a16f0ef6762c8583ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a901b641d788b79a16f0ef6762c8583ec">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[<a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a>] mrmeshpy.Face2RegionMap.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c8672a7e5d0e084605bfb227b78e46a" name="a8c8672a7e5d0e084605bfb227b78e46a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c8672a7e5d0e084605bfb227b78e46a">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Face2RegionMap.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e6ed1d1934c083cb78903cd62b9fb39" name="a1e6ed1d1934c083cb78903cd62b9fb39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e6ed1d1934c083cb78903cd62b9fb39">&#9670;&#160;</a></span>__setitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0fc67dd6bfb914938a02d3196c26372" name="ab0fc67dd6bfb914938a02d3196c26372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0fc67dd6bfb914938a02d3196c26372">&#9670;&#160;</a></span>autoResizeAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.autoResizeAt </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">this accessor automatically adjusts the size of the vector
+</pre> 
+</div>
+</div>
+<a id="a4c996d14758dbf00646d27ac715728a0" name="a4c996d14758dbf00646d27ac715728a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c996d14758dbf00646d27ac715728a0">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24573c46943ff05b5f49d2fdc75cbf0d" name="a24573c46943ff05b5f49d2fdc75cbf0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24573c46943ff05b5f49d2fdc75cbf0d">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets elements [pos, pos+len) to given value, adjusting the size of the vector to include new elements
+</pre> 
+</div>
+</div>
+<a id="a8e4bfdb4364d2b54575f02e239c9a402" name="a8e4bfdb4364d2b54575f02e239c9a402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e4bfdb4364d2b54575f02e239c9a402">&#9670;&#160;</a></span>back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e4bfdb4364d2b54575f02e239c9a402" name="a8e4bfdb4364d2b54575f02e239c9a402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e4bfdb4364d2b54575f02e239c9a402">&#9670;&#160;</a></span>back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a401c793e6b1854be790ecaa2597fccaa" name="a401c793e6b1854be790ecaa2597fccaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a401c793e6b1854be790ecaa2597fccaa">&#9670;&#160;</a></span>backId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> mrmeshpy.Face2RegionMap.backId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the back() element
+</pre> 
+</div>
+</div>
+<a id="a52f954fe2385ce733d296073f9fce3ff" name="a52f954fe2385ce733d296073f9fce3ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f954fe2385ce733d296073f9fce3ff">&#9670;&#160;</a></span>beginId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> mrmeshpy.Face2RegionMap.beginId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the first element
+</pre> 
+</div>
+</div>
+<a id="a45bdbc26df1060b2654608a5d549427e" name="a45bdbc26df1060b2654608a5d549427e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45bdbc26df1060b2654608a5d549427e">&#9670;&#160;</a></span>capacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Face2RegionMap.capacity </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80228a89eea6e8bf6157b5bab033e71b" name="a80228a89eea6e8bf6157b5bab033e71b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80228a89eea6e8bf6157b5bab033e71b">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b5088a5dc4a675f7558f869babd3c81" name="a7b5088a5dc4a675f7558f869babd3c81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b5088a5dc4a675f7558f869babd3c81">&#9670;&#160;</a></span>data() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b5088a5dc4a675f7558f869babd3c81" name="a7b5088a5dc4a675f7558f869babd3c81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b5088a5dc4a675f7558f869babd3c81">&#9670;&#160;</a></span>data() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a56dbd1613ac2573b707e400dab0bc4d9" name="a56dbd1613ac2573b707e400dab0bc4d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56dbd1613ac2573b707e400dab0bc4d9">&#9670;&#160;</a></span>emplace_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.emplace_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d7e6a26236163df25ce54b34cfdfc99" name="a2d7e6a26236163df25ce54b34cfdfc99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d7e6a26236163df25ce54b34cfdfc99">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Face2RegionMap.empty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab09410ca3aec69d9981b697fe6593055" name="ab09410ca3aec69d9981b697fe6593055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab09410ca3aec69d9981b697fe6593055">&#9670;&#160;</a></span>endId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a> mrmeshpy.Face2RegionMap.endId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns backId() + 1
+</pre> 
+</div>
+</div>
+<a id="a3de653a9815f8c7dfff62006915d60b5" name="a3de653a9815f8c7dfff62006915d60b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3de653a9815f8c7dfff62006915d60b5">&#9670;&#160;</a></span>front() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.front </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3de653a9815f8c7dfff62006915d60b5" name="a3de653a9815f8c7dfff62006915d60b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3de653a9815f8c7dfff62006915d60b5">&#9670;&#160;</a></span>front() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a> mrmeshpy.Face2RegionMap.front </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed56276c9b249d8e79f744728ae4c46f" name="aed56276c9b249d8e79f744728ae4c46f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed56276c9b249d8e79f744728ae4c46f">&#9670;&#160;</a></span>heapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Face2RegionMap.heapBytes </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the amount of memory this object occupies on heap
+</pre> 
+</div>
+</div>
+<a id="a92bb9c949db80b1147b256459aa7dfda" name="a92bb9c949db80b1147b256459aa7dfda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92bb9c949db80b1147b256459aa7dfda">&#9670;&#160;</a></span>pop_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.pop_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd4d6f9ee5f25571d83bdda76e7593d4" name="afd4d6f9ee5f25571d83bdda76e7593d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd4d6f9ee5f25571d83bdda76e7593d4">&#9670;&#160;</a></span>push_back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.push_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd4d6f9ee5f25571d83bdda76e7593d4" name="afd4d6f9ee5f25571d83bdda76e7593d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd4d6f9ee5f25571d83bdda76e7593d4">&#9670;&#160;</a></span>push_back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.push_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4d7853a9f05e42eee7b78bdaa73cdd5" name="af4d7853a9f05e42eee7b78bdaa73cdd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4d7853a9f05e42eee7b78bdaa73cdd5">&#9670;&#160;</a></span>reserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.reserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab4cc8b0439a47da14ae6b6e6c4bae22e" name="ab4cc8b0439a47da14ae6b6e6c4bae22e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4cc8b0439a47da14ae6b6e6c4bae22e">&#9670;&#160;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5bc533118f0bc5370d77bc4068418d71" name="a5bc533118f0bc5370d77bc4068418d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bc533118f0bc5370d77bc4068418d71">&#9670;&#160;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7867592a19f1c21c8a5301344207b7eb" name="a7867592a19f1c21c8a5301344207b7eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7867592a19f1c21c8a5301344207b7eb">&#9670;&#160;</a></span>resizeNoInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.resizeNoInit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>targetSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">resizes the vector skipping initialization of its elements (more precisely initializing them using ( noInit ) constructor )
+</pre> 
+</div>
+</div>
+<a id="a7200f9f7529a239786f62e283e53e8d7" name="a7200f9f7529a239786f62e283e53e8d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7200f9f7529a239786f62e283e53e8d7">&#9670;&#160;</a></span>resizeWithReserve() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.resizeWithReserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">doubles reserved memory until resize(newSize) can be done without reallocation
+</pre> 
+</div>
+</div>
+<a id="ae76ce1dc1d9acd1a74657e1542bdf824" name="ae76ce1dc1d9acd1a74657e1542bdf824"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae76ce1dc1d9acd1a74657e1542bdf824">&#9670;&#160;</a></span>resizeWithReserve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.resizeWithReserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RegionId.html">RegionId</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">doubles reserved memory until resize(newSize) can be done without reallocation
+</pre> 
+</div>
+</div>
+<a id="a43694d26d3db91fa44b0cd6b2b1c8d86" name="a43694d26d3db91fa44b0cd6b2b1c8d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43694d26d3db91fa44b0cd6b2b1c8d86">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Face2RegionMap.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fd5591d36f54e37cd80c0241448f764" name="a6fd5591d36f54e37cd80c0241448f764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fd5591d36f54e37cd80c0241448f764">&#9670;&#160;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.swap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04d2148ba11784f24ce21307816c0acc" name="a04d2148ba11784f24ce21307816c0acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04d2148ba11784f24ce21307816c0acc">&#9670;&#160;</a></span>vec_() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__Id__RegionTag.html">std_vector_Id_RegionTag</a> mrmeshpy.Face2RegionMap.vec_ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">the user can directly manipulate the vector, anyway she cannot break anything
+</pre> 
+</div>
+</div>
+<a id="afcb03928ffff5aab0cf103f68d2fb77a" name="afcb03928ffff5aab0cf103f68d2fb77a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb03928ffff5aab0cf103f68d2fb77a">&#9670;&#160;</a></span>vec_() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Face2RegionMap.vec_ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__Id__RegionTag.html">std_vector_Id_RegionTag</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1Face2RegionMap.html">Face2RegionMap</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.RenderModelPassMask Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1RenderModelPassMask.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1RenderModelPassMask-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.RenderModelPassMask Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a98893ada6704edcd145aec12c2fd10b4" id="r_a98893ada6704edcd145aec12c2fd10b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98893ada6704edcd145aec12c2fd10b4">__and__</a> (self, <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> b)</td></tr>
+<tr class="separator:a98893ada6704edcd145aec12c2fd10b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5595e54da3b5e6fde3513dc86a10fb" id="r_acd5595e54da3b5e6fde3513dc86a10fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd5595e54da3b5e6fde3513dc86a10fb">__eq__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:acd5595e54da3b5e6fde3513dc86a10fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9becb2ffeeb21f6cedfca4471e85c6f2" id="r_a9becb2ffeeb21f6cedfca4471e85c6f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9becb2ffeeb21f6cedfca4471e85c6f2">__getstate__</a> (self)</td></tr>
+<tr class="separator:a9becb2ffeeb21f6cedfca4471e85c6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c761defc678256a903dd611532d3dce" id="r_a8c761defc678256a903dd611532d3dce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c761defc678256a903dd611532d3dce">__hash__</a> (self)</td></tr>
+<tr class="separator:a8c761defc678256a903dd611532d3dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a7d4677c46a0f6e8451e15f64f5044" id="r_ae7a7d4677c46a0f6e8451e15f64f5044"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7a7d4677c46a0f6e8451e15f64f5044">__iand__</a> (self, <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> b)</td></tr>
+<tr class="separator:ae7a7d4677c46a0f6e8451e15f64f5044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7720a940f602c7fbd852ef354d6cf9e" id="r_ae7720a940f602c7fbd852ef354d6cf9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7720a940f602c7fbd852ef354d6cf9e">__imatmul__</a> (self, bool b)</td></tr>
+<tr class="separator:ae7720a940f602c7fbd852ef354d6cf9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43ce6f4506ce4ca444d2ad7ce6c3323a" id="r_a43ce6f4506ce4ca444d2ad7ce6c3323a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43ce6f4506ce4ca444d2ad7ce6c3323a">__index__</a> (self)</td></tr>
+<tr class="separator:a43ce6f4506ce4ca444d2ad7ce6c3323a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaabb8cc73465ccf59ae6bd327c3fdced" id="r_aaabb8cc73465ccf59ae6bd327c3fdced"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaabb8cc73465ccf59ae6bd327c3fdced">__init__</a> (self, int <a class="el" href="#ad80752455edc558bff49a834355e643a">value</a>)</td></tr>
+<tr class="separator:aaabb8cc73465ccf59ae6bd327c3fdced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6774a763afbed45245a67771ef7e6e76" id="r_a6774a763afbed45245a67771ef7e6e76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6774a763afbed45245a67771ef7e6e76">__int__</a> (self)</td></tr>
+<tr class="separator:a6774a763afbed45245a67771ef7e6e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a63aafc9db85237ae6dba8b90ed0667" id="r_a1a63aafc9db85237ae6dba8b90ed0667"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a63aafc9db85237ae6dba8b90ed0667">__invert__</a> (self)</td></tr>
+<tr class="separator:a1a63aafc9db85237ae6dba8b90ed0667"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a648e562700a6088dbe18c7724997a367" id="r_a648e562700a6088dbe18c7724997a367"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a648e562700a6088dbe18c7724997a367">__ior__</a> (self, <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> b)</td></tr>
+<tr class="separator:a648e562700a6088dbe18c7724997a367"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c2db09cadffa13d563506555ab68c16" id="r_a8c2db09cadffa13d563506555ab68c16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c2db09cadffa13d563506555ab68c16">__mul__</a> (self, bool b)</td></tr>
+<tr class="separator:a8c2db09cadffa13d563506555ab68c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34a5b280bb397aa01f9de62864d76970" id="r_a34a5b280bb397aa01f9de62864d76970"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34a5b280bb397aa01f9de62864d76970">__ne__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:a34a5b280bb397aa01f9de62864d76970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54f3ff9db8b1fc8d297cffdc7a9df32a" id="r_a54f3ff9db8b1fc8d297cffdc7a9df32a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54f3ff9db8b1fc8d297cffdc7a9df32a">__or__</a> (self, <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> b)</td></tr>
+<tr class="separator:a54f3ff9db8b1fc8d297cffdc7a9df32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a138699e6e1624d87db2bc8588d9abc3e" id="r_a138699e6e1624d87db2bc8588d9abc3e"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a138699e6e1624d87db2bc8588d9abc3e">__repr__</a> (self)</td></tr>
+<tr class="separator:a138699e6e1624d87db2bc8588d9abc3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ca7efe576b3f97a9e850dd9e811d95" id="r_a75ca7efe576b3f97a9e850dd9e811d95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75ca7efe576b3f97a9e850dd9e811d95">__rmul__</a> (self, bool b)</td></tr>
+<tr class="separator:a75ca7efe576b3f97a9e850dd9e811d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83f079e91411c8ec1195a9d34316695f" id="r_a83f079e91411c8ec1195a9d34316695f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83f079e91411c8ec1195a9d34316695f">__setstate__</a> (self, int state)</td></tr>
+<tr class="separator:a83f079e91411c8ec1195a9d34316695f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9edff95055b0c261311efac6e215c633" id="r_a9edff95055b0c261311efac6e215c633"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9edff95055b0c261311efac6e215c633">__str__</a> (self)</td></tr>
+<tr class="separator:a9edff95055b0c261311efac6e215c633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26ee61f934856e0f6031de1808fdfa03" id="r_a26ee61f934856e0f6031de1808fdfa03"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26ee61f934856e0f6031de1808fdfa03">name</a> (self)</td></tr>
+<tr class="separator:a26ee61f934856e0f6031de1808fdfa03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad80752455edc558bff49a834355e643a" id="r_ad80752455edc558bff49a834355e643a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad80752455edc558bff49a834355e643a">value</a> (self)</td></tr>
+<tr class="separator:ad80752455edc558bff49a834355e643a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a73d63ade64b368965e4b17461aa9eb0e" id="r_a73d63ade64b368965e4b17461aa9eb0e"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73d63ade64b368965e4b17461aa9eb0e">All</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td></tr>
+<tr class="separator:a73d63ade64b368965e4b17461aa9eb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638282176c5333596451b0be50a6a540" id="r_a638282176c5333596451b0be50a6a540"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a638282176c5333596451b0be50a6a540">NoDepthTest</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td></tr>
+<tr class="separator:a638282176c5333596451b0be50a6a540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90672cf10a8de02117e853e9accccdf1" id="r_a90672cf10a8de02117e853e9accccdf1"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90672cf10a8de02117e853e9accccdf1">Opaque</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td></tr>
+<tr class="separator:a90672cf10a8de02117e853e9accccdf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875b68ccb6cf4a035889e37b57557028" id="r_a875b68ccb6cf4a035889e37b57557028"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a875b68ccb6cf4a035889e37b57557028">Transparent</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td></tr>
+<tr class="separator:a875b68ccb6cf4a035889e37b57557028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0139f80597fa0b0496aa6f9a9d856f9" id="r_af0139f80597fa0b0496aa6f9a9d856f9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0139f80597fa0b0496aa6f9a9d856f9">VolumeRendering</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td></tr>
+<tr class="separator:af0139f80597fa0b0496aa6f9a9d856f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Members:
+
+  Opaque
+
+  Transparent
+
+  VolumeRendering
+
+  NoDepthTest
+
+  All
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aaabb8cc73465ccf59ae6bd327c3fdced" name="aaabb8cc73465ccf59ae6bd327c3fdced"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaabb8cc73465ccf59ae6bd327c3fdced">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RenderModelPassMask.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a98893ada6704edcd145aec12c2fd10b4" name="a98893ada6704edcd145aec12c2fd10b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98893ada6704edcd145aec12c2fd10b4">&#9670;&#160;</a></span>__and__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__and__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acd5595e54da3b5e6fde3513dc86a10fb" name="acd5595e54da3b5e6fde3513dc86a10fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd5595e54da3b5e6fde3513dc86a10fb">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RenderModelPassMask.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9becb2ffeeb21f6cedfca4471e85c6f2" name="a9becb2ffeeb21f6cedfca4471e85c6f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9becb2ffeeb21f6cedfca4471e85c6f2">&#9670;&#160;</a></span>__getstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.RenderModelPassMask.__getstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c761defc678256a903dd611532d3dce" name="a8c761defc678256a903dd611532d3dce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c761defc678256a903dd611532d3dce">&#9670;&#160;</a></span>__hash__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.RenderModelPassMask.__hash__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7a7d4677c46a0f6e8451e15f64f5044" name="ae7a7d4677c46a0f6e8451e15f64f5044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7a7d4677c46a0f6e8451e15f64f5044">&#9670;&#160;</a></span>__iand__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__iand__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7720a940f602c7fbd852ef354d6cf9e" name="ae7720a940f602c7fbd852ef354d6cf9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7720a940f602c7fbd852ef354d6cf9e">&#9670;&#160;</a></span>__imatmul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__imatmul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a43ce6f4506ce4ca444d2ad7ce6c3323a" name="a43ce6f4506ce4ca444d2ad7ce6c3323a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43ce6f4506ce4ca444d2ad7ce6c3323a">&#9670;&#160;</a></span>__index__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.RenderModelPassMask.__index__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6774a763afbed45245a67771ef7e6e76" name="a6774a763afbed45245a67771ef7e6e76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6774a763afbed45245a67771ef7e6e76">&#9670;&#160;</a></span>__int__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.RenderModelPassMask.__int__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a63aafc9db85237ae6dba8b90ed0667" name="a1a63aafc9db85237ae6dba8b90ed0667"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a63aafc9db85237ae6dba8b90ed0667">&#9670;&#160;</a></span>__invert__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__invert__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a648e562700a6088dbe18c7724997a367" name="a648e562700a6088dbe18c7724997a367"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a648e562700a6088dbe18c7724997a367">&#9670;&#160;</a></span>__ior__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__ior__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c2db09cadffa13d563506555ab68c16" name="a8c2db09cadffa13d563506555ab68c16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c2db09cadffa13d563506555ab68c16">&#9670;&#160;</a></span>__mul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__mul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34a5b280bb397aa01f9de62864d76970" name="a34a5b280bb397aa01f9de62864d76970"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34a5b280bb397aa01f9de62864d76970">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.RenderModelPassMask.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54f3ff9db8b1fc8d297cffdc7a9df32a" name="a54f3ff9db8b1fc8d297cffdc7a9df32a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54f3ff9db8b1fc8d297cffdc7a9df32a">&#9670;&#160;</a></span>__or__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__or__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a138699e6e1624d87db2bc8588d9abc3e" name="a138699e6e1624d87db2bc8588d9abc3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a138699e6e1624d87db2bc8588d9abc3e">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.RenderModelPassMask.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75ca7efe576b3f97a9e850dd9e811d95" name="a75ca7efe576b3f97a9e850dd9e811d95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ca7efe576b3f97a9e850dd9e811d95">&#9670;&#160;</a></span>__rmul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a> mrmeshpy.RenderModelPassMask.__rmul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83f079e91411c8ec1195a9d34316695f" name="a83f079e91411c8ec1195a9d34316695f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83f079e91411c8ec1195a9d34316695f">&#9670;&#160;</a></span>__setstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.RenderModelPassMask.__setstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9edff95055b0c261311efac6e215c633" name="a9edff95055b0c261311efac6e215c633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9edff95055b0c261311efac6e215c633">&#9670;&#160;</a></span>__str__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.RenderModelPassMask.__str__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26ee61f934856e0f6031de1808fdfa03" name="a26ee61f934856e0f6031de1808fdfa03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26ee61f934856e0f6031de1808fdfa03">&#9670;&#160;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.RenderModelPassMask.name </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad80752455edc558bff49a834355e643a" name="ad80752455edc558bff49a834355e643a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad80752455edc558bff49a834355e643a">&#9670;&#160;</a></span>value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.RenderModelPassMask.value </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a73d63ade64b368965e4b17461aa9eb0e" name="a73d63ade64b368965e4b17461aa9eb0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73d63ade64b368965e4b17461aa9eb0e">&#9670;&#160;</a></span>All</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.RenderModelPassMask.All .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a638282176c5333596451b0be50a6a540" name="a638282176c5333596451b0be50a6a540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638282176c5333596451b0be50a6a540">&#9670;&#160;</a></span>NoDepthTest</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.RenderModelPassMask.NoDepthTest .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90672cf10a8de02117e853e9accccdf1" name="a90672cf10a8de02117e853e9accccdf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90672cf10a8de02117e853e9accccdf1">&#9670;&#160;</a></span>Opaque</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.RenderModelPassMask.Opaque .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a875b68ccb6cf4a035889e37b57557028" name="a875b68ccb6cf4a035889e37b57557028"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a875b68ccb6cf4a035889e37b57557028">&#9670;&#160;</a></span>Transparent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.RenderModelPassMask.Transparent .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0139f80597fa0b0496aa6f9a9d856f9" name="af0139f80597fa0b0496aa6f9a9d856f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0139f80597fa0b0496aa6f9a9d856f9">&#9670;&#160;</a></span>VolumeRendering</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.RenderModelPassMask.VolumeRendering .ClassVar[<a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1RenderModelPassMask.html">RenderModelPassMask</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

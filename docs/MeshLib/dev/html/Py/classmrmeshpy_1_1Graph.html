@@ -1,0 +1,725 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.Graph Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1Graph.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1Graph-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.Graph Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Graph_1_1EndVertices.html">EndVertices</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a3712305aed0ad1e87fa63d612151a211" id="r_a3712305aed0ad1e87fa63d612151a211"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3712305aed0ad1e87fa63d612151a211">__init__</a> (self)</td></tr>
+<tr class="separator:a3712305aed0ad1e87fa63d612151a211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92cf845cfa15987573293a70fabd90e1" id="r_a92cf845cfa15987573293a70fabd90e1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92cf845cfa15987573293a70fabd90e1">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Graph.html">Graph</a> arg0)</td></tr>
+<tr class="separator:a92cf845cfa15987573293a70fabd90e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb850399916f589182a5218d4eb1757c" id="r_adb850399916f589182a5218d4eb1757c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb850399916f589182a5218d4eb1757c">areNeighbors</a> (self, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> a, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> b)</td></tr>
+<tr class="separator:adb850399916f589182a5218d4eb1757c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6dce4ccfffbea903b65ba66c7b871e" id="r_a6f6dce4ccfffbea903b65ba66c7b871e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f6dce4ccfffbea903b65ba66c7b871e">checkValidity</a> (self)</td></tr>
+<tr class="separator:a6f6dce4ccfffbea903b65ba66c7b871e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62e8dc7f72748f0636e1169d05a889b8" id="r_a62e8dc7f72748f0636e1169d05a889b8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62e8dc7f72748f0636e1169d05a889b8">construct</a> (self, <a class="el" href="classmrmeshpy_1_1Vector__std__vector__GraphEdgeId__GraphVertId.html">Vector_std_vector_GraphEdgeId_GraphVertId</a> neighboursPerVertex, <a class="el" href="classmrmeshpy_1_1Vector__Graph__EndVertices__GraphEdgeId.html">Vector_Graph_EndVertices_GraphEdgeId</a> endsPerEdge)</td></tr>
+<tr class="separator:a62e8dc7f72748f0636e1169d05a889b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cc955f4bcec3c630f6f52d3e07a941c" id="r_a3cc955f4bcec3c630f6f52d3e07a941c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cc955f4bcec3c630f6f52d3e07a941c">edgeSize</a> (self)</td></tr>
+<tr class="separator:a3cc955f4bcec3c630f6f52d3e07a941c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b035752f2df85f3d4634e5e961d3e10" id="r_a7b035752f2df85f3d4634e5e961d3e10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Graph_1_1EndVertices.html">Graph.EndVertices</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b035752f2df85f3d4634e5e961d3e10">ends</a> (self, <a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a> e)</td></tr>
+<tr class="separator:a7b035752f2df85f3d4634e5e961d3e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a189740779254da7d7e9ccf907bd3ed" id="r_a7a189740779254da7d7e9ccf907bd3ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a189740779254da7d7e9ccf907bd3ed">findEdge</a> (self, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> a, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> b)</td></tr>
+<tr class="separator:a7a189740779254da7d7e9ccf907bd3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd983603d3664bdf6569212efc00f5d0" id="r_abd983603d3664bdf6569212efc00f5d0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd983603d3664bdf6569212efc00f5d0">merge</a> (self, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> remnant, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> dead, <a class="el" href="classmrmeshpy_1_1func__void__from__Id__GraphEdgeTag__Id__GraphEdgeTag.html">func_void_from_Id_GraphEdgeTag_Id_GraphEdgeTag</a> onMergeEdges)</td></tr>
+<tr class="separator:abd983603d3664bdf6569212efc00f5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa435fd61762d5f5858fd7017e3b0716b" id="r_aa435fd61762d5f5858fd7017e3b0716b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__Id__GraphEdgeTag.html">std_vector_Id_GraphEdgeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa435fd61762d5f5858fd7017e3b0716b">neighbours</a> (self, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> v)</td></tr>
+<tr class="separator:aa435fd61762d5f5858fd7017e3b0716b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7151d61d9f442d00ef51f96f5adb645" id="r_ac7151d61d9f442d00ef51f96f5adb645"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7151d61d9f442d00ef51f96f5adb645">valid</a> (self, <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a> v)</td></tr>
+<tr class="separator:ac7151d61d9f442d00ef51f96f5adb645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2421ab5543f0c7d9b9680dcbba62c600" id="r_a2421ab5543f0c7d9b9680dcbba62c600"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2421ab5543f0c7d9b9680dcbba62c600">valid</a> (self, <a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a> e)</td></tr>
+<tr class="separator:a2421ab5543f0c7d9b9680dcbba62c600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585342f2deec7205a387347a508a509a" id="r_a585342f2deec7205a387347a508a509a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1GraphEdgeBitSet.html">GraphEdgeBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a585342f2deec7205a387347a508a509a">validEdges</a> (self)</td></tr>
+<tr class="separator:a585342f2deec7205a387347a508a509a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6450510905f127b02221698d8858f1" id="r_a6f6450510905f127b02221698d8858f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1GraphVertBitSet.html">GraphVertBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f6450510905f127b02221698d8858f1">validVerts</a> (self)</td></tr>
+<tr class="separator:a6f6450510905f127b02221698d8858f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28efb399a559793b53cabee8e42a7930" id="r_a28efb399a559793b53cabee8e42a7930"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28efb399a559793b53cabee8e42a7930">vertSize</a> (self)</td></tr>
+<tr class="separator:a28efb399a559793b53cabee8e42a7930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a3effc0a3753553905437d6e9b247d4f1" id="r_a3effc0a3753553905437d6e9b247d4f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3effc0a3753553905437d6e9b247d4f1">EdgeBitSet</a></td></tr>
+<tr class="separator:a3effc0a3753553905437d6e9b247d4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd11cc10962f02a8539e0d40b7087310" id="r_abd11cc10962f02a8539e0d40b7087310"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd11cc10962f02a8539e0d40b7087310">EdgeId</a> = <a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a></td></tr>
+<tr class="separator:abd11cc10962f02a8539e0d40b7087310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55ba2ea0a68ba58a9d357d310f45197" id="r_af55ba2ea0a68ba58a9d357d310f45197"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af55ba2ea0a68ba58a9d357d310f45197">EndsPerEdge</a> = <a class="el" href="classmrmeshpy_1_1Vector__Graph__EndVertices__GraphEdgeId.html">Vector_Graph_EndVertices_GraphEdgeId</a></td></tr>
+<tr class="separator:af55ba2ea0a68ba58a9d357d310f45197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa744063fc4c9bd5c4dae9b25a2cff31e" id="r_aa744063fc4c9bd5c4dae9b25a2cff31e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa744063fc4c9bd5c4dae9b25a2cff31e">Neighbours</a> = <a class="el" href="classmrmeshpy_1_1std__vector__Id__GraphEdgeTag.html">std_vector_Id_GraphEdgeTag</a></td></tr>
+<tr class="separator:aa744063fc4c9bd5c4dae9b25a2cff31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b246ec722c42c44f3c05950612cc83b" id="r_a5b246ec722c42c44f3c05950612cc83b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b246ec722c42c44f3c05950612cc83b">NeighboursPerVertex</a> = <a class="el" href="classmrmeshpy_1_1Vector__std__vector__GraphEdgeId__GraphVertId.html">Vector_std_vector_GraphEdgeId_GraphVertId</a></td></tr>
+<tr class="separator:a5b246ec722c42c44f3c05950612cc83b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2df11399caf6c599232ae05ab8943825" id="r_a2df11399caf6c599232ae05ab8943825"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2df11399caf6c599232ae05ab8943825">VertBitSet</a> = <a class="el" href="classmrmeshpy_1_1GraphVertBitSet.html">GraphVertBitSet</a></td></tr>
+<tr class="separator:a2df11399caf6c599232ae05ab8943825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9475b2ff69b35d06cb53127d1df3f70" id="r_aa9475b2ff69b35d06cb53127d1df3f70"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9475b2ff69b35d06cb53127d1df3f70">VertId</a> = <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td></tr>
+<tr class="separator:aa9475b2ff69b35d06cb53127d1df3f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::Graph
+
+mathematical graph consisting from vertices and undirected edges
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3712305aed0ad1e87fa63d612151a211" name="a3712305aed0ad1e87fa63d612151a211"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3712305aed0ad1e87fa63d612151a211">&#9670;&#160;</a></span>__init__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Graph.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a92cf845cfa15987573293a70fabd90e1" name="a92cf845cfa15987573293a70fabd90e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92cf845cfa15987573293a70fabd90e1">&#9670;&#160;</a></span>__init__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Graph.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Graph.html">Graph</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="adb850399916f589182a5218d4eb1757c" name="adb850399916f589182a5218d4eb1757c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb850399916f589182a5218d4eb1757c">&#9670;&#160;</a></span>areNeighbors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Graph.areNeighbors </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if the vertices a and b are neighbors
+</pre> 
+</div>
+</div>
+<a id="a6f6dce4ccfffbea903b65ba66c7b871e" name="a6f6dce4ccfffbea903b65ba66c7b871e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f6dce4ccfffbea903b65ba66c7b871e">&#9670;&#160;</a></span>checkValidity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Graph.checkValidity </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">verifies that all internal data structures are valid
+</pre> 
+</div>
+</div>
+<a id="a62e8dc7f72748f0636e1169d05a889b8" name="a62e8dc7f72748f0636e1169d05a889b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62e8dc7f72748f0636e1169d05a889b8">&#9670;&#160;</a></span>construct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Graph.construct </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector__std__vector__GraphEdgeId__GraphVertId.html">Vector_std_vector_GraphEdgeId_GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>neighboursPerVertex</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector__Graph__EndVertices__GraphEdgeId.html">Vector_Graph_EndVertices_GraphEdgeId</a></td>          <td class="paramname"><span class="paramname"><em>endsPerEdge</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">constructs the graph from all valid vertices and edges
+</pre> 
+</div>
+</div>
+<a id="a3cc955f4bcec3c630f6f52d3e07a941c" name="a3cc955f4bcec3c630f6f52d3e07a941c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cc955f4bcec3c630f6f52d3e07a941c">&#9670;&#160;</a></span>edgeSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Graph.edgeSize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the number of edge records, including invalid ones
+</pre> 
+</div>
+</div>
+<a id="a7b035752f2df85f3d4634e5e961d3e10" name="a7b035752f2df85f3d4634e5e961d3e10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b035752f2df85f3d4634e5e961d3e10">&#9670;&#160;</a></span>ends()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Graph_1_1EndVertices.html">Graph.EndVertices</a> mrmeshpy.Graph.ends </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the ends of given edge
+</pre> 
+</div>
+</div>
+<a id="a7a189740779254da7d7e9ccf907bd3ed" name="a7a189740779254da7d7e9ccf907bd3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a189740779254da7d7e9ccf907bd3ed">&#9670;&#160;</a></span>findEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a> mrmeshpy.Graph.findEdge </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">finds and returns edge between vertices a and b; returns invalid edge otherwise
+</pre> 
+</div>
+</div>
+<a id="abd983603d3664bdf6569212efc00f5d0" name="abd983603d3664bdf6569212efc00f5d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd983603d3664bdf6569212efc00f5d0">&#9670;&#160;</a></span>merge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Graph.merge </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>remnant</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>dead</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__Id__GraphEdgeTag__Id__GraphEdgeTag.html">func_void_from_Id_GraphEdgeTag_Id_GraphEdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>onMergeEdges</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">unites two vertices into one (deleting the second one),
+which leads to deletion and merge of some edges, for which callback is called
+</pre> 
+</div>
+</div>
+<a id="aa435fd61762d5f5858fd7017e3b0716b" name="aa435fd61762d5f5858fd7017e3b0716b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa435fd61762d5f5858fd7017e3b0716b">&#9670;&#160;</a></span>neighbours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__Id__GraphEdgeTag.html">std_vector_Id_GraphEdgeTag</a> mrmeshpy.Graph.neighbours </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns all edges adjacent to given vertex
+</pre> 
+</div>
+</div>
+<a id="a2421ab5543f0c7d9b9680dcbba62c600" name="a2421ab5543f0c7d9b9680dcbba62c600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2421ab5543f0c7d9b9680dcbba62c600">&#9670;&#160;</a></span>valid() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Graph.valid </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if given edge is valid
+</pre> 
+</div>
+</div>
+<a id="ac7151d61d9f442d00ef51f96f5adb645" name="ac7151d61d9f442d00ef51f96f5adb645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7151d61d9f442d00ef51f96f5adb645">&#9670;&#160;</a></span>valid() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Graph.valid </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>          <td class="paramname"><span class="paramname"><em>v</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if given vertex is valid
+</pre> 
+</div>
+</div>
+<a id="a585342f2deec7205a387347a508a509a" name="a585342f2deec7205a387347a508a509a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a585342f2deec7205a387347a508a509a">&#9670;&#160;</a></span>validEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1GraphEdgeBitSet.html">GraphEdgeBitSet</a> mrmeshpy.Graph.validEdges </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns all valid edges in the graph
+</pre> 
+</div>
+</div>
+<a id="a6f6450510905f127b02221698d8858f1" name="a6f6450510905f127b02221698d8858f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f6450510905f127b02221698d8858f1">&#9670;&#160;</a></span>validVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1GraphVertBitSet.html">GraphVertBitSet</a> mrmeshpy.Graph.validVerts </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns all valid vertices in the graph
+</pre> 
+</div>
+</div>
+<a id="a28efb399a559793b53cabee8e42a7930" name="a28efb399a559793b53cabee8e42a7930"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28efb399a559793b53cabee8e42a7930">&#9670;&#160;</a></span>vertSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Graph.vertSize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the number of vertex records, including invalid ones
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3effc0a3753553905437d6e9b247d4f1" name="a3effc0a3753553905437d6e9b247d4f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3effc0a3753553905437d6e9b247d4f1">&#9670;&#160;</a></span>EdgeBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Graph.EdgeBitSet</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd11cc10962f02a8539e0d40b7087310" name="abd11cc10962f02a8539e0d40b7087310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd11cc10962f02a8539e0d40b7087310">&#9670;&#160;</a></span>EdgeId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Graph.EdgeId = <a class="el" href="classmrmeshpy_1_1GraphEdgeId.html">GraphEdgeId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af55ba2ea0a68ba58a9d357d310f45197" name="af55ba2ea0a68ba58a9d357d310f45197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af55ba2ea0a68ba58a9d357d310f45197">&#9670;&#160;</a></span>EndsPerEdge</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Graph.EndsPerEdge = <a class="el" href="classmrmeshpy_1_1Vector__Graph__EndVertices__GraphEdgeId.html">Vector_Graph_EndVertices_GraphEdgeId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa744063fc4c9bd5c4dae9b25a2cff31e" name="aa744063fc4c9bd5c4dae9b25a2cff31e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa744063fc4c9bd5c4dae9b25a2cff31e">&#9670;&#160;</a></span>Neighbours</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Graph.Neighbours = <a class="el" href="classmrmeshpy_1_1std__vector__Id__GraphEdgeTag.html">std_vector_Id_GraphEdgeTag</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b246ec722c42c44f3c05950612cc83b" name="a5b246ec722c42c44f3c05950612cc83b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b246ec722c42c44f3c05950612cc83b">&#9670;&#160;</a></span>NeighboursPerVertex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Graph.NeighboursPerVertex = <a class="el" href="classmrmeshpy_1_1Vector__std__vector__GraphEdgeId__GraphVertId.html">Vector_std_vector_GraphEdgeId_GraphVertId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2df11399caf6c599232ae05ab8943825" name="a2df11399caf6c599232ae05ab8943825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2df11399caf6c599232ae05ab8943825">&#9670;&#160;</a></span>VertBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Graph.VertBitSet = <a class="el" href="classmrmeshpy_1_1GraphVertBitSet.html">GraphVertBitSet</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9475b2ff69b35d06cb53127d1df3f70" name="aa9475b2ff69b35d06cb53127d1df3f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9475b2ff69b35d06cb53127d1df3f70">&#9670;&#160;</a></span>VertId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Graph.VertId = <a class="el" href="classmrmeshpy_1_1GraphVertId.html">GraphVertId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1Graph.html">Graph</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

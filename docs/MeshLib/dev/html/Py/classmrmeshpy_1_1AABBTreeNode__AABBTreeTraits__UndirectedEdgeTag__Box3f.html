@@ -1,0 +1,582 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__UndirectedEdgeTag__Box3f.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__UndirectedEdgeTag__Box3f-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af5c852f346bfc30d7217bb9cc820c5b9" id="r_af5c852f346bfc30d7217bb9cc820c5b9"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5c852f346bfc30d7217bb9cc820c5b9">__init__</a> (self)</td></tr>
+<tr class="separator:af5c852f346bfc30d7217bb9cc820c5b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c0dbf6a4cabb20b07633ea41b0fdbb" id="r_a52c0dbf6a4cabb20b07633ea41b0fdbb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52c0dbf6a4cabb20b07633ea41b0fdbb">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__UndirectedEdgeTag__Box3f.html">AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f</a> arg0)</td></tr>
+<tr class="separator:a52c0dbf6a4cabb20b07633ea41b0fdbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aed0cfdd5d593101428fa7ab87ac4ff" id="r_a8aed0cfdd5d593101428fa7ab87ac4ff"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8aed0cfdd5d593101428fa7ab87ac4ff">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a> <a class="el" href="#a5b083a974ec4a601833a1b55d2b19aea">box</a>, <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> <a class="el" href="#ad752c6ef6930b3f80066d08ad767edca">l</a>, <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> <a class="el" href="#a3484a0a2cbc7344f5a0d875bf7e3497d">r</a>)</td></tr>
+<tr class="separator:a8aed0cfdd5d593101428fa7ab87ac4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02453366609f40cbe84a27192cf574e5" id="r_a02453366609f40cbe84a27192cf574e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02453366609f40cbe84a27192cf574e5">leaf</a> (self)</td></tr>
+<tr class="separator:a02453366609f40cbe84a27192cf574e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8754bfa06448afd7b88aed8bf343fd04" id="r_a8754bfa06448afd7b88aed8bf343fd04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1UndirectedEdgeId.html">UndirectedEdgeId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8754bfa06448afd7b88aed8bf343fd04">leafId</a> (self)</td></tr>
+<tr class="separator:a8754bfa06448afd7b88aed8bf343fd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc6d2b9050033a508194ef7538ff8059" id="r_adc6d2b9050033a508194ef7538ff8059"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc6d2b9050033a508194ef7538ff8059">setLeafId</a> (self, <a class="el" href="classmrmeshpy_1_1UndirectedEdgeId.html">UndirectedEdgeId</a> id)</td></tr>
+<tr class="separator:adc6d2b9050033a508194ef7538ff8059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b083a974ec4a601833a1b55d2b19aea" id="r_a5b083a974ec4a601833a1b55d2b19aea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b083a974ec4a601833a1b55d2b19aea">box</a> (self)</td></tr>
+<tr class="separator:a5b083a974ec4a601833a1b55d2b19aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd01c0234167fe7394e0df7f884f5a5" id="r_a0dd01c0234167fe7394e0df7f884f5a5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dd01c0234167fe7394e0df7f884f5a5">box</a> (self, <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a> arg1)</td></tr>
+<tr class="separator:a0dd01c0234167fe7394e0df7f884f5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad752c6ef6930b3f80066d08ad767edca" id="r_ad752c6ef6930b3f80066d08ad767edca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad752c6ef6930b3f80066d08ad767edca">l</a> (self)</td></tr>
+<tr class="separator:ad752c6ef6930b3f80066d08ad767edca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b4e8af8da0bfebace89bf1a20180d6" id="r_ab6b4e8af8da0bfebace89bf1a20180d6"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6b4e8af8da0bfebace89bf1a20180d6">l</a> (self, <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> arg1)</td></tr>
+<tr class="separator:ab6b4e8af8da0bfebace89bf1a20180d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3484a0a2cbc7344f5a0d875bf7e3497d" id="r_a3484a0a2cbc7344f5a0d875bf7e3497d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3484a0a2cbc7344f5a0d875bf7e3497d">r</a> (self)</td></tr>
+<tr class="separator:a3484a0a2cbc7344f5a0d875bf7e3497d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad57631555cc2264e2fabecef646b48fd" id="r_ad57631555cc2264e2fabecef646b48fd"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad57631555cc2264e2fabecef646b48fd">r</a> (self, <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> arg1)</td></tr>
+<tr class="separator:ad57631555cc2264e2fabecef646b48fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a5d67fab7f9fca2f798f7bc3a7b0f5c72" id="r_a5d67fab7f9fca2f798f7bc3a7b0f5c72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d67fab7f9fca2f798f7bc3a7b0f5c72">BoxT</a> = <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a></td></tr>
+<tr class="separator:a5d67fab7f9fca2f798f7bc3a7b0f5c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d9b7c49f39fbe74cafb4edc61accee0" id="r_a0d9b7c49f39fbe74cafb4edc61accee0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d9b7c49f39fbe74cafb4edc61accee0">LeafId</a> = <a class="el" href="classmrmeshpy_1_1UndirectedEdgeId.html">UndirectedEdgeId</a></td></tr>
+<tr class="separator:a0d9b7c49f39fbe74cafb4edc61accee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a410ed583bf2d601e6cf7901e585f8726" id="r_a410ed583bf2d601e6cf7901e585f8726"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a410ed583bf2d601e6cf7901e585f8726">_offsetof_box</a> = 0</td></tr>
+<tr class="separator:a410ed583bf2d601e6cf7901e585f8726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade2bc85175d536ca9ab8a46dc13bc698" id="r_ade2bc85175d536ca9ab8a46dc13bc698"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade2bc85175d536ca9ab8a46dc13bc698">_offsetof_l</a> = 24</td></tr>
+<tr class="separator:ade2bc85175d536ca9ab8a46dc13bc698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada1c67c27c6928b6420e3c0709ce54e5" id="r_ada1c67c27c6928b6420e3c0709ce54e5"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada1c67c27c6928b6420e3c0709ce54e5">_offsetof_r</a> = 28</td></tr>
+<tr class="separator:ada1c67c27c6928b6420e3c0709ce54e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::AABBTreeNode&lt;MR::AABBTreeTraits&lt;MR::UndirectedEdgeTag, MR::Box3f&gt;&gt;
+Aliases:  AABBTreeBase_AABBTreeTraits_UndirectedEdgeTag_Box3f.Node, Vector_AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f_NodeId.value_type, Vector_AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f_NodeId.const_reference, Vector_AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f_NodeId.reference
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af5c852f346bfc30d7217bb9cc820c5b9" name="af5c852f346bfc30d7217bb9cc820c5b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5c852f346bfc30d7217bb9cc820c5b9">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a52c0dbf6a4cabb20b07633ea41b0fdbb" name="a52c0dbf6a4cabb20b07633ea41b0fdbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52c0dbf6a4cabb20b07633ea41b0fdbb">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__UndirectedEdgeTag__Box3f.html">AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a8aed0cfdd5d593101428fa7ab87ac4ff" name="a8aed0cfdd5d593101428fa7ab87ac4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aed0cfdd5d593101428fa7ab87ac4ff">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a></td>          <td class="paramname"><span class="paramname"><em>box</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5b083a974ec4a601833a1b55d2b19aea" name="a5b083a974ec4a601833a1b55d2b19aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b083a974ec4a601833a1b55d2b19aea">&#9670;&#160;</a></span>box() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a> mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.box </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">bounding box of whole subtree
+</pre> 
+</div>
+</div>
+<a id="a0dd01c0234167fe7394e0df7f884f5a5" name="a0dd01c0234167fe7394e0df7f884f5a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dd01c0234167fe7394e0df7f884f5a5">&#9670;&#160;</a></span>box() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.box </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad752c6ef6930b3f80066d08ad767edca" name="ad752c6ef6930b3f80066d08ad767edca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad752c6ef6930b3f80066d08ad767edca">&#9670;&#160;</a></span>l() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.l </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">two children
+</pre> 
+</div>
+</div>
+<a id="ab6b4e8af8da0bfebace89bf1a20180d6" name="ab6b4e8af8da0bfebace89bf1a20180d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b4e8af8da0bfebace89bf1a20180d6">&#9670;&#160;</a></span>l() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.l </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a02453366609f40cbe84a27192cf574e5" name="a02453366609f40cbe84a27192cf574e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02453366609f40cbe84a27192cf574e5">&#9670;&#160;</a></span>leaf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.leaf </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if this is a leaf node without children nodes but with a LeafId reference
+</pre> 
+</div>
+</div>
+<a id="a8754bfa06448afd7b88aed8bf343fd04" name="a8754bfa06448afd7b88aed8bf343fd04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8754bfa06448afd7b88aed8bf343fd04">&#9670;&#160;</a></span>leafId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1UndirectedEdgeId.html">UndirectedEdgeId</a> mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.leafId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns face (for the leaf node only)
+</pre> 
+</div>
+</div>
+<a id="a3484a0a2cbc7344f5a0d875bf7e3497d" name="a3484a0a2cbc7344f5a0d875bf7e3497d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3484a0a2cbc7344f5a0d875bf7e3497d">&#9670;&#160;</a></span>r() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.r </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">two children
+</pre> 
+</div>
+</div>
+<a id="ad57631555cc2264e2fabecef646b48fd" name="ad57631555cc2264e2fabecef646b48fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad57631555cc2264e2fabecef646b48fd">&#9670;&#160;</a></span>r() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.r </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc6d2b9050033a508194ef7538ff8059" name="adc6d2b9050033a508194ef7538ff8059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc6d2b9050033a508194ef7538ff8059">&#9670;&#160;</a></span>setLeafId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.setLeafId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1UndirectedEdgeId.html">UndirectedEdgeId</a></td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a410ed583bf2d601e6cf7901e585f8726" name="a410ed583bf2d601e6cf7901e585f8726"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a410ed583bf2d601e6cf7901e585f8726">&#9670;&#160;</a></span>_offsetof_box</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f._offsetof_box = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade2bc85175d536ca9ab8a46dc13bc698" name="ade2bc85175d536ca9ab8a46dc13bc698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade2bc85175d536ca9ab8a46dc13bc698">&#9670;&#160;</a></span>_offsetof_l</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f._offsetof_l = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada1c67c27c6928b6420e3c0709ce54e5" name="ada1c67c27c6928b6420e3c0709ce54e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada1c67c27c6928b6420e3c0709ce54e5">&#9670;&#160;</a></span>_offsetof_r</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f._offsetof_r = 28</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5d67fab7f9fca2f798f7bc3a7b0f5c72" name="a5d67fab7f9fca2f798f7bc3a7b0f5c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d67fab7f9fca2f798f7bc3a7b0f5c72">&#9670;&#160;</a></span>BoxT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.BoxT = <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d9b7c49f39fbe74cafb4edc61accee0" name="a0d9b7c49f39fbe74cafb4edc61accee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d9b7c49f39fbe74cafb4edc61accee0">&#9670;&#160;</a></span>LeafId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f.LeafId = <a class="el" href="classmrmeshpy_1_1UndirectedEdgeId.html">UndirectedEdgeId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__UndirectedEdgeTag__Box3f.html">AABBTreeNode_AABBTreeTraits_UndirectedEdgeTag_Box3f</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

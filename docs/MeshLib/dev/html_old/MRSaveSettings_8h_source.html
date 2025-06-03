@@ -1,0 +1,278 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Documentation: MRSaveSettings.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="favicon.ico"/></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Documentation
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRSaveSettings_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRSaveSettings.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRSaveSettings_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRProgressCallback_8h.html">MRProgressCallback.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRAffineXf3_8h.html">MRAffineXf3.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRId_8h.html">MRId.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRVector_8h.html">MRVector.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceMR.html">MR</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1SaveSettings.html">SaveSettings</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a0b68c4c0ab3b6852ec10195e64e5148f">   17</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a0b68c4c0ab3b6852ec10195e64e5148f">saveValidOnly</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a2d0238b076acd7e381d778f9c92fe873">   21</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a2d0238b076acd7e381d778f9c92fe873">rearrangeTriangles</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a6aa78ab8ac3342aaeb267aa07e82721a">   24</a></span>    <span class="keyword">const</span> VertColors * <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a6aa78ab8ac3342aaeb267aa07e82721a">colors</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a71c2ed63cb6a101dbd9b47f8ca9898fd">   27</a></span>    <span class="keyword">const</span> VertUVCoords * <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a71c2ed63cb6a101dbd9b47f8ca9898fd">uvMap</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a0cd4cf82acb2f094f43f785282fcb76a">   30</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTexture.html">MeshTexture</a> * <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a0cd4cf82acb2f094f43f785282fcb76a">texture</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a3614a6ca71783b2dd64369d4f122ee69">   33</a></span>    std::string <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a3614a6ca71783b2dd64369d4f122ee69">materialName</a> = <span class="stringliteral">&quot;Default&quot;</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a972e4972bf3626cb56f22c55b69cccc0">   36</a></span>    <span class="keyword">const</span> AffineXf3d * <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a972e4972bf3626cb56f22c55b69cccc0">xf</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structMR_1_1SaveSettings.html#a0f2bb31407f2693aa939c47e0052b527">   39</a></span>    <a class="code hl_typedef" href="group__BasicStructuresGroup.html#ga51ff94746a41880cd06d3272b5bcf710">ProgressCallback</a> <a class="code hl_variable" href="structMR_1_1SaveSettings.html#a0f2bb31407f2693aa939c47e0052b527">progress</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
+</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespaceMR.html#a423dfbb3e8fe2d355d3569c58f27881f">   43</a></span><span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#a423dfbb3e8fe2d355d3569c58f27881f">applyFloat</a>( <span class="keyword">const</span> AffineXf3d * xf, <span class="keyword">const</span> Vector3f &amp; p )</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">return</span> xf ? Vector3f( (*xf)( Vector3d( p ) ) ) : p;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespaceMR.html#acc1d104ed2e275977cf878d68073c9b2">   49</a></span><span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#a423dfbb3e8fe2d355d3569c58f27881f">applyFloat</a>( <span class="keyword">const</span> Matrix3d * m, <span class="keyword">const</span> Vector3f &amp; n )</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> m ? Vector3f( *m * Vector3d( n ) ) : n;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceMR.html#a7aba106487b0adfd357e9232e18a922f">   55</a></span><span class="keyword">inline</span> Vector3d <a class="code hl_function" href="namespaceMR.html#a7aba106487b0adfd357e9232e18a922f">applyDouble</a>( <span class="keyword">const</span> AffineXf3d * xf, <span class="keyword">const</span> Vector3f &amp; p )</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    Vector3d pd( p );</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> xf ? (*xf)( pd ) : pd;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="namespaceMR.html#a7b5f265567104240be13bb0adc6d84f7">   62</a></span><span class="keyword">inline</span> Vector3d <a class="code hl_function" href="namespaceMR.html#a7aba106487b0adfd357e9232e18a922f">applyDouble</a>( <span class="keyword">const</span> Matrix3d * m, <span class="keyword">const</span> Vector3f &amp; n )</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    Vector3d nd( n );</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">return</span> m ? *m * nd : nd;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="};">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classMR_1_1VertRenumber.html">   69</a></span><span class="keyword">class </span><a class="code hl_class" href="classMR_1_1VertRenumber.html">VertRenumber</a></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classMR_1_1VertRenumber.html#a081d0a8f3933dd73ee062863c3644aa1">   73</a></span>    <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_function" href="classMR_1_1VertRenumber.html#a081d0a8f3933dd73ee062863c3644aa1">VertRenumber</a>( <span class="keyword">const</span> VertBitSet &amp; validVerts, <span class="keywordtype">bool</span> <a class="code hl_function" href="classMR_1_1VertRenumber.html#a5ee74de7f5fdfc7a5230e3326b122644">saveValidOnly</a> );</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classMR_1_1VertRenumber.html#a5ee74de7f5fdfc7a5230e3326b122644">   75</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMR_1_1VertRenumber.html#a5ee74de7f5fdfc7a5230e3326b122644">saveValidOnly</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !vert2packed_.<a class="code hl_function" href="classMR_1_1Vector.html#ac4b153c69fb7b5e1466b10723dd2f35b">empty</a>(); }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classMR_1_1VertRenumber.html#a1804a1dca0466765918892c65d9436f0">   78</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classMR_1_1VertRenumber.html#a1804a1dca0466765918892c65d9436f0">sizeVerts</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> sizeVerts_; }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classMR_1_1VertRenumber.html#a4180132d13f552ef422f73a2ad0c6bdc">   81</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classMR_1_1VertRenumber.html#a4180132d13f552ef422f73a2ad0c6bdc">operator()</a>( VertId v )<span class="keyword"> const</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        assert( v );</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> vert2packed_.<a class="code hl_function" href="classMR_1_1Vector.html#ac4b153c69fb7b5e1466b10723dd2f35b">empty</a>() ? (int)v : vert2packed_[v];</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_class" href="classMR_1_1Vector.html">Vector&lt;int, VertId&gt;</a> vert2packed_;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">int</span> sizeVerts_ = 0;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespaceMR.html#abd32e37d07e3aaa58297c5f0168825a4">   94</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keyword">const</span> VertCoords &amp; <a class="code hl_function" href="namespaceMR.html#abd32e37d07e3aaa58297c5f0168825a4">transformPoints</a>( <span class="keyword">const</span> VertCoords &amp; verts, <span class="keyword">const</span> VertBitSet &amp; validVerts, <span class="keyword">const</span> AffineXf3d * xf, VertCoords &amp; buf,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1VertRenumber.html">VertRenumber</a> * vertRenumber = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="namespaceMR.html#aaaf0654d94eb8f4d35be77facbbf5acc">   99</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keyword">const</span> VertNormals &amp; <a class="code hl_function" href="namespaceMR.html#aaaf0654d94eb8f4d35be77facbbf5acc">transformNormals</a>( <span class="keyword">const</span> VertNormals &amp; normals, <span class="keyword">const</span> VertBitSet &amp; validVerts, <span class="keyword">const</span> Matrix3d * m, VertNormals &amp; buf );</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>} <span class="comment">//namespace MR</span></div>
+<div class="ttc" id="aMRAffineXf3_8h_html"><div class="ttname"><a href="MRAffineXf3_8h.html">MRAffineXf3.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRId_8h_html"><div class="ttname"><a href="MRMesh_2MRId_8h.html">MRId.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRMeshFwd_8h_html_a08ff09fd7e75c029b08cc255b0734300"><div class="ttname"><a href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a></div><div class="ttdeci">#define MRMESH_API</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:68</div></div>
+<div class="ttc" id="aMRMesh_2MRVector_8h_html"><div class="ttname"><a href="MRMesh_2MRVector_8h.html">MRVector.h</a></div></div>
+<div class="ttc" id="aMRProgressCallback_8h_html"><div class="ttname"><a href="MRProgressCallback_8h.html">MRProgressCallback.h</a></div></div>
+<div class="ttc" id="aclassMR_1_1Vector_html"><div class="ttname"><a href="classMR_1_1Vector.html">MR::Vector</a></div><div class="ttdoc">std::vector&lt;T&gt;-like container that requires specific indexing type,</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector.h:20</div></div>
+<div class="ttc" id="aclassMR_1_1Vector_html_ac4b153c69fb7b5e1466b10723dd2f35b"><div class="ttname"><a href="classMR_1_1Vector.html#ac4b153c69fb7b5e1466b10723dd2f35b">MR::Vector::empty</a></div><div class="ttdeci">bool empty() const</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector.h:40</div></div>
+<div class="ttc" id="aclassMR_1_1VertRenumber_html"><div class="ttname"><a href="classMR_1_1VertRenumber.html">MR::VertRenumber</a></div><div class="ttdoc">maps valid points to packed sequential indices</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:70</div></div>
+<div class="ttc" id="aclassMR_1_1VertRenumber_html_a081d0a8f3933dd73ee062863c3644aa1"><div class="ttname"><a href="classMR_1_1VertRenumber.html#a081d0a8f3933dd73ee062863c3644aa1">MR::VertRenumber::VertRenumber</a></div><div class="ttdeci">MRMESH_API VertRenumber(const VertBitSet &amp;validVerts, bool saveValidOnly)</div><div class="ttdoc">prepares the mapping</div></div>
+<div class="ttc" id="aclassMR_1_1VertRenumber_html_a1804a1dca0466765918892c65d9436f0"><div class="ttname"><a href="classMR_1_1VertRenumber.html#a1804a1dca0466765918892c65d9436f0">MR::VertRenumber::sizeVerts</a></div><div class="ttdeci">int sizeVerts() const</div><div class="ttdoc">return the total number of vertices to be saved</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:78</div></div>
+<div class="ttc" id="aclassMR_1_1VertRenumber_html_a4180132d13f552ef422f73a2ad0c6bdc"><div class="ttname"><a href="classMR_1_1VertRenumber.html#a4180132d13f552ef422f73a2ad0c6bdc">MR::VertRenumber::operator()</a></div><div class="ttdeci">int operator()(VertId v) const</div><div class="ttdoc">return packed index (if saveValidOnly = true) or same index (if saveValidOnly = false)</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:81</div></div>
+<div class="ttc" id="aclassMR_1_1VertRenumber_html_a5ee74de7f5fdfc7a5230e3326b122644"><div class="ttname"><a href="classMR_1_1VertRenumber.html#a5ee74de7f5fdfc7a5230e3326b122644">MR::VertRenumber::saveValidOnly</a></div><div class="ttdeci">bool saveValidOnly() const</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:75</div></div>
+<div class="ttc" id="agroup__BasicStructuresGroup_html_ga51ff94746a41880cd06d3272b5bcf710"><div class="ttname"><a href="group__BasicStructuresGroup.html#ga51ff94746a41880cd06d3272b5bcf710">MR::ProgressCallback</a></div><div class="ttdeci">std::function&lt; bool(float)&gt; ProgressCallback</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:600</div></div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="namespaceMR.html">MR</a></div><div class="ttdef"><b>Definition</b> MRCameraOrientationPlugin.h:8</div></div>
+<div class="ttc" id="anamespaceMR_html_a423dfbb3e8fe2d355d3569c58f27881f"><div class="ttname"><a href="namespaceMR.html#a423dfbb3e8fe2d355d3569c58f27881f">MR::applyFloat</a></div><div class="ttdeci">Vector3f applyFloat(const AffineXf3d *xf, const Vector3f &amp;p)</div><div class="ttdoc">returns the point as is or after application of given transform to it in double precision</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:43</div></div>
+<div class="ttc" id="anamespaceMR_html_a7aba106487b0adfd357e9232e18a922f"><div class="ttname"><a href="namespaceMR.html#a7aba106487b0adfd357e9232e18a922f">MR::applyDouble</a></div><div class="ttdeci">Vector3d applyDouble(const AffineXf3d *xf, const Vector3f &amp;p)</div><div class="ttdoc">converts given point in double precision and applies given transformation to it</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:55</div></div>
+<div class="ttc" id="anamespaceMR_html_aaaf0654d94eb8f4d35be77facbbf5acc"><div class="ttname"><a href="namespaceMR.html#aaaf0654d94eb8f4d35be77facbbf5acc">MR::transformNormals</a></div><div class="ttdeci">MRMESH_API const VertNormals &amp; transformNormals(const VertNormals &amp;normals, const VertBitSet &amp;validVerts, const Matrix3d *m, VertNormals &amp;buf)</div></div>
+<div class="ttc" id="anamespaceMR_html_abd32e37d07e3aaa58297c5f0168825a4"><div class="ttname"><a href="namespaceMR.html#abd32e37d07e3aaa58297c5f0168825a4">MR::transformPoints</a></div><div class="ttdeci">MRMESH_API const VertCoords &amp; transformPoints(const VertCoords &amp;verts, const VertBitSet &amp;validVerts, const AffineXf3d *xf, VertCoords &amp;buf, const VertRenumber *vertRenumber=nullptr)</div></div>
+<div class="ttc" id="astructMR_1_1MeshTexture_html"><div class="ttname"><a href="structMR_1_1MeshTexture.html">MR::MeshTexture</a></div><div class="ttdef"><b>Definition</b> MRMeshTexture.h:13</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html"><div class="ttname"><a href="structMR_1_1SaveSettings.html">MR::SaveSettings</a></div><div class="ttdoc">determines how to save points/lines/mesh</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:14</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a0b68c4c0ab3b6852ec10195e64e5148f"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a0b68c4c0ab3b6852ec10195e64e5148f">MR::SaveSettings::saveValidOnly</a></div><div class="ttdeci">bool saveValidOnly</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:17</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a0cd4cf82acb2f094f43f785282fcb76a"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a0cd4cf82acb2f094f43f785282fcb76a">MR::SaveSettings::texture</a></div><div class="ttdeci">const MeshTexture * texture</div><div class="ttdoc">optional texture to save with the geometry</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:30</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a0f2bb31407f2693aa939c47e0052b527"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a0f2bb31407f2693aa939c47e0052b527">MR::SaveSettings::progress</a></div><div class="ttdeci">ProgressCallback progress</div><div class="ttdoc">to report save progress and cancel saving if user desires</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:39</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a2d0238b076acd7e381d778f9c92fe873"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a2d0238b076acd7e381d778f9c92fe873">MR::SaveSettings::rearrangeTriangles</a></div><div class="ttdeci">bool rearrangeTriangles</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:21</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a3614a6ca71783b2dd64369d4f122ee69"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a3614a6ca71783b2dd64369d4f122ee69">MR::SaveSettings::materialName</a></div><div class="ttdeci">std::string materialName</div><div class="ttdoc">used to save texture and material in some formats (obj)</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:33</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a6aa78ab8ac3342aaeb267aa07e82721a"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a6aa78ab8ac3342aaeb267aa07e82721a">MR::SaveSettings::colors</a></div><div class="ttdeci">const VertColors * colors</div><div class="ttdoc">optional per-vertex color to save with the geometry</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:24</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a71c2ed63cb6a101dbd9b47f8ca9898fd"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a71c2ed63cb6a101dbd9b47f8ca9898fd">MR::SaveSettings::uvMap</a></div><div class="ttdeci">const VertUVCoords * uvMap</div><div class="ttdoc">optional per-vertex uv coordinate to save with the geometry</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:27</div></div>
+<div class="ttc" id="astructMR_1_1SaveSettings_html_a972e4972bf3626cb56f22c55b69cccc0"><div class="ttname"><a href="structMR_1_1SaveSettings.html#a972e4972bf3626cb56f22c55b69cccc0">MR::SaveSettings::xf</a></div><div class="ttdeci">const AffineXf3d * xf</div><div class="ttdoc">this transformation can optionally be applied to all vertices (points) of saved object</div><div class="ttdef"><b>Definition</b> MRSaveSettings.h:36</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRSaveSettings_8h.html">MRSaveSettings.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/MRClosestWeightedPoint_8h_source.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRClosestWeightedPoint.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRClosestWeightedPoint_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRClosestWeightedPoint.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRClosestWeightedPoint_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRMeshFwd_8h.html">MRMeshFwd.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRMeshTriPoint_8h.html">MRMeshTriPoint.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;MRPch/MRBindingMacros.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;cfloat&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceMR.html">MR</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structMR_1_1PointAndDistance.html">   11</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1PointAndDistance.html">PointAndDistance</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structMR_1_1PointAndDistance.html#ad69e7a0cb1644a718347e10e06baf900">   14</a></span>    VertId <a class="code hl_variable" href="structMR_1_1PointAndDistance.html#ad69e7a0cb1644a718347e10e06baf900">vId</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structMR_1_1PointAndDistance.html#a95a6c6e03ea27af92edfb720b51eb6cc">   17</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMR_1_1PointAndDistance.html#a95a6c6e03ea27af92edfb720b51eb6cc">dist</a> = 0;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structMR_1_1PointAndDistance.html#a30b687a3ae4e9a8f1e2faf636e415f5c">   20</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="structMR_1_1PointAndDistance.html#a30b687a3ae4e9a8f1e2faf636e415f5c">valid</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structMR_1_1PointAndDistance.html#ad69e7a0cb1644a718347e10e06baf900">vId</a>.valid(); }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structMR_1_1PointAndDistance.html#a22d2548f25c23157315955c70584d502">   21</a></span>    [[nodiscard]] <span class="keyword">explicit</span> <span class="keyword">operator</span> bool()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structMR_1_1PointAndDistance.html#ad69e7a0cb1644a718347e10e06baf900">vId</a>.valid(); }</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structMR_1_1MeshPointAndDistance.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1MeshPointAndDistance.html">MeshPointAndDistance</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structMR_1_1MeshPointAndDistance.html#a1a758547372340f32380f76222e7c0b0">   27</a></span>    <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> <a class="code hl_variable" href="structMR_1_1MeshPointAndDistance.html#a1a758547372340f32380f76222e7c0b0">mtp</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structMR_1_1MeshPointAndDistance.html#afa4413c1f201f2abb68e3c1f604e80cb">   30</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMR_1_1MeshPointAndDistance.html#afa4413c1f201f2abb68e3c1f604e80cb">dist</a> = 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structMR_1_1MeshPointAndDistance.html#adf36a93304ddd8624d26589cec96401f">   33</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="structMR_1_1MeshPointAndDistance.html#adf36a93304ddd8624d26589cec96401f">valid</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structMR_1_1MeshPointAndDistance.html#a1a758547372340f32380f76222e7c0b0">mtp</a>.<a class="code hl_function" href="structMR_1_1MeshTriPoint.html#a448317ec66d714fc3faa1d0bd3b64867">valid</a>(); }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structMR_1_1MeshPointAndDistance.html#a656e490b9dc2a583eca217f757e6a1db">   34</a></span>    [[nodiscard]] <span class="keyword">explicit</span> <span class="keyword">operator</span> bool()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structMR_1_1MeshPointAndDistance.html#a1a758547372340f32380f76222e7c0b0">mtp</a>.<a class="code hl_function" href="structMR_1_1MeshTriPoint.html#a448317ec66d714fc3faa1d0bd3b64867">valid</a>(); }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structMR_1_1DistanceFromWeightedPointsParams.html">   37</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1DistanceFromWeightedPointsParams.html">DistanceFromWeightedPointsParams</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structMR_1_1DistanceFromWeightedPointsParams.html#a1eaf010a7c663adafe798fdd9007fe6c">   40</a></span>    <a class="code hl_typedef" href="namespaceMR.html#a036c60a88f141a437ffed0bc572fce6d">VertMetric</a> <a class="code hl_variable" href="structMR_1_1DistanceFromWeightedPointsParams.html#a1eaf010a7c663adafe798fdd9007fe6c">pointWeight</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structMR_1_1DistanceFromWeightedPointsParams.html#a2167c5cb63bc5340893e5ba8381e5de4">   44</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMR_1_1DistanceFromWeightedPointsParams.html#a2167c5cb63bc5340893e5ba8381e5de4">maxWeight</a> = 0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structMR_1_1DistanceFromWeightedPointsParams.html#ad08ccac9ccc26dcee3fa49c052003500">   48</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMR_1_1DistanceFromWeightedPointsParams.html#ad08ccac9ccc26dcee3fa49c052003500">maxWeightGrad</a> = FLT_MAX;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// To allow passing Python lambdas into `pointWeight`.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    MR_BIND_PREFER_UNLOCK_GIL_WHEN_USED_AS_PARAM</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
+</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html">   55</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html">DistanceFromWeightedPointsComputeParams</a> : <a class="code hl_struct" href="structMR_1_1DistanceFromWeightedPointsParams.html">DistanceFromWeightedPointsParams</a></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html#ad94fab535798f1acb476e818aa5969fb">   58</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html#ad94fab535798f1acb476e818aa5969fb">minDistance</a> = 0;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html#a6ee8d7ae212f877e6e2572350eea7c11">   61</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html#a6ee8d7ae212f877e6e2572350eea7c11">maxDistance</a> = FLT_MAX;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="namespaceMR.html#a7ac55cb1be58afd31c59d36e8b7f694d">   67</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_struct" href="structMR_1_1PointAndDistance.html">PointAndDistance</a> <a class="code hl_function" href="namespaceMR.html#a7ac55cb1be58afd31c59d36e8b7f694d">findClosestWeightedPoint</a>( <span class="keyword">const</span> Vector3f&amp; loc,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1AABBTreePoints.html">AABBTreePoints</a>&amp; tree, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html">DistanceFromWeightedPointsComputeParams</a>&amp; params );</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="namespaceMR.html#a9539c3875b76b2c903199487856a95eb">   73</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_struct" href="structMR_1_1MeshPointAndDistance.html">MeshPointAndDistance</a> <a class="code hl_function" href="namespaceMR.html#a9539c3875b76b2c903199487856a95eb">findClosestWeightedMeshPoint</a>( <span class="keyword">const</span> Vector3f&amp; loc,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1DistanceFromWeightedPointsComputeParams.html">DistanceFromWeightedPointsComputeParams</a>&amp; params );</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>} <span class="comment">//namespace MR</span></div>
+<div class="ttc" id="aMRMesh_2MRMeshFwd_8h_html"><div class="ttname"><a href="MRMesh_2MRMeshFwd_8h.html">MRMeshFwd.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRMeshFwd_8h_html_a08ff09fd7e75c029b08cc255b0734300"><div class="ttname"><a href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a></div><div class="ttdeci">#define MRMESH_API</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:79</div></div>
+<div class="ttc" id="aMRMesh_2MRMeshTriPoint_8h_html"><div class="ttname"><a href="MRMesh_2MRMeshTriPoint_8h.html">MRMeshTriPoint.h</a></div></div>
+<div class="ttc" id="aclassMR_1_1AABBTreePoints_html"><div class="ttname"><a href="classMR_1_1AABBTreePoints.html">MR::AABBTreePoints</a></div><div class="ttdoc">bounding volume hierarchy for point cloud structure</div><div class="ttdef"><b>Definition</b> MRAABBTreePoints.h:16</div></div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="namespaceMR.html">MR</a></div></div>
+<div class="ttc" id="anamespaceMR_html_a036c60a88f141a437ffed0bc572fce6d"><div class="ttname"><a href="namespaceMR.html#a036c60a88f141a437ffed0bc572fce6d">MR::VertMetric</a></div><div class="ttdeci">std::function&lt; float(VertId)&gt; VertMetric</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:492</div></div>
+<div class="ttc" id="anamespaceMR_html_a7ac55cb1be58afd31c59d36e8b7f694d"><div class="ttname"><a href="namespaceMR.html#a7ac55cb1be58afd31c59d36e8b7f694d">MR::findClosestWeightedPoint</a></div><div class="ttdeci">MRMESH_API PointAndDistance findClosestWeightedPoint(const Vector3f &amp;loc, const AABBTreePoints &amp;tree, const DistanceFromWeightedPointsComputeParams &amp;params)</div></div>
+<div class="ttc" id="anamespaceMR_html_a9539c3875b76b2c903199487856a95eb"><div class="ttname"><a href="namespaceMR.html#a9539c3875b76b2c903199487856a95eb">MR::findClosestWeightedMeshPoint</a></div><div class="ttdeci">MRMESH_API MeshPointAndDistance findClosestWeightedMeshPoint(const Vector3f &amp;loc, const Mesh &amp;mesh, const DistanceFromWeightedPointsComputeParams &amp;params)</div></div>
+<div class="ttc" id="astructMR_1_1DistanceFromWeightedPointsComputeParams_html"><div class="ttname"><a href="structMR_1_1DistanceFromWeightedPointsComputeParams.html">MR::DistanceFromWeightedPointsComputeParams</a></div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:56</div></div>
+<div class="ttc" id="astructMR_1_1DistanceFromWeightedPointsComputeParams_html_a6ee8d7ae212f877e6e2572350eea7c11"><div class="ttname"><a href="structMR_1_1DistanceFromWeightedPointsComputeParams.html#a6ee8d7ae212f877e6e2572350eea7c11">MR::DistanceFromWeightedPointsComputeParams::maxDistance</a></div><div class="ttdeci">float maxDistance</div><div class="ttdoc">find the closest point only if the distance to it is less than given value</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:61</div></div>
+<div class="ttc" id="astructMR_1_1DistanceFromWeightedPointsComputeParams_html_ad94fab535798f1acb476e818aa5969fb"><div class="ttname"><a href="structMR_1_1DistanceFromWeightedPointsComputeParams.html#ad94fab535798f1acb476e818aa5969fb">MR::DistanceFromWeightedPointsComputeParams::minDistance</a></div><div class="ttdeci">float minDistance</div><div class="ttdoc">stop searching as soon as any point within this distance is found</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:58</div></div>
+<div class="ttc" id="astructMR_1_1DistanceFromWeightedPointsParams_html"><div class="ttname"><a href="structMR_1_1DistanceFromWeightedPointsParams.html">MR::DistanceFromWeightedPointsParams</a></div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:38</div></div>
+<div class="ttc" id="astructMR_1_1DistanceFromWeightedPointsParams_html_a1eaf010a7c663adafe798fdd9007fe6c"><div class="ttname"><a href="structMR_1_1DistanceFromWeightedPointsParams.html#a1eaf010a7c663adafe798fdd9007fe6c">MR::DistanceFromWeightedPointsParams::pointWeight</a></div><div class="ttdeci">VertMetric pointWeight</div><div class="ttdoc">function returning the weight of each point, must be set by the user</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:40</div></div>
+<div class="ttc" id="astructMR_1_1DistanceFromWeightedPointsParams_html_a2167c5cb63bc5340893e5ba8381e5de4"><div class="ttname"><a href="structMR_1_1DistanceFromWeightedPointsParams.html#a2167c5cb63bc5340893e5ba8381e5de4">MR::DistanceFromWeightedPointsParams::maxWeight</a></div><div class="ttdeci">float maxWeight</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:44</div></div>
+<div class="ttc" id="astructMR_1_1DistanceFromWeightedPointsParams_html_ad08ccac9ccc26dcee3fa49c052003500"><div class="ttname"><a href="structMR_1_1DistanceFromWeightedPointsParams.html#ad08ccac9ccc26dcee3fa49c052003500">MR::DistanceFromWeightedPointsParams::maxWeightGrad</a></div><div class="ttdeci">float maxWeightGrad</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:48</div></div>
+<div class="ttc" id="astructMR_1_1MeshPointAndDistance_html"><div class="ttname"><a href="structMR_1_1MeshPointAndDistance.html">MR::MeshPointAndDistance</a></div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:25</div></div>
+<div class="ttc" id="astructMR_1_1MeshPointAndDistance_html_a1a758547372340f32380f76222e7c0b0"><div class="ttname"><a href="structMR_1_1MeshPointAndDistance.html#a1a758547372340f32380f76222e7c0b0">MR::MeshPointAndDistance::mtp</a></div><div class="ttdeci">MeshTriPoint mtp</div><div class="ttdoc">a point on mesh in barycentric representation</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:27</div></div>
+<div class="ttc" id="astructMR_1_1MeshPointAndDistance_html_adf36a93304ddd8624d26589cec96401f"><div class="ttname"><a href="structMR_1_1MeshPointAndDistance.html#adf36a93304ddd8624d26589cec96401f">MR::MeshPointAndDistance::valid</a></div><div class="ttdeci">bool valid() const</div><div class="ttdoc">check for validity, otherwise there is no point closer than maxDistance</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:33</div></div>
+<div class="ttc" id="astructMR_1_1MeshPointAndDistance_html_afa4413c1f201f2abb68e3c1f604e80cb"><div class="ttname"><a href="structMR_1_1MeshPointAndDistance.html#afa4413c1f201f2abb68e3c1f604e80cb">MR::MeshPointAndDistance::dist</a></div><div class="ttdeci">float dist</div><div class="ttdoc">the distance from input location to mtp considering point's weight</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:30</div></div>
+<div class="ttc" id="astructMR_1_1MeshTriPoint_html"><div class="ttname"><a href="structMR_1_1MeshTriPoint.html">MR::MeshTriPoint</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTriPoint.h:23</div></div>
+<div class="ttc" id="astructMR_1_1MeshTriPoint_html_a448317ec66d714fc3faa1d0bd3b64867"><div class="ttname"><a href="structMR_1_1MeshTriPoint.html#a448317ec66d714fc3faa1d0bd3b64867">MR::MeshTriPoint::valid</a></div><div class="ttdeci">bool valid() const</div><div class="ttdoc">consider this valid if the edge ID is valid</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTriPoint.h:58</div></div>
+<div class="ttc" id="astructMR_1_1Mesh_html"><div class="ttname"><a href="structMR_1_1Mesh.html">MR::Mesh</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMesh.h:22</div></div>
+<div class="ttc" id="astructMR_1_1PointAndDistance_html"><div class="ttname"><a href="structMR_1_1PointAndDistance.html">MR::PointAndDistance</a></div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:12</div></div>
+<div class="ttc" id="astructMR_1_1PointAndDistance_html_a30b687a3ae4e9a8f1e2faf636e415f5c"><div class="ttname"><a href="structMR_1_1PointAndDistance.html#a30b687a3ae4e9a8f1e2faf636e415f5c">MR::PointAndDistance::valid</a></div><div class="ttdeci">bool valid() const</div><div class="ttdoc">check for validity, otherwise there is no point closer than maxDistance</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:20</div></div>
+<div class="ttc" id="astructMR_1_1PointAndDistance_html_a95a6c6e03ea27af92edfb720b51eb6cc"><div class="ttname"><a href="structMR_1_1PointAndDistance.html#a95a6c6e03ea27af92edfb720b51eb6cc">MR::PointAndDistance::dist</a></div><div class="ttdeci">float dist</div><div class="ttdoc">the distance from input location to point vId considering point's weight</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:17</div></div>
+<div class="ttc" id="astructMR_1_1PointAndDistance_html_ad69e7a0cb1644a718347e10e06baf900"><div class="ttname"><a href="structMR_1_1PointAndDistance.html#ad69e7a0cb1644a718347e10e06baf900">MR::PointAndDistance::vId</a></div><div class="ttdeci">VertId vId</div><div class="ttdoc">a cloud's point</div><div class="ttdef"><b>Definition</b> MRClosestWeightedPoint.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRClosestWeightedPoint_8h.html">MRClosestWeightedPoint.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,908 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/namespaceMR_1_1Cuda.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MR::Cuda Namespace Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('namespaceMR_1_1Cuda.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">MR::Cuda Namespace Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMR_1_1Cuda_1_1FastWindingNumber.html">FastWindingNumber</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMR_1_1Cuda_1_1PointsProjector.html">PointsProjector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CUDA-backed implementation of <a class="el" href="classMR_1_1IPointsProjector.html" title="abstract class for computing the closest points of point clouds">IPointsProjector</a>.  <a href="classMR_1_1Cuda_1_1PointsProjector.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMR_1_1Cuda_1_1PointsToMeshProjector.html">PointsToMeshProjector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the closest point on mesh to each of given points on GPU. It caches data that necessary for computing.  <a href="classMR_1_1Cuda_1_1PointsToMeshProjector.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a481800f210dd09851992846af357b7e2" id="r_a481800f210dd09851992846af357b7e2"><td class="memItemLeft" align="right" valign="top">MRCUDA_API bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a481800f210dd09851992846af357b7e2">isCudaAvailable</a> (int *driverVersion=nullptr, int *runtimeVersion=nullptr, int *computeMajor=nullptr, int *computeMinor=nullptr)</td></tr>
+<tr class="separator:a481800f210dd09851992846af357b7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d6344c4c9b5959665fdde2ddc4a838" id="r_ae3d6344c4c9b5959665fdde2ddc4a838"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3d6344c4c9b5959665fdde2ddc4a838">getCudaAvailableMemory</a> ()</td></tr>
+<tr class="separator:ae3d6344c4c9b5959665fdde2ddc4a838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fed8d0688936d46135f8dad5f3497ee" id="r_a2fed8d0688936d46135f8dad5f3497ee"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fed8d0688936d46135f8dad5f3497ee">getCudaSafeMemoryLimit</a> ()</td></tr>
+<tr class="separator:a2fed8d0688936d46135f8dad5f3497ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45296cef05363425e0b1271f76436597" id="r_a45296cef05363425e0b1271f76436597"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45296cef05363425e0b1271f76436597">maxBufferSize</a> (size_t availableBytes, size_t elementCount, size_t elementBytes)</td></tr>
+<tr class="separator:a45296cef05363425e0b1271f76436597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef610d07cea3f8cabc78d63878b53bc8" id="r_aef610d07cea3f8cabc78d63878b53bc8"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef610d07cea3f8cabc78d63878b53bc8">maxBufferSizeAlignedByBlock</a> (size_t availableBytes, const Vector2i &amp;blockDims, size_t elementBytes)</td></tr>
+<tr class="separator:aef610d07cea3f8cabc78d63878b53bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5fd79d686c56c93e9dc89064653219" id="r_a3e5fd79d686c56c93e9dc89064653219"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e5fd79d686c56c93e9dc89064653219">maxBufferSizeAlignedByBlock</a> (size_t availableBytes, const Vector3i &amp;blockDims, size_t elementBytes)</td></tr>
+<tr class="separator:a3e5fd79d686c56c93e9dc89064653219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad903c7645148d442eed7b3be6f4b0da7" id="r_ad903c7645148d442eed7b3be6f4b0da7"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; <a class="el" href="classMR_1_1DistanceMap.html">DistanceMap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad903c7645148d442eed7b3be6f4b0da7">distanceMapFromContours</a> (const Polyline2 &amp;polyline, const <a class="el" href="structMR_1_1ContourToDistanceMapParams.html">ContourToDistanceMapParams</a> &amp;params)</td></tr>
+<tr class="memdesc:ad903c7645148d442eed7b3be6f4b0da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes distance of 2d contours according to <a class="el" href="structMR_1_1ContourToDistanceMapParams.html" title="Structure with parameters to generate DistanceMap by Contours.">ContourToDistanceMapParams</a> (works correctly only when withSign==false)  <br /></td></tr>
+<tr class="separator:ad903c7645148d442eed7b3be6f4b0da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57e91a18687a893997356f499e9a7e94" id="r_a57e91a18687a893997356f499e9a7e94"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57e91a18687a893997356f499e9a7e94">distanceMapFromContoursHeapBytes</a> (const Polyline2 &amp;polyline, const <a class="el" href="structMR_1_1ContourToDistanceMapParams.html">ContourToDistanceMapParams</a> &amp;params)</td></tr>
+<tr class="memdesc:a57e91a18687a893997356f499e9a7e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes memory consumption of distanceMapFromContours function.  <br /></td></tr>
+<tr class="separator:a57e91a18687a893997356f499e9a7e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe48634df88da1f3afd905bbea765155" id="r_abe48634df88da1f3afd905bbea765155"><td class="memItemLeft" align="right" valign="top">MRCUDA_API float3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe48634df88da1f3afd905bbea765155">fromVec</a> (const Vector3f &amp;v)</td></tr>
+<tr class="separator:abe48634df88da1f3afd905bbea765155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3847533ea91606e4e7a4068edd599d86" id="r_a3847533ea91606e4e7a4068edd599d86"><td class="memItemLeft" align="right" valign="top">MRCUDA_API int3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3847533ea91606e4e7a4068edd599d86">fromVec</a> (const Vector3i &amp;v)</td></tr>
+<tr class="separator:a3847533ea91606e4e7a4068edd599d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0383a2435c0b02c9305d443c8e9f5579" id="r_a0383a2435c0b02c9305d443c8e9f5579"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="structMR_1_1Matrix4.html">Matrix4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0383a2435c0b02c9305d443c8e9f5579">fromXf</a> (const MR::AffineXf3f &amp;xf)</td></tr>
+<tr class="separator:a0383a2435c0b02c9305d443c8e9f5579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae00800a975100101a6b94ad8c6c4c817" id="r_ae00800a975100101a6b94ad8c6c4c817"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; <a class="el" href="classMR_1_1DistanceMap.html">DistanceMap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae00800a975100101a6b94ad8c6c4c817">computeDistanceMap</a> (const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;mesh, const <a class="el" href="structMR_1_1MeshToDistanceMapParams.html">MeshToDistanceMapParams</a> &amp;params, <a class="el" href="group__BasicStructuresGroup.html#ga51ff94746a41880cd06d3272b5bcf710">ProgressCallback</a> cb={}, std::vector&lt; <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &gt; *outSamples=nullptr)</td></tr>
+<tr class="separator:ae00800a975100101a6b94ad8c6c4c817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3376b68fd0e9661c0072bf92dd704a3" id="r_ad3376b68fd0e9661c0072bf92dd704a3"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3376b68fd0e9661c0072bf92dd704a3">computeDistanceMapHeapBytes</a> (const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;mesh, const <a class="el" href="structMR_1_1MeshToDistanceMapParams.html">MeshToDistanceMapParams</a> &amp;params, bool needOutSamples=false)</td></tr>
+<tr class="memdesc:ad3376b68fd0e9661c0072bf92dd704a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes memory consumption of computeDistanceMap function.  <br /></td></tr>
+<tr class="separator:ad3376b68fd0e9661c0072bf92dd704a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b0e3af6fadf0842bbaef360071ea8e" id="r_ab0b0e3af6fadf0842bbaef360071ea8e"><td class="memTemplParams" colspan="2">template&lt;typename BufferType , typename InputIt , typename GPUFunc , typename CPUFunc &gt; </td></tr>
+<tr class="memitem:ab0b0e3af6fadf0842bbaef360071ea8e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab0b0e3af6fadf0842bbaef360071ea8e">cudaPipeline</a> (BufferType init, InputIt <a class="el" href="group__BasicGroup.html#ga130a7b2de56f57ba4b13111c6e3a31ef">begin</a>, InputIt <a class="el" href="group__BasicGroup.html#gab900ba901f90bfe11c4580814af4fbf6">end</a>, GPUFunc gpuFunc, CPUFunc cpuFunc)</td></tr>
+<tr class="separator:ab0b0e3af6fadf0842bbaef360071ea8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65f347287f9c0ba39f2cc533c51582e" id="r_ae65f347287f9c0ba39f2cc533c51582e"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; std::unique_ptr&lt; <a class="el" href="#a770259831b49f60068c30df5121056c9">PointCloudDataHolder</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae65f347287f9c0ba39f2cc533c51582e">copyDataFrom</a> (const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;pc, bool copyNormals=false, const std::vector&lt; Vector3f &gt; *normals=nullptr)</td></tr>
+<tr class="memdesc:ae65f347287f9c0ba39f2cc533c51582e"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy point cloud-related data to the GPU memory  <br /></td></tr>
+<tr class="separator:ae65f347287f9c0ba39f2cc533c51582e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa9aa568ce6f99642f04342760455a3f" id="r_aaa9aa568ce6f99642f04342760455a3f"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa9aa568ce6f99642f04342760455a3f">pointCloudHeapBytes</a> (const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;pc, bool copyNormals=false, const std::vector&lt; Vector3f &gt; *normals=nullptr)</td></tr>
+<tr class="memdesc:aaa9aa568ce6f99642f04342760455a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the amount of GPU memory required for <a class="el" href="#a770259831b49f60068c30df5121056c9">MR::Cuda::PointCloudDataHolder</a>  <br /></td></tr>
+<tr class="separator:aaa9aa568ce6f99642f04342760455a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdd0eaf7b314f1758bf6e417ad1f3795" id="r_acdd0eaf7b314f1758bf6e417ad1f3795"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; std::vector&lt; <a class="el" href="structMR_1_1PointsProjectionResult.html">MR::PointsProjectionResult</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdd0eaf7b314f1758bf6e417ad1f3795">findProjectionOnPoints</a> (const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;pointCloud, const std::vector&lt; Vector3f &gt; &amp;points, const <a class="el" href="structMR_1_1FindProjectionOnPointsSettings.html">FindProjectionOnPointsSettings</a> &amp;settings={})</td></tr>
+<tr class="memdesc:acdd0eaf7b314f1758bf6e417ad1f3795"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the closest points on point cloud to given points  <br /></td></tr>
+<tr class="separator:acdd0eaf7b314f1758bf6e417ad1f3795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6752d5a8d11db60ba3b3c7cd333658d" id="r_ab6752d5a8d11db60ba3b3c7cd333658d"><td class="memItemLeft" align="right" valign="top">MRCUDA_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6752d5a8d11db60ba3b3c7cd333658d">findProjectionOnPointsHeapBytes</a> (const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;pointCloud, size_t pointsCount)</td></tr>
+<tr class="memdesc:ab6752d5a8d11db60ba3b3c7cd333658d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the minimal amount of free GPU memory required for <a class="el" href="#acdd0eaf7b314f1758bf6e417ad1f3795">MR::Cuda::findProjectionOnPoints</a>  <br /></td></tr>
+<tr class="separator:ab6752d5a8d11db60ba3b3c7cd333658d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76d46e2388018a2bca5a72dfaefd30e9" id="r_a76d46e2388018a2bca5a72dfaefd30e9"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; MR::SimpleVolumeMinMax &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76d46e2388018a2bca5a72dfaefd30e9">pointsToDistanceVolume</a> (const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;cloud, const <a class="el" href="structMR_1_1PointsToDistanceVolumeParams.html">MR::PointsToDistanceVolumeParams</a> &amp;params)</td></tr>
+<tr class="memdesc:a76d46e2388018a2bca5a72dfaefd30e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">makes SimpleVolume filled with signed distances to points with normals  <br /></td></tr>
+<tr class="separator:a76d46e2388018a2bca5a72dfaefd30e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ca6e42153313ca635d7ea3e12d19bf0" id="r_a2ca6e42153313ca635d7ea3e12d19bf0"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ca6e42153313ca635d7ea3e12d19bf0">pointsToDistanceVolumeByParts</a> (const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;cloud, const <a class="el" href="structMR_1_1PointsToDistanceVolumeParams.html">MR::PointsToDistanceVolumeParams</a> &amp;params, std::function&lt; <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt;(const SimpleVolumeMinMax &amp;<a class="el" href="namespaceMR.html#a83e40508b3f05b594da19748c1da2d05">volume</a>, int zOffset)&gt; addPart, int layerOverlap)</td></tr>
+<tr class="separator:a2ca6e42153313ca635d7ea3e12d19bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5f9490f820c7e7eb708e516e58d6e5a" id="r_ab5f9490f820c7e7eb708e516e58d6e5a"><td class="memItemLeft" align="right" valign="top">MRCUDA_API VertScalars&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5f9490f820c7e7eb708e516e58d6e5a">computeSkyViewFactor</a> (const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;terrain, const VertCoords &amp;samples, const VertBitSet &amp;validSamples, const std::vector&lt; <a class="el" href="structMR_1_1SkyPatch.html">MR::SkyPatch</a> &gt; &amp;skyPatches, <a class="el" href="classMR_1_1BitSet.html">BitSet</a> *outSkyRays=nullptr, std::vector&lt; <a class="el" href="structMR_1_1MeshIntersectionResult.html">MR::MeshIntersectionResult</a> &gt; *outIntersections=nullptr)</td></tr>
+<tr class="separator:ab5f9490f820c7e7eb708e516e58d6e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af763aea7896baa102ab7715278d93231" id="r_af763aea7896baa102ab7715278d93231"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="classMR_1_1BitSet.html">BitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af763aea7896baa102ab7715278d93231">findSkyRays</a> (const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;terrain, const VertCoords &amp;samples, const VertBitSet &amp;validSamples, const std::vector&lt; <a class="el" href="structMR_1_1SkyPatch.html">MR::SkyPatch</a> &gt; &amp;skyPatches, std::vector&lt; <a class="el" href="structMR_1_1MeshIntersectionResult.html">MR::MeshIntersectionResult</a> &gt; *outIntersections=nullptr)</td></tr>
+<tr class="separator:af763aea7896baa102ab7715278d93231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07684cc6b916a645e4ed28757498d51a" id="r_a07684cc6b916a645e4ed28757498d51a"><td class="memItemLeft" align="right" valign="top">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07684cc6b916a645e4ed28757498d51a">negatePicture</a> (<a class="el" href="structMR_1_1Image.html">MR::Image</a> &amp;image)</td></tr>
+<tr class="separator:a07684cc6b916a645e4ed28757498d51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5caa3c21e1c35ac6d6dd2eb125484783" id="r_a5caa3c21e1c35ac6d6dd2eb125484783"><td class="memItemLeft" align="right" valign="top">MRCUDA_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5caa3c21e1c35ac6d6dd2eb125484783">loadMRCudaDll</a> ()</td></tr>
+<tr class="separator:a5caa3c21e1c35ac6d6dd2eb125484783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a770259831b49f60068c30df5121056c9" id="r_a770259831b49f60068c30df5121056c9"><td class="memItemLeft" align="right" valign="top">struct MR_BIND_IGNORE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a770259831b49f60068c30df5121056c9">PointCloudDataHolder</a></td></tr>
+<tr class="separator:a770259831b49f60068c30df5121056c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ae00800a975100101a6b94ad8c6c4c817" name="ae00800a975100101a6b94ad8c6c4c817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae00800a975100101a6b94ad8c6c4c817">&#9670;&#160;</a></span>computeDistanceMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; <a class="el" href="classMR_1_1DistanceMap.html">DistanceMap</a> &gt; MR::Cuda::computeDistanceMap </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1MeshToDistanceMapParams.html">MeshToDistanceMapParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__BasicStructuresGroup.html#ga51ff94746a41880cd06d3272b5bcf710">ProgressCallback</a></td>          <td class="paramname"><span class="paramname"><em>cb</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>outSamples</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>computes distance (height) map for given projection parameters using float-precision for finding ray-mesh intersections, which is faster but less reliable </p>
+
+</div>
+</div>
+<a id="ad3376b68fd0e9661c0072bf92dd704a3" name="ad3376b68fd0e9661c0072bf92dd704a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3376b68fd0e9661c0072bf92dd704a3">&#9670;&#160;</a></span>computeDistanceMapHeapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::computeDistanceMapHeapBytes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1MeshToDistanceMapParams.html">MeshToDistanceMapParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>needOutSamples</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes memory consumption of computeDistanceMap function. </p>
+
+</div>
+</div>
+<a id="ab5f9490f820c7e7eb708e516e58d6e5a" name="ab5f9490f820c7e7eb708e516e58d6e5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5f9490f820c7e7eb708e516e58d6e5a">&#9670;&#160;</a></span>computeSkyViewFactor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API VertScalars MR::Cuda::computeSkyViewFactor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>terrain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VertCoords &amp;</td>          <td class="paramname"><span class="paramname"><em>samples</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>validSamples</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structMR_1_1SkyPatch.html">MR::SkyPatch</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>skyPatches</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMR_1_1BitSet.html">BitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>outSkyRays</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structMR_1_1MeshIntersectionResult.html">MR::MeshIntersectionResult</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>outIntersections</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>computes relative radiation in each valid sample point by emitting rays from that point in the sky: the radiation is 1.0f if all rays reach the sky not hitting the terrain; the radiation is 0.0f if all rays do not reach the sky because they are intercepted by the terrain; </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outSkyRays</td><td>- optional output bitset where for every valid sample #i its rays are stored at indices [i*numPatches; (i+1)*numPatches), 0s for occluded rays (hitting the terrain) and 1s for the ones which don't hit anything and reach the sky </td></tr>
+    <tr><td class="paramname">outIntersections</td><td>- optional output vector of <a class="el" href="structMR_1_1MeshIntersectionResult.html">MeshIntersectionResult</a> for every valid sample point </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae65f347287f9c0ba39f2cc533c51582e" name="ae65f347287f9c0ba39f2cc533c51582e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65f347287f9c0ba39f2cc533c51582e">&#9670;&#160;</a></span>copyDataFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; std::unique_ptr&lt; <a class="el" href="#a770259831b49f60068c30df5121056c9">PointCloudDataHolder</a> &gt; &gt; MR::Cuda::copyDataFrom </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>copyNormals</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Vector3f &gt; *</td>          <td class="paramname"><span class="paramname"><em>normals</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>copy point cloud-related data to the GPU memory </p>
+
+</div>
+</div>
+<a id="ab0b0e3af6fadf0842bbaef360071ea8e" name="ab0b0e3af6fadf0842bbaef360071ea8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b0e3af6fadf0842bbaef360071ea8e">&#9670;&#160;</a></span>cudaPipeline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename BufferType , typename InputIt , typename GPUFunc , typename CPUFunc &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt; MR::Cuda::cudaPipeline </td>
+          <td>(</td>
+          <td class="paramtype">BufferType</td>          <td class="paramname"><span class="paramname"><em>init</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIt</td>          <td class="paramname"><span class="paramname"><em>begin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIt</td>          <td class="paramname"><span class="paramname"><em>end</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GPUFunc</td>          <td class="paramname"><span class="paramname"><em>gpuFunc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CPUFunc</td>          <td class="paramname"><span class="paramname"><em>cpuFunc</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Process data by blocks alternately by GPU and CPU. GPUFunc is executed in a separate thread. Both GPUFunc and CPUFunc must satisfy the following signature: <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">MR::Expected&lt;void&gt;</a> (*funcName) ( BufferType&amp; buffer, InputIt::value_type value ) </p>
+
+</div>
+</div>
+<a id="ad903c7645148d442eed7b3be6f4b0da7" name="ad903c7645148d442eed7b3be6f4b0da7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad903c7645148d442eed7b3be6f4b0da7">&#9670;&#160;</a></span>distanceMapFromContours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; <a class="el" href="classMR_1_1DistanceMap.html">DistanceMap</a> &gt; MR::Cuda::distanceMapFromContours </td>
+          <td>(</td>
+          <td class="paramtype">const Polyline2 &amp;</td>          <td class="paramname"><span class="paramname"><em>polyline</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1ContourToDistanceMapParams.html">ContourToDistanceMapParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes distance of 2d contours according to <a class="el" href="structMR_1_1ContourToDistanceMapParams.html" title="Structure with parameters to generate DistanceMap by Contours.">ContourToDistanceMapParams</a> (works correctly only when withSign==false) </p>
+
+</div>
+</div>
+<a id="a57e91a18687a893997356f499e9a7e94" name="a57e91a18687a893997356f499e9a7e94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57e91a18687a893997356f499e9a7e94">&#9670;&#160;</a></span>distanceMapFromContoursHeapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::distanceMapFromContoursHeapBytes </td>
+          <td>(</td>
+          <td class="paramtype">const Polyline2 &amp;</td>          <td class="paramname"><span class="paramname"><em>polyline</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1ContourToDistanceMapParams.html">ContourToDistanceMapParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes memory consumption of distanceMapFromContours function. </p>
+
+</div>
+</div>
+<a id="acdd0eaf7b314f1758bf6e417ad1f3795" name="acdd0eaf7b314f1758bf6e417ad1f3795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdd0eaf7b314f1758bf6e417ad1f3795">&#9670;&#160;</a></span>findProjectionOnPoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; std::vector&lt; <a class="el" href="structMR_1_1PointsProjectionResult.html">MR::PointsProjectionResult</a> &gt; &gt; MR::Cuda::findProjectionOnPoints </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pointCloud</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Vector3f &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1FindProjectionOnPointsSettings.html">FindProjectionOnPointsSettings</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>computes the closest points on point cloud to given points </p>
+
+</div>
+</div>
+<a id="ab6752d5a8d11db60ba3b3c7cd333658d" name="ab6752d5a8d11db60ba3b3c7cd333658d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6752d5a8d11db60ba3b3c7cd333658d">&#9670;&#160;</a></span>findProjectionOnPointsHeapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::findProjectionOnPointsHeapBytes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pointCloud</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>pointsCount</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns the minimal amount of free GPU memory required for <a class="el" href="#acdd0eaf7b314f1758bf6e417ad1f3795">MR::Cuda::findProjectionOnPoints</a> </p>
+
+</div>
+</div>
+<a id="af763aea7896baa102ab7715278d93231" name="af763aea7896baa102ab7715278d93231"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af763aea7896baa102ab7715278d93231">&#9670;&#160;</a></span>findSkyRays()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="classMR_1_1BitSet.html">BitSet</a> MR::Cuda::findSkyRays </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>terrain</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VertCoords &amp;</td>          <td class="paramname"><span class="paramname"><em>samples</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>validSamples</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structMR_1_1SkyPatch.html">MR::SkyPatch</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>skyPatches</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structMR_1_1MeshIntersectionResult.html">MR::MeshIntersectionResult</a> &gt; *</td>          <td class="paramname"><span class="paramname"><em>outIntersections</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>In each valid sample point tests the rays from that point in the sky; </p><dl class="section return"><dt>Returns</dt><dd>bitset where for every valid sample #i its rays are stored at indices [i*numPatches; (i+1)*numPatches), 0s for occluded rays (hitting the terrain) and 1s for the ones which don't hit anything and reach the sky </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outIntersections</td><td>- optional output vector of <a class="el" href="structMR_1_1MeshIntersectionResult.html">MeshIntersectionResult</a> for every valid sample point </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abe48634df88da1f3afd905bbea765155" name="abe48634df88da1f3afd905bbea765155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe48634df88da1f3afd905bbea765155">&#9670;&#160;</a></span>fromVec() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API float3 MR::Cuda::fromVec </td>
+          <td>(</td>
+          <td class="paramtype">const Vector3f &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3847533ea91606e4e7a4068edd599d86" name="a3847533ea91606e4e7a4068edd599d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3847533ea91606e4e7a4068edd599d86">&#9670;&#160;</a></span>fromVec() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API int3 MR::Cuda::fromVec </td>
+          <td>(</td>
+          <td class="paramtype">const Vector3i &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0383a2435c0b02c9305d443c8e9f5579" name="a0383a2435c0b02c9305d443c8e9f5579"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0383a2435c0b02c9305d443c8e9f5579">&#9670;&#160;</a></span>fromXf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="structMR_1_1Matrix4.html">Matrix4</a> MR::Cuda::fromXf </td>
+          <td>(</td>
+          <td class="paramtype">const MR::AffineXf3f &amp;</td>          <td class="paramname"><span class="paramname"><em>xf</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3d6344c4c9b5959665fdde2ddc4a838" name="ae3d6344c4c9b5959665fdde2ddc4a838"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d6344c4c9b5959665fdde2ddc4a838">&#9670;&#160;</a></span>getCudaAvailableMemory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::getCudaAvailableMemory </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2fed8d0688936d46135f8dad5f3497ee" name="a2fed8d0688936d46135f8dad5f3497ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fed8d0688936d46135f8dad5f3497ee">&#9670;&#160;</a></span>getCudaSafeMemoryLimit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::getCudaSafeMemoryLimit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a481800f210dd09851992846af357b7e2" name="a481800f210dd09851992846af357b7e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a481800f210dd09851992846af357b7e2">&#9670;&#160;</a></span>isCudaAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API bool MR::Cuda::isCudaAvailable </td>
+          <td>(</td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>driverVersion</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>runtimeVersion</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>computeMajor</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>computeMinor</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5caa3c21e1c35ac6d6dd2eb125484783" name="a5caa3c21e1c35ac6d6dd2eb125484783"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5caa3c21e1c35ac6d6dd2eb125484783">&#9670;&#160;</a></span>loadMRCudaDll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API void MR::Cuda::loadMRCudaDll </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45296cef05363425e0b1271f76436597" name="a45296cef05363425e0b1271f76436597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45296cef05363425e0b1271f76436597">&#9670;&#160;</a></span>maxBufferSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::maxBufferSize </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>availableBytes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>elementCount</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>elementBytes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef610d07cea3f8cabc78d63878b53bc8" name="aef610d07cea3f8cabc78d63878b53bc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef610d07cea3f8cabc78d63878b53bc8">&#9670;&#160;</a></span>maxBufferSizeAlignedByBlock() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::maxBufferSizeAlignedByBlock </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>availableBytes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector2i &amp;</td>          <td class="paramname"><span class="paramname"><em>blockDims</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>elementBytes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e5fd79d686c56c93e9dc89064653219" name="a3e5fd79d686c56c93e9dc89064653219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e5fd79d686c56c93e9dc89064653219">&#9670;&#160;</a></span>maxBufferSizeAlignedByBlock() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::maxBufferSizeAlignedByBlock </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>availableBytes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector3i &amp;</td>          <td class="paramname"><span class="paramname"><em>blockDims</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>elementBytes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a07684cc6b916a645e4ed28757498d51a" name="a07684cc6b916a645e4ed28757498d51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07684cc6b916a645e4ed28757498d51a">&#9670;&#160;</a></span>negatePicture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt; MR::Cuda::negatePicture </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMR_1_1Image.html">MR::Image</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>image</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa9aa568ce6f99642f04342760455a3f" name="aaa9aa568ce6f99642f04342760455a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa9aa568ce6f99642f04342760455a3f">&#9670;&#160;</a></span>pointCloudHeapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API size_t MR::Cuda::pointCloudHeapBytes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>copyNormals</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Vector3f &gt; *</td>          <td class="paramname"><span class="paramname"><em>normals</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>return the amount of GPU memory required for <a class="el" href="#a770259831b49f60068c30df5121056c9">MR::Cuda::PointCloudDataHolder</a> </p>
+
+</div>
+</div>
+<a id="a76d46e2388018a2bca5a72dfaefd30e9" name="a76d46e2388018a2bca5a72dfaefd30e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76d46e2388018a2bca5a72dfaefd30e9">&#9670;&#160;</a></span>pointsToDistanceVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; MR::SimpleVolumeMinMax &gt; MR::Cuda::pointsToDistanceVolume </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cloud</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointsToDistanceVolumeParams.html">MR::PointsToDistanceVolumeParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>makes SimpleVolume filled with signed distances to points with normals </p>
+
+</div>
+</div>
+<a id="a2ca6e42153313ca635d7ea3e12d19bf0" name="a2ca6e42153313ca635d7ea3e12d19bf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ca6e42153313ca635d7ea3e12d19bf0">&#9670;&#160;</a></span>pointsToDistanceVolumeByParts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MRCUDA_API <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt; MR::Cuda::pointsToDistanceVolumeByParts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointCloud.html">PointCloud</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cloud</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMR_1_1PointsToDistanceVolumeParams.html">MR::PointsToDistanceVolumeParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>params</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; void &gt;(const SimpleVolumeMinMax &amp;<a class="el" href="namespaceMR.html#a83e40508b3f05b594da19748c1da2d05">volume</a>, int zOffset)&gt;</td>          <td class="paramname"><span class="paramname"><em>addPart</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>layerOverlap</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>makes SimpleVolume filled with signed distances to points with normals populate the volume by parts to the given callback </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a770259831b49f60068c30df5121056c9" name="a770259831b49f60068c30df5121056c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a770259831b49f60068c30df5121056c9">&#9670;&#160;</a></span>PointCloudDataHolder</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct MR_BIND_IGNORE MR::Cuda::PointCloudDataHolder</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceMR.html">MR</a></li><li class="navelem"><a class="el" href="namespaceMR_1_1Cuda.html">Cuda</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

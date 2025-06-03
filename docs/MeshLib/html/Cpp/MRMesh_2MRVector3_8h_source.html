@@ -1,0 +1,502 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/MRMesh_2MRVector3_8h_source.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRVector3.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMesh_2MRVector3_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRMesh/MRVector3.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRMesh_2MRVector3_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMacros_8h.html">MRMacros.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRMeshFwd_8h.html">MRMeshFwd.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="MRConstants_8h.html">MRConstants.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;MRPch/MRBindingMacros.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#if MR_HAS_REQUIRES</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;concepts&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceMR.html">MR</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifdef _MSC_VER</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#pragma warning(push)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#pragma warning(disable: 4804) </span><span class="comment">// unsafe use of type &#39;bool&#39; in operation</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#pragma warning(disable: 4146) </span><span class="comment">// unary minus operator applied to unsigned type, result still unsigned</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html">   25</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a8ecb748650561c957b8b73afd24288cb">   27</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="structMR_1_1Vector3.html#a8ecb748650561c957b8b73afd24288cb">ValueType</a> = T;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a7c629d81f031f089ef5fb3ea45689ea5">   28</a></span>    <span class="keyword">using </span><a class="code hl_struct" href="structMR_1_1Matrix3.html">MatrixType</a> = <a class="code hl_struct" href="structMR_1_1Matrix3.html">Matrix3&lt;T&gt;</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a1be16f68d003d1fe45b63bd915d50bff">   29</a></span>    <span class="keyword">using </span><a class="code hl_struct" href="structMR_1_1SymMatrix3.html">SymMatrixType</a> = <a class="code hl_struct" href="structMR_1_1SymMatrix3.html">SymMatrix3&lt;T&gt;</a>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a5f40bccc013c893ac7558c2262a6eff1">   30</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="structMR_1_1Vector3.html#a5f40bccc013c893ac7558c2262a6eff1">elements</a> = 3;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">   32</a></span>    T <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>, <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>, <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">   34</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>() noexcept : <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>( 0 ), <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>( 0 ), <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>( 0 ) { }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a8d2060921c3ecd7d080f93c50e1bec51">   35</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="structMR_1_1Vector3.html#a8d2060921c3ecd7d080f93c50e1bec51">Vector3</a>( <a class="code hl_struct" href="structMR_1_1NoInit.html">NoInit</a> ) <span class="keyword">noexcept</span> { }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aa1b7f648b920d3afcfd29032b79ed8af">   36</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="structMR_1_1Vector3.html#aa1b7f648b920d3afcfd29032b79ed8af">Vector3</a>( T <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>, T <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>, T <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> ) noexcept : <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>( <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> ), <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>( <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> ), <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>( <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> ) { }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#accacc05b5f2af477f9cbf09f9d8f48f8">   37</a></span>    <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <a class="code hl_function" href="structMR_1_1Vector3.html#accacc05b5f2af477f9cbf09f9d8f48f8">Vector3</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector2.html">Vector2&lt;T&gt;</a> &amp; v ) noexcept : <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>( v.x ), <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>( v.y ), <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>( 0 ) { }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#af3522428d5137f019a3da623a19222ab">   39</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#af3522428d5137f019a3da623a19222ab">diagonal</a>( T a ) <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>( a, a, a ); }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a048dcca2da540bf2d429cbca37e41092">   40</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#a048dcca2da540bf2d429cbca37e41092">plusX</a>() noexcept { <span class="keywordflow">return</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>( 1, 0, 0 ); }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aedf66abcd7c315536ba2e512839885d0">   41</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#aedf66abcd7c315536ba2e512839885d0">plusY</a>() noexcept { <span class="keywordflow">return</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>( 0, 1, 0 ); }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aba68004d56f0100e523093390f939910">   42</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#aba68004d56f0100e523093390f939910">plusZ</a>() noexcept { <span class="keywordflow">return</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>( 0, 0, 1 ); }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a3f5f6dd8bdb3e981ced52e1dee56b8c1">   43</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#a3f5f6dd8bdb3e981ced52e1dee56b8c1">minusX</a>() noexcept { <span class="keywordflow">return</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>( -1, 0, 0 ); }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a406d86f1a9f8ecf8bcde6369c06cea5c">   44</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#a406d86f1a9f8ecf8bcde6369c06cea5c">minusY</a>() noexcept { <span class="keywordflow">return</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>( 0, -1, 0 ); }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#ad98e6c5a5a1105c363500ee42693e0d3">   45</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#ad98e6c5a5a1105c363500ee42693e0d3">minusZ</a>() noexcept { <span class="keywordflow">return</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3</a>( 0, 0, -1 ); }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#ad61b88bc9db8f4f19652d6fe5f3f6b09">   48</a></span>    <span class="keyword">constexpr</span> <span class="keyword">explicit</span> <a class="code hl_function" href="structMR_1_1Vector3.html#ad61b88bc9db8f4f19652d6fe5f3f6b09">Vector3</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;U&gt;</a> &amp; v ) noexcept : <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>( T( v.x ) ), <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>( T( v.y ) ), <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>( T( v.z ) ) { }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a91b0398c10d527ac2433b92451a3dfb8">   50</a></span>    <span class="keyword">constexpr</span> <span class="keyword">const</span> T &amp; <a class="code hl_function" href="structMR_1_1Vector3.html#a91b0398c10d527ac2433b92451a3dfb8">operator []</a>( <span class="keywordtype">int</span> e ) <span class="keyword">const</span> <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> *( &amp;<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> + e ); }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#afd88975c7b25f8752c951f16a74ac7f5">   51</a></span>    <span class="keyword">constexpr</span>       T &amp; <a class="code hl_function" href="structMR_1_1Vector3.html#a91b0398c10d527ac2433b92451a3dfb8">operator []</a>( <span class="keywordtype">int</span> e )       <span class="keyword">noexcept</span> { <span class="keywordflow">return</span> *( &amp;<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> + e ); }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aedb5f8de6324a8ee5e71243c4b67104c">   53</a></span>    T <a class="code hl_function" href="structMR_1_1Vector3.html#aedb5f8de6324a8ee5e71243c4b67104c">lengthSq</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> * <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> + <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> * <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> + <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> * <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>; }</div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a9b44af3c8a7c918cf88dac1811950e66">   54</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="structMR_1_1Vector3.html#a9b44af3c8a7c918cf88dac1811950e66">length</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment">// Calling `sqrt` this way to hopefully support boost.multiprecision numbers.</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// Returning `auto` to not break on integral types.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keyword">using </span>std::sqrt;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">return</span> sqrt( <a class="code hl_function" href="structMR_1_1Vector3.html#aedb5f8de6324a8ee5e71243c4b67104c">lengthSq</a>() );</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#ac61c07811df0f193e3462b3201ef1daf">   62</a></span>    [[nodiscard]] <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#ac61c07811df0f193e3462b3201ef1daf">normalized</a>() const <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( std::floating_point&lt;T&gt; )</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">auto</span> len = <a class="code hl_function" href="structMR_1_1Vector3.html#a9b44af3c8a7c918cf88dac1811950e66">length</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">if</span> ( len &lt;= 0 )</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> ( 1 / len ) * (*this);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aef52fe557a6a536a11a3fbfcd18eaf16">   71</a></span>    <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#aef52fe557a6a536a11a3fbfcd18eaf16">furthestBasisVector</a>() const <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( !std::is_same_v&lt;T, <span class="keywordtype">bool</span>&gt; );</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a850a38ce3943bd9da515c2ad86ed017c">   75</a></span>    std::pair&lt;<a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a>, <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a>&gt; <a class="code hl_function" href="structMR_1_1Vector3.html#a850a38ce3943bd9da515c2ad86ed017c">perpendicular</a>() const <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( std::floating_point&lt;T&gt; );</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    template &lt;<a class="code hl_define" href="MRMacros_8h.html#aa4077bf89cb8ad6b60d3d1d989cc5361">MR_SAME_TYPE_TEMPLATE_PARAM</a>(T, TT)&gt; <span class="comment">// Need this, otherwise the bindings try to instantiate `AffineXf3` with non-FP arguments.</span></div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#af27e5713538a089ef0c5213ad67d6c39">   79</a></span>    <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a> <a class="code hl_function" href="structMR_1_1Vector3.html#af27e5713538a089ef0c5213ad67d6c39">transformed</a>( const <a class="code hl_struct" href="structMR_1_1AffineXf.html">AffineXf3</a>&lt;TT&gt;* xf ) const <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( std::floating_point&lt;T&gt; )</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> xf ? ( *xf )( *this ) : *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a8a737d6b966f9953f4dbf5cb90b409e7">   85</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="structMR_1_1Vector3.html#a8a737d6b966f9953f4dbf5cb90b409e7">unsignZeroValues</a>() <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( std::floating_point&lt;T&gt; )</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">for</span> ( <span class="keyword">auto</span> i = 0; i &lt; <a class="code hl_variable" href="structMR_1_1Vector3.html#a5f40bccc013c893ac7558c2262a6eff1">elements</a>; ++i )</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="keywordflow">if</span> ( (*<span class="keyword">this</span>)[i] == 0.f &amp;&amp; std::signbit( (*<span class="keyword">this</span>)[i] ) )</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                (*this)[i] = 0.f;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a42a6a58414ddf6804bf51f6346b4665f">   92</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="structMR_1_1Vector3.html#a42a6a58414ddf6804bf51f6346b4665f">isFinite</a>() const <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( std::floating_point&lt;T&gt; )</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">return</span> std::isfinite( <a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> ) &amp;&amp; std::isfinite( <a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> ) &amp;&amp; std::isfinite( <a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> );</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aa313f8ba832a4b648631b27ecc640444">   97</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#aa313f8ba832a4b648631b27ecc640444">operator ==</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) { <span class="keywordflow">return</span> a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> == b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> &amp;&amp; a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> == b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> &amp;&amp; a.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> == b.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>; }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a21621332debf444906aee7baa46ec9bd">   98</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#a21621332debf444906aee7baa46ec9bd">operator !=</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) { <span class="keywordflow">return</span> !( a == b ); }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="comment">// NOTE: We use `std::declval()` in the operators below because libclang 18 in our binding generator is bugged and chokes on decltyping `a.x` and such. TODO fix this when we update libclang.</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a6ff62d94821680cd4aa78b7f0e9fc08f">  102</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; <a class="code hl_friend" href="structMR_1_1Vector3.html#a6ff62d94821680cd4aa78b7f0e9fc08f">operator +</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a ) { <span class="keywordflow">return</span> a; }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a3cc31cdd83a971750db6f671c1cced49">  103</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#a3cc31cdd83a971750db6f671c1cced49">operator -</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a ) -&gt; <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a>&lt;<span class="keyword">decltype</span>( -std::declval&lt;T&gt;() )&gt; { <span class="keywordflow">return</span> { -a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>, -a.y, -a.z }; }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a6d9dc5cc123e820501fce18c0d514bef">  105</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#a6ff62d94821680cd4aa78b7f0e9fc08f">operator +</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) -&gt; <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3&lt;decltype( std::declval&lt;T&gt;</a>() + std::declval&lt;T&gt;() )&gt; { <span class="keywordflow">return</span> { a.x + b.x, a.y + b.y, a.z + b.z }; }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a0e6e304d7db4cd0fbcec701048cb543c">  106</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#a3cc31cdd83a971750db6f671c1cced49">operator -</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) -&gt; <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3&lt;decltype( std::declval&lt;T&gt;</a>() - std::declval&lt;T&gt;() )&gt; { <span class="keywordflow">return</span> { a.x - b.x, a.y - b.y, a.z - b.z }; }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a3151d264071a57eaa4833608fd6571d6">  107</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#a3151d264071a57eaa4833608fd6571d6">operator *</a>(               T    a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) -&gt; <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3&lt;decltype( std::declval&lt;T&gt;</a>() * std::declval&lt;T&gt;() )&gt; { <span class="keywordflow">return</span> { a * b.x, a * b.y, a * b.z }; }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aaec8d078a94beb3ffac951b9ffd0b6cb">  108</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#a3151d264071a57eaa4833608fd6571d6">operator *</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b,               T    a ) -&gt; <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3&lt;decltype( std::declval&lt;T&gt;</a>() * std::declval&lt;T&gt;() )&gt; { <span class="keywordflow">return</span> { a * b.x, a * b.y, a * b.z }; }</div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="};">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#abe4fb08c12b763d3aeec47507ccd0973">  109</a></span>    [[nodiscard]] <span class="keyword">friend</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_friend" href="structMR_1_1Vector3.html#abe4fb08c12b763d3aeec47507ccd0973">operator /</a>(       <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a>   b,               T    a ) -&gt; <a class="code hl_function" href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">Vector3&lt;decltype( std::declval&lt;T&gt;</a>() / std::declval&lt;T&gt;() )&gt;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> ( std::is_integral_v&lt;T&gt; )</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keywordflow">return</span> { b.x / a, b.y / a, b.z / a };</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="keywordflow">return</span> b * ( 1 / a );</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#afe3fa854886280e7a5f2d84d4e02ca54">  117</a></span>    <span class="keyword">friend</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; <a class="code hl_friend" href="structMR_1_1Vector3.html#afe3fa854886280e7a5f2d84d4e02ca54">operator +=</a>( <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( <span class="keyword">requires</span>{ a + b; } ) { a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> += b.x; a.y += b.y; a.z += b.z; <span class="keywordflow">return</span> a; }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aeb0fb4fa5959f1241cc261574f4bd9d6">  118</a></span>    <span class="keyword">friend</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; <a class="code hl_friend" href="structMR_1_1Vector3.html#aeb0fb4fa5959f1241cc261574f4bd9d6">operator -=</a>( <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( <span class="keyword">requires</span>{ a - b; } ) { a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> -= b.x; a.y -= b.y; a.z -= b.z; <span class="keywordflow">return</span> a; }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aa5a5528f7655565df55378e5da9cf887">  119</a></span>    <span class="keyword">friend</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; <a class="code hl_friend" href="structMR_1_1Vector3.html#aa5a5528f7655565df55378e5da9cf887">operator *=</a>( <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a,               T    b ) <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( <span class="keyword">requires</span>{ a * b; } ) { a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> *= b; a.y *= b; a.z *= b; <span class="keywordflow">return</span> a; }</div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="};">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a7eff91fc4125a6e58692cd47a47988c8">  120</a></span>    <span class="keyword">friend</span> <span class="keyword">constexpr</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; <a class="code hl_friend" href="structMR_1_1Vector3.html#a7eff91fc4125a6e58692cd47a47988c8">operator /=</a>( <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a,               T    b ) <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( <span class="keyword">requires</span>{ a / b; } )</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> ( std::is_integral_v&lt;T&gt; )</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            { a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> /= b; a.y /= b; a.z /= b; <span class="keywordflow">return</span> a; }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">return</span> a *= ( 1 / b );</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>};</div>
+</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a1b7a343939b1a92e61700fb5bd609b56">  135</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="structMR_1_1Vector3.html#a1b7a343939b1a92e61700fb5bd609b56">distanceSq</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b )</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>{</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordflow">return</span> ( a - b ).lengthSq();</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>}</div>
+</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aa62b4ce06d0439125af427faabb987b1">  142</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="structMR_1_1Vector3.html#aa62b4ce06d0439125af427faabb987b1">distance</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b )</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>{</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordflow">return</span> ( a - b ).length();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00149" data-start="{" data-end="}">
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#af9065ae414e0307701366e479519540d">  149</a></span><span class="keyword">inline</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> <a class="code hl_function" href="structMR_1_1Vector3.html#af9065ae414e0307701366e479519540d">cross</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b )</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>{</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordflow">return</span> {</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> - a.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>,</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        a.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> - a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a>,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> - a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    };</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>}</div>
+</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a12ace0a073b6d056e20f50fabe0b9940">  160</a></span><span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="structMR_1_1Vector3.html#a12ace0a073b6d056e20f50fabe0b9940">dot</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b ) -&gt; <span class="keyword">decltype</span>( a.x * b.x )</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>{</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordflow">return</span> a.x * b.x + a.y * b.y + a.z * b.z;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
+</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#ac519c0badafc5dd614c0c6f8b8b28994">  167</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="structMR_1_1Vector3.html#ac519c0badafc5dd614c0c6f8b8b28994">sqr</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a )</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>{</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">return</span> a.<a class="code hl_function" href="structMR_1_1Vector3.html#aedb5f8de6324a8ee5e71243c4b67104c">lengthSq</a>();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>}</div>
+</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00174" data-start="{" data-end="}">
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#aa80c4d71ef5b56a6aaa251f91e636873">  174</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="structMR_1_1Vector3.html#aa80c4d71ef5b56a6aaa251f91e636873">mixed</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; c )</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>{</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">return</span> dot( a, cross( b, c ) );</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>}</div>
+</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00181" data-start="{" data-end="}">
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#ae2acb767e75d8fddbe60a26218e7635a">  181</a></span><span class="keyword">inline</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> <a class="code hl_function" href="structMR_1_1Vector3.html#ae2acb767e75d8fddbe60a26218e7635a">mult</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a>&amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a>&amp; b )</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>{</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordflow">return</span> { a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>,a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>,a.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> * b.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> };</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
+</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00188" data-start="{" data-end="}">
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a3032e40b08150686195023c67dd9b749">  188</a></span><span class="keyword">inline</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> <a class="code hl_function" href="structMR_1_1Vector3.html#a3032e40b08150686195023c67dd9b749">div</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a>&amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a>&amp; b )</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>{</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">return</span> { a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a> / b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">x</a>, a.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a> / b.<a class="code hl_variable" href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">y</a>, a.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> / b.<a class="code hl_variable" href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">z</a> };</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>}</div>
+</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00197" data-start="{" data-end="}">
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#ac91a0462b62bab22f973bb517dc805ca">  197</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="structMR_1_1Vector3.html#ac91a0462b62bab22f973bb517dc805ca">angle</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; a, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; b )</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>{</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">return</span> std::atan2( cross( a, b ).<a class="code hl_variable" href="MRObjectDimensionsEnum_8h.html#af9d495c1655d813d553030485d00fea7">length</a>(), dot( a, b ) );</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="comment">// this version is slower and less precise</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="comment">//return std::acos( std::clamp( dot( a.normalized(), b.normalized() ), T(-1), T(1) ) );</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
+</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="keyword">inline</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> <a class="code hl_function" href="structMR_1_1Vector3.html#aef52fe557a6a536a11a3fbfcd18eaf16">Vector3&lt;T&gt;::furthestBasisVector</a>() const <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( !std::is_same_v&lt;T, <span class="keywordtype">bool</span>&gt; )</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>{</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keyword">using </span>std::abs; <span class="comment">// This should allow boost.multiprecision numbers here.</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">if</span> ( abs( x ) &lt; abs( y ) )</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">return</span> ( abs( x ) &lt; abs( z ) ) ? <a class="code hl_variable" href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">Vector3</a>( 1, 0, 0 ) : <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a>( 0, 0, 1 );</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="keywordflow">return</span> ( abs( y ) &lt; abs( z ) ) ? <a class="code hl_variable" href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">Vector3</a>( 0, 1, 0 ) : <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3</a>( 0, 0, 1 );</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>}</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="keyword">inline</span> std::pair&lt;Vector3&lt;T&gt;, <a class="code hl_variable" href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">Vector3&lt;T&gt;</a>&gt; <a class="code hl_function" href="structMR_1_1Vector3.html#a850a38ce3943bd9da515c2ad86ed017c">Vector3&lt;T&gt;::perpendicular</a>() const <a class="code hl_define" href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a>( std::floating_point&lt;T&gt; )</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>{</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    std::pair&lt;Vector3&lt;T&gt;, <a class="code hl_variable" href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">Vector3&lt;T&gt;</a>&gt; res;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keyword">auto</span> c1 = furthestBasisVector();</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    res.first  = cross( *<span class="keyword">this</span>, c1 ).normalized();</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    res.second = cross( *<span class="keyword">this</span>, res.first ).normalized();</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00226" data-start="{" data-end="}">
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno"><a class="line" href="structMR_1_1Vector3.html#a14f7f0adb55e73e84d46a542b9b91186">  226</a></span><a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> <a class="code hl_function" href="structMR_1_1Vector3.html#a14f7f0adb55e73e84d46a542b9b91186">unitVector3</a>( T azimuth, T altitude )</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>{</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keyword">const</span> <span class="keyword">auto</span> zenithAngle = T( PI2 ) - altitude;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordflow">return</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    {</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        std::sin( zenithAngle ) * std::cos( azimuth ),</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        std::sin( zenithAngle ) * std::sin( azimuth ),</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        std::cos( zenithAngle )</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    };</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>}</div>
+</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">// We don&#39;t need to bind those functions themselves. This doesn&#39;t prevent `__iter__` from being generated for the type.</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>MR_BIND_IGNORE <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="group__BasicGroup.html#ga130a7b2de56f57ba4b13111c6e3a31ef">begin</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Vector3.html">Vector3&lt;T&gt;</a> &amp; v ) { <span class="keywordflow">return</span> &amp;v[0]; }</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>MR_BIND_IGNORE <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="group__BasicGroup.html#ga130a7b2de56f57ba4b13111c6e3a31ef">begin</a>( <a class="code hl_variable" href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">Vector3&lt;T&gt;</a> &amp; v ) { <span class="keywordflow">return</span> &amp;v[0]; }</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>MR_BIND_IGNORE <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="group__BasicGroup.html#gab900ba901f90bfe11c4580814af4fbf6">end</a>( <span class="keyword">const</span> <a class="code hl_variable" href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">Vector3&lt;T&gt;</a> &amp; v ) { <span class="keywordflow">return</span> &amp;v[3]; }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>MR_BIND_IGNORE <span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="group__BasicGroup.html#gab900ba901f90bfe11c4580814af4fbf6">end</a>( <a class="code hl_variable" href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">Vector3&lt;T&gt;</a> &amp; v ) { <span class="keywordflow">return</span> &amp;v[3]; }</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#ifdef _MSC_VER</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">#pragma warning(pop)</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>} <span class="comment">// namespace MR</span></div>
+<div class="ttc" id="aMRConstants_8h_html"><div class="ttname"><a href="MRConstants_8h.html">MRConstants.h</a></div></div>
+<div class="ttc" id="aMRMacros_8h_html"><div class="ttname"><a href="MRMacros_8h.html">MRMacros.h</a></div></div>
+<div class="ttc" id="aMRMacros_8h_html_aa4077bf89cb8ad6b60d3d1d989cc5361"><div class="ttname"><a href="MRMacros_8h.html#aa4077bf89cb8ad6b60d3d1d989cc5361">MR_SAME_TYPE_TEMPLATE_PARAM</a></div><div class="ttdeci">#define MR_SAME_TYPE_TEMPLATE_PARAM(target_, name_)</div><div class="ttdef"><b>Definition</b> MRMacros.h:32</div></div>
+<div class="ttc" id="aMRMacros_8h_html_adb4b71f9ebce86e54868bd967010ebbb"><div class="ttname"><a href="MRMacros_8h.html#adb4b71f9ebce86e54868bd967010ebbb">MR_REQUIRES_IF_SUPPORTED</a></div><div class="ttdeci">#define MR_REQUIRES_IF_SUPPORTED(...)</div><div class="ttdef"><b>Definition</b> MRMacros.h:31</div></div>
+<div class="ttc" id="aMRMesh_2MRMeshFwd_8h_html"><div class="ttname"><a href="MRMesh_2MRMeshFwd_8h.html">MRMeshFwd.h</a></div></div>
+<div class="ttc" id="aMRObjectDimensionsEnum_8h_html_af9d495c1655d813d553030485d00fea7"><div class="ttname"><a href="MRObjectDimensionsEnum_8h.html#af9d495c1655d813d553030485d00fea7">length</a></div><div class="ttdeci">length</div><div class="ttdef"><b>Definition</b> MRObjectDimensionsEnum.h:14</div></div>
+<div class="ttc" id="agroup__BasicGroup_html_ga130a7b2de56f57ba4b13111c6e3a31ef"><div class="ttname"><a href="group__BasicGroup.html#ga130a7b2de56f57ba4b13111c6e3a31ef">MR::begin</a></div><div class="ttdeci">MR_BIND_IGNORE auto begin(const BitSet &amp;a)</div><div class="ttdef"><b>Definition</b> MRMesh/MRBitSet.h:295</div></div>
+<div class="ttc" id="agroup__BasicGroup_html_gab900ba901f90bfe11c4580814af4fbf6"><div class="ttname"><a href="group__BasicGroup.html#gab900ba901f90bfe11c4580814af4fbf6">MR::end</a></div><div class="ttdeci">MR_BIND_IGNORE auto end(const BitSet &amp;)</div><div class="ttdef"><b>Definition</b> MRMesh/MRBitSet.h:297</div></div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="namespaceMR.html">MR</a></div></div>
+<div class="ttc" id="anamespaceMR_html_ac878ba63f3f91f5ab032a38cd3a2c206"><div class="ttname"><a href="namespaceMR.html#ac878ba63f3f91f5ab032a38cd3a2c206">MR::Vector3</a></div><div class="ttdeci">MRMESH_CLASS Vector3</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:170</div></div>
+<div class="ttc" id="astructMR_1_1AffineXf_html"><div class="ttname"><a href="structMR_1_1AffineXf.html">MR::AffineXf</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRAffineXf.h:14</div></div>
+<div class="ttc" id="astructMR_1_1Matrix3_html"><div class="ttname"><a href="structMR_1_1Matrix3.html">MR::Matrix3</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMatrix3.h:19</div></div>
+<div class="ttc" id="astructMR_1_1NoInit_html"><div class="ttname"><a href="structMR_1_1NoInit.html">MR::NoInit</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:89</div></div>
+<div class="ttc" id="astructMR_1_1SymMatrix3_html"><div class="ttname"><a href="structMR_1_1SymMatrix3.html">MR::SymMatrix3</a></div><div class="ttdef"><b>Definition</b> MRSymMatrix3.h:15</div></div>
+<div class="ttc" id="astructMR_1_1Vector2_html"><div class="ttname"><a href="structMR_1_1Vector2.html">MR::Vector2</a></div><div class="ttdef"><b>Definition</b> MRVector2.h:25</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html"><div class="ttname"><a href="structMR_1_1Vector3.html">MR::Vector3</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:26</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a048dcca2da540bf2d429cbca37e41092"><div class="ttname"><a href="structMR_1_1Vector3.html#a048dcca2da540bf2d429cbca37e41092">MR::Vector3::plusX</a></div><div class="ttdeci">static constexpr Vector3 plusX() noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:40</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a12ace0a073b6d056e20f50fabe0b9940"><div class="ttname"><a href="structMR_1_1Vector3.html#a12ace0a073b6d056e20f50fabe0b9940">MR::Vector3::dot</a></div><div class="ttdeci">auto dot(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b) -&gt; decltype(a.x *b.x)</div><div class="ttdoc">dot product</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:160</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a14f7f0adb55e73e84d46a542b9b91186"><div class="ttname"><a href="structMR_1_1Vector3.html#a14f7f0adb55e73e84d46a542b9b91186">MR::Vector3::unitVector3</a></div><div class="ttdeci">Vector3&lt; T &gt; unitVector3(T azimuth, T altitude)</div><div class="ttdoc">returns a point on unit sphere given two angles</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:226</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a1b7a343939b1a92e61700fb5bd609b56"><div class="ttname"><a href="structMR_1_1Vector3.html#a1b7a343939b1a92e61700fb5bd609b56">MR::Vector3::distanceSq</a></div><div class="ttdeci">T distanceSq(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdoc">squared distance between two points, which is faster to compute than just distance</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:135</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a21621332debf444906aee7baa46ec9bd"><div class="ttname"><a href="structMR_1_1Vector3.html#a21621332debf444906aee7baa46ec9bd">MR::Vector3::operator!=</a></div><div class="ttdeci">friend constexpr bool operator!=(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:98</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a3032e40b08150686195023c67dd9b749"><div class="ttname"><a href="structMR_1_1Vector3.html#a3032e40b08150686195023c67dd9b749">MR::Vector3::div</a></div><div class="ttdeci">Vector3&lt; T &gt; div(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdoc">per component division</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:188</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a3151d264071a57eaa4833608fd6571d6"><div class="ttname"><a href="structMR_1_1Vector3.html#a3151d264071a57eaa4833608fd6571d6">MR::Vector3::operator*</a></div><div class="ttdeci">friend constexpr auto operator*(T a, const Vector3&lt; T &gt; &amp;b) -&gt; Vector3&lt; decltype(std::declval&lt; T &gt;() *std::declval&lt; T &gt;())&gt;</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:107</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a3cc31cdd83a971750db6f671c1cced49"><div class="ttname"><a href="structMR_1_1Vector3.html#a3cc31cdd83a971750db6f671c1cced49">MR::Vector3::operator-</a></div><div class="ttdeci">friend constexpr auto operator-(const Vector3&lt; T &gt; &amp;a) -&gt; Vector3&lt; decltype(-std::declval&lt; T &gt;())&gt;</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:103</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a3d6f56ed3c525a928116d6c095997c5c"><div class="ttname"><a href="structMR_1_1Vector3.html#a3d6f56ed3c525a928116d6c095997c5c">MR::Vector3::x</a></div><div class="ttdeci">T x</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:32</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a3f5f6dd8bdb3e981ced52e1dee56b8c1"><div class="ttname"><a href="structMR_1_1Vector3.html#a3f5f6dd8bdb3e981ced52e1dee56b8c1">MR::Vector3::minusX</a></div><div class="ttdeci">static constexpr Vector3 minusX() noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:43</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a406d86f1a9f8ecf8bcde6369c06cea5c"><div class="ttname"><a href="structMR_1_1Vector3.html#a406d86f1a9f8ecf8bcde6369c06cea5c">MR::Vector3::minusY</a></div><div class="ttdeci">static constexpr Vector3 minusY() noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:44</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a42a6a58414ddf6804bf51f6346b4665f"><div class="ttname"><a href="structMR_1_1Vector3.html#a42a6a58414ddf6804bf51f6346b4665f">MR::Vector3::isFinite</a></div><div class="ttdeci">bool isFinite() const</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:92</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a4cbb29e67931176028f57f29b2bd6953"><div class="ttname"><a href="structMR_1_1Vector3.html#a4cbb29e67931176028f57f29b2bd6953">MR::Vector3::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:32</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a5f40bccc013c893ac7558c2262a6eff1"><div class="ttname"><a href="structMR_1_1Vector3.html#a5f40bccc013c893ac7558c2262a6eff1">MR::Vector3::elements</a></div><div class="ttdeci">static constexpr int elements</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:30</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a6ff62d94821680cd4aa78b7f0e9fc08f"><div class="ttname"><a href="structMR_1_1Vector3.html#a6ff62d94821680cd4aa78b7f0e9fc08f">MR::Vector3::operator+</a></div><div class="ttdeci">friend constexpr const Vector3&lt; T &gt; &amp; operator+(const Vector3&lt; T &gt; &amp;a)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:102</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a7eff91fc4125a6e58692cd47a47988c8"><div class="ttname"><a href="structMR_1_1Vector3.html#a7eff91fc4125a6e58692cd47a47988c8">MR::Vector3::operator/=</a></div><div class="ttdeci">friend constexpr Vector3&lt; T &gt; &amp; operator/=(Vector3&lt; T &gt; &amp;a, T b)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:120</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a850a38ce3943bd9da515c2ad86ed017c"><div class="ttname"><a href="structMR_1_1Vector3.html#a850a38ce3943bd9da515c2ad86ed017c">MR::Vector3::perpendicular</a></div><div class="ttdeci">std::pair&lt; Vector3, Vector3 &gt; perpendicular() const</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a8a737d6b966f9953f4dbf5cb90b409e7"><div class="ttname"><a href="structMR_1_1Vector3.html#a8a737d6b966f9953f4dbf5cb90b409e7">MR::Vector3::unsignZeroValues</a></div><div class="ttdeci">void unsignZeroValues()</div><div class="ttdoc">get rid of signed zero values to be sure that equal vectors have identical binary representation</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:85</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a8d2060921c3ecd7d080f93c50e1bec51"><div class="ttname"><a href="structMR_1_1Vector3.html#a8d2060921c3ecd7d080f93c50e1bec51">MR::Vector3::Vector3</a></div><div class="ttdeci">Vector3(NoInit) noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:35</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a8ecb748650561c957b8b73afd24288cb"><div class="ttname"><a href="structMR_1_1Vector3.html#a8ecb748650561c957b8b73afd24288cb">MR::Vector3::ValueType</a></div><div class="ttdeci">T ValueType</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:27</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a91b0398c10d527ac2433b92451a3dfb8"><div class="ttname"><a href="structMR_1_1Vector3.html#a91b0398c10d527ac2433b92451a3dfb8">MR::Vector3::operator[]</a></div><div class="ttdeci">constexpr const T &amp; operator[](int e) const noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:50</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_a9b44af3c8a7c918cf88dac1811950e66"><div class="ttname"><a href="structMR_1_1Vector3.html#a9b44af3c8a7c918cf88dac1811950e66">MR::Vector3::length</a></div><div class="ttdeci">auto length() const</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:54</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aa1b7f648b920d3afcfd29032b79ed8af"><div class="ttname"><a href="structMR_1_1Vector3.html#aa1b7f648b920d3afcfd29032b79ed8af">MR::Vector3::Vector3</a></div><div class="ttdeci">constexpr Vector3(T x, T y, T z) noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:36</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aa313f8ba832a4b648631b27ecc640444"><div class="ttname"><a href="structMR_1_1Vector3.html#aa313f8ba832a4b648631b27ecc640444">MR::Vector3::operator==</a></div><div class="ttdeci">friend constexpr bool operator==(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:97</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aa5a5528f7655565df55378e5da9cf887"><div class="ttname"><a href="structMR_1_1Vector3.html#aa5a5528f7655565df55378e5da9cf887">MR::Vector3::operator*=</a></div><div class="ttdeci">friend constexpr Vector3&lt; T &gt; &amp; operator*=(Vector3&lt; T &gt; &amp;a, T b)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:119</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aa62b4ce06d0439125af427faabb987b1"><div class="ttname"><a href="structMR_1_1Vector3.html#aa62b4ce06d0439125af427faabb987b1">MR::Vector3::distance</a></div><div class="ttdeci">T distance(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdoc">distance between two points, better use distanceSq for higher performance</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:142</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aa80c4d71ef5b56a6aaa251f91e636873"><div class="ttname"><a href="structMR_1_1Vector3.html#aa80c4d71ef5b56a6aaa251f91e636873">MR::Vector3::mixed</a></div><div class="ttdeci">T mixed(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b, const Vector3&lt; T &gt; &amp;c)</div><div class="ttdoc">mixed product</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:174</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aba68004d56f0100e523093390f939910"><div class="ttname"><a href="structMR_1_1Vector3.html#aba68004d56f0100e523093390f939910">MR::Vector3::plusZ</a></div><div class="ttdeci">static constexpr Vector3 plusZ() noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:42</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_abe4fb08c12b763d3aeec47507ccd0973"><div class="ttname"><a href="structMR_1_1Vector3.html#abe4fb08c12b763d3aeec47507ccd0973">MR::Vector3::operator/</a></div><div class="ttdeci">friend constexpr auto operator/(Vector3&lt; T &gt; b, T a) -&gt; Vector3&lt; decltype(std::declval&lt; T &gt;()/std::declval&lt; T &gt;())&gt;</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:109</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ac519c0badafc5dd614c0c6f8b8b28994"><div class="ttname"><a href="structMR_1_1Vector3.html#ac519c0badafc5dd614c0c6f8b8b28994">MR::Vector3::sqr</a></div><div class="ttdeci">T sqr(const Vector3&lt; T &gt; &amp;a)</div><div class="ttdoc">squared length</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:167</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ac61c07811df0f193e3462b3201ef1daf"><div class="ttname"><a href="structMR_1_1Vector3.html#ac61c07811df0f193e3462b3201ef1daf">MR::Vector3::normalized</a></div><div class="ttdeci">Vector3 normalized() const</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:62</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ac91a0462b62bab22f973bb517dc805ca"><div class="ttname"><a href="structMR_1_1Vector3.html#ac91a0462b62bab22f973bb517dc805ca">MR::Vector3::angle</a></div><div class="ttdeci">T angle(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:197</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_accacc05b5f2af477f9cbf09f9d8f48f8"><div class="ttname"><a href="structMR_1_1Vector3.html#accacc05b5f2af477f9cbf09f9d8f48f8">MR::Vector3::Vector3</a></div><div class="ttdeci">constexpr Vector3(const Vector2&lt; T &gt; &amp;v) noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:37</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ad61b88bc9db8f4f19652d6fe5f3f6b09"><div class="ttname"><a href="structMR_1_1Vector3.html#ad61b88bc9db8f4f19652d6fe5f3f6b09">MR::Vector3::Vector3</a></div><div class="ttdeci">constexpr Vector3(const Vector3&lt; U &gt; &amp;v) noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:48</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ad8b62d7466c2f210d9618cc9c3fe555f"><div class="ttname"><a href="structMR_1_1Vector3.html#ad8b62d7466c2f210d9618cc9c3fe555f">MR::Vector3::Vector3</a></div><div class="ttdeci">constexpr Vector3() noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:34</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ad98e6c5a5a1105c363500ee42693e0d3"><div class="ttname"><a href="structMR_1_1Vector3.html#ad98e6c5a5a1105c363500ee42693e0d3">MR::Vector3::minusZ</a></div><div class="ttdeci">static constexpr Vector3 minusZ() noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:45</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ae2acb767e75d8fddbe60a26218e7635a"><div class="ttname"><a href="structMR_1_1Vector3.html#ae2acb767e75d8fddbe60a26218e7635a">MR::Vector3::mult</a></div><div class="ttdeci">Vector3&lt; T &gt; mult(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdoc">per component multiplication</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:181</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_ae596ea6de55c00124d84150eadecd455"><div class="ttname"><a href="structMR_1_1Vector3.html#ae596ea6de55c00124d84150eadecd455">MR::Vector3::z</a></div><div class="ttdeci">T z</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:32</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aeb0fb4fa5959f1241cc261574f4bd9d6"><div class="ttname"><a href="structMR_1_1Vector3.html#aeb0fb4fa5959f1241cc261574f4bd9d6">MR::Vector3::operator-=</a></div><div class="ttdeci">friend constexpr Vector3&lt; T &gt; &amp; operator-=(Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:118</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aedb5f8de6324a8ee5e71243c4b67104c"><div class="ttname"><a href="structMR_1_1Vector3.html#aedb5f8de6324a8ee5e71243c4b67104c">MR::Vector3::lengthSq</a></div><div class="ttdeci">T lengthSq() const</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:53</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aedf66abcd7c315536ba2e512839885d0"><div class="ttname"><a href="structMR_1_1Vector3.html#aedf66abcd7c315536ba2e512839885d0">MR::Vector3::plusY</a></div><div class="ttdeci">static constexpr Vector3 plusY() noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:41</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_aef52fe557a6a536a11a3fbfcd18eaf16"><div class="ttname"><a href="structMR_1_1Vector3.html#aef52fe557a6a536a11a3fbfcd18eaf16">MR::Vector3::furthestBasisVector</a></div><div class="ttdeci">Vector3 furthestBasisVector() const</div><div class="ttdoc">returns one of 3 basis unit vector that makes the biggest angle with the direction specified by this</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_af27e5713538a089ef0c5213ad67d6c39"><div class="ttname"><a href="structMR_1_1Vector3.html#af27e5713538a089ef0c5213ad67d6c39">MR::Vector3::transformed</a></div><div class="ttdeci">Vector3 transformed(const AffineXf3&lt; TT &gt; *xf) const</div><div class="ttdoc">returns this vector transformed by xf if it is</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:79</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_af3522428d5137f019a3da623a19222ab"><div class="ttname"><a href="structMR_1_1Vector3.html#af3522428d5137f019a3da623a19222ab">MR::Vector3::diagonal</a></div><div class="ttdeci">static constexpr Vector3 diagonal(T a) noexcept</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:39</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_af9065ae414e0307701366e479519540d"><div class="ttname"><a href="structMR_1_1Vector3.html#af9065ae414e0307701366e479519540d">MR::Vector3::cross</a></div><div class="ttdeci">Vector3&lt; T &gt; cross(const Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdoc">cross product</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:149</div></div>
+<div class="ttc" id="astructMR_1_1Vector3_html_afe3fa854886280e7a5f2d84d4e02ca54"><div class="ttname"><a href="structMR_1_1Vector3.html#afe3fa854886280e7a5f2d84d4e02ca54">MR::Vector3::operator+=</a></div><div class="ttdeci">friend constexpr Vector3&lt; T &gt; &amp; operator+=(Vector3&lt; T &gt; &amp;a, const Vector3&lt; T &gt; &amp;b)</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector3.h:117</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRMesh_2MRVector3_8h.html">MRVector3.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

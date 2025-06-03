@@ -1,0 +1,536 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.PartMapping Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1PartMapping.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1PartMapping-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.PartMapping Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a616926f2bcd8beaaaba16966b42e54a2" id="r_a616926f2bcd8beaaaba16966b42e54a2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a616926f2bcd8beaaaba16966b42e54a2">__init__</a> (self)</td></tr>
+<tr class="separator:a616926f2bcd8beaaaba16966b42e54a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d327dc972f56bd4911785d539bfc3b2" id="r_a4d327dc972f56bd4911785d539bfc3b2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d327dc972f56bd4911785d539bfc3b2">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1PartMapping.html">PartMapping</a> arg0)</td></tr>
+<tr class="separator:a4d327dc972f56bd4911785d539bfc3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a111fe15355e183b686537eec9b6cb6a8" id="r_a111fe15355e183b686537eec9b6cb6a8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a111fe15355e183b686537eec9b6cb6a8">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a> <a class="el" href="#ab51198ae2919997dd7b50097ac400d01">src2tgtFaces</a>, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a> src2tgtVerts, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__UndirectedEdgeId__Id__EdgeTag.html">MapOrHashMap_UndirectedEdgeId_Id_EdgeTag</a> src2tgtEdges, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a> <a class="el" href="#aa6132b284874f0356da18b4fd6910b04">tgt2srcFaces</a>, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a> tgt2srcVerts, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__UndirectedEdgeId__Id__EdgeTag.html">MapOrHashMap_UndirectedEdgeId_Id_EdgeTag</a> tgt2srcEdges)</td></tr>
+<tr class="separator:a111fe15355e183b686537eec9b6cb6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfb145a1c318ea357fc6dcbe72c3a9e2" id="r_abfb145a1c318ea357fc6dcbe72c3a9e2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfb145a1c318ea357fc6dcbe72c3a9e2">clear</a> (self)</td></tr>
+<tr class="separator:abfb145a1c318ea357fc6dcbe72c3a9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab51198ae2919997dd7b50097ac400d01" id="r_ab51198ae2919997dd7b50097ac400d01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab51198ae2919997dd7b50097ac400d01">src2tgtFaces</a> (self)</td></tr>
+<tr class="separator:ab51198ae2919997dd7b50097ac400d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d976b31634cd7218ef61770648552b8" id="r_a2d976b31634cd7218ef61770648552b8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d976b31634cd7218ef61770648552b8">src2tgtFaces</a> (self, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a> arg1)</td></tr>
+<tr class="separator:a2d976b31634cd7218ef61770648552b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6132b284874f0356da18b4fd6910b04" id="r_aa6132b284874f0356da18b4fd6910b04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6132b284874f0356da18b4fd6910b04">tgt2srcFaces</a> (self)</td></tr>
+<tr class="separator:aa6132b284874f0356da18b4fd6910b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03f7b4afd31fab37d1012508f025b37e" id="r_a03f7b4afd31fab37d1012508f025b37e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03f7b4afd31fab37d1012508f025b37e">tgt2srcFaces</a> (self, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a> arg1)</td></tr>
+<tr class="separator:a03f7b4afd31fab37d1012508f025b37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a41f8fa30630df4a30df3b1b93717d4c5" id="r_a41f8fa30630df4a30df3b1b93717d4c5"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41f8fa30630df4a30df3b1b93717d4c5">_offsetof_src2tgtEdges</a> = 16</td></tr>
+<tr class="separator:a41f8fa30630df4a30df3b1b93717d4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa90d9efa36729b439b9eb9c120608a6f" id="r_aa90d9efa36729b439b9eb9c120608a6f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa90d9efa36729b439b9eb9c120608a6f">_offsetof_src2tgtFaces</a> = 0</td></tr>
+<tr class="separator:aa90d9efa36729b439b9eb9c120608a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90e5a64e0dbe062278760f500a472a8f" id="r_a90e5a64e0dbe062278760f500a472a8f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90e5a64e0dbe062278760f500a472a8f">_offsetof_src2tgtVerts</a> = 8</td></tr>
+<tr class="separator:a90e5a64e0dbe062278760f500a472a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8aefa7469c578efe49d97a674e0796f" id="r_ab8aefa7469c578efe49d97a674e0796f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8aefa7469c578efe49d97a674e0796f">_offsetof_tgt2srcEdges</a> = 40</td></tr>
+<tr class="separator:ab8aefa7469c578efe49d97a674e0796f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b02c01274e8b190ef73aa1da8c155ec" id="r_a8b02c01274e8b190ef73aa1da8c155ec"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b02c01274e8b190ef73aa1da8c155ec">_offsetof_tgt2srcFaces</a> = 24</td></tr>
+<tr class="separator:a8b02c01274e8b190ef73aa1da8c155ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a535c24b92c7dc36104c67cb4b3efb2fb" id="r_a535c24b92c7dc36104c67cb4b3efb2fb"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a535c24b92c7dc36104c67cb4b3efb2fb">_offsetof_tgt2srcVerts</a> = 32</td></tr>
+<tr class="separator:a535c24b92c7dc36104c67cb4b3efb2fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::PartMapping
+
+mapping among elements of source mesh, from which a part is taken, and target mesh
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a616926f2bcd8beaaaba16966b42e54a2" name="a616926f2bcd8beaaaba16966b42e54a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a616926f2bcd8beaaaba16966b42e54a2">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PartMapping.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a4d327dc972f56bd4911785d539bfc3b2" name="a4d327dc972f56bd4911785d539bfc3b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d327dc972f56bd4911785d539bfc3b2">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PartMapping.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PartMapping.html">PartMapping</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a111fe15355e183b686537eec9b6cb6a8" name="a111fe15355e183b686537eec9b6cb6a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a111fe15355e183b686537eec9b6cb6a8">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PartMapping.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a></td>          <td class="paramname"><span class="paramname"><em>src2tgtFaces</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a></td>          <td class="paramname"><span class="paramname"><em>src2tgtVerts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__UndirectedEdgeId__Id__EdgeTag.html">MapOrHashMap_UndirectedEdgeId_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>src2tgtEdges</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a></td>          <td class="paramname"><span class="paramname"><em>tgt2srcFaces</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a></td>          <td class="paramname"><span class="paramname"><em>tgt2srcVerts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__UndirectedEdgeId__Id__EdgeTag.html">MapOrHashMap_UndirectedEdgeId_Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>tgt2srcEdges</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abfb145a1c318ea357fc6dcbe72c3a9e2" name="abfb145a1c318ea357fc6dcbe72c3a9e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfb145a1c318ea357fc6dcbe72c3a9e2">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PartMapping.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">clears all member maps
+</pre> 
+</div>
+</div>
+<a id="ab51198ae2919997dd7b50097ac400d01" name="ab51198ae2919997dd7b50097ac400d01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51198ae2919997dd7b50097ac400d01">&#9670;&#160;</a></span>src2tgtFaces() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a> mrmeshpy.PartMapping.src2tgtFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">source.id -&gt; target.id
+each map here can be either dense vector or hash map, the type is set by the user and preserved by mesh copying functions;
+dense maps are better by speed and memory when source mesh is packed and must be copied entirely;
+hash maps minimize memory consumption when only a small portion of source mesh is copied
+</pre> 
+</div>
+</div>
+<a id="a2d976b31634cd7218ef61770648552b8" name="a2d976b31634cd7218ef61770648552b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d976b31634cd7218ef61770648552b8">&#9670;&#160;</a></span>src2tgtFaces() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PartMapping.src2tgtFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6132b284874f0356da18b4fd6910b04" name="aa6132b284874f0356da18b4fd6910b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6132b284874f0356da18b4fd6910b04">&#9670;&#160;</a></span>tgt2srcFaces() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a> mrmeshpy.PartMapping.tgt2srcFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">target.id -&gt; source.id
+dense vectors are better by speed and memory when target mesh was empty before copying
+</pre> 
+</div>
+</div>
+<a id="a03f7b4afd31fab37d1012508f025b37e" name="a03f7b4afd31fab37d1012508f025b37e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03f7b4afd31fab37d1012508f025b37e">&#9670;&#160;</a></span>tgt2srcFaces() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PartMapping.tgt2srcFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__FaceId__FaceId.html">MapOrHashMap_FaceId_FaceId</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a41f8fa30630df4a30df3b1b93717d4c5" name="a41f8fa30630df4a30df3b1b93717d4c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41f8fa30630df4a30df3b1b93717d4c5">&#9670;&#160;</a></span>_offsetof_src2tgtEdges</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PartMapping._offsetof_src2tgtEdges = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa90d9efa36729b439b9eb9c120608a6f" name="aa90d9efa36729b439b9eb9c120608a6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa90d9efa36729b439b9eb9c120608a6f">&#9670;&#160;</a></span>_offsetof_src2tgtFaces</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PartMapping._offsetof_src2tgtFaces = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90e5a64e0dbe062278760f500a472a8f" name="a90e5a64e0dbe062278760f500a472a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90e5a64e0dbe062278760f500a472a8f">&#9670;&#160;</a></span>_offsetof_src2tgtVerts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PartMapping._offsetof_src2tgtVerts = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8aefa7469c578efe49d97a674e0796f" name="ab8aefa7469c578efe49d97a674e0796f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8aefa7469c578efe49d97a674e0796f">&#9670;&#160;</a></span>_offsetof_tgt2srcEdges</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PartMapping._offsetof_tgt2srcEdges = 40</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b02c01274e8b190ef73aa1da8c155ec" name="a8b02c01274e8b190ef73aa1da8c155ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b02c01274e8b190ef73aa1da8c155ec">&#9670;&#160;</a></span>_offsetof_tgt2srcFaces</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PartMapping._offsetof_tgt2srcFaces = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a535c24b92c7dc36104c67cb4b3efb2fb" name="a535c24b92c7dc36104c67cb4b3efb2fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a535c24b92c7dc36104c67cb4b3efb2fb">&#9670;&#160;</a></span>_offsetof_tgt2srcVerts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.PartMapping._offsetof_tgt2srcVerts = 32</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1PartMapping.html">PartMapping</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

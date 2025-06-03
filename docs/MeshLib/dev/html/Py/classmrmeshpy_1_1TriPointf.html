@@ -1,0 +1,659 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.TriPointf Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1TriPointf.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1TriPointf-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.TriPointf Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a25f432710cd0ab77d959a4be6cbe8b42" id="r_a25f432710cd0ab77d959a4be6cbe8b42"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25f432710cd0ab77d959a4be6cbe8b42">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a> rhs)</td></tr>
+<tr class="separator:a25f432710cd0ab77d959a4be6cbe8b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a032d5ec470a2a45c99eba504dd08ad0d" id="r_a032d5ec470a2a45c99eba504dd08ad0d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a032d5ec470a2a45c99eba504dd08ad0d">__init__</a> (self)</td></tr>
+<tr class="separator:a032d5ec470a2a45c99eba504dd08ad0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e0d35276652120257b3cee441f3e4ff" id="r_a4e0d35276652120257b3cee441f3e4ff"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e0d35276652120257b3cee441f3e4ff">__init__</a> (self, float <a class="el" href="#a4ee1cb5387bc622bf861fa49e8a6aea1">a</a>, float <a class="el" href="#a01200c0a58f015670f2cf63656fafcde">b</a>)</td></tr>
+<tr class="separator:a4e0d35276652120257b3cee441f3e4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04289bbb463c038de2bfd1201080cb0d" id="r_a04289bbb463c038de2bfd1201080cb0d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04289bbb463c038de2bfd1201080cb0d">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a> s)</td></tr>
+<tr class="separator:a04289bbb463c038de2bfd1201080cb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf590b6752a17734a3d684762190348c" id="r_acf590b6752a17734a3d684762190348c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf590b6752a17734a3d684762190348c">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> p, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> v0, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> v1, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> v2)</td></tr>
+<tr class="separator:acf590b6752a17734a3d684762190348c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a428ecc8d1b23cdc892ae5358784f0b20" id="r_a428ecc8d1b23cdc892ae5358784f0b20"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a428ecc8d1b23cdc892ae5358784f0b20">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> p, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> v1, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> v2)</td></tr>
+<tr class="separator:a428ecc8d1b23cdc892ae5358784f0b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e0fd3a8352a7e32a5aa1205646ef88c" id="r_a2e0fd3a8352a7e32a5aa1205646ef88c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e0fd3a8352a7e32a5aa1205646ef88c">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a> arg0)</td></tr>
+<tr class="separator:a2e0fd3a8352a7e32a5aa1205646ef88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bdca4b5baafebe1750d0c3c03135864" id="r_a4bdca4b5baafebe1750d0c3c03135864"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bdca4b5baafebe1750d0c3c03135864">__repr__</a> (self)</td></tr>
+<tr class="separator:a4bdca4b5baafebe1750d0c3c03135864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab472a8e492e79e32dd6ce12a862ac4c6" id="r_ab472a8e492e79e32dd6ce12a862ac4c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab472a8e492e79e32dd6ce12a862ac4c6">inVertex</a> (self)</td></tr>
+<tr class="separator:ab472a8e492e79e32dd6ce12a862ac4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2bf344ffc53347e983da6fa2a9bec8f" id="r_aa2bf344ffc53347e983da6fa2a9bec8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2bf344ffc53347e983da6fa2a9bec8f">lnext</a> (self)</td></tr>
+<tr class="separator:aa2bf344ffc53347e983da6fa2a9bec8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81110a4cda0c61c6f21ef2ddb4e2a7b6" id="r_a81110a4cda0c61c6f21ef2ddb4e2a7b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81110a4cda0c61c6f21ef2ddb4e2a7b6">onEdge</a> (self)</td></tr>
+<tr class="separator:a81110a4cda0c61c6f21ef2ddb4e2a7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ee1cb5387bc622bf861fa49e8a6aea1" id="r_a4ee1cb5387bc622bf861fa49e8a6aea1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ee1cb5387bc622bf861fa49e8a6aea1">a</a> (self)</td></tr>
+<tr class="separator:a4ee1cb5387bc622bf861fa49e8a6aea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2339ec8b7fb781353d8bd48e726ce9d" id="r_ac2339ec8b7fb781353d8bd48e726ce9d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2339ec8b7fb781353d8bd48e726ce9d">a</a> (self, float arg1)</td></tr>
+<tr class="separator:ac2339ec8b7fb781353d8bd48e726ce9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01200c0a58f015670f2cf63656fafcde" id="r_a01200c0a58f015670f2cf63656fafcde"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01200c0a58f015670f2cf63656fafcde">b</a> (self)</td></tr>
+<tr class="separator:a01200c0a58f015670f2cf63656fafcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af96d765fe645aa6329ed2b194e414747" id="r_af96d765fe645aa6329ed2b194e414747"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af96d765fe645aa6329ed2b194e414747">b</a> (self, float arg1)</td></tr>
+<tr class="separator:af96d765fe645aa6329ed2b194e414747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aab0ec92fbe99a3f1d742fd8ea00b8305" id="r_aab0ec92fbe99a3f1d742fd8ea00b8305"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab0ec92fbe99a3f1d742fd8ea00b8305">__init__</a> (*args, **kwargs)</td></tr>
+<tr class="separator:aab0ec92fbe99a3f1d742fd8ea00b8305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a62de5cf087ddec5dcf6006b7c163a91c" id="r_a62de5cf087ddec5dcf6006b7c163a91c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62de5cf087ddec5dcf6006b7c163a91c">eps</a> = 1.1920928955078125e-06</td></tr>
+<tr class="separator:a62de5cf087ddec5dcf6006b7c163a91c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a55890937ec14468de505bd0807d54a15" id="r_a55890937ec14468de505bd0807d54a15"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55890937ec14468de505bd0807d54a15">_offsetof_a</a> = 0</td></tr>
+<tr class="separator:a55890937ec14468de505bd0807d54a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2c20964d0fcc39c2def91d5031a760" id="r_a1c2c20964d0fcc39c2def91d5031a760"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c2c20964d0fcc39c2def91d5031a760">_offsetof_b</a> = 4</td></tr>
+<tr class="separator:a1c2c20964d0fcc39c2def91d5031a760"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::TriPointf
+
+\\brief encodes a point inside a triangle using barycentric coordinates
+\\ingroup MathGroup
+\\details Notations used below: v0, v1, v2 - points of the triangle
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aab0ec92fbe99a3f1d742fd8ea00b8305" name="aab0ec92fbe99a3f1d742fd8ea00b8305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab0ec92fbe99a3f1d742fd8ea00b8305">&#9670;&#160;</a></span>__init__() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a032d5ec470a2a45c99eba504dd08ad0d" name="a032d5ec470a2a45c99eba504dd08ad0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a032d5ec470a2a45c99eba504dd08ad0d">&#9670;&#160;</a></span>__init__() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4e0d35276652120257b3cee441f3e4ff" name="a4e0d35276652120257b3cee441f3e4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e0d35276652120257b3cee441f3e4ff">&#9670;&#160;</a></span>__init__() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04289bbb463c038de2bfd1201080cb0d" name="a04289bbb463c038de2bfd1201080cb0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04289bbb463c038de2bfd1201080cb0d">&#9670;&#160;</a></span>__init__() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf590b6752a17734a3d684762190348c" name="acf590b6752a17734a3d684762190348c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf590b6752a17734a3d684762190348c">&#9670;&#160;</a></span>__init__() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>v0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>v1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>v2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">given a point coordinates and triangle (v0,v1,v2) computes barycentric coordinates of the point
+</pre> 
+</div>
+</div>
+<a id="a428ecc8d1b23cdc892ae5358784f0b20" name="a428ecc8d1b23cdc892ae5358784f0b20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a428ecc8d1b23cdc892ae5358784f0b20">&#9670;&#160;</a></span>__init__() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>v1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>v2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">given a point coordinates and triangle (0,v1,v2) computes barycentric coordinates of the point
+</pre> 
+</div>
+</div>
+<a id="a2e0fd3a8352a7e32a5aa1205646ef88c" name="a2e0fd3a8352a7e32a5aa1205646ef88c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e0fd3a8352a7e32a5aa1205646ef88c">&#9670;&#160;</a></span>__init__() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a25f432710cd0ab77d959a4be6cbe8b42" name="a25f432710cd0ab77d959a4be6cbe8b42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25f432710cd0ab77d959a4be6cbe8b42">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.TriPointf.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if two points have equal (a,b) representation
+</pre> 
+</div>
+</div>
+<a id="a4bdca4b5baafebe1750d0c3c03135864" name="a4bdca4b5baafebe1750d0c3c03135864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bdca4b5baafebe1750d0c3c03135864">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.TriPointf.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ee1cb5387bc622bf861fa49e8a6aea1" name="a4ee1cb5387bc622bf861fa49e8a6aea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ee1cb5387bc622bf861fa49e8a6aea1">&#9670;&#160;</a></span>a() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.TriPointf.a </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">a in [0,1], a=0 =&gt; point is on [v2,v0] edge, a=1 =&gt; point is in v1
+</pre> 
+</div>
+</div>
+<a id="ac2339ec8b7fb781353d8bd48e726ce9d" name="ac2339ec8b7fb781353d8bd48e726ce9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2339ec8b7fb781353d8bd48e726ce9d">&#9670;&#160;</a></span>a() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.a </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01200c0a58f015670f2cf63656fafcde" name="a01200c0a58f015670f2cf63656fafcde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01200c0a58f015670f2cf63656fafcde">&#9670;&#160;</a></span>b() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.TriPointf.b </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">b in [0,1], b=0 =&gt; point is on [v0,v1] edge, b=1 =&gt; point is in v2
+</pre> 
+</div>
+</div>
+<a id="af96d765fe645aa6329ed2b194e414747" name="af96d765fe645aa6329ed2b194e414747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af96d765fe645aa6329ed2b194e414747">&#9670;&#160;</a></span>b() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TriPointf.b </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab472a8e492e79e32dd6ce12a862ac4c6" name="ab472a8e492e79e32dd6ce12a862ac4c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab472a8e492e79e32dd6ce12a862ac4c6">&#9670;&#160;</a></span>inVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.TriPointf.inVertex </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns [0,2] if the point is in a vertex or -1 otherwise
+</pre> 
+</div>
+</div>
+<a id="aa2bf344ffc53347e983da6fa2a9bec8f" name="aa2bf344ffc53347e983da6fa2a9bec8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2bf344ffc53347e983da6fa2a9bec8f">&#9670;&#160;</a></span>lnext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a> mrmeshpy.TriPointf.lnext </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">represents the same point relative to next edge in the same triangle
+</pre> 
+</div>
+</div>
+<a id="a81110a4cda0c61c6f21ef2ddb4e2a7b6" name="a81110a4cda0c61c6f21ef2ddb4e2a7b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81110a4cda0c61c6f21ef2ddb4e2a7b6">&#9670;&#160;</a></span>onEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.TriPointf.onEdge </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns [0,2] if the point is on edge or -1 otherwise:
+0 means edge [v1,v2]; 1 means edge [v2,v0]; 2 means edge [v0,v1]
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a55890937ec14468de505bd0807d54a15" name="a55890937ec14468de505bd0807d54a15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55890937ec14468de505bd0807d54a15">&#9670;&#160;</a></span>_offsetof_a</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TriPointf._offsetof_a = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c2c20964d0fcc39c2def91d5031a760" name="a1c2c20964d0fcc39c2def91d5031a760"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c2c20964d0fcc39c2def91d5031a760">&#9670;&#160;</a></span>_offsetof_b</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TriPointf._offsetof_b = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62de5cf087ddec5dcf6006b7c163a91c" name="a62de5cf087ddec5dcf6006b7c163a91c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62de5cf087ddec5dcf6006b7c163a91c">&#9670;&#160;</a></span>eps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TriPointf.eps = 1.1920928955078125e-06</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1TriPointf.html">TriPointf</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

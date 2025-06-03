@@ -1,0 +1,494 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.Plane3d Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1Plane3d.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1Plane3d-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.Plane3d Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a49bdd21570dad52482d66335477ab483" id="r_a49bdd21570dad52482d66335477ab483"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49bdd21570dad52482d66335477ab483">__init__</a> (self)</td></tr>
+<tr class="separator:a49bdd21570dad52482d66335477ab483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b76dc5822ce23f643e44854620b5e95" id="r_a4b76dc5822ce23f643e44854620b5e95"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b76dc5822ce23f643e44854620b5e95">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> n, float d)</td></tr>
+<tr class="separator:a4b76dc5822ce23f643e44854620b5e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a882c73fecc9ba56ab250bb4111a563" id="r_a8a882c73fecc9ba56ab250bb4111a563"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a882c73fecc9ba56ab250bb4111a563">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Plane3f.html">Plane3f</a> p)</td></tr>
+<tr class="separator:a8a882c73fecc9ba56ab250bb4111a563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab29f950ae96bc327ed53ef41c6032072" id="r_ab29f950ae96bc327ed53ef41c6032072"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab29f950ae96bc327ed53ef41c6032072">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a> arg0)</td></tr>
+<tr class="separator:ab29f950ae96bc327ed53ef41c6032072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56b9de6327ab66d7415af7905c1773bf" id="r_a56b9de6327ab66d7415af7905c1773bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56b9de6327ab66d7415af7905c1773bf">__neg__</a> (self)</td></tr>
+<tr class="separator:a56b9de6327ab66d7415af7905c1773bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c52f864107ea736949498305c18b9f" id="r_ad4c52f864107ea736949498305c18b9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4c52f864107ea736949498305c18b9f">__pos__</a> (self)</td></tr>
+<tr class="separator:ad4c52f864107ea736949498305c18b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2012644425cecdf88da76cde809b9e0f" id="r_a2012644425cecdf88da76cde809b9e0f"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2012644425cecdf88da76cde809b9e0f">__repr__</a> (self)</td></tr>
+<tr class="separator:a2012644425cecdf88da76cde809b9e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46b56cf9734a49537fa5bd347181cace" id="r_a46b56cf9734a49537fa5bd347181cace"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46b56cf9734a49537fa5bd347181cace">distance</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> x)</td></tr>
+<tr class="separator:a46b56cf9734a49537fa5bd347181cace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7be54f300aa350bfc0db5249ce73d39" id="r_ae7be54f300aa350bfc0db5249ce73d39"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7be54f300aa350bfc0db5249ce73d39">normalized</a> (self)</td></tr>
+<tr class="separator:ae7be54f300aa350bfc0db5249ce73d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9237b6fdf901325105efb5bf06e60cb4" id="r_a9237b6fdf901325105efb5bf06e60cb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9237b6fdf901325105efb5bf06e60cb4">project</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> p)</td></tr>
+<tr class="separator:a9237b6fdf901325105efb5bf06e60cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a8eb1044a1c3295a7f90ce8565a9bf647" id="r_a8eb1044a1c3295a7f90ce8565a9bf647"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8eb1044a1c3295a7f90ce8565a9bf647">fromDirAndPt</a> (<a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> n, <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> p)</td></tr>
+<tr class="separator:a8eb1044a1c3295a7f90ce8565a9bf647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a59bf42fb5736f617560ee21cde7b83bb" id="r_a59bf42fb5736f617560ee21cde7b83bb"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59bf42fb5736f617560ee21cde7b83bb">_offsetof_d</a> = 24</td></tr>
+<tr class="separator:a59bf42fb5736f617560ee21cde7b83bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a291c57425b131685c79080ab47b5827f" id="r_a291c57425b131685c79080ab47b5827f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a291c57425b131685c79080ab47b5827f">_offsetof_n</a> = 0</td></tr>
+<tr class="separator:a291c57425b131685c79080ab47b5827f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::Plane3d
+
+3-dimensional plane: dot(n,x) - d = 0
+\\ingroup MathGroup
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a49bdd21570dad52482d66335477ab483" name="a49bdd21570dad52482d66335477ab483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49bdd21570dad52482d66335477ab483">&#9670;&#160;</a></span>__init__() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Plane3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b76dc5822ce23f643e44854620b5e95" name="a4b76dc5822ce23f643e44854620b5e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b76dc5822ce23f643e44854620b5e95">&#9670;&#160;</a></span>__init__() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Plane3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>d</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a882c73fecc9ba56ab250bb4111a563" name="a8a882c73fecc9ba56ab250bb4111a563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a882c73fecc9ba56ab250bb4111a563">&#9670;&#160;</a></span>__init__() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Plane3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Plane3f.html">Plane3f</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab29f950ae96bc327ed53ef41c6032072" name="ab29f950ae96bc327ed53ef41c6032072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab29f950ae96bc327ed53ef41c6032072">&#9670;&#160;</a></span>__init__() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Plane3d.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a56b9de6327ab66d7415af7905c1773bf" name="a56b9de6327ab66d7415af7905c1773bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56b9de6327ab66d7415af7905c1773bf">&#9670;&#160;</a></span>__neg__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a> mrmeshpy.Plane3d.__neg__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns same plane represented with flipped direction of n-vector
+</pre> 
+</div>
+</div>
+<a id="ad4c52f864107ea736949498305c18b9f" name="ad4c52f864107ea736949498305c18b9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c52f864107ea736949498305c18b9f">&#9670;&#160;</a></span>__pos__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a> mrmeshpy.Plane3d.__pos__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns same representation
+</pre> 
+</div>
+</div>
+<a id="a2012644425cecdf88da76cde809b9e0f" name="a2012644425cecdf88da76cde809b9e0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2012644425cecdf88da76cde809b9e0f">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.Plane3d.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46b56cf9734a49537fa5bd347181cace" name="a46b56cf9734a49537fa5bd347181cace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46b56cf9734a49537fa5bd347181cace">&#9670;&#160;</a></span>distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.Plane3d.distance </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns distance from given point to this plane (if n is a unit vector)
+</pre> 
+</div>
+</div>
+<a id="a8eb1044a1c3295a7f90ce8565a9bf647" name="a8eb1044a1c3295a7f90ce8565a9bf647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eb1044a1c3295a7f90ce8565a9bf647">&#9670;&#160;</a></span>fromDirAndPt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a> mrmeshpy.Plane3d.fromDirAndPt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae7be54f300aa350bfc0db5249ce73d39" name="ae7be54f300aa350bfc0db5249ce73d39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7be54f300aa350bfc0db5249ce73d39">&#9670;&#160;</a></span>normalized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a> mrmeshpy.Plane3d.normalized </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns same plane represented with unit n-vector
+</pre> 
+</div>
+</div>
+<a id="a9237b6fdf901325105efb5bf06e60cb4" name="a9237b6fdf901325105efb5bf06e60cb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9237b6fdf901325105efb5bf06e60cb4">&#9670;&#160;</a></span>project()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a> mrmeshpy.Plane3d.project </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3d.html">Vector3d</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">finds the closest point on plane
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a59bf42fb5736f617560ee21cde7b83bb" name="a59bf42fb5736f617560ee21cde7b83bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59bf42fb5736f617560ee21cde7b83bb">&#9670;&#160;</a></span>_offsetof_d</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.Plane3d._offsetof_d = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a291c57425b131685c79080ab47b5827f" name="a291c57425b131685c79080ab47b5827f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a291c57425b131685c79080ab47b5827f">&#9670;&#160;</a></span>_offsetof_n</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.Plane3d._offsetof_n = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1Plane3d.html">Plane3d</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

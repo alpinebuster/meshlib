@@ -1,0 +1,850 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.ObjectVoxels.VolumeRenderingParams Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.ObjectVoxels.VolumeRenderingParams Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1AlphaType.html">AlphaType</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1LutType.html">LutType</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1ShadingType.html">ShadingType</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a40bfed2ce7243a53dd40c3b719f3d6bb" id="r_a40bfed2ce7243a53dd40c3b719f3d6bb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40bfed2ce7243a53dd40c3b719f3d6bb">__init__</a> (self)</td></tr>
+<tr class="separator:a40bfed2ce7243a53dd40c3b719f3d6bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1007930aba59f08d485d1a2f268b21ae" id="r_a1007930aba59f08d485d1a2f268b21ae"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1007930aba59f08d485d1a2f268b21ae">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams.html">ObjectVoxels.VolumeRenderingParams</a> arg0)</td></tr>
+<tr class="separator:a1007930aba59f08d485d1a2f268b21ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84d219c0f39f03271739ef930d53a7da" id="r_a84d219c0f39f03271739ef930d53a7da"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84d219c0f39f03271739ef930d53a7da">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1FilterType.html">FilterType</a> <a class="el" href="#a3f88d33222210f1c9c3b88638809a923">volumeFilterType</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1ShadingType.html">ObjectVoxels.VolumeRenderingParams.ShadingType</a> <a class="el" href="#af6f5f876452352c9bc1c616b6fc2166a">shadingType</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1LutType.html">ObjectVoxels.VolumeRenderingParams.LutType</a> <a class="el" href="#ae1fac6b198ee13c94a5291b9b49dcd92">lutType</a>, <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> <a class="el" href="#a6a1e521e43e7ef8afb64ec5587452dd3">oneColor</a>, float <a class="el" href="#ab933777f31aaafebdd02e5f9fdbd8767">min</a>, float <a class="el" href="#aa32de8b8b0e6931568283d100fa6c773">max</a>, float <a class="el" href="#a87dcfe1c29f80ebb0a88d59acec26c71">samplingStep</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1AlphaType.html">ObjectVoxels.VolumeRenderingParams.AlphaType</a> <a class="el" href="#a8e58ddf14ffeaa2af241ca86a6652672">alphaType</a>, int alphaLimit)</td></tr>
+<tr class="separator:a84d219c0f39f03271739ef930d53a7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa32de8b8b0e6931568283d100fa6c773" id="r_aa32de8b8b0e6931568283d100fa6c773"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa32de8b8b0e6931568283d100fa6c773">max</a> (self)</td></tr>
+<tr class="separator:aa32de8b8b0e6931568283d100fa6c773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af79375740b1dc212f68f5e770ae232b0" id="r_af79375740b1dc212f68f5e770ae232b0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af79375740b1dc212f68f5e770ae232b0">max</a> (self, float arg1)</td></tr>
+<tr class="separator:af79375740b1dc212f68f5e770ae232b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab933777f31aaafebdd02e5f9fdbd8767" id="r_ab933777f31aaafebdd02e5f9fdbd8767"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab933777f31aaafebdd02e5f9fdbd8767">min</a> (self)</td></tr>
+<tr class="separator:ab933777f31aaafebdd02e5f9fdbd8767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115ff0a7b922c60597c5d5c07c1bb871" id="r_a115ff0a7b922c60597c5d5c07c1bb871"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a115ff0a7b922c60597c5d5c07c1bb871">min</a> (self, float arg1)</td></tr>
+<tr class="separator:a115ff0a7b922c60597c5d5c07c1bb871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a1e521e43e7ef8afb64ec5587452dd3" id="r_a6a1e521e43e7ef8afb64ec5587452dd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a1e521e43e7ef8afb64ec5587452dd3">oneColor</a> (self)</td></tr>
+<tr class="separator:a6a1e521e43e7ef8afb64ec5587452dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a929f2653756d4c2eb6c6fdf8a986fb49" id="r_a929f2653756d4c2eb6c6fdf8a986fb49"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a929f2653756d4c2eb6c6fdf8a986fb49">oneColor</a> (self, <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> arg1)</td></tr>
+<tr class="separator:a929f2653756d4c2eb6c6fdf8a986fb49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87dcfe1c29f80ebb0a88d59acec26c71" id="r_a87dcfe1c29f80ebb0a88d59acec26c71"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87dcfe1c29f80ebb0a88d59acec26c71">samplingStep</a> (self)</td></tr>
+<tr class="separator:a87dcfe1c29f80ebb0a88d59acec26c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa75965e84d649696a40b26499723a3a2" id="r_aa75965e84d649696a40b26499723a3a2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa75965e84d649696a40b26499723a3a2">samplingStep</a> (self, float arg1)</td></tr>
+<tr class="separator:aa75965e84d649696a40b26499723a3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f88d33222210f1c9c3b88638809a923" id="r_a3f88d33222210f1c9c3b88638809a923"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FilterType.html">FilterType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f88d33222210f1c9c3b88638809a923">volumeFilterType</a> (self)</td></tr>
+<tr class="separator:a3f88d33222210f1c9c3b88638809a923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca631dcc170e08fbd34e09a525a1c996" id="r_aca631dcc170e08fbd34e09a525a1c996"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca631dcc170e08fbd34e09a525a1c996">volumeFilterType</a> (self, <a class="el" href="classmrmeshpy_1_1FilterType.html">FilterType</a> arg1)</td></tr>
+<tr class="separator:aca631dcc170e08fbd34e09a525a1c996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a747f2a05d3cde6dbba21ddeaa3fbf9b5" id="r_a747f2a05d3cde6dbba21ddeaa3fbf9b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a747f2a05d3cde6dbba21ddeaa3fbf9b5">__eq__</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a747f2a05d3cde6dbba21ddeaa3fbf9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a8e58ddf14ffeaa2af241ca86a6652672" id="r_a8e58ddf14ffeaa2af241ca86a6652672"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ObjectVoxels.html">ObjectVoxels</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e58ddf14ffeaa2af241ca86a6652672">alphaType</a> .<a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1AlphaType.html">VolumeRenderingParams.AlphaType</a></td></tr>
+<tr class="separator:a8e58ddf14ffeaa2af241ca86a6652672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1fac6b198ee13c94a5291b9b49dcd92" id="r_ae1fac6b198ee13c94a5291b9b49dcd92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ObjectVoxels.html">ObjectVoxels</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1fac6b198ee13c94a5291b9b49dcd92">lutType</a> .<a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1LutType.html">VolumeRenderingParams.LutType</a></td></tr>
+<tr class="separator:ae1fac6b198ee13c94a5291b9b49dcd92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6f5f876452352c9bc1c616b6fc2166a" id="r_af6f5f876452352c9bc1c616b6fc2166a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ObjectVoxels.html">ObjectVoxels</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6f5f876452352c9bc1c616b6fc2166a">shadingType</a> .<a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1ShadingType.html">VolumeRenderingParams.ShadingType</a></td></tr>
+<tr class="separator:af6f5f876452352c9bc1c616b6fc2166a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a0805d0b64ac3b1e73cebd22a3f73b95f" id="r_a0805d0b64ac3b1e73cebd22a3f73b95f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0805d0b64ac3b1e73cebd22a3f73b95f">_offsetof_alphaLimit</a> = 32</td></tr>
+<tr class="separator:a0805d0b64ac3b1e73cebd22a3f73b95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a706a1fe3994df488edf5a1c6b52bec5f" id="r_a706a1fe3994df488edf5a1c6b52bec5f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a706a1fe3994df488edf5a1c6b52bec5f">_offsetof_alphaType</a> = 28</td></tr>
+<tr class="separator:a706a1fe3994df488edf5a1c6b52bec5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1ee8c1a923e982f27c30298ff0ce60" id="r_afd1ee8c1a923e982f27c30298ff0ce60"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd1ee8c1a923e982f27c30298ff0ce60">_offsetof_lutType</a> = 8</td></tr>
+<tr class="separator:afd1ee8c1a923e982f27c30298ff0ce60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a035e3f3a09398db0c92c07cd3b55ec03" id="r_a035e3f3a09398db0c92c07cd3b55ec03"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a035e3f3a09398db0c92c07cd3b55ec03">_offsetof_max</a> = 20</td></tr>
+<tr class="separator:a035e3f3a09398db0c92c07cd3b55ec03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27b74c6019a132a19962a48465daf08" id="r_ac27b74c6019a132a19962a48465daf08"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac27b74c6019a132a19962a48465daf08">_offsetof_min</a> = 16</td></tr>
+<tr class="separator:ac27b74c6019a132a19962a48465daf08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73b65983d1acd975f69f4e8017c3ea9" id="r_ae73b65983d1acd975f69f4e8017c3ea9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae73b65983d1acd975f69f4e8017c3ea9">_offsetof_oneColor</a> = 12</td></tr>
+<tr class="separator:ae73b65983d1acd975f69f4e8017c3ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d5370e21ebd94c8fb8207ee7adfb8f" id="r_aa7d5370e21ebd94c8fb8207ee7adfb8f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7d5370e21ebd94c8fb8207ee7adfb8f">_offsetof_samplingStep</a> = 24</td></tr>
+<tr class="separator:aa7d5370e21ebd94c8fb8207ee7adfb8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0053cbfd970c2cd654a8bf5f37778f" id="r_a3d0053cbfd970c2cd654a8bf5f37778f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d0053cbfd970c2cd654a8bf5f37778f">_offsetof_shadingType</a> = 4</td></tr>
+<tr class="separator:a3d0053cbfd970c2cd654a8bf5f37778f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb1fa2dfc31126c9e94fbba0f19a3cb" id="r_a6cb1fa2dfc31126c9e94fbba0f19a3cb"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cb1fa2dfc31126c9e94fbba0f19a3cb">_offsetof_volumeFilterType</a> = 0</td></tr>
+<tr class="separator:a6cb1fa2dfc31126c9e94fbba0f19a3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::ObjectVoxels::VolumeRenderingParams
+
+struct to control volume rendering texture
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a40bfed2ce7243a53dd40c3b719f3d6bb" name="a40bfed2ce7243a53dd40c3b719f3d6bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40bfed2ce7243a53dd40c3b719f3d6bb">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a1007930aba59f08d485d1a2f268b21ae" name="a1007930aba59f08d485d1a2f268b21ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1007930aba59f08d485d1a2f268b21ae">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams.html">ObjectVoxels.VolumeRenderingParams</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a84d219c0f39f03271739ef930d53a7da" name="a84d219c0f39f03271739ef930d53a7da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84d219c0f39f03271739ef930d53a7da">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FilterType.html">FilterType</a></td>          <td class="paramname"><span class="paramname"><em>volumeFilterType</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1ShadingType.html">ObjectVoxels.VolumeRenderingParams.ShadingType</a></td>          <td class="paramname"><span class="paramname"><em>shadingType</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1LutType.html">ObjectVoxels.VolumeRenderingParams.LutType</a></td>          <td class="paramname"><span class="paramname"><em>lutType</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a></td>          <td class="paramname"><span class="paramname"><em>oneColor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>max</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>samplingStep</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1AlphaType.html">ObjectVoxels.VolumeRenderingParams.AlphaType</a></td>          <td class="paramname"><span class="paramname"><em>alphaType</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>alphaLimit</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a747f2a05d3cde6dbba21ddeaa3fbf9b5" name="a747f2a05d3cde6dbba21ddeaa3fbf9b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a747f2a05d3cde6dbba21ddeaa3fbf9b5">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.ObjectVoxels.VolumeRenderingParams.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa32de8b8b0e6931568283d100fa6c773" name="aa32de8b8b0e6931568283d100fa6c773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa32de8b8b0e6931568283d100fa6c773">&#9670;&#160;</a></span>max() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.ObjectVoxels.VolumeRenderingParams.max </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">maximum colored value (voxels with higher values are transparent)
+</pre> 
+</div>
+</div>
+<a id="af79375740b1dc212f68f5e770ae232b0" name="af79375740b1dc212f68f5e770ae232b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af79375740b1dc212f68f5e770ae232b0">&#9670;&#160;</a></span>max() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.max </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab933777f31aaafebdd02e5f9fdbd8767" name="ab933777f31aaafebdd02e5f9fdbd8767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab933777f31aaafebdd02e5f9fdbd8767">&#9670;&#160;</a></span>min() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.ObjectVoxels.VolumeRenderingParams.min </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">minimum colored value (voxels with lower values are transparent)
+</pre> 
+</div>
+</div>
+<a id="a115ff0a7b922c60597c5d5c07c1bb871" name="a115ff0a7b922c60597c5d5c07c1bb871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a115ff0a7b922c60597c5d5c07c1bb871">&#9670;&#160;</a></span>min() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.min </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a1e521e43e7ef8afb64ec5587452dd3" name="a6a1e521e43e7ef8afb64ec5587452dd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a1e521e43e7ef8afb64ec5587452dd3">&#9670;&#160;</a></span>oneColor() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> mrmeshpy.ObjectVoxels.VolumeRenderingParams.oneColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">color that is used for OneColor mode
+</pre> 
+</div>
+</div>
+<a id="a929f2653756d4c2eb6c6fdf8a986fb49" name="a929f2653756d4c2eb6c6fdf8a986fb49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a929f2653756d4c2eb6c6fdf8a986fb49">&#9670;&#160;</a></span>oneColor() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.oneColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87dcfe1c29f80ebb0a88d59acec26c71" name="a87dcfe1c29f80ebb0a88d59acec26c71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87dcfe1c29f80ebb0a88d59acec26c71">&#9670;&#160;</a></span>samplingStep() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.ObjectVoxels.VolumeRenderingParams.samplingStep </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">step to sample each ray with
+if &lt;= 0 then default sampling is used
+</pre> 
+</div>
+</div>
+<a id="aa75965e84d649696a40b26499723a3a2" name="aa75965e84d649696a40b26499723a3a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa75965e84d649696a40b26499723a3a2">&#9670;&#160;</a></span>samplingStep() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.samplingStep </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f88d33222210f1c9c3b88638809a923" name="a3f88d33222210f1c9c3b88638809a923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f88d33222210f1c9c3b88638809a923">&#9670;&#160;</a></span>volumeFilterType() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FilterType.html">FilterType</a> mrmeshpy.ObjectVoxels.VolumeRenderingParams.volumeFilterType </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">volume texture smoothing
+</pre> 
+</div>
+</div>
+<a id="aca631dcc170e08fbd34e09a525a1c996" name="aca631dcc170e08fbd34e09a525a1c996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca631dcc170e08fbd34e09a525a1c996">&#9670;&#160;</a></span>volumeFilterType() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ObjectVoxels.VolumeRenderingParams.volumeFilterType </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FilterType.html">FilterType</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0805d0b64ac3b1e73cebd22a3f73b95f" name="a0805d0b64ac3b1e73cebd22a3f73b95f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0805d0b64ac3b1e73cebd22a3f73b95f">&#9670;&#160;</a></span>_offsetof_alphaLimit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_alphaLimit = 32</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a706a1fe3994df488edf5a1c6b52bec5f" name="a706a1fe3994df488edf5a1c6b52bec5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a706a1fe3994df488edf5a1c6b52bec5f">&#9670;&#160;</a></span>_offsetof_alphaType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_alphaType = 28</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd1ee8c1a923e982f27c30298ff0ce60" name="afd1ee8c1a923e982f27c30298ff0ce60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd1ee8c1a923e982f27c30298ff0ce60">&#9670;&#160;</a></span>_offsetof_lutType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_lutType = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a035e3f3a09398db0c92c07cd3b55ec03" name="a035e3f3a09398db0c92c07cd3b55ec03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a035e3f3a09398db0c92c07cd3b55ec03">&#9670;&#160;</a></span>_offsetof_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_max = 20</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac27b74c6019a132a19962a48465daf08" name="ac27b74c6019a132a19962a48465daf08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac27b74c6019a132a19962a48465daf08">&#9670;&#160;</a></span>_offsetof_min</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_min = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae73b65983d1acd975f69f4e8017c3ea9" name="ae73b65983d1acd975f69f4e8017c3ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae73b65983d1acd975f69f4e8017c3ea9">&#9670;&#160;</a></span>_offsetof_oneColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_oneColor = 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7d5370e21ebd94c8fb8207ee7adfb8f" name="aa7d5370e21ebd94c8fb8207ee7adfb8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7d5370e21ebd94c8fb8207ee7adfb8f">&#9670;&#160;</a></span>_offsetof_samplingStep</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_samplingStep = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d0053cbfd970c2cd654a8bf5f37778f" name="a3d0053cbfd970c2cd654a8bf5f37778f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d0053cbfd970c2cd654a8bf5f37778f">&#9670;&#160;</a></span>_offsetof_shadingType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_shadingType = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6cb1fa2dfc31126c9e94fbba0f19a3cb" name="a6cb1fa2dfc31126c9e94fbba0f19a3cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cb1fa2dfc31126c9e94fbba0f19a3cb">&#9670;&#160;</a></span>_offsetof_volumeFilterType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ObjectVoxels.VolumeRenderingParams._offsetof_volumeFilterType = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e58ddf14ffeaa2af241ca86a6652672" name="a8e58ddf14ffeaa2af241ca86a6652672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e58ddf14ffeaa2af241ca86a6652672">&#9670;&#160;</a></span>alphaType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmrmeshpy_1_1ObjectVoxels.html">ObjectVoxels</a> mrmeshpy.ObjectVoxels.VolumeRenderingParams.alphaType .<a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1AlphaType.html">VolumeRenderingParams.AlphaType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1fac6b198ee13c94a5291b9b49dcd92" name="ae1fac6b198ee13c94a5291b9b49dcd92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1fac6b198ee13c94a5291b9b49dcd92">&#9670;&#160;</a></span>lutType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmrmeshpy_1_1ObjectVoxels.html">ObjectVoxels</a> mrmeshpy.ObjectVoxels.VolumeRenderingParams.lutType .<a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1LutType.html">VolumeRenderingParams.LutType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6f5f876452352c9bc1c616b6fc2166a" name="af6f5f876452352c9bc1c616b6fc2166a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f5f876452352c9bc1c616b6fc2166a">&#9670;&#160;</a></span>shadingType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmrmeshpy_1_1ObjectVoxels.html">ObjectVoxels</a> mrmeshpy.ObjectVoxels.VolumeRenderingParams.shadingType .<a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams_1_1ShadingType.html">VolumeRenderingParams.ShadingType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1ObjectVoxels.html">ObjectVoxels</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1ObjectVoxels_1_1VolumeRenderingParams.html">VolumeRenderingParams</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

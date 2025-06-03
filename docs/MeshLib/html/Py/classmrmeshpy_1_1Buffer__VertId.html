@@ -1,0 +1,667 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1Buffer__VertId.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.Buffer_VertId Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1Buffer__VertId.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1Buffer__VertId-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.Buffer_VertId Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:afc098f04a4f874a713548a7365fd630c" id="r_afc098f04a4f874a713548a7365fd630c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc098f04a4f874a713548a7365fd630c">__getitem__</a> (self, int i)</td></tr>
+<tr class="separator:afc098f04a4f874a713548a7365fd630c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc098f04a4f874a713548a7365fd630c" id="r_afc098f04a4f874a713548a7365fd630c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc098f04a4f874a713548a7365fd630c">__getitem__</a> (self, int i)</td></tr>
+<tr class="separator:afc098f04a4f874a713548a7365fd630c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced8ace0eea60579cbf6cb0222052a07" id="r_aced8ace0eea60579cbf6cb0222052a07"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aced8ace0eea60579cbf6cb0222052a07">__init__</a> (self)</td></tr>
+<tr class="separator:aced8ace0eea60579cbf6cb0222052a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f10f3c7d7f52f4522a4987944b76101" id="r_a9f10f3c7d7f52f4522a4987944b76101"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f10f3c7d7f52f4522a4987944b76101">__init__</a> (self, int <a class="el" href="#a810168018f75106ca4554d61a05c3b30">size</a>)</td></tr>
+<tr class="separator:a9f10f3c7d7f52f4522a4987944b76101"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac08d6c1e828a891b4ee34c3e3243a315" id="r_ac08d6c1e828a891b4ee34c3e3243a315"><td class="memItemLeft" align="right" valign="top">typing.Iterator[<a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac08d6c1e828a891b4ee34c3e3243a315">__iter__</a> (self)</td></tr>
+<tr class="separator:ac08d6c1e828a891b4ee34c3e3243a315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4b1a2161d159135592422741818811" id="r_a8b4b1a2161d159135592422741818811"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b4b1a2161d159135592422741818811">__setitem__</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a> arg1)</td></tr>
+<tr class="separator:a8b4b1a2161d159135592422741818811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ad64645b9c956fb6a7caa1c98b0a97" id="r_a23ad64645b9c956fb6a7caa1c98b0a97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23ad64645b9c956fb6a7caa1c98b0a97">backId</a> (self)</td></tr>
+<tr class="separator:a23ad64645b9c956fb6a7caa1c98b0a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af99411042f3efbdd406d0caf9c449773" id="r_af99411042f3efbdd406d0caf9c449773"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af99411042f3efbdd406d0caf9c449773">beginId</a> (self)</td></tr>
+<tr class="separator:af99411042f3efbdd406d0caf9c449773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ca39885875f80210abfa75eef5560c" id="r_ac6ca39885875f80210abfa75eef5560c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6ca39885875f80210abfa75eef5560c">capacity</a> (self)</td></tr>
+<tr class="separator:ac6ca39885875f80210abfa75eef5560c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a326a0cfa7e76d2580c44d9e9217ad602" id="r_a326a0cfa7e76d2580c44d9e9217ad602"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a326a0cfa7e76d2580c44d9e9217ad602">clear</a> (self)</td></tr>
+<tr class="separator:a326a0cfa7e76d2580c44d9e9217ad602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5918de0694c1c25532862776a56c4f17" id="r_a5918de0694c1c25532862776a56c4f17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5918de0694c1c25532862776a56c4f17">data</a> (self)</td></tr>
+<tr class="separator:a5918de0694c1c25532862776a56c4f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5918de0694c1c25532862776a56c4f17" id="r_a5918de0694c1c25532862776a56c4f17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5918de0694c1c25532862776a56c4f17">data</a> (self)</td></tr>
+<tr class="separator:a5918de0694c1c25532862776a56c4f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2551bd8d0345db51694dd456ecfa677c" id="r_a2551bd8d0345db51694dd456ecfa677c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2551bd8d0345db51694dd456ecfa677c">empty</a> (self)</td></tr>
+<tr class="separator:a2551bd8d0345db51694dd456ecfa677c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b55b824c10aa9202f2135a2b68efdac" id="r_a5b55b824c10aa9202f2135a2b68efdac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b55b824c10aa9202f2135a2b68efdac">endId</a> (self)</td></tr>
+<tr class="separator:a5b55b824c10aa9202f2135a2b68efdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae377f56196a31360a5dd58b1b4d8d385" id="r_ae377f56196a31360a5dd58b1b4d8d385"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae377f56196a31360a5dd58b1b4d8d385">heapBytes</a> (self)</td></tr>
+<tr class="separator:ae377f56196a31360a5dd58b1b4d8d385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2296a2277ebe8965004ef6a372933081" id="r_a2296a2277ebe8965004ef6a372933081"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2296a2277ebe8965004ef6a372933081">resize</a> (self, int newSize)</td></tr>
+<tr class="separator:a2296a2277ebe8965004ef6a372933081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a810168018f75106ca4554d61a05c3b30" id="r_a810168018f75106ca4554d61a05c3b30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a810168018f75106ca4554d61a05c3b30">size</a> (self)</td></tr>
+<tr class="separator:a810168018f75106ca4554d61a05c3b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a281f782dbc6f74d26dd2218f0e5da401" id="r_a281f782dbc6f74d26dd2218f0e5da401"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a281f782dbc6f74d26dd2218f0e5da401">T</a> = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td></tr>
+<tr class="separator:a281f782dbc6f74d26dd2218f0e5da401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e920df9d3602bac2e7a68cef48e8db3" id="r_a9e920df9d3602bac2e7a68cef48e8db3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e920df9d3602bac2e7a68cef48e8db3">const_iterator</a> = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td></tr>
+<tr class="separator:a9e920df9d3602bac2e7a68cef48e8db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458796181aba7fd93e5d98114e38a10b" id="r_a458796181aba7fd93e5d98114e38a10b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a458796181aba7fd93e5d98114e38a10b">const_reference</a> = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td></tr>
+<tr class="separator:a458796181aba7fd93e5d98114e38a10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9444046e0d9f2448833688bb2fd21cb" id="r_ac9444046e0d9f2448833688bb2fd21cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9444046e0d9f2448833688bb2fd21cb">iterator</a> = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td></tr>
+<tr class="separator:ac9444046e0d9f2448833688bb2fd21cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e263c9519fb33d9d1db20ad081dd34" id="r_a31e263c9519fb33d9d1db20ad081dd34"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31e263c9519fb33d9d1db20ad081dd34">reference</a> = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td></tr>
+<tr class="separator:a31e263c9519fb33d9d1db20ad081dd34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::Buffer&lt;MR::VertId&gt;
+
+
+ \\brief std::vector&lt;V&gt;-like container that is
+  1) resized without initialization of its elements,
+  2) much simplified: no push_back and many other methods
+ \\tparam V type of stored elements
+ \\tparam I type of index (shall be convertible to size_t)
+ \\ingroup BasicGroup</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aced8ace0eea60579cbf6cb0222052a07" name="aced8ace0eea60579cbf6cb0222052a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced8ace0eea60579cbf6cb0222052a07">&#9670;&#160;</a></span>__init__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Buffer_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f10f3c7d7f52f4522a4987944b76101" name="a9f10f3c7d7f52f4522a4987944b76101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f10f3c7d7f52f4522a4987944b76101">&#9670;&#160;</a></span>__init__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Buffer_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="afc098f04a4f874a713548a7365fd630c" name="afc098f04a4f874a713548a7365fd630c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc098f04a4f874a713548a7365fd630c">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a> mrmeshpy.Buffer_VertId.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc098f04a4f874a713548a7365fd630c" name="afc098f04a4f874a713548a7365fd630c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc098f04a4f874a713548a7365fd630c">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a> mrmeshpy.Buffer_VertId.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac08d6c1e828a891b4ee34c3e3243a315" name="ac08d6c1e828a891b4ee34c3e3243a315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac08d6c1e828a891b4ee34c3e3243a315">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[<a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a>] mrmeshpy.Buffer_VertId.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b4b1a2161d159135592422741818811" name="a8b4b1a2161d159135592422741818811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b4b1a2161d159135592422741818811">&#9670;&#160;</a></span>__setitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Buffer_VertId.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23ad64645b9c956fb6a7caa1c98b0a97" name="a23ad64645b9c956fb6a7caa1c98b0a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ad64645b9c956fb6a7caa1c98b0a97">&#9670;&#160;</a></span>backId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Buffer_VertId.backId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the back() element
+</pre> 
+</div>
+</div>
+<a id="af99411042f3efbdd406d0caf9c449773" name="af99411042f3efbdd406d0caf9c449773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af99411042f3efbdd406d0caf9c449773">&#9670;&#160;</a></span>beginId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Buffer_VertId.beginId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the first element
+</pre> 
+</div>
+</div>
+<a id="ac6ca39885875f80210abfa75eef5560c" name="ac6ca39885875f80210abfa75eef5560c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6ca39885875f80210abfa75eef5560c">&#9670;&#160;</a></span>capacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Buffer_VertId.capacity </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a326a0cfa7e76d2580c44d9e9217ad602" name="a326a0cfa7e76d2580c44d9e9217ad602"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a326a0cfa7e76d2580c44d9e9217ad602">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Buffer_VertId.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5918de0694c1c25532862776a56c4f17" name="a5918de0694c1c25532862776a56c4f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5918de0694c1c25532862776a56c4f17">&#9670;&#160;</a></span>data() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a> mrmeshpy.Buffer_VertId.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5918de0694c1c25532862776a56c4f17" name="a5918de0694c1c25532862776a56c4f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5918de0694c1c25532862776a56c4f17">&#9670;&#160;</a></span>data() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a> mrmeshpy.Buffer_VertId.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2551bd8d0345db51694dd456ecfa677c" name="a2551bd8d0345db51694dd456ecfa677c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2551bd8d0345db51694dd456ecfa677c">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Buffer_VertId.empty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b55b824c10aa9202f2135a2b68efdac" name="a5b55b824c10aa9202f2135a2b68efdac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b55b824c10aa9202f2135a2b68efdac">&#9670;&#160;</a></span>endId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Buffer_VertId.endId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns backId() + 1
+</pre> 
+</div>
+</div>
+<a id="ae377f56196a31360a5dd58b1b4d8d385" name="ae377f56196a31360a5dd58b1b4d8d385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae377f56196a31360a5dd58b1b4d8d385">&#9670;&#160;</a></span>heapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Buffer_VertId.heapBytes </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the amount of memory this object occupies on heap
+</pre> 
+</div>
+</div>
+<a id="a2296a2277ebe8965004ef6a372933081" name="a2296a2277ebe8965004ef6a372933081"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2296a2277ebe8965004ef6a372933081">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Buffer_VertId.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a810168018f75106ca4554d61a05c3b30" name="a810168018f75106ca4554d61a05c3b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a810168018f75106ca4554d61a05c3b30">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Buffer_VertId.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9e920df9d3602bac2e7a68cef48e8db3" name="a9e920df9d3602bac2e7a68cef48e8db3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e920df9d3602bac2e7a68cef48e8db3">&#9670;&#160;</a></span>const_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Buffer_VertId.const_iterator = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a458796181aba7fd93e5d98114e38a10b" name="a458796181aba7fd93e5d98114e38a10b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a458796181aba7fd93e5d98114e38a10b">&#9670;&#160;</a></span>const_reference</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Buffer_VertId.const_reference = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9444046e0d9f2448833688bb2fd21cb" name="ac9444046e0d9f2448833688bb2fd21cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9444046e0d9f2448833688bb2fd21cb">&#9670;&#160;</a></span>iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Buffer_VertId.iterator = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31e263c9519fb33d9d1db20ad081dd34" name="a31e263c9519fb33d9d1db20ad081dd34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31e263c9519fb33d9d1db20ad081dd34">&#9670;&#160;</a></span>reference</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Buffer_VertId.reference = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a281f782dbc6f74d26dd2218f0e5da401" name="a281f782dbc6f74d26dd2218f0e5da401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a281f782dbc6f74d26dd2218f0e5da401">&#9670;&#160;</a></span>T</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Buffer_VertId.T = <a class="el" href="classmrmeshpy_1_1NoDefInit__VertId.html">NoDefInit_VertId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1Buffer__VertId.html">Buffer_VertId</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

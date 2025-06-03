@@ -1,0 +1,584 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1EmbeddedStructureParameters.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.EmbeddedStructureParameters Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1EmbeddedStructureParameters.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1EmbeddedStructureParameters-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.EmbeddedStructureParameters Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad9891f52a5df8c17eb40c7580d3848be" id="r_ad9891f52a5df8c17eb40c7580d3848be"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9891f52a5df8c17eb40c7580d3848be">__init__</a> (self)</td></tr>
+<tr class="separator:ad9891f52a5df8c17eb40c7580d3848be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38b91e78bf6501fd0daed2647a85f12f" id="r_a38b91e78bf6501fd0daed2647a85f12f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38b91e78bf6501fd0daed2647a85f12f">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1EmbeddedStructureParameters.html">EmbeddedStructureParameters</a> arg0)</td></tr>
+<tr class="separator:a38b91e78bf6501fd0daed2647a85f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af50ec37fa5bfa2fe4a67cae9e928520c" id="r_af50ec37fa5bfa2fe4a67cae9e928520c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af50ec37fa5bfa2fe4a67cae9e928520c">__init__</a> (self, float <a class="el" href="#ae4941f3c48a97b62a219e4b32551ad82">fillAngle</a>, float <a class="el" href="#aed47e638b269c80cca0f2b45cadaa4a8">cutAngle</a>, float <a class="el" href="#a2a0a9257630ec152b1a8ed01b6ec29f1">minAnglePrecision</a>, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> <a class="el" href="#acb4eac41f3775c8992a9b74b13cadf7f">outStructFaces</a>, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> <a class="el" href="#a18570c6a6a8c48ef20fbfb60388f3d69">outFillFaces</a>, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> <a class="el" href="#a5c322381bd5c03ba780d7bed2ab0b70b">outCutFaces</a>, <a class="el" href="classmrmeshpy_1_1FaceMap.html">FaceMap</a> <a class="el" href="#acabd9eb5fe88bbc2e480426409714cae">new2oldFaces</a>)</td></tr>
+<tr class="separator:af50ec37fa5bfa2fe4a67cae9e928520c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed47e638b269c80cca0f2b45cadaa4a8" id="r_aed47e638b269c80cca0f2b45cadaa4a8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed47e638b269c80cca0f2b45cadaa4a8">cutAngle</a> (self)</td></tr>
+<tr class="separator:aed47e638b269c80cca0f2b45cadaa4a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb7675a15e65ce3be186c7c88ff0e42" id="r_abdb7675a15e65ce3be186c7c88ff0e42"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdb7675a15e65ce3be186c7c88ff0e42">cutAngle</a> (self, float arg1)</td></tr>
+<tr class="separator:abdb7675a15e65ce3be186c7c88ff0e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4941f3c48a97b62a219e4b32551ad82" id="r_ae4941f3c48a97b62a219e4b32551ad82"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4941f3c48a97b62a219e4b32551ad82">fillAngle</a> (self)</td></tr>
+<tr class="separator:ae4941f3c48a97b62a219e4b32551ad82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101262bee4ce01990b20c6f56ae0cc5c" id="r_a101262bee4ce01990b20c6f56ae0cc5c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a101262bee4ce01990b20c6f56ae0cc5c">fillAngle</a> (self, float arg1)</td></tr>
+<tr class="separator:a101262bee4ce01990b20c6f56ae0cc5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a0a9257630ec152b1a8ed01b6ec29f1" id="r_a2a0a9257630ec152b1a8ed01b6ec29f1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a0a9257630ec152b1a8ed01b6ec29f1">minAnglePrecision</a> (self)</td></tr>
+<tr class="separator:a2a0a9257630ec152b1a8ed01b6ec29f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515ed108cec297495d6d56d3d320cf7b" id="r_a515ed108cec297495d6d56d3d320cf7b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a515ed108cec297495d6d56d3d320cf7b">minAnglePrecision</a> (self, float arg1)</td></tr>
+<tr class="separator:a515ed108cec297495d6d56d3d320cf7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acabd9eb5fe88bbc2e480426409714cae" id="r_acabd9eb5fe88bbc2e480426409714cae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceMap.html">FaceMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acabd9eb5fe88bbc2e480426409714cae">new2oldFaces</a> (self)</td></tr>
+<tr class="separator:acabd9eb5fe88bbc2e480426409714cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f4827867585e6065f8489232666a9d7" id="r_a0f4827867585e6065f8489232666a9d7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f4827867585e6065f8489232666a9d7">new2oldFaces</a> (self, <a class="el" href="classmrmeshpy_1_1FaceMap.html">FaceMap</a> arg1)</td></tr>
+<tr class="separator:a0f4827867585e6065f8489232666a9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c322381bd5c03ba780d7bed2ab0b70b" id="r_a5c322381bd5c03ba780d7bed2ab0b70b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c322381bd5c03ba780d7bed2ab0b70b">outCutFaces</a> (self)</td></tr>
+<tr class="separator:a5c322381bd5c03ba780d7bed2ab0b70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ecd67698db1a6e1b08b56deee2e749f" id="r_a2ecd67698db1a6e1b08b56deee2e749f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ecd67698db1a6e1b08b56deee2e749f">outCutFaces</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> arg1)</td></tr>
+<tr class="separator:a2ecd67698db1a6e1b08b56deee2e749f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18570c6a6a8c48ef20fbfb60388f3d69" id="r_a18570c6a6a8c48ef20fbfb60388f3d69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18570c6a6a8c48ef20fbfb60388f3d69">outFillFaces</a> (self)</td></tr>
+<tr class="separator:a18570c6a6a8c48ef20fbfb60388f3d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ffe213d869938bf5a134414b691fbe2" id="r_a7ffe213d869938bf5a134414b691fbe2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ffe213d869938bf5a134414b691fbe2">outFillFaces</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> arg1)</td></tr>
+<tr class="separator:a7ffe213d869938bf5a134414b691fbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb4eac41f3775c8992a9b74b13cadf7f" id="r_acb4eac41f3775c8992a9b74b13cadf7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb4eac41f3775c8992a9b74b13cadf7f">outStructFaces</a> (self)</td></tr>
+<tr class="separator:acb4eac41f3775c8992a9b74b13cadf7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3779a9a5ac2bcb7614da7010665210f" id="r_ae3779a9a5ac2bcb7614da7010665210f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3779a9a5ac2bcb7614da7010665210f">outStructFaces</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> arg1)</td></tr>
+<tr class="separator:ae3779a9a5ac2bcb7614da7010665210f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::EmbeddedStructureParameters
+
+Parameters of structure embedding in terrain
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad9891f52a5df8c17eb40c7580d3848be" name="ad9891f52a5df8c17eb40c7580d3848be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9891f52a5df8c17eb40c7580d3848be">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a38b91e78bf6501fd0daed2647a85f12f" name="a38b91e78bf6501fd0daed2647a85f12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38b91e78bf6501fd0daed2647a85f12f">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1EmbeddedStructureParameters.html">EmbeddedStructureParameters</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="af50ec37fa5bfa2fe4a67cae9e928520c" name="af50ec37fa5bfa2fe4a67cae9e928520c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af50ec37fa5bfa2fe4a67cae9e928520c">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>fillAngle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>cutAngle</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>minAnglePrecision</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>outStructFaces</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>outFillFaces</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>outCutFaces</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceMap.html">FaceMap</a></td>          <td class="paramname"><span class="paramname"><em>new2oldFaces</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aed47e638b269c80cca0f2b45cadaa4a8" name="aed47e638b269c80cca0f2b45cadaa4a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed47e638b269c80cca0f2b45cadaa4a8">&#9670;&#160;</a></span>cutAngle() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EmbeddedStructureParameters.cutAngle </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">angle of cut cone (pit)
+</pre> 
+</div>
+</div>
+<a id="abdb7675a15e65ce3be186c7c88ff0e42" name="abdb7675a15e65ce3be186c7c88ff0e42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb7675a15e65ce3be186c7c88ff0e42">&#9670;&#160;</a></span>cutAngle() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.cutAngle </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4941f3c48a97b62a219e4b32551ad82" name="ae4941f3c48a97b62a219e4b32551ad82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4941f3c48a97b62a219e4b32551ad82">&#9670;&#160;</a></span>fillAngle() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EmbeddedStructureParameters.fillAngle </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">angle of fill cone (mound)
+</pre> 
+</div>
+</div>
+<a id="a101262bee4ce01990b20c6f56ae0cc5c" name="a101262bee4ce01990b20c6f56ae0cc5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a101262bee4ce01990b20c6f56ae0cc5c">&#9670;&#160;</a></span>fillAngle() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.fillAngle </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a0a9257630ec152b1a8ed01b6ec29f1" name="a2a0a9257630ec152b1a8ed01b6ec29f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a0a9257630ec152b1a8ed01b6ec29f1">&#9670;&#160;</a></span>minAnglePrecision() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EmbeddedStructureParameters.minAnglePrecision </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">20 deg
+</pre> 
+</div>
+</div>
+<a id="a515ed108cec297495d6d56d3d320cf7b" name="a515ed108cec297495d6d56d3d320cf7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515ed108cec297495d6d56d3d320cf7b">&#9670;&#160;</a></span>minAnglePrecision() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.minAnglePrecision </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acabd9eb5fe88bbc2e480426409714cae" name="acabd9eb5fe88bbc2e480426409714cae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acabd9eb5fe88bbc2e480426409714cae">&#9670;&#160;</a></span>new2oldFaces() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceMap.html">FaceMap</a> mrmeshpy.EmbeddedStructureParameters.new2oldFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">optional out map new terrain faces to old terrain faces
+</pre> 
+</div>
+</div>
+<a id="a0f4827867585e6065f8489232666a9d7" name="a0f4827867585e6065f8489232666a9d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f4827867585e6065f8489232666a9d7">&#9670;&#160;</a></span>new2oldFaces() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.new2oldFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceMap.html">FaceMap</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c322381bd5c03ba780d7bed2ab0b70b" name="a5c322381bd5c03ba780d7bed2ab0b70b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c322381bd5c03ba780d7bed2ab0b70b">&#9670;&#160;</a></span>outCutFaces() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> mrmeshpy.EmbeddedStructureParameters.outCutFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">optional out new faces of cut part
+</pre> 
+</div>
+</div>
+<a id="a2ecd67698db1a6e1b08b56deee2e749f" name="a2ecd67698db1a6e1b08b56deee2e749f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ecd67698db1a6e1b08b56deee2e749f">&#9670;&#160;</a></span>outCutFaces() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.outCutFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18570c6a6a8c48ef20fbfb60388f3d69" name="a18570c6a6a8c48ef20fbfb60388f3d69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18570c6a6a8c48ef20fbfb60388f3d69">&#9670;&#160;</a></span>outFillFaces() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> mrmeshpy.EmbeddedStructureParameters.outFillFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">optional out new faces of fill part
+</pre> 
+</div>
+</div>
+<a id="a7ffe213d869938bf5a134414b691fbe2" name="a7ffe213d869938bf5a134414b691fbe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ffe213d869938bf5a134414b691fbe2">&#9670;&#160;</a></span>outFillFaces() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.outFillFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb4eac41f3775c8992a9b74b13cadf7f" name="acb4eac41f3775c8992a9b74b13cadf7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4eac41f3775c8992a9b74b13cadf7f">&#9670;&#160;</a></span>outStructFaces() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> mrmeshpy.EmbeddedStructureParameters.outStructFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">optional out new faces of embedded structure 
+</pre> 
+</div>
+</div>
+<a id="ae3779a9a5ac2bcb7614da7010665210f" name="ae3779a9a5ac2bcb7614da7010665210f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3779a9a5ac2bcb7614da7010665210f">&#9670;&#160;</a></span>outStructFaces() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EmbeddedStructureParameters.outStructFaces </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1EmbeddedStructureParameters.html">EmbeddedStructureParameters</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

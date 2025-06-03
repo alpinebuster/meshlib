@@ -1,0 +1,636 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.DistanceToMeshOptions Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1DistanceToMeshOptions.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1DistanceToMeshOptions-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.DistanceToMeshOptions Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.DistanceToMeshOptions:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1DistanceToMeshOptions.png" usemap="#mrmeshpy.DistanceToMeshOptions_map" alt=""/>
+  <map id="mrmeshpy.DistanceToMeshOptions_map" name="mrmeshpy.DistanceToMeshOptions_map">
+<area href="classmrmeshpy_1_1SignedDistanceToMeshOptions.html" alt="mrmeshpy.SignedDistanceToMeshOptions" shape="rect" coords="0,56,249,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aa5a71155931c1d066d5a1e26f45424a5" id="r_aa5a71155931c1d066d5a1e26f45424a5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5a71155931c1d066d5a1e26f45424a5">__init__</a> (self)</td></tr>
+<tr class="separator:aa5a71155931c1d066d5a1e26f45424a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb62cc8be3cdcddff00defdd687e5cb" id="r_aefb62cc8be3cdcddff00defdd687e5cb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefb62cc8be3cdcddff00defdd687e5cb">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1DistanceToMeshOptions.html">DistanceToMeshOptions</a> arg0)</td></tr>
+<tr class="separator:aefb62cc8be3cdcddff00defdd687e5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d7378f391fdcdecc071d5fea21dd54f" id="r_a2d7378f391fdcdecc071d5fea21dd54f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d7378f391fdcdecc071d5fea21dd54f">__init__</a> (self, float <a class="el" href="#a1a3519767c036b77f65c2f182d35dacb">minDistSq</a>, float <a class="el" href="#ad09befd18d3d1af91f3abcdc32723ab8">maxDistSq</a>, bool <a class="el" href="#a248c4d1374a3f13137c3f1a003b34d36">nullOutsideMinMax</a>, float <a class="el" href="#a0b0ea7eed543ddf956334e99c053fc4f">windingNumberThreshold</a>, float <a class="el" href="#ac2a9eda1a9655941090c176d8729bc27">windingNumberBeta</a>)</td></tr>
+<tr class="separator:a2d7378f391fdcdecc071d5fea21dd54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09befd18d3d1af91f3abcdc32723ab8" id="r_ad09befd18d3d1af91f3abcdc32723ab8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad09befd18d3d1af91f3abcdc32723ab8">maxDistSq</a> (self)</td></tr>
+<tr class="separator:ad09befd18d3d1af91f3abcdc32723ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6599e39abe3fb35f92b2bad44faebb84" id="r_a6599e39abe3fb35f92b2bad44faebb84"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6599e39abe3fb35f92b2bad44faebb84">maxDistSq</a> (self, float arg1)</td></tr>
+<tr class="separator:a6599e39abe3fb35f92b2bad44faebb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a3519767c036b77f65c2f182d35dacb" id="r_a1a3519767c036b77f65c2f182d35dacb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a3519767c036b77f65c2f182d35dacb">minDistSq</a> (self)</td></tr>
+<tr class="separator:a1a3519767c036b77f65c2f182d35dacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a468dbb02cc9ea681838e396fb8677502" id="r_a468dbb02cc9ea681838e396fb8677502"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a468dbb02cc9ea681838e396fb8677502">minDistSq</a> (self, float arg1)</td></tr>
+<tr class="separator:a468dbb02cc9ea681838e396fb8677502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a248c4d1374a3f13137c3f1a003b34d36" id="r_a248c4d1374a3f13137c3f1a003b34d36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a248c4d1374a3f13137c3f1a003b34d36">nullOutsideMinMax</a> (self)</td></tr>
+<tr class="separator:a248c4d1374a3f13137c3f1a003b34d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44420267d0048d9539a9b6cea0a28ed2" id="r_a44420267d0048d9539a9b6cea0a28ed2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44420267d0048d9539a9b6cea0a28ed2">nullOutsideMinMax</a> (self, bool arg1)</td></tr>
+<tr class="separator:a44420267d0048d9539a9b6cea0a28ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a9eda1a9655941090c176d8729bc27" id="r_ac2a9eda1a9655941090c176d8729bc27"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2a9eda1a9655941090c176d8729bc27">windingNumberBeta</a> (self)</td></tr>
+<tr class="separator:ac2a9eda1a9655941090c176d8729bc27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60629749f572b3f2a344828d1d366e21" id="r_a60629749f572b3f2a344828d1d366e21"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60629749f572b3f2a344828d1d366e21">windingNumberBeta</a> (self, float arg1)</td></tr>
+<tr class="separator:a60629749f572b3f2a344828d1d366e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b0ea7eed543ddf956334e99c053fc4f" id="r_a0b0ea7eed543ddf956334e99c053fc4f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b0ea7eed543ddf956334e99c053fc4f">windingNumberThreshold</a> (self)</td></tr>
+<tr class="separator:a0b0ea7eed543ddf956334e99c053fc4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afefc0b359fbf40a711bd234dd9efa407" id="r_afefc0b359fbf40a711bd234dd9efa407"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afefc0b359fbf40a711bd234dd9efa407">windingNumberThreshold</a> (self, float arg1)</td></tr>
+<tr class="separator:afefc0b359fbf40a711bd234dd9efa407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a6b1688da4187aa021d2975bcf17dfd39" id="r_a6b1688da4187aa021d2975bcf17dfd39"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1688da4187aa021d2975bcf17dfd39">_offsetof_maxDistSq</a> = 4</td></tr>
+<tr class="separator:a6b1688da4187aa021d2975bcf17dfd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e7c3cd4771a2067e7573545ace6887" id="r_a04e7c3cd4771a2067e7573545ace6887"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04e7c3cd4771a2067e7573545ace6887">_offsetof_minDistSq</a> = 0</td></tr>
+<tr class="separator:a04e7c3cd4771a2067e7573545ace6887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8012b6b89f3cabaebcb6000f0eebae8" id="r_af8012b6b89f3cabaebcb6000f0eebae8"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8012b6b89f3cabaebcb6000f0eebae8">_offsetof_nullOutsideMinMax</a> = 8</td></tr>
+<tr class="separator:af8012b6b89f3cabaebcb6000f0eebae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d4f79ec687fff6ef3a42b14805eb32" id="r_ad6d4f79ec687fff6ef3a42b14805eb32"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6d4f79ec687fff6ef3a42b14805eb32">_offsetof_windingNumberBeta</a> = 16</td></tr>
+<tr class="separator:ad6d4f79ec687fff6ef3a42b14805eb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d401ce5c9f93d40f4caf9d23e1932a2" id="r_a9d401ce5c9f93d40f4caf9d23e1932a2"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d401ce5c9f93d40f4caf9d23e1932a2">_offsetof_windingNumberThreshold</a> = 12</td></tr>
+<tr class="separator:a9d401ce5c9f93d40f4caf9d23e1932a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::DistanceToMeshOptions
+
+options determining computation of distance from a point to a mesh
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa5a71155931c1d066d5a1e26f45424a5" name="aa5a71155931c1d066d5a1e26f45424a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5a71155931c1d066d5a1e26f45424a5">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1SignedDistanceToMeshOptions.html#ad55b383858a0417d2464b5c247b39436">mrmeshpy.SignedDistanceToMeshOptions</a>, and <a class="el" href="classmrmeshpy_1_1SignedDistanceToMeshOptions.html#a2a3ab58e5815530af8cec8eac21cd03d">mrmeshpy.SignedDistanceToMeshOptions</a>.</p>
+
+</div>
+</div>
+<a id="aefb62cc8be3cdcddff00defdd687e5cb" name="aefb62cc8be3cdcddff00defdd687e5cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefb62cc8be3cdcddff00defdd687e5cb">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1DistanceToMeshOptions.html">DistanceToMeshOptions</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1SignedDistanceToMeshOptions.html#ad55b383858a0417d2464b5c247b39436">mrmeshpy.SignedDistanceToMeshOptions</a>, and <a class="el" href="classmrmeshpy_1_1SignedDistanceToMeshOptions.html#a2a3ab58e5815530af8cec8eac21cd03d">mrmeshpy.SignedDistanceToMeshOptions</a>.</p>
+
+</div>
+</div>
+<a id="a2d7378f391fdcdecc071d5fea21dd54f" name="a2d7378f391fdcdecc071d5fea21dd54f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d7378f391fdcdecc071d5fea21dd54f">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>minDistSq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxDistSq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>nullOutsideMinMax</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>windingNumberThreshold</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>windingNumberBeta</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1SignedDistanceToMeshOptions.html#ad55b383858a0417d2464b5c247b39436">mrmeshpy.SignedDistanceToMeshOptions</a>, and <a class="el" href="classmrmeshpy_1_1SignedDistanceToMeshOptions.html#a2a3ab58e5815530af8cec8eac21cd03d">mrmeshpy.SignedDistanceToMeshOptions</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad09befd18d3d1af91f3abcdc32723ab8" name="ad09befd18d3d1af91f3abcdc32723ab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09befd18d3d1af91f3abcdc32723ab8">&#9670;&#160;</a></span>maxDistSq() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.DistanceToMeshOptions.maxDistSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">maximum squared distance from a point to mesh to be computed precisely
+</pre> 
+</div>
+</div>
+<a id="a6599e39abe3fb35f92b2bad44faebb84" name="a6599e39abe3fb35f92b2bad44faebb84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6599e39abe3fb35f92b2bad44faebb84">&#9670;&#160;</a></span>maxDistSq() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.maxDistSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a3519767c036b77f65c2f182d35dacb" name="a1a3519767c036b77f65c2f182d35dacb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a3519767c036b77f65c2f182d35dacb">&#9670;&#160;</a></span>minDistSq() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.DistanceToMeshOptions.minDistSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">minimum squared distance from a point to mesh to be computed precisely
+</pre> 
+</div>
+</div>
+<a id="a468dbb02cc9ea681838e396fb8677502" name="a468dbb02cc9ea681838e396fb8677502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a468dbb02cc9ea681838e396fb8677502">&#9670;&#160;</a></span>minDistSq() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.minDistSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a248c4d1374a3f13137c3f1a003b34d36" name="a248c4d1374a3f13137c3f1a003b34d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a248c4d1374a3f13137c3f1a003b34d36">&#9670;&#160;</a></span>nullOutsideMinMax() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.DistanceToMeshOptions.nullOutsideMinMax </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">what to do if actual distance is outside [min, max) range:
+true - return std::nullopt for std::optional&lt;float&gt; or NaN for float,
+false - return approximate value of the distance (with correct sign in case of SignDetectionMode::HoleWindingRule);
+please note that in HoleWindingRule the sign can change even for too small or too large distances,
+so if you would like to get closed mesh from marching cubes, set false here
+</pre> 
+</div>
+</div>
+<a id="a44420267d0048d9539a9b6cea0a28ed2" name="a44420267d0048d9539a9b6cea0a28ed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44420267d0048d9539a9b6cea0a28ed2">&#9670;&#160;</a></span>nullOutsideMinMax() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.nullOutsideMinMax </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2a9eda1a9655941090c176d8729bc27" name="ac2a9eda1a9655941090c176d8729bc27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2a9eda1a9655941090c176d8729bc27">&#9670;&#160;</a></span>windingNumberBeta() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.DistanceToMeshOptions.windingNumberBeta </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">only for SignDetectionMode::HoleWindingRule:
+determines the precision of fast approximation: the more the better, minimum value is 1
+</pre> 
+</div>
+</div>
+<a id="a60629749f572b3f2a344828d1d366e21" name="a60629749f572b3f2a344828d1d366e21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60629749f572b3f2a344828d1d366e21">&#9670;&#160;</a></span>windingNumberBeta() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.windingNumberBeta </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b0ea7eed543ddf956334e99c053fc4f" name="a0b0ea7eed543ddf956334e99c053fc4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b0ea7eed543ddf956334e99c053fc4f">&#9670;&#160;</a></span>windingNumberThreshold() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.DistanceToMeshOptions.windingNumberThreshold </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">only for SignDetectionMode::HoleWindingRule:
+positive distance if winding number below or equal this threshold;
+ideal threshold: 0.5 for closed meshes; 0.0 for planar meshes
+</pre> 
+</div>
+</div>
+<a id="afefc0b359fbf40a711bd234dd9efa407" name="afefc0b359fbf40a711bd234dd9efa407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afefc0b359fbf40a711bd234dd9efa407">&#9670;&#160;</a></span>windingNumberThreshold() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DistanceToMeshOptions.windingNumberThreshold </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6b1688da4187aa021d2975bcf17dfd39" name="a6b1688da4187aa021d2975bcf17dfd39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b1688da4187aa021d2975bcf17dfd39">&#9670;&#160;</a></span>_offsetof_maxDistSq</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.DistanceToMeshOptions._offsetof_maxDistSq = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04e7c3cd4771a2067e7573545ace6887" name="a04e7c3cd4771a2067e7573545ace6887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04e7c3cd4771a2067e7573545ace6887">&#9670;&#160;</a></span>_offsetof_minDistSq</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.DistanceToMeshOptions._offsetof_minDistSq = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8012b6b89f3cabaebcb6000f0eebae8" name="af8012b6b89f3cabaebcb6000f0eebae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8012b6b89f3cabaebcb6000f0eebae8">&#9670;&#160;</a></span>_offsetof_nullOutsideMinMax</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.DistanceToMeshOptions._offsetof_nullOutsideMinMax = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6d4f79ec687fff6ef3a42b14805eb32" name="ad6d4f79ec687fff6ef3a42b14805eb32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6d4f79ec687fff6ef3a42b14805eb32">&#9670;&#160;</a></span>_offsetof_windingNumberBeta</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.DistanceToMeshOptions._offsetof_windingNumberBeta = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d401ce5c9f93d40f4caf9d23e1932a2" name="a9d401ce5c9f93d40f4caf9d23e1932a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d401ce5c9f93d40f4caf9d23e1932a2">&#9670;&#160;</a></span>_offsetof_windingNumberThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.DistanceToMeshOptions._offsetof_windingNumberThreshold = 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1DistanceToMeshOptions.html">DistanceToMeshOptions</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

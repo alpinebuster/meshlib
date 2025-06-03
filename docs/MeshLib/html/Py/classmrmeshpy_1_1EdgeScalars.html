@@ -1,0 +1,1077 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1EdgeScalars.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.EdgeScalars Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1EdgeScalars.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1EdgeScalars-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.EdgeScalars Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a14911aea10433bf0e57a38e0d3166151" id="r_a14911aea10433bf0e57a38e0d3166151"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14911aea10433bf0e57a38e0d3166151">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a> b)</td></tr>
+<tr class="separator:a14911aea10433bf0e57a38e0d3166151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63271e4ab5d8c82c81a70527263a948a" id="r_a63271e4ab5d8c82c81a70527263a948a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63271e4ab5d8c82c81a70527263a948a">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> i)</td></tr>
+<tr class="separator:a63271e4ab5d8c82c81a70527263a948a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63271e4ab5d8c82c81a70527263a948a" id="r_a63271e4ab5d8c82c81a70527263a948a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63271e4ab5d8c82c81a70527263a948a">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> i)</td></tr>
+<tr class="separator:a63271e4ab5d8c82c81a70527263a948a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3621c487541b11258357633c0c7d41bc" id="r_a3621c487541b11258357633c0c7d41bc"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3621c487541b11258357633c0c7d41bc">__init__</a> (self)</td></tr>
+<tr class="separator:a3621c487541b11258357633c0c7d41bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa62a3f79007cf177b8b495b97f03b91e" id="r_aa62a3f79007cf177b8b495b97f03b91e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa62a3f79007cf177b8b495b97f03b91e">__init__</a> (self, int <a class="el" href="#afc02e577b3f592073f9a8b0f90153188">size</a>)</td></tr>
+<tr class="separator:aa62a3f79007cf177b8b495b97f03b91e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fabbad7b1cc734d5ee19db921f809da" id="r_a0fabbad7b1cc734d5ee19db921f809da"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fabbad7b1cc734d5ee19db921f809da">__init__</a> (self, int <a class="el" href="#afc02e577b3f592073f9a8b0f90153188">size</a>, float val)</td></tr>
+<tr class="separator:a0fabbad7b1cc734d5ee19db921f809da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c00797edfe9d388d655f817d373481" id="r_a76c00797edfe9d388d655f817d373481"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76c00797edfe9d388d655f817d373481">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__float.html">std_vector_float</a> vec)</td></tr>
+<tr class="separator:a76c00797edfe9d388d655f817d373481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13fcb7e3ef346c49933d66d7ff56b6b7" id="r_a13fcb7e3ef346c49933d66d7ff56b6b7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13fcb7e3ef346c49933d66d7ff56b6b7">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a> arg0)</td></tr>
+<tr class="separator:a13fcb7e3ef346c49933d66d7ff56b6b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10aedd366735ec6ad2fdc6335aac415d" id="r_a10aedd366735ec6ad2fdc6335aac415d"><td class="memItemLeft" align="right" valign="top">typing.Iterator[float]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10aedd366735ec6ad2fdc6335aac415d">__iter__</a> (self)</td></tr>
+<tr class="separator:a10aedd366735ec6ad2fdc6335aac415d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73304e18696680e1cbaab8fe63993ae7" id="r_a73304e18696680e1cbaab8fe63993ae7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73304e18696680e1cbaab8fe63993ae7">__ne__</a> (self, <a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a> b)</td></tr>
+<tr class="separator:a73304e18696680e1cbaab8fe63993ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1022284bea31404b21505ecb40321d84" id="r_a1022284bea31404b21505ecb40321d84"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1022284bea31404b21505ecb40321d84">__setitem__</a> (self, <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> arg0, float arg1)</td></tr>
+<tr class="separator:a1022284bea31404b21505ecb40321d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63455a225ae9108173b40fe97cdea2a8" id="r_a63455a225ae9108173b40fe97cdea2a8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63455a225ae9108173b40fe97cdea2a8">autoResizeAt</a> (self, <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> i)</td></tr>
+<tr class="separator:a63455a225ae9108173b40fe97cdea2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ce9e4986c187c26b65733454b6a349e" id="r_a4ce9e4986c187c26b65733454b6a349e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ce9e4986c187c26b65733454b6a349e">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> pos, int len, float val)</td></tr>
+<tr class="separator:a4ce9e4986c187c26b65733454b6a349e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10c84246ca0dc986f29bfd4562688b71" id="r_a10c84246ca0dc986f29bfd4562688b71"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10c84246ca0dc986f29bfd4562688b71">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> i, float val)</td></tr>
+<tr class="separator:a10c84246ca0dc986f29bfd4562688b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb86dc3325a9aed239180337a121dab6" id="r_aeb86dc3325a9aed239180337a121dab6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb86dc3325a9aed239180337a121dab6">back</a> (self)</td></tr>
+<tr class="separator:aeb86dc3325a9aed239180337a121dab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb86dc3325a9aed239180337a121dab6" id="r_aeb86dc3325a9aed239180337a121dab6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb86dc3325a9aed239180337a121dab6">back</a> (self)</td></tr>
+<tr class="separator:aeb86dc3325a9aed239180337a121dab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a606fa2924fc77aff672551f95262614d" id="r_a606fa2924fc77aff672551f95262614d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a606fa2924fc77aff672551f95262614d">backId</a> (self)</td></tr>
+<tr class="separator:a606fa2924fc77aff672551f95262614d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d424931eedd5aa2e657b3a0f4561edc" id="r_a2d424931eedd5aa2e657b3a0f4561edc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d424931eedd5aa2e657b3a0f4561edc">beginId</a> (self)</td></tr>
+<tr class="separator:a2d424931eedd5aa2e657b3a0f4561edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab79ba17463cd23d3356345b29e269bcc" id="r_ab79ba17463cd23d3356345b29e269bcc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab79ba17463cd23d3356345b29e269bcc">capacity</a> (self)</td></tr>
+<tr class="separator:ab79ba17463cd23d3356345b29e269bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db12cdf3aeed4843585223ba2d83d64" id="r_a2db12cdf3aeed4843585223ba2d83d64"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2db12cdf3aeed4843585223ba2d83d64">clear</a> (self)</td></tr>
+<tr class="separator:a2db12cdf3aeed4843585223ba2d83d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fbcdc615bc8902f73893b42d6f2bab6" id="r_a6fbcdc615bc8902f73893b42d6f2bab6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fbcdc615bc8902f73893b42d6f2bab6">data</a> (self)</td></tr>
+<tr class="separator:a6fbcdc615bc8902f73893b42d6f2bab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fbcdc615bc8902f73893b42d6f2bab6" id="r_a6fbcdc615bc8902f73893b42d6f2bab6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fbcdc615bc8902f73893b42d6f2bab6">data</a> (self)</td></tr>
+<tr class="separator:a6fbcdc615bc8902f73893b42d6f2bab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d5bd1632ea0deb06c18b3a02e0bab12" id="r_a9d5bd1632ea0deb06c18b3a02e0bab12"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d5bd1632ea0deb06c18b3a02e0bab12">emplace_back</a> (self)</td></tr>
+<tr class="separator:a9d5bd1632ea0deb06c18b3a02e0bab12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3ec4feaf610b56864a8ebb2a0b8adff" id="r_ac3ec4feaf610b56864a8ebb2a0b8adff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3ec4feaf610b56864a8ebb2a0b8adff">empty</a> (self)</td></tr>
+<tr class="separator:ac3ec4feaf610b56864a8ebb2a0b8adff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a369cf30378a0d621360846ee8b4b3438" id="r_a369cf30378a0d621360846ee8b4b3438"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a369cf30378a0d621360846ee8b4b3438">endId</a> (self)</td></tr>
+<tr class="separator:a369cf30378a0d621360846ee8b4b3438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c001e61019fb3423b82b726daac8b26" id="r_a5c001e61019fb3423b82b726daac8b26"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c001e61019fb3423b82b726daac8b26">front</a> (self)</td></tr>
+<tr class="separator:a5c001e61019fb3423b82b726daac8b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c001e61019fb3423b82b726daac8b26" id="r_a5c001e61019fb3423b82b726daac8b26"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c001e61019fb3423b82b726daac8b26">front</a> (self)</td></tr>
+<tr class="separator:a5c001e61019fb3423b82b726daac8b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e4a9a091de76a2cb4e24dc238a0d27d" id="r_a9e4a9a091de76a2cb4e24dc238a0d27d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e4a9a091de76a2cb4e24dc238a0d27d">heapBytes</a> (self)</td></tr>
+<tr class="separator:a9e4a9a091de76a2cb4e24dc238a0d27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71b57323a16b55d71cef15f3d2e7b07b" id="r_a71b57323a16b55d71cef15f3d2e7b07b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71b57323a16b55d71cef15f3d2e7b07b">pop_back</a> (self)</td></tr>
+<tr class="separator:a71b57323a16b55d71cef15f3d2e7b07b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add71b72d97c87387a9450aeaf03641de" id="r_add71b72d97c87387a9450aeaf03641de"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add71b72d97c87387a9450aeaf03641de">push_back</a> (self, float t)</td></tr>
+<tr class="separator:add71b72d97c87387a9450aeaf03641de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add71b72d97c87387a9450aeaf03641de" id="r_add71b72d97c87387a9450aeaf03641de"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add71b72d97c87387a9450aeaf03641de">push_back</a> (self, float t)</td></tr>
+<tr class="separator:add71b72d97c87387a9450aeaf03641de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab14f6b4b9960c2e7d59c6164ccaf7bb" id="r_aab14f6b4b9960c2e7d59c6164ccaf7bb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab14f6b4b9960c2e7d59c6164ccaf7bb">reserve</a> (self, int <a class="el" href="#ab79ba17463cd23d3356345b29e269bcc">capacity</a>)</td></tr>
+<tr class="separator:aab14f6b4b9960c2e7d59c6164ccaf7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4422828c8373538fc8da21b0331a4c6a" id="r_a4422828c8373538fc8da21b0331a4c6a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4422828c8373538fc8da21b0331a4c6a">resize</a> (self, int newSize)</td></tr>
+<tr class="separator:a4422828c8373538fc8da21b0331a4c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad62f042c1d062f05027ab8da7013d633" id="r_ad62f042c1d062f05027ab8da7013d633"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad62f042c1d062f05027ab8da7013d633">resize</a> (self, int newSize, float t)</td></tr>
+<tr class="separator:ad62f042c1d062f05027ab8da7013d633"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2fbd6587eb3d7351faeba6d2cd3ebdd" id="r_ab2fbd6587eb3d7351faeba6d2cd3ebdd"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2fbd6587eb3d7351faeba6d2cd3ebdd">resizeWithReserve</a> (self, int newSize)</td></tr>
+<tr class="separator:ab2fbd6587eb3d7351faeba6d2cd3ebdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e4bcee02dd5559e386cd4e23491c62" id="r_a01e4bcee02dd5559e386cd4e23491c62"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01e4bcee02dd5559e386cd4e23491c62">resizeWithReserve</a> (self, int newSize, float value)</td></tr>
+<tr class="separator:a01e4bcee02dd5559e386cd4e23491c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc02e577b3f592073f9a8b0f90153188" id="r_afc02e577b3f592073f9a8b0f90153188"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc02e577b3f592073f9a8b0f90153188">size</a> (self)</td></tr>
+<tr class="separator:afc02e577b3f592073f9a8b0f90153188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac53431e824c55e76b6ae13fddd2235d4" id="r_ac53431e824c55e76b6ae13fddd2235d4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac53431e824c55e76b6ae13fddd2235d4">swap</a> (self, <a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a> b)</td></tr>
+<tr class="separator:ac53431e824c55e76b6ae13fddd2235d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd95f5913bec2b08a41a72f977e7a4e" id="r_afbd95f5913bec2b08a41a72f977e7a4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__float.html">std_vector_float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbd95f5913bec2b08a41a72f977e7a4e">vec_</a> (self)</td></tr>
+<tr class="separator:afbd95f5913bec2b08a41a72f977e7a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb4b841c87ca162d0d0d2583dd05ecf2" id="r_adb4b841c87ca162d0d0d2583dd05ecf2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb4b841c87ca162d0d0d2583dd05ecf2">vec_</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__float.html">std_vector_float</a> arg1)</td></tr>
+<tr class="separator:adb4b841c87ca162d0d0d2583dd05ecf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::EdgeScalars
+
+
+ \\brief std::vector&lt;T&gt;-like container that requires specific indexing type,
+ \\tparam T type of stored elements
+ \\tparam I type of index (shall be convertible to size_t)
+ \\ingroup BasicGroup</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3621c487541b11258357633c0c7d41bc" name="a3621c487541b11258357633c0c7d41bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3621c487541b11258357633c0c7d41bc">&#9670;&#160;</a></span>__init__() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa62a3f79007cf177b8b495b97f03b91e" name="aa62a3f79007cf177b8b495b97f03b91e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa62a3f79007cf177b8b495b97f03b91e">&#9670;&#160;</a></span>__init__() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fabbad7b1cc734d5ee19db921f809da" name="a0fabbad7b1cc734d5ee19db921f809da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fabbad7b1cc734d5ee19db921f809da">&#9670;&#160;</a></span>__init__() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76c00797edfe9d388d655f817d373481" name="a76c00797edfe9d388d655f817d373481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c00797edfe9d388d655f817d373481">&#9670;&#160;</a></span>__init__() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__float.html">std_vector_float</a></td>          <td class="paramname"><span class="paramname"><em>vec</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a13fcb7e3ef346c49933d66d7ff56b6b7" name="a13fcb7e3ef346c49933d66d7ff56b6b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13fcb7e3ef346c49933d66d7ff56b6b7">&#9670;&#160;</a></span>__init__() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a14911aea10433bf0e57a38e0d3166151" name="a14911aea10433bf0e57a38e0d3166151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14911aea10433bf0e57a38e0d3166151">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.EdgeScalars.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63271e4ab5d8c82c81a70527263a948a" name="a63271e4ab5d8c82c81a70527263a948a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63271e4ab5d8c82c81a70527263a948a">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63271e4ab5d8c82c81a70527263a948a" name="a63271e4ab5d8c82c81a70527263a948a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63271e4ab5d8c82c81a70527263a948a">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10aedd366735ec6ad2fdc6335aac415d" name="a10aedd366735ec6ad2fdc6335aac415d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10aedd366735ec6ad2fdc6335aac415d">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[float] mrmeshpy.EdgeScalars.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a73304e18696680e1cbaab8fe63993ae7" name="a73304e18696680e1cbaab8fe63993ae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73304e18696680e1cbaab8fe63993ae7">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.EdgeScalars.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1022284bea31404b21505ecb40321d84" name="a1022284bea31404b21505ecb40321d84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1022284bea31404b21505ecb40321d84">&#9670;&#160;</a></span>__setitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63455a225ae9108173b40fe97cdea2a8" name="a63455a225ae9108173b40fe97cdea2a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63455a225ae9108173b40fe97cdea2a8">&#9670;&#160;</a></span>autoResizeAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.autoResizeAt </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">this accessor automatically adjusts the size of the vector
+</pre> 
+</div>
+</div>
+<a id="a10c84246ca0dc986f29bfd4562688b71" name="a10c84246ca0dc986f29bfd4562688b71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10c84246ca0dc986f29bfd4562688b71">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ce9e4986c187c26b65733454b6a349e" name="a4ce9e4986c187c26b65733454b6a349e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ce9e4986c187c26b65733454b6a349e">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets elements [pos, pos+len) to given value, adjusting the size of the vector to include new elements
+</pre> 
+</div>
+</div>
+<a id="aeb86dc3325a9aed239180337a121dab6" name="aeb86dc3325a9aed239180337a121dab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb86dc3325a9aed239180337a121dab6">&#9670;&#160;</a></span>back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb86dc3325a9aed239180337a121dab6" name="aeb86dc3325a9aed239180337a121dab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb86dc3325a9aed239180337a121dab6">&#9670;&#160;</a></span>back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a606fa2924fc77aff672551f95262614d" name="a606fa2924fc77aff672551f95262614d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a606fa2924fc77aff672551f95262614d">&#9670;&#160;</a></span>backId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> mrmeshpy.EdgeScalars.backId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the back() element
+</pre> 
+</div>
+</div>
+<a id="a2d424931eedd5aa2e657b3a0f4561edc" name="a2d424931eedd5aa2e657b3a0f4561edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d424931eedd5aa2e657b3a0f4561edc">&#9670;&#160;</a></span>beginId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> mrmeshpy.EdgeScalars.beginId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the first element
+</pre> 
+</div>
+</div>
+<a id="ab79ba17463cd23d3356345b29e269bcc" name="ab79ba17463cd23d3356345b29e269bcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab79ba17463cd23d3356345b29e269bcc">&#9670;&#160;</a></span>capacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.EdgeScalars.capacity </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2db12cdf3aeed4843585223ba2d83d64" name="a2db12cdf3aeed4843585223ba2d83d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2db12cdf3aeed4843585223ba2d83d64">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fbcdc615bc8902f73893b42d6f2bab6" name="a6fbcdc615bc8902f73893b42d6f2bab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fbcdc615bc8902f73893b42d6f2bab6">&#9670;&#160;</a></span>data() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fbcdc615bc8902f73893b42d6f2bab6" name="a6fbcdc615bc8902f73893b42d6f2bab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fbcdc615bc8902f73893b42d6f2bab6">&#9670;&#160;</a></span>data() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d5bd1632ea0deb06c18b3a02e0bab12" name="a9d5bd1632ea0deb06c18b3a02e0bab12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d5bd1632ea0deb06c18b3a02e0bab12">&#9670;&#160;</a></span>emplace_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.emplace_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3ec4feaf610b56864a8ebb2a0b8adff" name="ac3ec4feaf610b56864a8ebb2a0b8adff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3ec4feaf610b56864a8ebb2a0b8adff">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.EdgeScalars.empty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a369cf30378a0d621360846ee8b4b3438" name="a369cf30378a0d621360846ee8b4b3438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a369cf30378a0d621360846ee8b4b3438">&#9670;&#160;</a></span>endId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Id__EdgeTag.html">Id_EdgeTag</a> mrmeshpy.EdgeScalars.endId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns backId() + 1
+</pre> 
+</div>
+</div>
+<a id="a5c001e61019fb3423b82b726daac8b26" name="a5c001e61019fb3423b82b726daac8b26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c001e61019fb3423b82b726daac8b26">&#9670;&#160;</a></span>front() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.front </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c001e61019fb3423b82b726daac8b26" name="a5c001e61019fb3423b82b726daac8b26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c001e61019fb3423b82b726daac8b26">&#9670;&#160;</a></span>front() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.EdgeScalars.front </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e4a9a091de76a2cb4e24dc238a0d27d" name="a9e4a9a091de76a2cb4e24dc238a0d27d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e4a9a091de76a2cb4e24dc238a0d27d">&#9670;&#160;</a></span>heapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.EdgeScalars.heapBytes </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the amount of memory this object occupies on heap
+</pre> 
+</div>
+</div>
+<a id="a71b57323a16b55d71cef15f3d2e7b07b" name="a71b57323a16b55d71cef15f3d2e7b07b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71b57323a16b55d71cef15f3d2e7b07b">&#9670;&#160;</a></span>pop_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.pop_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add71b72d97c87387a9450aeaf03641de" name="add71b72d97c87387a9450aeaf03641de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add71b72d97c87387a9450aeaf03641de">&#9670;&#160;</a></span>push_back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.push_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add71b72d97c87387a9450aeaf03641de" name="add71b72d97c87387a9450aeaf03641de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add71b72d97c87387a9450aeaf03641de">&#9670;&#160;</a></span>push_back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.push_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab14f6b4b9960c2e7d59c6164ccaf7bb" name="aab14f6b4b9960c2e7d59c6164ccaf7bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab14f6b4b9960c2e7d59c6164ccaf7bb">&#9670;&#160;</a></span>reserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.reserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4422828c8373538fc8da21b0331a4c6a" name="a4422828c8373538fc8da21b0331a4c6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4422828c8373538fc8da21b0331a4c6a">&#9670;&#160;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad62f042c1d062f05027ab8da7013d633" name="ad62f042c1d062f05027ab8da7013d633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad62f042c1d062f05027ab8da7013d633">&#9670;&#160;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2fbd6587eb3d7351faeba6d2cd3ebdd" name="ab2fbd6587eb3d7351faeba6d2cd3ebdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2fbd6587eb3d7351faeba6d2cd3ebdd">&#9670;&#160;</a></span>resizeWithReserve() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.resizeWithReserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">doubles reserved memory until resize(newSize) can be done without reallocation
+</pre> 
+</div>
+</div>
+<a id="a01e4bcee02dd5559e386cd4e23491c62" name="a01e4bcee02dd5559e386cd4e23491c62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e4bcee02dd5559e386cd4e23491c62">&#9670;&#160;</a></span>resizeWithReserve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.resizeWithReserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">doubles reserved memory until resize(newSize) can be done without reallocation
+</pre> 
+</div>
+</div>
+<a id="afc02e577b3f592073f9a8b0f90153188" name="afc02e577b3f592073f9a8b0f90153188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc02e577b3f592073f9a8b0f90153188">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.EdgeScalars.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac53431e824c55e76b6ae13fddd2235d4" name="ac53431e824c55e76b6ae13fddd2235d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53431e824c55e76b6ae13fddd2235d4">&#9670;&#160;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.swap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afbd95f5913bec2b08a41a72f977e7a4e" name="afbd95f5913bec2b08a41a72f977e7a4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbd95f5913bec2b08a41a72f977e7a4e">&#9670;&#160;</a></span>vec_() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__float.html">std_vector_float</a> mrmeshpy.EdgeScalars.vec_ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">the user can directly manipulate the vector, anyway she cannot break anything
+</pre> 
+</div>
+</div>
+<a id="adb4b841c87ca162d0d0d2583dd05ecf2" name="adb4b841c87ca162d0d0d2583dd05ecf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb4b841c87ca162d0d0d2583dd05ecf2">&#9670;&#160;</a></span>vec_() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.EdgeScalars.vec_ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__float.html">std_vector_float</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1EdgeScalars.html">EdgeScalars</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

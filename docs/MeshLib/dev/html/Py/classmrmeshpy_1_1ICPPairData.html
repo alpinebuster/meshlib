@@ -1,0 +1,737 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.ICPPairData Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1ICPPairData.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1ICPPairData-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.ICPPairData Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.ICPPairData:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1ICPPairData.png" usemap="#mrmeshpy.ICPPairData_map" alt=""/>
+  <map id="mrmeshpy.ICPPairData_map" name="mrmeshpy.ICPPairData_map">
+<area href="classmrmeshpy_1_1ICPGroupPair.html" alt="mrmeshpy.ICPGroupPair" shape="rect" coords="0,56,151,80"/>
+<area href="classmrmeshpy_1_1PointPair.html" alt="mrmeshpy.PointPair" shape="rect" coords="161,56,312,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab146480efc1ea9a30c3d8ca77e86519e" id="r_ab146480efc1ea9a30c3d8ca77e86519e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab146480efc1ea9a30c3d8ca77e86519e">__init__</a> (self)</td></tr>
+<tr class="separator:ab146480efc1ea9a30c3d8ca77e86519e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2edf225bad86490514eda1a00647fbf9" id="r_a2edf225bad86490514eda1a00647fbf9"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2edf225bad86490514eda1a00647fbf9">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1ICPPairData.html">ICPPairData</a> arg0)</td></tr>
+<tr class="separator:a2edf225bad86490514eda1a00647fbf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad2944fb50aa2e5e9b87ac6456aa9a06" id="r_aad2944fb50aa2e5e9b87ac6456aa9a06"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad2944fb50aa2e5e9b87ac6456aa9a06">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> <a class="el" href="#a30219ca3196957a77bb962d99a1fa358">srcPoint</a>, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> <a class="el" href="#a89482cc3aa04a939129275e013cec31d">srcNorm</a>, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> <a class="el" href="#a8fd5cbb59c667c22d5b48c5e0a3fe81e">tgtPoint</a>, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> <a class="el" href="#a962a452004d14db0007b9ce46984b430">tgtNorm</a>, float <a class="el" href="#a81a16851930b610d0f2da952f2e9dfb2">distSq</a>, float <a class="el" href="#a9a47e51ee552fd10d2b79ed1b21ef4f4">weight</a>)</td></tr>
+<tr class="separator:aad2944fb50aa2e5e9b87ac6456aa9a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81a16851930b610d0f2da952f2e9dfb2" id="r_a81a16851930b610d0f2da952f2e9dfb2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81a16851930b610d0f2da952f2e9dfb2">distSq</a> (self)</td></tr>
+<tr class="separator:a81a16851930b610d0f2da952f2e9dfb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0bc3f78c9ae7c4183be09dfdde928b0" id="r_ad0bc3f78c9ae7c4183be09dfdde928b0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0bc3f78c9ae7c4183be09dfdde928b0">distSq</a> (self, float arg1)</td></tr>
+<tr class="separator:ad0bc3f78c9ae7c4183be09dfdde928b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89482cc3aa04a939129275e013cec31d" id="r_a89482cc3aa04a939129275e013cec31d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89482cc3aa04a939129275e013cec31d">srcNorm</a> (self)</td></tr>
+<tr class="separator:a89482cc3aa04a939129275e013cec31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515d9cd8b7997e018b8a5beac3198fa0" id="r_a515d9cd8b7997e018b8a5beac3198fa0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a515d9cd8b7997e018b8a5beac3198fa0">srcNorm</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> arg1)</td></tr>
+<tr class="separator:a515d9cd8b7997e018b8a5beac3198fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30219ca3196957a77bb962d99a1fa358" id="r_a30219ca3196957a77bb962d99a1fa358"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30219ca3196957a77bb962d99a1fa358">srcPoint</a> (self)</td></tr>
+<tr class="separator:a30219ca3196957a77bb962d99a1fa358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afda2b1f35f010bc4ec2c329159ea9bb7" id="r_afda2b1f35f010bc4ec2c329159ea9bb7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afda2b1f35f010bc4ec2c329159ea9bb7">srcPoint</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> arg1)</td></tr>
+<tr class="separator:afda2b1f35f010bc4ec2c329159ea9bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a962a452004d14db0007b9ce46984b430" id="r_a962a452004d14db0007b9ce46984b430"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a962a452004d14db0007b9ce46984b430">tgtNorm</a> (self)</td></tr>
+<tr class="separator:a962a452004d14db0007b9ce46984b430"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e2f5b153ceba9f49471637a8b885f4" id="r_a06e2f5b153ceba9f49471637a8b885f4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06e2f5b153ceba9f49471637a8b885f4">tgtNorm</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> arg1)</td></tr>
+<tr class="separator:a06e2f5b153ceba9f49471637a8b885f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fd5cbb59c667c22d5b48c5e0a3fe81e" id="r_a8fd5cbb59c667c22d5b48c5e0a3fe81e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fd5cbb59c667c22d5b48c5e0a3fe81e">tgtPoint</a> (self)</td></tr>
+<tr class="separator:a8fd5cbb59c667c22d5b48c5e0a3fe81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3543d2260c7847ebf61a1b2bd780d4b" id="r_ae3543d2260c7847ebf61a1b2bd780d4b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3543d2260c7847ebf61a1b2bd780d4b">tgtPoint</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> arg1)</td></tr>
+<tr class="separator:ae3543d2260c7847ebf61a1b2bd780d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a47e51ee552fd10d2b79ed1b21ef4f4" id="r_a9a47e51ee552fd10d2b79ed1b21ef4f4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a47e51ee552fd10d2b79ed1b21ef4f4">weight</a> (self)</td></tr>
+<tr class="separator:a9a47e51ee552fd10d2b79ed1b21ef4f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e6a858233d91201b69b2364f6e675e" id="r_a81e6a858233d91201b69b2364f6e675e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81e6a858233d91201b69b2364f6e675e">weight</a> (self, float arg1)</td></tr>
+<tr class="separator:a81e6a858233d91201b69b2364f6e675e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a024a604081665729f2ae92aee9077513" id="r_a024a604081665729f2ae92aee9077513"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a024a604081665729f2ae92aee9077513">__eq__</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a024a604081665729f2ae92aee9077513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a975ad0f4fbf56b0b696b016bb5459394" id="r_a975ad0f4fbf56b0b696b016bb5459394"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a975ad0f4fbf56b0b696b016bb5459394">_offsetof_distSq</a> = 48</td></tr>
+<tr class="separator:a975ad0f4fbf56b0b696b016bb5459394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b21da77be31bc7aefe9d51008c2cf1c" id="r_a2b21da77be31bc7aefe9d51008c2cf1c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b21da77be31bc7aefe9d51008c2cf1c">_offsetof_srcNorm</a> = 12</td></tr>
+<tr class="separator:a2b21da77be31bc7aefe9d51008c2cf1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9be727a0422ad006449afad101e0841d" id="r_a9be727a0422ad006449afad101e0841d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9be727a0422ad006449afad101e0841d">_offsetof_srcPoint</a> = 0</td></tr>
+<tr class="separator:a9be727a0422ad006449afad101e0841d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a507276f8b26de9a904d2ec49bf33c393" id="r_a507276f8b26de9a904d2ec49bf33c393"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a507276f8b26de9a904d2ec49bf33c393">_offsetof_tgtNorm</a> = 36</td></tr>
+<tr class="separator:a507276f8b26de9a904d2ec49bf33c393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53baaf24a2f082c08ab6834b7a741adc" id="r_a53baaf24a2f082c08ab6834b7a741adc"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53baaf24a2f082c08ab6834b7a741adc">_offsetof_tgtPoint</a> = 24</td></tr>
+<tr class="separator:a53baaf24a2f082c08ab6834b7a741adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e12fe9d68b29a4f4ac5fca26ae40b9" id="r_a94e12fe9d68b29a4f4ac5fca26ae40b9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94e12fe9d68b29a4f4ac5fca26ae40b9">_offsetof_weight</a> = 52</td></tr>
+<tr class="separator:a94e12fe9d68b29a4f4ac5fca26ae40b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::ICPPairData
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab146480efc1ea9a30c3d8ca77e86519e" name="ab146480efc1ea9a30c3d8ca77e86519e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab146480efc1ea9a30c3d8ca77e86519e">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ICPGroupPair.html#aac8c8cfe71c39aee9eb8487b0f10b6c0">mrmeshpy.ICPGroupPair</a>, <a class="el" href="classmrmeshpy_1_1ICPGroupPair.html#a8cee7ed74929fd00185476667a007598">mrmeshpy.ICPGroupPair</a>, <a class="el" href="classmrmeshpy_1_1PointPair.html#afa320dd5611f71a18b07b52f44352bfc">mrmeshpy.PointPair</a>, and <a class="el" href="classmrmeshpy_1_1PointPair.html#aa4b263a6d942bfae24a1dd4b7ce4315f">mrmeshpy.PointPair</a>.</p>
+
+</div>
+</div>
+<a id="a2edf225bad86490514eda1a00647fbf9" name="a2edf225bad86490514eda1a00647fbf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2edf225bad86490514eda1a00647fbf9">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ICPPairData.html">ICPPairData</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ICPGroupPair.html#aac8c8cfe71c39aee9eb8487b0f10b6c0">mrmeshpy.ICPGroupPair</a>, <a class="el" href="classmrmeshpy_1_1ICPGroupPair.html#a8cee7ed74929fd00185476667a007598">mrmeshpy.ICPGroupPair</a>, <a class="el" href="classmrmeshpy_1_1PointPair.html#afa320dd5611f71a18b07b52f44352bfc">mrmeshpy.PointPair</a>, and <a class="el" href="classmrmeshpy_1_1PointPair.html#aa4b263a6d942bfae24a1dd4b7ce4315f">mrmeshpy.PointPair</a>.</p>
+
+</div>
+</div>
+<a id="aad2944fb50aa2e5e9b87ac6456aa9a06" name="aad2944fb50aa2e5e9b87ac6456aa9a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad2944fb50aa2e5e9b87ac6456aa9a06">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>srcPoint</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>srcNorm</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>tgtPoint</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>tgtNorm</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>distSq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>weight</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ICPGroupPair.html#aac8c8cfe71c39aee9eb8487b0f10b6c0">mrmeshpy.ICPGroupPair</a>, <a class="el" href="classmrmeshpy_1_1ICPGroupPair.html#a8cee7ed74929fd00185476667a007598">mrmeshpy.ICPGroupPair</a>, <a class="el" href="classmrmeshpy_1_1PointPair.html#afa320dd5611f71a18b07b52f44352bfc">mrmeshpy.PointPair</a>, and <a class="el" href="classmrmeshpy_1_1PointPair.html#aa4b263a6d942bfae24a1dd4b7ce4315f">mrmeshpy.PointPair</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a024a604081665729f2ae92aee9077513" name="a024a604081665729f2ae92aee9077513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a024a604081665729f2ae92aee9077513">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.ICPPairData.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1PointPair.html#a6d5a7cf7fbfbb1b9382513200289b312">mrmeshpy.PointPair</a>.</p>
+
+</div>
+</div>
+<a id="a81a16851930b610d0f2da952f2e9dfb2" name="a81a16851930b610d0f2da952f2e9dfb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81a16851930b610d0f2da952f2e9dfb2">&#9670;&#160;</a></span>distSq() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.ICPPairData.distSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">squared distance between source and target points
+</pre> 
+</div>
+</div>
+<a id="ad0bc3f78c9ae7c4183be09dfdde928b0" name="ad0bc3f78c9ae7c4183be09dfdde928b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0bc3f78c9ae7c4183be09dfdde928b0">&#9670;&#160;</a></span>distSq() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.distSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89482cc3aa04a939129275e013cec31d" name="a89482cc3aa04a939129275e013cec31d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89482cc3aa04a939129275e013cec31d">&#9670;&#160;</a></span>srcNorm() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> mrmeshpy.ICPPairData.srcNorm </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">normal in source point after transforming in world space
+</pre> 
+</div>
+</div>
+<a id="a515d9cd8b7997e018b8a5beac3198fa0" name="a515d9cd8b7997e018b8a5beac3198fa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515d9cd8b7997e018b8a5beac3198fa0">&#9670;&#160;</a></span>srcNorm() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.srcNorm </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a30219ca3196957a77bb962d99a1fa358" name="a30219ca3196957a77bb962d99a1fa358"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30219ca3196957a77bb962d99a1fa358">&#9670;&#160;</a></span>srcPoint() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> mrmeshpy.ICPPairData.srcPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">coordinates of the source point after transforming in world space
+</pre> 
+</div>
+</div>
+<a id="afda2b1f35f010bc4ec2c329159ea9bb7" name="afda2b1f35f010bc4ec2c329159ea9bb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afda2b1f35f010bc4ec2c329159ea9bb7">&#9670;&#160;</a></span>srcPoint() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.srcPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a962a452004d14db0007b9ce46984b430" name="a962a452004d14db0007b9ce46984b430"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a962a452004d14db0007b9ce46984b430">&#9670;&#160;</a></span>tgtNorm() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> mrmeshpy.ICPPairData.tgtNorm </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">normal in the target point after transforming in world space
+</pre> 
+</div>
+</div>
+<a id="a06e2f5b153ceba9f49471637a8b885f4" name="a06e2f5b153ceba9f49471637a8b885f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06e2f5b153ceba9f49471637a8b885f4">&#9670;&#160;</a></span>tgtNorm() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.tgtNorm </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8fd5cbb59c667c22d5b48c5e0a3fe81e" name="a8fd5cbb59c667c22d5b48c5e0a3fe81e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fd5cbb59c667c22d5b48c5e0a3fe81e">&#9670;&#160;</a></span>tgtPoint() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> mrmeshpy.ICPPairData.tgtPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">coordinates of the closest point on target after transforming in world space
+</pre> 
+</div>
+</div>
+<a id="ae3543d2260c7847ebf61a1b2bd780d4b" name="ae3543d2260c7847ebf61a1b2bd780d4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3543d2260c7847ebf61a1b2bd780d4b">&#9670;&#160;</a></span>tgtPoint() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.tgtPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a47e51ee552fd10d2b79ed1b21ef4f4" name="a9a47e51ee552fd10d2b79ed1b21ef4f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a47e51ee552fd10d2b79ed1b21ef4f4">&#9670;&#160;</a></span>weight() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.ICPPairData.weight </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">weight of the pair (to prioritize over other pairs)
+</pre> 
+</div>
+</div>
+<a id="a81e6a858233d91201b69b2364f6e675e" name="a81e6a858233d91201b69b2364f6e675e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e6a858233d91201b69b2364f6e675e">&#9670;&#160;</a></span>weight() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.ICPPairData.weight </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a975ad0f4fbf56b0b696b016bb5459394" name="a975ad0f4fbf56b0b696b016bb5459394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a975ad0f4fbf56b0b696b016bb5459394">&#9670;&#160;</a></span>_offsetof_distSq</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ICPPairData._offsetof_distSq = 48</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b21da77be31bc7aefe9d51008c2cf1c" name="a2b21da77be31bc7aefe9d51008c2cf1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b21da77be31bc7aefe9d51008c2cf1c">&#9670;&#160;</a></span>_offsetof_srcNorm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ICPPairData._offsetof_srcNorm = 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9be727a0422ad006449afad101e0841d" name="a9be727a0422ad006449afad101e0841d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9be727a0422ad006449afad101e0841d">&#9670;&#160;</a></span>_offsetof_srcPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ICPPairData._offsetof_srcPoint = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a507276f8b26de9a904d2ec49bf33c393" name="a507276f8b26de9a904d2ec49bf33c393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a507276f8b26de9a904d2ec49bf33c393">&#9670;&#160;</a></span>_offsetof_tgtNorm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ICPPairData._offsetof_tgtNorm = 36</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a53baaf24a2f082c08ab6834b7a741adc" name="a53baaf24a2f082c08ab6834b7a741adc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53baaf24a2f082c08ab6834b7a741adc">&#9670;&#160;</a></span>_offsetof_tgtPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ICPPairData._offsetof_tgtPoint = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94e12fe9d68b29a4f4ac5fca26ae40b9" name="a94e12fe9d68b29a4f4ac5fca26ae40b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94e12fe9d68b29a4f4ac5fca26ae40b9">&#9670;&#160;</a></span>_offsetof_weight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.ICPPairData._offsetof_weight = 52</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1ICPPairData.html">ICPPairData</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

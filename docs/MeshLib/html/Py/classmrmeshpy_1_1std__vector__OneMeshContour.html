@@ -1,0 +1,712 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1std__vector__OneMeshContour.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.std_vector_OneMeshContour Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1std__vector__OneMeshContour.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1std__vector__OneMeshContour-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.std_vector_OneMeshContour Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a91e0b53fd8a9bb5a1544eb4a4509df3d" id="r_a91e0b53fd8a9bb5a1544eb4a4509df3d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91e0b53fd8a9bb5a1544eb4a4509df3d">__bool__</a> (self)</td></tr>
+<tr class="separator:a91e0b53fd8a9bb5a1544eb4a4509df3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3459439d0842fff42954bdf85d9b50ba" id="r_a3459439d0842fff42954bdf85d9b50ba"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3459439d0842fff42954bdf85d9b50ba">__delitem__</a> (self, int arg0)</td></tr>
+<tr class="separator:a3459439d0842fff42954bdf85d9b50ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6ff806bebeef10462ed3b1f1e3bb19e" id="r_aa6ff806bebeef10462ed3b1f1e3bb19e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6ff806bebeef10462ed3b1f1e3bb19e">__delitem__</a> (self, slice arg0)</td></tr>
+<tr class="separator:aa6ff806bebeef10462ed3b1f1e3bb19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c12de810aff3f1c1e9586848310e50c" id="r_a2c12de810aff3f1c1e9586848310e50c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c12de810aff3f1c1e9586848310e50c">__getitem__</a> (self, slice s)</td></tr>
+<tr class="separator:a2c12de810aff3f1c1e9586848310e50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f84848dc219d5442049ad2505c78d1c" id="r_a3f84848dc219d5442049ad2505c78d1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f84848dc219d5442049ad2505c78d1c">__getitem__</a> (self, int arg0)</td></tr>
+<tr class="separator:a3f84848dc219d5442049ad2505c78d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58a40ed4ca5a8d946c20357aa209bc00" id="r_a58a40ed4ca5a8d946c20357aa209bc00"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58a40ed4ca5a8d946c20357aa209bc00">__init__</a> (self)</td></tr>
+<tr class="separator:a58a40ed4ca5a8d946c20357aa209bc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368767f200a532b3cc20fda2616160c6" id="r_a368767f200a532b3cc20fda2616160c6"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a368767f200a532b3cc20fda2616160c6">__init__</a> (self, typing.Iterable arg0)</td></tr>
+<tr class="separator:a368767f200a532b3cc20fda2616160c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8848a01ec651b52b98d028fa0d6aaa" id="r_acd8848a01ec651b52b98d028fa0d6aaa"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd8848a01ec651b52b98d028fa0d6aaa">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a> arg0)</td></tr>
+<tr class="separator:acd8848a01ec651b52b98d028fa0d6aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb926fea9f775271f3c779caa6720171" id="r_aeb926fea9f775271f3c779caa6720171"><td class="memItemLeft" align="right" valign="top">typing.Iterator[<a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb926fea9f775271f3c779caa6720171">__iter__</a> (self)</td></tr>
+<tr class="separator:aeb926fea9f775271f3c779caa6720171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96736f8f5c0d36e3b6fbdcdc814c036f" id="r_a96736f8f5c0d36e3b6fbdcdc814c036f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96736f8f5c0d36e3b6fbdcdc814c036f">__len__</a> (self)</td></tr>
+<tr class="separator:a96736f8f5c0d36e3b6fbdcdc814c036f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22a22f39c3b78d2de045e39d3f57da59" id="r_a22a22f39c3b78d2de045e39d3f57da59"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22a22f39c3b78d2de045e39d3f57da59">__setitem__</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a> arg1)</td></tr>
+<tr class="separator:a22a22f39c3b78d2de045e39d3f57da59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a78ef8532876e89c6c31ae5574464da" id="r_a8a78ef8532876e89c6c31ae5574464da"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a78ef8532876e89c6c31ae5574464da">__setitem__</a> (self, slice arg0, <a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a> arg1)</td></tr>
+<tr class="separator:a8a78ef8532876e89c6c31ae5574464da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83ca413aa23598c9b0c48cff7a9283b8" id="r_a83ca413aa23598c9b0c48cff7a9283b8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83ca413aa23598c9b0c48cff7a9283b8">append</a> (self, <a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a> x)</td></tr>
+<tr class="separator:a83ca413aa23598c9b0c48cff7a9283b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37c58078ff2502ad400ed8aa81678c9d" id="r_a37c58078ff2502ad400ed8aa81678c9d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37c58078ff2502ad400ed8aa81678c9d">clear</a> (self)</td></tr>
+<tr class="separator:a37c58078ff2502ad400ed8aa81678c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426792a54a2ff8c42e33811a990bb891" id="r_a426792a54a2ff8c42e33811a990bb891"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426792a54a2ff8c42e33811a990bb891">empty</a> (self)</td></tr>
+<tr class="separator:a426792a54a2ff8c42e33811a990bb891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68c3aef94a84bfa289e107ff281bc7fa" id="r_a68c3aef94a84bfa289e107ff281bc7fa"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68c3aef94a84bfa289e107ff281bc7fa">extend</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a> L)</td></tr>
+<tr class="separator:a68c3aef94a84bfa289e107ff281bc7fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e7635874cf91313d23f1bd5f5a095ba" id="r_a7e7635874cf91313d23f1bd5f5a095ba"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e7635874cf91313d23f1bd5f5a095ba">extend</a> (self, typing.Iterable L)</td></tr>
+<tr class="separator:a7e7635874cf91313d23f1bd5f5a095ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7f9ad69f347d0c8b585dd8b01c30cc1" id="r_ac7f9ad69f347d0c8b585dd8b01c30cc1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7f9ad69f347d0c8b585dd8b01c30cc1">insert</a> (self, int i, <a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a> x)</td></tr>
+<tr class="separator:ac7f9ad69f347d0c8b585dd8b01c30cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a044cc0b09d4dfa7aa4423fd66db169ce" id="r_a044cc0b09d4dfa7aa4423fd66db169ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a044cc0b09d4dfa7aa4423fd66db169ce">pop</a> (self)</td></tr>
+<tr class="separator:a044cc0b09d4dfa7aa4423fd66db169ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e803ceb37abe7ba83822d7f77aaf89" id="r_a00e803ceb37abe7ba83822d7f77aaf89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00e803ceb37abe7ba83822d7f77aaf89">pop</a> (self, int i)</td></tr>
+<tr class="separator:a00e803ceb37abe7ba83822d7f77aaf89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa49afe66a244d5a6f1b22e5f232689e3" id="r_aa49afe66a244d5a6f1b22e5f232689e3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa49afe66a244d5a6f1b22e5f232689e3">resize</a> (self, int arg0)</td></tr>
+<tr class="separator:aa49afe66a244d5a6f1b22e5f232689e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd6dbe7a1c34fabbd244582ab4ec034" id="r_adfd6dbe7a1c34fabbd244582ab4ec034"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfd6dbe7a1c34fabbd244582ab4ec034">resize</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a> arg1)</td></tr>
+<tr class="separator:adfd6dbe7a1c34fabbd244582ab4ec034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ea2555464acc2f842acc1a0d434986" id="r_a87ea2555464acc2f842acc1a0d434986"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87ea2555464acc2f842acc1a0d434986">size</a> (self)</td></tr>
+<tr class="separator:a87ea2555464acc2f842acc1a0d434986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Aliases:  OneMeshContours, OneMeshContours
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a58a40ed4ca5a8d946c20357aa209bc00" name="a58a40ed4ca5a8d946c20357aa209bc00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58a40ed4ca5a8d946c20357aa209bc00">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a368767f200a532b3cc20fda2616160c6" name="a368767f200a532b3cc20fda2616160c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a368767f200a532b3cc20fda2616160c6">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Iterable</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acd8848a01ec651b52b98d028fa0d6aaa" name="acd8848a01ec651b52b98d028fa0d6aaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8848a01ec651b52b98d028fa0d6aaa">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a91e0b53fd8a9bb5a1544eb4a4509df3d" name="a91e0b53fd8a9bb5a1544eb4a4509df3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91e0b53fd8a9bb5a1544eb4a4509df3d">&#9670;&#160;</a></span>__bool__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_OneMeshContour.__bool__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Check whether the list is nonempty
+</pre> 
+</div>
+</div>
+<a id="a3459439d0842fff42954bdf85d9b50ba" name="a3459439d0842fff42954bdf85d9b50ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3459439d0842fff42954bdf85d9b50ba">&#9670;&#160;</a></span>__delitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.__delitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Delete the list elements at index ``i``
+</pre> 
+</div>
+</div>
+<a id="aa6ff806bebeef10462ed3b1f1e3bb19e" name="aa6ff806bebeef10462ed3b1f1e3bb19e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6ff806bebeef10462ed3b1f1e3bb19e">&#9670;&#160;</a></span>__delitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.__delitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Delete list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="a3f84848dc219d5442049ad2505c78d1c" name="a3f84848dc219d5442049ad2505c78d1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f84848dc219d5442049ad2505c78d1c">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a> mrmeshpy.std_vector_OneMeshContour.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c12de810aff3f1c1e9586848310e50c" name="a2c12de810aff3f1c1e9586848310e50c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c12de810aff3f1c1e9586848310e50c">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a> mrmeshpy.std_vector_OneMeshContour.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Retrieve list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="aeb926fea9f775271f3c779caa6720171" name="aeb926fea9f775271f3c779caa6720171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb926fea9f775271f3c779caa6720171">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[<a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a>] mrmeshpy.std_vector_OneMeshContour.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96736f8f5c0d36e3b6fbdcdc814c036f" name="a96736f8f5c0d36e3b6fbdcdc814c036f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96736f8f5c0d36e3b6fbdcdc814c036f">&#9670;&#160;</a></span>__len__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_OneMeshContour.__len__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22a22f39c3b78d2de045e39d3f57da59" name="a22a22f39c3b78d2de045e39d3f57da59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22a22f39c3b78d2de045e39d3f57da59">&#9670;&#160;</a></span>__setitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a78ef8532876e89c6c31ae5574464da" name="a8a78ef8532876e89c6c31ae5574464da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a78ef8532876e89c6c31ae5574464da">&#9670;&#160;</a></span>__setitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Assign list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="a83ca413aa23598c9b0c48cff7a9283b8" name="a83ca413aa23598c9b0c48cff7a9283b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83ca413aa23598c9b0c48cff7a9283b8">&#9670;&#160;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.append </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Add an item to the end of the list
+</pre> 
+</div>
+</div>
+<a id="a37c58078ff2502ad400ed8aa81678c9d" name="a37c58078ff2502ad400ed8aa81678c9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37c58078ff2502ad400ed8aa81678c9d">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Clear the contents
+</pre> 
+</div>
+</div>
+<a id="a426792a54a2ff8c42e33811a990bb891" name="a426792a54a2ff8c42e33811a990bb891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426792a54a2ff8c42e33811a990bb891">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_OneMeshContour.empty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68c3aef94a84bfa289e107ff281bc7fa" name="a68c3aef94a84bfa289e107ff281bc7fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68c3aef94a84bfa289e107ff281bc7fa">&#9670;&#160;</a></span>extend() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.extend </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a></td>          <td class="paramname"><span class="paramname"><em>L</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Extend the list by appending all the items in the given list
+</pre> 
+</div>
+</div>
+<a id="a7e7635874cf91313d23f1bd5f5a095ba" name="a7e7635874cf91313d23f1bd5f5a095ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e7635874cf91313d23f1bd5f5a095ba">&#9670;&#160;</a></span>extend() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.extend </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Iterable</td>          <td class="paramname"><span class="paramname"><em>L</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Extend the list by appending all the items in the given list
+</pre> 
+</div>
+</div>
+<a id="ac7f9ad69f347d0c8b585dd8b01c30cc1" name="ac7f9ad69f347d0c8b585dd8b01c30cc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7f9ad69f347d0c8b585dd8b01c30cc1">&#9670;&#160;</a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.insert </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Insert an item at a given position.
+</pre> 
+</div>
+</div>
+<a id="a044cc0b09d4dfa7aa4423fd66db169ce" name="a044cc0b09d4dfa7aa4423fd66db169ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a044cc0b09d4dfa7aa4423fd66db169ce">&#9670;&#160;</a></span>pop() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a> mrmeshpy.std_vector_OneMeshContour.pop </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Remove and return the last item
+</pre> 
+</div>
+</div>
+<a id="a00e803ceb37abe7ba83822d7f77aaf89" name="a00e803ceb37abe7ba83822d7f77aaf89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00e803ceb37abe7ba83822d7f77aaf89">&#9670;&#160;</a></span>pop() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a> mrmeshpy.std_vector_OneMeshContour.pop </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Remove and return the item at index ``i``
+</pre> 
+</div>
+</div>
+<a id="aa49afe66a244d5a6f1b22e5f232689e3" name="aa49afe66a244d5a6f1b22e5f232689e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa49afe66a244d5a6f1b22e5f232689e3">&#9670;&#160;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adfd6dbe7a1c34fabbd244582ab4ec034" name="adfd6dbe7a1c34fabbd244582ab4ec034"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfd6dbe7a1c34fabbd244582ab4ec034">&#9670;&#160;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_OneMeshContour.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OneMeshContour.html">OneMeshContour</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87ea2555464acc2f842acc1a0d434986" name="a87ea2555464acc2f842acc1a0d434986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87ea2555464acc2f842acc1a0d434986">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_OneMeshContour.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1std__vector__OneMeshContour.html">std_vector_OneMeshContour</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

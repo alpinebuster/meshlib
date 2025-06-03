@@ -1,0 +1,687 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.MoveMeshToVoxelMaxDerivSettings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1MoveMeshToVoxelMaxDerivSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1MoveMeshToVoxelMaxDerivSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.MoveMeshToVoxelMaxDerivSettings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a2dee1d33324c14b72acff4a8e13707a4" id="r_a2dee1d33324c14b72acff4a8e13707a4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dee1d33324c14b72acff4a8e13707a4">__init__</a> (self)</td></tr>
+<tr class="separator:a2dee1d33324c14b72acff4a8e13707a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae48e0aa9873b42a66822e26770971173" id="r_ae48e0aa9873b42a66822e26770971173"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae48e0aa9873b42a66822e26770971173">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1MoveMeshToVoxelMaxDerivSettings.html">MoveMeshToVoxelMaxDerivSettings</a> arg0)</td></tr>
+<tr class="separator:ae48e0aa9873b42a66822e26770971173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bb02d8a14d7fc12ba5f963fb9ca879c" id="r_a5bb02d8a14d7fc12ba5f963fb9ca879c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bb02d8a14d7fc12ba5f963fb9ca879c">__init__</a> (self, int <a class="el" href="#a5574b1ffc320b6de1014b95d6273a134">iters</a>, int <a class="el" href="#a727f46fda827f56a9f2b2f3e658d0c9d">samplePoints</a>, int <a class="el" href="#a84fac9ec6daa82feef3f9813e0edff7a">degree</a>, float <a class="el" href="#a0fc5ca2a30aea1f3b5999316e44d11dc">outlierThreshold</a>, float <a class="el" href="#ae9d0e81d99de234bef240122f06d3489">intermediateSmoothForce</a>, float <a class="el" href="#aac43060e0ca64081658aca0b4d79d0e3">preparationSmoothForce</a>)</td></tr>
+<tr class="separator:a5bb02d8a14d7fc12ba5f963fb9ca879c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84fac9ec6daa82feef3f9813e0edff7a" id="r_a84fac9ec6daa82feef3f9813e0edff7a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84fac9ec6daa82feef3f9813e0edff7a">degree</a> (self)</td></tr>
+<tr class="separator:a84fac9ec6daa82feef3f9813e0edff7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e6ba9fe95439697da7005e540904114" id="r_a8e6ba9fe95439697da7005e540904114"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e6ba9fe95439697da7005e540904114">degree</a> (self, int arg1)</td></tr>
+<tr class="separator:a8e6ba9fe95439697da7005e540904114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9d0e81d99de234bef240122f06d3489" id="r_ae9d0e81d99de234bef240122f06d3489"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9d0e81d99de234bef240122f06d3489">intermediateSmoothForce</a> (self)</td></tr>
+<tr class="separator:ae9d0e81d99de234bef240122f06d3489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2e4b2909846234927611aaaaf572de5" id="r_ad2e4b2909846234927611aaaaf572de5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2e4b2909846234927611aaaaf572de5">intermediateSmoothForce</a> (self, float arg1)</td></tr>
+<tr class="separator:ad2e4b2909846234927611aaaaf572de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5574b1ffc320b6de1014b95d6273a134" id="r_a5574b1ffc320b6de1014b95d6273a134"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5574b1ffc320b6de1014b95d6273a134">iters</a> (self)</td></tr>
+<tr class="separator:a5574b1ffc320b6de1014b95d6273a134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a240a00c6f915bf7812443f9831a81ff1" id="r_a240a00c6f915bf7812443f9831a81ff1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a240a00c6f915bf7812443f9831a81ff1">iters</a> (self, int arg1)</td></tr>
+<tr class="separator:a240a00c6f915bf7812443f9831a81ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc5ca2a30aea1f3b5999316e44d11dc" id="r_a0fc5ca2a30aea1f3b5999316e44d11dc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fc5ca2a30aea1f3b5999316e44d11dc">outlierThreshold</a> (self)</td></tr>
+<tr class="separator:a0fc5ca2a30aea1f3b5999316e44d11dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ac2b0d2eab3aeff5212e84d749dc68" id="r_ac0ac2b0d2eab3aeff5212e84d749dc68"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0ac2b0d2eab3aeff5212e84d749dc68">outlierThreshold</a> (self, float arg1)</td></tr>
+<tr class="separator:ac0ac2b0d2eab3aeff5212e84d749dc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac43060e0ca64081658aca0b4d79d0e3" id="r_aac43060e0ca64081658aca0b4d79d0e3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac43060e0ca64081658aca0b4d79d0e3">preparationSmoothForce</a> (self)</td></tr>
+<tr class="separator:aac43060e0ca64081658aca0b4d79d0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f9e2a2b15a153b3e23c000a0ab13994" id="r_a9f9e2a2b15a153b3e23c000a0ab13994"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f9e2a2b15a153b3e23c000a0ab13994">preparationSmoothForce</a> (self, float arg1)</td></tr>
+<tr class="separator:a9f9e2a2b15a153b3e23c000a0ab13994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a727f46fda827f56a9f2b2f3e658d0c9d" id="r_a727f46fda827f56a9f2b2f3e658d0c9d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a727f46fda827f56a9f2b2f3e658d0c9d">samplePoints</a> (self)</td></tr>
+<tr class="separator:a727f46fda827f56a9f2b2f3e658d0c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5825de207690ae592bf42cad9ab16f0" id="r_ad5825de207690ae592bf42cad9ab16f0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5825de207690ae592bf42cad9ab16f0">samplePoints</a> (self, int arg1)</td></tr>
+<tr class="separator:ad5825de207690ae592bf42cad9ab16f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a8ebba856b1068d0c281d9971b88ce2c3" id="r_a8ebba856b1068d0c281d9971b88ce2c3"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ebba856b1068d0c281d9971b88ce2c3">_offsetof_degree</a> = 8</td></tr>
+<tr class="separator:a8ebba856b1068d0c281d9971b88ce2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90285ae6f729f19dbde37eb76cec3ccd" id="r_a90285ae6f729f19dbde37eb76cec3ccd"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90285ae6f729f19dbde37eb76cec3ccd">_offsetof_intermediateSmoothForce</a> = 16</td></tr>
+<tr class="separator:a90285ae6f729f19dbde37eb76cec3ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960f957bc1d077d5781478601377ab62" id="r_a960f957bc1d077d5781478601377ab62"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a960f957bc1d077d5781478601377ab62">_offsetof_iters</a> = 0</td></tr>
+<tr class="separator:a960f957bc1d077d5781478601377ab62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a614303de4804c207e9e88db10d6d7e" id="r_a6a614303de4804c207e9e88db10d6d7e"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a614303de4804c207e9e88db10d6d7e">_offsetof_outlierThreshold</a> = 12</td></tr>
+<tr class="separator:a6a614303de4804c207e9e88db10d6d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d58386f967c97178c6e853f594ba684" id="r_a0d58386f967c97178c6e853f594ba684"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d58386f967c97178c6e853f594ba684">_offsetof_preparationSmoothForce</a> = 20</td></tr>
+<tr class="separator:a0d58386f967c97178c6e853f594ba684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4f66df81214dd2a429f871788e0c02" id="r_a4f4f66df81214dd2a429f871788e0c02"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f4f66df81214dd2a429f871788e0c02">_offsetof_samplePoints</a> = 4</td></tr>
+<tr class="separator:a4f4f66df81214dd2a429f871788e0c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::MoveMeshToVoxelMaxDerivSettings
+
+\\ingroup SubvoxelMeshCorrection
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2dee1d33324c14b72acff4a8e13707a4" name="a2dee1d33324c14b72acff4a8e13707a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dee1d33324c14b72acff4a8e13707a4">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="ae48e0aa9873b42a66822e26770971173" name="ae48e0aa9873b42a66822e26770971173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae48e0aa9873b42a66822e26770971173">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MoveMeshToVoxelMaxDerivSettings.html">MoveMeshToVoxelMaxDerivSettings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a5bb02d8a14d7fc12ba5f963fb9ca879c" name="a5bb02d8a14d7fc12ba5f963fb9ca879c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bb02d8a14d7fc12ba5f963fb9ca879c">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>iters</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>samplePoints</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>degree</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>outlierThreshold</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>intermediateSmoothForce</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>preparationSmoothForce</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a84fac9ec6daa82feef3f9813e0edff7a" name="a84fac9ec6daa82feef3f9813e0edff7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84fac9ec6daa82feef3f9813e0edff7a">&#9670;&#160;</a></span>degree() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MoveMeshToVoxelMaxDerivSettings.degree </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">degree of the polynomial used to fit sampled points. Must be in range [3; 6]
+</pre> 
+</div>
+</div>
+<a id="a8e6ba9fe95439697da7005e540904114" name="a8e6ba9fe95439697da7005e540904114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e6ba9fe95439697da7005e540904114">&#9670;&#160;</a></span>degree() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.degree </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae9d0e81d99de234bef240122f06d3489" name="ae9d0e81d99de234bef240122f06d3489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9d0e81d99de234bef240122f06d3489">&#9670;&#160;</a></span>intermediateSmoothForce() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.MoveMeshToVoxelMaxDerivSettings.intermediateSmoothForce </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">force of the smoothing (relaxation) of vector field of shifts on each iteration
+</pre> 
+</div>
+</div>
+<a id="ad2e4b2909846234927611aaaaf572de5" name="ad2e4b2909846234927611aaaaf572de5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e4b2909846234927611aaaaf572de5">&#9670;&#160;</a></span>intermediateSmoothForce() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.intermediateSmoothForce </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5574b1ffc320b6de1014b95d6273a134" name="a5574b1ffc320b6de1014b95d6273a134"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5574b1ffc320b6de1014b95d6273a134">&#9670;&#160;</a></span>iters() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MoveMeshToVoxelMaxDerivSettings.iters </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">number of iterations. Each iteration moves vertex only slightly and smooths the vector field of shifts.
+</pre> 
+</div>
+</div>
+<a id="a240a00c6f915bf7812443f9831a81ff1" name="a240a00c6f915bf7812443f9831a81ff1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a240a00c6f915bf7812443f9831a81ff1">&#9670;&#160;</a></span>iters() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.iters </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fc5ca2a30aea1f3b5999316e44d11dc" name="a0fc5ca2a30aea1f3b5999316e44d11dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fc5ca2a30aea1f3b5999316e44d11dc">&#9670;&#160;</a></span>outlierThreshold() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.MoveMeshToVoxelMaxDerivSettings.outlierThreshold </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">for each iteration, if target position of the vertex is greater than this threshold, it is disregarded.
+For small degrees, this value should be small, for large degrees it may be larger.
+Measured in number of voxels.
+</pre> 
+</div>
+</div>
+<a id="ac0ac2b0d2eab3aeff5212e84d749dc68" name="ac0ac2b0d2eab3aeff5212e84d749dc68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0ac2b0d2eab3aeff5212e84d749dc68">&#9670;&#160;</a></span>outlierThreshold() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.outlierThreshold </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac43060e0ca64081658aca0b4d79d0e3" name="aac43060e0ca64081658aca0b4d79d0e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac43060e0ca64081658aca0b4d79d0e3">&#9670;&#160;</a></span>preparationSmoothForce() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.MoveMeshToVoxelMaxDerivSettings.preparationSmoothForce </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">force of initial smoothing of vertices, before applying the algorithm
+</pre> 
+</div>
+</div>
+<a id="a9f9e2a2b15a153b3e23c000a0ab13994" name="a9f9e2a2b15a153b3e23c000a0ab13994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f9e2a2b15a153b3e23c000a0ab13994">&#9670;&#160;</a></span>preparationSmoothForce() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.preparationSmoothForce </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a727f46fda827f56a9f2b2f3e658d0c9d" name="a727f46fda827f56a9f2b2f3e658d0c9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a727f46fda827f56a9f2b2f3e658d0c9d">&#9670;&#160;</a></span>samplePoints() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MoveMeshToVoxelMaxDerivSettings.samplePoints </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">number of points to sample for each vertex. Samples are used to get the picewice-linear function of density and
+estimate the derivative based on it
+</pre> 
+</div>
+</div>
+<a id="ad5825de207690ae592bf42cad9ab16f0" name="ad5825de207690ae592bf42cad9ab16f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5825de207690ae592bf42cad9ab16f0">&#9670;&#160;</a></span>samplePoints() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MoveMeshToVoxelMaxDerivSettings.samplePoints </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8ebba856b1068d0c281d9971b88ce2c3" name="a8ebba856b1068d0c281d9971b88ce2c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ebba856b1068d0c281d9971b88ce2c3">&#9670;&#160;</a></span>_offsetof_degree</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MoveMeshToVoxelMaxDerivSettings._offsetof_degree = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90285ae6f729f19dbde37eb76cec3ccd" name="a90285ae6f729f19dbde37eb76cec3ccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90285ae6f729f19dbde37eb76cec3ccd">&#9670;&#160;</a></span>_offsetof_intermediateSmoothForce</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MoveMeshToVoxelMaxDerivSettings._offsetof_intermediateSmoothForce = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a960f957bc1d077d5781478601377ab62" name="a960f957bc1d077d5781478601377ab62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960f957bc1d077d5781478601377ab62">&#9670;&#160;</a></span>_offsetof_iters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MoveMeshToVoxelMaxDerivSettings._offsetof_iters = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6a614303de4804c207e9e88db10d6d7e" name="a6a614303de4804c207e9e88db10d6d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a614303de4804c207e9e88db10d6d7e">&#9670;&#160;</a></span>_offsetof_outlierThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MoveMeshToVoxelMaxDerivSettings._offsetof_outlierThreshold = 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d58386f967c97178c6e853f594ba684" name="a0d58386f967c97178c6e853f594ba684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d58386f967c97178c6e853f594ba684">&#9670;&#160;</a></span>_offsetof_preparationSmoothForce</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MoveMeshToVoxelMaxDerivSettings._offsetof_preparationSmoothForce = 20</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f4f66df81214dd2a429f871788e0c02" name="a4f4f66df81214dd2a429f871788e0c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4f66df81214dd2a429f871788e0c02">&#9670;&#160;</a></span>_offsetof_samplePoints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MoveMeshToVoxelMaxDerivSettings._offsetof_samplePoints = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1MoveMeshToVoxelMaxDerivSettings.html">MoveMeshToVoxelMaxDerivSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

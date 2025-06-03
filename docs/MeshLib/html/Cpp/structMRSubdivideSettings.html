@@ -1,0 +1,458 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/structMRSubdivideSettings.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRSubdivideSettings Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('structMRSubdivideSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structMRSubdivideSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MRSubdivideSettings Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="MRMeshC_2MRMeshSubdivide_8h_source.html">MRMeshSubdivide.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:adeec58499ab1c16c86c799874f90c8f0" id="r_adeec58499ab1c16c86c799874f90c8f0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adeec58499ab1c16c86c799874f90c8f0">maxEdgeLen</a></td></tr>
+<tr class="memdesc:adeec58499ab1c16c86c799874f90c8f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subdivision is stopped when all edges inside or on the boundary of the region are not longer than this value.  <br /></td></tr>
+<tr class="separator:adeec58499ab1c16c86c799874f90c8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd07252f9a939e4ae38e6eeba987e76" id="r_a8cd07252f9a939e4ae38e6eeba987e76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cd07252f9a939e4ae38e6eeba987e76">maxEdgeSplits</a></td></tr>
+<tr class="memdesc:a8cd07252f9a939e4ae38e6eeba987e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of edge splits allowed.  <br /></td></tr>
+<tr class="separator:a8cd07252f9a939e4ae38e6eeba987e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2102d7a5abd7a59bc9f5214fe35d054" id="r_af2102d7a5abd7a59bc9f5214fe35d054"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2102d7a5abd7a59bc9f5214fe35d054">maxDeviationAfterFlip</a></td></tr>
+<tr class="memdesc:af2102d7a5abd7a59bc9f5214fe35d054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Improves local mesh triangulation by doing edge flips if it does not make too big surface deviation.  <br /></td></tr>
+<tr class="separator:af2102d7a5abd7a59bc9f5214fe35d054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ce3b63ebb60313037ea626982cee63" id="r_a33ce3b63ebb60313037ea626982cee63"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33ce3b63ebb60313037ea626982cee63">maxAngleChangeAfterFlip</a></td></tr>
+<tr class="memdesc:a33ce3b63ebb60313037ea626982cee63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Improves local mesh triangulation by doing edge flips if it does not change dihedral angle more than on this value (in radians)  <br /></td></tr>
+<tr class="separator:a33ce3b63ebb60313037ea626982cee63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d755eca0a3bcc58f0847f35da897684" id="r_a1d755eca0a3bcc58f0847f35da897684"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d755eca0a3bcc58f0847f35da897684">criticalAspectRatioFlip</a></td></tr>
+<tr class="separator:a1d755eca0a3bcc58f0847f35da897684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a988969d8eecf9f0180bbece45a4048b8" id="r_a988969d8eecf9f0180bbece45a4048b8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a988969d8eecf9f0180bbece45a4048b8">region</a></td></tr>
+<tr class="memdesc:a988969d8eecf9f0180bbece45a4048b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Region on mesh to be subdivided, it is updated during the operation.  <br /></td></tr>
+<tr class="separator:a988969d8eecf9f0180bbece45a4048b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27a31d53f64821543bd5fb21cd4fab9d" id="r_a27a31d53f64821543bd5fb21cd4fab9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27a31d53f64821543bd5fb21cd4fab9d">notFlippable</a></td></tr>
+<tr class="memdesc:a27a31d53f64821543bd5fb21cd4fab9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edges specified by this bit-set will never be flipped, but they can be split so it is updated during the operation.  <br /></td></tr>
+<tr class="separator:a27a31d53f64821543bd5fb21cd4fab9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e281a5d1635b3cf548aede48e82214a" id="r_a1e281a5d1635b3cf548aede48e82214a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e281a5d1635b3cf548aede48e82214a">newVerts</a></td></tr>
+<tr class="memdesc:a1e281a5d1635b3cf548aede48e82214a"><td class="mdescLeft">&#160;</td><td class="mdescRight">New vertices appeared during subdivision will be added here.  <br /></td></tr>
+<tr class="separator:a1e281a5d1635b3cf548aede48e82214a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9d3add86da268d281c43554fa22c2a" id="r_a1e9d3add86da268d281c43554fa22c2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e9d3add86da268d281c43554fa22c2a">subdivideBorder</a></td></tr>
+<tr class="separator:a1e9d3add86da268d281c43554fa22c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6017bb445dacb13666341b551c1a7e96" id="r_a6017bb445dacb13666341b551c1a7e96"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6017bb445dacb13666341b551c1a7e96">maxTriAspectRatio</a></td></tr>
+<tr class="memdesc:a6017bb445dacb13666341b551c1a7e96"><td class="mdescLeft">&#160;</td><td class="mdescRight">The subdivision stops as soon as all triangles (in the region) have aspect ratio below or equal to this value.  <br /></td></tr>
+<tr class="separator:a6017bb445dacb13666341b551c1a7e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55ed7d642c787d8957d3a9497ba51087" id="r_a55ed7d642c787d8957d3a9497ba51087"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55ed7d642c787d8957d3a9497ba51087">maxSplittableTriAspectRatio</a></td></tr>
+<tr class="separator:a55ed7d642c787d8957d3a9497ba51087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40d6f0e5fc04584858699368ab9804bc" id="r_a40d6f0e5fc04584858699368ab9804bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40d6f0e5fc04584858699368ab9804bc">smoothMode</a></td></tr>
+<tr class="separator:a40d6f0e5fc04584858699368ab9804bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4837999f61cc60e7cf30f052dc28f1dd" id="r_a4837999f61cc60e7cf30f052dc28f1dd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4837999f61cc60e7cf30f052dc28f1dd">minSharpDihedralAngle</a></td></tr>
+<tr class="separator:a4837999f61cc60e7cf30f052dc28f1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5110fcc51f181788ac84bfb5d55c73c2" id="r_a5110fcc51f181788ac84bfb5d55c73c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5110fcc51f181788ac84bfb5d55c73c2">projectOnOriginalMesh</a></td></tr>
+<tr class="memdesc:a5110fcc51f181788ac84bfb5d55c73c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">if true, then every new vertex will be projected on the original mesh (before smoothing)  <br /></td></tr>
+<tr class="separator:a5110fcc51f181788ac84bfb5d55c73c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28a33eb2158b00f97b177fec21f8b80" id="r_aa28a33eb2158b00f97b177fec21f8b80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa28a33eb2158b00f97b177fec21f8b80">progressCallback</a></td></tr>
+<tr class="memdesc:aa28a33eb2158b00f97b177fec21f8b80"><td class="mdescLeft">&#160;</td><td class="mdescRight">callback to report algorithm progress and cancel it by user request  <br /></td></tr>
+<tr class="separator:aa28a33eb2158b00f97b177fec21f8b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1d755eca0a3bcc58f0847f35da897684" name="a1d755eca0a3bcc58f0847f35da897684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d755eca0a3bcc58f0847f35da897684">&#9670;&#160;</a></span>criticalAspectRatioFlip</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRSubdivideSettings::criticalAspectRatioFlip</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>If this value is less than FLT_MAX then edge flips will ignore dihedral angle check if one of triangles has aspect ratio more than this value Unit: rad </p>
+
+</div>
+</div>
+<a id="a33ce3b63ebb60313037ea626982cee63" name="a33ce3b63ebb60313037ea626982cee63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ce3b63ebb60313037ea626982cee63">&#9670;&#160;</a></span>maxAngleChangeAfterFlip</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRSubdivideSettings::maxAngleChangeAfterFlip</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Improves local mesh triangulation by doing edge flips if it does not change dihedral angle more than on this value (in radians) </p>
+
+</div>
+</div>
+<a id="af2102d7a5abd7a59bc9f5214fe35d054" name="af2102d7a5abd7a59bc9f5214fe35d054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2102d7a5abd7a59bc9f5214fe35d054">&#9670;&#160;</a></span>maxDeviationAfterFlip</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRSubdivideSettings::maxDeviationAfterFlip</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Improves local mesh triangulation by doing edge flips if it does not make too big surface deviation. </p>
+
+</div>
+</div>
+<a id="adeec58499ab1c16c86c799874f90c8f0" name="adeec58499ab1c16c86c799874f90c8f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeec58499ab1c16c86c799874f90c8f0">&#9670;&#160;</a></span>maxEdgeLen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRSubdivideSettings::maxEdgeLen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subdivision is stopped when all edges inside or on the boundary of the region are not longer than this value. </p>
+
+</div>
+</div>
+<a id="a8cd07252f9a939e4ae38e6eeba987e76" name="a8cd07252f9a939e4ae38e6eeba987e76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cd07252f9a939e4ae38e6eeba987e76">&#9670;&#160;</a></span>maxEdgeSplits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRSubdivideSettings::maxEdgeSplits</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maximum number of edge splits allowed. </p>
+
+</div>
+</div>
+<a id="a55ed7d642c787d8957d3a9497ba51087" name="a55ed7d642c787d8957d3a9497ba51087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55ed7d642c787d8957d3a9497ba51087">&#9670;&#160;</a></span>maxSplittableTriAspectRatio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRSubdivideSettings::maxSplittableTriAspectRatio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>An edge is subdivided only if both its left and right triangles have aspect ratio below or equal to this value. So this is a maximum aspect ratio of a triangle that can be split on two before Delone optimization. Please set it to a smaller value only if subdivideBorder==false, otherwise many narrow triangles can appear near border </p>
+
+</div>
+</div>
+<a id="a6017bb445dacb13666341b551c1a7e96" name="a6017bb445dacb13666341b551c1a7e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6017bb445dacb13666341b551c1a7e96">&#9670;&#160;</a></span>maxTriAspectRatio</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRSubdivideSettings::maxTriAspectRatio</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The subdivision stops as soon as all triangles (in the region) have aspect ratio below or equal to this value. </p>
+
+</div>
+</div>
+<a id="a4837999f61cc60e7cf30f052dc28f1dd" name="a4837999f61cc60e7cf30f052dc28f1dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4837999f61cc60e7cf30f052dc28f1dd">&#9670;&#160;</a></span>minSharpDihedralAngle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MRSubdivideSettings::minSharpDihedralAngle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>In case of activated smoothMode, the smoothness is locally deactivated at the edges having dihedral angle at least this value </p>
+
+</div>
+</div>
+<a id="a1e281a5d1635b3cf548aede48e82214a" name="a1e281a5d1635b3cf548aede48e82214a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e281a5d1635b3cf548aede48e82214a">&#9670;&#160;</a></span>newVerts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a>* MRSubdivideSettings::newVerts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>New vertices appeared during subdivision will be added here. </p>
+
+</div>
+</div>
+<a id="a27a31d53f64821543bd5fb21cd4fab9d" name="a27a31d53f64821543bd5fb21cd4fab9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27a31d53f64821543bd5fb21cd4fab9d">&#9670;&#160;</a></span>notFlippable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a>* MRSubdivideSettings::notFlippable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Edges specified by this bit-set will never be flipped, but they can be split so it is updated during the operation. </p>
+
+</div>
+</div>
+<a id="aa28a33eb2158b00f97b177fec21f8b80" name="aa28a33eb2158b00f97b177fec21f8b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa28a33eb2158b00f97b177fec21f8b80">&#9670;&#160;</a></span>progressCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a> MRSubdivideSettings::progressCallback</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>callback to report algorithm progress and cancel it by user request </p>
+
+</div>
+</div>
+<a id="a5110fcc51f181788ac84bfb5d55c73c2" name="a5110fcc51f181788ac84bfb5d55c73c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5110fcc51f181788ac84bfb5d55c73c2">&#9670;&#160;</a></span>projectOnOriginalMesh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRSubdivideSettings::projectOnOriginalMesh</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>if true, then every new vertex will be projected on the original mesh (before smoothing) </p>
+
+</div>
+</div>
+<a id="a988969d8eecf9f0180bbece45a4048b8" name="a988969d8eecf9f0180bbece45a4048b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a988969d8eecf9f0180bbece45a4048b8">&#9670;&#160;</a></span>region</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a>* MRSubdivideSettings::region</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Region on mesh to be subdivided, it is updated during the operation. </p>
+
+</div>
+</div>
+<a id="a40d6f0e5fc04584858699368ab9804bc" name="a40d6f0e5fc04584858699368ab9804bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40d6f0e5fc04584858699368ab9804bc">&#9670;&#160;</a></span>smoothMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRSubdivideSettings::smoothMode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Puts new vertices so that they form a smooth surface together with existing vertices. This option works best for natural surfaces without sharp edges in between triangles </p>
+
+</div>
+</div>
+<a id="a1e9d3add86da268d281c43554fa22c2a" name="a1e9d3add86da268d281c43554fa22c2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e9d3add86da268d281c43554fa22c2a">&#9670;&#160;</a></span>subdivideBorder</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MRSubdivideSettings::subdivideBorder</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>If false do not touch border edges (cannot subdivide lone faces)<br  />
+use <a class="el" href="namespaceMR.html#a14819584da09eac6df2cab459ab80626">MR::findRegionOuterFaces</a> to find boundary faces </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="MRMeshC_2MRMeshSubdivide_8h_source.html">MRMeshC/MRMeshSubdivide.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structMRSubdivideSettings.html">MRSubdivideSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

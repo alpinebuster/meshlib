@@ -1,0 +1,1051 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1Matrix3i.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.Matrix3i Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1Matrix3i.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1Matrix3i-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.Matrix3i Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:acef4b2a51b57c09c1ee1792b20c46d24" id="r_acef4b2a51b57c09c1ee1792b20c46d24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acef4b2a51b57c09c1ee1792b20c46d24">__add__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> b)</td></tr>
+<tr class="separator:acef4b2a51b57c09c1ee1792b20c46d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c75b9facc552eec3674429df5fa6b44" id="r_a5c75b9facc552eec3674429df5fa6b44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c75b9facc552eec3674429df5fa6b44">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> b)</td></tr>
+<tr class="separator:a5c75b9facc552eec3674429df5fa6b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af036fac3225538b55f497b07b0c4a79f" id="r_af036fac3225538b55f497b07b0c4a79f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af036fac3225538b55f497b07b0c4a79f">__getitem__</a> (self, int row)</td></tr>
+<tr class="separator:af036fac3225538b55f497b07b0c4a79f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af036fac3225538b55f497b07b0c4a79f" id="r_af036fac3225538b55f497b07b0c4a79f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af036fac3225538b55f497b07b0c4a79f">__getitem__</a> (self, int row)</td></tr>
+<tr class="separator:af036fac3225538b55f497b07b0c4a79f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a570731c2c78503c8ca00e1351b294b4a" id="r_a570731c2c78503c8ca00e1351b294b4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a570731c2c78503c8ca00e1351b294b4a">__iadd__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> b)</td></tr>
+<tr class="separator:a570731c2c78503c8ca00e1351b294b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31cca544a6f11539ae32d527e27d7e4b" id="r_a31cca544a6f11539ae32d527e27d7e4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31cca544a6f11539ae32d527e27d7e4b">__imatmul__</a> (self, int b)</td></tr>
+<tr class="separator:a31cca544a6f11539ae32d527e27d7e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e18592f850d037c271d3b22ef376c92" id="r_a8e18592f850d037c271d3b22ef376c92"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e18592f850d037c271d3b22ef376c92">__init__</a> (self)</td></tr>
+<tr class="separator:a8e18592f850d037c271d3b22ef376c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50bb65b611cb5e9aca5047f6457fba1d" id="r_a50bb65b611cb5e9aca5047f6457fba1d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50bb65b611cb5e9aca5047f6457fba1d">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> <a class="el" href="#a2b0599063345b3977f2f1ec7c095b9b9">x</a>, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> y, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> z)</td></tr>
+<tr class="separator:a50bb65b611cb5e9aca5047f6457fba1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe93db7fa9115b9c32b0a4e5ea2b678d" id="r_abe93db7fa9115b9c32b0a4e5ea2b678d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe93db7fa9115b9c32b0a4e5ea2b678d">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> arg0)</td></tr>
+<tr class="separator:abe93db7fa9115b9c32b0a4e5ea2b678d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d1515d4ca0d843ef3d09363914c90be" id="r_a8d1515d4ca0d843ef3d09363914c90be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d1515d4ca0d843ef3d09363914c90be">__isub__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> b)</td></tr>
+<tr class="separator:a8d1515d4ca0d843ef3d09363914c90be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a2a4f8d5157ec21e26b54719b51a20" id="r_ac3a2a4f8d5157ec21e26b54719b51a20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3a2a4f8d5157ec21e26b54719b51a20">__itruediv__</a> (self, int b)</td></tr>
+<tr class="separator:ac3a2a4f8d5157ec21e26b54719b51a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4de5e4db519645b9da768150fc7535a" id="r_aa4de5e4db519645b9da768150fc7535a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4de5e4db519645b9da768150fc7535a">__mul__</a> (self, int a)</td></tr>
+<tr class="separator:aa4de5e4db519645b9da768150fc7535a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ec58aedfe2121e18ce1b2598ca32e1b" id="r_a2ec58aedfe2121e18ce1b2598ca32e1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ec58aedfe2121e18ce1b2598ca32e1b">__mul__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> b)</td></tr>
+<tr class="separator:a2ec58aedfe2121e18ce1b2598ca32e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c12e11acf2ee42a03023cd0960c6a6" id="r_ad5c12e11acf2ee42a03023cd0960c6a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5c12e11acf2ee42a03023cd0960c6a6">__mul__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> b)</td></tr>
+<tr class="separator:ad5c12e11acf2ee42a03023cd0960c6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4aea842b9c96c7b3f6dd02fb256a61a" id="r_ae4aea842b9c96c7b3f6dd02fb256a61a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4aea842b9c96c7b3f6dd02fb256a61a">__ne__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> b)</td></tr>
+<tr class="separator:ae4aea842b9c96c7b3f6dd02fb256a61a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa17f2103fb2979347df8d906373a65e5" id="r_aa17f2103fb2979347df8d906373a65e5"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa17f2103fb2979347df8d906373a65e5">__repr__</a> (self)</td></tr>
+<tr class="separator:aa17f2103fb2979347df8d906373a65e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1622e611204f43e882930c31fa6ac1ac" id="r_a1622e611204f43e882930c31fa6ac1ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1622e611204f43e882930c31fa6ac1ac">__rmul__</a> (self, int b)</td></tr>
+<tr class="separator:a1622e611204f43e882930c31fa6ac1ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c1a560049042c20a9462bffa4bf885a" id="r_a3c1a560049042c20a9462bffa4bf885a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c1a560049042c20a9462bffa4bf885a">__setitem__</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> arg1)</td></tr>
+<tr class="separator:a3c1a560049042c20a9462bffa4bf885a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3eeebbe0cc6557910d0f0ae78c0521e" id="r_ab3eeebbe0cc6557910d0f0ae78c0521e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3eeebbe0cc6557910d0f0ae78c0521e">__sub__</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> b)</td></tr>
+<tr class="separator:ab3eeebbe0cc6557910d0f0ae78c0521e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7ff3cc52d6ad5a495165b6ad0f8814c" id="r_af7ff3cc52d6ad5a495165b6ad0f8814c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7ff3cc52d6ad5a495165b6ad0f8814c">__truediv__</a> (self, int a)</td></tr>
+<tr class="separator:af7ff3cc52d6ad5a495165b6ad0f8814c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59e6c03c213d0a46b78fd37ac9e6e169" id="r_a59e6c03c213d0a46b78fd37ac9e6e169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59e6c03c213d0a46b78fd37ac9e6e169">col</a> (self, int i)</td></tr>
+<tr class="separator:a59e6c03c213d0a46b78fd37ac9e6e169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960770cdddaeae4283a3baf7d0885bdc" id="r_a960770cdddaeae4283a3baf7d0885bdc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a960770cdddaeae4283a3baf7d0885bdc">det</a> (self)</td></tr>
+<tr class="separator:a960770cdddaeae4283a3baf7d0885bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aada9171b8649b7e3d0a2502d50e7b3a9" id="r_aada9171b8649b7e3d0a2502d50e7b3a9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aada9171b8649b7e3d0a2502d50e7b3a9">norm</a> (self)</td></tr>
+<tr class="separator:aada9171b8649b7e3d0a2502d50e7b3a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1126505bab3a50fd7d5ea02d33cb5f4e" id="r_a1126505bab3a50fd7d5ea02d33cb5f4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1126505bab3a50fd7d5ea02d33cb5f4e">normSq</a> (self)</td></tr>
+<tr class="separator:a1126505bab3a50fd7d5ea02d33cb5f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17a98283940ee5350b81073871dd463d" id="r_a17a98283940ee5350b81073871dd463d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17a98283940ee5350b81073871dd463d">trace</a> (self)</td></tr>
+<tr class="separator:a17a98283940ee5350b81073871dd463d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89486e9e07c9431e2c3c805760f4813c" id="r_a89486e9e07c9431e2c3c805760f4813c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89486e9e07c9431e2c3c805760f4813c">transposed</a> (self)</td></tr>
+<tr class="separator:a89486e9e07c9431e2c3c805760f4813c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b0599063345b3977f2f1ec7c095b9b9" id="r_a2b0599063345b3977f2f1ec7c095b9b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b0599063345b3977f2f1ec7c095b9b9">x</a> (self)</td></tr>
+<tr class="separator:a2b0599063345b3977f2f1ec7c095b9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bcfa91788f4dec61c6da4c5bae32d71" id="r_a4bcfa91788f4dec61c6da4c5bae32d71"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bcfa91788f4dec61c6da4c5bae32d71">x</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> arg1)</td></tr>
+<tr class="separator:a4bcfa91788f4dec61c6da4c5bae32d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a4fd9f906d14473d3bf7cb51b1f35397a" id="r_a4fd9f906d14473d3bf7cb51b1f35397a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fd9f906d14473d3bf7cb51b1f35397a">fromColumns</a> (<a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> <a class="el" href="#a2b0599063345b3977f2f1ec7c095b9b9">x</a>, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> y, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> z)</td></tr>
+<tr class="separator:a4fd9f906d14473d3bf7cb51b1f35397a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e335691a345d7afe9ca3077b3415d6" id="r_ad3e335691a345d7afe9ca3077b3415d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3e335691a345d7afe9ca3077b3415d6">fromRows</a> (<a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> <a class="el" href="#a2b0599063345b3977f2f1ec7c095b9b9">x</a>, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> y, <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> z)</td></tr>
+<tr class="separator:ad3e335691a345d7afe9ca3077b3415d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71374b5f45658aa84e0e0ecf03737fb8" id="r_a71374b5f45658aa84e0e0ecf03737fb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71374b5f45658aa84e0e0ecf03737fb8">identity</a> ()</td></tr>
+<tr class="separator:a71374b5f45658aa84e0e0ecf03737fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a511905346105da038df4e1c7edc5f3db" id="r_a511905346105da038df4e1c7edc5f3db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a511905346105da038df4e1c7edc5f3db">scale</a> (int s)</td></tr>
+<tr class="separator:a511905346105da038df4e1c7edc5f3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a575247221322accce042478a8a4da1a3" id="r_a575247221322accce042478a8a4da1a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a575247221322accce042478a8a4da1a3">scale</a> (int sx, int sy, int sz)</td></tr>
+<tr class="separator:a575247221322accce042478a8a4da1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad48adae57f657c4fc6fc46bddf1e148a" id="r_ad48adae57f657c4fc6fc46bddf1e148a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad48adae57f657c4fc6fc46bddf1e148a">scale</a> (<a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> s)</td></tr>
+<tr class="separator:ad48adae57f657c4fc6fc46bddf1e148a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef0445cc7c56fbcf5b235b50e2dc1a02" id="r_aef0445cc7c56fbcf5b235b50e2dc1a02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef0445cc7c56fbcf5b235b50e2dc1a02">zero</a> ()</td></tr>
+<tr class="separator:aef0445cc7c56fbcf5b235b50e2dc1a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::Matrix3i
+Aliases:  Vector3_int_MatrixType
+
+arbitrary 3x3 matrix
+\\ingroup MatrixGroup
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8e18592f850d037c271d3b22ef376c92" name="a8e18592f850d037c271d3b22ef376c92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e18592f850d037c271d3b22ef376c92">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Matrix3i.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50bb65b611cb5e9aca5047f6457fba1d" name="a50bb65b611cb5e9aca5047f6457fba1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50bb65b611cb5e9aca5047f6457fba1d">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Matrix3i.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">initializes matrix from its 3 rows
+</pre> 
+</div>
+</div>
+<a id="abe93db7fa9115b9c32b0a4e5ea2b678d" name="abe93db7fa9115b9c32b0a4e5ea2b678d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe93db7fa9115b9c32b0a4e5ea2b678d">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Matrix3i.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="acef4b2a51b57c09c1ee1792b20c46d24" name="acef4b2a51b57c09c1ee1792b20c46d24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acef4b2a51b57c09c1ee1792b20c46d24">&#9670;&#160;</a></span>__add__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__add__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">NOTE: We use `std::declval()` in the operators below because libclang 18 in our binding generator is bugged and chokes on decltyping `a.x` and such. TODO fix this when we update libclang.
+</pre> 
+</div>
+</div>
+<a id="a5c75b9facc552eec3674429df5fa6b44" name="a5c75b9facc552eec3674429df5fa6b44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c75b9facc552eec3674429df5fa6b44">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Matrix3i.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af036fac3225538b55f497b07b0c4a79f" name="af036fac3225538b55f497b07b0c4a79f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af036fac3225538b55f497b07b0c4a79f">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> mrmeshpy.Matrix3i.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>row</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">row access
+</pre> 
+</div>
+</div>
+<a id="af036fac3225538b55f497b07b0c4a79f" name="af036fac3225538b55f497b07b0c4a79f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af036fac3225538b55f497b07b0c4a79f">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> mrmeshpy.Matrix3i.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>row</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a570731c2c78503c8ca00e1351b294b4a" name="a570731c2c78503c8ca00e1351b294b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a570731c2c78503c8ca00e1351b294b4a">&#9670;&#160;</a></span>__iadd__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__iadd__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31cca544a6f11539ae32d527e27d7e4b" name="a31cca544a6f11539ae32d527e27d7e4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31cca544a6f11539ae32d527e27d7e4b">&#9670;&#160;</a></span>__imatmul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__imatmul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d1515d4ca0d843ef3d09363914c90be" name="a8d1515d4ca0d843ef3d09363914c90be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d1515d4ca0d843ef3d09363914c90be">&#9670;&#160;</a></span>__isub__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__isub__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3a2a4f8d5157ec21e26b54719b51a20" name="ac3a2a4f8d5157ec21e26b54719b51a20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3a2a4f8d5157ec21e26b54719b51a20">&#9670;&#160;</a></span>__itruediv__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__itruediv__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4de5e4db519645b9da768150fc7535a" name="aa4de5e4db519645b9da768150fc7535a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4de5e4db519645b9da768150fc7535a">&#9670;&#160;</a></span>__mul__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__mul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>a</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5c12e11acf2ee42a03023cd0960c6a6" name="ad5c12e11acf2ee42a03023cd0960c6a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c12e11acf2ee42a03023cd0960c6a6">&#9670;&#160;</a></span>__mul__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__mul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">product of two matrices
+</pre> 
+</div>
+</div>
+<a id="a2ec58aedfe2121e18ce1b2598ca32e1b" name="a2ec58aedfe2121e18ce1b2598ca32e1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ec58aedfe2121e18ce1b2598ca32e1b">&#9670;&#160;</a></span>__mul__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> mrmeshpy.Matrix3i.__mul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">x = a * b
+</pre> 
+</div>
+</div>
+<a id="ae4aea842b9c96c7b3f6dd02fb256a61a" name="ae4aea842b9c96c7b3f6dd02fb256a61a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4aea842b9c96c7b3f6dd02fb256a61a">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Matrix3i.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa17f2103fb2979347df8d906373a65e5" name="aa17f2103fb2979347df8d906373a65e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa17f2103fb2979347df8d906373a65e5">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.Matrix3i.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1622e611204f43e882930c31fa6ac1ac" name="a1622e611204f43e882930c31fa6ac1ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1622e611204f43e882930c31fa6ac1ac">&#9670;&#160;</a></span>__rmul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__rmul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c1a560049042c20a9462bffa4bf885a" name="a3c1a560049042c20a9462bffa4bf885a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c1a560049042c20a9462bffa4bf885a">&#9670;&#160;</a></span>__setitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Matrix3i.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3eeebbe0cc6557910d0f0ae78c0521e" name="ab3eeebbe0cc6557910d0f0ae78c0521e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3eeebbe0cc6557910d0f0ae78c0521e">&#9670;&#160;</a></span>__sub__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__sub__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7ff3cc52d6ad5a495165b6ad0f8814c" name="af7ff3cc52d6ad5a495165b6ad0f8814c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7ff3cc52d6ad5a495165b6ad0f8814c">&#9670;&#160;</a></span>__truediv__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.__truediv__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>a</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a59e6c03c213d0a46b78fd37ac9e6e169" name="a59e6c03c213d0a46b78fd37ac9e6e169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59e6c03c213d0a46b78fd37ac9e6e169">&#9670;&#160;</a></span>col()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> mrmeshpy.Matrix3i.col </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">column access
+</pre> 
+</div>
+</div>
+<a id="a960770cdddaeae4283a3baf7d0885bdc" name="a960770cdddaeae4283a3baf7d0885bdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960770cdddaeae4283a3baf7d0885bdc">&#9670;&#160;</a></span>det()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Matrix3i.det </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes determinant of the matrix
+</pre> 
+</div>
+</div>
+<a id="a4fd9f906d14473d3bf7cb51b1f35397a" name="a4fd9f906d14473d3bf7cb51b1f35397a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd9f906d14473d3bf7cb51b1f35397a">&#9670;&#160;</a></span>fromColumns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.fromColumns </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">constructs a matrix from its 3 columns;
+use this method to get the matrix that transforms basis vectors ( plusX, plusY, plusZ ) into vectors ( x, y, z ) respectively
+</pre> 
+</div>
+</div>
+<a id="ad3e335691a345d7afe9ca3077b3415d6" name="ad3e335691a345d7afe9ca3077b3415d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e335691a345d7afe9ca3077b3415d6">&#9670;&#160;</a></span>fromRows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.fromRows </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">constructs a matrix from its 3 rows
+</pre> 
+</div>
+</div>
+<a id="a71374b5f45658aa84e0e0ecf03737fb8" name="a71374b5f45658aa84e0e0ecf03737fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71374b5f45658aa84e0e0ecf03737fb8">&#9670;&#160;</a></span>identity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.identity </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aada9171b8649b7e3d0a2502d50e7b3a9" name="aada9171b8649b7e3d0a2502d50e7b3a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aada9171b8649b7e3d0a2502d50e7b3a9">&#9670;&#160;</a></span>norm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.Matrix3i.norm </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1126505bab3a50fd7d5ea02d33cb5f4e" name="a1126505bab3a50fd7d5ea02d33cb5f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1126505bab3a50fd7d5ea02d33cb5f4e">&#9670;&#160;</a></span>normSq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Matrix3i.normSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">compute sum of squared matrix elements
+</pre> 
+</div>
+</div>
+<a id="a511905346105da038df4e1c7edc5f3db" name="a511905346105da038df4e1c7edc5f3db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a511905346105da038df4e1c7edc5f3db">&#9670;&#160;</a></span>scale() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.scale </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">returns a matrix that scales uniformly
+</pre> 
+</div>
+</div>
+<a id="a575247221322accce042478a8a4da1a3" name="a575247221322accce042478a8a4da1a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a575247221322accce042478a8a4da1a3">&#9670;&#160;</a></span>scale() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.scale </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sz</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">returns a matrix that has its own scale along each axis
+</pre> 
+</div>
+</div>
+<a id="ad48adae57f657c4fc6fc46bddf1e148a" name="ad48adae57f657c4fc6fc46bddf1e148a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad48adae57f657c4fc6fc46bddf1e148a">&#9670;&#160;</a></span>scale() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.scale </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17a98283940ee5350b81073871dd463d" name="a17a98283940ee5350b81073871dd463d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17a98283940ee5350b81073871dd463d">&#9670;&#160;</a></span>trace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Matrix3i.trace </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes trace of the matrix
+</pre> 
+</div>
+</div>
+<a id="a89486e9e07c9431e2c3c805760f4813c" name="a89486e9e07c9431e2c3c805760f4813c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89486e9e07c9431e2c3c805760f4813c">&#9670;&#160;</a></span>transposed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.transposed </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes transposed matrix
+</pre> 
+</div>
+</div>
+<a id="a2b0599063345b3977f2f1ec7c095b9b9" name="a2b0599063345b3977f2f1ec7c095b9b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b0599063345b3977f2f1ec7c095b9b9">&#9670;&#160;</a></span>x() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a> mrmeshpy.Matrix3i.x </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">rows, identity matrix by default
+</pre> 
+</div>
+</div>
+<a id="a4bcfa91788f4dec61c6da4c5bae32d71" name="a4bcfa91788f4dec61c6da4c5bae32d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bcfa91788f4dec61c6da4c5bae32d71">&#9670;&#160;</a></span>x() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Matrix3i.x </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3i.html">Vector3i</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef0445cc7c56fbcf5b235b50e2dc1a02" name="aef0445cc7c56fbcf5b235b50e2dc1a02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef0445cc7c56fbcf5b235b50e2dc1a02">&#9670;&#160;</a></span>zero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a> mrmeshpy.Matrix3i.zero </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1Matrix3i.html">Matrix3i</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

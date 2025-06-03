@@ -1,0 +1,521 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRMeshFwd.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRMeshFwd_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
+  <div class="headertitle"><div class="title">MRMeshFwd.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="MRMeshC_2MRMeshFwd_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ab8a099cc7166020a82c2f96fa5043ae6" id="r_ab8a099cc7166020a82c2f96fa5043ae6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a>&#160;&#160;&#160;__attribute__( ( visibility( &quot;default&quot; ) ) )</td></tr>
+<tr class="separator:ab8a099cc7166020a82c2f96fa5043ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07cb85df391b65224a89339236e03c2e" id="r_a07cb85df391b65224a89339236e03c2e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></td></tr>
+<tr class="separator:a07cb85df391b65224a89339236e03c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c0dd57de0c70036b4a1e14f71d2fe11" id="r_a4c0dd57de0c70036b4a1e14f71d2fe11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></td></tr>
+<tr class="separator:a4c0dd57de0c70036b4a1e14f71d2fe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a89b45a4728b7f2a3281d78d9164162fe" id="r_a89b45a4728b7f2a3281d78d9164162fe"><td class="memItemLeft" align="right" valign="top">typedef typedefMR_EXTERN_C_BEGIN struct <a class="el" href="#a89b45a4728b7f2a3281d78d9164162fe">MRString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89b45a4728b7f2a3281d78d9164162fe">MRString</a></td></tr>
+<tr class="separator:a89b45a4728b7f2a3281d78d9164162fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c8567a61ac1e952ded2abbb02ff204" id="r_ad2c8567a61ac1e952ded2abbb02ff204"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a></td></tr>
+<tr class="separator:ad2c8567a61ac1e952ded2abbb02ff204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe7b5eb2550df2844d90173c210184af" id="r_afe7b5eb2550df2844d90173c210184af"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a></td></tr>
+<tr class="separator:afe7b5eb2550df2844d90173c210184af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a548f82a7483e7be9fc0e69623051cef9" id="r_a548f82a7483e7be9fc0e69623051cef9"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a></td></tr>
+<tr class="separator:a548f82a7483e7be9fc0e69623051cef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87ea817dc8204ed7e311d55fd9252cfc" id="r_a87ea817dc8204ed7e311d55fd9252cfc"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a></td></tr>
+<tr class="separator:a87ea817dc8204ed7e311d55fd9252cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46d18b867dd2cbd31dd009e01658ba44" id="r_a46d18b867dd2cbd31dd009e01658ba44"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a></td></tr>
+<tr class="separator:a46d18b867dd2cbd31dd009e01658ba44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7dcb20cfb7d62569e4fa66321b6c35a" id="r_af7dcb20cfb7d62569e4fa66321b6c35a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#af7dcb20cfb7d62569e4fa66321b6c35a">MRVoxelBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7dcb20cfb7d62569e4fa66321b6c35a">MRVoxelBitSet</a></td></tr>
+<tr class="separator:af7dcb20cfb7d62569e4fa66321b6c35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1efab8f165542a85e22ea5e2d0aa18b2" id="r_a1efab8f165542a85e22ea5e2d0aa18b2"><td class="memItemLeft" align="right" valign="top">typedef struct MRBox3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1efab8f165542a85e22ea5e2d0aa18b2">MRBox3f</a></td></tr>
+<tr class="separator:a1efab8f165542a85e22ea5e2d0aa18b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af49ab2afae9db985778fbadaa3803017" id="r_af49ab2afae9db985778fbadaa3803017"><td class="memItemLeft" align="right" valign="top">typedef struct MRBox3i&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af49ab2afae9db985778fbadaa3803017">MRBox3i</a></td></tr>
+<tr class="separator:af49ab2afae9db985778fbadaa3803017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469f0a5727d73054f9f7acba1c1193a7" id="r_a469f0a5727d73054f9f7acba1c1193a7"><td class="memItemLeft" align="right" valign="top">typedef struct MRVector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a469f0a5727d73054f9f7acba1c1193a7">MRVector3f</a></td></tr>
+<tr class="separator:a469f0a5727d73054f9f7acba1c1193a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1665fc204f46ceb2585f1ed9453edee" id="r_af1665fc204f46ceb2585f1ed9453edee"><td class="memItemLeft" align="right" valign="top">typedef struct MRAffineXf3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1665fc204f46ceb2585f1ed9453edee">MRAffineXf3f</a></td></tr>
+<tr class="separator:af1665fc204f46ceb2585f1ed9453edee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3a7218b1a3774293f119358ece55c8" id="r_a7b3a7218b1a3774293f119358ece55c8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a></td></tr>
+<tr class="separator:a7b3a7218b1a3774293f119358ece55c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b372c6d0fd65239f731902623e752c5" id="r_a7b372c6d0fd65239f731902623e752c5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b372c6d0fd65239f731902623e752c5">MRMesh</a></td></tr>
+<tr class="separator:a7b372c6d0fd65239f731902623e752c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a877289e7c07441f8026608ae31c04b94" id="r_a877289e7c07441f8026608ae31c04b94"><td class="memItemLeft" align="right" valign="top">typedef struct MRMeshPart&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a877289e7c07441f8026608ae31c04b94">MRMeshPart</a></td></tr>
+<tr class="separator:a877289e7c07441f8026608ae31c04b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19ede8e7737a01e7448209c82c517753" id="r_a19ede8e7737a01e7448209c82c517753"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#a19ede8e7737a01e7448209c82c517753">MRPointCloud</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19ede8e7737a01e7448209c82c517753">MRPointCloud</a></td></tr>
+<tr class="separator:a19ede8e7737a01e7448209c82c517753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4154c318451cdd0d2aff3d2c7686f0ce" id="r_a4154c318451cdd0d2aff3d2c7686f0ce"><td class="memItemLeft" align="right" valign="top">typedef struct MRPointsLoadSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4154c318451cdd0d2aff3d2c7686f0ce">MRPointsLoadSettings</a></td></tr>
+<tr class="separator:a4154c318451cdd0d2aff3d2c7686f0ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a761cff4830de379b4ab552bf5e53607a" id="r_a761cff4830de379b4ab552bf5e53607a"><td class="memItemLeft" align="right" valign="top">typedef struct MRSaveSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a761cff4830de379b4ab552bf5e53607a">MRSaveSettings</a></td></tr>
+<tr class="separator:a761cff4830de379b4ab552bf5e53607a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466dd32565f9e71946208ad0428aa09d" id="r_a466dd32565f9e71946208ad0428aa09d"><td class="memItemLeft" align="right" valign="top">typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a>) (float)</td></tr>
+<tr class="separator:a466dd32565f9e71946208ad0428aa09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a07cb85df391b65224a89339236e03c2e" name="a07cb85df391b65224a89339236e03c2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07cb85df391b65224a89339236e03c2e">&#9670;&#160;</a></span>MR_EXTERN_C_BEGIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MR_EXTERN_C_BEGIN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c0dd57de0c70036b4a1e14f71d2fe11" name="a4c0dd57de0c70036b4a1e14f71d2fe11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c0dd57de0c70036b4a1e14f71d2fe11">&#9670;&#160;</a></span>MR_EXTERN_C_END</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MR_EXTERN_C_END</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8a099cc7166020a82c2f96fa5043ae6" name="ab8a099cc7166020a82c2f96fa5043ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8a099cc7166020a82c2f96fa5043ae6">&#9670;&#160;</a></span>MRMESHC_API</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MRMESHC_API&#160;&#160;&#160;__attribute__( ( visibility( &quot;default&quot; ) ) )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="af1665fc204f46ceb2585f1ed9453edee" name="af1665fc204f46ceb2585f1ed9453edee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1665fc204f46ceb2585f1ed9453edee">&#9670;&#160;</a></span>MRAffineXf3f</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRAffineXf3f MRAffineXf3f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2c8567a61ac1e952ded2abbb02ff204" name="ad2c8567a61ac1e952ded2abbb02ff204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2c8567a61ac1e952ded2abbb02ff204">&#9670;&#160;</a></span>MRBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a> <a class="el" href="#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1efab8f165542a85e22ea5e2d0aa18b2" name="a1efab8f165542a85e22ea5e2d0aa18b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1efab8f165542a85e22ea5e2d0aa18b2">&#9670;&#160;</a></span>MRBox3f</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRBox3f MRBox3f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af49ab2afae9db985778fbadaa3803017" name="af49ab2afae9db985778fbadaa3803017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49ab2afae9db985778fbadaa3803017">&#9670;&#160;</a></span>MRBox3i</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRBox3i MRBox3i</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe7b5eb2550df2844d90173c210184af" name="afe7b5eb2550df2844d90173c210184af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe7b5eb2550df2844d90173c210184af">&#9670;&#160;</a></span>MREdgeBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a> <a class="el" href="#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87ea817dc8204ed7e311d55fd9252cfc" name="a87ea817dc8204ed7e311d55fd9252cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87ea817dc8204ed7e311d55fd9252cfc">&#9670;&#160;</a></span>MRFaceBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> <a class="el" href="#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b372c6d0fd65239f731902623e752c5" name="a7b372c6d0fd65239f731902623e752c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b372c6d0fd65239f731902623e752c5">&#9670;&#160;</a></span>MRMesh</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> <a class="el" href="#a7b372c6d0fd65239f731902623e752c5">MRMesh</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a877289e7c07441f8026608ae31c04b94" name="a877289e7c07441f8026608ae31c04b94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a877289e7c07441f8026608ae31c04b94">&#9670;&#160;</a></span>MRMeshPart</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRMeshPart MRMeshPart</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b3a7218b1a3774293f119358ece55c8" name="a7b3a7218b1a3774293f119358ece55c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b3a7218b1a3774293f119358ece55c8">&#9670;&#160;</a></span>MRMeshTopology</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a> <a class="el" href="#a7b3a7218b1a3774293f119358ece55c8">MRMeshTopology</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19ede8e7737a01e7448209c82c517753" name="a19ede8e7737a01e7448209c82c517753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19ede8e7737a01e7448209c82c517753">&#9670;&#160;</a></span>MRPointCloud</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#a19ede8e7737a01e7448209c82c517753">MRPointCloud</a> <a class="el" href="#a19ede8e7737a01e7448209c82c517753">MRPointCloud</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4154c318451cdd0d2aff3d2c7686f0ce" name="a4154c318451cdd0d2aff3d2c7686f0ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4154c318451cdd0d2aff3d2c7686f0ce">&#9670;&#160;</a></span>MRPointsLoadSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRPointsLoadSettings MRPointsLoadSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a466dd32565f9e71946208ad0428aa09d" name="a466dd32565f9e71946208ad0428aa09d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466dd32565f9e71946208ad0428aa09d">&#9670;&#160;</a></span>MRProgressCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef bool(* MRProgressCallback) (float)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a761cff4830de379b4ab552bf5e53607a" name="a761cff4830de379b4ab552bf5e53607a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a761cff4830de379b4ab552bf5e53607a">&#9670;&#160;</a></span>MRSaveSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRSaveSettings MRSaveSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89b45a4728b7f2a3281d78d9164162fe" name="a89b45a4728b7f2a3281d78d9164162fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89b45a4728b7f2a3281d78d9164162fe">&#9670;&#160;</a></span>MRString</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef typedefMR_EXTERN_C_BEGIN struct <a class="el" href="#a89b45a4728b7f2a3281d78d9164162fe">MRString</a> <a class="el" href="#a89b45a4728b7f2a3281d78d9164162fe">MRString</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a548f82a7483e7be9fc0e69623051cef9" name="a548f82a7483e7be9fc0e69623051cef9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a548f82a7483e7be9fc0e69623051cef9">&#9670;&#160;</a></span>MRUndirectedEdgeBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a> <a class="el" href="#a548f82a7483e7be9fc0e69623051cef9">MRUndirectedEdgeBitSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a469f0a5727d73054f9f7acba1c1193a7" name="a469f0a5727d73054f9f7acba1c1193a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a469f0a5727d73054f9f7acba1c1193a7">&#9670;&#160;</a></span>MRVector3f</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRVector3f MRVector3f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46d18b867dd2cbd31dd009e01658ba44" name="a46d18b867dd2cbd31dd009e01658ba44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46d18b867dd2cbd31dd009e01658ba44">&#9670;&#160;</a></span>MRVertBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> <a class="el" href="#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af7dcb20cfb7d62569e4fa66321b6c35a" name="af7dcb20cfb7d62569e4fa66321b6c35a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7dcb20cfb7d62569e4fa66321b6c35a">&#9670;&#160;</a></span>MRVoxelBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#af7dcb20cfb7d62569e4fa66321b6c35a">MRVoxelBitSet</a> <a class="el" href="#af7dcb20cfb7d62569e4fa66321b6c35a">MRVoxelBitSet</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html">MRMeshFwd.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

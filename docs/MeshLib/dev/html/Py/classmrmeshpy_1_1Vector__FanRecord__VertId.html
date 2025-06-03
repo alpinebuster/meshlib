@@ -1,0 +1,1159 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.Vector_FanRecord_VertId Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1Vector__FanRecord__VertId.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1Vector__FanRecord__VertId-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.Vector_FanRecord_VertId Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ae77607f98cd6286fc76fd32e5731fecf" id="r_ae77607f98cd6286fc76fd32e5731fecf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae77607f98cd6286fc76fd32e5731fecf">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> i)</td></tr>
+<tr class="separator:ae77607f98cd6286fc76fd32e5731fecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae77607f98cd6286fc76fd32e5731fecf" id="r_ae77607f98cd6286fc76fd32e5731fecf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae77607f98cd6286fc76fd32e5731fecf">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> i)</td></tr>
+<tr class="separator:ae77607f98cd6286fc76fd32e5731fecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8472295a43ede599d6b9498a6313f0fd" id="r_a8472295a43ede599d6b9498a6313f0fd"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8472295a43ede599d6b9498a6313f0fd">__init__</a> (self)</td></tr>
+<tr class="separator:a8472295a43ede599d6b9498a6313f0fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651a8982c53454edebb33f9cb78bd819" id="r_a651a8982c53454edebb33f9cb78bd819"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a651a8982c53454edebb33f9cb78bd819">__init__</a> (self, int <a class="el" href="#a7c858a1140b8f75a17424637f9608d5c">size</a>)</td></tr>
+<tr class="separator:a651a8982c53454edebb33f9cb78bd819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7cfcf43cff83ffa5ebc8605675cd056" id="r_aa7cfcf43cff83ffa5ebc8605675cd056"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7cfcf43cff83ffa5ebc8605675cd056">__init__</a> (self, int <a class="el" href="#a7c858a1140b8f75a17424637f9608d5c">size</a>, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> val)</td></tr>
+<tr class="separator:aa7cfcf43cff83ffa5ebc8605675cd056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb6d944bab749864986485b0b3253b8" id="r_affb6d944bab749864986485b0b3253b8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affb6d944bab749864986485b0b3253b8">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__FanRecord.html">std_vector_FanRecord</a> vec)</td></tr>
+<tr class="separator:affb6d944bab749864986485b0b3253b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca63369e2b956ef3704b4ded42692cf5" id="r_aca63369e2b956ef3704b4ded42692cf5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca63369e2b956ef3704b4ded42692cf5">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector__FanRecord__VertId.html">Vector_FanRecord_VertId</a> arg0)</td></tr>
+<tr class="separator:aca63369e2b956ef3704b4ded42692cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b3ec56d4dec1bb58280ab348e5aa324" id="r_a3b3ec56d4dec1bb58280ab348e5aa324"><td class="memItemLeft" align="right" valign="top">typing.Iterator[<a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b3ec56d4dec1bb58280ab348e5aa324">__iter__</a> (self)</td></tr>
+<tr class="separator:a3b3ec56d4dec1bb58280ab348e5aa324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8669ac5ce2330bf057f9cf4b86ec7dc3" id="r_a8669ac5ce2330bf057f9cf4b86ec7dc3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8669ac5ce2330bf057f9cf4b86ec7dc3">__setitem__</a> (self, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> arg0, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> arg1)</td></tr>
+<tr class="separator:a8669ac5ce2330bf057f9cf4b86ec7dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8be7df02fa7d5f3a92713bac9d831c65" id="r_a8be7df02fa7d5f3a92713bac9d831c65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8be7df02fa7d5f3a92713bac9d831c65">autoResizeAt</a> (self, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> i)</td></tr>
+<tr class="separator:a8be7df02fa7d5f3a92713bac9d831c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace1aa0f9a1084a2caaf0c76ee7b4a346" id="r_ace1aa0f9a1084a2caaf0c76ee7b4a346"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace1aa0f9a1084a2caaf0c76ee7b4a346">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> pos, int len, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> val)</td></tr>
+<tr class="separator:ace1aa0f9a1084a2caaf0c76ee7b4a346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aae738930c272138b37a05c66cb17d7" id="r_a0aae738930c272138b37a05c66cb17d7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0aae738930c272138b37a05c66cb17d7">autoResizeSet</a> (self, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> i, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> val)</td></tr>
+<tr class="separator:a0aae738930c272138b37a05c66cb17d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61ac158fbb3e41f7bce556d8aed81b04" id="r_a61ac158fbb3e41f7bce556d8aed81b04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61ac158fbb3e41f7bce556d8aed81b04">back</a> (self)</td></tr>
+<tr class="separator:a61ac158fbb3e41f7bce556d8aed81b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61ac158fbb3e41f7bce556d8aed81b04" id="r_a61ac158fbb3e41f7bce556d8aed81b04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61ac158fbb3e41f7bce556d8aed81b04">back</a> (self)</td></tr>
+<tr class="separator:a61ac158fbb3e41f7bce556d8aed81b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41fb29c84c747ecd77cb5845df235654" id="r_a41fb29c84c747ecd77cb5845df235654"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41fb29c84c747ecd77cb5845df235654">backId</a> (self)</td></tr>
+<tr class="separator:a41fb29c84c747ecd77cb5845df235654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f9cd880861c4bdec600d608674994f8" id="r_a8f9cd880861c4bdec600d608674994f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f9cd880861c4bdec600d608674994f8">beginId</a> (self)</td></tr>
+<tr class="separator:a8f9cd880861c4bdec600d608674994f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900e6933ab5e96fb6bfc1597831f023a" id="r_a900e6933ab5e96fb6bfc1597831f023a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a900e6933ab5e96fb6bfc1597831f023a">capacity</a> (self)</td></tr>
+<tr class="separator:a900e6933ab5e96fb6bfc1597831f023a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2564f3605a5e2add3cb9ddd49a20113c" id="r_a2564f3605a5e2add3cb9ddd49a20113c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2564f3605a5e2add3cb9ddd49a20113c">clear</a> (self)</td></tr>
+<tr class="separator:a2564f3605a5e2add3cb9ddd49a20113c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b412ad096ed81e7b9c6733ba98ffc22" id="r_a8b412ad096ed81e7b9c6733ba98ffc22"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b412ad096ed81e7b9c6733ba98ffc22">data</a> (self)</td></tr>
+<tr class="separator:a8b412ad096ed81e7b9c6733ba98ffc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b412ad096ed81e7b9c6733ba98ffc22" id="r_a8b412ad096ed81e7b9c6733ba98ffc22"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b412ad096ed81e7b9c6733ba98ffc22">data</a> (self)</td></tr>
+<tr class="separator:a8b412ad096ed81e7b9c6733ba98ffc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac0fc159068bd421d3d31ed60e956eb" id="r_a3ac0fc159068bd421d3d31ed60e956eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ac0fc159068bd421d3d31ed60e956eb">emplace_back</a> (self)</td></tr>
+<tr class="separator:a3ac0fc159068bd421d3d31ed60e956eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada400019f2e60676e626e51f45951b5e" id="r_ada400019f2e60676e626e51f45951b5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada400019f2e60676e626e51f45951b5e">empty</a> (self)</td></tr>
+<tr class="separator:ada400019f2e60676e626e51f45951b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab415c5073a9a4c95e222dca2b1f5914f" id="r_ab415c5073a9a4c95e222dca2b1f5914f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab415c5073a9a4c95e222dca2b1f5914f">endId</a> (self)</td></tr>
+<tr class="separator:ab415c5073a9a4c95e222dca2b1f5914f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3837268a164b47412781ebbdc02dc2e0" id="r_a3837268a164b47412781ebbdc02dc2e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3837268a164b47412781ebbdc02dc2e0">front</a> (self)</td></tr>
+<tr class="separator:a3837268a164b47412781ebbdc02dc2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3837268a164b47412781ebbdc02dc2e0" id="r_a3837268a164b47412781ebbdc02dc2e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3837268a164b47412781ebbdc02dc2e0">front</a> (self)</td></tr>
+<tr class="separator:a3837268a164b47412781ebbdc02dc2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d323dc8adf29058d5ff92cf71c67ee7" id="r_a0d323dc8adf29058d5ff92cf71c67ee7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d323dc8adf29058d5ff92cf71c67ee7">heapBytes</a> (self)</td></tr>
+<tr class="separator:a0d323dc8adf29058d5ff92cf71c67ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86f6040900de9bfda8e6e4409b85c5b2" id="r_a86f6040900de9bfda8e6e4409b85c5b2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86f6040900de9bfda8e6e4409b85c5b2">pop_back</a> (self)</td></tr>
+<tr class="separator:a86f6040900de9bfda8e6e4409b85c5b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa25be182a8aa6bfee2b92cda84db2595" id="r_aa25be182a8aa6bfee2b92cda84db2595"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa25be182a8aa6bfee2b92cda84db2595">push_back</a> (self, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> t)</td></tr>
+<tr class="separator:aa25be182a8aa6bfee2b92cda84db2595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa25be182a8aa6bfee2b92cda84db2595" id="r_aa25be182a8aa6bfee2b92cda84db2595"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa25be182a8aa6bfee2b92cda84db2595">push_back</a> (self, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> t)</td></tr>
+<tr class="separator:aa25be182a8aa6bfee2b92cda84db2595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a64087ebcac99f547ec1e0b95401acc" id="r_a5a64087ebcac99f547ec1e0b95401acc"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a64087ebcac99f547ec1e0b95401acc">reserve</a> (self, int <a class="el" href="#a900e6933ab5e96fb6bfc1597831f023a">capacity</a>)</td></tr>
+<tr class="separator:a5a64087ebcac99f547ec1e0b95401acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0548d0c480bbc73d6bf3364613a418d" id="r_ad0548d0c480bbc73d6bf3364613a418d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0548d0c480bbc73d6bf3364613a418d">resize</a> (self, int newSize)</td></tr>
+<tr class="separator:ad0548d0c480bbc73d6bf3364613a418d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af803725c2b72b62ffe6e58e19a389578" id="r_af803725c2b72b62ffe6e58e19a389578"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af803725c2b72b62ffe6e58e19a389578">resize</a> (self, int newSize, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> t)</td></tr>
+<tr class="separator:af803725c2b72b62ffe6e58e19a389578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa75c85b98f4edb2a796b78f7561fa627" id="r_aa75c85b98f4edb2a796b78f7561fa627"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa75c85b98f4edb2a796b78f7561fa627">resizeNoInit</a> (self, int targetSize)</td></tr>
+<tr class="separator:aa75c85b98f4edb2a796b78f7561fa627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7e311cbfa72f9cbfcff2198e72ddf4f" id="r_af7e311cbfa72f9cbfcff2198e72ddf4f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7e311cbfa72f9cbfcff2198e72ddf4f">resizeWithReserve</a> (self, int newSize)</td></tr>
+<tr class="separator:af7e311cbfa72f9cbfcff2198e72ddf4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10a3758713fedac9ad68a6268bac8340" id="r_a10a3758713fedac9ad68a6268bac8340"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10a3758713fedac9ad68a6268bac8340">resizeWithReserve</a> (self, int newSize, <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> value)</td></tr>
+<tr class="separator:a10a3758713fedac9ad68a6268bac8340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c858a1140b8f75a17424637f9608d5c" id="r_a7c858a1140b8f75a17424637f9608d5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c858a1140b8f75a17424637f9608d5c">size</a> (self)</td></tr>
+<tr class="separator:a7c858a1140b8f75a17424637f9608d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1600d3419e0e9d8bc78c70f92a19eb" id="r_a7a1600d3419e0e9d8bc78c70f92a19eb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a1600d3419e0e9d8bc78c70f92a19eb">swap</a> (self, <a class="el" href="classmrmeshpy_1_1Vector__FanRecord__VertId.html">Vector_FanRecord_VertId</a> b)</td></tr>
+<tr class="separator:a7a1600d3419e0e9d8bc78c70f92a19eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad223a339ccc12658e9abaf166edf3cf0" id="r_ad223a339ccc12658e9abaf166edf3cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__FanRecord.html">std_vector_FanRecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad223a339ccc12658e9abaf166edf3cf0">vec_</a> (self)</td></tr>
+<tr class="separator:ad223a339ccc12658e9abaf166edf3cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70a0e52aa67b77037a3b24a9e8fe96f1" id="r_a70a0e52aa67b77037a3b24a9e8fe96f1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70a0e52aa67b77037a3b24a9e8fe96f1">vec_</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__FanRecord.html">std_vector_FanRecord</a> arg1)</td></tr>
+<tr class="separator:a70a0e52aa67b77037a3b24a9e8fe96f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a57974c1be937dd92a6eb641ec67e43da" id="r_a57974c1be937dd92a6eb641ec67e43da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57974c1be937dd92a6eb641ec67e43da">const_reference</a> = <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td></tr>
+<tr class="separator:a57974c1be937dd92a6eb641ec67e43da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8db48765aef5f40629f6ccd76749e92" id="r_ac8db48765aef5f40629f6ccd76749e92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8db48765aef5f40629f6ccd76749e92">reference</a> = <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td></tr>
+<tr class="separator:ac8db48765aef5f40629f6ccd76749e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa1e36ffefa8a2bd938324e09c20d1c7" id="r_afa1e36ffefa8a2bd938324e09c20d1c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa1e36ffefa8a2bd938324e09c20d1c7">value_type</a> = <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td></tr>
+<tr class="separator:afa1e36ffefa8a2bd938324e09c20d1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a7bc39c4970df04466cd1b1e7fbfb2e79" id="r_a7bc39c4970df04466cd1b1e7fbfb2e79"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bc39c4970df04466cd1b1e7fbfb2e79">_offsetof_vec_</a> = 0</td></tr>
+<tr class="separator:a7bc39c4970df04466cd1b1e7fbfb2e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::Vector&lt;MR::FanRecord, MR::VertId&gt;
+
+
+ \\brief std::vector&lt;T&gt;-like container that requires specific indexing type,
+ \\tparam T type of stored elements
+ \\tparam I type of index (shall be convertible to size_t)
+ \\ingroup BasicGroup</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8472295a43ede599d6b9498a6313f0fd" name="a8472295a43ede599d6b9498a6313f0fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8472295a43ede599d6b9498a6313f0fd">&#9670;&#160;</a></span>__init__() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a651a8982c53454edebb33f9cb78bd819" name="a651a8982c53454edebb33f9cb78bd819"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651a8982c53454edebb33f9cb78bd819">&#9670;&#160;</a></span>__init__() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7cfcf43cff83ffa5ebc8605675cd056" name="aa7cfcf43cff83ffa5ebc8605675cd056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7cfcf43cff83ffa5ebc8605675cd056">&#9670;&#160;</a></span>__init__() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="affb6d944bab749864986485b0b3253b8" name="affb6d944bab749864986485b0b3253b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb6d944bab749864986485b0b3253b8">&#9670;&#160;</a></span>__init__() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__FanRecord.html">std_vector_FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>vec</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca63369e2b956ef3704b4ded42692cf5" name="aca63369e2b956ef3704b4ded42692cf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca63369e2b956ef3704b4ded42692cf5">&#9670;&#160;</a></span>__init__() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector__FanRecord__VertId.html">Vector_FanRecord_VertId</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae77607f98cd6286fc76fd32e5731fecf" name="ae77607f98cd6286fc76fd32e5731fecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae77607f98cd6286fc76fd32e5731fecf">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae77607f98cd6286fc76fd32e5731fecf" name="ae77607f98cd6286fc76fd32e5731fecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae77607f98cd6286fc76fd32e5731fecf">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b3ec56d4dec1bb58280ab348e5aa324" name="a3b3ec56d4dec1bb58280ab348e5aa324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b3ec56d4dec1bb58280ab348e5aa324">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[<a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a>] mrmeshpy.Vector_FanRecord_VertId.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8669ac5ce2330bf057f9cf4b86ec7dc3" name="a8669ac5ce2330bf057f9cf4b86ec7dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8669ac5ce2330bf057f9cf4b86ec7dc3">&#9670;&#160;</a></span>__setitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8be7df02fa7d5f3a92713bac9d831c65" name="a8be7df02fa7d5f3a92713bac9d831c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8be7df02fa7d5f3a92713bac9d831c65">&#9670;&#160;</a></span>autoResizeAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.autoResizeAt </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">this accessor automatically adjusts the size of the vector
+</pre> 
+</div>
+</div>
+<a id="a0aae738930c272138b37a05c66cb17d7" name="a0aae738930c272138b37a05c66cb17d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aae738930c272138b37a05c66cb17d7">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace1aa0f9a1084a2caaf0c76ee7b4a346" name="ace1aa0f9a1084a2caaf0c76ee7b4a346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace1aa0f9a1084a2caaf0c76ee7b4a346">&#9670;&#160;</a></span>autoResizeSet() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.autoResizeSet </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets elements [pos, pos+len) to given value, adjusting the size of the vector to include new elements
+</pre> 
+</div>
+</div>
+<a id="a61ac158fbb3e41f7bce556d8aed81b04" name="a61ac158fbb3e41f7bce556d8aed81b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61ac158fbb3e41f7bce556d8aed81b04">&#9670;&#160;</a></span>back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61ac158fbb3e41f7bce556d8aed81b04" name="a61ac158fbb3e41f7bce556d8aed81b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61ac158fbb3e41f7bce556d8aed81b04">&#9670;&#160;</a></span>back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41fb29c84c747ecd77cb5845df235654" name="a41fb29c84c747ecd77cb5845df235654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41fb29c84c747ecd77cb5845df235654">&#9670;&#160;</a></span>backId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> mrmeshpy.Vector_FanRecord_VertId.backId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the back() element
+</pre> 
+</div>
+</div>
+<a id="a8f9cd880861c4bdec600d608674994f8" name="a8f9cd880861c4bdec600d608674994f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f9cd880861c4bdec600d608674994f8">&#9670;&#160;</a></span>beginId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> mrmeshpy.Vector_FanRecord_VertId.beginId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the identifier of the first element
+</pre> 
+</div>
+</div>
+<a id="a900e6933ab5e96fb6bfc1597831f023a" name="a900e6933ab5e96fb6bfc1597831f023a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a900e6933ab5e96fb6bfc1597831f023a">&#9670;&#160;</a></span>capacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Vector_FanRecord_VertId.capacity </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2564f3605a5e2add3cb9ddd49a20113c" name="a2564f3605a5e2add3cb9ddd49a20113c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2564f3605a5e2add3cb9ddd49a20113c">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b412ad096ed81e7b9c6733ba98ffc22" name="a8b412ad096ed81e7b9c6733ba98ffc22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b412ad096ed81e7b9c6733ba98ffc22">&#9670;&#160;</a></span>data() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b412ad096ed81e7b9c6733ba98ffc22" name="a8b412ad096ed81e7b9c6733ba98ffc22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b412ad096ed81e7b9c6733ba98ffc22">&#9670;&#160;</a></span>data() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.data </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ac0fc159068bd421d3d31ed60e956eb" name="a3ac0fc159068bd421d3d31ed60e956eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ac0fc159068bd421d3d31ed60e956eb">&#9670;&#160;</a></span>emplace_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.emplace_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada400019f2e60676e626e51f45951b5e" name="ada400019f2e60676e626e51f45951b5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada400019f2e60676e626e51f45951b5e">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.Vector_FanRecord_VertId.empty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab415c5073a9a4c95e222dca2b1f5914f" name="ab415c5073a9a4c95e222dca2b1f5914f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab415c5073a9a4c95e222dca2b1f5914f">&#9670;&#160;</a></span>endId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> mrmeshpy.Vector_FanRecord_VertId.endId </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns backId() + 1
+</pre> 
+</div>
+</div>
+<a id="a3837268a164b47412781ebbdc02dc2e0" name="a3837268a164b47412781ebbdc02dc2e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3837268a164b47412781ebbdc02dc2e0">&#9670;&#160;</a></span>front() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.front </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3837268a164b47412781ebbdc02dc2e0" name="a3837268a164b47412781ebbdc02dc2e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3837268a164b47412781ebbdc02dc2e0">&#9670;&#160;</a></span>front() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.front </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d323dc8adf29058d5ff92cf71c67ee7" name="a0d323dc8adf29058d5ff92cf71c67ee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d323dc8adf29058d5ff92cf71c67ee7">&#9670;&#160;</a></span>heapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Vector_FanRecord_VertId.heapBytes </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the amount of memory this object occupies on heap
+</pre> 
+</div>
+</div>
+<a id="a86f6040900de9bfda8e6e4409b85c5b2" name="a86f6040900de9bfda8e6e4409b85c5b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f6040900de9bfda8e6e4409b85c5b2">&#9670;&#160;</a></span>pop_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.pop_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa25be182a8aa6bfee2b92cda84db2595" name="aa25be182a8aa6bfee2b92cda84db2595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa25be182a8aa6bfee2b92cda84db2595">&#9670;&#160;</a></span>push_back() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.push_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa25be182a8aa6bfee2b92cda84db2595" name="aa25be182a8aa6bfee2b92cda84db2595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa25be182a8aa6bfee2b92cda84db2595">&#9670;&#160;</a></span>push_back() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.push_back </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a64087ebcac99f547ec1e0b95401acc" name="a5a64087ebcac99f547ec1e0b95401acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a64087ebcac99f547ec1e0b95401acc">&#9670;&#160;</a></span>reserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.reserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0548d0c480bbc73d6bf3364613a418d" name="ad0548d0c480bbc73d6bf3364613a418d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0548d0c480bbc73d6bf3364613a418d">&#9670;&#160;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af803725c2b72b62ffe6e58e19a389578" name="af803725c2b72b62ffe6e58e19a389578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af803725c2b72b62ffe6e58e19a389578">&#9670;&#160;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa75c85b98f4edb2a796b78f7561fa627" name="aa75c85b98f4edb2a796b78f7561fa627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa75c85b98f4edb2a796b78f7561fa627">&#9670;&#160;</a></span>resizeNoInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.resizeNoInit </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>targetSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">resizes the vector skipping initialization of its elements (more precisely initializing them using ( noInit ) constructor )
+</pre> 
+</div>
+</div>
+<a id="af7e311cbfa72f9cbfcff2198e72ddf4f" name="af7e311cbfa72f9cbfcff2198e72ddf4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7e311cbfa72f9cbfcff2198e72ddf4f">&#9670;&#160;</a></span>resizeWithReserve() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.resizeWithReserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">doubles reserved memory until resize(newSize) can be done without reallocation
+</pre> 
+</div>
+</div>
+<a id="a10a3758713fedac9ad68a6268bac8340" name="a10a3758713fedac9ad68a6268bac8340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10a3758713fedac9ad68a6268bac8340">&#9670;&#160;</a></span>resizeWithReserve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.resizeWithReserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>newSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">doubles reserved memory until resize(newSize) can be done without reallocation
+</pre> 
+</div>
+</div>
+<a id="a7c858a1140b8f75a17424637f9608d5c" name="a7c858a1140b8f75a17424637f9608d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c858a1140b8f75a17424637f9608d5c">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.Vector_FanRecord_VertId.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a1600d3419e0e9d8bc78c70f92a19eb" name="a7a1600d3419e0e9d8bc78c70f92a19eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1600d3419e0e9d8bc78c70f92a19eb">&#9670;&#160;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.swap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector__FanRecord__VertId.html">Vector_FanRecord_VertId</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad223a339ccc12658e9abaf166edf3cf0" name="ad223a339ccc12658e9abaf166edf3cf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad223a339ccc12658e9abaf166edf3cf0">&#9670;&#160;</a></span>vec_() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__FanRecord.html">std_vector_FanRecord</a> mrmeshpy.Vector_FanRecord_VertId.vec_ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">the user can directly manipulate the vector, anyway she cannot break anything
+</pre> 
+</div>
+</div>
+<a id="a70a0e52aa67b77037a3b24a9e8fe96f1" name="a70a0e52aa67b77037a3b24a9e8fe96f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70a0e52aa67b77037a3b24a9e8fe96f1">&#9670;&#160;</a></span>vec_() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.Vector_FanRecord_VertId.vec_ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__FanRecord.html">std_vector_FanRecord</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7bc39c4970df04466cd1b1e7fbfb2e79" name="a7bc39c4970df04466cd1b1e7fbfb2e79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bc39c4970df04466cd1b1e7fbfb2e79">&#9670;&#160;</a></span>_offsetof_vec_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.Vector_FanRecord_VertId._offsetof_vec_ = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a57974c1be937dd92a6eb641ec67e43da" name="a57974c1be937dd92a6eb641ec67e43da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57974c1be937dd92a6eb641ec67e43da">&#9670;&#160;</a></span>const_reference</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Vector_FanRecord_VertId.const_reference = <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8db48765aef5f40629f6ccd76749e92" name="ac8db48765aef5f40629f6ccd76749e92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8db48765aef5f40629f6ccd76749e92">&#9670;&#160;</a></span>reference</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Vector_FanRecord_VertId.reference = <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afa1e36ffefa8a2bd938324e09c20d1c7" name="afa1e36ffefa8a2bd938324e09c20d1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa1e36ffefa8a2bd938324e09c20d1c7">&#9670;&#160;</a></span>value_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.Vector_FanRecord_VertId.value_type = <a class="el" href="classmrmeshpy_1_1FanRecord.html">FanRecord</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1Vector__FanRecord__VertId.html">Vector_FanRecord_VertId</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

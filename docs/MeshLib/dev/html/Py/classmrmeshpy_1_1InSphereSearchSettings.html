@@ -1,0 +1,619 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.InSphereSearchSettings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1InSphereSearchSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1InSphereSearchSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.InSphereSearchSettings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a3f0e7622ee44d9207319b3c585391fd7" id="r_a3f0e7622ee44d9207319b3c585391fd7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f0e7622ee44d9207319b3c585391fd7">__init__</a> (self)</td></tr>
+<tr class="separator:a3f0e7622ee44d9207319b3c585391fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8fa1b3bcec86c2f87f96d71505640b" id="r_a1a8fa1b3bcec86c2f87f96d71505640b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a8fa1b3bcec86c2f87f96d71505640b">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1InSphereSearchSettings.html">InSphereSearchSettings</a> arg0)</td></tr>
+<tr class="separator:a1a8fa1b3bcec86c2f87f96d71505640b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f8bb0eec3f2cfd8dd6d8070b69c7405" id="r_a6f8bb0eec3f2cfd8dd6d8070b69c7405"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f8bb0eec3f2cfd8dd6d8070b69c7405">__init__</a> (self, bool <a class="el" href="#a43e18f120551a90286eb010911b4bf82">insideAndOutside</a>, float <a class="el" href="#a0bc9dfc185d8a52438a1683aa14203d0">maxRadius</a>, int <a class="el" href="#a72d462082b3107d22cf7e18b0aa33ade">maxIters</a>, float <a class="el" href="#af9bbe4cee5f7424c133413c36f6b8f3a">minShrinkage</a>, float <a class="el" href="#ac7a5abaa75e96e0dd92325224a105b68">minAngleCos</a>)</td></tr>
+<tr class="separator:a6f8bb0eec3f2cfd8dd6d8070b69c7405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43e18f120551a90286eb010911b4bf82" id="r_a43e18f120551a90286eb010911b4bf82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43e18f120551a90286eb010911b4bf82">insideAndOutside</a> (self)</td></tr>
+<tr class="separator:a43e18f120551a90286eb010911b4bf82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b1d48e74aaad8aa3e05a714ceb9bf47" id="r_a0b1d48e74aaad8aa3e05a714ceb9bf47"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1d48e74aaad8aa3e05a714ceb9bf47">insideAndOutside</a> (self, bool arg1)</td></tr>
+<tr class="separator:a0b1d48e74aaad8aa3e05a714ceb9bf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d462082b3107d22cf7e18b0aa33ade" id="r_a72d462082b3107d22cf7e18b0aa33ade"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72d462082b3107d22cf7e18b0aa33ade">maxIters</a> (self)</td></tr>
+<tr class="separator:a72d462082b3107d22cf7e18b0aa33ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89c67b4beaefad94df738dd4eae68de2" id="r_a89c67b4beaefad94df738dd4eae68de2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89c67b4beaefad94df738dd4eae68de2">maxIters</a> (self, int arg1)</td></tr>
+<tr class="separator:a89c67b4beaefad94df738dd4eae68de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc9dfc185d8a52438a1683aa14203d0" id="r_a0bc9dfc185d8a52438a1683aa14203d0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bc9dfc185d8a52438a1683aa14203d0">maxRadius</a> (self)</td></tr>
+<tr class="separator:a0bc9dfc185d8a52438a1683aa14203d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a744f1ca6fc9779e6798c018e06490e" id="r_a4a744f1ca6fc9779e6798c018e06490e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a744f1ca6fc9779e6798c018e06490e">maxRadius</a> (self, float arg1)</td></tr>
+<tr class="separator:a4a744f1ca6fc9779e6798c018e06490e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7a5abaa75e96e0dd92325224a105b68" id="r_ac7a5abaa75e96e0dd92325224a105b68"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7a5abaa75e96e0dd92325224a105b68">minAngleCos</a> (self)</td></tr>
+<tr class="separator:ac7a5abaa75e96e0dd92325224a105b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad611bdd900cdba3a1649947a32aedc87" id="r_ad611bdd900cdba3a1649947a32aedc87"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad611bdd900cdba3a1649947a32aedc87">minAngleCos</a> (self, float arg1)</td></tr>
+<tr class="separator:ad611bdd900cdba3a1649947a32aedc87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9bbe4cee5f7424c133413c36f6b8f3a" id="r_af9bbe4cee5f7424c133413c36f6b8f3a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9bbe4cee5f7424c133413c36f6b8f3a">minShrinkage</a> (self)</td></tr>
+<tr class="separator:af9bbe4cee5f7424c133413c36f6b8f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b87dbc090803245424d4d145a4650d" id="r_a79b87dbc090803245424d4d145a4650d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79b87dbc090803245424d4d145a4650d">minShrinkage</a> (self, float arg1)</td></tr>
+<tr class="separator:a79b87dbc090803245424d4d145a4650d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a1303b108ea0dd5e255d77dea7e01e82c" id="r_a1303b108ea0dd5e255d77dea7e01e82c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1303b108ea0dd5e255d77dea7e01e82c">_offsetof_insideAndOutside</a> = 0</td></tr>
+<tr class="separator:a1303b108ea0dd5e255d77dea7e01e82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe836fd1b532f3410187db0977cb9693" id="r_afe836fd1b532f3410187db0977cb9693"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe836fd1b532f3410187db0977cb9693">_offsetof_maxIters</a> = 8</td></tr>
+<tr class="separator:afe836fd1b532f3410187db0977cb9693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a091490f1908c567cad9898ea490ef48f" id="r_a091490f1908c567cad9898ea490ef48f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a091490f1908c567cad9898ea490ef48f">_offsetof_maxRadius</a> = 4</td></tr>
+<tr class="separator:a091490f1908c567cad9898ea490ef48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab166cb472fbf8d5d05309bb03942c0b8" id="r_ab166cb472fbf8d5d05309bb03942c0b8"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab166cb472fbf8d5d05309bb03942c0b8">_offsetof_minAngleCos</a> = 16</td></tr>
+<tr class="separator:ab166cb472fbf8d5d05309bb03942c0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6292bfa949c68571c48309188ad5d2c1" id="r_a6292bfa949c68571c48309188ad5d2c1"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6292bfa949c68571c48309188ad5d2c1">_offsetof_minShrinkage</a> = 12</td></tr>
+<tr class="separator:a6292bfa949c68571c48309188ad5d2c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::InSphereSearchSettings
+
+controls the finding of maximal inscribed sphere in mesh
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3f0e7622ee44d9207319b3c585391fd7" name="a3f0e7622ee44d9207319b3c585391fd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f0e7622ee44d9207319b3c585391fd7">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a1a8fa1b3bcec86c2f87f96d71505640b" name="a1a8fa1b3bcec86c2f87f96d71505640b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a8fa1b3bcec86c2f87f96d71505640b">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1InSphereSearchSettings.html">InSphereSearchSettings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a6f8bb0eec3f2cfd8dd6d8070b69c7405" name="a6f8bb0eec3f2cfd8dd6d8070b69c7405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f8bb0eec3f2cfd8dd6d8070b69c7405">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>insideAndOutside</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxRadius</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxIters</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>minShrinkage</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>minAngleCos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a43e18f120551a90286eb010911b4bf82" name="a43e18f120551a90286eb010911b4bf82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43e18f120551a90286eb010911b4bf82">&#9670;&#160;</a></span>insideAndOutside() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.InSphereSearchSettings.insideAndOutside </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">if false then searches for the maximal inscribed sphere in mesh;
+if true then searches for both a) maximal inscribed sphere, and b) maximal sphere outside the mesh touching it at two points;
+             and returns the smaller of two, and if it is b) then with minus sign
+</pre> 
+</div>
+</div>
+<a id="a0b1d48e74aaad8aa3e05a714ceb9bf47" name="a0b1d48e74aaad8aa3e05a714ceb9bf47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b1d48e74aaad8aa3e05a714ceb9bf47">&#9670;&#160;</a></span>insideAndOutside() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.insideAndOutside </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72d462082b3107d22cf7e18b0aa33ade" name="a72d462082b3107d22cf7e18b0aa33ade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d462082b3107d22cf7e18b0aa33ade">&#9670;&#160;</a></span>maxIters() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.InSphereSearchSettings.maxIters </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">maximum number of shrinking iterations for one triangle
+</pre> 
+</div>
+</div>
+<a id="a89c67b4beaefad94df738dd4eae68de2" name="a89c67b4beaefad94df738dd4eae68de2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89c67b4beaefad94df738dd4eae68de2">&#9670;&#160;</a></span>maxIters() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.maxIters </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0bc9dfc185d8a52438a1683aa14203d0" name="a0bc9dfc185d8a52438a1683aa14203d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bc9dfc185d8a52438a1683aa14203d0">&#9670;&#160;</a></span>maxRadius() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.InSphereSearchSettings.maxRadius </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">maximum allowed radius of the sphere;
+for almost closed meshes the article recommends maxRadius = 0.5f * std::min( { boxSize.x, boxSize.y, boxSize.z } )
+</pre> 
+</div>
+</div>
+<a id="a4a744f1ca6fc9779e6798c018e06490e" name="a4a744f1ca6fc9779e6798c018e06490e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a744f1ca6fc9779e6798c018e06490e">&#9670;&#160;</a></span>maxRadius() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.maxRadius </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7a5abaa75e96e0dd92325224a105b68" name="ac7a5abaa75e96e0dd92325224a105b68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7a5abaa75e96e0dd92325224a105b68">&#9670;&#160;</a></span>minAngleCos() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.InSphereSearchSettings.minAngleCos </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">minimum cosine of the angle between two unit directions:
+1) search unit direction (m.inDir),
+2) unit direction from sphere's center to the other found touch point;
+-1 value means no filtering by this angle;
+the increase of this value helps avoiding too small spheres on noisy surfaces
+</pre> 
+</div>
+</div>
+<a id="ad611bdd900cdba3a1649947a32aedc87" name="ad611bdd900cdba3a1649947a32aedc87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad611bdd900cdba3a1649947a32aedc87">&#9670;&#160;</a></span>minAngleCos() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.minAngleCos </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9bbe4cee5f7424c133413c36f6b8f3a" name="af9bbe4cee5f7424c133413c36f6b8f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9bbe4cee5f7424c133413c36f6b8f3a">&#9670;&#160;</a></span>minShrinkage() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.InSphereSearchSettings.minShrinkage </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">iterations stop if next radius is larger than minShrinkage times previous radius
+</pre> 
+</div>
+</div>
+<a id="a79b87dbc090803245424d4d145a4650d" name="a79b87dbc090803245424d4d145a4650d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b87dbc090803245424d4d145a4650d">&#9670;&#160;</a></span>minShrinkage() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.InSphereSearchSettings.minShrinkage </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1303b108ea0dd5e255d77dea7e01e82c" name="a1303b108ea0dd5e255d77dea7e01e82c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1303b108ea0dd5e255d77dea7e01e82c">&#9670;&#160;</a></span>_offsetof_insideAndOutside</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.InSphereSearchSettings._offsetof_insideAndOutside = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe836fd1b532f3410187db0977cb9693" name="afe836fd1b532f3410187db0977cb9693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe836fd1b532f3410187db0977cb9693">&#9670;&#160;</a></span>_offsetof_maxIters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.InSphereSearchSettings._offsetof_maxIters = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a091490f1908c567cad9898ea490ef48f" name="a091490f1908c567cad9898ea490ef48f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a091490f1908c567cad9898ea490ef48f">&#9670;&#160;</a></span>_offsetof_maxRadius</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.InSphereSearchSettings._offsetof_maxRadius = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab166cb472fbf8d5d05309bb03942c0b8" name="ab166cb472fbf8d5d05309bb03942c0b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab166cb472fbf8d5d05309bb03942c0b8">&#9670;&#160;</a></span>_offsetof_minAngleCos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.InSphereSearchSettings._offsetof_minAngleCos = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6292bfa949c68571c48309188ad5d2c1" name="a6292bfa949c68571c48309188ad5d2c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6292bfa949c68571c48309188ad5d2c1">&#9670;&#160;</a></span>_offsetof_minShrinkage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.InSphereSearchSettings._offsetof_minShrinkage = 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1InSphereSearchSettings.html">InSphereSearchSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

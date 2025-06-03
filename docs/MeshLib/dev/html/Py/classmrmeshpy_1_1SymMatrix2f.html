@@ -1,0 +1,820 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.SymMatrix2f Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1SymMatrix2f.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1SymMatrix2f-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.SymMatrix2f Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af0a638e63adc0a8be7764808f3721fd7" id="r_af0a638e63adc0a8be7764808f3721fd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a638e63adc0a8be7764808f3721fd7">__iadd__</a> (self, <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> b)</td></tr>
+<tr class="separator:af0a638e63adc0a8be7764808f3721fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a096aa1048c5e4ac9c7d55e2348b5950d" id="r_a096aa1048c5e4ac9c7d55e2348b5950d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a096aa1048c5e4ac9c7d55e2348b5950d">__imatmul__</a> (self, float b)</td></tr>
+<tr class="separator:a096aa1048c5e4ac9c7d55e2348b5950d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61da85337dc3dbe37757759be98aa6fe" id="r_a61da85337dc3dbe37757759be98aa6fe"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61da85337dc3dbe37757759be98aa6fe">__init__</a> (self)</td></tr>
+<tr class="separator:a61da85337dc3dbe37757759be98aa6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58bb9ef1138decc0b9ef678da09d6083" id="r_a58bb9ef1138decc0b9ef678da09d6083"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58bb9ef1138decc0b9ef678da09d6083">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> m)</td></tr>
+<tr class="separator:a58bb9ef1138decc0b9ef678da09d6083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e6d8bc0825f3e5ae391ff0520652d7" id="r_ae4e6d8bc0825f3e5ae391ff0520652d7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4e6d8bc0825f3e5ae391ff0520652d7">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> arg0)</td></tr>
+<tr class="separator:ae4e6d8bc0825f3e5ae391ff0520652d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853658a552d349eea1eb9361317b3dc1" id="r_a853658a552d349eea1eb9361317b3dc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a853658a552d349eea1eb9361317b3dc1">__isub__</a> (self, <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> b)</td></tr>
+<tr class="separator:a853658a552d349eea1eb9361317b3dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c415ae83bf4d7e2c61be999d31607d6" id="r_a0c415ae83bf4d7e2c61be999d31607d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c415ae83bf4d7e2c61be999d31607d6">__itruediv__</a> (self, float b)</td></tr>
+<tr class="separator:a0c415ae83bf4d7e2c61be999d31607d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a661708a84a22b8956b4ca3203273da15" id="r_a661708a84a22b8956b4ca3203273da15"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a661708a84a22b8956b4ca3203273da15">det</a> (self)</td></tr>
+<tr class="separator:a661708a84a22b8956b4ca3203273da15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dcd97b6c901c9e0012cc7c6fa3182ff" id="r_a6dcd97b6c901c9e0012cc7c6fa3182ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dcd97b6c901c9e0012cc7c6fa3182ff">eigens</a> (self, <a class="el" href="classmrmeshpy_1_1Matrix2f.html">Matrix2f</a> eigenvectors=None)</td></tr>
+<tr class="separator:a6dcd97b6c901c9e0012cc7c6fa3182ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83842d1139cdcd97ed137d8edeeb460a" id="r_a83842d1139cdcd97ed137d8edeeb460a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83842d1139cdcd97ed137d8edeeb460a">eigenvector</a> (self, float eigenvalue)</td></tr>
+<tr class="separator:a83842d1139cdcd97ed137d8edeeb460a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb0f1fc95908d850f29e43d8a4a6ae73" id="r_aeb0f1fc95908d850f29e43d8a4a6ae73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb0f1fc95908d850f29e43d8a4a6ae73">inverse</a> (self)</td></tr>
+<tr class="separator:aeb0f1fc95908d850f29e43d8a4a6ae73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5e335493d4fe1c475a17d388a4b77e2" id="r_ac5e335493d4fe1c475a17d388a4b77e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e335493d4fe1c475a17d388a4b77e2">inverse</a> (self, float <a class="el" href="#a661708a84a22b8956b4ca3203273da15">det</a>)</td></tr>
+<tr class="separator:ac5e335493d4fe1c475a17d388a4b77e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5385618e358c4ceffe0fa2c4ae5da1f" id="r_ab5385618e358c4ceffe0fa2c4ae5da1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5385618e358c4ceffe0fa2c4ae5da1f">maxEigenvector</a> (self)</td></tr>
+<tr class="separator:ab5385618e358c4ceffe0fa2c4ae5da1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4b2f3587426ca7c1eed68bf460c1afa" id="r_ac4b2f3587426ca7c1eed68bf460c1afa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4b2f3587426ca7c1eed68bf460c1afa">normSq</a> (self)</td></tr>
+<tr class="separator:ac4b2f3587426ca7c1eed68bf460c1afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d68605765533d8b7a9b8880f18d944a" id="r_a6d68605765533d8b7a9b8880f18d944a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d68605765533d8b7a9b8880f18d944a">pseudoinverse</a> (self, float tol=1.1920928955078125e-07, <a class="el" href="classmrmeshpy_1_1int__output.html">int_output</a> rank=None, <a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> space=None)</td></tr>
+<tr class="separator:a6d68605765533d8b7a9b8880f18d944a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b30e9e678b8e15d816f35ec3c8db40b" id="r_a8b30e9e678b8e15d816f35ec3c8db40b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b30e9e678b8e15d816f35ec3c8db40b">trace</a> (self)</td></tr>
+<tr class="separator:a8b30e9e678b8e15d816f35ec3c8db40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a7019f9c2fbf6fb1b2004461fb426d" id="r_ab9a7019f9c2fbf6fb1b2004461fb426d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9a7019f9c2fbf6fb1b2004461fb426d">xx</a> (self)</td></tr>
+<tr class="separator:ab9a7019f9c2fbf6fb1b2004461fb426d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a386a12631dd48cecce892d2958a876ab" id="r_a386a12631dd48cecce892d2958a876ab"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a386a12631dd48cecce892d2958a876ab">xx</a> (self, float arg1)</td></tr>
+<tr class="separator:a386a12631dd48cecce892d2958a876ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ada8b0c8de2e2cc6f453f45941b01cb" id="r_a5ada8b0c8de2e2cc6f453f45941b01cb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ada8b0c8de2e2cc6f453f45941b01cb">xy</a> (self)</td></tr>
+<tr class="separator:a5ada8b0c8de2e2cc6f453f45941b01cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5f34f5490f73a15585e4b1a1d9a78f7" id="r_ab5f34f5490f73a15585e4b1a1d9a78f7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5f34f5490f73a15585e4b1a1d9a78f7">xy</a> (self, float arg1)</td></tr>
+<tr class="separator:ab5f34f5490f73a15585e4b1a1d9a78f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacf84a3628546b98d89e8ee897499e23" id="r_aacf84a3628546b98d89e8ee897499e23"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf84a3628546b98d89e8ee897499e23">yy</a> (self)</td></tr>
+<tr class="separator:aacf84a3628546b98d89e8ee897499e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45134e479c505271eff2a769f284986" id="r_ac45134e479c505271eff2a769f284986"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac45134e479c505271eff2a769f284986">yy</a> (self, float arg1)</td></tr>
+<tr class="separator:ac45134e479c505271eff2a769f284986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a360636ea0b0ee548e4c7670b4be7fde7" id="r_a360636ea0b0ee548e4c7670b4be7fde7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a360636ea0b0ee548e4c7670b4be7fde7">diagonal</a> (float diagVal)</td></tr>
+<tr class="separator:a360636ea0b0ee548e4c7670b4be7fde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54a2c4493ded30c855db0c973342a811" id="r_a54a2c4493ded30c855db0c973342a811"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54a2c4493ded30c855db0c973342a811">identity</a> ()</td></tr>
+<tr class="separator:a54a2c4493ded30c855db0c973342a811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:af3f3d5fe1ecc06eb3466f8148ba78c53" id="r_af3f3d5fe1ecc06eb3466f8148ba78c53"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3f3d5fe1ecc06eb3466f8148ba78c53">_offsetof_xx</a> = 0</td></tr>
+<tr class="separator:af3f3d5fe1ecc06eb3466f8148ba78c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac6f454f9535c2a450471082cd00ed9" id="r_a6ac6f454f9535c2a450471082cd00ed9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ac6f454f9535c2a450471082cd00ed9">_offsetof_xy</a> = 4</td></tr>
+<tr class="separator:a6ac6f454f9535c2a450471082cd00ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d7efee05c4740e859e742feeab4eb41" id="r_a6d7efee05c4740e859e742feeab4eb41"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d7efee05c4740e859e742feeab4eb41">_offsetof_yy</a> = 8</td></tr>
+<tr class="separator:a6d7efee05c4740e859e742feeab4eb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::SymMatrix2f
+Aliases:  Vector2_float_SymMatrixType, QuadraticForm_Vector2f_SM
+
+symmetric 2x2 matrix
+\\ingroup MatrixGroup
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a61da85337dc3dbe37757759be98aa6fe" name="a61da85337dc3dbe37757759be98aa6fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61da85337dc3dbe37757759be98aa6fe">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SymMatrix2f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a58bb9ef1138decc0b9ef678da09d6083" name="a58bb9ef1138decc0b9ef678da09d6083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58bb9ef1138decc0b9ef678da09d6083">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SymMatrix2f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a></td>          <td class="paramname"><span class="paramname"><em>m</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e6d8bc0825f3e5ae391ff0520652d7" name="ae4e6d8bc0825f3e5ae391ff0520652d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e6d8bc0825f3e5ae391ff0520652d7">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SymMatrix2f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af0a638e63adc0a8be7764808f3721fd7" name="af0a638e63adc0a8be7764808f3721fd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0a638e63adc0a8be7764808f3721fd7">&#9670;&#160;</a></span>__iadd__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.__iadd__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a096aa1048c5e4ac9c7d55e2348b5950d" name="a096aa1048c5e4ac9c7d55e2348b5950d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a096aa1048c5e4ac9c7d55e2348b5950d">&#9670;&#160;</a></span>__imatmul__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.__imatmul__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a853658a552d349eea1eb9361317b3dc1" name="a853658a552d349eea1eb9361317b3dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a853658a552d349eea1eb9361317b3dc1">&#9670;&#160;</a></span>__isub__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.__isub__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c415ae83bf4d7e2c61be999d31607d6" name="a0c415ae83bf4d7e2c61be999d31607d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c415ae83bf4d7e2c61be999d31607d6">&#9670;&#160;</a></span>__itruediv__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.__itruediv__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a661708a84a22b8956b4ca3203273da15" name="a661708a84a22b8956b4ca3203273da15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a661708a84a22b8956b4ca3203273da15">&#9670;&#160;</a></span>det()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.SymMatrix2f.det </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes determinant of the matrix
+</pre> 
+</div>
+</div>
+<a id="a360636ea0b0ee548e4c7670b4be7fde7" name="a360636ea0b0ee548e4c7670b4be7fde7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a360636ea0b0ee548e4c7670b4be7fde7">&#9670;&#160;</a></span>diagonal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.diagonal </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>diagVal</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6dcd97b6c901c9e0012cc7c6fa3182ff" name="a6dcd97b6c901c9e0012cc7c6fa3182ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dcd97b6c901c9e0012cc7c6fa3182ff">&#9670;&#160;</a></span>eigens()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> mrmeshpy.SymMatrix2f.eigens </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Matrix2f.html">Matrix2f</a> </td>          <td class="paramname"><span class="paramname"><em>eigenvectors</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns eigenvalues of the matrix in ascending order (diagonal matrix L), and
+optionally returns corresponding unit eigenvectors in the rows of orthogonal matrix V,
+M*V^T = V^T*L; M = V^T*L*V
+</pre> 
+</div>
+</div>
+<a id="a83842d1139cdcd97ed137d8edeeb460a" name="a83842d1139cdcd97ed137d8edeeb460a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83842d1139cdcd97ed137d8edeeb460a">&#9670;&#160;</a></span>eigenvector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> mrmeshpy.SymMatrix2f.eigenvector </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>eigenvalue</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes not-unit eigenvector corresponding to a not-repeating eigenvalue
+</pre> 
+</div>
+</div>
+<a id="a54a2c4493ded30c855db0c973342a811" name="a54a2c4493ded30c855db0c973342a811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54a2c4493ded30c855db0c973342a811">&#9670;&#160;</a></span>identity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.identity </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb0f1fc95908d850f29e43d8a4a6ae73" name="aeb0f1fc95908d850f29e43d8a4a6ae73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0f1fc95908d850f29e43d8a4a6ae73">&#9670;&#160;</a></span>inverse() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.inverse </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes inverse matrix
+</pre> 
+</div>
+</div>
+<a id="ac5e335493d4fe1c475a17d388a4b77e2" name="ac5e335493d4fe1c475a17d388a4b77e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5e335493d4fe1c475a17d388a4b77e2">&#9670;&#160;</a></span>inverse() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.inverse </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>det</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes inverse matrix given determinant of this
+</pre> 
+</div>
+</div>
+<a id="ab5385618e358c4ceffe0fa2c4ae5da1f" name="ab5385618e358c4ceffe0fa2c4ae5da1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5385618e358c4ceffe0fa2c4ae5da1f">&#9670;&#160;</a></span>maxEigenvector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> mrmeshpy.SymMatrix2f.maxEigenvector </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes not-unit eigenvector corresponding to maximum eigenvalue
+</pre> 
+</div>
+</div>
+<a id="ac4b2f3587426ca7c1eed68bf460c1afa" name="ac4b2f3587426ca7c1eed68bf460c1afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4b2f3587426ca7c1eed68bf460c1afa">&#9670;&#160;</a></span>normSq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.SymMatrix2f.normSq </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes the squared norm of the matrix, which is equal to the sum of 4 squared elements
+</pre> 
+</div>
+</div>
+<a id="a6d68605765533d8b7a9b8880f18d944a" name="a6d68605765533d8b7a9b8880f18d944a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d68605765533d8b7a9b8880f18d944a">&#9670;&#160;</a></span>pseudoinverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a> mrmeshpy.SymMatrix2f.pseudoinverse </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float </td>          <td class="paramname"><span class="paramname"><em>tol</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1.1920928955078125e-07</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1int__output.html">int_output</a> </td>          <td class="paramname"><span class="paramname"><em>rank</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> </td>          <td class="paramname"><span class="paramname"><em>space</em></span><span class="paramdefsep"> = </span><span class="paramdefval">None</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">for not-degenerate matrix returns just inverse matrix, otherwise
+returns degenerate matrix, which performs inversion on not-kernel subspace;
+\\param tol relative epsilon-tolerance for too small number detection
+\\param rank optional output for this matrix rank according to given tolerance
+\\param space rank=1: unit direction of solution line, rank=2: zero vector
+</pre> 
+</div>
+</div>
+<a id="a8b30e9e678b8e15d816f35ec3c8db40b" name="a8b30e9e678b8e15d816f35ec3c8db40b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b30e9e678b8e15d816f35ec3c8db40b">&#9670;&#160;</a></span>trace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.SymMatrix2f.trace </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes trace of the matrix
+</pre> 
+</div>
+</div>
+<a id="ab9a7019f9c2fbf6fb1b2004461fb426d" name="ab9a7019f9c2fbf6fb1b2004461fb426d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9a7019f9c2fbf6fb1b2004461fb426d">&#9670;&#160;</a></span>xx() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.SymMatrix2f.xx </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">zero matrix by default
+</pre> 
+</div>
+</div>
+<a id="a386a12631dd48cecce892d2958a876ab" name="a386a12631dd48cecce892d2958a876ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a386a12631dd48cecce892d2958a876ab">&#9670;&#160;</a></span>xx() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SymMatrix2f.xx </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5ada8b0c8de2e2cc6f453f45941b01cb" name="a5ada8b0c8de2e2cc6f453f45941b01cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ada8b0c8de2e2cc6f453f45941b01cb">&#9670;&#160;</a></span>xy() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.SymMatrix2f.xy </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">zero matrix by default
+</pre> 
+</div>
+</div>
+<a id="ab5f34f5490f73a15585e4b1a1d9a78f7" name="ab5f34f5490f73a15585e4b1a1d9a78f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5f34f5490f73a15585e4b1a1d9a78f7">&#9670;&#160;</a></span>xy() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SymMatrix2f.xy </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aacf84a3628546b98d89e8ee897499e23" name="aacf84a3628546b98d89e8ee897499e23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacf84a3628546b98d89e8ee897499e23">&#9670;&#160;</a></span>yy() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.SymMatrix2f.yy </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">zero matrix by default
+</pre> 
+</div>
+</div>
+<a id="ac45134e479c505271eff2a769f284986" name="ac45134e479c505271eff2a769f284986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45134e479c505271eff2a769f284986">&#9670;&#160;</a></span>yy() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SymMatrix2f.yy </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af3f3d5fe1ecc06eb3466f8148ba78c53" name="af3f3d5fe1ecc06eb3466f8148ba78c53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3f3d5fe1ecc06eb3466f8148ba78c53">&#9670;&#160;</a></span>_offsetof_xx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SymMatrix2f._offsetof_xx = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6ac6f454f9535c2a450471082cd00ed9" name="a6ac6f454f9535c2a450471082cd00ed9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ac6f454f9535c2a450471082cd00ed9">&#9670;&#160;</a></span>_offsetof_xy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SymMatrix2f._offsetof_xy = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d7efee05c4740e859e742feeab4eb41" name="a6d7efee05c4740e859e742feeab4eb41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d7efee05c4740e859e742feeab4eb41">&#9670;&#160;</a></span>_offsetof_yy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SymMatrix2f._offsetof_yy = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1SymMatrix2f.html">SymMatrix2f</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

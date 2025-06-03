@@ -1,0 +1,725 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.OffsetContoursOrigins Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1OffsetContoursOrigins.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1OffsetContoursOrigins-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.OffsetContoursOrigins Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a22a78f0abfa0af4420a712e67a981057" id="r_a22a78f0abfa0af4420a712e67a981057"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22a78f0abfa0af4420a712e67a981057">__init__</a> (self)</td></tr>
+<tr class="separator:a22a78f0abfa0af4420a712e67a981057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4df8564556e7bb4ba795fe3be413f599" id="r_a4df8564556e7bb4ba795fe3be413f599"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4df8564556e7bb4ba795fe3be413f599">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1OffsetContoursOrigins.html">OffsetContoursOrigins</a> arg0)</td></tr>
+<tr class="separator:a4df8564556e7bb4ba795fe3be413f599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d8331bad73640ee9312c5d3121e19c" id="r_a07d8331bad73640ee9312c5d3121e19c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07d8331bad73640ee9312c5d3121e19c">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> <a class="el" href="#a5b00a17a7420a9e13419a3595c8091ae">lOrg</a>, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> <a class="el" href="#ab804df8043d3435a078f3ed50db2baf8">lDest</a>, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> <a class="el" href="#a2d9ad56c455b9829b207bbb0a6c1bdce">uOrg</a>, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> <a class="el" href="#a8b86015148faa7b7c2da433e647acc8c">uDest</a>, float <a class="el" href="#a30c2793e73ec1d2c730654774b3656d6">lRatio</a>, float <a class="el" href="#afc369115bc68b3fbe5eab89ed31cbef9">uRatio</a>)</td></tr>
+<tr class="separator:a07d8331bad73640ee9312c5d3121e19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb04b3eef387cbf6f388491d94688bc" id="r_a1cb04b3eef387cbf6f388491d94688bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cb04b3eef387cbf6f388491d94688bc">isIntersection</a> (self)</td></tr>
+<tr class="separator:a1cb04b3eef387cbf6f388491d94688bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16c3855e37ca6ee08d61c0050f11fd5a" id="r_a16c3855e37ca6ee08d61c0050f11fd5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16c3855e37ca6ee08d61c0050f11fd5a">valid</a> (self)</td></tr>
+<tr class="separator:a16c3855e37ca6ee08d61c0050f11fd5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab804df8043d3435a078f3ed50db2baf8" id="r_ab804df8043d3435a078f3ed50db2baf8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab804df8043d3435a078f3ed50db2baf8">lDest</a> (self)</td></tr>
+<tr class="separator:ab804df8043d3435a078f3ed50db2baf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d09385affb9885363aafa9b67239380" id="r_a4d09385affb9885363aafa9b67239380"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d09385affb9885363aafa9b67239380">lDest</a> (self, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> arg1)</td></tr>
+<tr class="separator:a4d09385affb9885363aafa9b67239380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b00a17a7420a9e13419a3595c8091ae" id="r_a5b00a17a7420a9e13419a3595c8091ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b00a17a7420a9e13419a3595c8091ae">lOrg</a> (self)</td></tr>
+<tr class="separator:a5b00a17a7420a9e13419a3595c8091ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab966e308d804e37e07a8bd652146deaf" id="r_ab966e308d804e37e07a8bd652146deaf"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab966e308d804e37e07a8bd652146deaf">lOrg</a> (self, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> arg1)</td></tr>
+<tr class="separator:ab966e308d804e37e07a8bd652146deaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c2793e73ec1d2c730654774b3656d6" id="r_a30c2793e73ec1d2c730654774b3656d6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30c2793e73ec1d2c730654774b3656d6">lRatio</a> (self)</td></tr>
+<tr class="separator:a30c2793e73ec1d2c730654774b3656d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa51d8698fb8aff905d9b8e8212ad2ce1" id="r_aa51d8698fb8aff905d9b8e8212ad2ce1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa51d8698fb8aff905d9b8e8212ad2ce1">lRatio</a> (self, float arg1)</td></tr>
+<tr class="separator:aa51d8698fb8aff905d9b8e8212ad2ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b86015148faa7b7c2da433e647acc8c" id="r_a8b86015148faa7b7c2da433e647acc8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b86015148faa7b7c2da433e647acc8c">uDest</a> (self)</td></tr>
+<tr class="separator:a8b86015148faa7b7c2da433e647acc8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84231cc5b84fa99b60449fd8a57a73a0" id="r_a84231cc5b84fa99b60449fd8a57a73a0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84231cc5b84fa99b60449fd8a57a73a0">uDest</a> (self, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> arg1)</td></tr>
+<tr class="separator:a84231cc5b84fa99b60449fd8a57a73a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d9ad56c455b9829b207bbb0a6c1bdce" id="r_a2d9ad56c455b9829b207bbb0a6c1bdce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d9ad56c455b9829b207bbb0a6c1bdce">uOrg</a> (self)</td></tr>
+<tr class="separator:a2d9ad56c455b9829b207bbb0a6c1bdce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a299943a759aefe2f2522f60a82927842" id="r_a299943a759aefe2f2522f60a82927842"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a299943a759aefe2f2522f60a82927842">uOrg</a> (self, <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> arg1)</td></tr>
+<tr class="separator:a299943a759aefe2f2522f60a82927842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc369115bc68b3fbe5eab89ed31cbef9" id="r_afc369115bc68b3fbe5eab89ed31cbef9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc369115bc68b3fbe5eab89ed31cbef9">uRatio</a> (self)</td></tr>
+<tr class="separator:afc369115bc68b3fbe5eab89ed31cbef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a760542caf232920ed2fed7ff36cf7" id="r_a13a760542caf232920ed2fed7ff36cf7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13a760542caf232920ed2fed7ff36cf7">uRatio</a> (self, float arg1)</td></tr>
+<tr class="separator:a13a760542caf232920ed2fed7ff36cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a16e58b8051b47b7977fe13fdef7df629" id="r_a16e58b8051b47b7977fe13fdef7df629"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16e58b8051b47b7977fe13fdef7df629">_offsetof_lDest</a> = 8</td></tr>
+<tr class="separator:a16e58b8051b47b7977fe13fdef7df629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d81fbd7cc8a3a61167455e4b3de9154" id="r_a7d81fbd7cc8a3a61167455e4b3de9154"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d81fbd7cc8a3a61167455e4b3de9154">_offsetof_lOrg</a> = 0</td></tr>
+<tr class="separator:a7d81fbd7cc8a3a61167455e4b3de9154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eb75286b871e622d5b64c3903b8ecc9" id="r_a8eb75286b871e622d5b64c3903b8ecc9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8eb75286b871e622d5b64c3903b8ecc9">_offsetof_lRatio</a> = 32</td></tr>
+<tr class="separator:a8eb75286b871e622d5b64c3903b8ecc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe59451ba637c792b0b09a1f2415cd09" id="r_abe59451ba637c792b0b09a1f2415cd09"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe59451ba637c792b0b09a1f2415cd09">_offsetof_uDest</a> = 24</td></tr>
+<tr class="separator:abe59451ba637c792b0b09a1f2415cd09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec99c66c61f04a2662440d8df16ab93" id="r_a7ec99c66c61f04a2662440d8df16ab93"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ec99c66c61f04a2662440d8df16ab93">_offsetof_uOrg</a> = 16</td></tr>
+<tr class="separator:a7ec99c66c61f04a2662440d8df16ab93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d26a00e32299b4aa4de8a8f983b93f0" id="r_a0d26a00e32299b4aa4de8a8f983b93f0"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d26a00e32299b4aa4de8a8f983b93f0">_offsetof_uRatio</a> = 36</td></tr>
+<tr class="separator:a0d26a00e32299b4aa4de8a8f983b93f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::OffsetContoursOrigins
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a22a78f0abfa0af4420a712e67a981057" name="a22a78f0abfa0af4420a712e67a981057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22a78f0abfa0af4420a712e67a981057">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a4df8564556e7bb4ba795fe3be413f599" name="a4df8564556e7bb4ba795fe3be413f599"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4df8564556e7bb4ba795fe3be413f599">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContoursOrigins.html">OffsetContoursOrigins</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a07d8331bad73640ee9312c5d3121e19c" name="a07d8331bad73640ee9312c5d3121e19c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07d8331bad73640ee9312c5d3121e19c">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>lOrg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>lDest</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>uOrg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>uDest</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>lRatio</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>uRatio</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1cb04b3eef387cbf6f388491d94688bc" name="a1cb04b3eef387cbf6f388491d94688bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb04b3eef387cbf6f388491d94688bc">&#9670;&#160;</a></span>isIntersection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.OffsetContoursOrigins.isIntersection </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab804df8043d3435a078f3ed50db2baf8" name="ab804df8043d3435a078f3ed50db2baf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab804df8043d3435a078f3ed50db2baf8">&#9670;&#160;</a></span>lDest() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> mrmeshpy.OffsetContoursOrigins.lDest </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">index of lower corresponding destination point on input contour
+</pre> 
+</div>
+</div>
+<a id="a4d09385affb9885363aafa9b67239380" name="a4d09385affb9885363aafa9b67239380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d09385affb9885363aafa9b67239380">&#9670;&#160;</a></span>lDest() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.lDest </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b00a17a7420a9e13419a3595c8091ae" name="a5b00a17a7420a9e13419a3595c8091ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b00a17a7420a9e13419a3595c8091ae">&#9670;&#160;</a></span>lOrg() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> mrmeshpy.OffsetContoursOrigins.lOrg </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Should be always valid
+index of lower corresponding origin point on input contour
+</pre> 
+</div>
+</div>
+<a id="ab966e308d804e37e07a8bd652146deaf" name="ab966e308d804e37e07a8bd652146deaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab966e308d804e37e07a8bd652146deaf">&#9670;&#160;</a></span>lOrg() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.lOrg </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a30c2793e73ec1d2c730654774b3656d6" name="a30c2793e73ec1d2c730654774b3656d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30c2793e73ec1d2c730654774b3656d6">&#9670;&#160;</a></span>lRatio() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.OffsetContoursOrigins.lRatio </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">ratio of intersection point on lOrg-&gt;lDest segment
+0.0 -&gt; lOrg
+1.0 -&gt; lDest
+</pre> 
+</div>
+</div>
+<a id="aa51d8698fb8aff905d9b8e8212ad2ce1" name="aa51d8698fb8aff905d9b8e8212ad2ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa51d8698fb8aff905d9b8e8212ad2ce1">&#9670;&#160;</a></span>lRatio() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.lRatio </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b86015148faa7b7c2da433e647acc8c" name="a8b86015148faa7b7c2da433e647acc8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b86015148faa7b7c2da433e647acc8c">&#9670;&#160;</a></span>uDest() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> mrmeshpy.OffsetContoursOrigins.uDest </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">index of upper corresponding destination point on input contour
+</pre> 
+</div>
+</div>
+<a id="a84231cc5b84fa99b60449fd8a57a73a0" name="a84231cc5b84fa99b60449fd8a57a73a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84231cc5b84fa99b60449fd8a57a73a0">&#9670;&#160;</a></span>uDest() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.uDest </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d9ad56c455b9829b207bbb0a6c1bdce" name="a2d9ad56c455b9829b207bbb0a6c1bdce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d9ad56c455b9829b207bbb0a6c1bdce">&#9670;&#160;</a></span>uOrg() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a> mrmeshpy.OffsetContoursOrigins.uOrg </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">index of upper corresponding origin point on input contour
+</pre> 
+</div>
+</div>
+<a id="a299943a759aefe2f2522f60a82927842" name="a299943a759aefe2f2522f60a82927842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a299943a759aefe2f2522f60a82927842">&#9670;&#160;</a></span>uOrg() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.uOrg </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1OffsetContourIndex.html">OffsetContourIndex</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc369115bc68b3fbe5eab89ed31cbef9" name="afc369115bc68b3fbe5eab89ed31cbef9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc369115bc68b3fbe5eab89ed31cbef9">&#9670;&#160;</a></span>uRatio() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.OffsetContoursOrigins.uRatio </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">ratio of intersection point on uOrg-&gt;uDest segment
+0.0 -&gt; uOrg
+1.0 -&gt; uDest
+</pre> 
+</div>
+</div>
+<a id="a13a760542caf232920ed2fed7ff36cf7" name="a13a760542caf232920ed2fed7ff36cf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a760542caf232920ed2fed7ff36cf7">&#9670;&#160;</a></span>uRatio() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.OffsetContoursOrigins.uRatio </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a16c3855e37ca6ee08d61c0050f11fd5a" name="a16c3855e37ca6ee08d61c0050f11fd5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16c3855e37ca6ee08d61c0050f11fd5a">&#9670;&#160;</a></span>valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.OffsetContoursOrigins.valid </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a16e58b8051b47b7977fe13fdef7df629" name="a16e58b8051b47b7977fe13fdef7df629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e58b8051b47b7977fe13fdef7df629">&#9670;&#160;</a></span>_offsetof_lDest</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.OffsetContoursOrigins._offsetof_lDest = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d81fbd7cc8a3a61167455e4b3de9154" name="a7d81fbd7cc8a3a61167455e4b3de9154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d81fbd7cc8a3a61167455e4b3de9154">&#9670;&#160;</a></span>_offsetof_lOrg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.OffsetContoursOrigins._offsetof_lOrg = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8eb75286b871e622d5b64c3903b8ecc9" name="a8eb75286b871e622d5b64c3903b8ecc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eb75286b871e622d5b64c3903b8ecc9">&#9670;&#160;</a></span>_offsetof_lRatio</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.OffsetContoursOrigins._offsetof_lRatio = 32</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe59451ba637c792b0b09a1f2415cd09" name="abe59451ba637c792b0b09a1f2415cd09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe59451ba637c792b0b09a1f2415cd09">&#9670;&#160;</a></span>_offsetof_uDest</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.OffsetContoursOrigins._offsetof_uDest = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ec99c66c61f04a2662440d8df16ab93" name="a7ec99c66c61f04a2662440d8df16ab93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec99c66c61f04a2662440d8df16ab93">&#9670;&#160;</a></span>_offsetof_uOrg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.OffsetContoursOrigins._offsetof_uOrg = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d26a00e32299b4aa4de8a8f983b93f0" name="a0d26a00e32299b4aa4de8a8f983b93f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d26a00e32299b4aa4de8a8f983b93f0">&#9670;&#160;</a></span>_offsetof_uRatio</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.OffsetContoursOrigins._offsetof_uRatio = 36</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1OffsetContoursOrigins.html">OffsetContoursOrigins</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRICP.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRICP_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRMeshC/MRICP.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRMeshC_2MRICP_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRMeshFwd_8h.html">MRMeshFwd.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRAffineXf_8h.html">MRAffineXf.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRId_8h.html">MRId.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRMeshOrPoints_8h.html">MRMeshOrPoints.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRVector3_8h.html">MRVector3.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4ed">   12</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4ed">MRICPMethod</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4eda10c506de436752392581e7caf768e046">   15</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4eda10c506de436752392581e7caf768e046">MRICPMethodCombined</a> = 0,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4eda34e280367064f88f205bee18fe9e0aa1">   18</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4eda34e280367064f88f205bee18fe9e0aa1">MRICPMethodPointToPoint</a> = 1,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4edaca07e234f7785c96d25379d2f7c3a2fa">MRICPMethodPointToPlane</a> = 2</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a63e57f82dca3b550b8d81189255afca0">   22</a></span>} <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4ed">MRICPMethod</a>;</div>
+</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1">   25</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1">MRICPMode</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a6b1b62a91a8f6d8be4f15fbacf281da8">   28</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a6b1b62a91a8f6d8be4f15fbacf281da8">MRICPModeRigidScale</a> = 0,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1aa86bc93d822ae0eb6ed65e1e3198d5a2">   30</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1aa86bc93d822ae0eb6ed65e1e3198d5a2">MRICPModeAnyRigidXf</a>,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a3f4ffa592094811e6f5fcda2da58f033">   32</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a3f4ffa592094811e6f5fcda2da58f033">MRICPModeOrthogonalAxis</a>,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a85188f84fe24b366dc1acf30acbb327d">   34</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a85188f84fe24b366dc1acf30acbb327d">MRICPModeFixedAxis</a>,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a0216ef0ef59709efd98a0b19a29b79fb">MRICPModeTranslationOnly</a></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a1a3ebcef4e3087ca1a2eb61dc20d1122">   37</a></span>} <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1">MRICPMode</a>;</div>
+</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structMRICPPairData.html">   39</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRICPPairData.html">MRICPPairData</a></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structMRICPPairData.html#a846d3e65ab2e79227973c093d37d296f">   42</a></span>    <a class="code hl_struct" href="structMRVector3f.html">MRVector3f</a> <a class="code hl_variable" href="structMRICPPairData.html#a846d3e65ab2e79227973c093d37d296f">srcPoint</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structMRICPPairData.html#ad69c3803430c2d67ad2d7b98d50671b7">   44</a></span>    <a class="code hl_struct" href="structMRVector3f.html">MRVector3f</a> <a class="code hl_variable" href="structMRICPPairData.html#ad69c3803430c2d67ad2d7b98d50671b7">srcNorm</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structMRICPPairData.html#af985418f8344cd7fff2fb9219041866b">   46</a></span>    <a class="code hl_struct" href="structMRVector3f.html">MRVector3f</a> <a class="code hl_variable" href="structMRICPPairData.html#af985418f8344cd7fff2fb9219041866b">tgtPoint</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structMRICPPairData.html#a1058754ffc1ca72641a18f3948b5e193">   48</a></span>    <a class="code hl_struct" href="structMRVector3f.html">MRVector3f</a> <a class="code hl_variable" href="structMRICPPairData.html#a1058754ffc1ca72641a18f3948b5e193">tgtNorm</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structMRICPPairData.html#a378a97d5205f2e9f3da4234898bce466">   50</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPPairData.html#a378a97d5205f2e9f3da4234898bce466">distSq</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structMRICPPairData.html#a5d766d30128740e59a1a46f3c070f04d">   52</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPPairData.html#a5d766d30128740e59a1a46f3c070f04d">weight</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ab9fe7131e91ae734c0f8d9b2322b24b5">   53</a></span>} <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#ab9fe7131e91ae734c0f8d9b2322b24b5">MRICPPairData</a>;</div>
+</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="};">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structMRPointPair.html">   56</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRPointPair.html">MRPointPair</a></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structMRPointPair.html#a3a57febe50fbfa87ec9506c23214c723">   58</a></span>    <a class="code hl_struct" href="structMRICPPairData.html">MRICPPairData</a> <a class="code hl_variable" href="structMRPointPair.html#a3a57febe50fbfa87ec9506c23214c723">ICPPairData</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="structMRPointPair.html#ade96451aa57e9f26439ea7333910d37a">   60</a></span>    <a class="code hl_struct" href="structMRVertId.html">MRVertId</a> <a class="code hl_variable" href="structMRPointPair.html#ade96451aa57e9f26439ea7333910d37a">srcVertId</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="structMRPointPair.html#aaf071fe8e6ec54c8e173d7c49c968b10">   63</a></span>    <a class="code hl_struct" href="structMRVertId.html">MRVertId</a> <a class="code hl_variable" href="structMRPointPair.html#aaf071fe8e6ec54c8e173d7c49c968b10">tgtCloseVert</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structMRPointPair.html#a85030f1c32b6fa41b3cb99f84864951a">   65</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRPointPair.html#a85030f1c32b6fa41b3cb99f84864951a">normalsAngleCos</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="structMRPointPair.html#a3a1c36eeeff22faca6d6749a8630cff5">   67</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structMRPointPair.html#a3a1c36eeeff22faca6d6749a8630cff5">tgtOnBd</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a2c132176bcf2eec46fce5f762996cf79">   68</a></span>} <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a2c132176bcf2eec46fce5f762996cf79">MRPointPair</a>;</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">   71</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a42c283bfd720a4855868f2da23d516da">   73</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a42c283bfd720a4855868f2da23d516da">MRPointPairs</a> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a42c283bfd720a4855868f2da23d516da">MRPointPairs</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a7a7e1b4b917587e9342b15b8dc457fec">   75</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keyword">const</span> <a class="code hl_struct" href="structMRICPPairData.html">MRICPPairData</a>* <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a7a7e1b4b917587e9342b15b8dc457fec">mrIPointPairsGet</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a>* pp, <span class="keywordtype">size_t</span> idx );</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ad041c7d6accf6325f43a084b6522221f">   77</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">size_t</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#ad041c7d6accf6325f43a084b6522221f">mrIPointPairsSize</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a>* pp );</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#abd53dc27a52ca64a9b6dbcf194a2f844">   79</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRICPPairData.html">MRICPPairData</a>* <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#abd53dc27a52ca64a9b6dbcf194a2f844">mrIPointPairsGetRef</a>( <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a>* pp, <span class="keywordtype">size_t</span> idx );</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="};">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71">   82</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71">MRICPExitType</a></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71ac2cb2410a7811ff0fe800d0da2c6e242">   85</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71ac2cb2410a7811ff0fe800d0da2c6e242">MRICPExitTypeNotStarted</a> = 0,</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71a6ad07a9633810b37bc21a21775006ebb">   87</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71a6ad07a9633810b37bc21a21775006ebb">MRICPExitTypeNotFoundSolution</a>,</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71ae73be2eaa1b5072f98f8a8903017c0bd">   89</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71ae73be2eaa1b5072f98f8a8903017c0bd">MRICPExitTypeMaxIterations</a>,</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71afd56d46f18e9ef449ae8dd084183f594">   91</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71afd56d46f18e9ef449ae8dd084183f594">MRICPExitTypeMaxBadIterations</a>,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_enumvalue" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71afe1e5215b08f8fd66281c3f61dc356ae">MRICPExitTypeStopMsdReached</a></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a87d7e14eec260289c6e8b03474385c15">   94</a></span>} <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71">MRICPExitType</a>;</div>
+</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="};">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="structMRICPProperties.html">   96</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRICPProperties.html">MRICPProperties</a></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a2e7b2a199320af5a6d96b01ab388564e">   99</a></span>    <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4ed">MRICPMethod</a> <a class="code hl_variable" href="structMRICPProperties.html#a2e7b2a199320af5a6d96b01ab388564e">method</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#abc69dd3c0d8015e675a498bfa51c4169">  101</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPProperties.html#abc69dd3c0d8015e675a498bfa51c4169">p2plAngleLimit</a>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a21b20f7216af2711301f59435713a9c2">  103</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPProperties.html#a21b20f7216af2711301f59435713a9c2">p2plScaleLimit</a>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a01533b26bf04f650af9c2628b8804258">  105</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPProperties.html#a01533b26bf04f650af9c2628b8804258">cosThreshold</a>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#af8056cb5ec97a0e2fb709ac76fc146de">  107</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPProperties.html#af8056cb5ec97a0e2fb709ac76fc146de">distThresholdSq</a>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a88912841f4a73c5941ddc87fac934139">  110</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPProperties.html#a88912841f4a73c5941ddc87fac934139">farDistFactor</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a3f48a94ed67f67bf7d0b65d62add2d0a">  112</a></span>    <a class="code hl_enumeration" href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1">MRICPMode</a> <a class="code hl_variable" href="structMRICPProperties.html#a3f48a94ed67f67bf7d0b65d62add2d0a">icpMode</a>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a032ebb1b9396df0c2d307fc043167307">  114</a></span>    <a class="code hl_struct" href="structMRVector3f.html">MRVector3f</a> <a class="code hl_variable" href="structMRICPProperties.html#a032ebb1b9396df0c2d307fc043167307">fixedRotationAxis</a>;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a93094df050def819f5582b2327011b50">  116</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMRICPProperties.html#a93094df050def819f5582b2327011b50">iterLimit</a>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#a27741c61220a9d8a833b03f4354cf9d6">  118</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMRICPProperties.html#a27741c61220a9d8a833b03f4354cf9d6">badIterStopCount</a>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#af361f47102e347876690d8afb088ed69">  120</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRICPProperties.html#af361f47102e347876690d8afb088ed69">exitVal</a>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="structMRICPProperties.html#ae0d73485e14b9caf033279eb35df4670">  122</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structMRICPProperties.html#ae0d73485e14b9caf033279eb35df4670">mutualClosest</a>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#aadd3889ebdb61bcdddc57a96cf3b0a55">  123</a></span>} <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#aadd3889ebdb61bcdddc57a96cf3b0a55">MRICPProperties</a>;</div>
+</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ad6572e9fd51800d785882fab5dc53502">  126</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRICPProperties.html">MRICPProperties</a> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#ad6572e9fd51800d785882fab5dc53502">mrICPPropertiesNew</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">  130</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ae00bfaafa2a5cd791ec1206c17fc151f">  133</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#ae00bfaafa2a5cd791ec1206c17fc151f">mrICPNew</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshOrPoints_8h.html#a56d39781ac5d47019574ee608c9ead18">MRMeshOrPointsXf</a>* flt, <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshOrPoints_8h.html#a56d39781ac5d47019574ee608c9ead18">MRMeshOrPointsXf</a>* ref, <span class="keywordtype">float</span> samplingVoxelSize );</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a854e635d53e45015b77660eb04b57c8a">  135</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a854e635d53e45015b77660eb04b57c8a">mrICPNewFromSamples</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshOrPoints_8h.html#a56d39781ac5d47019574ee608c9ead18">MRMeshOrPointsXf</a>* flt, <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshOrPoints_8h.html#a56d39781ac5d47019574ee608c9ead18">MRMeshOrPointsXf</a>* ref, <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a>* fltSamples, <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a>* refSamples );</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#aa0deba5552214cfbbef4d811d610dca7">  138</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#aa0deba5552214cfbbef4d811d610dca7">mrICPSetParams</a>( <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp, <span class="keyword">const</span> <a class="code hl_struct" href="structMRICPProperties.html">MRICPProperties</a>* prop );</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a8302124626b7e2ad2e3fdafa3a1be27f">  141</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a8302124626b7e2ad2e3fdafa3a1be27f">mrICPSamplePoints</a>( <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp, <span class="keywordtype">float</span> samplingVoxelSize );</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a63085bec7974b0c59dd501ac20410e1d">  146</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRAffineXf3f.html">MRAffineXf3f</a> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a63085bec7974b0c59dd501ac20410e1d">mrICPAutoSelectFloatXf</a>( <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a51b744c2181e12a4d943dac98d4078e8">  149</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a51b744c2181e12a4d943dac98d4078e8">mrICPUpdatePointPairs</a>( <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ace0593a443f3c2094e9706b7f5985e8e">  152</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a>* <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#ace0593a443f3c2094e9706b7f5985e8e">mrICPGetStatusInfo</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a51b0c94596fe9d6c9b2bfe7adb2cf05e">  155</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">size_t</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a51b0c94596fe9d6c9b2bfe7adb2cf05e">mrICPGetNumSamples</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ad4e9636bc22be4235319224e809adbb6">  158</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">size_t</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#ad4e9636bc22be4235319224e809adbb6">mrICPGetNumActivePairs</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a4941ae635823ececaa470dbff0d516c0">  161</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a4941ae635823ececaa470dbff0d516c0">mrICPGetMeanSqDistToPoint</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a2589eee29e9726ae601f37690dad5840">  164</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a2589eee29e9726ae601f37690dad5840">mrICPGetMeanSqDistToPlane</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#afed4cf1a0b5f632c3c96f3b7eec8c5a5">  167</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a>* <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#afed4cf1a0b5f632c3c96f3b7eec8c5a5">mrICPGetFlt2RefPairs</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#a4eac86c842b04d1eb8fe9c450811b45b">  170</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a>* <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#a4eac86c842b04d1eb8fe9c450811b45b">mrICPGetRef2FltPairs</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#aafb393d5ef1b456624976f54488bcd71">  174</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRAffineXf3f.html">MRAffineXf3f</a> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#aafb393d5ef1b456624976f54488bcd71">mrICPCalculateTransformation</a>( <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="MRMeshC_2MRICP_8h.html#ab1fbb8172fb51e68259611bf26579898">  177</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="MRMeshC_2MRICP_8h.html#ab1fbb8172fb51e68259611bf26579898">mrICPFree</a>( <a class="code hl_typedef" href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a>* icp );</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div>
+<div class="ttc" id="aMRMeshC_2MRAffineXf_8h_html"><div class="ttname"><a href="MRMeshC_2MRAffineXf_8h.html">MRAffineXf.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a2589eee29e9726ae601f37690dad5840"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a2589eee29e9726ae601f37690dad5840">mrICPGetMeanSqDistToPlane</a></div><div class="ttdeci">MRMESHC_API float mrICPGetMeanSqDistToPlane(const MRICP *icp)</div><div class="ttdoc">computes root-mean-square deviation from points to target planes</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a2c132176bcf2eec46fce5f762996cf79"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a2c132176bcf2eec46fce5f762996cf79">MRPointPair</a></div><div class="ttdeci">struct MRPointPair MRPointPair</div><div class="ttdoc">Stores a pair of points: one samples on the source and the closest to it on the target.</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a42c283bfd720a4855868f2da23d516da"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a42c283bfd720a4855868f2da23d516da">MRPointPairs</a></div><div class="ttdeci">struct MRPointPairs MRPointPairs</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:73</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a4941ae635823ececaa470dbff0d516c0"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a4941ae635823ececaa470dbff0d516c0">mrICPGetMeanSqDistToPoint</a></div><div class="ttdeci">MRMESHC_API float mrICPGetMeanSqDistToPoint(const MRICP *icp)</div><div class="ttdoc">computes root-mean-square deviation between points</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a4eac86c842b04d1eb8fe9c450811b45b"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a4eac86c842b04d1eb8fe9c450811b45b">mrICPGetRef2FltPairs</a></div><div class="ttdeci">MRMESHC_API const MRIPointPairs * mrICPGetRef2FltPairs(const MRICP *icp)</div><div class="ttdoc">returns current pairs formed from samples on reference object and projections on floating object</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a51b0c94596fe9d6c9b2bfe7adb2cf05e"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a51b0c94596fe9d6c9b2bfe7adb2cf05e">mrICPGetNumSamples</a></div><div class="ttdeci">MRMESHC_API size_t mrICPGetNumSamples(const MRICP *icp)</div><div class="ttdoc">computes the number of samples able to form pairs</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a51b744c2181e12a4d943dac98d4078e8"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a51b744c2181e12a4d943dac98d4078e8">mrICPUpdatePointPairs</a></div><div class="ttdeci">MRMESHC_API void mrICPUpdatePointPairs(MRICP *icp)</div><div class="ttdoc">recompute point pairs after manual change of transformations or parameters</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a554c91f93673a3d87ae5b114e607aacc"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a554c91f93673a3d87ae5b114e607aacc">MRICP</a></div><div class="ttdeci">struct MRICP MRICP</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:130</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a557dd31f8dfe045d460e3563dd42b5d1"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1">MRICPMode</a></div><div class="ttdeci">MRICPMode</div><div class="ttdoc">The group of transformations, each with its own degrees of freedom.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:26</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a557dd31f8dfe045d460e3563dd42b5d1a0216ef0ef59709efd98a0b19a29b79fb"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a0216ef0ef59709efd98a0b19a29b79fb">MRICPModeTranslationOnly</a></div><div class="ttdeci">@ MRICPModeTranslationOnly</div><div class="ttdoc">only translation (3 degrees of freedom)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:36</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a557dd31f8dfe045d460e3563dd42b5d1a3f4ffa592094811e6f5fcda2da58f033"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a3f4ffa592094811e6f5fcda2da58f033">MRICPModeOrthogonalAxis</a></div><div class="ttdeci">@ MRICPModeOrthogonalAxis</div><div class="ttdoc">rigid body transformation with rotation except argument axis (5 degrees of freedom)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:32</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a557dd31f8dfe045d460e3563dd42b5d1a6b1b62a91a8f6d8be4f15fbacf281da8"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a6b1b62a91a8f6d8be4f15fbacf281da8">MRICPModeRigidScale</a></div><div class="ttdeci">@ MRICPModeRigidScale</div><div class="ttdoc">rigid body transformation with uniform scaling (7 degrees of freedom)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:28</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a557dd31f8dfe045d460e3563dd42b5d1a85188f84fe24b366dc1acf30acbb327d"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1a85188f84fe24b366dc1acf30acbb327d">MRICPModeFixedAxis</a></div><div class="ttdeci">@ MRICPModeFixedAxis</div><div class="ttdoc">rigid body transformation with rotation around given axis only (4 degrees of freedom)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:34</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a557dd31f8dfe045d460e3563dd42b5d1aa86bc93d822ae0eb6ed65e1e3198d5a2"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a557dd31f8dfe045d460e3563dd42b5d1aa86bc93d822ae0eb6ed65e1e3198d5a2">MRICPModeAnyRigidXf</a></div><div class="ttdeci">@ MRICPModeAnyRigidXf</div><div class="ttdoc">rigid body transformation (6 degrees of freedom)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:30</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a570f9e0f14adc60a3268c6312c7a81e6"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a570f9e0f14adc60a3268c6312c7a81e6">MRIPointPairs</a></div><div class="ttdeci">struct MRIPointPairs MRIPointPairs</div><div class="ttdoc">Simple interface for pairs holder.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:71</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a63085bec7974b0c59dd501ac20410e1d"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a63085bec7974b0c59dd501ac20410e1d">mrICPAutoSelectFloatXf</a></div><div class="ttdeci">MRMESHC_API MRAffineXf3f mrICPAutoSelectFloatXf(MRICP *icp)</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a7a7e1b4b917587e9342b15b8dc457fec"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a7a7e1b4b917587e9342b15b8dc457fec">mrIPointPairsGet</a></div><div class="ttdeci">MRMESHC_API const MRICPPairData * mrIPointPairsGet(const MRIPointPairs *pp, size_t idx)</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a8302124626b7e2ad2e3fdafa3a1be27f"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a8302124626b7e2ad2e3fdafa3a1be27f">mrICPSamplePoints</a></div><div class="ttdeci">MRMESHC_API void mrICPSamplePoints(MRICP *icp, float samplingVoxelSize)</div><div class="ttdoc">select pairs with origin samples on both objects</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_a854e635d53e45015b77660eb04b57c8a"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#a854e635d53e45015b77660eb04b57c8a">mrICPNewFromSamples</a></div><div class="ttdeci">MRMESHC_API MRICP * mrICPNewFromSamples(const MRMeshOrPointsXf *flt, const MRMeshOrPointsXf *ref, const MRVertBitSet *fltSamples, const MRVertBitSet *refSamples)</div><div class="ttdoc">Constructs ICP framework with given sample points on both objects.</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_aa0deba5552214cfbbef4d811d610dca7"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#aa0deba5552214cfbbef4d811d610dca7">mrICPSetParams</a></div><div class="ttdeci">MRMESHC_API void mrICPSetParams(MRICP *icp, const MRICPProperties *prop)</div><div class="ttdoc">tune algorithm params before run calculateTransformation()</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_aadd3889ebdb61bcdddc57a96cf3b0a55"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#aadd3889ebdb61bcdddc57a96cf3b0a55">MRICPProperties</a></div><div class="ttdeci">struct MRICPProperties MRICPProperties</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_aafb393d5ef1b456624976f54488bcd71"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#aafb393d5ef1b456624976f54488bcd71">mrICPCalculateTransformation</a></div><div class="ttdeci">MRMESHC_API MRAffineXf3f mrICPCalculateTransformation(MRICP *icp)</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ab1fbb8172fb51e68259611bf26579898"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ab1fbb8172fb51e68259611bf26579898">mrICPFree</a></div><div class="ttdeci">MRMESHC_API void mrICPFree(MRICP *icp)</div><div class="ttdoc">deallocates an ICP object</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ab9fe7131e91ae734c0f8d9b2322b24b5"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ab9fe7131e91ae734c0f8d9b2322b24b5">MRICPPairData</a></div><div class="ttdeci">struct MRICPPairData MRICPPairData</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_abd53dc27a52ca64a9b6dbcf194a2f844"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#abd53dc27a52ca64a9b6dbcf194a2f844">mrIPointPairsGetRef</a></div><div class="ttdeci">MRMESHC_API MRICPPairData * mrIPointPairsGetRef(MRIPointPairs *pp, size_t idx)</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ace0593a443f3c2094e9706b7f5985e8e"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ace0593a443f3c2094e9706b7f5985e8e">mrICPGetStatusInfo</a></div><div class="ttdeci">MRMESHC_API MRString * mrICPGetStatusInfo(const MRICP *icp)</div><div class="ttdoc">returns status info string</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ad041c7d6accf6325f43a084b6522221f"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ad041c7d6accf6325f43a084b6522221f">mrIPointPairsSize</a></div><div class="ttdeci">MRMESHC_API size_t mrIPointPairsSize(const MRIPointPairs *pp)</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ad13059f0ee11805873789c5c2a23c4ed"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4ed">MRICPMethod</a></div><div class="ttdeci">MRICPMethod</div><div class="ttdoc">The method how to update transformation from point pairs.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:13</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ad13059f0ee11805873789c5c2a23c4eda10c506de436752392581e7caf768e046"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4eda10c506de436752392581e7caf768e046">MRICPMethodCombined</a></div><div class="ttdeci">@ MRICPMethodCombined</div><div class="ttdoc">PointToPoint for the first 2 iterations, and PointToPlane for the remaining iterations.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:15</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ad13059f0ee11805873789c5c2a23c4eda34e280367064f88f205bee18fe9e0aa1"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4eda34e280367064f88f205bee18fe9e0aa1">MRICPMethodPointToPoint</a></div><div class="ttdeci">@ MRICPMethodPointToPoint</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:18</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ad13059f0ee11805873789c5c2a23c4edaca07e234f7785c96d25379d2f7c3a2fa"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ad13059f0ee11805873789c5c2a23c4edaca07e234f7785c96d25379d2f7c3a2fa">MRICPMethodPointToPlane</a></div><div class="ttdeci">@ MRICPMethodPointToPlane</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:21</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ad4e9636bc22be4235319224e809adbb6"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ad4e9636bc22be4235319224e809adbb6">mrICPGetNumActivePairs</a></div><div class="ttdeci">MRMESHC_API size_t mrICPGetNumActivePairs(const MRICP *icp)</div><div class="ttdoc">computes the number of active point pairs</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ad6572e9fd51800d785882fab5dc53502"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ad6572e9fd51800d785882fab5dc53502">mrICPPropertiesNew</a></div><div class="ttdeci">MRMESHC_API MRICPProperties mrICPPropertiesNew(void)</div><div class="ttdoc">initializes a default instance</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_ae00bfaafa2a5cd791ec1206c17fc151f"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#ae00bfaafa2a5cd791ec1206c17fc151f">mrICPNew</a></div><div class="ttdeci">MRMESHC_API MRICP * mrICPNew(const MRMeshOrPointsXf *flt, const MRMeshOrPointsXf *ref, float samplingVoxelSize)</div><div class="ttdoc">Constructs ICP framework with automatic points sampling on both objects.</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_af637e69192a24d1df05967ff7f05ad71"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71">MRICPExitType</a></div><div class="ttdeci">MRICPExitType</div><div class="ttdoc">types of exit conditions in calculation</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:83</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_af637e69192a24d1df05967ff7f05ad71a6ad07a9633810b37bc21a21775006ebb"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71a6ad07a9633810b37bc21a21775006ebb">MRICPExitTypeNotFoundSolution</a></div><div class="ttdeci">@ MRICPExitTypeNotFoundSolution</div><div class="ttdoc">solution not found in some iteration</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:87</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_af637e69192a24d1df05967ff7f05ad71ac2cb2410a7811ff0fe800d0da2c6e242"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71ac2cb2410a7811ff0fe800d0da2c6e242">MRICPExitTypeNotStarted</a></div><div class="ttdeci">@ MRICPExitTypeNotStarted</div><div class="ttdoc">calculation is not started yet</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:85</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_af637e69192a24d1df05967ff7f05ad71ae73be2eaa1b5072f98f8a8903017c0bd"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71ae73be2eaa1b5072f98f8a8903017c0bd">MRICPExitTypeMaxIterations</a></div><div class="ttdeci">@ MRICPExitTypeMaxIterations</div><div class="ttdoc">iteration limit reached</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:89</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_af637e69192a24d1df05967ff7f05ad71afd56d46f18e9ef449ae8dd084183f594"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71afd56d46f18e9ef449ae8dd084183f594">MRICPExitTypeMaxBadIterations</a></div><div class="ttdeci">@ MRICPExitTypeMaxBadIterations</div><div class="ttdoc">limit of non-improvement iterations in a row reached</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:91</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_af637e69192a24d1df05967ff7f05ad71afe1e5215b08f8fd66281c3f61dc356ae"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#af637e69192a24d1df05967ff7f05ad71afe1e5215b08f8fd66281c3f61dc356ae">MRICPExitTypeStopMsdReached</a></div><div class="ttdeci">@ MRICPExitTypeStopMsdReached</div><div class="ttdoc">stop mean square deviation reached</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:93</div></div>
+<div class="ttc" id="aMRMeshC_2MRICP_8h_html_afed4cf1a0b5f632c3c96f3b7eec8c5a5"><div class="ttname"><a href="MRMeshC_2MRICP_8h.html#afed4cf1a0b5f632c3c96f3b7eec8c5a5">mrICPGetFlt2RefPairs</a></div><div class="ttdeci">MRMESHC_API const MRIPointPairs * mrICPGetFlt2RefPairs(const MRICP *icp)</div><div class="ttdoc">returns current pairs formed from samples on floating object and projections on reference object</div></div>
+<div class="ttc" id="aMRMeshC_2MRId_8h_html"><div class="ttname"><a href="MRMeshC_2MRId_8h.html">MRId.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html">MRMeshFwd.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a07cb85df391b65224a89339236e03c2e"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div><div class="ttdeci">#define MR_EXTERN_C_BEGIN</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:26</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a46d18b867dd2cbd31dd009e01658ba44"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a></div><div class="ttdeci">struct MRVertBitSet MRVertBitSet</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:38</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a4c0dd57de0c70036b4a1e14f71d2fe11"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div><div class="ttdeci">#define MR_EXTERN_C_END</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:27</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a89b45a4728b7f2a3281d78d9164162fe"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a></div><div class="ttdeci">typedefMR_EXTERN_C_BEGIN struct MRString MRString</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:32</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_ab8a099cc7166020a82c2f96fa5043ae6"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a></div><div class="ttdeci">#define MRMESHC_API</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:19</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshOrPoints_8h_html"><div class="ttname"><a href="MRMeshC_2MRMeshOrPoints_8h.html">MRMeshOrPoints.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshOrPoints_8h_html_a56d39781ac5d47019574ee608c9ead18"><div class="ttname"><a href="MRMeshC_2MRMeshOrPoints_8h.html#a56d39781ac5d47019574ee608c9ead18">MRMeshOrPointsXf</a></div><div class="ttdeci">struct MRMeshOrPointsXf MRMeshOrPointsXf</div><div class="ttdoc">an object and its transformation to global space with other objects</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshOrPoints.h:20</div></div>
+<div class="ttc" id="aMRMeshC_2MRVector3_8h_html"><div class="ttname"><a href="MRMeshC_2MRVector3_8h.html">MRVector3.h</a></div></div>
+<div class="ttc" id="astructMRAffineXf3f_html"><div class="ttname"><a href="structMRAffineXf3f.html">MRAffineXf3f</a></div><div class="ttdoc">affine transformation: y = A*x + b, where A in VxV, and b in V</div><div class="ttdef"><b>Definition</b> MRMeshC/MRAffineXf.h:10</div></div>
+<div class="ttc" id="astructMRICPPairData_html"><div class="ttname"><a href="structMRICPPairData.html">MRICPPairData</a></div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:40</div></div>
+<div class="ttc" id="astructMRICPPairData_html_a1058754ffc1ca72641a18f3948b5e193"><div class="ttname"><a href="structMRICPPairData.html#a1058754ffc1ca72641a18f3948b5e193">MRICPPairData::tgtNorm</a></div><div class="ttdeci">MRVector3f tgtNorm</div><div class="ttdoc">normal in the target point after transforming in world space</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:48</div></div>
+<div class="ttc" id="astructMRICPPairData_html_a378a97d5205f2e9f3da4234898bce466"><div class="ttname"><a href="structMRICPPairData.html#a378a97d5205f2e9f3da4234898bce466">MRICPPairData::distSq</a></div><div class="ttdeci">float distSq</div><div class="ttdoc">squared distance between source and target points</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:50</div></div>
+<div class="ttc" id="astructMRICPPairData_html_a5d766d30128740e59a1a46f3c070f04d"><div class="ttname"><a href="structMRICPPairData.html#a5d766d30128740e59a1a46f3c070f04d">MRICPPairData::weight</a></div><div class="ttdeci">float weight</div><div class="ttdoc">weight of the pair (to prioritize over other pairs)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:52</div></div>
+<div class="ttc" id="astructMRICPPairData_html_a846d3e65ab2e79227973c093d37d296f"><div class="ttname"><a href="structMRICPPairData.html#a846d3e65ab2e79227973c093d37d296f">MRICPPairData::srcPoint</a></div><div class="ttdeci">MRVector3f srcPoint</div><div class="ttdoc">coordinates of the source point after transforming in world space</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:42</div></div>
+<div class="ttc" id="astructMRICPPairData_html_ad69c3803430c2d67ad2d7b98d50671b7"><div class="ttname"><a href="structMRICPPairData.html#ad69c3803430c2d67ad2d7b98d50671b7">MRICPPairData::srcNorm</a></div><div class="ttdeci">MRVector3f srcNorm</div><div class="ttdoc">normal in source point after transforming in world space</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:44</div></div>
+<div class="ttc" id="astructMRICPPairData_html_af985418f8344cd7fff2fb9219041866b"><div class="ttname"><a href="structMRICPPairData.html#af985418f8344cd7fff2fb9219041866b">MRICPPairData::tgtPoint</a></div><div class="ttdeci">MRVector3f tgtPoint</div><div class="ttdoc">coordinates of the closest point on target after transforming in world space</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:46</div></div>
+<div class="ttc" id="astructMRICPProperties_html"><div class="ttname"><a href="structMRICPProperties.html">MRICPProperties</a></div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:97</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a01533b26bf04f650af9c2628b8804258"><div class="ttname"><a href="structMRICPProperties.html#a01533b26bf04f650af9c2628b8804258">MRICPProperties::cosThreshold</a></div><div class="ttdeci">float cosThreshold</div><div class="ttdoc">Points pair will be counted only if cosine between surface normals in points is higher.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:105</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a032ebb1b9396df0c2d307fc043167307"><div class="ttname"><a href="structMRICPProperties.html#a032ebb1b9396df0c2d307fc043167307">MRICPProperties::fixedRotationAxis</a></div><div class="ttdeci">MRVector3f fixedRotationAxis</div><div class="ttdoc">If this vector is not zero then rotation is allowed relative to this axis only.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:114</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a21b20f7216af2711301f59435713a9c2"><div class="ttname"><a href="structMRICPProperties.html#a21b20f7216af2711301f59435713a9c2">MRICPProperties::p2plScaleLimit</a></div><div class="ttdeci">float p2plScaleLimit</div><div class="ttdoc">Scaling during one iteration of PointToPlane will be limited by this value.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:103</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a27741c61220a9d8a833b03f4354cf9d6"><div class="ttname"><a href="structMRICPProperties.html#a27741c61220a9d8a833b03f4354cf9d6">MRICPProperties::badIterStopCount</a></div><div class="ttdeci">int badIterStopCount</div><div class="ttdoc">maximum iterations without improvements</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:118</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a2e7b2a199320af5a6d96b01ab388564e"><div class="ttname"><a href="structMRICPProperties.html#a2e7b2a199320af5a6d96b01ab388564e">MRICPProperties::method</a></div><div class="ttdeci">MRICPMethod method</div><div class="ttdoc">The method how to update transformation from point pairs.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:99</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a3f48a94ed67f67bf7d0b65d62add2d0a"><div class="ttname"><a href="structMRICPProperties.html#a3f48a94ed67f67bf7d0b65d62add2d0a">MRICPProperties::icpMode</a></div><div class="ttdeci">MRICPMode icpMode</div><div class="ttdoc">Finds only translation. Rotation part is identity matrix.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:112</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a88912841f4a73c5941ddc87fac934139"><div class="ttname"><a href="structMRICPProperties.html#a88912841f4a73c5941ddc87fac934139">MRICPProperties::farDistFactor</a></div><div class="ttdeci">float farDistFactor</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:110</div></div>
+<div class="ttc" id="astructMRICPProperties_html_a93094df050def819f5582b2327011b50"><div class="ttname"><a href="structMRICPProperties.html#a93094df050def819f5582b2327011b50">MRICPProperties::iterLimit</a></div><div class="ttdeci">int iterLimit</div><div class="ttdoc">maximum iterations</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:116</div></div>
+<div class="ttc" id="astructMRICPProperties_html_abc69dd3c0d8015e675a498bfa51c4169"><div class="ttname"><a href="structMRICPProperties.html#abc69dd3c0d8015e675a498bfa51c4169">MRICPProperties::p2plAngleLimit</a></div><div class="ttdeci">float p2plAngleLimit</div><div class="ttdoc">Rotation angle during one iteration of PointToPlane will be limited by this value.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:101</div></div>
+<div class="ttc" id="astructMRICPProperties_html_ae0d73485e14b9caf033279eb35df4670"><div class="ttname"><a href="structMRICPProperties.html#ae0d73485e14b9caf033279eb35df4670">MRICPProperties::mutualClosest</a></div><div class="ttdeci">bool mutualClosest</div><div class="ttdoc">a pair of points is formed only if both points in the pair are mutually closest (reciprocity test pas...</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:122</div></div>
+<div class="ttc" id="astructMRICPProperties_html_af361f47102e347876690d8afb088ed69"><div class="ttname"><a href="structMRICPProperties.html#af361f47102e347876690d8afb088ed69">MRICPProperties::exitVal</a></div><div class="ttdeci">float exitVal</div><div class="ttdoc">Algorithm target root-mean-square distance. As soon as it is reached, the algorithm stops.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:120</div></div>
+<div class="ttc" id="astructMRICPProperties_html_af8056cb5ec97a0e2fb709ac76fc146de"><div class="ttname"><a href="structMRICPProperties.html#af8056cb5ec97a0e2fb709ac76fc146de">MRICPProperties::distThresholdSq</a></div><div class="ttdeci">float distThresholdSq</div><div class="ttdoc">Points pair will be counted only if squared distance between points is lower than.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:107</div></div>
+<div class="ttc" id="astructMRPointPair_html"><div class="ttname"><a href="structMRPointPair.html">MRPointPair</a></div><div class="ttdoc">Stores a pair of points: one samples on the source and the closest to it on the target.</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:57</div></div>
+<div class="ttc" id="astructMRPointPair_html_a3a1c36eeeff22faca6d6749a8630cff5"><div class="ttname"><a href="structMRPointPair.html#a3a1c36eeeff22faca6d6749a8630cff5">MRPointPair::tgtOnBd</a></div><div class="ttdeci">bool tgtOnBd</div><div class="ttdoc">true if if the closest point on target is located on the boundary (only for meshes)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:67</div></div>
+<div class="ttc" id="astructMRPointPair_html_a3a57febe50fbfa87ec9506c23214c723"><div class="ttname"><a href="structMRPointPair.html#a3a57febe50fbfa87ec9506c23214c723">MRPointPair::ICPPairData</a></div><div class="ttdeci">MRICPPairData ICPPairData</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:58</div></div>
+<div class="ttc" id="astructMRPointPair_html_a85030f1c32b6fa41b3cb99f84864951a"><div class="ttname"><a href="structMRPointPair.html#a85030f1c32b6fa41b3cb99f84864951a">MRPointPair::normalsAngleCos</a></div><div class="ttdeci">float normalsAngleCos</div><div class="ttdoc">cosine between normals in source and target points</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:65</div></div>
+<div class="ttc" id="astructMRPointPair_html_aaf071fe8e6ec54c8e173d7c49c968b10"><div class="ttname"><a href="structMRPointPair.html#aaf071fe8e6ec54c8e173d7c49c968b10">MRPointPair::tgtCloseVert</a></div><div class="ttdeci">MRVertId tgtCloseVert</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:63</div></div>
+<div class="ttc" id="astructMRPointPair_html_ade96451aa57e9f26439ea7333910d37a"><div class="ttname"><a href="structMRPointPair.html#ade96451aa57e9f26439ea7333910d37a">MRPointPair::srcVertId</a></div><div class="ttdeci">MRVertId srcVertId</div><div class="ttdoc">id of the source point</div><div class="ttdef"><b>Definition</b> MRMeshC/MRICP.h:60</div></div>
+<div class="ttc" id="astructMRVector3f_html"><div class="ttname"><a href="structMRVector3f.html">MRVector3f</a></div><div class="ttdoc">three-dimensional vector of floats</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVector3.h:9</div></div>
+<div class="ttc" id="astructMRVertId_html"><div class="ttname"><a href="structMRVertId.html">MRVertId</a></div><div class="ttdoc">vertex index</div><div class="ttdef"><b>Definition</b> MRMeshC/MRId.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRICP_8h.html">MRICP.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

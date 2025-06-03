@@ -1,0 +1,760 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.std_vector_Line3Mesh_double Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1std__vector__Line3Mesh__double.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1std__vector__Line3Mesh__double-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.std_vector_Line3Mesh_double Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0ab2f9d7c9ff481d9180a61347286b18" id="r_a0ab2f9d7c9ff481d9180a61347286b18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ab2f9d7c9ff481d9180a61347286b18">__bool__</a> (self)</td></tr>
+<tr class="separator:a0ab2f9d7c9ff481d9180a61347286b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9989435c83b699fbba86115882fa10ce" id="r_a9989435c83b699fbba86115882fa10ce"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9989435c83b699fbba86115882fa10ce">__delitem__</a> (self, int arg0)</td></tr>
+<tr class="separator:a9989435c83b699fbba86115882fa10ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf47f2c497ed1df6fc6dd77a124acfcc" id="r_adf47f2c497ed1df6fc6dd77a124acfcc"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf47f2c497ed1df6fc6dd77a124acfcc">__delitem__</a> (self, slice arg0)</td></tr>
+<tr class="separator:adf47f2c497ed1df6fc6dd77a124acfcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a272d2c95e63c6ce5c9f6c1e3f74583ff" id="r_a272d2c95e63c6ce5c9f6c1e3f74583ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a272d2c95e63c6ce5c9f6c1e3f74583ff">__getitem__</a> (self, slice s)</td></tr>
+<tr class="separator:a272d2c95e63c6ce5c9f6c1e3f74583ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acad377280747053c79791e154168054d" id="r_acad377280747053c79791e154168054d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acad377280747053c79791e154168054d">__getitem__</a> (self, int arg0)</td></tr>
+<tr class="separator:acad377280747053c79791e154168054d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20edef43e24aa79df641446ba7a76761" id="r_a20edef43e24aa79df641446ba7a76761"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20edef43e24aa79df641446ba7a76761">__init__</a> (self)</td></tr>
+<tr class="separator:a20edef43e24aa79df641446ba7a76761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a35cc1e0843f2474b959f3c231097d7" id="r_a2a35cc1e0843f2474b959f3c231097d7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a35cc1e0843f2474b959f3c231097d7">__init__</a> (self, typing.Iterable arg0)</td></tr>
+<tr class="separator:a2a35cc1e0843f2474b959f3c231097d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa59166fcc6aada4108833e4f9737b70a" id="r_aa59166fcc6aada4108833e4f9737b70a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa59166fcc6aada4108833e4f9737b70a">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a> arg0)</td></tr>
+<tr class="separator:aa59166fcc6aada4108833e4f9737b70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8817376b9a3f802a9a64c1117fe8c5f5" id="r_a8817376b9a3f802a9a64c1117fe8c5f5"><td class="memItemLeft" align="right" valign="top">typing.Iterator[<a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8817376b9a3f802a9a64c1117fe8c5f5">__iter__</a> (self)</td></tr>
+<tr class="separator:a8817376b9a3f802a9a64c1117fe8c5f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a870949bd038d788ba37c56fc75b185c8" id="r_a870949bd038d788ba37c56fc75b185c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a870949bd038d788ba37c56fc75b185c8">__len__</a> (self)</td></tr>
+<tr class="separator:a870949bd038d788ba37c56fc75b185c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee026c6ea863cea967b9c26e20e7ef31" id="r_aee026c6ea863cea967b9c26e20e7ef31"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee026c6ea863cea967b9c26e20e7ef31">__setitem__</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a> arg1)</td></tr>
+<tr class="separator:aee026c6ea863cea967b9c26e20e7ef31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a83f79168b34e43b1500fa5c2c83794" id="r_a4a83f79168b34e43b1500fa5c2c83794"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a83f79168b34e43b1500fa5c2c83794">__setitem__</a> (self, slice arg0, <a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a> arg1)</td></tr>
+<tr class="separator:a4a83f79168b34e43b1500fa5c2c83794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adae7c1a6025db291361c524f36a7b8a4" id="r_adae7c1a6025db291361c524f36a7b8a4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adae7c1a6025db291361c524f36a7b8a4">append</a> (self, <a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a> x)</td></tr>
+<tr class="separator:adae7c1a6025db291361c524f36a7b8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adade7acd846074adce53b0633e95afaf" id="r_adade7acd846074adce53b0633e95afaf"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adade7acd846074adce53b0633e95afaf">clear</a> (self)</td></tr>
+<tr class="separator:adade7acd846074adce53b0633e95afaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf5674a2c2084343e888a6e6cfddbb5" id="r_a6bf5674a2c2084343e888a6e6cfddbb5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bf5674a2c2084343e888a6e6cfddbb5">data_pointer</a> (self)</td></tr>
+<tr class="separator:a6bf5674a2c2084343e888a6e6cfddbb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13cbc379af50076ba178f9361223bf4c" id="r_a13cbc379af50076ba178f9361223bf4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13cbc379af50076ba178f9361223bf4c">empty</a> (self)</td></tr>
+<tr class="separator:a13cbc379af50076ba178f9361223bf4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6440154573733a5875e7dc1dd141162a" id="r_a6440154573733a5875e7dc1dd141162a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6440154573733a5875e7dc1dd141162a">extend</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a> L)</td></tr>
+<tr class="separator:a6440154573733a5875e7dc1dd141162a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e61d46f0d8525e6e4e9c9956ab2bdb3" id="r_a8e61d46f0d8525e6e4e9c9956ab2bdb3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e61d46f0d8525e6e4e9c9956ab2bdb3">extend</a> (self, typing.Iterable L)</td></tr>
+<tr class="separator:a8e61d46f0d8525e6e4e9c9956ab2bdb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2495127e43ee1518698380b8eab179c" id="r_af2495127e43ee1518698380b8eab179c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2495127e43ee1518698380b8eab179c">insert</a> (self, int i, <a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a> x)</td></tr>
+<tr class="separator:af2495127e43ee1518698380b8eab179c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e8b3fef0a91ddc2acc8781a9b7cfa62" id="r_a7e8b3fef0a91ddc2acc8781a9b7cfa62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e8b3fef0a91ddc2acc8781a9b7cfa62">pop</a> (self)</td></tr>
+<tr class="separator:a7e8b3fef0a91ddc2acc8781a9b7cfa62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0aca9e2b1918952bb63ee17181cc64" id="r_aad0aca9e2b1918952bb63ee17181cc64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad0aca9e2b1918952bb63ee17181cc64">pop</a> (self, int i)</td></tr>
+<tr class="separator:aad0aca9e2b1918952bb63ee17181cc64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bbd91f3ef2ed370c89023ab8a6fd221" id="r_a1bbd91f3ef2ed370c89023ab8a6fd221"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bbd91f3ef2ed370c89023ab8a6fd221">resize</a> (self, int arg0)</td></tr>
+<tr class="separator:a1bbd91f3ef2ed370c89023ab8a6fd221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2a23bbaed3cb827e32fd09d34268487" id="r_af2a23bbaed3cb827e32fd09d34268487"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2a23bbaed3cb827e32fd09d34268487">resize</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a> arg1)</td></tr>
+<tr class="separator:af2a23bbaed3cb827e32fd09d34268487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44934cb57d6b67c662afa14ce7512cf9" id="r_a44934cb57d6b67c662afa14ce7512cf9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44934cb57d6b67c662afa14ce7512cf9">size</a> (self)</td></tr>
+<tr class="separator:a44934cb57d6b67c662afa14ce7512cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a6b93ae27e16cce2ff07a871e50fdcad0" id="r_a6b93ae27e16cce2ff07a871e50fdcad0"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b93ae27e16cce2ff07a871e50fdcad0">element_type_byte_size</a> = 80</td></tr>
+<tr class="separator:a6b93ae27e16cce2ff07a871e50fdcad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Aliases:  std_vector_Line3dMesh
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a20edef43e24aa79df641446ba7a76761" name="a20edef43e24aa79df641446ba7a76761"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20edef43e24aa79df641446ba7a76761">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a35cc1e0843f2474b959f3c231097d7" name="a2a35cc1e0843f2474b959f3c231097d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a35cc1e0843f2474b959f3c231097d7">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Iterable</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa59166fcc6aada4108833e4f9737b70a" name="aa59166fcc6aada4108833e4f9737b70a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa59166fcc6aada4108833e4f9737b70a">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0ab2f9d7c9ff481d9180a61347286b18" name="a0ab2f9d7c9ff481d9180a61347286b18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab2f9d7c9ff481d9180a61347286b18">&#9670;&#160;</a></span>__bool__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_Line3Mesh_double.__bool__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Check whether the list is nonempty
+</pre> 
+</div>
+</div>
+<a id="a9989435c83b699fbba86115882fa10ce" name="a9989435c83b699fbba86115882fa10ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9989435c83b699fbba86115882fa10ce">&#9670;&#160;</a></span>__delitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.__delitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Delete the list elements at index ``i``
+</pre> 
+</div>
+</div>
+<a id="adf47f2c497ed1df6fc6dd77a124acfcc" name="adf47f2c497ed1df6fc6dd77a124acfcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf47f2c497ed1df6fc6dd77a124acfcc">&#9670;&#160;</a></span>__delitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.__delitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Delete list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="acad377280747053c79791e154168054d" name="acad377280747053c79791e154168054d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acad377280747053c79791e154168054d">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a> mrmeshpy.std_vector_Line3Mesh_double.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a272d2c95e63c6ce5c9f6c1e3f74583ff" name="a272d2c95e63c6ce5c9f6c1e3f74583ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a272d2c95e63c6ce5c9f6c1e3f74583ff">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a> mrmeshpy.std_vector_Line3Mesh_double.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Retrieve list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="a8817376b9a3f802a9a64c1117fe8c5f5" name="a8817376b9a3f802a9a64c1117fe8c5f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8817376b9a3f802a9a64c1117fe8c5f5">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[<a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a>] mrmeshpy.std_vector_Line3Mesh_double.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a870949bd038d788ba37c56fc75b185c8" name="a870949bd038d788ba37c56fc75b185c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a870949bd038d788ba37c56fc75b185c8">&#9670;&#160;</a></span>__len__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_Line3Mesh_double.__len__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee026c6ea863cea967b9c26e20e7ef31" name="aee026c6ea863cea967b9c26e20e7ef31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee026c6ea863cea967b9c26e20e7ef31">&#9670;&#160;</a></span>__setitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a83f79168b34e43b1500fa5c2c83794" name="a4a83f79168b34e43b1500fa5c2c83794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a83f79168b34e43b1500fa5c2c83794">&#9670;&#160;</a></span>__setitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Assign list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="adae7c1a6025db291361c524f36a7b8a4" name="adae7c1a6025db291361c524f36a7b8a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adae7c1a6025db291361c524f36a7b8a4">&#9670;&#160;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.append </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Add an item to the end of the list
+</pre> 
+</div>
+</div>
+<a id="adade7acd846074adce53b0633e95afaf" name="adade7acd846074adce53b0633e95afaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adade7acd846074adce53b0633e95afaf">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Clear the contents
+</pre> 
+</div>
+</div>
+<a id="a6bf5674a2c2084343e888a6e6cfddbb5" name="a6bf5674a2c2084343e888a6e6cfddbb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf5674a2c2084343e888a6e6cfddbb5">&#9670;&#160;</a></span>data_pointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_Line3Mesh_double.data_pointer </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Returns the pointer to the contiguous vector contents, as an integer.
+</pre> 
+</div>
+</div>
+<a id="a13cbc379af50076ba178f9361223bf4c" name="a13cbc379af50076ba178f9361223bf4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13cbc379af50076ba178f9361223bf4c">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_Line3Mesh_double.empty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6440154573733a5875e7dc1dd141162a" name="a6440154573733a5875e7dc1dd141162a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6440154573733a5875e7dc1dd141162a">&#9670;&#160;</a></span>extend() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.extend </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a></td>          <td class="paramname"><span class="paramname"><em>L</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Extend the list by appending all the items in the given list
+</pre> 
+</div>
+</div>
+<a id="a8e61d46f0d8525e6e4e9c9956ab2bdb3" name="a8e61d46f0d8525e6e4e9c9956ab2bdb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e61d46f0d8525e6e4e9c9956ab2bdb3">&#9670;&#160;</a></span>extend() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.extend </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Iterable</td>          <td class="paramname"><span class="paramname"><em>L</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Extend the list by appending all the items in the given list
+</pre> 
+</div>
+</div>
+<a id="af2495127e43ee1518698380b8eab179c" name="af2495127e43ee1518698380b8eab179c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2495127e43ee1518698380b8eab179c">&#9670;&#160;</a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.insert </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Insert an item at a given position.
+</pre> 
+</div>
+</div>
+<a id="a7e8b3fef0a91ddc2acc8781a9b7cfa62" name="a7e8b3fef0a91ddc2acc8781a9b7cfa62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e8b3fef0a91ddc2acc8781a9b7cfa62">&#9670;&#160;</a></span>pop() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a> mrmeshpy.std_vector_Line3Mesh_double.pop </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Remove and return the last item
+</pre> 
+</div>
+</div>
+<a id="aad0aca9e2b1918952bb63ee17181cc64" name="aad0aca9e2b1918952bb63ee17181cc64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad0aca9e2b1918952bb63ee17181cc64">&#9670;&#160;</a></span>pop() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a> mrmeshpy.std_vector_Line3Mesh_double.pop </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Remove and return the item at index ``i``
+</pre> 
+</div>
+</div>
+<a id="a1bbd91f3ef2ed370c89023ab8a6fd221" name="a1bbd91f3ef2ed370c89023ab8a6fd221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bbd91f3ef2ed370c89023ab8a6fd221">&#9670;&#160;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2a23bbaed3cb827e32fd09d34268487" name="af2a23bbaed3cb827e32fd09d34268487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2a23bbaed3cb827e32fd09d34268487">&#9670;&#160;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_Line3Mesh_double.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Line3Mesh__double.html">Line3Mesh_double</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44934cb57d6b67c662afa14ce7512cf9" name="a44934cb57d6b67c662afa14ce7512cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44934cb57d6b67c662afa14ce7512cf9">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_Line3Mesh_double.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6b93ae27e16cce2ff07a871e50fdcad0" name="a6b93ae27e16cce2ff07a871e50fdcad0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b93ae27e16cce2ff07a871e50fdcad0">&#9670;&#160;</a></span>element_type_byte_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.std_vector_Line3Mesh_double.element_type_byte_size = 80</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1std__vector__Line3Mesh__double.html">std_vector_Line3Mesh_double</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

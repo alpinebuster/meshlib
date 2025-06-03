@@ -1,0 +1,339 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRFillHoleNicely.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRFillHoleNicely_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MRFillHoleNicely.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="MRMeshC_2MRMeshFillHole_8h_source.html">MRMeshFillHole.h</a>&quot;</code><br />
+</div>
+<p><a href="MRMeshC_2MRFillHoleNicely_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMRFillHoleNicelyParams.html">MRFillHoleNicelyParams</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a1387fd74306a78d317758159ba532ca8" id="r_a1387fd74306a78d317758159ba532ca8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a23ed8e6ac32f148502c0aacc5769ca28">MRVertexMass</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1387fd74306a78d317758159ba532ca8">MRVertexMass</a></td></tr>
+<tr class="separator:a1387fd74306a78d317758159ba532ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8d2d5dcb882b7d22af2da00737c6fa" id="r_acd8d2d5dcb882b7d22af2da00737c6fa"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#adc9427c3876893e6ee1743bcd1c2fab9">MREdgeWeights</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd8d2d5dcb882b7d22af2da00737c6fa">MREdgeWeights</a></td></tr>
+<tr class="separator:acd8d2d5dcb882b7d22af2da00737c6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d756050e7f03224879c75d9c6a49e4" id="r_a85d756050e7f03224879c75d9c6a49e4"><td class="memItemLeft" align="right" valign="top">typedef struct MRFillHoleNicelyParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d756050e7f03224879c75d9c6a49e4">MRFillHoleNicelyParams</a></td></tr>
+<tr class="separator:a85d756050e7f03224879c75d9c6a49e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a23ed8e6ac32f148502c0aacc5769ca28" id="r_a23ed8e6ac32f148502c0aacc5769ca28"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23ed8e6ac32f148502c0aacc5769ca28">MRVertexMass</a> { <a class="el" href="#a23ed8e6ac32f148502c0aacc5769ca28a28ff5876ef2f60e797044c7bbc90e175">MRVertexMassUnit</a>
+, <a class="el" href="#a23ed8e6ac32f148502c0aacc5769ca28a2dd3141d74ed2288053cb31d2caff3c9">MRVertexMassNeiArea</a>
+ }</td></tr>
+<tr class="separator:a23ed8e6ac32f148502c0aacc5769ca28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc9427c3876893e6ee1743bcd1c2fab9" id="r_adc9427c3876893e6ee1743bcd1c2fab9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc9427c3876893e6ee1743bcd1c2fab9">MREdgeWeights</a> { <a class="el" href="#adc9427c3876893e6ee1743bcd1c2fab9a4756380cbd0b3f7cb0a902052cd02dcc">MREdgeWeightsUnit</a>
+, <a class="el" href="#adc9427c3876893e6ee1743bcd1c2fab9a05f5620e10ada5d6c8caefc165ac9a84">MREdgeWeightsCotan</a>
+ }</td></tr>
+<tr class="separator:adc9427c3876893e6ee1743bcd1c2fab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a3f685fca0d4ec16f5371023c722c92f7" id="r_a3f685fca0d4ec16f5371023c722c92f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRFillHoleNicelyParams.html">MRFillHoleNicelyParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f685fca0d4ec16f5371023c722c92f7">mrFillHoleNicelyParamsNew</a> (void)</td></tr>
+<tr class="separator:a3f685fca0d4ec16f5371023c722c92f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f19211cdfb264a8c9d4cfbf8a3efb8" id="r_ad3f19211cdfb264a8c9d4cfbf8a3efb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3f19211cdfb264a8c9d4cfbf8a3efb8">mrFillHoleNicely</a> (<a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *mesh, <a class="el" href="structMREdgeId.html">MREdgeId</a> holeEdge_, const <a class="el" href="structMRFillHoleNicelyParams.html">MRFillHoleNicelyParams</a> *params)</td></tr>
+<tr class="separator:ad3f19211cdfb264a8c9d4cfbf8a3efb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="acd8d2d5dcb882b7d22af2da00737c6fa" name="acd8d2d5dcb882b7d22af2da00737c6fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8d2d5dcb882b7d22af2da00737c6fa">&#9670;&#160;</a></span>MREdgeWeights</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="#adc9427c3876893e6ee1743bcd1c2fab9">MREdgeWeights</a> <a class="el" href="#adc9427c3876893e6ee1743bcd1c2fab9">MREdgeWeights</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85d756050e7f03224879c75d9c6a49e4" name="a85d756050e7f03224879c75d9c6a49e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d756050e7f03224879c75d9c6a49e4">&#9670;&#160;</a></span>MRFillHoleNicelyParams</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRFillHoleNicelyParams MRFillHoleNicelyParams</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1387fd74306a78d317758159ba532ca8" name="a1387fd74306a78d317758159ba532ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1387fd74306a78d317758159ba532ca8">&#9670;&#160;</a></span>MRVertexMass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a23ed8e6ac32f148502c0aacc5769ca28">MRVertexMass</a> <a class="el" href="#a23ed8e6ac32f148502c0aacc5769ca28">MRVertexMass</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="adc9427c3876893e6ee1743bcd1c2fab9" name="adc9427c3876893e6ee1743bcd1c2fab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc9427c3876893e6ee1743bcd1c2fab9">&#9670;&#160;</a></span>MREdgeWeights</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#adc9427c3876893e6ee1743bcd1c2fab9">MREdgeWeights</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adc9427c3876893e6ee1743bcd1c2fab9a4756380cbd0b3f7cb0a902052cd02dcc" name="adc9427c3876893e6ee1743bcd1c2fab9a4756380cbd0b3f7cb0a902052cd02dcc"></a>MREdgeWeightsUnit&#160;</td><td class="fielddoc"><p>all edges have same weight=1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adc9427c3876893e6ee1743bcd1c2fab9a05f5620e10ada5d6c8caefc165ac9a84" name="adc9427c3876893e6ee1743bcd1c2fab9a05f5620e10ada5d6c8caefc165ac9a84"></a>MREdgeWeightsCotan&#160;</td><td class="fielddoc"><p>edge weight depends on local geometry and uses cotangent values </p>
+<p>cotangent edge weights and equation weights inversely proportional to square root of local area </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a23ed8e6ac32f148502c0aacc5769ca28" name="a23ed8e6ac32f148502c0aacc5769ca28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23ed8e6ac32f148502c0aacc5769ca28">&#9670;&#160;</a></span>MRVertexMass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a23ed8e6ac32f148502c0aacc5769ca28">MRVertexMass</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a23ed8e6ac32f148502c0aacc5769ca28a28ff5876ef2f60e797044c7bbc90e175" name="a23ed8e6ac32f148502c0aacc5769ca28a28ff5876ef2f60e797044c7bbc90e175"></a>MRVertexMassUnit&#160;</td><td class="fielddoc"><p>all vertices have same mass=1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23ed8e6ac32f148502c0aacc5769ca28a2dd3141d74ed2288053cb31d2caff3c9" name="a23ed8e6ac32f148502c0aacc5769ca28a2dd3141d74ed2288053cb31d2caff3c9"></a>MRVertexMassNeiArea&#160;</td><td class="fielddoc"><p>vertex mass depends on local geometry and proportional to the area of first-ring triangles </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ad3f19211cdfb264a8c9d4cfbf8a3efb8" name="ad3f19211cdfb264a8c9d4cfbf8a3efb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3f19211cdfb264a8c9d4cfbf8a3efb8">&#9670;&#160;</a></span>mrFillHoleNicely()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> * mrFillHoleNicely </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a> *</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structMREdgeId.html">MREdgeId</a></td>          <td class="paramname"><span class="paramname"><em>holeEdge_</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMRFillHoleNicelyParams.html">MRFillHoleNicelyParams</a> *</td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>fills a hole in mesh specified by one of its edge, optionally subdivides new patch on smaller triangles, optionally make smooth connection with existing triangles outside the hole </p><dl class="section return"><dt>Returns</dt><dd>triangles of the patch </dd></dl>
+
+</div>
+</div>
+<a id="a3f685fca0d4ec16f5371023c722c92f7" name="a3f685fca0d4ec16f5371023c722c92f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f685fca0d4ec16f5371023c722c92f7">&#9670;&#160;</a></span>mrFillHoleNicelyParamsNew()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRFillHoleNicelyParams.html">MRFillHoleNicelyParams</a> mrFillHoleNicelyParamsNew </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRFillHoleNicely_8h.html">MRFillHoleNicely.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

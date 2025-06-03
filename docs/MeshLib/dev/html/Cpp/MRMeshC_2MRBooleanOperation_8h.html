@@ -1,0 +1,659 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRBooleanOperation.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRBooleanOperation_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MRBooleanOperation.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="MRMeshC_2MRMeshFwd_8h_source.html">MRMeshFwd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MRMeshC_2MRVector_8h_source.html">MRVector.h</a>&quot;</code><br />
+</div>
+<p><a href="MRMeshC_2MRBooleanOperation_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a42be404107443ace130c706a99d005d7" id="r_a42be404107443ace130c706a99d005d7"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1a">MRBooleanOperation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42be404107443ace130c706a99d005d7">MRBooleanOperation</a></td></tr>
+<tr class="memdesc:a42be404107443ace130c706a99d005d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available CSG operations.  <br /></td></tr>
+<tr class="separator:a42be404107443ace130c706a99d005d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e237fd86d0ff08443c8dfe7687c6ec9" id="r_a5e237fd86d0ff08443c8dfe7687c6ec9"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e237fd86d0ff08443c8dfe7687c6ec9">MRBooleanResultMapperMapObject</a></td></tr>
+<tr class="memdesc:a5e237fd86d0ff08443c8dfe7687c6ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input object index enum.  <br /></td></tr>
+<tr class="separator:a5e237fd86d0ff08443c8dfe7687c6ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a127e53a69993ac9d8362f544a94f9f31" id="r_a127e53a69993ac9d8362f544a94f9f31"><td class="memItemLeft" align="right" valign="top">typedef struct MRBooleanResultMapper&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a127e53a69993ac9d8362f544a94f9f31">MRBooleanResultMapper</a></td></tr>
+<tr class="separator:a127e53a69993ac9d8362f544a94f9f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed19152d61475195ba2d79dcda07fd4a" id="r_aed19152d61475195ba2d79dcda07fd4a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a></td></tr>
+<tr class="separator:aed19152d61475195ba2d79dcda07fd4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a23023d1e8bdd5c8deebba6a109008b1a" id="r_a23023d1e8bdd5c8deebba6a109008b1a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1a">MRBooleanOperation</a> { <br />
+&#160;&#160;<a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aa288f6eb4c17c3cbf16f9692cd8b641ed">MRBooleanOperationInsideA</a> = 0
+, <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aa6bd6711dbc177b8fe3d50bc5d392c906">MRBooleanOperationInsideB</a>
+, <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aa3d43a308ba33f30800011fdbfd3e4b7a">MRBooleanOperationOutsideA</a>
+, <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aa73abf8e42c1369f6f003ec9d3cd2a123">MRBooleanOperationOutsideB</a>
+, <br />
+&#160;&#160;<a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aa5fb40b2f4eed39f20bdae173fbbc3a19">MRBooleanOperationUnion</a>
+, <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aabf138ff7e3c5caf7b0b9dcc5e7245833">MRBooleanOperationIntersection</a>
+, <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aa700d788dc6f6d30b11e7b7ee7dbb9c32">MRBooleanOperationDifferenceBA</a>
+, <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aaa79934cd204c14b02b158729337126b1">MRBooleanOperationDifferenceAB</a>
+, <br />
+&#160;&#160;<a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1aa875e6f4439eedec3c26a278a552b1d3f">MRBooleanOperationCount</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a23023d1e8bdd5c8deebba6a109008b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available CSG operations.  <a href="#a23023d1e8bdd5c8deebba6a109008b1a">More...</a><br /></td></tr>
+<tr class="separator:a23023d1e8bdd5c8deebba6a109008b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a755f2ee37b0f54fb24695f20ff3baca1" id="r_a755f2ee37b0f54fb24695f20ff3baca1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a> { <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1a40cf29526b10d228e0993fc4dad8699a">MRBooleanResultMapperMapObjectA</a>
+, <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1a84d7bf50effb5fed6bdca496bb33b6a7">MRBooleanResultMapperMapObjectB</a>
+, <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1a533dbfce92d74ed35a8ff1666e74d7bf">MRBooleanResultMapperMapObjectCount</a>
+ }</td></tr>
+<tr class="memdesc:a755f2ee37b0f54fb24695f20ff3baca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input object index enum.  <a href="#a755f2ee37b0f54fb24695f20ff3baca1">More...</a><br /></td></tr>
+<tr class="separator:a755f2ee37b0f54fb24695f20ff3baca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aa82b6c9d277aa28feda5f34b0cdd4f40" id="r_aa82b6c9d277aa28feda5f34b0cdd4f40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa82b6c9d277aa28feda5f34b0cdd4f40">mrBooleanResultMapperNew</a> (void)</td></tr>
+<tr class="memdesc:aa82b6c9d277aa28feda5f34b0cdd4f40"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a new BooleanResultMapper object  <br /></td></tr>
+<tr class="separator:aa82b6c9d277aa28feda5f34b0cdd4f40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a526d3bc6d41cd5ee9737420b2a03d09a" id="r_a526d3bc6d41cd5ee9737420b2a03d09a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a526d3bc6d41cd5ee9737420b2a03d09a">mrBooleanResultMapperMapFaces</a> (const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *mapper, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *oldBS, <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a> obj)</td></tr>
+<tr class="memdesc:a526d3bc6d41cd5ee9737420b2a03d09a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns faces bitset of result mesh corresponding input one.  <br /></td></tr>
+<tr class="separator:a526d3bc6d41cd5ee9737420b2a03d09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b9068962b00649104a85a9ebb426861" id="r_a3b9068962b00649104a85a9ebb426861"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b9068962b00649104a85a9ebb426861">mrBooleanResultMapperMapVerts</a> (const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *mapper, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *oldBS, <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a> obj)</td></tr>
+<tr class="memdesc:a3b9068962b00649104a85a9ebb426861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns vertices bitset of result mesh corresponding input one.  <br /></td></tr>
+<tr class="separator:a3b9068962b00649104a85a9ebb426861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9885ed963220dd68152f70382e5a070e" id="r_a9885ed963220dd68152f70382e5a070e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9885ed963220dd68152f70382e5a070e">mrBooleanResultMapperMapEdges</a> (const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *mapper, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a> *oldBS, <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a> obj)</td></tr>
+<tr class="memdesc:a9885ed963220dd68152f70382e5a070e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns edges bitset of result mesh corresponding input one.  <br /></td></tr>
+<tr class="separator:a9885ed963220dd68152f70382e5a070e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0be103f321feff0a8e65d9216e4d334" id="r_ac0be103f321feff0a8e65d9216e4d334"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0be103f321feff0a8e65d9216e4d334">mrBooleanResultMapperNewFaces</a> (const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *mapper)</td></tr>
+<tr class="memdesc:ac0be103f321feff0a8e65d9216e4d334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns only new faces that are created during boolean operation.  <br /></td></tr>
+<tr class="separator:ac0be103f321feff0a8e65d9216e4d334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af827309aa48f5c4df6927a05fa191c65" id="r_af827309aa48f5c4df6927a05fa191c65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af827309aa48f5c4df6927a05fa191c65">mrBooleanResultMapperFilteredOldFaceBitSet</a> (<a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *mapper, const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *oldBS, <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a> obj)</td></tr>
+<tr class="memdesc:af827309aa48f5c4df6927a05fa191c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns updated oldBS leaving only faces that has corresponding ones in result mesh  <br /></td></tr>
+<tr class="separator:af827309aa48f5c4df6927a05fa191c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae44aeab642672cace48f2d7fc685b996" id="r_ae44aeab642672cace48f2d7fc685b996"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae44aeab642672cace48f2d7fc685b996">mrBooleanResultMapperGetMaps</a> (const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *mapper, <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a> index)</td></tr>
+<tr class="separator:ae44aeab642672cace48f2d7fc685b996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27798aa73c48f9e4008fe82e6b02ad6f" id="r_a27798aa73c48f9e4008fe82e6b02ad6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRFaceMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27798aa73c48f9e4008fe82e6b02ad6f">mrBooleanResultMapperMapsCut2origin</a> (const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *maps)</td></tr>
+<tr class="separator:a27798aa73c48f9e4008fe82e6b02ad6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8f0ebf41da815f8e44bf234019e6180" id="r_ad8f0ebf41da815f8e44bf234019e6180"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRFaceMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8f0ebf41da815f8e44bf234019e6180">mrBooleanResultMapperMapsCut2newFaces</a> (const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *maps)</td></tr>
+<tr class="memdesc:ad8f0ebf41da815f8e44bf234019e6180"><td class="mdescLeft">&#160;</td><td class="mdescRight">"after cut" faces to "after stitch" faces (1-1)  <br /></td></tr>
+<tr class="separator:ad8f0ebf41da815f8e44bf234019e6180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ded68e251578245abf28495053df36c" id="r_a3ded68e251578245abf28495053df36c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRWholeEdgeMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ded68e251578245abf28495053df36c">mrBooleanResultMapperMapsOld2newEdges</a> (const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *maps)</td></tr>
+<tr class="memdesc:a3ded68e251578245abf28495053df36c"><td class="mdescLeft">&#160;</td><td class="mdescRight">"origin" edges to "after stitch" edges (1-1)  <br /></td></tr>
+<tr class="separator:a3ded68e251578245abf28495053df36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cbd1e994c26aa38ddb5e56a93b042f7" id="r_a7cbd1e994c26aa38ddb5e56a93b042f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRVertMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cbd1e994c26aa38ddb5e56a93b042f7">mrBooleanResultMapperMapsOld2NewVerts</a> (const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *maps)</td></tr>
+<tr class="memdesc:a7cbd1e994c26aa38ddb5e56a93b042f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">"origin" vertices to "after stitch" vertices (1-1)  <br /></td></tr>
+<tr class="separator:a7cbd1e994c26aa38ddb5e56a93b042f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a478d999ba5ba69a8c5f909c2dad92ac8" id="r_a478d999ba5ba69a8c5f909c2dad92ac8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a478d999ba5ba69a8c5f909c2dad92ac8">mrBooleanResultMapperMapsIdentity</a> (const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *maps)</td></tr>
+<tr class="memdesc:a478d999ba5ba69a8c5f909c2dad92ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">old topology indexes are valid if true  <br /></td></tr>
+<tr class="separator:a478d999ba5ba69a8c5f909c2dad92ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16fc5c9b1cdc8b8aaee2e6d5149c425" id="r_ac16fc5c9b1cdc8b8aaee2e6d5149c425"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac16fc5c9b1cdc8b8aaee2e6d5149c425">mrBooleanResultMapperFree</a> (<a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *mapper)</td></tr>
+<tr class="memdesc:ac16fc5c9b1cdc8b8aaee2e6d5149c425"><td class="mdescLeft">&#160;</td><td class="mdescRight">deallocates a BooleanResultMapper object  <br /></td></tr>
+<tr class="separator:ac16fc5c9b1cdc8b8aaee2e6d5149c425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a42be404107443ace130c706a99d005d7" name="a42be404107443ace130c706a99d005d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42be404107443ace130c706a99d005d7">&#9670;&#160;</a></span>MRBooleanOperation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a> enum <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1a">MRBooleanOperation</a> <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1a">MRBooleanOperation</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Available CSG operations. </p>
+
+</div>
+</div>
+<a id="a127e53a69993ac9d8362f544a94f9f31" name="a127e53a69993ac9d8362f544a94f9f31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a127e53a69993ac9d8362f544a94f9f31">&#9670;&#160;</a></span>MRBooleanResultMapper</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct MRBooleanResultMapper MRBooleanResultMapper</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e237fd86d0ff08443c8dfe7687c6ec9" name="a5e237fd86d0ff08443c8dfe7687c6ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e237fd86d0ff08443c8dfe7687c6ec9">&#9670;&#160;</a></span>MRBooleanResultMapperMapObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a> <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Input object index enum. </p>
+
+</div>
+</div>
+<a id="aed19152d61475195ba2d79dcda07fd4a" name="aed19152d61475195ba2d79dcda07fd4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed19152d61475195ba2d79dcda07fd4a">&#9670;&#160;</a></span>MRBooleanResultMapperMaps</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a23023d1e8bdd5c8deebba6a109008b1a" name="a23023d1e8bdd5c8deebba6a109008b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23023d1e8bdd5c8deebba6a109008b1a">&#9670;&#160;</a></span>MRBooleanOperation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a23023d1e8bdd5c8deebba6a109008b1a">MRBooleanOperation</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Available CSG operations. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aa288f6eb4c17c3cbf16f9692cd8b641ed" name="a23023d1e8bdd5c8deebba6a109008b1aa288f6eb4c17c3cbf16f9692cd8b641ed"></a>MRBooleanOperationInsideA&#160;</td><td class="fielddoc"><p>Part of mesh <code>A</code> that is inside of mesh <code>B</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aa6bd6711dbc177b8fe3d50bc5d392c906" name="a23023d1e8bdd5c8deebba6a109008b1aa6bd6711dbc177b8fe3d50bc5d392c906"></a>MRBooleanOperationInsideB&#160;</td><td class="fielddoc"><p>Part of mesh <code>B</code> that is inside of mesh <code>A</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aa3d43a308ba33f30800011fdbfd3e4b7a" name="a23023d1e8bdd5c8deebba6a109008b1aa3d43a308ba33f30800011fdbfd3e4b7a"></a>MRBooleanOperationOutsideA&#160;</td><td class="fielddoc"><p>Part of mesh <code>A</code> that is outside of mesh <code>B</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aa73abf8e42c1369f6f003ec9d3cd2a123" name="a23023d1e8bdd5c8deebba6a109008b1aa73abf8e42c1369f6f003ec9d3cd2a123"></a>MRBooleanOperationOutsideB&#160;</td><td class="fielddoc"><p>Part of mesh <code>B</code> that is outside of mesh <code>A</code> </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aa5fb40b2f4eed39f20bdae173fbbc3a19" name="a23023d1e8bdd5c8deebba6a109008b1aa5fb40b2f4eed39f20bdae173fbbc3a19"></a>MRBooleanOperationUnion&#160;</td><td class="fielddoc"><p>Union surface of two meshes (outside parts) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aabf138ff7e3c5caf7b0b9dcc5e7245833" name="a23023d1e8bdd5c8deebba6a109008b1aabf138ff7e3c5caf7b0b9dcc5e7245833"></a>MRBooleanOperationIntersection&#160;</td><td class="fielddoc"><p>Intersection surface of two meshes (inside parts) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aa700d788dc6f6d30b11e7b7ee7dbb9c32" name="a23023d1e8bdd5c8deebba6a109008b1aa700d788dc6f6d30b11e7b7ee7dbb9c32"></a>MRBooleanOperationDifferenceBA&#160;</td><td class="fielddoc"><p>Surface of mesh <code>B</code> - surface of mesh <code>A</code> (outside <code>B</code> - inside <code>A</code>) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aaa79934cd204c14b02b158729337126b1" name="a23023d1e8bdd5c8deebba6a109008b1aaa79934cd204c14b02b158729337126b1"></a>MRBooleanOperationDifferenceAB&#160;</td><td class="fielddoc"><p>Surface of mesh <code>A</code> - surface of mesh <code>B</code> (outside <code>A</code> - inside <code>B</code>) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a23023d1e8bdd5c8deebba6a109008b1aa875e6f4439eedec3c26a278a552b1d3f" name="a23023d1e8bdd5c8deebba6a109008b1aa875e6f4439eedec3c26a278a552b1d3f"></a>MRBooleanOperationCount&#160;</td><td class="fielddoc"><p>not a valid operation </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a755f2ee37b0f54fb24695f20ff3baca1" name="a755f2ee37b0f54fb24695f20ff3baca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a755f2ee37b0f54fb24695f20ff3baca1">&#9670;&#160;</a></span>MRBooleanResultMapperMapObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Input object index enum. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a755f2ee37b0f54fb24695f20ff3baca1a40cf29526b10d228e0993fc4dad8699a" name="a755f2ee37b0f54fb24695f20ff3baca1a40cf29526b10d228e0993fc4dad8699a"></a>MRBooleanResultMapperMapObjectA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a755f2ee37b0f54fb24695f20ff3baca1a84d7bf50effb5fed6bdca496bb33b6a7" name="a755f2ee37b0f54fb24695f20ff3baca1a84d7bf50effb5fed6bdca496bb33b6a7"></a>MRBooleanResultMapperMapObjectB&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a755f2ee37b0f54fb24695f20ff3baca1a533dbfce92d74ed35a8ff1666e74d7bf" name="a755f2ee37b0f54fb24695f20ff3baca1a533dbfce92d74ed35a8ff1666e74d7bf"></a>MRBooleanResultMapperMapObjectCount&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="af827309aa48f5c4df6927a05fa191c65" name="af827309aa48f5c4df6927a05fa191c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af827309aa48f5c4df6927a05fa191c65">&#9670;&#160;</a></span>mrBooleanResultMapperFilteredOldFaceBitSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> * mrBooleanResultMapperFilteredOldFaceBitSet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *</td>          <td class="paramname"><span class="paramname"><em>mapper</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>oldBS</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a></td>          <td class="paramname"><span class="paramname"><em>obj</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns updated oldBS leaving only faces that has corresponding ones in result mesh </p>
+
+</div>
+</div>
+<a id="ac16fc5c9b1cdc8b8aaee2e6d5149c425" name="ac16fc5c9b1cdc8b8aaee2e6d5149c425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac16fc5c9b1cdc8b8aaee2e6d5149c425">&#9670;&#160;</a></span>mrBooleanResultMapperFree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> void mrBooleanResultMapperFree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *</td>          <td class="paramname"><span class="paramname"><em>mapper</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>deallocates a BooleanResultMapper object </p>
+
+</div>
+</div>
+<a id="ae44aeab642672cace48f2d7fc685b996" name="ae44aeab642672cace48f2d7fc685b996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae44aeab642672cace48f2d7fc685b996">&#9670;&#160;</a></span>mrBooleanResultMapperGetMaps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> * mrBooleanResultMapperGetMaps </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *</td>          <td class="paramname"><span class="paramname"><em>mapper</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a></td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9885ed963220dd68152f70382e5a070e" name="a9885ed963220dd68152f70382e5a070e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9885ed963220dd68152f70382e5a070e">&#9670;&#160;</a></span>mrBooleanResultMapperMapEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a> * mrBooleanResultMapperMapEdges </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *</td>          <td class="paramname"><span class="paramname"><em>mapper</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#afe7b5eb2550df2844d90173c210184af">MREdgeBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>oldBS</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a></td>          <td class="paramname"><span class="paramname"><em>obj</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns edges bitset of result mesh corresponding input one. </p>
+
+</div>
+</div>
+<a id="a526d3bc6d41cd5ee9737420b2a03d09a" name="a526d3bc6d41cd5ee9737420b2a03d09a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a526d3bc6d41cd5ee9737420b2a03d09a">&#9670;&#160;</a></span>mrBooleanResultMapperMapFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> * mrBooleanResultMapperMapFaces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *</td>          <td class="paramname"><span class="paramname"><em>mapper</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>oldBS</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a></td>          <td class="paramname"><span class="paramname"><em>obj</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns faces bitset of result mesh corresponding input one. </p>
+
+</div>
+</div>
+<a id="ad8f0ebf41da815f8e44bf234019e6180" name="ad8f0ebf41da815f8e44bf234019e6180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8f0ebf41da815f8e44bf234019e6180">&#9670;&#160;</a></span>mrBooleanResultMapperMapsCut2newFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRFaceMap mrBooleanResultMapperMapsCut2newFaces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *</td>          <td class="paramname"><span class="paramname"><em>maps</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>"after cut" faces to "after stitch" faces (1-1) </p>
+
+</div>
+</div>
+<a id="a27798aa73c48f9e4008fe82e6b02ad6f" name="a27798aa73c48f9e4008fe82e6b02ad6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27798aa73c48f9e4008fe82e6b02ad6f">&#9670;&#160;</a></span>mrBooleanResultMapperMapsCut2origin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRFaceMap mrBooleanResultMapperMapsCut2origin </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *</td>          <td class="paramname"><span class="paramname"><em>maps</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>"after cut" faces to "origin" faces this map is not 1-1, but N-1 </p>
+
+</div>
+</div>
+<a id="a478d999ba5ba69a8c5f909c2dad92ac8" name="a478d999ba5ba69a8c5f909c2dad92ac8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a478d999ba5ba69a8c5f909c2dad92ac8">&#9670;&#160;</a></span>mrBooleanResultMapperMapsIdentity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> bool mrBooleanResultMapperMapsIdentity </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *</td>          <td class="paramname"><span class="paramname"><em>maps</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>old topology indexes are valid if true </p>
+
+</div>
+</div>
+<a id="a3ded68e251578245abf28495053df36c" name="a3ded68e251578245abf28495053df36c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ded68e251578245abf28495053df36c">&#9670;&#160;</a></span>mrBooleanResultMapperMapsOld2newEdges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRWholeEdgeMap mrBooleanResultMapperMapsOld2newEdges </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *</td>          <td class="paramname"><span class="paramname"><em>maps</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>"origin" edges to "after stitch" edges (1-1) </p>
+
+</div>
+</div>
+<a id="a7cbd1e994c26aa38ddb5e56a93b042f7" name="a7cbd1e994c26aa38ddb5e56a93b042f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cbd1e994c26aa38ddb5e56a93b042f7">&#9670;&#160;</a></span>mrBooleanResultMapperMapsOld2NewVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> MRVertMap mrBooleanResultMapperMapsOld2NewVerts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aed19152d61475195ba2d79dcda07fd4a">MRBooleanResultMapperMaps</a> *</td>          <td class="paramname"><span class="paramname"><em>maps</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>"origin" vertices to "after stitch" vertices (1-1) </p>
+
+</div>
+</div>
+<a id="a3b9068962b00649104a85a9ebb426861" name="a3b9068962b00649104a85a9ebb426861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b9068962b00649104a85a9ebb426861">&#9670;&#160;</a></span>mrBooleanResultMapperMapVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> * mrBooleanResultMapperMapVerts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *</td>          <td class="paramname"><span class="paramname"><em>mapper</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a> *</td>          <td class="paramname"><span class="paramname"><em>oldBS</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a755f2ee37b0f54fb24695f20ff3baca1">MRBooleanResultMapperMapObject</a></td>          <td class="paramname"><span class="paramname"><em>obj</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns vertices bitset of result mesh corresponding input one. </p>
+
+</div>
+</div>
+<a id="aa82b6c9d277aa28feda5f34b0cdd4f40" name="aa82b6c9d277aa28feda5f34b0cdd4f40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa82b6c9d277aa28feda5f34b0cdd4f40">&#9670;&#160;</a></span>mrBooleanResultMapperNew()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> * mrBooleanResultMapperNew </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>creates a new BooleanResultMapper object </p>
+
+</div>
+</div>
+<a id="ac0be103f321feff0a8e65d9216e4d334" name="ac0be103f321feff0a8e65d9216e4d334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0be103f321feff0a8e65d9216e4d334">&#9670;&#160;</a></span>mrBooleanResultMapperNewFaces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="el" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a> * mrBooleanResultMapperNewFaces </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMRBooleanResultMapper.html">MRBooleanResultMapper</a> *</td>          <td class="paramname"><span class="paramname"><em>mapper</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns only new faces that are created during boolean operation. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRBooleanOperation_8h.html">MRBooleanOperation.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

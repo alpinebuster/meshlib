@@ -1,0 +1,555 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MR::Laplacian Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classMR_1_1Laplacian.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classMR_1_1Laplacian-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MR::Laplacian Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="MRMesh_2MRLaplacian_8h_source.html">MRLaplacian.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a67c8dfc7669f41712a92d21d5ec99fed" id="r_a67c8dfc7669f41712a92d21d5ec99fed"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67c8dfc7669f41712a92d21d5ec99fed">RememberShape</a> { <a class="el" href="#a67c8dfc7669f41712a92d21d5ec99feda93cba07454f06a4a960172bbd6e2a435">Yes</a>
+, <a class="el" href="#a67c8dfc7669f41712a92d21d5ec99fedabafd7322c6e97d25b6299b5d6fe8920b">No</a>
+ }</td></tr>
+<tr class="separator:a67c8dfc7669f41712a92d21d5ec99fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a73bfefd11d47ad836834540e5e85f7b3" id="r_a73bfefd11d47ad836834540e5e85f7b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73bfefd11d47ad836834540e5e85f7b3">Laplacian</a> (<a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;mesh)</td></tr>
+<tr class="separator:a73bfefd11d47ad836834540e5e85f7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76c6a49784d646ffed8a834c10e927df" id="r_a76c6a49784d646ffed8a834c10e927df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76c6a49784d646ffed8a834c10e927df">Laplacian</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, VertCoords &amp;points)</td></tr>
+<tr class="separator:a76c6a49784d646ffed8a834c10e927df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9722fea3de00eb2456b5578da15a385a" id="r_a9722fea3de00eb2456b5578da15a385a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9722fea3de00eb2456b5578da15a385a">init</a> (const VertBitSet &amp;<a class="el" href="#a193dcb7b5ba595a2dad19cf1b4af4ce9">freeVerts</a>, <a class="elRef" href="../namespaceMR.html#a5ac9f08cd2ef48394fa1c77a8ebdd6c8">EdgeWeights</a> weights, <a class="elRef" href="../namespaceMR.html#ada281bbc8bccd66b01be1b6d2b99e3cd">VertexMass</a> vmass=VertexMass::Unit, <a class="el" href="#a67c8dfc7669f41712a92d21d5ec99fed">RememberShape</a> rem=<a class="el" href="#a67c8dfc7669f41712a92d21d5ec99feda93cba07454f06a4a960172bbd6e2a435">Laplacian::RememberShape::Yes</a>)</td></tr>
+<tr class="separator:a9722fea3de00eb2456b5578da15a385a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde407cebf38b19019235ca25c82309e" id="r_abde407cebf38b19019235ca25c82309e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abde407cebf38b19019235ca25c82309e">fixVertex</a> (VertId v, bool smooth=true)</td></tr>
+<tr class="separator:abde407cebf38b19019235ca25c82309e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a215e845242a349800e84d63d629cd76f" id="r_a215e845242a349800e84d63d629cd76f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a215e845242a349800e84d63d629cd76f">fixVertex</a> (VertId v, const Vector3f &amp;fixedPos, bool smooth=true)</td></tr>
+<tr class="separator:a215e845242a349800e84d63d629cd76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e7bb340acaa3ef81fe7ed9f5eaaf226" id="r_a3e7bb340acaa3ef81fe7ed9f5eaaf226"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e7bb340acaa3ef81fe7ed9f5eaaf226">updateSolver</a> ()</td></tr>
+<tr class="memdesc:a3e7bb340acaa3ef81fe7ed9f5eaaf226"><td class="mdescLeft">&#160;</td><td class="mdescRight">if you manually call this method after initialization and fixing vertices then next apply call will be much faster  <br /></td></tr>
+<tr class="separator:a3e7bb340acaa3ef81fe7ed9f5eaaf226"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a99ff3fbda2af6c118c5bb00a99d5d1" id="r_a1a99ff3fbda2af6c118c5bb00a99d5d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a99ff3fbda2af6c118c5bb00a99d5d1">apply</a> ()</td></tr>
+<tr class="memdesc:a1a99ff3fbda2af6c118c5bb00a99d5d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">given fixed vertices, computes positions of remaining region vertices  <br /></td></tr>
+<tr class="separator:a1a99ff3fbda2af6c118c5bb00a99d5d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf4e4b8b9500077dbd7d806dfc74f54" id="r_afdf4e4b8b9500077dbd7d806dfc74f54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdf4e4b8b9500077dbd7d806dfc74f54">applyToScalar</a> (VertScalars &amp;scalarField)</td></tr>
+<tr class="memdesc:afdf4e4b8b9500077dbd7d806dfc74f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">given a pre-resized scalar field with set values in fixed vertices, computes the values in free vertices  <br /></td></tr>
+<tr class="separator:afdf4e4b8b9500077dbd7d806dfc74f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ad9ba866f86e02979c7ad6b6af3331c" id="r_a9ad9ba866f86e02979c7ad6b6af3331c"><td class="memItemLeft" align="right" valign="top">const VertBitSet &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ad9ba866f86e02979c7ad6b6af3331c">region</a> () const</td></tr>
+<tr class="memdesc:a9ad9ba866f86e02979c7ad6b6af3331c"><td class="mdescLeft">&#160;</td><td class="mdescRight">return all initially free vertices and the first layer of vertices around them  <br /></td></tr>
+<tr class="separator:a9ad9ba866f86e02979c7ad6b6af3331c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a193dcb7b5ba595a2dad19cf1b4af4ce9" id="r_a193dcb7b5ba595a2dad19cf1b4af4ce9"><td class="memItemLeft" align="right" valign="top">const VertBitSet &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a193dcb7b5ba595a2dad19cf1b4af4ce9">freeVerts</a> () const</td></tr>
+<tr class="memdesc:a193dcb7b5ba595a2dad19cf1b4af4ce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">return currently free vertices  <br /></td></tr>
+<tr class="separator:a193dcb7b5ba595a2dad19cf1b4af4ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d3cc11b268b8962ef51d56d4946b2a8" id="r_a1d3cc11b268b8962ef51d56d4946b2a8"><td class="memItemLeft" align="right" valign="top">const VertBitSet &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d3cc11b268b8962ef51d56d4946b2a8">firstLayerFixedVerts</a> () const</td></tr>
+<tr class="memdesc:a1d3cc11b268b8962ef51d56d4946b2a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">return fixed vertices from the first layer around free vertices  <br /></td></tr>
+<tr class="separator:a1d3cc11b268b8962ef51d56d4946b2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classMR_1_1Laplacian.html">Laplacian</a> to smoothly deform a region preserving mesh fine details. How to use:</p><ol type="1">
+<li>Initialize <a class="el" href="classMR_1_1Laplacian.html">Laplacian</a> for the region being deformed, here region properties are remembered.</li>
+<li>Change positions of some vertices within the region and call fixVertex for them.</li>
+<li>Optionally call <a class="el" href="#a3e7bb340acaa3ef81fe7ed9f5eaaf226" title="if you manually call this method after initialization and fixing vertices then next apply call will b...">updateSolver()</a></li>
+<li>Call <a class="el" href="#a1a99ff3fbda2af6c118c5bb00a99d5d1" title="given fixed vertices, computes positions of remaining region vertices">apply()</a> to change the remaining vertices within the region Then steps 1-4 or 2-4 can be repeated. <div class="fragment"><div class="line">    <span class="comment">// Construct deformer on the mesh vertices</span></div>
+<div class="line">    <a class="code hl_class" href="classMR_1_1Laplacian.html">MR::Laplacian</a> lDeformer( mesh );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Initialize laplacian</span></div>
+<div class="line">    lDeformer.init( region, MR::EdgeWeights::Cotan, MR::VertexMass::NeiArea );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Fix the anchor vertices in the required position</span></div>
+<div class="line">    lDeformer.fixVertex( v0, newPos0 );</div>
+<div class="line">    lDeformer.fixVertex( v1, newPos1 );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Move the free vertices according to the anchor ones</span></div>
+<div class="line">    lDeformer.apply();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Invalidate the mesh because of the external vertex changes</span></div>
+<div class="line">    mesh.<a class="code hl_function" href="structMR_1_1Mesh.html#ac4cfa4d1a1f01bbcf883f4e96079e505">invalidateCaches</a>();</div>
+</div><!-- fragment --> </li>
+</ol>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a67c8dfc7669f41712a92d21d5ec99fed" name="a67c8dfc7669f41712a92d21d5ec99fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67c8dfc7669f41712a92d21d5ec99fed">&#9670;&#160;</a></span>RememberShape</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a67c8dfc7669f41712a92d21d5ec99fed">MR::Laplacian::RememberShape</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a67c8dfc7669f41712a92d21d5ec99feda93cba07454f06a4a960172bbd6e2a435" name="a67c8dfc7669f41712a92d21d5ec99feda93cba07454f06a4a960172bbd6e2a435"></a>Yes&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a67c8dfc7669f41712a92d21d5ec99fedabafd7322c6e97d25b6299b5d6fe8920b" name="a67c8dfc7669f41712a92d21d5ec99fedabafd7322c6e97d25b6299b5d6fe8920b"></a>No&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a73bfefd11d47ad836834540e5e85f7b3" name="a73bfefd11d47ad836834540e5e85f7b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73bfefd11d47ad836834540e5e85f7b3">&#9670;&#160;</a></span>Laplacian() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> MR::Laplacian::Laplacian </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMR_1_1Mesh.html">Mesh</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>mesh</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76c6a49784d646ffed8a834c10e927df" name="a76c6a49784d646ffed8a834c10e927df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c6a49784d646ffed8a834c10e927df">&#9670;&#160;</a></span>Laplacian() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MR::Laplacian::Laplacian </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>topology</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VertCoords &amp;</td>          <td class="paramname"><span class="paramname"><em>points</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1a99ff3fbda2af6c118c5bb00a99d5d1" name="a1a99ff3fbda2af6c118c5bb00a99d5d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a99ff3fbda2af6c118c5bb00a99d5d1">&#9670;&#160;</a></span>apply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void MR::Laplacian::apply </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>given fixed vertices, computes positions of remaining region vertices </p>
+
+</div>
+</div>
+<a id="afdf4e4b8b9500077dbd7d806dfc74f54" name="afdf4e4b8b9500077dbd7d806dfc74f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf4e4b8b9500077dbd7d806dfc74f54">&#9670;&#160;</a></span>applyToScalar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void MR::Laplacian::applyToScalar </td>
+          <td>(</td>
+          <td class="paramtype">VertScalars &amp;</td>          <td class="paramname"><span class="paramname"><em>scalarField</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>given a pre-resized scalar field with set values in fixed vertices, computes the values in free vertices </p>
+
+</div>
+</div>
+<a id="a1d3cc11b268b8962ef51d56d4946b2a8" name="a1d3cc11b268b8962ef51d56d4946b2a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d3cc11b268b8962ef51d56d4946b2a8">&#9670;&#160;</a></span>firstLayerFixedVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const VertBitSet &amp; MR::Laplacian::firstLayerFixedVerts </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return fixed vertices from the first layer around free vertices </p>
+
+</div>
+</div>
+<a id="abde407cebf38b19019235ca25c82309e" name="abde407cebf38b19019235ca25c82309e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abde407cebf38b19019235ca25c82309e">&#9670;&#160;</a></span>fixVertex() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void MR::Laplacian::fixVertex </td>
+          <td>(</td>
+          <td class="paramtype">VertId</td>          <td class="paramname"><span class="paramname"><em>v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>smooth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>notify <a class="el" href="classMR_1_1Laplacian.html">Laplacian</a> that given vertex has changed after init and must be fixed during apply; </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">smooth</td><td>whether to make the surface smooth in this vertex (sharp otherwise) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a215e845242a349800e84d63d629cd76f" name="a215e845242a349800e84d63d629cd76f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a215e845242a349800e84d63d629cd76f">&#9670;&#160;</a></span>fixVertex() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void MR::Laplacian::fixVertex </td>
+          <td>(</td>
+          <td class="paramtype">VertId</td>          <td class="paramname"><span class="paramname"><em>v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector3f &amp;</td>          <td class="paramname"><span class="paramname"><em>fixedPos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>smooth</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>sets position of given vertex after init and it must be fixed during apply (THIS METHOD CHANGES THE MESH); </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">smooth</td><td>whether to make the surface smooth in this vertex (sharp otherwise) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a193dcb7b5ba595a2dad19cf1b4af4ce9" name="a193dcb7b5ba595a2dad19cf1b4af4ce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193dcb7b5ba595a2dad19cf1b4af4ce9">&#9670;&#160;</a></span>freeVerts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const VertBitSet &amp; MR::Laplacian::freeVerts </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return currently free vertices </p>
+
+</div>
+</div>
+<a id="a9722fea3de00eb2456b5578da15a385a" name="a9722fea3de00eb2456b5578da15a385a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9722fea3de00eb2456b5578da15a385a">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void MR::Laplacian::init </td>
+          <td>(</td>
+          <td class="paramtype">const VertBitSet &amp;</td>          <td class="paramname"><span class="paramname"><em>freeVerts</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="../namespaceMR.html#a5ac9f08cd2ef48394fa1c77a8ebdd6c8">EdgeWeights</a></td>          <td class="paramname"><span class="paramname"><em>weights</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="../namespaceMR.html#ada281bbc8bccd66b01be1b6d2b99e3cd">VertexMass</a></td>          <td class="paramname"><span class="paramname"><em>vmass</em></span><span class="paramdefsep"> = </span><span class="paramdefval">VertexMass::Unit</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a67c8dfc7669f41712a92d21d5ec99fed">RememberShape</a></td>          <td class="paramname"><span class="paramname"><em>rem</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a67c8dfc7669f41712a92d21d5ec99feda93cba07454f06a4a960172bbd6e2a435">Laplacian::RememberShape::Yes</a></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>initialize <a class="el" href="classMR_1_1Laplacian.html">Laplacian</a> for the region being deformed, here region properties are remembered and precomputed; </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">freeVerts</td><td>must not include all vertices of a mesh connected component </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9ad9ba866f86e02979c7ad6b6af3331c" name="a9ad9ba866f86e02979c7ad6b6af3331c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ad9ba866f86e02979c7ad6b6af3331c">&#9670;&#160;</a></span>region()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const VertBitSet &amp; MR::Laplacian::region </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return all initially free vertices and the first layer of vertices around them </p>
+
+</div>
+</div>
+<a id="a3e7bb340acaa3ef81fe7ed9f5eaaf226" name="a3e7bb340acaa3ef81fe7ed9f5eaaf226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e7bb340acaa3ef81fe7ed9f5eaaf226">&#9670;&#160;</a></span>updateSolver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void MR::Laplacian::updateSolver </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>if you manually call this method after initialization and fixing vertices then next apply call will be much faster </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="MRMesh_2MRLaplacian_8h_source.html">MRMesh/MRLaplacian.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>MR</b></li><li class="navelem"><a class="el" href="classMR_1_1Laplacian.html">Laplacian</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1861 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.VisualObject Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1VisualObject.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1VisualObject-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.VisualObject Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.VisualObject:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1VisualObject.png" usemap="#mrmeshpy.VisualObject_map" alt=""/>
+  <map id="mrmeshpy.VisualObject_map" name="mrmeshpy.VisualObject_map">
+<area href="classmrmeshpy_1_1Object.html" alt="mrmeshpy.Object" shape="rect" coords="3563,56,4571,80"/>
+<area href="classmrmeshpy_1_1ObjectChildrenHolder.html" alt="mrmeshpy.ObjectChildrenHolder" shape="rect" coords="3563,0,4571,24"/>
+<area href="classmrmeshpy_1_1FeatureObject.html" alt="mrmeshpy.FeatureObject" shape="rect" coords="0,168,1008,192"/>
+<area href="classmrmeshpy_1_1MeasurementObject.html" alt="mrmeshpy.MeasurementObject" shape="rect" coords="2036,168,3044,192"/>
+<area href="classmrmeshpy_1_1ObjectLabel.html" alt="mrmeshpy.ObjectLabel" shape="rect" coords="3054,168,4062,192"/>
+<area href="classmrmeshpy_1_1ObjectLinesHolder.html" alt="mrmeshpy.ObjectLinesHolder" shape="rect" coords="4072,168,5080,192"/>
+<area href="classmrmeshpy_1_1ObjectMeshHolder.html" alt="mrmeshpy.ObjectMeshHolder" shape="rect" coords="6108,168,7116,192"/>
+<area href="classmrmeshpy_1_1ObjectPointsHolder.html" alt="mrmeshpy.ObjectPointsHolder" shape="rect" coords="8144,168,9152,192"/>
+<area href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter.html" alt="mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter" shape="rect" coords="1018,224,2026,248"/>
+<area href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__08bac3bda56e323e9f008186f80b7f55.html" alt="mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_angle_DimensionsVisualizePropertyType_length" shape="rect" coords="1018,280,2026,304"/>
+<area href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__76fd3e0afd560dcf4b968132e8074b6d.html" alt="mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_length" shape="rect" coords="1018,336,2026,360"/>
+<area href="classmrmeshpy_1_1LineObject.html" alt="mrmeshpy.LineObject" shape="rect" coords="1018,392,2026,416"/>
+<area href="classmrmeshpy_1_1PlaneObject.html" alt="mrmeshpy.PlaneObject" shape="rect" coords="1018,448,2026,472"/>
+<area href="classmrmeshpy_1_1PointObject.html" alt="mrmeshpy.PointObject" shape="rect" coords="1018,504,2026,528"/>
+<area href="classmrmeshpy_1_1AngleMeasurementObject.html" alt="mrmeshpy.AngleMeasurementObject" shape="rect" coords="3054,224,4062,248"/>
+<area href="classmrmeshpy_1_1DistanceMeasurementObject.html" alt="mrmeshpy.DistanceMeasurementObject" shape="rect" coords="3054,280,4062,304"/>
+<area href="classmrmeshpy_1_1RadiusMeasurementObject.html" alt="mrmeshpy.RadiusMeasurementObject" shape="rect" coords="3054,336,4062,360"/>
+<area href="classmrmeshpy_1_1ObjectGcode.html" alt="mrmeshpy.ObjectGcode" shape="rect" coords="5090,224,6098,248"/>
+<area href="classmrmeshpy_1_1ObjectLines.html" alt="mrmeshpy.ObjectLines" shape="rect" coords="5090,280,6098,304"/>
+<area href="classmrmeshpy_1_1ObjectDistanceMap.html" alt="mrmeshpy.ObjectDistanceMap" shape="rect" coords="7126,224,8134,248"/>
+<area href="classmrmeshpy_1_1ObjectMesh.html" alt="mrmeshpy.ObjectMesh" shape="rect" coords="7126,280,8134,304"/>
+<area href="classmrmeshpy_1_1ObjectVoxels.html" alt="mrmeshpy.ObjectVoxels" shape="rect" coords="7126,336,8134,360"/>
+<area href="classmrmeshpy_1_1ObjectPoints.html" alt="mrmeshpy.ObjectPoints" shape="rect" coords="8144,224,9152,248"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a3aa4d51e5d881a8faec9b51637da6364" id="r_a3aa4d51e5d881a8faec9b51637da6364"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3aa4d51e5d881a8faec9b51637da6364">__init__</a> (self)</td></tr>
+<tr class="separator:a3aa4d51e5d881a8faec9b51637da6364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aeb8f658d1ec828372eb5f234f696fd" id="r_a1aeb8f658d1ec828372eb5f234f696fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1aeb8f658d1ec828372eb5f234f696fd">clone</a> (self)</td></tr>
+<tr class="separator:a1aeb8f658d1ec828372eb5f234f696fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99a68c12bda4b4c07f5ba725b2b2af59" id="r_a99a68c12bda4b4c07f5ba725b2b2af59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__ViewportMask.html">std_vector_ViewportMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99a68c12bda4b4c07f5ba725b2b2af59">getAllVisualizeProperties</a> (self)</td></tr>
+<tr class="separator:a99a68c12bda4b4c07f5ba725b2b2af59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c638c112056461424bfc09c23925b7" id="r_a82c638c112056461424bfc09c23925b7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82c638c112056461424bfc09c23925b7">getAmbientStrength</a> (self)</td></tr>
+<tr class="separator:a82c638c112056461424bfc09c23925b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52231ec5177a10f568e957c8ad4d671" id="r_ae52231ec5177a10f568e957c8ad4d671"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae52231ec5177a10f568e957c8ad4d671">getBackColor</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:ae52231ec5177a10f568e957c8ad4d671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c50e24643b786be0271ce69b3390c9c" id="r_a9c50e24643b786be0271ce69b3390c9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c50e24643b786be0271ce69b3390c9c">getBackColorsForAllViewports</a> (self)</td></tr>
+<tr class="separator:a9c50e24643b786be0271ce69b3390c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f787f2b93a34cfb4d2d1744e2177271" id="r_a7f787f2b93a34cfb4d2d1744e2177271"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f787f2b93a34cfb4d2d1744e2177271">getBoundingBox</a> (self)</td></tr>
+<tr class="separator:a7f787f2b93a34cfb4d2d1744e2177271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae02cc04db9034c21e7b707ddeb335114" id="r_ae02cc04db9034c21e7b707ddeb335114"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae02cc04db9034c21e7b707ddeb335114">getClassName</a> (self)</td></tr>
+<tr class="separator:ae02cc04db9034c21e7b707ddeb335114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac93868b05bd4133b812381d686c527d6" id="r_ac93868b05bd4133b812381d686c527d6"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac93868b05bd4133b812381d686c527d6">getClassNameInPlural</a> (self)</td></tr>
+<tr class="separator:ac93868b05bd4133b812381d686c527d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2701866ba9629c598b8d6c83056f4f3" id="r_af2701866ba9629c598b8d6c83056f4f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ColoringType.html">ColoringType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2701866ba9629c598b8d6c83056f4f3">getColoringType</a> (self)</td></tr>
+<tr class="separator:af2701866ba9629c598b8d6c83056f4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9ead8b38c035c872a132c5cb24bf5d" id="r_a4b9ead8b38c035c872a132c5cb24bf5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b9ead8b38c035c872a132c5cb24bf5d">getDirtyFlags</a> (self)</td></tr>
+<tr class="separator:a4b9ead8b38c035c872a132c5cb24bf5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51881787ab04577da4acce749b1d747e" id="r_a51881787ab04577da4acce749b1d747e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51881787ab04577da4acce749b1d747e">getFrontColor</a> (self, bool selected=True, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:a51881787ab04577da4acce749b1d747e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2808b144a06c6ceb816da6622c52c5f" id="r_aa2808b144a06c6ceb816da6622c52c5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2808b144a06c6ceb816da6622c52c5f">getFrontColorsForAllViewports</a> (self, bool selected=True)</td></tr>
+<tr class="separator:aa2808b144a06c6ceb816da6622c52c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3063b5e8be62503e1bbf2421636228" id="r_a6e3063b5e8be62503e1bbf2421636228"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e3063b5e8be62503e1bbf2421636228">getGlobalAlpha</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:a6e3063b5e8be62503e1bbf2421636228"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6dea7b6b8d6999a2441165e0073951e" id="r_aa6dea7b6b8d6999a2441165e0073951e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportProperty__unsigned__char.html">ViewportProperty_unsigned_char</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6dea7b6b8d6999a2441165e0073951e">getGlobalAlphaForAllViewports</a> (self)</td></tr>
+<tr class="separator:aa6dea7b6b8d6999a2441165e0073951e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcc9d10e0b22298e7cfbde120288ed3" id="r_aadcc9d10e0b22298e7cfbde120288ed3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__std__string.html">std_vector_std_string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadcc9d10e0b22298e7cfbde120288ed3">getInfoLines</a> (self)</td></tr>
+<tr class="separator:aadcc9d10e0b22298e7cfbde120288ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4842439acb63665c69e48c89cf3039da" id="r_a4842439acb63665c69e48c89cf3039da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__PositionedText.html">std_vector_PositionedText</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4842439acb63665c69e48c89cf3039da">getLabels</a> (self)</td></tr>
+<tr class="separator:a4842439acb63665c69e48c89cf3039da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab11323bc37a1b69c97065ae9b1e86d71" id="r_ab11323bc37a1b69c97065ae9b1e86d71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab11323bc37a1b69c97065ae9b1e86d71">getLabelsColor</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:ab11323bc37a1b69c97065ae9b1e86d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef6d4e80cce959f51d5731650b5500d" id="r_a1ef6d4e80cce959f51d5731650b5500d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ef6d4e80cce959f51d5731650b5500d">getLabelsColorsForAllViewports</a> (self)</td></tr>
+<tr class="separator:a1ef6d4e80cce959f51d5731650b5500d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b36e627e752037bbe0d6cfeee96dbaf" id="r_a9b36e627e752037bbe0d6cfeee96dbaf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b36e627e752037bbe0d6cfeee96dbaf">getRedrawFlag</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask)</td></tr>
+<tr class="separator:a9b36e627e752037bbe0d6cfeee96dbaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9224ef194f3580c35affb61d7a560db2" id="r_a9224ef194f3580c35affb61d7a560db2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9224ef194f3580c35affb61d7a560db2">getShininess</a> (self)</td></tr>
+<tr class="separator:a9224ef194f3580c35affb61d7a560db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ac83a9fca121b3f5e6716ed1222a5f8" id="r_a8ac83a9fca121b3f5e6716ed1222a5f8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ac83a9fca121b3f5e6716ed1222a5f8">getSpecularStrength</a> (self)</td></tr>
+<tr class="separator:a8ac83a9fca121b3f5e6716ed1222a5f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a487af7ed5a9684ff50ae73578c31bf4b" id="r_a487af7ed5a9684ff50ae73578c31bf4b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a487af7ed5a9684ff50ae73578c31bf4b">getVisualizeProperty</a> (self, <a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a> type, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask)</td></tr>
+<tr class="separator:a487af7ed5a9684ff50ae73578c31bf4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a936f4ea388564c3dc033b5abb39993f4" id="r_a936f4ea388564c3dc033b5abb39993f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a936f4ea388564c3dc033b5abb39993f4">getVisualizePropertyMask</a> (self, <a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a> type)</td></tr>
+<tr class="separator:a936f4ea388564c3dc033b5abb39993f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a571d9d02df9a2a9dd723f6a71ce398" id="r_a1a571d9d02df9a2a9dd723f6a71ce398"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a571d9d02df9a2a9dd723f6a71ce398">heapBytes</a> (self)</td></tr>
+<tr class="separator:a1a571d9d02df9a2a9dd723f6a71ce398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90715c5c04e6a8c2a5d0998877fec7d7" id="r_a90715c5c04e6a8c2a5d0998877fec7d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90715c5c04e6a8c2a5d0998877fec7d7">isPickable</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()')</td></tr>
+<tr class="separator:a90715c5c04e6a8c2a5d0998877fec7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5140b7d1eac8c1736d61cc0459a4a83e" id="r_a5140b7d1eac8c1736d61cc0459a4a83e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5140b7d1eac8c1736d61cc0459a4a83e">renderUi</a> (self, <a class="el" href="classmrmeshpy_1_1UiRenderParams.html">UiRenderParams</a> params)</td></tr>
+<tr class="separator:a5140b7d1eac8c1736d61cc0459a4a83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c9e2837535628e814ef5dda5e6f9804" id="r_a6c9e2837535628e814ef5dda5e6f9804"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c9e2837535628e814ef5dda5e6f9804">resetDirty</a> (self)</td></tr>
+<tr class="separator:a6c9e2837535628e814ef5dda5e6f9804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7878a1ddebce740b0874891ca28193b4" id="r_a7878a1ddebce740b0874891ca28193b4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7878a1ddebce740b0874891ca28193b4">resetDirtyExceptMask</a> (self, int mask)</td></tr>
+<tr class="separator:a7878a1ddebce740b0874891ca28193b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d1644b7ff803c36884c9296da2bd460" id="r_a3d1644b7ff803c36884c9296da2bd460"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d1644b7ff803c36884c9296da2bd460">setAllVisualizeProperties</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__ViewportMask.html">std_vector_ViewportMask</a> properties)</td></tr>
+<tr class="separator:a3d1644b7ff803c36884c9296da2bd460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b4f144aeb3979ad37f0fedfc15e5ef" id="r_a42b4f144aeb3979ad37f0fedfc15e5ef"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42b4f144aeb3979ad37f0fedfc15e5ef">setAmbientStrength</a> (self, float ambientStrength)</td></tr>
+<tr class="separator:a42b4f144aeb3979ad37f0fedfc15e5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a5d00cb08cfb6c1cf9b2adf05391ac" id="r_a45a5d00cb08cfb6c1cf9b2adf05391ac"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45a5d00cb08cfb6c1cf9b2adf05391ac">setBackColor</a> (self, <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> color, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:a45a5d00cb08cfb6c1cf9b2adf05391ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad509bb820ada532c9f7ac2957aec5726" id="r_ad509bb820ada532c9f7ac2957aec5726"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad509bb820ada532c9f7ac2957aec5726">setBackColorsForAllViewports</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a> val)</td></tr>
+<tr class="separator:ad509bb820ada532c9f7ac2957aec5726"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45fe6a0cc0b9e898e6e027a173baae46" id="r_a45fe6a0cc0b9e898e6e027a173baae46"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45fe6a0cc0b9e898e6e027a173baae46">setColoringType</a> (self, <a class="el" href="classmrmeshpy_1_1ColoringType.html">ColoringType</a> coloringType)</td></tr>
+<tr class="separator:a45fe6a0cc0b9e898e6e027a173baae46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883cdf9eb84b10488087440af6534a26" id="r_a883cdf9eb84b10488087440af6534a26"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a883cdf9eb84b10488087440af6534a26">setDirtyFlags</a> (self, int mask, bool invalidateCaches=True)</td></tr>
+<tr class="separator:a883cdf9eb84b10488087440af6534a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a187a6467d9407f53360cfb361cc3f7d4" id="r_a187a6467d9407f53360cfb361cc3f7d4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a187a6467d9407f53360cfb361cc3f7d4">setFrontColor</a> (self, <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> color, bool selected, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:a187a6467d9407f53360cfb361cc3f7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdbcc2226221f32f64842601d9e1e4a3" id="r_acdbcc2226221f32f64842601d9e1e4a3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdbcc2226221f32f64842601d9e1e4a3">setFrontColorsForAllViewports</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a> val, bool selected=True)</td></tr>
+<tr class="separator:acdbcc2226221f32f64842601d9e1e4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fefd22785493a44ac52755cbcb666d7" id="r_a3fefd22785493a44ac52755cbcb666d7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fefd22785493a44ac52755cbcb666d7">setGlobalAlpha</a> (self, int alpha, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:a3fefd22785493a44ac52755cbcb666d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa64178b2ff0ec0f3160412286a20124" id="r_afa64178b2ff0ec0f3160412286a20124"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa64178b2ff0ec0f3160412286a20124">setGlobalAlphaForAllViewports</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportProperty__unsigned__char.html">ViewportProperty_unsigned_char</a> val)</td></tr>
+<tr class="separator:afa64178b2ff0ec0f3160412286a20124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21b7a6222609580a5381e9c2e0dea1d2" id="r_a21b7a6222609580a5381e9c2e0dea1d2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21b7a6222609580a5381e9c2e0dea1d2">setLabels</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__PositionedText.html">std_vector_PositionedText</a> labels)</td></tr>
+<tr class="separator:a21b7a6222609580a5381e9c2e0dea1d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a682702ee805b61997c99c221e3f707f2" id="r_a682702ee805b61997c99c221e3f707f2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a682702ee805b61997c99c221e3f707f2">setLabelsColor</a> (self, <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> color, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> viewportId='{}')</td></tr>
+<tr class="separator:a682702ee805b61997c99c221e3f707f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a707275fd9ea18111f49a8c7a76d3a37f" id="r_a707275fd9ea18111f49a8c7a76d3a37f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a707275fd9ea18111f49a8c7a76d3a37f">setLabelsColorsForAllViewports</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a> val)</td></tr>
+<tr class="separator:a707275fd9ea18111f49a8c7a76d3a37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571b17c0c898d7ba22361d3acea9f511" id="r_a571b17c0c898d7ba22361d3acea9f511"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a571b17c0c898d7ba22361d3acea9f511">setPickable</a> (self, bool on, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#ad265bcbabed580f2fe7dd20c68e7970d">ViewportMask::all</a>()')</td></tr>
+<tr class="separator:a571b17c0c898d7ba22361d3acea9f511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03bf218ed762761b72a397cf74ac6b25" id="r_a03bf218ed762761b72a397cf74ac6b25"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03bf218ed762761b72a397cf74ac6b25">setShininess</a> (self, float shininess)</td></tr>
+<tr class="separator:a03bf218ed762761b72a397cf74ac6b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5aaf91f77383289702c646d873af962" id="r_aa5aaf91f77383289702c646d873af962"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5aaf91f77383289702c646d873af962">setSpecularStrength</a> (self, float specularStrength)</td></tr>
+<tr class="separator:aa5aaf91f77383289702c646d873af962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a835cb96e26e7068936c68aba9046257e" id="r_a835cb96e26e7068936c68aba9046257e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a835cb96e26e7068936c68aba9046257e">setUseDefaultScenePropertiesOnDeserialization</a> (self, bool <a class="el" href="#a5e25b63c3965dc9f65f914e80f164bbd">useDefaultScenePropertiesOnDeserialization</a>)</td></tr>
+<tr class="separator:a835cb96e26e7068936c68aba9046257e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a714cc9052b7153f7263836546050015f" id="r_a714cc9052b7153f7263836546050015f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a714cc9052b7153f7263836546050015f">setVisualizeProperty</a> (self, bool value, <a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a> type, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask)</td></tr>
+<tr class="separator:a714cc9052b7153f7263836546050015f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48dca93e69125ceede505cae9f2e4629" id="r_a48dca93e69125ceede505cae9f2e4629"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48dca93e69125ceede505cae9f2e4629">setVisualizePropertyMask</a> (self, <a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a> type, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask)</td></tr>
+<tr class="separator:a48dca93e69125ceede505cae9f2e4629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f1849493da5afd051a79175b5f08734" id="r_a2f1849493da5afd051a79175b5f08734"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f1849493da5afd051a79175b5f08734">shallowClone</a> (self)</td></tr>
+<tr class="separator:a2f1849493da5afd051a79175b5f08734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac257ca586aac9d77be68dcc8597dc71" id="r_aac257ca586aac9d77be68dcc8597dc71"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac257ca586aac9d77be68dcc8597dc71">showLabels</a> (self, bool on)</td></tr>
+<tr class="separator:aac257ca586aac9d77be68dcc8597dc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1fea9392fd2a77f641451abf0fea207" id="r_ae1fea9392fd2a77f641451abf0fea207"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1fea9392fd2a77f641451abf0fea207">showLabels</a> (self)</td></tr>
+<tr class="separator:ae1fea9392fd2a77f641451abf0fea207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1982e8baf3d180cb968085525a988ec4" id="r_a1982e8baf3d180cb968085525a988ec4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1982e8baf3d180cb968085525a988ec4">showName</a> (self, bool on)</td></tr>
+<tr class="separator:a1982e8baf3d180cb968085525a988ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf37fc4271039b5e74b29185ddbd35e3" id="r_adf37fc4271039b5e74b29185ddbd35e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf37fc4271039b5e74b29185ddbd35e3">showName</a> (self)</td></tr>
+<tr class="separator:adf37fc4271039b5e74b29185ddbd35e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af397dd03ebfb70c972d3c4b39e52fc51" id="r_af397dd03ebfb70c972d3c4b39e52fc51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af397dd03ebfb70c972d3c4b39e52fc51">supportsVisualizeProperty</a> (self, <a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a> type)</td></tr>
+<tr class="separator:af397dd03ebfb70c972d3c4b39e52fc51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afccac4560acbe3eb1403c494d2d9b197" id="r_afccac4560acbe3eb1403c494d2d9b197"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afccac4560acbe3eb1403c494d2d9b197">toggleVisualizeProperty</a> (self, <a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a> type, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask)</td></tr>
+<tr class="separator:afccac4560acbe3eb1403c494d2d9b197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e188ed95f73756841030840741720e9" id="r_a0e188ed95f73756841030840741720e9"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e188ed95f73756841030840741720e9">typeName</a> (self)</td></tr>
+<tr class="separator:a0e188ed95f73756841030840741720e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e25b63c3965dc9f65f914e80f164bbd" id="r_a5e25b63c3965dc9f65f914e80f164bbd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e25b63c3965dc9f65f914e80f164bbd">useDefaultScenePropertiesOnDeserialization</a> (self)</td></tr>
+<tr class="separator:a5e25b63c3965dc9f65f914e80f164bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1Object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1Object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1Object.html">mrmeshpy.Object</a></td></tr>
+<tr class="memitem:a4c9a5cdc889f952e88f15efc92859b0b inherit pub_methods_classmrmeshpy_1_1Object" id="r_a4c9a5cdc889f952e88f15efc92859b0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a4c9a5cdc889f952e88f15efc92859b0b">addChild</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> child, bool recognizedChild=True)</td></tr>
+<tr class="separator:a4c9a5cdc889f952e88f15efc92859b0b inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a628d57698bee030f4e37809eed20fdb6 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a628d57698bee030f4e37809eed20fdb6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a628d57698bee030f4e37809eed20fdb6">addChildBefore</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> newChild, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> existingChild)</td></tr>
+<tr class="separator:a628d57698bee030f4e37809eed20fdb6 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1db3f0240dda415f1f066fed72225e16 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a1db3f0240dda415f1f066fed72225e16"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a1db3f0240dda415f1f066fed72225e16">applyScale</a> (self, float scaleFactor)</td></tr>
+<tr class="separator:a1db3f0240dda415f1f066fed72225e16 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae3f323064ae2cb5d831eeb6a3baaa379"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VisualObject.html">VisualObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae3f323064ae2cb5d831eeb6a3baaa379">asType_VisualObject</a> (self)</td></tr>
+<tr class="separator:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae3f323064ae2cb5d831eeb6a3baaa379"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VisualObject.html">VisualObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae3f323064ae2cb5d831eeb6a3baaa379">asType_VisualObject</a> (self)</td></tr>
+<tr class="separator:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35f5a7bbb06be9169dbe752e0b8440e3 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a35f5a7bbb06be9169dbe752e0b8440e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__std__shared__ptr__Object.html">std_vector_std_shared_ptr_Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a35f5a7bbb06be9169dbe752e0b8440e3">children</a> (self)</td></tr>
+<tr class="separator:a35f5a7bbb06be9169dbe752e0b8440e3 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c285511171875eaa87d26a18bd45efc inherit pub_methods_classmrmeshpy_1_1Object" id="r_a3c285511171875eaa87d26a18bd45efc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__std__shared__ptr__Object__const.html">std_vector_std_shared_ptr_Object_const</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a3c285511171875eaa87d26a18bd45efc">children</a> (self)</td></tr>
+<tr class="separator:a3c285511171875eaa87d26a18bd45efc inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115b8bd891d9bd7e08946e8f84da09f0 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a115b8bd891d9bd7e08946e8f84da09f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a115b8bd891d9bd7e08946e8f84da09f0">cloneTree</a> (self)</td></tr>
+<tr class="separator:a115b8bd891d9bd7e08946e8f84da09f0 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a567315111aee91b3dd5bfef4188b23b7 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a567315111aee91b3dd5bfef4188b23b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a567315111aee91b3dd5bfef4188b23b7">detachFromParent</a> (self)</td></tr>
+<tr class="separator:a567315111aee91b3dd5bfef4188b23b7 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae6adbbc7286265563fb4d6d162f4dc49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae6adbbc7286265563fb4d6d162f4dc49">find</a> (self, str <a class="el" href="classmrmeshpy_1_1Object.html#a1df02ba03a7110bf58c7f740696f4c35">name</a>)</td></tr>
+<tr class="separator:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae6adbbc7286265563fb4d6d162f4dc49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae6adbbc7286265563fb4d6d162f4dc49">find</a> (self, str <a class="el" href="classmrmeshpy_1_1Object.html#a1df02ba03a7110bf58c7f740696f4c35">name</a>)</td></tr>
+<tr class="separator:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object" id="r_aef02c28f6dfb85ade9554043fdf249dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aef02c28f6dfb85ade9554043fdf249dd">findCommonAncestor</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> other)</td></tr>
+<tr class="separator:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object" id="r_aef02c28f6dfb85ade9554043fdf249dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aef02c28f6dfb85ade9554043fdf249dd">findCommonAncestor</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> other)</td></tr>
+<tr class="separator:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a7d136a58b2e69851ac59192bcd5b5 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a78a7d136a58b2e69851ac59192bcd5b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a78a7d136a58b2e69851ac59192bcd5b5">globalVisibility</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()')</td></tr>
+<tr class="separator:a78a7d136a58b2e69851ac59192bcd5b5 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b1a4fd5f92fc87757bc139ce2e770be inherit pub_methods_classmrmeshpy_1_1Object" id="r_a4b1a4fd5f92fc87757bc139ce2e770be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a4b1a4fd5f92fc87757bc139ce2e770be">globalVisibilityMask</a> (self)</td></tr>
+<tr class="separator:a4b1a4fd5f92fc87757bc139ce2e770be inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3270abd9924fa3f784d3105824979f0b inherit pub_methods_classmrmeshpy_1_1Object" id="r_a3270abd9924fa3f784d3105824979f0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a3270abd9924fa3f784d3105824979f0b">hasModel</a> (self)</td></tr>
+<tr class="separator:a3270abd9924fa3f784d3105824979f0b inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21510ca05f3888f5db9ff0aae662c9d1 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a21510ca05f3888f5db9ff0aae662c9d1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a21510ca05f3888f5db9ff0aae662c9d1">hasVisualRepresentation</a> (self)</td></tr>
+<tr class="separator:a21510ca05f3888f5db9ff0aae662c9d1 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d0fafc2423205d5a3ba75eae112655 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a33d0fafc2423205d5a3ba75eae112655"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a33d0fafc2423205d5a3ba75eae112655">isAncestor</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> ancestor)</td></tr>
+<tr class="separator:a33d0fafc2423205d5a3ba75eae112655 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a2cb58be1a7e062e9c502295eb6ce23 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a5a2cb58be1a7e062e9c502295eb6ce23"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a5a2cb58be1a7e062e9c502295eb6ce23">isAncillary</a> (self)</td></tr>
+<tr class="separator:a5a2cb58be1a7e062e9c502295eb6ce23 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb58092748e5b61228ff7ed23b9c0d6f inherit pub_methods_classmrmeshpy_1_1Object" id="r_adb58092748e5b61228ff7ed23b9c0d6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#adb58092748e5b61228ff7ed23b9c0d6f">isLocked</a> (self)</td></tr>
+<tr class="separator:adb58092748e5b61228ff7ed23b9c0d6f inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad4248d019ab25e15e9f40f726c1f3d3 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aad4248d019ab25e15e9f40f726c1f3d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aad4248d019ab25e15e9f40f726c1f3d3">isParentLocked</a> (self)</td></tr>
+<tr class="separator:aad4248d019ab25e15e9f40f726c1f3d3 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3395c8e6e84a9d82d622557fb6939f inherit pub_methods_classmrmeshpy_1_1Object" id="r_add3395c8e6e84a9d82d622557fb6939f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#add3395c8e6e84a9d82d622557fb6939f">isSelected</a> (self)</td></tr>
+<tr class="separator:add3395c8e6e84a9d82d622557fb6939f inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad160388c69186e8a83fde5e8eb02535e inherit pub_methods_classmrmeshpy_1_1Object" id="r_ad160388c69186e8a83fde5e8eb02535e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ad160388c69186e8a83fde5e8eb02535e">isVisible</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()')</td></tr>
+<tr class="separator:ad160388c69186e8a83fde5e8eb02535e inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df02ba03a7110bf58c7f740696f4c35 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a1df02ba03a7110bf58c7f740696f4c35"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a1df02ba03a7110bf58c7f740696f4c35">name</a> (self)</td></tr>
+<tr class="separator:a1df02ba03a7110bf58c7f740696f4c35 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a49aa72b1374065f24972ced7c2bfbe34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a49aa72b1374065f24972ced7c2bfbe34">parent</a> (self)</td></tr>
+<tr class="separator:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a49aa72b1374065f24972ced7c2bfbe34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a49aa72b1374065f24972ced7c2bfbe34">parent</a> (self)</td></tr>
+<tr class="separator:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa593f6befb32f6453133a516f1c863b8 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aa593f6befb32f6453133a516f1c863b8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aa593f6befb32f6453133a516f1c863b8">removeAllChildren</a> (self)</td></tr>
+<tr class="separator:aa593f6befb32f6453133a516f1c863b8 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a414cac53ffc4dac827d7b9ddbf126098"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a414cac53ffc4dac827d7b9ddbf126098">removeChild</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> child)</td></tr>
+<tr class="separator:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a414cac53ffc4dac827d7b9ddbf126098"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a414cac53ffc4dac827d7b9ddbf126098">removeChild</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> child)</td></tr>
+<tr class="separator:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f27a64bfcdec74242fdf571a687c94c inherit pub_methods_classmrmeshpy_1_1Object" id="r_a3f27a64bfcdec74242fdf571a687c94c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a3f27a64bfcdec74242fdf571a687c94c">resetRedrawFlag</a> (self)</td></tr>
+<tr class="separator:a3f27a64bfcdec74242fdf571a687c94c inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ba6855a489e33e6a6f88843575178f4 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a7ba6855a489e33e6a6f88843575178f4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a7ba6855a489e33e6a6f88843575178f4">resetXf</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}')</td></tr>
+<tr class="separator:a7ba6855a489e33e6a6f88843575178f4 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaa159cd1e51142ff71a27dcab211ada inherit pub_methods_classmrmeshpy_1_1Object" id="r_abaa159cd1e51142ff71a27dcab211ada"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#abaa159cd1e51142ff71a27dcab211ada">select</a> (self, bool on)</td></tr>
+<tr class="separator:abaa159cd1e51142ff71a27dcab211ada inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db756ea98710dbbc11ae7d00752b069 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a2db756ea98710dbbc11ae7d00752b069"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a2db756ea98710dbbc11ae7d00752b069">setAncillary</a> (self, bool ancillary)</td></tr>
+<tr class="separator:a2db756ea98710dbbc11ae7d00752b069 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f260bf94c3aaca96c76a3b2df7e4123 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a1f260bf94c3aaca96c76a3b2df7e4123"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a1f260bf94c3aaca96c76a3b2df7e4123">setGlobalVisibility</a> (self, bool on, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()')</td></tr>
+<tr class="separator:a1f260bf94c3aaca96c76a3b2df7e4123 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9e7cf21687080d8eb1322b76772577 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aff9e7cf21687080d8eb1322b76772577"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aff9e7cf21687080d8eb1322b76772577">setLocked</a> (self, bool on)</td></tr>
+<tr class="separator:aff9e7cf21687080d8eb1322b76772577 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9747a45a791c65be899d3376c0b6ef inherit pub_methods_classmrmeshpy_1_1Object" id="r_a9c9747a45a791c65be899d3376c0b6ef"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a9c9747a45a791c65be899d3376c0b6ef">setName</a> (self, str <a class="el" href="classmrmeshpy_1_1Object.html#a1df02ba03a7110bf58c7f740696f4c35">name</a>)</td></tr>
+<tr class="separator:a9c9747a45a791c65be899d3376c0b6ef inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae28ca7af2e7903818a96c60d5959e07 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aae28ca7af2e7903818a96c60d5959e07"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aae28ca7af2e7903818a96c60d5959e07">setParentLocked</a> (self, bool lock)</td></tr>
+<tr class="separator:aae28ca7af2e7903818a96c60d5959e07 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a093177bee96f9715ec03afc69262aa inherit pub_methods_classmrmeshpy_1_1Object" id="r_a2a093177bee96f9715ec03afc69262aa"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a2a093177bee96f9715ec03afc69262aa">setVisibilityMask</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask)</td></tr>
+<tr class="separator:a2a093177bee96f9715ec03afc69262aa inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b7a91d7379e983adad42fd434e04381 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a8b7a91d7379e983adad42fd434e04381"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a8b7a91d7379e983adad42fd434e04381">setVisible</a> (self, bool on, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#ad265bcbabed580f2fe7dd20c68e7970d">ViewportMask::all</a>()')</td></tr>
+<tr class="separator:a8b7a91d7379e983adad42fd434e04381 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bfe044b45e30faa3dcf35bac6993502 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a6bfe044b45e30faa3dcf35bac6993502"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a6bfe044b45e30faa3dcf35bac6993502">setWorldXf</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a> <a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a>, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}')</td></tr>
+<tr class="separator:a6bfe044b45e30faa3dcf35bac6993502 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94f23ddd1f300e9b4ab45d33fe364e9d inherit pub_methods_classmrmeshpy_1_1Object" id="r_a94f23ddd1f300e9b4ab45d33fe364e9d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a94f23ddd1f300e9b4ab45d33fe364e9d">setXf</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a> <a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a>, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}')</td></tr>
+<tr class="separator:a94f23ddd1f300e9b4ab45d33fe364e9d inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac6bdfb45902aa99fc95799b508c57f5 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aac6bdfb45902aa99fc95799b508c57f5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aac6bdfb45902aa99fc95799b508c57f5">setXfsForAllViewports</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportProperty__AffineXf3f.html">ViewportProperty_AffineXf3f</a> <a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a>)</td></tr>
+<tr class="separator:aac6bdfb45902aa99fc95799b508c57f5 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab39f51bc5e295bf79bf21e09e8a4374b inherit pub_methods_classmrmeshpy_1_1Object" id="r_ab39f51bc5e295bf79bf21e09e8a4374b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ab39f51bc5e295bf79bf21e09e8a4374b">shallowCloneTree</a> (self)</td></tr>
+<tr class="separator:ab39f51bc5e295bf79bf21e09e8a4374b inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81fe3b89047200dec9832c065dd92ceb inherit pub_methods_classmrmeshpy_1_1Object" id="r_a81fe3b89047200dec9832c065dd92ceb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a81fe3b89047200dec9832c065dd92ceb">sortChildren</a> (self)</td></tr>
+<tr class="separator:a81fe3b89047200dec9832c065dd92ceb inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c92cdb11df4d895c639f0e26dca1c83 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a6c92cdb11df4d895c639f0e26dca1c83"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a6c92cdb11df4d895c639f0e26dca1c83">swap</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> other)</td></tr>
+<tr class="separator:a6c92cdb11df4d895c639f0e26dca1c83 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e97a992a254dfa6b44c7bf1eb144e4 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a64e97a992a254dfa6b44c7bf1eb144e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a64e97a992a254dfa6b44c7bf1eb144e4">visibilityMask</a> (self)</td></tr>
+<tr class="separator:a64e97a992a254dfa6b44c7bf1eb144e4 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f2c3076b7fdbbb28f3693a4be052175 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a8f2c3076b7fdbbb28f3693a4be052175"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a8f2c3076b7fdbbb28f3693a4be052175">worldXf</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}', <a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a> isDef=None)</td></tr>
+<tr class="separator:a8f2c3076b7fdbbb28f3693a4be052175 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbf3bcedfe092cc75eba9b2b05dfed4c inherit pub_methods_classmrmeshpy_1_1Object" id="r_afbf3bcedfe092cc75eba9b2b05dfed4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}', <a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a> isDef=None)</td></tr>
+<tr class="separator:afbf3bcedfe092cc75eba9b2b05dfed4c inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ee8acaa199b194040b1613d4038012 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a05ee8acaa199b194040b1613d4038012"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportProperty__AffineXf3f.html">ViewportProperty_AffineXf3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a05ee8acaa199b194040b1613d4038012">xfsForAllViewports</a> (self)</td></tr>
+<tr class="separator:a05ee8acaa199b194040b1613d4038012 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1ObjectChildrenHolder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">mrmeshpy.ObjectChildrenHolder</a></td></tr>
+<tr class="memitem:aa1020074c1326a825c86467a0580791d inherit pub_methods_classmrmeshpy_1_1ObjectChildrenHolder" id="r_aa1020074c1326a825c86467a0580791d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html#aa1020074c1326a825c86467a0580791d">getSharedPtr</a> (self)</td></tr>
+<tr class="separator:aa1020074c1326a825c86467a0580791d inherit pub_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a9b62aeca52a962ae5a30198d4b130635" id="r_a9b62aeca52a962ae5a30198d4b130635"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b62aeca52a962ae5a30198d4b130635">TypeName</a> ()</td></tr>
+<tr class="separator:a9b62aeca52a962ae5a30198d4b130635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a675713afd7ce3e2b8196c36c74f4477e" id="r_a675713afd7ce3e2b8196c36c74f4477e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a675713afd7ce3e2b8196c36c74f4477e">getWorldBox</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a675713afd7ce3e2b8196c36c74f4477e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc91ecedf69cebccb4b80aec9dc0f662" id="r_acc91ecedf69cebccb4b80aec9dc0f662"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc91ecedf69cebccb4b80aec9dc0f662">render</a> (*args, **kwargs)</td></tr>
+<tr class="separator:acc91ecedf69cebccb4b80aec9dc0f662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abff6c6fabf3fe8e9aa545af55f2f9f" id="r_a3abff6c6fabf3fe8e9aa545af55f2f9f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3abff6c6fabf3fe8e9aa545af55f2f9f">renderForPicker</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a3abff6c6fabf3fe8e9aa545af55f2f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_classmrmeshpy_1_1Object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classmrmeshpy_1_1Object')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1Object.html">mrmeshpy.Object</a></td></tr>
+<tr class="memitem:a000669ce3765e97358761b420a4b3283 inherit pub_static_methods_classmrmeshpy_1_1Object" id="r_a000669ce3765e97358761b420a4b3283"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a000669ce3765e97358761b420a4b3283">getWorldTreeBox</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a000669ce3765e97358761b420a4b3283 inherit pub_static_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">mrmeshpy.ObjectChildrenHolder</a></td></tr>
+<tr class="memitem:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder" id="r_a2509e431a24a98b7f41f99b9899a6331"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">ObjectChildrenHolder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html#a2509e431a24a98b7f41f99b9899a6331">_Equal</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder" id="r_a2509e431a24a98b7f41f99b9899a6331"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">ObjectChildrenHolder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html#a2509e431a24a98b7f41f99b9899a6331">_Equal</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classmrmeshpy_1_1Object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classmrmeshpy_1_1Object')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classmrmeshpy_1_1Object.html">mrmeshpy.Object</a></td></tr>
+<tr class="memitem:ac113f2fecf0be553a258e33a492430c3 inherit pro_static_attribs_classmrmeshpy_1_1Object" id="r_ac113f2fecf0be553a258e33a492430c3"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ac113f2fecf0be553a258e33a492430c3">_offsetof_worldXfChangedSignal</a> = 64</td></tr>
+<tr class="separator:ac113f2fecf0be553a258e33a492430c3 inherit pro_static_attribs_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::VisualObject
+Aliases:  ChangeObjectColorAction.Obj, ChangeVisualizePropertyAction.Obj, ChangeColoringType.Obj
+
+Visual Object
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3aa4d51e5d881a8faec9b51637da6364" name="a3aa4d51e5d881a8faec9b51637da6364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aa4d51e5d881a8faec9b51637da6364">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a78e6900dc386c6dcc7d484090c140c74">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#a44e5094398c2d722e8f76c60d0457965">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#ad0e48950b1d06ccdde14433a4958b3ff">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#a6c2cc6bd88924946089ae0df20600f0a">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#ac22997ccae1372440154b18b40bcc096">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#aee3c9c6013b2f9ea032ae48cf2f136cd">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#a5e6cd93bf59fcbeb0b0c6f05c401caa9">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#a01439225547a22c0e47983d8ce72088d">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#ad39016caf2db5099aa1f469a6d3c3c39">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#a707b2540d964efa703893afe49306580">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#a5a8936c1eaa24d70f6c024352b277912">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1MeasurementObject.html#a4d0ba97b8361ffac9e4ec2e0d5065d37">mrmeshpy.MeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#aa11c35477076924c1d3101a45d78019c">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#aeeee8765f9cedaf64cb20f3385a745d3">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#aba87056b804a68adbd7532069c0c1503">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#a24f2e6fd3d90352d42be66772b68adc0">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#ae89c55eb14c80dcca14c9e11137e09fa">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#a969a9885ff3b33b06a0ada8c222f6e7c">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#abd61dce95267032fba31a6b6b8398cef">mrmeshpy.ObjectMeshHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a7723030d0f3da83fdd9f9f3deb67472d">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a1b8a3423ebe5c2c2bfe68309b0180d64">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#a9eed396027becfde7d2590df55a49171">mrmeshpy.ObjectPointsHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#a88addf3f7eac5ac0fecfa218fa66c699">mrmeshpy.ObjectVoxels</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#a07e978419c9e85e79e42d49188d03e2f">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#a4c5ec9507fa15607f49f6734012fdb58">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#a35ccb3c76197823708dc16e702a0c744">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#a3bf07ea0a14f3e7a3fcfe0fefb6f1af8">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#a6dbbbc0852325c729144d57e5cc184c6">mrmeshpy.RadiusMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1SphereObject.html#aaf02f7d1b6182f887248f9444d29a148">mrmeshpy.SphereObject</a>, and <a class="el" href="classmrmeshpy_1_1SphereObject.html#a4633876e20ed9435ac2940716253b3f4">mrmeshpy.SphereObject</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1aeb8f658d1ec828372eb5f234f696fd" name="a1aeb8f658d1ec828372eb5f234f696fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aeb8f658d1ec828372eb5f234f696fd">&#9670;&#160;</a></span>clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> mrmeshpy.VisualObject.clone </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">clones this object only, without its children,
+making new object the owner of all copied resources
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a3cede34187cf92e2953b8c04cc66db22">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#a12dc6efe8b7d81f30825123b91ac1082">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#a4e27ddaeda8f7c07c2b23ceef768daf6">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#aa87ba2fdb68b1b2541c9963af8a5dcec">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#a1bc8bddea8e36a975ed247668424f9e9">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#af34f9bc6a9200561e8f68cddd725835c">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#a0a51955f3410656c8857f0147e5a3dec">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#a1d7c1b9a3a166fde6b983b93affb6942">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a69d90eb39a7c8f555722df8156f69463">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#aec10a48c6b97e7eedda9ae313ae7fb9d">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#a83edefef20d75676d641281be9ae8a81">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#a0ce5f0f36cb7ebc31e410e151c5775c3">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#a74d05289828bf738860653a727be72e9">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#a66929bbabbd9ede0679393a802190c59">mrmeshpy.ObjectMeshHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a8a2bbd6705202af2e96e68811bad6874">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#a3f4e885d3a38cf6190fb47d9eb70c28a">mrmeshpy.ObjectPointsHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#a33891c9758158a7a075824c1dbfbe3b0">mrmeshpy.ObjectVoxels</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#a8d6883e2122d697941f9a6773135213f">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#a9ddb1111f89bf74a9a7188c6eca0f690">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#aed4eb8fd11e08f1930d2d70ce491b43a">mrmeshpy.RadiusMeasurementObject</a>, and <a class="el" href="classmrmeshpy_1_1SphereObject.html#adbdf2840f4922ff77b1792811ae1e1a8">mrmeshpy.SphereObject</a>.</p>
+
+</div>
+</div>
+<a id="a99a68c12bda4b4c07f5ba725b2b2af59" name="a99a68c12bda4b4c07f5ba725b2b2af59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99a68c12bda4b4c07f5ba725b2b2af59">&#9670;&#160;</a></span>getAllVisualizeProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__ViewportMask.html">std_vector_ViewportMask</a> mrmeshpy.VisualObject.getAllVisualizeProperties </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">get all visualize properties masks
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter.html#a12d230fa69ad5580a9302f91c8818369">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter</a>, <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__08bac3bda56e323e9f008186f80b7f55.html#a4594786b6deab4bb110fa73c6058d6c8">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_angle_DimensionsVisualizePropertyType_length</a>, <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__76fd3e0afd560dcf4b968132e8074b6d.html#a8ffa19554161fd3c786e459d6bcdc42f">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_length</a>, <a class="el" href="classmrmeshpy_1_1FeatureObject.html#a840b68101f6eb43e4abae6222e049566">mrmeshpy.FeatureObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#a2a322f59d83788598d4a38fb8f3efcbd">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#a994cad33d6a8028132f72cdd9b0dca98">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#a6a88666654b2ba7770c3ef5c61e8ec2a">mrmeshpy.ObjectMeshHolder</a>, and <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#aa5327811ea066d5d98c044e893255b1e">mrmeshpy.ObjectPointsHolder</a>.</p>
+
+</div>
+</div>
+<a id="a82c638c112056461424bfc09c23925b7" name="a82c638c112056461424bfc09c23925b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c638c112056461424bfc09c23925b7">&#9670;&#160;</a></span>getAmbientStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.VisualObject.getAmbientStrength </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns intensity of non-directional light
+</pre> 
+</div>
+</div>
+<a id="ae52231ec5177a10f568e957c8ad4d671" name="ae52231ec5177a10f568e957c8ad4d671"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae52231ec5177a10f568e957c8ad4d671">&#9670;&#160;</a></span>getBackColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> mrmeshpy.VisualObject.getBackColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns backward color of object in given viewport
+</pre> 
+</div>
+</div>
+<a id="a9c50e24643b786be0271ce69b3390c9c" name="a9c50e24643b786be0271ce69b3390c9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c50e24643b786be0271ce69b3390c9c">&#9670;&#160;</a></span>getBackColorsForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a> mrmeshpy.VisualObject.getBackColorsForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns backward color of object in all viewports
+</pre> 
+</div>
+</div>
+<a id="a7f787f2b93a34cfb4d2d1744e2177271" name="a7f787f2b93a34cfb4d2d1744e2177271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f787f2b93a34cfb4d2d1744e2177271">&#9670;&#160;</a></span>getBoundingBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a> mrmeshpy.VisualObject.getBoundingBox </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns cached bounding box of this object in local coordinates
+</pre> 
+</div>
+</div>
+<a id="ae02cc04db9034c21e7b707ddeb335114" name="ae02cc04db9034c21e7b707ddeb335114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02cc04db9034c21e7b707ddeb335114">&#9670;&#160;</a></span>getClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.VisualObject.getClassName </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">return human readable name of subclass
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a3e88aaafd3d356c3a1fbb208bce97f8d">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#a4eb78ef95d4e1103b5b264b166f50cc0">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#ac0727234c9fae366a869a491ef3bbfb6">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#ad23671395e62d816916447a5b61232af">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#a18477f51a82bcbc85b69bf8f123984e0">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#a470309e910d88a26eeb3289a6be7d646">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#ac373d968628343828b3ad5d6d9fac0e9">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#a79093a97d32c2bb6fbe10b4962221ce7">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a2f7657ac9051a5e9f91005e73061e14b">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#a4a8c40ce44d9b7da043fd81e46b17a33">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#a6f4c56fb83b28b2288591ade99c0e070">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a7a774ed42bbef90a7f9d1a4edc60e065">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#ab00d4e0a68ee4cc1569670ba9d6710fb">mrmeshpy.ObjectVoxels</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#ad441fc81963abb4b790a8e1700408471">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#ad59ab5d649c16dda1764901774591bd4">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#a6c6d1a13f7dcf0b616fee881f65c52e4">mrmeshpy.RadiusMeasurementObject</a>, and <a class="el" href="classmrmeshpy_1_1SphereObject.html#a9f5f5c1452fd5e8381feac8e28dc1c0d">mrmeshpy.SphereObject</a>.</p>
+
+</div>
+</div>
+<a id="ac93868b05bd4133b812381d686c527d6" name="ac93868b05bd4133b812381d686c527d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac93868b05bd4133b812381d686c527d6">&#9670;&#160;</a></span>getClassNameInPlural()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.VisualObject.getClassNameInPlural </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">return human readable name of subclass in plural form
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#ade4231c3568ee69e8ae20cf0282fbf8a">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#aa945d8b25dc67511a3623848ee0d87bd">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#a4b218da06a50ca6788ec0bb32803534c">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#a00a25d10c1d6f7a87a659e3e9ce087ee">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#af6684989f7735262344b748527b9757e">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#a0f92be20a88d82a7b385c00417bd92b4">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#a24643553868594c9f2fba4cb8ec092e7">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#ad5f3a4e1b2bb5df27bdf550c12ebd5c9">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a16189e1bd553b6d96e0dbfe34b912d21">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#a2cf4f807f65a0e53dcf6fe7bbe6c31fe">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#ad2e44551879d3a2d9cb370602bb91c7c">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a05c0a4f6ec9f39003a2389ff3eca04e3">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#a0766bbd3c7cfb05b54a30bdf420de9e8">mrmeshpy.ObjectVoxels</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#ad3496d476b77dd09ec1e6625b7db78f3">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#a09ebda4b81b67aed4dee3bbca09fe4ac">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#a8a55a9e63bd863a778af50a91304750c">mrmeshpy.RadiusMeasurementObject</a>, and <a class="el" href="classmrmeshpy_1_1SphereObject.html#a04d502a5906caf73ce1760fb660e411b">mrmeshpy.SphereObject</a>.</p>
+
+</div>
+</div>
+<a id="af2701866ba9629c598b8d6c83056f4f3" name="af2701866ba9629c598b8d6c83056f4f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2701866ba9629c598b8d6c83056f4f3">&#9670;&#160;</a></span>getColoringType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1ColoringType.html">ColoringType</a> mrmeshpy.VisualObject.getColoringType </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the current coloring mode of the object
+</pre> 
+</div>
+</div>
+<a id="a4b9ead8b38c035c872a132c5cb24bf5d" name="a4b9ead8b38c035c872a132c5cb24bf5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9ead8b38c035c872a132c5cb24bf5d">&#9670;&#160;</a></span>getDirtyFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.VisualObject.getDirtyFlags </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns current dirty flags for the object
+</pre> 
+</div>
+</div>
+<a id="a51881787ab04577da4acce749b1d747e" name="a51881787ab04577da4acce749b1d747e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51881787ab04577da4acce749b1d747e">&#9670;&#160;</a></span>getFrontColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> mrmeshpy.VisualObject.getFrontColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>selected</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns color of object when it is selected/not-selected (depending on argument) in given viewport
+</pre> 
+</div>
+</div>
+<a id="aa2808b144a06c6ceb816da6622c52c5f" name="aa2808b144a06c6ceb816da6622c52c5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2808b144a06c6ceb816da6622c52c5f">&#9670;&#160;</a></span>getFrontColorsForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a> mrmeshpy.VisualObject.getFrontColorsForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>selected</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns color of object when it is selected/not-selected (depending on argument) in all viewports
+</pre> 
+</div>
+</div>
+<a id="a6e3063b5e8be62503e1bbf2421636228" name="a6e3063b5e8be62503e1bbf2421636228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e3063b5e8be62503e1bbf2421636228">&#9670;&#160;</a></span>getGlobalAlpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.VisualObject.getGlobalAlpha </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns global transparency alpha of object in given viewport
+</pre> 
+</div>
+</div>
+<a id="aa6dea7b6b8d6999a2441165e0073951e" name="aa6dea7b6b8d6999a2441165e0073951e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6dea7b6b8d6999a2441165e0073951e">&#9670;&#160;</a></span>getGlobalAlphaForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1ViewportProperty__unsigned__char.html">ViewportProperty_unsigned_char</a> mrmeshpy.VisualObject.getGlobalAlphaForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns global transparency alpha of object in all viewports
+</pre> 
+</div>
+</div>
+<a id="aadcc9d10e0b22298e7cfbde120288ed3" name="aadcc9d10e0b22298e7cfbde120288ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadcc9d10e0b22298e7cfbde120288ed3">&#9670;&#160;</a></span>getInfoLines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__std__string.html">std_vector_std_string</a> mrmeshpy.VisualObject.getInfoLines </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">return several info lines that can better describe the object in the UI
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a2923b7dd1c5fb2a0d72ebf7e346dd482">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#a98de414aae00a3243da639cc137b828a">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#a50b672a65be7b7e345e75ffb1f89d17f">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#ad443c02a67a280e87d39c752899cc75d">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a7ea09ad84cdca61d84505611b67484aa">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#af9f89a101bc8c2e0e2047c01b3196b16">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#adc56c57b9eb3aff553e4b128a812afca">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a415f54e82942029e197c986b7602a5d3">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#a1048607d1fdffea151db58ed963fdeb0">mrmeshpy.ObjectVoxels</a>, and <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#adae46eaf8cc2e1361ccca3dc81e335ea">mrmeshpy.RadiusMeasurementObject</a>.</p>
+
+</div>
+</div>
+<a id="a4842439acb63665c69e48c89cf3039da" name="a4842439acb63665c69e48c89cf3039da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4842439acb63665c69e48c89cf3039da">&#9670;&#160;</a></span>getLabels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__PositionedText.html">std_vector_PositionedText</a> mrmeshpy.VisualObject.getLabels </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab11323bc37a1b69c97065ae9b1e86d71" name="ab11323bc37a1b69c97065ae9b1e86d71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab11323bc37a1b69c97065ae9b1e86d71">&#9670;&#160;</a></span>getLabelsColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Color.html">Color</a> mrmeshpy.VisualObject.getLabelsColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ef6d4e80cce959f51d5731650b5500d" name="a1ef6d4e80cce959f51d5731650b5500d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ef6d4e80cce959f51d5731650b5500d">&#9670;&#160;</a></span>getLabelsColorsForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a> mrmeshpy.VisualObject.getLabelsColorsForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9b36e627e752037bbe0d6cfeee96dbaf" name="a9b36e627e752037bbe0d6cfeee96dbaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b36e627e752037bbe0d6cfeee96dbaf">&#9670;&#160;</a></span>getRedrawFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.getRedrawFlag </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a></td>          <td class="paramname"><span class="paramname"><em>viewportMask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if the object must be redrawn (due to dirty flags) in one of specified viewports
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#af4d061bc0f0a13399144f3337aed1074">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#acceac36a0f3a7d30879ad0f6b41296e3">mrmeshpy.ObjectMeshHolder</a>.</p>
+
+</div>
+</div>
+<a id="a9224ef194f3580c35affb61d7a560db2" name="a9224ef194f3580c35affb61d7a560db2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9224ef194f3580c35affb61d7a560db2">&#9670;&#160;</a></span>getShininess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.VisualObject.getShininess </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the current shininess visual value
+</pre> 
+</div>
+</div>
+<a id="a8ac83a9fca121b3f5e6716ed1222a5f8" name="a8ac83a9fca121b3f5e6716ed1222a5f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ac83a9fca121b3f5e6716ed1222a5f8">&#9670;&#160;</a></span>getSpecularStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.VisualObject.getSpecularStrength </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns intensity of reflections
+</pre> 
+</div>
+</div>
+<a id="a487af7ed5a9684ff50ae73578c31bf4b" name="a487af7ed5a9684ff50ae73578c31bf4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487af7ed5a9684ff50ae73578c31bf4b">&#9670;&#160;</a></span>getVisualizeProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.getVisualizeProperty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a></td>          <td class="paramname"><span class="paramname"><em>viewportMask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns true if the property is set at least in one viewport specified by the mask
+</pre> 
+</div>
+</div>
+<a id="a936f4ea388564c3dc033b5abb39993f4" name="a936f4ea388564c3dc033b5abb39993f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a936f4ea388564c3dc033b5abb39993f4">&#9670;&#160;</a></span>getVisualizePropertyMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> mrmeshpy.VisualObject.getVisualizePropertyMask </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns mask of viewports where given property is set
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter.html#a047131f4d6f07708ce219ace69abc136">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter</a>, <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__08bac3bda56e323e9f008186f80b7f55.html#ae24c38c12e95bf204a9061bd48958062">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_angle_DimensionsVisualizePropertyType_length</a>, <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__76fd3e0afd560dcf4b968132e8074b6d.html#a0981de2e4663a97f511bc2b6d27d3bb2">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_length</a>, <a class="el" href="classmrmeshpy_1_1FeatureObject.html#a7b7ed6a567132ae14467b9a6d12479ea">mrmeshpy.FeatureObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#a627921d7a1585a04c9ff9aeded092e23">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#ab13e38aeb0c31e09015e40caedd7df43">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#a57fe4fe1f7e1397960b0735df502637a">mrmeshpy.ObjectMeshHolder</a>, and <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#adfd38edd1f55d3830f74e675f1b2ab54">mrmeshpy.ObjectPointsHolder</a>.</p>
+
+</div>
+</div>
+<a id="a675713afd7ce3e2b8196c36c74f4477e" name="a675713afd7ce3e2b8196c36c74f4477e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a675713afd7ce3e2b8196c36c74f4477e">&#9670;&#160;</a></span>getWorldBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a> mrmeshpy.VisualObject.getWorldBox </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">returns bounding box of this object in given viewport in world coordinates,
+to get world bounding box of the object with all child objects, please call Object::getWorldTreeBox method
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#aa70d89231083d21c4702de52efe4b037">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#aed7c96fb9d5943dfb8b01c55eeb47cf6">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#a54596b7e6cf3d95356455b1646909346">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#a3ffd95e9ae64f3fa3e3f1b78ba9d2657">mrmeshpy.ObjectMeshHolder</a>, and <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#a6f5db0cc43a881ac52561a4645bf4067">mrmeshpy.ObjectPointsHolder</a>.</p>
+
+</div>
+</div>
+<a id="a1a571d9d02df9a2a9dd723f6a71ce398" name="a1a571d9d02df9a2a9dd723f6a71ce398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a571d9d02df9a2a9dd723f6a71ce398">&#9670;&#160;</a></span>heapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.VisualObject.heapBytes </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the amount of memory this object occupies on heap
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a62b16119e3432b9c35158f35ca3f1523">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#a4547e044933fcba7f42179b0d72505e5">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a79b7b19a9c02de20a815b6c85930b32f">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#a2f7303b4a6e16d2cea97ba06b1bf4877">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#a66a9da044d1ff0dafad25ee62ec981cb">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#aa7e11fd226a248ba7223ac77557677be">mrmeshpy.ObjectMeshHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#ade90b016167c31e2de1d21d9a05bbd62">mrmeshpy.ObjectPointsHolder</a>, and <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#ad732d380377bfa366752ac8594fdf05e">mrmeshpy.ObjectVoxels</a>.</p>
+
+</div>
+</div>
+<a id="a90715c5c04e6a8c2a5d0998877fec7d7" name="a90715c5c04e6a8c2a5d0998877fec7d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90715c5c04e6a8c2a5d0998877fec7d7">&#9670;&#160;</a></span>isPickable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.isPickable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> </td>          <td class="paramname"><span class="paramname"><em>viewportMask</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">whether the object can be picked (by mouse) in any of given viewports
+</pre> 
+</div>
+</div>
+<a id="acc91ecedf69cebccb4b80aec9dc0f662" name="acc91ecedf69cebccb4b80aec9dc0f662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc91ecedf69cebccb4b80aec9dc0f662">&#9670;&#160;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.render </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">draws this object for visualization
+Returns true if something was drawn.
+</pre> 
+</div>
+</div>
+<a id="a3abff6c6fabf3fe8e9aa545af55f2f9f" name="a3abff6c6fabf3fe8e9aa545af55f2f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abff6c6fabf3fe8e9aa545af55f2f9f">&#9670;&#160;</a></span>renderForPicker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.renderForPicker </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">draws this object for picking
+</pre> 
+</div>
+</div>
+<a id="a5140b7d1eac8c1736d61cc0459a4a83e" name="a5140b7d1eac8c1736d61cc0459a4a83e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5140b7d1eac8c1736d61cc0459a4a83e">&#9670;&#160;</a></span>renderUi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.renderUi </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1UiRenderParams.html">UiRenderParams</a></td>          <td class="paramname"><span class="paramname"><em>params</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">draws this object for 2d UI
+</pre> 
+</div>
+</div>
+<a id="a6c9e2837535628e814ef5dda5e6f9804" name="a6c9e2837535628e814ef5dda5e6f9804"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c9e2837535628e814ef5dda5e6f9804">&#9670;&#160;</a></span>resetDirty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.resetDirty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">resets all dirty flags (except for cache flags that will be reset automatically on cache update)
+</pre> 
+</div>
+</div>
+<a id="a7878a1ddebce740b0874891ca28193b4" name="a7878a1ddebce740b0874891ca28193b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7878a1ddebce740b0874891ca28193b4">&#9670;&#160;</a></span>resetDirtyExceptMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.resetDirtyExceptMask </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">reset dirty flags without some specific bits (useful for lazy normals update)
+</pre> 
+</div>
+</div>
+<a id="a3d1644b7ff803c36884c9296da2bd460" name="a3d1644b7ff803c36884c9296da2bd460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d1644b7ff803c36884c9296da2bd460">&#9670;&#160;</a></span>setAllVisualizeProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setAllVisualizeProperties </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__ViewportMask.html">std_vector_ViewportMask</a></td>          <td class="paramname"><span class="paramname"><em>properties</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">set all visualize properties masks
+</pre> 
+</div>
+</div>
+<a id="a42b4f144aeb3979ad37f0fedfc15e5ef" name="a42b4f144aeb3979ad37f0fedfc15e5ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b4f144aeb3979ad37f0fedfc15e5ef">&#9670;&#160;</a></span>setAmbientStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setAmbientStrength </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ambientStrength</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets intensity of non-directional light
+</pre> 
+</div>
+</div>
+<a id="a45a5d00cb08cfb6c1cf9b2adf05391ac" name="a45a5d00cb08cfb6c1cf9b2adf05391ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45a5d00cb08cfb6c1cf9b2adf05391ac">&#9670;&#160;</a></span>setBackColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setBackColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets backward color of object in given viewport
+</pre> 
+</div>
+</div>
+<a id="ad509bb820ada532c9f7ac2957aec5726" name="ad509bb820ada532c9f7ac2957aec5726"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad509bb820ada532c9f7ac2957aec5726">&#9670;&#160;</a></span>setBackColorsForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setBackColorsForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets backward color of object in all viewports
+</pre> 
+</div>
+</div>
+<a id="a45fe6a0cc0b9e898e6e027a173baae46" name="a45fe6a0cc0b9e898e6e027a173baae46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45fe6a0cc0b9e898e6e027a173baae46">&#9670;&#160;</a></span>setColoringType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setColoringType </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ColoringType.html">ColoringType</a></td>          <td class="paramname"><span class="paramname"><em>coloringType</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets coloring mode of the object with given argument
+</pre> 
+</div>
+</div>
+<a id="a883cdf9eb84b10488087440af6534a26" name="a883cdf9eb84b10488087440af6534a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883cdf9eb84b10488087440af6534a26">&#9670;&#160;</a></span>setDirtyFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setDirtyFlags </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>invalidateCaches</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets some dirty flags for the object (to force its visual update)
+\\param mask is a union of DirtyFlags flags
+\\param invalidateCaches whether to automatically invalidate model caches (pass false here if you manually update the caches)
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a9420d89f0e9d81ef7990811e0db5c691">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#ab1c589c9fb3c6324c3e5bcf9c155fe21">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#ae2cf69c6b8bbc437fac219147a738433">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#a34188c8fdfca8040bff1dc0077b91561">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#a90370e23c214c82c98540543e9c6f38d">mrmeshpy.ObjectMeshHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a7ded99536476852364195ca8da634c86">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#a21ef2275b0fdb3731afa65b42d24dbf9">mrmeshpy.ObjectPointsHolder</a>, and <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#a8e8ef94c4dc4dfb918f87e8c45d88a56">mrmeshpy.ObjectVoxels</a>.</p>
+
+</div>
+</div>
+<a id="a187a6467d9407f53360cfb361cc3f7d4" name="a187a6467d9407f53360cfb361cc3f7d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a187a6467d9407f53360cfb361cc3f7d4">&#9670;&#160;</a></span>setFrontColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setFrontColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>selected</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets color of object when it is selected/not-selected (depending on argument) in given viewport
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a8db8d16b037c4156b6dcaed437fa8cc6">mrmeshpy.ObjectGcode</a>.</p>
+
+</div>
+</div>
+<a id="acdbcc2226221f32f64842601d9e1e4a3" name="acdbcc2226221f32f64842601d9e1e4a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdbcc2226221f32f64842601d9e1e4a3">&#9670;&#160;</a></span>setFrontColorsForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setFrontColorsForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool </td>          <td class="paramname"><span class="paramname"><em>selected</em></span><span class="paramdefsep"> = </span><span class="paramdefval">True</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets color of object when it is selected/not-selected (depending on argument) in all viewports
+</pre> 
+</div>
+</div>
+<a id="a3fefd22785493a44ac52755cbcb666d7" name="a3fefd22785493a44ac52755cbcb666d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fefd22785493a44ac52755cbcb666d7">&#9670;&#160;</a></span>setGlobalAlpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setGlobalAlpha </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>alpha</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets global transparency alpha of object in given viewport
+</pre> 
+</div>
+</div>
+<a id="afa64178b2ff0ec0f3160412286a20124" name="afa64178b2ff0ec0f3160412286a20124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa64178b2ff0ec0f3160412286a20124">&#9670;&#160;</a></span>setGlobalAlphaForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setGlobalAlphaForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportProperty__unsigned__char.html">ViewportProperty_unsigned_char</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets global transparency alpha of object in all viewports
+</pre> 
+</div>
+</div>
+<a id="a21b7a6222609580a5381e9c2e0dea1d2" name="a21b7a6222609580a5381e9c2e0dea1d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21b7a6222609580a5381e9c2e0dea1d2">&#9670;&#160;</a></span>setLabels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setLabels </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__PositionedText.html">std_vector_PositionedText</a></td>          <td class="paramname"><span class="paramname"><em>labels</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a682702ee805b61997c99c221e3f707f2" name="a682702ee805b61997c99c221e3f707f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a682702ee805b61997c99c221e3f707f2">&#9670;&#160;</a></span>setLabelsColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setLabelsColor </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Color.html">Color</a></td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> </td>          <td class="paramname"><span class="paramname"><em>viewportId</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a707275fd9ea18111f49a8c7a76d3a37f" name="a707275fd9ea18111f49a8c7a76d3a37f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a707275fd9ea18111f49a8c7a76d3a37f">&#9670;&#160;</a></span>setLabelsColorsForAllViewports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setLabelsColorsForAllViewports </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportProperty__Color.html">ViewportProperty_Color</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a571b17c0c898d7ba22361d3acea9f511" name="a571b17c0c898d7ba22361d3acea9f511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a571b17c0c898d7ba22361d3acea9f511">&#9670;&#160;</a></span>setPickable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setPickable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>on</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> </td>          <td class="paramname"><span class="paramname"><em>viewportMask</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'<a class="el" href="classmrmeshpy_1_1ViewportMask.html#ad265bcbabed580f2fe7dd20c68e7970d">ViewportMask::all</a>()'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets the object as can/cannot be picked (by mouse) in all of given viewports
+</pre> 
+</div>
+</div>
+<a id="a03bf218ed762761b72a397cf74ac6b25" name="a03bf218ed762761b72a397cf74ac6b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03bf218ed762761b72a397cf74ac6b25">&#9670;&#160;</a></span>setShininess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setShininess </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>shininess</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets shininess visual value of the object with given argument
+</pre> 
+</div>
+</div>
+<a id="aa5aaf91f77383289702c646d873af962" name="aa5aaf91f77383289702c646d873af962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5aaf91f77383289702c646d873af962">&#9670;&#160;</a></span>setSpecularStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setSpecularStrength </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>specularStrength</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets intensity of reflections
+</pre> 
+</div>
+</div>
+<a id="a835cb96e26e7068936c68aba9046257e" name="a835cb96e26e7068936c68aba9046257e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a835cb96e26e7068936c68aba9046257e">&#9670;&#160;</a></span>setUseDefaultScenePropertiesOnDeserialization()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setUseDefaultScenePropertiesOnDeserialization </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>useDefaultScenePropertiesOnDeserialization</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">set whether the scene-related properties should get their values from SceneColors and SceneSettings instances
+rather than from the input data on deserialization
+</pre> 
+</div>
+</div>
+<a id="a714cc9052b7153f7263836546050015f" name="a714cc9052b7153f7263836546050015f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a714cc9052b7153f7263836546050015f">&#9670;&#160;</a></span>setVisualizeProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setVisualizeProperty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a></td>          <td class="paramname"><span class="paramname"><em>viewportMask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">set visual property in all viewports specified by the mask
+</pre> 
+</div>
+</div>
+<a id="a48dca93e69125ceede505cae9f2e4629" name="a48dca93e69125ceede505cae9f2e4629"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48dca93e69125ceede505cae9f2e4629">&#9670;&#160;</a></span>setVisualizePropertyMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.setVisualizePropertyMask </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a></td>          <td class="paramname"><span class="paramname"><em>viewportMask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">set visual property mask
+</pre> 
+</div>
+</div>
+<a id="a2f1849493da5afd051a79175b5f08734" name="a2f1849493da5afd051a79175b5f08734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f1849493da5afd051a79175b5f08734">&#9670;&#160;</a></span>shallowClone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> mrmeshpy.VisualObject.shallowClone </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">clones this object only, without its children,
+making new object to share resources with this object
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a306197efc63015a901bb1d87a6b74f23">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#a1d2bfb619159fc0a3c31e5f8e4c5e855">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#a3cf97dad78bfa4d75340504a970a0c2c">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#a017a2fa27d467a7e3113450b3e76bfc4">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#a2dce5b23cbf3a8c59c1f022eb6eeb51c">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#aefe7826eefa884545ec3a25e85279711">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#ae277cf72dcad1ae300fe560003afdf58">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#a270bf3bb4e1d5ebe595bc72c4b192aa3">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a880506f01e0ee9219a5b770e47966083">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#abb39835769f1d417f7f03789d04f762a">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#a8d33c4e7cb486c5b6ee8423373d416f6">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#aa4fb859df3557e279340755c13cad777">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#acc666f41f06a7e1c289a22ed5fc97e5a">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#aa2ca6534ff568a978cd63472c5841437">mrmeshpy.ObjectMeshHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a817afa6f2021486ff85de4ade8900c6f">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#ad96af8f45bacc210de03b1f13dc696dd">mrmeshpy.ObjectPointsHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#a5cfa1bacbd798378476393ac06694d38">mrmeshpy.ObjectVoxels</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#a31dea42dba989d6f4b0e1a438c674290">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#ae5dbe12cbbc7cc1c9c03518b90c49192">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#a7047545b95b7b31ac712919f2413247b">mrmeshpy.RadiusMeasurementObject</a>, and <a class="el" href="classmrmeshpy_1_1SphereObject.html#a174d6d17b7a911b0d5ef16b5b5bd830b">mrmeshpy.SphereObject</a>.</p>
+
+</div>
+</div>
+<a id="ae1fea9392fd2a77f641451abf0fea207" name="ae1fea9392fd2a77f641451abf0fea207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1fea9392fd2a77f641451abf0fea207">&#9670;&#160;</a></span>showLabels() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.showLabels </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac257ca586aac9d77be68dcc8597dc71" name="aac257ca586aac9d77be68dcc8597dc71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac257ca586aac9d77be68dcc8597dc71">&#9670;&#160;</a></span>showLabels() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.showLabels </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>on</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">shows/hides labels
+</pre> 
+</div>
+</div>
+<a id="adf37fc4271039b5e74b29185ddbd35e3" name="adf37fc4271039b5e74b29185ddbd35e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf37fc4271039b5e74b29185ddbd35e3">&#9670;&#160;</a></span>showName() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.showName </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns whether object name is shown in any viewport
+</pre> 
+</div>
+</div>
+<a id="a1982e8baf3d180cb968085525a988ec4" name="a1982e8baf3d180cb968085525a988ec4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1982e8baf3d180cb968085525a988ec4">&#9670;&#160;</a></span>showName() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.showName </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>on</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">shows/hides object name in all viewports
+</pre> 
+</div>
+</div>
+<a id="af397dd03ebfb70c972d3c4b39e52fc51" name="af397dd03ebfb70c972d3c4b39e52fc51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af397dd03ebfb70c972d3c4b39e52fc51">&#9670;&#160;</a></span>supportsVisualizeProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.supportsVisualizeProperty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Returns true if this class supports the property `type`. Otherwise passing it to the functions below is illegal.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter.html#ab7dca2824f7c5f179cdb8875c3b0fef1">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter</a>, <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__08bac3bda56e323e9f008186f80b7f55.html#aa62951dcc0fb773998472ba3368ea0bc">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_angle_DimensionsVisualizePropertyType_length</a>, <a class="el" href="classmrmeshpy_1_1AddVisualProperties__FeatureObject__DimensionsVisualizePropertyType__diameter__76fd3e0afd560dcf4b968132e8074b6d.html#a25738fcf06e9b13f84b8472c86770caa">mrmeshpy.AddVisualProperties_FeatureObject_DimensionsVisualizePropertyType_diameter_DimensionsVisualizePropertyType_length</a>, <a class="el" href="classmrmeshpy_1_1FeatureObject.html#a1d424208c478b75ec64eccd64a0d78d6">mrmeshpy.FeatureObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#a3da9a9950b496f5f6239dddeb246887b">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#aaf9980af82046f462a024730059368b0">mrmeshpy.ObjectMeshHolder</a>, and <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#a20924da44458776bdc8ae1d585d13339">mrmeshpy.ObjectPointsHolder</a>.</p>
+
+</div>
+</div>
+<a id="afccac4560acbe3eb1403c494d2d9b197" name="afccac4560acbe3eb1403c494d2d9b197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afccac4560acbe3eb1403c494d2d9b197">&#9670;&#160;</a></span>toggleVisualizeProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.VisualObject.toggleVisualizeProperty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AnyVisualizeMaskEnum.html">AnyVisualizeMaskEnum</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a></td>          <td class="paramname"><span class="paramname"><em>viewportMask</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">toggle visual property in all viewports specified by the mask
+</pre> 
+</div>
+</div>
+<a id="a9b62aeca52a962ae5a30198d4b130635" name="a9b62aeca52a962ae5a30198d4b130635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b62aeca52a962ae5a30198d4b130635">&#9670;&#160;</a></span>TypeName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.VisualObject.TypeName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">return name of subtype for serialization purposes
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a7daf4fd77eecf6eaf3f0b0a4e6c7fd21">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#aef4aee796be3922681d13523c286b228">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#a9a1bbfa2654d60783562cd5b71464e8d">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#a5612903b245f1fa3ea43f7357c2aac4e">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#a7db21f9e73e22641f87ebc51aad3f4df">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#a40198e485d9603391334d9fd47523e61">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#a73af6f635505ad900e73330bfd32e0ec">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#a778aa34fdfbbd8933cbc05aba58262e8">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a27710272698174395573158fb503cf35">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#a6351617720f7fdae3d07e3b91b1723fb">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#ac2ffe80a452958acd1b2bcdd42fe4730">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#a09c34eb86141abd310c8a84f8169a2cc">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#a59189d8100a67b5bdc1b75d72b08c729">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#a9384a3cfab0c85ddf63f0e619e9fb97b">mrmeshpy.ObjectMeshHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a2596d80dd53a2c5fe4f651ff54161277">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#a4f81677d5779c09dfa9dd8409350b05e">mrmeshpy.ObjectPointsHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#af8a44e4ff93ebb4e08fd9264d51c7deb">mrmeshpy.ObjectVoxels</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#a59d977112c755038ed630c7a7c2b9851">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#ad70be2897b215b5010b3397d7a8e6043">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#aa5899e26986dbe8aa4d1f9202905f862">mrmeshpy.RadiusMeasurementObject</a>, and <a class="el" href="classmrmeshpy_1_1SphereObject.html#a65cfd7f70d027bbe0701936f1cd6e86a">mrmeshpy.SphereObject</a>.</p>
+
+</div>
+</div>
+<a id="a0e188ed95f73756841030840741720e9" name="a0e188ed95f73756841030840741720e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e188ed95f73756841030840741720e9">&#9670;&#160;</a></span>typeName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.VisualObject.typeName </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#afa703704e5f68c3a465825a46cf4a5bf">mrmeshpy.Object</a>.</p>
+
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AngleMeasurementObject.html#a880d2862b045f9d6bbcf6ba21311b584">mrmeshpy.AngleMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1CircleObject.html#a391c0bfd1a55b06b1de0f33874ddf0de">mrmeshpy.CircleObject</a>, <a class="el" href="classmrmeshpy_1_1ConeObject.html#ae6d15b14c42b71b272fa0e39a73c23d3">mrmeshpy.ConeObject</a>, <a class="el" href="classmrmeshpy_1_1CylinderObject.html#a7007f9ec38b4c2c61176f1c3e0990e8c">mrmeshpy.CylinderObject</a>, <a class="el" href="classmrmeshpy_1_1DistanceMeasurementObject.html#a140ed40e13487ae65c40a9ac0d45bd2c">mrmeshpy.DistanceMeasurementObject</a>, <a class="el" href="classmrmeshpy_1_1LineObject.html#afa7d13e6a3c01fdbe0dd30dd27213202">mrmeshpy.LineObject</a>, <a class="el" href="classmrmeshpy_1_1ObjectDistanceMap.html#a728f9c3b70bcc06c8995b5e7208958bb">mrmeshpy.ObjectDistanceMap</a>, <a class="el" href="classmrmeshpy_1_1ObjectGcode.html#a1a21c672f5f041a5f57deafc67794e3f">mrmeshpy.ObjectGcode</a>, <a class="el" href="classmrmeshpy_1_1ObjectLabel.html#a801dbab12a1ed2b4d735494892632080">mrmeshpy.ObjectLabel</a>, <a class="el" href="classmrmeshpy_1_1ObjectLines.html#a64022fd1c53b41a5116e1f9b62016c48">mrmeshpy.ObjectLines</a>, <a class="el" href="classmrmeshpy_1_1ObjectLinesHolder.html#a3d74f153344e45ee25a3ab78a883ba4a">mrmeshpy.ObjectLinesHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectMesh.html#a33edc6ff466c80f1b112a02c315e9ddc">mrmeshpy.ObjectMesh</a>, <a class="el" href="classmrmeshpy_1_1ObjectMeshHolder.html#aa24e5842efc9ba794b8087b11bf64c40">mrmeshpy.ObjectMeshHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectPoints.html#a9cc9f03414ab03f8e8476c20fdc9aed8">mrmeshpy.ObjectPoints</a>, <a class="el" href="classmrmeshpy_1_1ObjectPointsHolder.html#ae619aa1d3ffa919568541313c7f6f7dd">mrmeshpy.ObjectPointsHolder</a>, <a class="el" href="classmrmeshpy_1_1ObjectVoxels.html#ab65e6996367638adce659172a1a49a27">mrmeshpy.ObjectVoxels</a>, <a class="el" href="classmrmeshpy_1_1PlaneObject.html#ae0abbb8c5a7ec816b0741e6f4b346c61">mrmeshpy.PlaneObject</a>, <a class="el" href="classmrmeshpy_1_1PointObject.html#af9c5949768640aef3614d28b5aa94a9c">mrmeshpy.PointObject</a>, <a class="el" href="classmrmeshpy_1_1RadiusMeasurementObject.html#ae02f20519ba91f58be69767f6e06f3c4">mrmeshpy.RadiusMeasurementObject</a>, and <a class="el" href="classmrmeshpy_1_1SphereObject.html#aeae2fa1c3017cf8e8ae4cfcc10ed28cc">mrmeshpy.SphereObject</a>.</p>
+
+</div>
+</div>
+<a id="a5e25b63c3965dc9f65f914e80f164bbd" name="a5e25b63c3965dc9f65f914e80f164bbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e25b63c3965dc9f65f914e80f164bbd">&#9670;&#160;</a></span>useDefaultScenePropertiesOnDeserialization()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.VisualObject.useDefaultScenePropertiesOnDeserialization </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">whether the scene-related properties should get their values from SceneColors and SceneSettings instances
+rather than from the input data on deserialization
+</pre> 
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1VisualObject.html">VisualObject</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

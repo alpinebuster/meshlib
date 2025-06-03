@@ -1,0 +1,222 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRMeshMetrics.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRMeshMetrics_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRMeshC/MRMeshMetrics.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRMeshC_2MRMeshMetrics_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRMeshFwd_8h.html">MRMeshFwd.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRId_8h.html">MRId.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#ac9fcd0e7cfebaafa5ca3b9eb0b170988">    9</a></span><span class="keyword">typedef</span> double (*<a class="code hl_variable" href="MRMeshC_2MRMeshMetrics_8h.html#ac9fcd0e7cfebaafa5ca3b9eb0b170988">MRFillTriangleMetric</a>)( <a class="code hl_typedef" href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a>, <a class="code hl_typedef" href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a>, <a class="code hl_typedef" href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a> );</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a974a9a6f5f81cf0d969bea5fcdaef097">   11</a></span><span class="keyword">typedef</span> double (*<a class="code hl_typedef" href="MRMeshC_2MRMeshMetrics_8h.html#a974a9a6f5f81cf0d969bea5fcdaef097">MRFillEdgeMetric</a>)( <a class="code hl_typedef" href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a>, <a class="code hl_typedef" href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a>, <a class="code hl_typedef" href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a>, <a class="code hl_typedef" href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a> );</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a8d1bbea24e1fb3709f9b1b830d170aee">   13</a></span><span class="keyword">typedef</span> double (*<a class="code hl_typedef" href="MRMeshC_2MRMeshMetrics_8h.html#a8d1bbea24e1fb3709f9b1b830d170aee">MRFillCombineMetric</a>)( double, double );</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#acd1399e35f0a7a8d6666aab0bba9086d">   28</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#af34b3d4e7fc6bacaed511d3aaadc00b6">   30</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#af34b3d4e7fc6bacaed511d3aaadc00b6">mrFillHoleMetricNew</a>( <a class="code hl_variable" href="MRMeshC_2MRMeshMetrics_8h.html#ac9fcd0e7cfebaafa5ca3b9eb0b170988">MRFillTriangleMetric</a> triangleMetric, <a class="code hl_typedef" href="MRMeshC_2MRMeshMetrics_8h.html#a974a9a6f5f81cf0d969bea5fcdaef097">MRFillEdgeMetric</a> edgeMetric, <a class="code hl_typedef" href="MRMeshC_2MRMeshMetrics_8h.html#a8d1bbea24e1fb3709f9b1b830d170aee">MRFillCombineMetric</a> combineMetric );</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a6882ccc857733c7a6fe9feb52ae94c93">   32</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a6882ccc857733c7a6fe9feb52ae94c93">mrFillHoleMetricFree</a>( <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* metric );</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a2b6934ebbcbfea0b07d52d6e62bdd6c8">   35</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">double</span> <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a2b6934ebbcbfea0b07d52d6e62bdd6c8">mrCalcCombinedFillMetric</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh, <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a>* filledRegion, <span class="keyword">const</span> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* metric );</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a6cf2d2dfd31a4567f61d5c74c253819d">   39</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a6cf2d2dfd31a4567f61d5c74c253819d">mrGetCircumscribedMetric</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh );</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a1264c3916b7890813b180b08138fec0c">   43</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a1264c3916b7890813b180b08138fec0c">mrGetPlaneFillMetric</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh, <a class="code hl_struct" href="structMREdgeId.html">MREdgeId</a> e );</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a961736cc9fff9092b4fda1fdf0070c34">   48</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a961736cc9fff9092b4fda1fdf0070c34">mrGetPlaneNormalizedFillMetric</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh, <a class="code hl_struct" href="structMREdgeId.html">MREdgeId</a> e );</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a255c2b2dd7374cc784f3f1a11d3dfcd6">   55</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a255c2b2dd7374cc784f3f1a11d3dfcd6">mrGetComplexFillMetric</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh, <a class="code hl_struct" href="structMREdgeId.html">MREdgeId</a> e );</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a039ab12cbc75ca2813c259f9724b5136">   60</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a039ab12cbc75ca2813c259f9724b5136">mrGetUniversalMetric</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh );</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMeshMetrics_8h.html#a4479a552d8a3c47063066fd7c9261f3d">   64</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRFillHoleMetric.html">MRFillHoleMetric</a>* <a class="code hl_function" href="MRMeshC_2MRMeshMetrics_8h.html#a4479a552d8a3c47063066fd7c9261f3d">mrGetMinAreaMetric</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh );</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div>
+<div class="ttc" id="aMRMeshC_2MRId_8h_html"><div class="ttname"><a href="MRMeshC_2MRId_8h.html">MRId.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRId_8h_html_a9ac012b0350b14e8b0fd50cfeb57beb6"><div class="ttname"><a href="MRMeshC_2MRId_8h.html#a9ac012b0350b14e8b0fd50cfeb57beb6">MRVertId</a></div><div class="ttdeci">struct MRVertId MRVertId</div><div class="ttdoc">vertex index</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html">MRMeshFwd.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a07cb85df391b65224a89339236e03c2e"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div><div class="ttdeci">#define MR_EXTERN_C_BEGIN</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:26</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a4c0dd57de0c70036b4a1e14f71d2fe11"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div><div class="ttdeci">#define MR_EXTERN_C_END</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:27</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a7b372c6d0fd65239f731902623e752c5"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a></div><div class="ttdeci">struct MRMesh MRMesh</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:47</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a87ea817dc8204ed7e311d55fd9252cfc"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a></div><div class="ttdeci">struct MRFaceBitSet MRFaceBitSet</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:37</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_ab8a099cc7166020a82c2f96fa5043ae6"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a></div><div class="ttdeci">#define MRMESHC_API</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:19</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a039ab12cbc75ca2813c259f9724b5136"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a039ab12cbc75ca2813c259f9724b5136">mrGetUniversalMetric</a></div><div class="ttdeci">MRMESHC_API MRFillHoleMetric * mrGetUniversalMetric(const MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a1264c3916b7890813b180b08138fec0c"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a1264c3916b7890813b180b08138fec0c">mrGetPlaneFillMetric</a></div><div class="ttdeci">MRMESHC_API MRFillHoleMetric * mrGetPlaneFillMetric(const MRMesh *mesh, MREdgeId e)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a255c2b2dd7374cc784f3f1a11d3dfcd6"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a255c2b2dd7374cc784f3f1a11d3dfcd6">mrGetComplexFillMetric</a></div><div class="ttdeci">MRMESHC_API MRFillHoleMetric * mrGetComplexFillMetric(const MRMesh *mesh, MREdgeId e)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a2b6934ebbcbfea0b07d52d6e62bdd6c8"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a2b6934ebbcbfea0b07d52d6e62bdd6c8">mrCalcCombinedFillMetric</a></div><div class="ttdeci">MRMESHC_API double mrCalcCombinedFillMetric(const MRMesh *mesh, const MRFaceBitSet *filledRegion, const MRFillHoleMetric *metric)</div><div class="ttdoc">Computes combined metric after filling a hole.</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a4479a552d8a3c47063066fd7c9261f3d"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a4479a552d8a3c47063066fd7c9261f3d">mrGetMinAreaMetric</a></div><div class="ttdeci">MRMESHC_API MRFillHoleMetric * mrGetMinAreaMetric(const MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a6882ccc857733c7a6fe9feb52ae94c93"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a6882ccc857733c7a6fe9feb52ae94c93">mrFillHoleMetricFree</a></div><div class="ttdeci">MRMESHC_API void mrFillHoleMetricFree(MRFillHoleMetric *metric)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a6cf2d2dfd31a4567f61d5c74c253819d"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a6cf2d2dfd31a4567f61d5c74c253819d">mrGetCircumscribedMetric</a></div><div class="ttdeci">MRMESHC_API MRFillHoleMetric * mrGetCircumscribedMetric(const MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a8d1bbea24e1fb3709f9b1b830d170aee"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a8d1bbea24e1fb3709f9b1b830d170aee">MRFillCombineMetric</a></div><div class="ttdeci">double(* MRFillCombineMetric)(double, double)</div><div class="ttdoc">is called to combine metrics from different candidates, if it is not set it just summarizes input</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshMetrics.h:13</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a961736cc9fff9092b4fda1fdf0070c34"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a961736cc9fff9092b4fda1fdf0070c34">mrGetPlaneNormalizedFillMetric</a></div><div class="ttdeci">MRMESHC_API MRFillHoleMetric * mrGetPlaneNormalizedFillMetric(const MRMesh *mesh, MREdgeId e)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_a974a9a6f5f81cf0d969bea5fcdaef097"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#a974a9a6f5f81cf0d969bea5fcdaef097">MRFillEdgeMetric</a></div><div class="ttdeci">double(* MRFillEdgeMetric)(MRVertId, MRVertId, MRVertId, MRVertId)</div><div class="ttdoc">is called for each edge, if it is set</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshMetrics.h:11</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_ac9fcd0e7cfebaafa5ca3b9eb0b170988"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#ac9fcd0e7cfebaafa5ca3b9eb0b170988">MRFillTriangleMetric</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN typedef double(* MRFillTriangleMetric)(MRVertId, MRVertId, MRVertId)</div><div class="ttdoc">is called for each triangle, if it is set</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshMetrics.h:9</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshMetrics_8h_html_af34b3d4e7fc6bacaed511d3aaadc00b6"><div class="ttname"><a href="MRMeshC_2MRMeshMetrics_8h.html#af34b3d4e7fc6bacaed511d3aaadc00b6">mrFillHoleMetricNew</a></div><div class="ttdeci">MRMESHC_API MRFillHoleMetric * mrFillHoleMetricNew(MRFillTriangleMetric triangleMetric, MRFillEdgeMetric edgeMetric, MRFillCombineMetric combineMetric)</div></div>
+<div class="ttc" id="astructMREdgeId_html"><div class="ttname"><a href="structMREdgeId.html">MREdgeId</a></div><div class="ttdoc">edge index</div><div class="ttdef"><b>Definition</b> MRMeshC/MRId.h:8</div></div>
+<div class="ttc" id="astructMRFillHoleMetric_html"><div class="ttname"><a href="structMRFillHoleMetric.html">MRFillHoleMetric</a></div><div class="ttdoc">Holds metrics for mrFillHole and mrBuildCylinderBetweenTwoHoles triangulation .</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRMeshMetrics_8h.html">MRMeshMetrics.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MR::PriorityQueue&lt; T, P &gt; Class Template Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classMR_1_1PriorityQueue.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classMR_1_1PriorityQueue-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">MR::PriorityQueue&lt; T, P &gt; Class Template Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>similar to std::priority_queue, but with ability to access underlying vector to custom modify its elements  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="MRPriorityQueue_8h_source.html">MRPriorityQueue.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a3b6a5fb6f7530ae66dfec44b04efaf99" id="r_a3b6a5fb6f7530ae66dfec44b04efaf99"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b6a5fb6f7530ae66dfec44b04efaf99">value_type</a> = T</td></tr>
+<tr class="separator:a3b6a5fb6f7530ae66dfec44b04efaf99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf2b86418b3f772aaf5c8bc2329d8c2" id="r_aeaf2b86418b3f772aaf5c8bc2329d8c2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaf2b86418b3f772aaf5c8bc2329d8c2">Container</a> = std::vector&lt;T&gt;</td></tr>
+<tr class="separator:aeaf2b86418b3f772aaf5c8bc2329d8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657bf77bb26190bcd1415b93138f77d9" id="r_a657bf77bb26190bcd1415b93138f77d9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a657bf77bb26190bcd1415b93138f77d9">size_type</a> = typename Container::size_type</td></tr>
+<tr class="separator:a657bf77bb26190bcd1415b93138f77d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aae44e735cc86835adbb6d48ff4a446ab" id="r_aae44e735cc86835adbb6d48ff4a446ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae44e735cc86835adbb6d48ff4a446ab">PriorityQueue</a> ()</td></tr>
+<tr class="memdesc:aae44e735cc86835adbb6d48ff4a446ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructs empty queue  <br /></td></tr>
+<tr class="separator:aae44e735cc86835adbb6d48ff4a446ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebd81e426914ebd5fa07ba5e4bfa0142" id="r_aebd81e426914ebd5fa07ba5e4bfa0142"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aebd81e426914ebd5fa07ba5e4bfa0142">PriorityQueue</a> (const P &amp;pred)</td></tr>
+<tr class="separator:aebd81e426914ebd5fa07ba5e4bfa0142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bf03b4612ec1dfe18e90b99153030cc" id="r_a7bf03b4612ec1dfe18e90b99153030cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bf03b4612ec1dfe18e90b99153030cc">PriorityQueue</a> (const P &amp;pred, <a class="el" href="#aeaf2b86418b3f772aaf5c8bc2329d8c2">Container</a> &amp;&amp;v)</td></tr>
+<tr class="memdesc:a7bf03b4612ec1dfe18e90b99153030cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes queue elements from given vector  <br /></td></tr>
+<tr class="separator:a7bf03b4612ec1dfe18e90b99153030cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10d6af2f304f8f8ce7d09de3b272a283" id="r_a10d6af2f304f8f8ce7d09de3b272a283"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10d6af2f304f8f8ce7d09de3b272a283">empty</a> () const</td></tr>
+<tr class="memdesc:a10d6af2f304f8f8ce7d09de3b272a283"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if the queue has no elements  <br /></td></tr>
+<tr class="separator:a10d6af2f304f8f8ce7d09de3b272a283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6d4bc3f087a1d5b9e3acf5c3334f1af" id="r_ab6d4bc3f087a1d5b9e3acf5c3334f1af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a657bf77bb26190bcd1415b93138f77d9">size_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6d4bc3f087a1d5b9e3acf5c3334f1af">size</a> () const</td></tr>
+<tr class="memdesc:ab6d4bc3f087a1d5b9e3acf5c3334f1af"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of elements  <br /></td></tr>
+<tr class="separator:ab6d4bc3f087a1d5b9e3acf5c3334f1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af82d3663565c02f63678292a87e97192" id="r_af82d3663565c02f63678292a87e97192"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af82d3663565c02f63678292a87e97192">top</a> () const</td></tr>
+<tr class="memdesc:af82d3663565c02f63678292a87e97192"><td class="mdescLeft">&#160;</td><td class="mdescRight">accesses the top element  <br /></td></tr>
+<tr class="separator:af82d3663565c02f63678292a87e97192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a493610b54c4c312a6522dfd1a22b8d" id="r_a0a493610b54c4c312a6522dfd1a22b8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a493610b54c4c312a6522dfd1a22b8d">push</a> (const <a class="el" href="#a3b6a5fb6f7530ae66dfec44b04efaf99">value_type</a> &amp;value)</td></tr>
+<tr class="memdesc:a0a493610b54c4c312a6522dfd1a22b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts element in the queue  <br /></td></tr>
+<tr class="separator:a0a493610b54c4c312a6522dfd1a22b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac59724ac4d832ab0bd70f42d9c2170d1" id="r_ac59724ac4d832ab0bd70f42d9c2170d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac59724ac4d832ab0bd70f42d9c2170d1">push</a> (<a class="el" href="#a3b6a5fb6f7530ae66dfec44b04efaf99">value_type</a> &amp;&amp;value)</td></tr>
+<tr class="separator:ac59724ac4d832ab0bd70f42d9c2170d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14e51732a3a52902181ca4b3d1f28374" id="r_a14e51732a3a52902181ca4b3d1f28374"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:a14e51732a3a52902181ca4b3d1f28374"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a14e51732a3a52902181ca4b3d1f28374">emplace</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="separator:a14e51732a3a52902181ca4b3d1f28374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada44a589fd04a828763560decb38cdf8" id="r_ada44a589fd04a828763560decb38cdf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada44a589fd04a828763560decb38cdf8">pop</a> ()</td></tr>
+<tr class="memdesc:ada44a589fd04a828763560decb38cdf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">removes the top element from the priority queue  <br /></td></tr>
+<tr class="separator:ada44a589fd04a828763560decb38cdf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a5f49205aba3f95b0774623effbc87e49" id="r_a5f49205aba3f95b0774623effbc87e49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aeaf2b86418b3f772aaf5c8bc2329d8c2">Container</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f49205aba3f95b0774623effbc87e49">c</a></td></tr>
+<tr class="separator:a5f49205aba3f95b0774623effbc87e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, typename P = std::less&lt;T&gt;&gt;<br />
+class MR::PriorityQueue&lt; T, P &gt;</div><p>similar to std::priority_queue, but with ability to access underlying vector to custom modify its elements </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aeaf2b86418b3f772aaf5c8bc2329d8c2" name="aeaf2b86418b3f772aaf5c8bc2329d8c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf2b86418b3f772aaf5c8bc2329d8c2">&#9670;&#160;</a></span>Container</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::Container = std::vector&lt;T&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a657bf77bb26190bcd1415b93138f77d9" name="a657bf77bb26190bcd1415b93138f77d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657bf77bb26190bcd1415b93138f77d9">&#9670;&#160;</a></span>size_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::size_type = typename Container::size_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b6a5fb6f7530ae66dfec44b04efaf99" name="a3b6a5fb6f7530ae66dfec44b04efaf99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b6a5fb6f7530ae66dfec44b04efaf99">&#9670;&#160;</a></span>value_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::value_type = T</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aae44e735cc86835adbb6d48ff4a446ab" name="aae44e735cc86835adbb6d48ff4a446ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae44e735cc86835adbb6d48ff4a446ab">&#9670;&#160;</a></span>PriorityQueue() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::PriorityQueue </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>constructs empty queue </p>
+
+</div>
+</div>
+<a id="aebd81e426914ebd5fa07ba5e4bfa0142" name="aebd81e426914ebd5fa07ba5e4bfa0142"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebd81e426914ebd5fa07ba5e4bfa0142">&#9670;&#160;</a></span>PriorityQueue() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::PriorityQueue </td>
+          <td>(</td>
+          <td class="paramtype">const P &amp;</td>          <td class="paramname"><span class="paramname"><em>pred</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7bf03b4612ec1dfe18e90b99153030cc" name="a7bf03b4612ec1dfe18e90b99153030cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bf03b4612ec1dfe18e90b99153030cc">&#9670;&#160;</a></span>PriorityQueue() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::PriorityQueue </td>
+          <td>(</td>
+          <td class="paramtype">const P &amp;</td>          <td class="paramname"><span class="paramname"><em>pred</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aeaf2b86418b3f772aaf5c8bc2329d8c2">Container</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>initializes queue elements from given vector </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a14e51732a3a52902181ca4b3d1f28374" name="a14e51732a3a52902181ca4b3d1f28374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14e51732a3a52902181ca4b3d1f28374">&#9670;&#160;</a></span>emplace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<div class="memtemplate">
+template&lt;class... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::emplace </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10d6af2f304f8f8ce7d09de3b272a283" name="a10d6af2f304f8f8ce7d09de3b272a283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d6af2f304f8f8ce7d09de3b272a283">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::empty </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>checks if the queue has no elements </p>
+
+</div>
+</div>
+<a id="ada44a589fd04a828763560decb38cdf8" name="ada44a589fd04a828763560decb38cdf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada44a589fd04a828763560decb38cdf8">&#9670;&#160;</a></span>pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::pop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removes the top element from the priority queue </p>
+
+</div>
+</div>
+<a id="a0a493610b54c4c312a6522dfd1a22b8d" name="a0a493610b54c4c312a6522dfd1a22b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a493610b54c4c312a6522dfd1a22b8d">&#9670;&#160;</a></span>push() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::push </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a3b6a5fb6f7530ae66dfec44b04efaf99">value_type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>inserts element in the queue </p>
+
+</div>
+</div>
+<a id="ac59724ac4d832ab0bd70f42d9c2170d1" name="ac59724ac4d832ab0bd70f42d9c2170d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59724ac4d832ab0bd70f42d9c2170d1">&#9670;&#160;</a></span>push() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a3b6a5fb6f7530ae66dfec44b04efaf99">value_type</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6d4bc3f087a1d5b9e3acf5c3334f1af" name="ab6d4bc3f087a1d5b9e3acf5c3334f1af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6d4bc3f087a1d5b9e3acf5c3334f1af">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a657bf77bb26190bcd1415b93138f77d9">size_type</a> <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns the number of elements </p>
+
+</div>
+</div>
+<a id="af82d3663565c02f63678292a87e97192" name="af82d3663565c02f63678292a87e97192"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af82d3663565c02f63678292a87e97192">&#9670;&#160;</a></span>top()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T &amp; <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::top </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>accesses the top element </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5f49205aba3f95b0774623effbc87e49" name="a5f49205aba3f95b0774623effbc87e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f49205aba3f95b0774623effbc87e49">&#9670;&#160;</a></span>c</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P  = std::less&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#aeaf2b86418b3f772aaf5c8bc2329d8c2">Container</a> <a class="el" href="classMR_1_1PriorityQueue.html">MR::PriorityQueue</a>&lt; T, P &gt;::c</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>intentionally left public to allow user access to it, but the user is responsible for restore heap-property of this vector before calling of any method </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="MRPriorityQueue_8h_source.html">MRPriorityQueue.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>MR</b></li><li class="navelem"><a class="el" href="classMR_1_1PriorityQueue.html">PriorityQueue</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

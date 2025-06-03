@@ -1,0 +1,605 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1SceneRootObject.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.SceneRootObject Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1SceneRootObject.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1SceneRootObject-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.SceneRootObject Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.SceneRootObject:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1SceneRootObject.png" usemap="#mrmeshpy.SceneRootObject_map" alt=""/>
+  <map id="mrmeshpy.SceneRootObject_map" name="mrmeshpy.SceneRootObject_map">
+<area href="classmrmeshpy_1_1Object.html" alt="mrmeshpy.Object" shape="rect" coords="0,56,196,80"/>
+<area href="classmrmeshpy_1_1ObjectChildrenHolder.html" alt="mrmeshpy.ObjectChildrenHolder" shape="rect" coords="0,0,196,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a2dd7053e85fc9d4ba144712a5a79c532" id="r_a2dd7053e85fc9d4ba144712a5a79c532"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dd7053e85fc9d4ba144712a5a79c532">__init__</a> (self)</td></tr>
+<tr class="separator:a2dd7053e85fc9d4ba144712a5a79c532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15ca2cad6fdfde06e2c701f9ef40d0af" id="r_a15ca2cad6fdfde06e2c701f9ef40d0af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15ca2cad6fdfde06e2c701f9ef40d0af">clone</a> (self)</td></tr>
+<tr class="separator:a15ca2cad6fdfde06e2c701f9ef40d0af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a776b02e225f7200264afd891034828f4" id="r_a776b02e225f7200264afd891034828f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SceneRootObject.html">SceneRootObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a776b02e225f7200264afd891034828f4">cloneRoot</a> (self)</td></tr>
+<tr class="separator:a776b02e225f7200264afd891034828f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e7f03630100ce733ca42c8190a312ca" id="r_a6e7f03630100ce733ca42c8190a312ca"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e7f03630100ce733ca42c8190a312ca">getClassName</a> (self)</td></tr>
+<tr class="separator:a6e7f03630100ce733ca42c8190a312ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605bc7ca4e2b565d1593b68c8dcd5d5d" id="r_a605bc7ca4e2b565d1593b68c8dcd5d5d"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a605bc7ca4e2b565d1593b68c8dcd5d5d">getClassNameInPlural</a> (self)</td></tr>
+<tr class="separator:a605bc7ca4e2b565d1593b68c8dcd5d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2039fa810ccd04200d0c092e8d60893f" id="r_a2039fa810ccd04200d0c092e8d60893f"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2039fa810ccd04200d0c092e8d60893f">typeName</a> (self)</td></tr>
+<tr class="separator:a2039fa810ccd04200d0c092e8d60893f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1Object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1Object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1Object.html">mrmeshpy.Object</a></td></tr>
+<tr class="memitem:a4c9a5cdc889f952e88f15efc92859b0b inherit pub_methods_classmrmeshpy_1_1Object" id="r_a4c9a5cdc889f952e88f15efc92859b0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a4c9a5cdc889f952e88f15efc92859b0b">addChild</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> child, bool recognizedChild=True)</td></tr>
+<tr class="separator:a4c9a5cdc889f952e88f15efc92859b0b inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a628d57698bee030f4e37809eed20fdb6 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a628d57698bee030f4e37809eed20fdb6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a628d57698bee030f4e37809eed20fdb6">addChildBefore</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> newChild, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> existingChild)</td></tr>
+<tr class="separator:a628d57698bee030f4e37809eed20fdb6 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1db3f0240dda415f1f066fed72225e16 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a1db3f0240dda415f1f066fed72225e16"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a1db3f0240dda415f1f066fed72225e16">applyScale</a> (self, float scaleFactor)</td></tr>
+<tr class="separator:a1db3f0240dda415f1f066fed72225e16 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae3f323064ae2cb5d831eeb6a3baaa379"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VisualObject.html">VisualObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae3f323064ae2cb5d831eeb6a3baaa379">asType_VisualObject</a> (self)</td></tr>
+<tr class="separator:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae3f323064ae2cb5d831eeb6a3baaa379"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VisualObject.html">VisualObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae3f323064ae2cb5d831eeb6a3baaa379">asType_VisualObject</a> (self)</td></tr>
+<tr class="separator:ae3f323064ae2cb5d831eeb6a3baaa379 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35f5a7bbb06be9169dbe752e0b8440e3 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a35f5a7bbb06be9169dbe752e0b8440e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__std__shared__ptr__Object.html">std_vector_std_shared_ptr_Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a35f5a7bbb06be9169dbe752e0b8440e3">children</a> (self)</td></tr>
+<tr class="separator:a35f5a7bbb06be9169dbe752e0b8440e3 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c285511171875eaa87d26a18bd45efc inherit pub_methods_classmrmeshpy_1_1Object" id="r_a3c285511171875eaa87d26a18bd45efc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__std__shared__ptr__Object__const.html">std_vector_std_shared_ptr_Object_const</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a3c285511171875eaa87d26a18bd45efc">children</a> (self)</td></tr>
+<tr class="separator:a3c285511171875eaa87d26a18bd45efc inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115b8bd891d9bd7e08946e8f84da09f0 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a115b8bd891d9bd7e08946e8f84da09f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a115b8bd891d9bd7e08946e8f84da09f0">cloneTree</a> (self)</td></tr>
+<tr class="separator:a115b8bd891d9bd7e08946e8f84da09f0 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a567315111aee91b3dd5bfef4188b23b7 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a567315111aee91b3dd5bfef4188b23b7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a567315111aee91b3dd5bfef4188b23b7">detachFromParent</a> (self)</td></tr>
+<tr class="separator:a567315111aee91b3dd5bfef4188b23b7 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae6adbbc7286265563fb4d6d162f4dc49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae6adbbc7286265563fb4d6d162f4dc49">find</a> (self, str <a class="el" href="classmrmeshpy_1_1Object.html#a1df02ba03a7110bf58c7f740696f4c35">name</a>)</td></tr>
+<tr class="separator:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object" id="r_ae6adbbc7286265563fb4d6d162f4dc49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ae6adbbc7286265563fb4d6d162f4dc49">find</a> (self, str <a class="el" href="classmrmeshpy_1_1Object.html#a1df02ba03a7110bf58c7f740696f4c35">name</a>)</td></tr>
+<tr class="separator:ae6adbbc7286265563fb4d6d162f4dc49 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object" id="r_aef02c28f6dfb85ade9554043fdf249dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aef02c28f6dfb85ade9554043fdf249dd">findCommonAncestor</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> other)</td></tr>
+<tr class="separator:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object" id="r_aef02c28f6dfb85ade9554043fdf249dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aef02c28f6dfb85ade9554043fdf249dd">findCommonAncestor</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> other)</td></tr>
+<tr class="separator:aef02c28f6dfb85ade9554043fdf249dd inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2923b7dd1c5fb2a0d72ebf7e346dd482 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a2923b7dd1c5fb2a0d72ebf7e346dd482"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__std__string.html">std_vector_std_string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a2923b7dd1c5fb2a0d72ebf7e346dd482">getInfoLines</a> (self)</td></tr>
+<tr class="separator:a2923b7dd1c5fb2a0d72ebf7e346dd482 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a7d136a58b2e69851ac59192bcd5b5 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a78a7d136a58b2e69851ac59192bcd5b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a78a7d136a58b2e69851ac59192bcd5b5">globalVisibility</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()')</td></tr>
+<tr class="separator:a78a7d136a58b2e69851ac59192bcd5b5 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b1a4fd5f92fc87757bc139ce2e770be inherit pub_methods_classmrmeshpy_1_1Object" id="r_a4b1a4fd5f92fc87757bc139ce2e770be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a4b1a4fd5f92fc87757bc139ce2e770be">globalVisibilityMask</a> (self)</td></tr>
+<tr class="separator:a4b1a4fd5f92fc87757bc139ce2e770be inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3270abd9924fa3f784d3105824979f0b inherit pub_methods_classmrmeshpy_1_1Object" id="r_a3270abd9924fa3f784d3105824979f0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a3270abd9924fa3f784d3105824979f0b">hasModel</a> (self)</td></tr>
+<tr class="separator:a3270abd9924fa3f784d3105824979f0b inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21510ca05f3888f5db9ff0aae662c9d1 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a21510ca05f3888f5db9ff0aae662c9d1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a21510ca05f3888f5db9ff0aae662c9d1">hasVisualRepresentation</a> (self)</td></tr>
+<tr class="separator:a21510ca05f3888f5db9ff0aae662c9d1 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62b16119e3432b9c35158f35ca3f1523 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a62b16119e3432b9c35158f35ca3f1523"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a62b16119e3432b9c35158f35ca3f1523">heapBytes</a> (self)</td></tr>
+<tr class="separator:a62b16119e3432b9c35158f35ca3f1523 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d0fafc2423205d5a3ba75eae112655 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a33d0fafc2423205d5a3ba75eae112655"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a33d0fafc2423205d5a3ba75eae112655">isAncestor</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> ancestor)</td></tr>
+<tr class="separator:a33d0fafc2423205d5a3ba75eae112655 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a2cb58be1a7e062e9c502295eb6ce23 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a5a2cb58be1a7e062e9c502295eb6ce23"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a5a2cb58be1a7e062e9c502295eb6ce23">isAncillary</a> (self)</td></tr>
+<tr class="separator:a5a2cb58be1a7e062e9c502295eb6ce23 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb58092748e5b61228ff7ed23b9c0d6f inherit pub_methods_classmrmeshpy_1_1Object" id="r_adb58092748e5b61228ff7ed23b9c0d6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#adb58092748e5b61228ff7ed23b9c0d6f">isLocked</a> (self)</td></tr>
+<tr class="separator:adb58092748e5b61228ff7ed23b9c0d6f inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad4248d019ab25e15e9f40f726c1f3d3 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aad4248d019ab25e15e9f40f726c1f3d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aad4248d019ab25e15e9f40f726c1f3d3">isParentLocked</a> (self)</td></tr>
+<tr class="separator:aad4248d019ab25e15e9f40f726c1f3d3 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3395c8e6e84a9d82d622557fb6939f inherit pub_methods_classmrmeshpy_1_1Object" id="r_add3395c8e6e84a9d82d622557fb6939f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#add3395c8e6e84a9d82d622557fb6939f">isSelected</a> (self)</td></tr>
+<tr class="separator:add3395c8e6e84a9d82d622557fb6939f inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad160388c69186e8a83fde5e8eb02535e inherit pub_methods_classmrmeshpy_1_1Object" id="r_ad160388c69186e8a83fde5e8eb02535e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ad160388c69186e8a83fde5e8eb02535e">isVisible</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()')</td></tr>
+<tr class="separator:ad160388c69186e8a83fde5e8eb02535e inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df02ba03a7110bf58c7f740696f4c35 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a1df02ba03a7110bf58c7f740696f4c35"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a1df02ba03a7110bf58c7f740696f4c35">name</a> (self)</td></tr>
+<tr class="separator:a1df02ba03a7110bf58c7f740696f4c35 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a49aa72b1374065f24972ced7c2bfbe34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a49aa72b1374065f24972ced7c2bfbe34">parent</a> (self)</td></tr>
+<tr class="separator:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a49aa72b1374065f24972ced7c2bfbe34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a49aa72b1374065f24972ced7c2bfbe34">parent</a> (self)</td></tr>
+<tr class="separator:a49aa72b1374065f24972ced7c2bfbe34 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa593f6befb32f6453133a516f1c863b8 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aa593f6befb32f6453133a516f1c863b8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aa593f6befb32f6453133a516f1c863b8">removeAllChildren</a> (self)</td></tr>
+<tr class="separator:aa593f6befb32f6453133a516f1c863b8 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a414cac53ffc4dac827d7b9ddbf126098"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a414cac53ffc4dac827d7b9ddbf126098">removeChild</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> child)</td></tr>
+<tr class="separator:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a414cac53ffc4dac827d7b9ddbf126098"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a414cac53ffc4dac827d7b9ddbf126098">removeChild</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> child)</td></tr>
+<tr class="separator:a414cac53ffc4dac827d7b9ddbf126098 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f27a64bfcdec74242fdf571a687c94c inherit pub_methods_classmrmeshpy_1_1Object" id="r_a3f27a64bfcdec74242fdf571a687c94c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a3f27a64bfcdec74242fdf571a687c94c">resetRedrawFlag</a> (self)</td></tr>
+<tr class="separator:a3f27a64bfcdec74242fdf571a687c94c inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ba6855a489e33e6a6f88843575178f4 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a7ba6855a489e33e6a6f88843575178f4"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a7ba6855a489e33e6a6f88843575178f4">resetXf</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}')</td></tr>
+<tr class="separator:a7ba6855a489e33e6a6f88843575178f4 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f260bf94c3aaca96c76a3b2df7e4123 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a1f260bf94c3aaca96c76a3b2df7e4123"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a1f260bf94c3aaca96c76a3b2df7e4123">setGlobalVisibility</a> (self, bool on, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#a835d61983f7e4513ee4cfc01bb8a0a00">ViewportMask::any</a>()')</td></tr>
+<tr class="separator:a1f260bf94c3aaca96c76a3b2df7e4123 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff9e7cf21687080d8eb1322b76772577 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aff9e7cf21687080d8eb1322b76772577"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aff9e7cf21687080d8eb1322b76772577">setLocked</a> (self, bool on)</td></tr>
+<tr class="separator:aff9e7cf21687080d8eb1322b76772577 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae28ca7af2e7903818a96c60d5959e07 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aae28ca7af2e7903818a96c60d5959e07"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aae28ca7af2e7903818a96c60d5959e07">setParentLocked</a> (self, bool lock)</td></tr>
+<tr class="separator:aae28ca7af2e7903818a96c60d5959e07 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a093177bee96f9715ec03afc69262aa inherit pub_methods_classmrmeshpy_1_1Object" id="r_a2a093177bee96f9715ec03afc69262aa"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a2a093177bee96f9715ec03afc69262aa">setVisibilityMask</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask)</td></tr>
+<tr class="separator:a2a093177bee96f9715ec03afc69262aa inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b7a91d7379e983adad42fd434e04381 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a8b7a91d7379e983adad42fd434e04381"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a8b7a91d7379e983adad42fd434e04381">setVisible</a> (self, bool on, <a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a> viewportMask='<a class="el" href="classmrmeshpy_1_1ViewportMask.html#ad265bcbabed580f2fe7dd20c68e7970d">ViewportMask::all</a>()')</td></tr>
+<tr class="separator:a8b7a91d7379e983adad42fd434e04381 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bfe044b45e30faa3dcf35bac6993502 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a6bfe044b45e30faa3dcf35bac6993502"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a6bfe044b45e30faa3dcf35bac6993502">setWorldXf</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a> <a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a>, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}')</td></tr>
+<tr class="separator:a6bfe044b45e30faa3dcf35bac6993502 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94f23ddd1f300e9b4ab45d33fe364e9d inherit pub_methods_classmrmeshpy_1_1Object" id="r_a94f23ddd1f300e9b4ab45d33fe364e9d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a94f23ddd1f300e9b4ab45d33fe364e9d">setXf</a> (self, <a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a> <a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a>, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}')</td></tr>
+<tr class="separator:a94f23ddd1f300e9b4ab45d33fe364e9d inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac6bdfb45902aa99fc95799b508c57f5 inherit pub_methods_classmrmeshpy_1_1Object" id="r_aac6bdfb45902aa99fc95799b508c57f5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aac6bdfb45902aa99fc95799b508c57f5">setXfsForAllViewports</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportProperty__AffineXf3f.html">ViewportProperty_AffineXf3f</a> <a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a>)</td></tr>
+<tr class="separator:aac6bdfb45902aa99fc95799b508c57f5 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a306197efc63015a901bb1d87a6b74f23 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a306197efc63015a901bb1d87a6b74f23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a306197efc63015a901bb1d87a6b74f23">shallowClone</a> (self)</td></tr>
+<tr class="separator:a306197efc63015a901bb1d87a6b74f23 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab39f51bc5e295bf79bf21e09e8a4374b inherit pub_methods_classmrmeshpy_1_1Object" id="r_ab39f51bc5e295bf79bf21e09e8a4374b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#ab39f51bc5e295bf79bf21e09e8a4374b">shallowCloneTree</a> (self)</td></tr>
+<tr class="separator:ab39f51bc5e295bf79bf21e09e8a4374b inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81fe3b89047200dec9832c065dd92ceb inherit pub_methods_classmrmeshpy_1_1Object" id="r_a81fe3b89047200dec9832c065dd92ceb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a81fe3b89047200dec9832c065dd92ceb">sortChildren</a> (self)</td></tr>
+<tr class="separator:a81fe3b89047200dec9832c065dd92ceb inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c92cdb11df4d895c639f0e26dca1c83 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a6c92cdb11df4d895c639f0e26dca1c83"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a6c92cdb11df4d895c639f0e26dca1c83">swap</a> (self, <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> other)</td></tr>
+<tr class="separator:a6c92cdb11df4d895c639f0e26dca1c83 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e97a992a254dfa6b44c7bf1eb144e4 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a64e97a992a254dfa6b44c7bf1eb144e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportMask.html">ViewportMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a64e97a992a254dfa6b44c7bf1eb144e4">visibilityMask</a> (self)</td></tr>
+<tr class="separator:a64e97a992a254dfa6b44c7bf1eb144e4 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f2c3076b7fdbbb28f3693a4be052175 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a8f2c3076b7fdbbb28f3693a4be052175"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a8f2c3076b7fdbbb28f3693a4be052175">worldXf</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}', <a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a> isDef=None)</td></tr>
+<tr class="separator:a8f2c3076b7fdbbb28f3693a4be052175 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbf3bcedfe092cc75eba9b2b05dfed4c inherit pub_methods_classmrmeshpy_1_1Object" id="r_afbf3bcedfe092cc75eba9b2b05dfed4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AffineXf3f.html">AffineXf3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#afbf3bcedfe092cc75eba9b2b05dfed4c">xf</a> (self, <a class="el" href="classmrmeshpy_1_1ViewportId.html">ViewportId</a> id='{}', <a class="el" href="classmrmeshpy_1_1bool__output.html">bool_output</a> isDef=None)</td></tr>
+<tr class="separator:afbf3bcedfe092cc75eba9b2b05dfed4c inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ee8acaa199b194040b1613d4038012 inherit pub_methods_classmrmeshpy_1_1Object" id="r_a05ee8acaa199b194040b1613d4038012"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ViewportProperty__AffineXf3f.html">ViewportProperty_AffineXf3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a05ee8acaa199b194040b1613d4038012">xfsForAllViewports</a> (self)</td></tr>
+<tr class="separator:a05ee8acaa199b194040b1613d4038012 inherit pub_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1ObjectChildrenHolder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">mrmeshpy.ObjectChildrenHolder</a></td></tr>
+<tr class="memitem:aa1020074c1326a825c86467a0580791d inherit pub_methods_classmrmeshpy_1_1ObjectChildrenHolder" id="r_aa1020074c1326a825c86467a0580791d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Object.html">Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html#aa1020074c1326a825c86467a0580791d">getSharedPtr</a> (self)</td></tr>
+<tr class="separator:aa1020074c1326a825c86467a0580791d inherit pub_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:aa3b0993721cb0fa7d587593c94c467d8" id="r_aa3b0993721cb0fa7d587593c94c467d8"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3b0993721cb0fa7d587593c94c467d8">RootName</a> ()</td></tr>
+<tr class="separator:aa3b0993721cb0fa7d587593c94c467d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1a3c5c7506bca5cd314e6f35ec22db4" id="r_ac1a3c5c7506bca5cd314e6f35ec22db4"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1a3c5c7506bca5cd314e6f35ec22db4">TypeName</a> ()</td></tr>
+<tr class="separator:ac1a3c5c7506bca5cd314e6f35ec22db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f18a4178d8908b92e79d074c204fd5" id="r_a29f18a4178d8908b92e79d074c204fd5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29f18a4178d8908b92e79d074c204fd5">select</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a29f18a4178d8908b92e79d074c204fd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88d4d67fa1559e5a62dff87ac8b801b5" id="r_a88d4d67fa1559e5a62dff87ac8b801b5"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88d4d67fa1559e5a62dff87ac8b801b5">setAncillary</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a88d4d67fa1559e5a62dff87ac8b801b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa33c99d47427db725d724c96475f4f72" id="r_aa33c99d47427db725d724c96475f4f72"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa33c99d47427db725d724c96475f4f72">setName</a> (*args, **kwargs)</td></tr>
+<tr class="separator:aa33c99d47427db725d724c96475f4f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_methods_classmrmeshpy_1_1Object"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classmrmeshpy_1_1Object')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1Object.html">mrmeshpy.Object</a></td></tr>
+<tr class="memitem:af4d061bc0f0a13399144f3337aed1074 inherit pub_static_methods_classmrmeshpy_1_1Object" id="r_af4d061bc0f0a13399144f3337aed1074"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#af4d061bc0f0a13399144f3337aed1074">getRedrawFlag</a> (*args, **kwargs)</td></tr>
+<tr class="separator:af4d061bc0f0a13399144f3337aed1074 inherit pub_static_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa70d89231083d21c4702de52efe4b037 inherit pub_static_methods_classmrmeshpy_1_1Object" id="r_aa70d89231083d21c4702de52efe4b037"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#aa70d89231083d21c4702de52efe4b037">getWorldBox</a> (*args, **kwargs)</td></tr>
+<tr class="separator:aa70d89231083d21c4702de52efe4b037 inherit pub_static_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a000669ce3765e97358761b420a4b3283 inherit pub_static_methods_classmrmeshpy_1_1Object" id="r_a000669ce3765e97358761b420a4b3283"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Object.html#a000669ce3765e97358761b420a4b3283">getWorldTreeBox</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a000669ce3765e97358761b420a4b3283 inherit pub_static_methods_classmrmeshpy_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">mrmeshpy.ObjectChildrenHolder</a></td></tr>
+<tr class="memitem:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder" id="r_a2509e431a24a98b7f41f99b9899a6331"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">ObjectChildrenHolder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html#a2509e431a24a98b7f41f99b9899a6331">_Equal</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder" id="r_a2509e431a24a98b7f41f99b9899a6331"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html">ObjectChildrenHolder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1ObjectChildrenHolder.html#a2509e431a24a98b7f41f99b9899a6331">_Equal</a> (*args, **kwargs)</td></tr>
+<tr class="separator:a2509e431a24a98b7f41f99b9899a6331 inherit pro_static_methods_classmrmeshpy_1_1ObjectChildrenHolder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::SceneRootObject
+
+Object that is parent of all scene
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2dd7053e85fc9d4ba144712a5a79c532" name="a2dd7053e85fc9d4ba144712a5a79c532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dd7053e85fc9d4ba144712a5a79c532">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SceneRootObject.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a78e6900dc386c6dcc7d484090c140c74">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a15ca2cad6fdfde06e2c701f9ef40d0af" name="a15ca2cad6fdfde06e2c701f9ef40d0af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ca2cad6fdfde06e2c701f9ef40d0af">&#9670;&#160;</a></span>clone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Object.html">Object</a> mrmeshpy.SceneRootObject.clone </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">clones current object only, without parent and/or children
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a3cede34187cf92e2953b8c04cc66db22">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<a id="a776b02e225f7200264afd891034828f4" name="a776b02e225f7200264afd891034828f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a776b02e225f7200264afd891034828f4">&#9670;&#160;</a></span>cloneRoot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1SceneRootObject.html">SceneRootObject</a> mrmeshpy.SceneRootObject.cloneRoot </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">same as clone but returns correct type
+</pre> 
+</div>
+</div>
+<a id="a6e7f03630100ce733ca42c8190a312ca" name="a6e7f03630100ce733ca42c8190a312ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e7f03630100ce733ca42c8190a312ca">&#9670;&#160;</a></span>getClassName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.SceneRootObject.getClassName </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">return human readable name of subclass
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a3e88aaafd3d356c3a1fbb208bce97f8d">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<a id="a605bc7ca4e2b565d1593b68c8dcd5d5d" name="a605bc7ca4e2b565d1593b68c8dcd5d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a605bc7ca4e2b565d1593b68c8dcd5d5d">&#9670;&#160;</a></span>getClassNameInPlural()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.SceneRootObject.getClassNameInPlural </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">return human readable name of subclass in plural form
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#ade4231c3568ee69e8ae20cf0282fbf8a">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<a id="aa3b0993721cb0fa7d587593c94c467d8" name="aa3b0993721cb0fa7d587593c94c467d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3b0993721cb0fa7d587593c94c467d8">&#9670;&#160;</a></span>RootName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.SceneRootObject.RootName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29f18a4178d8908b92e79d074c204fd5" name="a29f18a4178d8908b92e79d074c204fd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f18a4178d8908b92e79d074c204fd5">&#9670;&#160;</a></span>select()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.SceneRootObject.select </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>on</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">selects the object, returns true if value changed, otherwise returns false
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#abaa159cd1e51142ff71a27dcab211ada">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<a id="a88d4d67fa1559e5a62dff87ac8b801b5" name="a88d4d67fa1559e5a62dff87ac8b801b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88d4d67fa1559e5a62dff87ac8b801b5">&#9670;&#160;</a></span>setAncillary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SceneRootObject.setAncillary </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>ancillary</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">ancillary object is an object hidden (in scene menu) from a regular user
+such objects cannot be selected, and if it has been selected, it is unselected when turn ancillary
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a2db756ea98710dbbc11ae7d00752b069">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<a id="aa33c99d47427db725d724c96475f4f72" name="aa33c99d47427db725d724c96475f4f72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa33c99d47427db725d724c96475f4f72">&#9670;&#160;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SceneRootObject.setName </td>
+          <td>(</td>
+          <td class="paramtype">*</td>          <td class="paramname"><span class="paramname"><em>args</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**</td>          <td class="paramname"><span class="paramname"><em>kwargs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a9c9747a45a791c65be899d3376c0b6ef">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<a id="ac1a3c5c7506bca5cd314e6f35ec22db4" name="ac1a3c5c7506bca5cd314e6f35ec22db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a3c5c7506bca5cd314e6f35ec22db4">&#9670;&#160;</a></span>TypeName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.SceneRootObject.TypeName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">return name of subtype for serialization purposes
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#a7daf4fd77eecf6eaf3f0b0a4e6c7fd21">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<a id="a2039fa810ccd04200d0c092e8d60893f" name="a2039fa810ccd04200d0c092e8d60893f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2039fa810ccd04200d0c092e8d60893f">&#9670;&#160;</a></span>typeName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.SceneRootObject.typeName </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Object.html#afa703704e5f68c3a465825a46cf4a5bf">mrmeshpy.Object</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1SceneRootObject.html">SceneRootObject</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

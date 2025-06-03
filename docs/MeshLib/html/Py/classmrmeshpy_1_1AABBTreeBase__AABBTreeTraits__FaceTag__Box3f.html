@@ -1,0 +1,675 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1AABBTreeBase__AABBTreeTraits__FaceTag__Box3f.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1AABBTreeBase__AABBTreeTraits__FaceTag__Box3f.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1AABBTreeBase__AABBTreeTraits__FaceTag__Box3f-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1AABBTreeBase__AABBTreeTraits__FaceTag__Box3f.png" usemap="#mrmeshpy.AABBTreeBase_5FAABBTreeTraits_5FFaceTag_5FBox3f_map" alt=""/>
+  <map id="mrmeshpy.AABBTreeBase_5FAABBTreeTraits_5FFaceTag_5FBox3f_map" name="mrmeshpy.AABBTreeBase_5FAABBTreeTraits_5FFaceTag_5FBox3f_map">
+<area href="classmrmeshpy_1_1AABBTree.html" alt="mrmeshpy.AABBTree" shape="rect" coords="0,56,355,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a53d6bbe90c9939f33d3b31dbd5f7bb88" id="r_a53d6bbe90c9939f33d3b31dbd5f7bb88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__FaceTag__Box3f.html">AABBTreeNode_AABBTreeTraits_FaceTag_Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53d6bbe90c9939f33d3b31dbd5f7bb88">__getitem__</a> (self, <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> nid)</td></tr>
+<tr class="separator:a53d6bbe90c9939f33d3b31dbd5f7bb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade3c92f8160ea07c8e624b054994ce0a" id="r_ade3c92f8160ea07c8e624b054994ce0a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade3c92f8160ea07c8e624b054994ce0a">__init__</a> (self)</td></tr>
+<tr class="separator:ade3c92f8160ea07c8e624b054994ce0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91653d4e96387338558f4e8a5590796a" id="r_a91653d4e96387338558f4e8a5590796a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91653d4e96387338558f4e8a5590796a">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1AABBTreeBase__AABBTreeTraits__FaceTag__Box3f.html">AABBTreeBase_AABBTreeTraits_FaceTag_Box3f</a> arg0)</td></tr>
+<tr class="separator:a91653d4e96387338558f4e8a5590796a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af474e7aa575461debc92925add9a2002" id="r_af474e7aa575461debc92925add9a2002"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af474e7aa575461debc92925add9a2002">getBoundingBox</a> (self)</td></tr>
+<tr class="separator:af474e7aa575461debc92925add9a2002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a267bb32c343cad4671760c34b65f612c" id="r_a267bb32c343cad4671760c34b65f612c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a267bb32c343cad4671760c34b65f612c">getLeafOrder</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBMap.html">FaceBMap</a> leafMap)</td></tr>
+<tr class="separator:a267bb32c343cad4671760c34b65f612c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4f141289055b2f8d319eac96402196d" id="r_ab4f141289055b2f8d319eac96402196d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4f141289055b2f8d319eac96402196d">getLeafOrderAndReset</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBMap.html">FaceBMap</a> leafMap)</td></tr>
+<tr class="separator:ab4f141289055b2f8d319eac96402196d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2fd07ba48880bd913a997e085e606fa" id="r_ad2fd07ba48880bd913a997e085e606fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NodeBitSet.html">NodeBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2fd07ba48880bd913a997e085e606fa">getNodesFromLeaves</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> leaves)</td></tr>
+<tr class="separator:ad2fd07ba48880bd913a997e085e606fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b0def4ef602895455a96ae8465a962b" id="r_a1b0def4ef602895455a96ae8465a962b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b0def4ef602895455a96ae8465a962b">getSubtreeLeaves</a> (self, <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> subtreeRoot)</td></tr>
+<tr class="separator:a1b0def4ef602895455a96ae8465a962b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29604405428072f1487077b740126c1f" id="r_a29604405428072f1487077b740126c1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__Id__NodeTag.html">std_vector_Id_NodeTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29604405428072f1487077b740126c1f">getSubtrees</a> (self, int minNum)</td></tr>
+<tr class="separator:a29604405428072f1487077b740126c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fbb5ad9d4d0c5f503595ee37379ae87" id="r_a9fbb5ad9d4d0c5f503595ee37379ae87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fbb5ad9d4d0c5f503595ee37379ae87">heapBytes</a> (self)</td></tr>
+<tr class="separator:a9fbb5ad9d4d0c5f503595ee37379ae87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa91e174c6f4171282a1b365c1e1d44fd" id="r_aa91e174c6f4171282a1b365c1e1d44fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector__AABBTreeNode__AABBTreeTraits__FaceTag__Box3f__NodeId.html">Vector_AABBTreeNode_AABBTreeTraits_FaceTag_Box3f_NodeId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa91e174c6f4171282a1b365c1e1d44fd">nodes</a> (self)</td></tr>
+<tr class="separator:aa91e174c6f4171282a1b365c1e1d44fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5a6a55ecaef8c797f01247e51d6b425" id="r_aa5a6a55ecaef8c797f01247e51d6b425"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5a6a55ecaef8c797f01247e51d6b425">numLeaves</a> (self)</td></tr>
+<tr class="separator:aa5a6a55ecaef8c797f01247e51d6b425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ab925d1b58c24fb6518107da6c4886994" id="r_ab925d1b58c24fb6518107da6c4886994"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab925d1b58c24fb6518107da6c4886994">rootNodeId</a> ()</td></tr>
+<tr class="separator:ab925d1b58c24fb6518107da6c4886994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a62aa4a237234ee6e4240611c4d4b20f7" id="r_a62aa4a237234ee6e4240611c4d4b20f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62aa4a237234ee6e4240611c4d4b20f7">BoxT</a> = <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a></td></tr>
+<tr class="separator:a62aa4a237234ee6e4240611c4d4b20f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62a55ce99f89db00252a725fe9c0e6f8" id="r_a62a55ce99f89db00252a725fe9c0e6f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62a55ce99f89db00252a725fe9c0e6f8">LeafBMap</a> = <a class="el" href="classmrmeshpy_1_1FaceBMap.html">FaceBMap</a></td></tr>
+<tr class="separator:a62a55ce99f89db00252a725fe9c0e6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf25fc72ed8f58faf120e2557cedd85e" id="r_aaf25fc72ed8f58faf120e2557cedd85e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf25fc72ed8f58faf120e2557cedd85e">LeafBitSet</a> = <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td></tr>
+<tr class="separator:aaf25fc72ed8f58faf120e2557cedd85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19dfe4e96ad24ba519efe25107ba8146" id="r_a19dfe4e96ad24ba519efe25107ba8146"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19dfe4e96ad24ba519efe25107ba8146">LeafId</a> = <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td></tr>
+<tr class="separator:a19dfe4e96ad24ba519efe25107ba8146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae67bff45a59bc7f895a3c616744c2375" id="r_ae67bff45a59bc7f895a3c616744c2375"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae67bff45a59bc7f895a3c616744c2375">Node</a> = <a class="el" href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__FaceTag__Box3f.html">AABBTreeNode_AABBTreeTraits_FaceTag_Box3f</a></td></tr>
+<tr class="separator:ae67bff45a59bc7f895a3c616744c2375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45e69eacc1e5ca3137ca4a1265f0242e" id="r_a45e69eacc1e5ca3137ca4a1265f0242e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45e69eacc1e5ca3137ca4a1265f0242e">NodeVec</a> = <a class="el" href="classmrmeshpy_1_1Vector__AABBTreeNode__AABBTreeTraits__FaceTag__Box3f__NodeId.html">Vector_AABBTreeNode_AABBTreeTraits_FaceTag_Box3f_NodeId</a></td></tr>
+<tr class="separator:a45e69eacc1e5ca3137ca4a1265f0242e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abddda85ceb749dc2ba7ef843330048f1" id="r_abddda85ceb749dc2ba7ef843330048f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abddda85ceb749dc2ba7ef843330048f1">Traits</a> = <a class="el" href="classmrmeshpy_1_1AABBTreeTraits__FaceTag__Box3f.html">AABBTreeTraits_FaceTag_Box3f</a></td></tr>
+<tr class="separator:abddda85ceb749dc2ba7ef843330048f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::AABBTreeBase&lt;MR::AABBTreeTraits&lt;MR::FaceTag, MR::Box3f&gt;&gt;
+
+base class for most AABB-trees (except for AABBTreePoints)
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ade3c92f8160ea07c8e624b054994ce0a" name="ade3c92f8160ea07c8e624b054994ce0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade3c92f8160ea07c8e624b054994ce0a">&#9670;&#160;</a></span>__init__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AABBTree.html#a31df616df8ebd38c2ca94d5994b10c59">mrmeshpy.AABBTree</a>, and <a class="el" href="classmrmeshpy_1_1AABBTree.html#a61d53bd98bc1f2e15dd8e60b2fbb0cbb">mrmeshpy.AABBTree</a>.</p>
+
+</div>
+</div>
+<a id="a91653d4e96387338558f4e8a5590796a" name="a91653d4e96387338558f4e8a5590796a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91653d4e96387338558f4e8a5590796a">&#9670;&#160;</a></span>__init__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1AABBTreeBase__AABBTreeTraits__FaceTag__Box3f.html">AABBTreeBase_AABBTreeTraits_FaceTag_Box3f</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+<p>Reimplemented in <a class="el" href="classmrmeshpy_1_1AABBTree.html#a31df616df8ebd38c2ca94d5994b10c59">mrmeshpy.AABBTree</a>, and <a class="el" href="classmrmeshpy_1_1AABBTree.html#a61d53bd98bc1f2e15dd8e60b2fbb0cbb">mrmeshpy.AABBTree</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a53d6bbe90c9939f33d3b31dbd5f7bb88" name="a53d6bbe90c9939f33d3b31dbd5f7bb88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53d6bbe90c9939f33d3b31dbd5f7bb88">&#9670;&#160;</a></span>__getitem__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__FaceTag__Box3f.html">AABBTreeNode_AABBTreeTraits_FaceTag_Box3f</a> mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a></td>          <td class="paramname"><span class="paramname"><em>nid</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">const-access to any node
+</pre> 
+</div>
+</div>
+<a id="af474e7aa575461debc92925add9a2002" name="af474e7aa575461debc92925add9a2002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af474e7aa575461debc92925add9a2002">&#9670;&#160;</a></span>getBoundingBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a> mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.getBoundingBox </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the root node bounding box
+</pre> 
+</div>
+</div>
+<a id="a267bb32c343cad4671760c34b65f612c" name="a267bb32c343cad4671760c34b65f612c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a267bb32c343cad4671760c34b65f612c">&#9670;&#160;</a></span>getLeafOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.getLeafOrder </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBMap.html">FaceBMap</a></td>          <td class="paramname"><span class="paramname"><em>leafMap</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">fills map: LeafId -&gt; leaf#;
+buffer in leafMap must be resized before the call, and caller is responsible for filling missing leaf elements
+</pre> 
+</div>
+</div>
+<a id="ab4f141289055b2f8d319eac96402196d" name="ab4f141289055b2f8d319eac96402196d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4f141289055b2f8d319eac96402196d">&#9670;&#160;</a></span>getLeafOrderAndReset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.getLeafOrderAndReset </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBMap.html">FaceBMap</a></td>          <td class="paramname"><span class="paramname"><em>leafMap</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">fills map: LeafId -&gt; leaf#, then resets leaf order to 0,1,2,...;
+buffer in leafMap must be resized before the call, and caller is responsible for filling missing leaf elements
+</pre> 
+</div>
+</div>
+<a id="ad2fd07ba48880bd913a997e085e606fa" name="ad2fd07ba48880bd913a997e085e606fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2fd07ba48880bd913a997e085e606fa">&#9670;&#160;</a></span>getNodesFromLeaves()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NodeBitSet.html">NodeBitSet</a> mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.getNodesFromLeaves </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>leaves</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns set of nodes containing among direct or indirect children given leaves
+</pre> 
+</div>
+</div>
+<a id="a1b0def4ef602895455a96ae8465a962b" name="a1b0def4ef602895455a96ae8465a962b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b0def4ef602895455a96ae8465a962b">&#9670;&#160;</a></span>getSubtreeLeaves()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.getSubtreeLeaves </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a></td>          <td class="paramname"><span class="paramname"><em>subtreeRoot</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns all leaves in the subtree with given root
+</pre> 
+</div>
+</div>
+<a id="a29604405428072f1487077b740126c1f" name="a29604405428072f1487077b740126c1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29604405428072f1487077b740126c1f">&#9670;&#160;</a></span>getSubtrees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__Id__NodeTag.html">std_vector_Id_NodeTag</a> mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.getSubtrees </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>minNum</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns at least given number of top-level not-intersecting subtrees, union of which contain all tree leaves
+</pre> 
+</div>
+</div>
+<a id="a9fbb5ad9d4d0c5f503595ee37379ae87" name="a9fbb5ad9d4d0c5f503595ee37379ae87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fbb5ad9d4d0c5f503595ee37379ae87">&#9670;&#160;</a></span>heapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.heapBytes </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the amount of memory this object occupies on heap
+</pre> 
+</div>
+</div>
+<a id="aa91e174c6f4171282a1b365c1e1d44fd" name="aa91e174c6f4171282a1b365c1e1d44fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa91e174c6f4171282a1b365c1e1d44fd">&#9670;&#160;</a></span>nodes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector__AABBTreeNode__AABBTreeTraits__FaceTag__Box3f__NodeId.html">Vector_AABBTreeNode_AABBTreeTraits_FaceTag_Box3f_NodeId</a> mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.nodes </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">const-access to all nodes
+</pre> 
+</div>
+</div>
+<a id="aa5a6a55ecaef8c797f01247e51d6b425" name="aa5a6a55ecaef8c797f01247e51d6b425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5a6a55ecaef8c797f01247e51d6b425">&#9670;&#160;</a></span>numLeaves()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.numLeaves </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns the number of leaves in whole tree
+</pre> 
+</div>
+</div>
+<a id="ab925d1b58c24fb6518107da6c4886994" name="ab925d1b58c24fb6518107da6c4886994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab925d1b58c24fb6518107da6c4886994">&#9670;&#160;</a></span>rootNodeId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1NodeId.html">NodeId</a> mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.rootNodeId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">returns root node id
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a62aa4a237234ee6e4240611c4d4b20f7" name="a62aa4a237234ee6e4240611c4d4b20f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62aa4a237234ee6e4240611c4d4b20f7">&#9670;&#160;</a></span>BoxT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.BoxT = <a class="el" href="classmrmeshpy_1_1Box3f.html">Box3f</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf25fc72ed8f58faf120e2557cedd85e" name="aaf25fc72ed8f58faf120e2557cedd85e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf25fc72ed8f58faf120e2557cedd85e">&#9670;&#160;</a></span>LeafBitSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.LeafBitSet = <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62a55ce99f89db00252a725fe9c0e6f8" name="a62a55ce99f89db00252a725fe9c0e6f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62a55ce99f89db00252a725fe9c0e6f8">&#9670;&#160;</a></span>LeafBMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.LeafBMap = <a class="el" href="classmrmeshpy_1_1FaceBMap.html">FaceBMap</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19dfe4e96ad24ba519efe25107ba8146" name="a19dfe4e96ad24ba519efe25107ba8146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19dfe4e96ad24ba519efe25107ba8146">&#9670;&#160;</a></span>LeafId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.LeafId = <a class="el" href="classmrmeshpy_1_1FaceId.html">FaceId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae67bff45a59bc7f895a3c616744c2375" name="ae67bff45a59bc7f895a3c616744c2375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae67bff45a59bc7f895a3c616744c2375">&#9670;&#160;</a></span>Node</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.Node = <a class="el" href="classmrmeshpy_1_1AABBTreeNode__AABBTreeTraits__FaceTag__Box3f.html">AABBTreeNode_AABBTreeTraits_FaceTag_Box3f</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45e69eacc1e5ca3137ca4a1265f0242e" name="a45e69eacc1e5ca3137ca4a1265f0242e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45e69eacc1e5ca3137ca4a1265f0242e">&#9670;&#160;</a></span>NodeVec</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.NodeVec = <a class="el" href="classmrmeshpy_1_1Vector__AABBTreeNode__AABBTreeTraits__FaceTag__Box3f__NodeId.html">Vector_AABBTreeNode_AABBTreeTraits_FaceTag_Box3f_NodeId</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abddda85ceb749dc2ba7ef843330048f1" name="abddda85ceb749dc2ba7ef843330048f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abddda85ceb749dc2ba7ef843330048f1">&#9670;&#160;</a></span>Traits</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.AABBTreeBase_AABBTreeTraits_FaceTag_Box3f.Traits = <a class="el" href="classmrmeshpy_1_1AABBTreeTraits__FaceTag__Box3f.html">AABBTreeTraits_FaceTag_Box3f</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1AABBTreeBase__AABBTreeTraits__FaceTag__Box3f.html">AABBTreeBase_AABBTreeTraits_FaceTag_Box3f</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

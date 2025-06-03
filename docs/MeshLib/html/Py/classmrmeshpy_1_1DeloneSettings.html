@@ -1,0 +1,535 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Py/classmrmeshpy_1_1DeloneSettings.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.DeloneSettings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1DeloneSettings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1DeloneSettings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.DeloneSettings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a90339f6a8aa00ae65e73579898f5499c" id="r_a90339f6a8aa00ae65e73579898f5499c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90339f6a8aa00ae65e73579898f5499c">__init__</a> (self)</td></tr>
+<tr class="separator:a90339f6a8aa00ae65e73579898f5499c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16ba078a461520d1302ad3a7db234316" id="r_a16ba078a461520d1302ad3a7db234316"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16ba078a461520d1302ad3a7db234316">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1DeloneSettings.html">DeloneSettings</a> arg0)</td></tr>
+<tr class="separator:a16ba078a461520d1302ad3a7db234316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8904d9e6a46b4093ed7983f36afe874" id="r_af8904d9e6a46b4093ed7983f36afe874"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8904d9e6a46b4093ed7983f36afe874">__init__</a> (self, float <a class="el" href="#a76845ab04c0635b101bf76601b744f34">maxDeviationAfterFlip</a>, float <a class="el" href="#a6d5ddda6af45818626f0df9b07774dac">maxAngleChange</a>, float <a class="el" href="#a6f3e0cd4d7fd8fcdeac0587b83569177">criticalTriAspectRatio</a>, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> <a class="el" href="#a82118a36822ad1ccf9562fda5900ce6f">region</a>, <a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a> <a class="el" href="#a3a767967e878efcd7ca8a26b686e3ed4">notFlippable</a>, <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> <a class="el" href="#aa9d70190b18a745faad143325f8392c5">vertRegion</a>)</td></tr>
+<tr class="separator:af8904d9e6a46b4093ed7983f36afe874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f3e0cd4d7fd8fcdeac0587b83569177" id="r_a6f3e0cd4d7fd8fcdeac0587b83569177"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f3e0cd4d7fd8fcdeac0587b83569177">criticalTriAspectRatio</a> (self)</td></tr>
+<tr class="separator:a6f3e0cd4d7fd8fcdeac0587b83569177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ce44bad6da1e16d66848bb4f438b83" id="r_a84ce44bad6da1e16d66848bb4f438b83"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84ce44bad6da1e16d66848bb4f438b83">criticalTriAspectRatio</a> (self, float arg1)</td></tr>
+<tr class="separator:a84ce44bad6da1e16d66848bb4f438b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d5ddda6af45818626f0df9b07774dac" id="r_a6d5ddda6af45818626f0df9b07774dac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d5ddda6af45818626f0df9b07774dac">maxAngleChange</a> (self)</td></tr>
+<tr class="separator:a6d5ddda6af45818626f0df9b07774dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa08178988f1e7304096ad7e641b0f91d" id="r_aa08178988f1e7304096ad7e641b0f91d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa08178988f1e7304096ad7e641b0f91d">maxAngleChange</a> (self, float arg1)</td></tr>
+<tr class="separator:aa08178988f1e7304096ad7e641b0f91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76845ab04c0635b101bf76601b744f34" id="r_a76845ab04c0635b101bf76601b744f34"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76845ab04c0635b101bf76601b744f34">maxDeviationAfterFlip</a> (self)</td></tr>
+<tr class="separator:a76845ab04c0635b101bf76601b744f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31aab6dfd5f30ef79ff9916499d11607" id="r_a31aab6dfd5f30ef79ff9916499d11607"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31aab6dfd5f30ef79ff9916499d11607">maxDeviationAfterFlip</a> (self, float arg1)</td></tr>
+<tr class="separator:a31aab6dfd5f30ef79ff9916499d11607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a767967e878efcd7ca8a26b686e3ed4" id="r_a3a767967e878efcd7ca8a26b686e3ed4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a767967e878efcd7ca8a26b686e3ed4">notFlippable</a> (self)</td></tr>
+<tr class="separator:a3a767967e878efcd7ca8a26b686e3ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77f4e295bacda62ec17540f9196f60d1" id="r_a77f4e295bacda62ec17540f9196f60d1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77f4e295bacda62ec17540f9196f60d1">notFlippable</a> (self, <a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a> arg1)</td></tr>
+<tr class="separator:a77f4e295bacda62ec17540f9196f60d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82118a36822ad1ccf9562fda5900ce6f" id="r_a82118a36822ad1ccf9562fda5900ce6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82118a36822ad1ccf9562fda5900ce6f">region</a> (self)</td></tr>
+<tr class="separator:a82118a36822ad1ccf9562fda5900ce6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5eec09e4ba1a3a836b8d460a42458d8" id="r_ae5eec09e4ba1a3a836b8d460a42458d8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5eec09e4ba1a3a836b8d460a42458d8">region</a> (self, <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> arg1)</td></tr>
+<tr class="separator:ae5eec09e4ba1a3a836b8d460a42458d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d70190b18a745faad143325f8392c5" id="r_aa9d70190b18a745faad143325f8392c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9d70190b18a745faad143325f8392c5">vertRegion</a> (self)</td></tr>
+<tr class="separator:aa9d70190b18a745faad143325f8392c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadefc9bb5c15a729e4e1fd4a80b72f11" id="r_aadefc9bb5c15a729e4e1fd4a80b72f11"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadefc9bb5c15a729e4e1fd4a80b72f11">vertRegion</a> (self, <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> arg1)</td></tr>
+<tr class="separator:aadefc9bb5c15a729e4e1fd4a80b72f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::DeloneSettings
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a90339f6a8aa00ae65e73579898f5499c" name="a90339f6a8aa00ae65e73579898f5499c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90339f6a8aa00ae65e73579898f5499c">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a16ba078a461520d1302ad3a7db234316" name="a16ba078a461520d1302ad3a7db234316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16ba078a461520d1302ad3a7db234316">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1DeloneSettings.html">DeloneSettings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="af8904d9e6a46b4093ed7983f36afe874" name="af8904d9e6a46b4093ed7983f36afe874"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8904d9e6a46b4093ed7983f36afe874">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxDeviationAfterFlip</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>maxAngleChange</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>criticalTriAspectRatio</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>region</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a></td>          <td class="paramname"><span class="paramname"><em>notFlippable</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a></td>          <td class="paramname"><span class="paramname"><em>vertRegion</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6f3e0cd4d7fd8fcdeac0587b83569177" name="a6f3e0cd4d7fd8fcdeac0587b83569177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f3e0cd4d7fd8fcdeac0587b83569177">&#9670;&#160;</a></span>criticalTriAspectRatio() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.DeloneSettings.criticalTriAspectRatio </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">if this value is less than FLT_MAX then the algorithm will
+ignore dihedral angle check if one of triangles has aspect ratio more than this value
+</pre> 
+</div>
+</div>
+<a id="a84ce44bad6da1e16d66848bb4f438b83" name="a84ce44bad6da1e16d66848bb4f438b83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84ce44bad6da1e16d66848bb4f438b83">&#9670;&#160;</a></span>criticalTriAspectRatio() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.criticalTriAspectRatio </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d5ddda6af45818626f0df9b07774dac" name="a6d5ddda6af45818626f0df9b07774dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d5ddda6af45818626f0df9b07774dac">&#9670;&#160;</a></span>maxAngleChange() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.DeloneSettings.maxAngleChange </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Maximal allowed dihedral angle change (in radians) over the flipped edge
+</pre> 
+</div>
+</div>
+<a id="aa08178988f1e7304096ad7e641b0f91d" name="aa08178988f1e7304096ad7e641b0f91d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa08178988f1e7304096ad7e641b0f91d">&#9670;&#160;</a></span>maxAngleChange() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.maxAngleChange </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76845ab04c0635b101bf76601b744f34" name="a76845ab04c0635b101bf76601b744f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76845ab04c0635b101bf76601b744f34">&#9670;&#160;</a></span>maxDeviationAfterFlip() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.DeloneSettings.maxDeviationAfterFlip </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Maximal allowed surface deviation during every individual flip
+</pre> 
+</div>
+</div>
+<a id="a31aab6dfd5f30ef79ff9916499d11607" name="a31aab6dfd5f30ef79ff9916499d11607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31aab6dfd5f30ef79ff9916499d11607">&#9670;&#160;</a></span>maxDeviationAfterFlip() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.maxDeviationAfterFlip </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a767967e878efcd7ca8a26b686e3ed4" name="a3a767967e878efcd7ca8a26b686e3ed4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a767967e878efcd7ca8a26b686e3ed4">&#9670;&#160;</a></span>notFlippable() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a> mrmeshpy.DeloneSettings.notFlippable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Edges specified by this bit-set will never be flipped
+</pre> 
+</div>
+</div>
+<a id="a77f4e295bacda62ec17540f9196f60d1" name="a77f4e295bacda62ec17540f9196f60d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77f4e295bacda62ec17540f9196f60d1">&#9670;&#160;</a></span>notFlippable() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.notFlippable </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1UndirectedEdgeBitSet.html">UndirectedEdgeBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82118a36822ad1ccf9562fda5900ce6f" name="a82118a36822ad1ccf9562fda5900ce6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82118a36822ad1ccf9562fda5900ce6f">&#9670;&#160;</a></span>region() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a> mrmeshpy.DeloneSettings.region </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Only edges with left and right faces in this set can be flipped
+</pre> 
+</div>
+</div>
+<a id="ae5eec09e4ba1a3a836b8d460a42458d8" name="ae5eec09e4ba1a3a836b8d460a42458d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5eec09e4ba1a3a836b8d460a42458d8">&#9670;&#160;</a></span>region() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.region </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1FaceBitSet.html">FaceBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9d70190b18a745faad143325f8392c5" name="aa9d70190b18a745faad143325f8392c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d70190b18a745faad143325f8392c5">&#9670;&#160;</a></span>vertRegion() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a> mrmeshpy.DeloneSettings.vertRegion </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Only edges with origin or destination in this set before or after flip can be flipped
+</pre> 
+</div>
+</div>
+<a id="aadefc9bb5c15a729e4e1fd4a80b72f11" name="aadefc9bb5c15a729e4e1fd4a80b72f11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadefc9bb5c15a729e4e1fd4a80b72f11">&#9670;&#160;</a></span>vertRegion() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.DeloneSettings.vertRegion </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertBitSet.html">VertBitSet</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1DeloneSettings.html">DeloneSettings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

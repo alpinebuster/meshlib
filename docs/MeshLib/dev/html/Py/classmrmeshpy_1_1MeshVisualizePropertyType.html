@@ -1,0 +1,747 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.MeshVisualizePropertyType Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1MeshVisualizePropertyType.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1MeshVisualizePropertyType-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.MeshVisualizePropertyType Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a047f335e6b2f99a6fd7798a2add0683a" id="r_a047f335e6b2f99a6fd7798a2add0683a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a047f335e6b2f99a6fd7798a2add0683a">__eq__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:a047f335e6b2f99a6fd7798a2add0683a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c3abd9346bb55f9b48d7f6d03a20444" id="r_a6c3abd9346bb55f9b48d7f6d03a20444"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c3abd9346bb55f9b48d7f6d03a20444">__getstate__</a> (self)</td></tr>
+<tr class="separator:a6c3abd9346bb55f9b48d7f6d03a20444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae594a5e7af31d1be38098d65167e01fa" id="r_ae594a5e7af31d1be38098d65167e01fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae594a5e7af31d1be38098d65167e01fa">__hash__</a> (self)</td></tr>
+<tr class="separator:ae594a5e7af31d1be38098d65167e01fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50720aa227797c7093e5b72986de8876" id="r_a50720aa227797c7093e5b72986de8876"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50720aa227797c7093e5b72986de8876">__index__</a> (self)</td></tr>
+<tr class="separator:a50720aa227797c7093e5b72986de8876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d925f3c9f73e72835b3680f8d549653" id="r_a8d925f3c9f73e72835b3680f8d549653"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d925f3c9f73e72835b3680f8d549653">__init__</a> (self, int <a class="el" href="#aa73650f3c547eb2f266cd74656c8d066">value</a>)</td></tr>
+<tr class="separator:a8d925f3c9f73e72835b3680f8d549653"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b3e79c7c17a7d4f1740a38a2e68126b" id="r_a5b3e79c7c17a7d4f1740a38a2e68126b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b3e79c7c17a7d4f1740a38a2e68126b">__int__</a> (self)</td></tr>
+<tr class="separator:a5b3e79c7c17a7d4f1740a38a2e68126b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b12faa11b7443d9cd498be8683f006d" id="r_a7b12faa11b7443d9cd498be8683f006d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b12faa11b7443d9cd498be8683f006d">__ne__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:a7b12faa11b7443d9cd498be8683f006d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44a6fd41b73b28c03a4eea55bdb7ed1" id="r_ab44a6fd41b73b28c03a4eea55bdb7ed1"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab44a6fd41b73b28c03a4eea55bdb7ed1">__repr__</a> (self)</td></tr>
+<tr class="separator:ab44a6fd41b73b28c03a4eea55bdb7ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fcdd4260451ab14943938fd3ad4aac3" id="r_a0fcdd4260451ab14943938fd3ad4aac3"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fcdd4260451ab14943938fd3ad4aac3">__setstate__</a> (self, int state)</td></tr>
+<tr class="separator:a0fcdd4260451ab14943938fd3ad4aac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47d9f8f949c635da8a25d274576212a" id="r_ae47d9f8f949c635da8a25d274576212a"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47d9f8f949c635da8a25d274576212a">__str__</a> (self)</td></tr>
+<tr class="separator:ae47d9f8f949c635da8a25d274576212a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5346d796595826e443a4138c44b22401" id="r_a5346d796595826e443a4138c44b22401"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5346d796595826e443a4138c44b22401">name</a> (self)</td></tr>
+<tr class="separator:a5346d796595826e443a4138c44b22401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73650f3c547eb2f266cd74656c8d066" id="r_aa73650f3c547eb2f266cd74656c8d066"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa73650f3c547eb2f266cd74656c8d066">value</a> (self)</td></tr>
+<tr class="separator:aa73650f3c547eb2f266cd74656c8d066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a0e7356fd2a1fdaa79474036c578cf821" id="r_a0e7356fd2a1fdaa79474036c578cf821"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e7356fd2a1fdaa79474036c578cf821">BordersHighlight</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a0e7356fd2a1fdaa79474036c578cf821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab48aede3a4047e5c762fb702aa2c41d2" id="r_ab48aede3a4047e5c762fb702aa2c41d2"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab48aede3a4047e5c762fb702aa2c41d2">Edges</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:ab48aede3a4047e5c762fb702aa2c41d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a527f212cb882def0780b87122a60021f" id="r_a527f212cb882def0780b87122a60021f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a527f212cb882def0780b87122a60021f">EnableShading</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a527f212cb882def0780b87122a60021f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23521b76bf517b96bb7c8b2d43766e08" id="r_a23521b76bf517b96bb7c8b2d43766e08"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23521b76bf517b96bb7c8b2d43766e08">Faces</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a23521b76bf517b96bb7c8b2d43766e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae965309e33ca4b1bb3cd7f66a5f803d" id="r_aae965309e33ca4b1bb3cd7f66a5f803d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae965309e33ca4b1bb3cd7f66a5f803d">FlatShading</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:aae965309e33ca4b1bb3cd7f66a5f803d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bb5781ee6d7bb320773515e9dbc9136" id="r_a6bb5781ee6d7bb320773515e9dbc9136"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bb5781ee6d7bb320773515e9dbc9136">OnlyOddFragments</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a6bb5781ee6d7bb320773515e9dbc9136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85f74c4a16e9ceddaa4fcbc3ba6a55c1" id="r_a85f74c4a16e9ceddaa4fcbc3ba6a55c1"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85f74c4a16e9ceddaa4fcbc3ba6a55c1">Points</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a85f74c4a16e9ceddaa4fcbc3ba6a55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac72561d634c822e696d2653d2f94d5ad" id="r_ac72561d634c822e696d2653d2f94d5ad"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac72561d634c822e696d2653d2f94d5ad">PolygonOffsetFromCamera</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:ac72561d634c822e696d2653d2f94d5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74186b6d5d29a19da92c492a8d1bed2" id="r_ae74186b6d5d29a19da92c492a8d1bed2"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae74186b6d5d29a19da92c492a8d1bed2">SelectedEdges</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:ae74186b6d5d29a19da92c492a8d1bed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81bcd2a50aee3157430a2226d691b797" id="r_a81bcd2a50aee3157430a2226d691b797"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81bcd2a50aee3157430a2226d691b797">SelectedFaces</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a81bcd2a50aee3157430a2226d691b797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba55377edf21cf2029cea0d16c1814d" id="r_a3ba55377edf21cf2029cea0d16c1814d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ba55377edf21cf2029cea0d16c1814d">Texture</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a3ba55377edf21cf2029cea0d16c1814d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:ad67a36df1625e895333d16c1745bd85f" id="r_ad67a36df1625e895333d16c1745bd85f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad67a36df1625e895333d16c1745bd85f">_count</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td></tr>
+<tr class="separator:ad67a36df1625e895333d16c1745bd85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Members:
+
+  Faces
+
+  Texture
+
+  Edges
+
+  Points
+
+  SelectedFaces
+
+  SelectedEdges
+
+  EnableShading
+
+  FlatShading
+
+  OnlyOddFragments
+
+  BordersHighlight
+
+  PolygonOffsetFromCamera : recommended for drawing edges on top of mesh
+
+  _count
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8d925f3c9f73e72835b3680f8d549653" name="a8d925f3c9f73e72835b3680f8d549653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d925f3c9f73e72835b3680f8d549653">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MeshVisualizePropertyType.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a047f335e6b2f99a6fd7798a2add0683a" name="a047f335e6b2f99a6fd7798a2add0683a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a047f335e6b2f99a6fd7798a2add0683a">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.MeshVisualizePropertyType.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c3abd9346bb55f9b48d7f6d03a20444" name="a6c3abd9346bb55f9b48d7f6d03a20444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c3abd9346bb55f9b48d7f6d03a20444">&#9670;&#160;</a></span>__getstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MeshVisualizePropertyType.__getstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae594a5e7af31d1be38098d65167e01fa" name="ae594a5e7af31d1be38098d65167e01fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae594a5e7af31d1be38098d65167e01fa">&#9670;&#160;</a></span>__hash__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MeshVisualizePropertyType.__hash__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50720aa227797c7093e5b72986de8876" name="a50720aa227797c7093e5b72986de8876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50720aa227797c7093e5b72986de8876">&#9670;&#160;</a></span>__index__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MeshVisualizePropertyType.__index__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b3e79c7c17a7d4f1740a38a2e68126b" name="a5b3e79c7c17a7d4f1740a38a2e68126b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b3e79c7c17a7d4f1740a38a2e68126b">&#9670;&#160;</a></span>__int__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MeshVisualizePropertyType.__int__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b12faa11b7443d9cd498be8683f006d" name="a7b12faa11b7443d9cd498be8683f006d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b12faa11b7443d9cd498be8683f006d">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.MeshVisualizePropertyType.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab44a6fd41b73b28c03a4eea55bdb7ed1" name="ab44a6fd41b73b28c03a4eea55bdb7ed1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab44a6fd41b73b28c03a4eea55bdb7ed1">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.MeshVisualizePropertyType.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fcdd4260451ab14943938fd3ad4aac3" name="a0fcdd4260451ab14943938fd3ad4aac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fcdd4260451ab14943938fd3ad4aac3">&#9670;&#160;</a></span>__setstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MeshVisualizePropertyType.__setstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae47d9f8f949c635da8a25d274576212a" name="ae47d9f8f949c635da8a25d274576212a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47d9f8f949c635da8a25d274576212a">&#9670;&#160;</a></span>__str__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.MeshVisualizePropertyType.__str__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5346d796595826e443a4138c44b22401" name="a5346d796595826e443a4138c44b22401"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5346d796595826e443a4138c44b22401">&#9670;&#160;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.MeshVisualizePropertyType.name </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa73650f3c547eb2f266cd74656c8d066" name="aa73650f3c547eb2f266cd74656c8d066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa73650f3c547eb2f266cd74656c8d066">&#9670;&#160;</a></span>value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MeshVisualizePropertyType.value </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad67a36df1625e895333d16c1745bd85f" name="ad67a36df1625e895333d16c1745bd85f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad67a36df1625e895333d16c1745bd85f">&#9670;&#160;</a></span>_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType._count .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e7356fd2a1fdaa79474036c578cf821" name="a0e7356fd2a1fdaa79474036c578cf821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e7356fd2a1fdaa79474036c578cf821">&#9670;&#160;</a></span>BordersHighlight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.BordersHighlight .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab48aede3a4047e5c762fb702aa2c41d2" name="ab48aede3a4047e5c762fb702aa2c41d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab48aede3a4047e5c762fb702aa2c41d2">&#9670;&#160;</a></span>Edges</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.Edges .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a527f212cb882def0780b87122a60021f" name="a527f212cb882def0780b87122a60021f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a527f212cb882def0780b87122a60021f">&#9670;&#160;</a></span>EnableShading</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.EnableShading .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23521b76bf517b96bb7c8b2d43766e08" name="a23521b76bf517b96bb7c8b2d43766e08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23521b76bf517b96bb7c8b2d43766e08">&#9670;&#160;</a></span>Faces</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.Faces .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae965309e33ca4b1bb3cd7f66a5f803d" name="aae965309e33ca4b1bb3cd7f66a5f803d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae965309e33ca4b1bb3cd7f66a5f803d">&#9670;&#160;</a></span>FlatShading</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.FlatShading .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6bb5781ee6d7bb320773515e9dbc9136" name="a6bb5781ee6d7bb320773515e9dbc9136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bb5781ee6d7bb320773515e9dbc9136">&#9670;&#160;</a></span>OnlyOddFragments</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.OnlyOddFragments .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85f74c4a16e9ceddaa4fcbc3ba6a55c1" name="a85f74c4a16e9ceddaa4fcbc3ba6a55c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85f74c4a16e9ceddaa4fcbc3ba6a55c1">&#9670;&#160;</a></span>Points</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.Points .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac72561d634c822e696d2653d2f94d5ad" name="ac72561d634c822e696d2653d2f94d5ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac72561d634c822e696d2653d2f94d5ad">&#9670;&#160;</a></span>PolygonOffsetFromCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.PolygonOffsetFromCamera .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae74186b6d5d29a19da92c492a8d1bed2" name="ae74186b6d5d29a19da92c492a8d1bed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74186b6d5d29a19da92c492a8d1bed2">&#9670;&#160;</a></span>SelectedEdges</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.SelectedEdges .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81bcd2a50aee3157430a2226d691b797" name="a81bcd2a50aee3157430a2226d691b797"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81bcd2a50aee3157430a2226d691b797">&#9670;&#160;</a></span>SelectedFaces</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.SelectedFaces .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ba55377edf21cf2029cea0d16c1814d" name="a3ba55377edf21cf2029cea0d16c1814d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba55377edf21cf2029cea0d16c1814d">&#9670;&#160;</a></span>Texture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MeshVisualizePropertyType.Texture .ClassVar[<a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1MeshVisualizePropertyType.html">MeshVisualizePropertyType</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

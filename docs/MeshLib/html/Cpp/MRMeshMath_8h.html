@@ -1,0 +1,379 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/MRMeshMath_8h.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRMeshMath.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshMath_8h.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MRMeshMath.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="MRMesh_2MRVector_8h_source.html">MRVector.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MRMesh_2MRMeshTopology_8h_source.html">MRMeshTopology.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MRLineSegm_8h_source.html">MRLineSegm.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="MRMesh_2MRPointOnFace_8h_source.html">MRPointOnFace.h</a>&quot;</code><br />
+</div>
+<p><a href="MRMeshMath_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html">MR</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aa2a7fba3a600699de880615c69671718" id="r_aa2a7fba3a600699de880615c69671718"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#aa2a7fba3a600699de880615c69671718">MR::orgPnt</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:aa2a7fba3a600699de880615c69671718"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns coordinates of the edge origin  <br /></td></tr>
+<tr class="separator:aa2a7fba3a600699de880615c69671718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cdd8fe5835da1eaf2a4f623c04f00a9" id="r_a5cdd8fe5835da1eaf2a4f623c04f00a9"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a5cdd8fe5835da1eaf2a4f623c04f00a9">MR::destPnt</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:a5cdd8fe5835da1eaf2a4f623c04f00a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns coordinates of the edge destination  <br /></td></tr>
+<tr class="separator:a5cdd8fe5835da1eaf2a4f623c04f00a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ecd5552b4907aa1e0a475427a4cef98" id="r_a2ecd5552b4907aa1e0a475427a4cef98"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a2ecd5552b4907aa1e0a475427a4cef98">MR::edgeVector</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:a2ecd5552b4907aa1e0a475427a4cef98"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns vector equal to edge destination point minus edge origin point  <br /></td></tr>
+<tr class="separator:a2ecd5552b4907aa1e0a475427a4cef98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2298085a06a459719ca28a1f8c583f2a" id="r_a2298085a06a459719ca28a1f8c583f2a"><td class="memItemLeft" align="right" valign="top">LineSegm3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a2298085a06a459719ca28a1f8c583f2a">MR::edgeSegment</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:a2298085a06a459719ca28a1f8c583f2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns line segment of given edge  <br /></td></tr>
+<tr class="separator:a2298085a06a459719ca28a1f8c583f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d641e99aa4679047a71ff850e614f60" id="r_a7d641e99aa4679047a71ff850e614f60"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a7d641e99aa4679047a71ff850e614f60">MR::edgePoint</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e, float f)</td></tr>
+<tr class="memdesc:a7d641e99aa4679047a71ff850e614f60"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a point on the edge: origin point for f=0 and destination point for f=1  <br /></td></tr>
+<tr class="separator:a7d641e99aa4679047a71ff850e614f60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a537cde697d7f35e3370cd46156a03646" id="r_a537cde697d7f35e3370cd46156a03646"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a537cde697d7f35e3370cd46156a03646">MR::edgePoint</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="namespaceMR.html#a8ffb37085bbd6060f17bcf222941ab8c">MeshEdgePoint</a> &amp;ep)</td></tr>
+<tr class="memdesc:a537cde697d7f35e3370cd46156a03646"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes coordinates of point given as edge and relative position on it  <br /></td></tr>
+<tr class="separator:a537cde697d7f35e3370cd46156a03646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b62bcd240ef5b1885ecfec97054a9c" id="r_ab2b62bcd240ef5b1885ecfec97054a9c"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ab2b62bcd240ef5b1885ecfec97054a9c">MR::edgeCenter</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</td></tr>
+<tr class="memdesc:ab2b62bcd240ef5b1885ecfec97054a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the center of given edge  <br /></td></tr>
+<tr class="separator:ab2b62bcd240ef5b1885ecfec97054a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c31ded9fca5ab0be7fbc73187e14e17" id="r_a7c31ded9fca5ab0be7fbc73187e14e17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">MR::getLeftTriPoints</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e, Vector3f &amp;v0, Vector3f &amp;v1, Vector3f &amp;v2)</td></tr>
+<tr class="memdesc:a7c31ded9fca5ab0be7fbc73187e14e17"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns three points of left face of e: v0 = orgPnt( e ), v1 = destPnt( e )  <br /></td></tr>
+<tr class="separator:a7c31ded9fca5ab0be7fbc73187e14e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad93f2b890a8c5bc9854f7fc4c54f7c55" id="r_ad93f2b890a8c5bc9854f7fc4c54f7c55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ad93f2b890a8c5bc9854f7fc4c54f7c55">MR::getLeftTriPoints</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e, Vector3f(&amp;v)[3])</td></tr>
+<tr class="memdesc:ad93f2b890a8c5bc9854f7fc4c54f7c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns three points of left face of e: v[0] = orgPnt( e ), v[1] = destPnt( e )  <br /></td></tr>
+<tr class="separator:ad93f2b890a8c5bc9854f7fc4c54f7c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f76c7c53566d50dedc2505feaeaa30b" id="r_a4f76c7c53566d50dedc2505feaeaa30b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceMR.html#ac3b4f93ff16dbb5975ce8dec6adc39cf">Triangle3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a4f76c7c53566d50dedc2505feaeaa30b">MR::getLeftTriPoints</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:a4f76c7c53566d50dedc2505feaeaa30b"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns three points of left face of e: res[0] = orgPnt( e ), res[1] = destPnt( e )  <br /></td></tr>
+<tr class="separator:a4f76c7c53566d50dedc2505feaeaa30b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1ba2ac64996a6cd34ae45a5c002194" id="r_a4f1ba2ac64996a6cd34ae45a5c002194"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">MR::getTriPoints</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f, Vector3f &amp;v0, Vector3f &amp;v1, Vector3f &amp;v2)</td></tr>
+<tr class="memdesc:a4f1ba2ac64996a6cd34ae45a5c002194"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns three points of given face  <br /></td></tr>
+<tr class="separator:a4f1ba2ac64996a6cd34ae45a5c002194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac951e8c2b35367642c93bc4c6c72b6f6" id="r_ac951e8c2b35367642c93bc4c6c72b6f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ac951e8c2b35367642c93bc4c6c72b6f6">MR::getTriPoints</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f, Vector3f(&amp;v)[3])</td></tr>
+<tr class="memdesc:ac951e8c2b35367642c93bc4c6c72b6f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns three points of given face  <br /></td></tr>
+<tr class="separator:ac951e8c2b35367642c93bc4c6c72b6f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8597debb336c94ce7e51ca1626e71ef4" id="r_a8597debb336c94ce7e51ca1626e71ef4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceMR.html#ac3b4f93ff16dbb5975ce8dec6adc39cf">Triangle3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a8597debb336c94ce7e51ca1626e71ef4">MR::getTriPoints</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:a8597debb336c94ce7e51ca1626e71ef4"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns three points of given face  <br /></td></tr>
+<tr class="separator:a8597debb336c94ce7e51ca1626e71ef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8833f02470c8a91d3de35ce644fb62d8" id="r_a8833f02470c8a91d3de35ce644fb62d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a8833f02470c8a91d3de35ce644fb62d8">MR::triPoint</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp;p)</td></tr>
+<tr class="memdesc:a8833f02470c8a91d3de35ce644fb62d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes coordinates of point given as face and barycentric representation  <br /></td></tr>
+<tr class="separator:a8833f02470c8a91d3de35ce644fb62d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cb53a0284adb26bcdc9278da8f476ff" id="r_a3cb53a0284adb26bcdc9278da8f476ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a3cb53a0284adb26bcdc9278da8f476ff">MR::triCenter</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:a3cb53a0284adb26bcdc9278da8f476ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the centroid of given triangle  <br /></td></tr>
+<tr class="separator:a3cb53a0284adb26bcdc9278da8f476ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69db1209a124ce8bdfb38c51922889bb" id="r_a69db1209a124ce8bdfb38c51922889bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a69db1209a124ce8bdfb38c51922889bb">MR::triangleAspectRatio</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:a69db1209a124ce8bdfb38c51922889bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns aspect ratio of given mesh triangle equal to the ratio of the circum-radius to twice its in-radius  <br /></td></tr>
+<tr class="separator:a69db1209a124ce8bdfb38c51922889bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab24719c8c1f71e117f3096280104749c" id="r_ab24719c8c1f71e117f3096280104749c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ab24719c8c1f71e117f3096280104749c">MR::circumcircleDiameterSq</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:ab24719c8c1f71e117f3096280104749c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns squared circumcircle diameter of given mesh triangle  <br /></td></tr>
+<tr class="separator:ab24719c8c1f71e117f3096280104749c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b0f80c1e8ad5786a1773062c11d2146" id="r_a2b0f80c1e8ad5786a1773062c11d2146"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a2b0f80c1e8ad5786a1773062c11d2146">MR::circumcircleDiameter</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:a2b0f80c1e8ad5786a1773062c11d2146"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns circumcircle diameter of given mesh triangle  <br /></td></tr>
+<tr class="separator:a2b0f80c1e8ad5786a1773062c11d2146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a547b4e993aea9621b6ba5c6fe68036b2" id="r_a547b4e993aea9621b6ba5c6fe68036b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a547b4e993aea9621b6ba5c6fe68036b2">MR::toTriPoint</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f, const Vector3f &amp;p)</td></tr>
+<tr class="memdesc:a547b4e993aea9621b6ba5c6fe68036b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts face id and 3d point into barycentric representation  <br /></td></tr>
+<tr class="separator:a547b4e993aea9621b6ba5c6fe68036b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accd52e0cd3e03db73c1e67e0a24b0de2" id="r_accd52e0cd3e03db73c1e67e0a24b0de2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#accd52e0cd3e03db73c1e67e0a24b0de2">MR::toTriPoint</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1PointOnFace.html">PointOnFace</a> &amp;p)</td></tr>
+<tr class="memdesc:accd52e0cd3e03db73c1e67e0a24b0de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts face id and 3d point into barycentric representation  <br /></td></tr>
+<tr class="separator:accd52e0cd3e03db73c1e67e0a24b0de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aa264819f866f07944440f5a92120c1" id="r_a3aa264819f866f07944440f5a92120c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="el" href="namespaceMR.html#a8ffb37085bbd6060f17bcf222941ab8c">MeshEdgePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a3aa264819f866f07944440f5a92120c1">MR::toEdgePoint</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e, const Vector3f &amp;p)</td></tr>
+<tr class="memdesc:a3aa264819f866f07944440f5a92120c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts edge and 3d point into edge-point representation  <br /></td></tr>
+<tr class="separator:a3aa264819f866f07944440f5a92120c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0358fa9df433e60bc4d95e83abeff6" id="r_add0358fa9df433e60bc4d95e83abeff6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> VertId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#add0358fa9df433e60bc4d95e83abeff6">MR::getClosestVertex</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1PointOnFace.html">PointOnFace</a> &amp;p)</td></tr>
+<tr class="memdesc:add0358fa9df433e60bc4d95e83abeff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns one of three face vertices, closest to given point  <br /></td></tr>
+<tr class="separator:add0358fa9df433e60bc4d95e83abeff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab90be448411f1e7a917f330cbd45452d" id="r_ab90be448411f1e7a917f330cbd45452d"><td class="memItemLeft" align="right" valign="top">VertId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ab90be448411f1e7a917f330cbd45452d">MR::getClosestVertex</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp;p)</td></tr>
+<tr class="memdesc:ab90be448411f1e7a917f330cbd45452d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns one of three face vertices, closest to given point  <br /></td></tr>
+<tr class="separator:ab90be448411f1e7a917f330cbd45452d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7641eb2e941e9bc43b5e10d395328f1" id="r_ab7641eb2e941e9bc43b5e10d395328f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> UndirectedEdgeId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ab7641eb2e941e9bc43b5e10d395328f1">MR::getClosestEdge</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1PointOnFace.html">PointOnFace</a> &amp;p)</td></tr>
+<tr class="memdesc:ab7641eb2e941e9bc43b5e10d395328f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns one of three face edges, closest to given point  <br /></td></tr>
+<tr class="separator:ab7641eb2e941e9bc43b5e10d395328f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56215ffe5137000044da948850230c79" id="r_a56215ffe5137000044da948850230c79"><td class="memItemLeft" align="right" valign="top">UndirectedEdgeId&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a56215ffe5137000044da948850230c79">MR::getClosestEdge</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp;p)</td></tr>
+<tr class="memdesc:a56215ffe5137000044da948850230c79"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns one of three face edges, closest to given point  <br /></td></tr>
+<tr class="separator:a56215ffe5137000044da948850230c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f4e8a904a2f00fdb5a7dc8b4925b19" id="r_ac6f4e8a904a2f00fdb5a7dc8b4925b19"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ac6f4e8a904a2f00fdb5a7dc8b4925b19">MR::edgeLength</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</td></tr>
+<tr class="memdesc:ac6f4e8a904a2f00fdb5a7dc8b4925b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns Euclidean length of the edge  <br /></td></tr>
+<tr class="separator:ac6f4e8a904a2f00fdb5a7dc8b4925b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17861476d65a0c34d1f6ae3968133dab" id="r_a17861476d65a0c34d1f6ae3968133dab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> UndirectedEdgeScalars&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a17861476d65a0c34d1f6ae3968133dab">MR::edgeLengths</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points)</td></tr>
+<tr class="memdesc:a17861476d65a0c34d1f6ae3968133dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes and returns the lengths of all edges in the mesh  <br /></td></tr>
+<tr class="separator:a17861476d65a0c34d1f6ae3968133dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8375bb81ce2308e9b03e2e0d5792dcd9" id="r_a8375bb81ce2308e9b03e2e0d5792dcd9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a8375bb81ce2308e9b03e2e0d5792dcd9">MR::edgeLengthSq</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</td></tr>
+<tr class="memdesc:a8375bb81ce2308e9b03e2e0d5792dcd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns squared Euclidean length of the edge (faster to compute than length)  <br /></td></tr>
+<tr class="separator:a8375bb81ce2308e9b03e2e0d5792dcd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae377aac48c0e2e3070f73db2719c9dfe" id="r_ae377aac48c0e2e3070f73db2719c9dfe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ae377aac48c0e2e3070f73db2719c9dfe">MR::leftDirDblArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:ae377aac48c0e2e3070f73db2719c9dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes directed double area of left triangular face of given edge  <br /></td></tr>
+<tr class="separator:ae377aac48c0e2e3070f73db2719c9dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60596c8cd5eca043531d0f0c4ece20c0" id="r_a60596c8cd5eca043531d0f0c4ece20c0"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">MR::dirDblArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:a60596c8cd5eca043531d0f0c4ece20c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes directed double area for a triangular face from its vertices  <br /></td></tr>
+<tr class="separator:a60596c8cd5eca043531d0f0c4ece20c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff94707b83310dd38361b67bf3490f8e" id="r_aff94707b83310dd38361b67bf3490f8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="el" href="classMR_1_1Vector.html">Vector</a>&lt; Vector3f, VertId &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#aff94707b83310dd38361b67bf3490f8e">MR::dirDblAreas</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const VertBitSet *region=nullptr)</td></tr>
+<tr class="memdesc:aff94707b83310dd38361b67bf3490f8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes and returns the directed double area for every (region) vertex in the mesh  <br /></td></tr>
+<tr class="separator:aff94707b83310dd38361b67bf3490f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd3259955c972492f27f1ec056e2fd41" id="r_abd3259955c972492f27f1ec056e2fd41"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#abd3259955c972492f27f1ec056e2fd41">MR::dblArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:abd3259955c972492f27f1ec056e2fd41"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns twice the area of given face  <br /></td></tr>
+<tr class="separator:abd3259955c972492f27f1ec056e2fd41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19abe27ef41cab9ed70e6a0b5d60026e" id="r_a19abe27ef41cab9ed70e6a0b5d60026e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a19abe27ef41cab9ed70e6a0b5d60026e">MR::area</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:a19abe27ef41cab9ed70e6a0b5d60026e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the area of given face  <br /></td></tr>
+<tr class="separator:a19abe27ef41cab9ed70e6a0b5d60026e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0558eb3364f004c3a1898af28571b3af" id="r_a0558eb3364f004c3a1898af28571b3af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a0558eb3364f004c3a1898af28571b3af">MR::area</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const FaceBitSet &amp;fs)</td></tr>
+<tr class="memdesc:a0558eb3364f004c3a1898af28571b3af"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the area of given face-region  <br /></td></tr>
+<tr class="separator:a0558eb3364f004c3a1898af28571b3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb0dbb5b5768b6c4630c3ceec9b1426" id="r_a8bb0dbb5b5768b6c4630c3ceec9b1426"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a8bb0dbb5b5768b6c4630c3ceec9b1426">MR::area</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const FaceBitSet *fs=nullptr)</td></tr>
+<tr class="memdesc:a8bb0dbb5b5768b6c4630c3ceec9b1426"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the area of given face-region (or whole mesh)  <br /></td></tr>
+<tr class="separator:a8bb0dbb5b5768b6c4630c3ceec9b1426"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb7501549ed859f41648effc8d74063" id="r_a6cb7501549ed859f41648effc8d74063"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a6cb7501549ed859f41648effc8d74063">MR::dirArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const FaceBitSet &amp;fs)</td></tr>
+<tr class="memdesc:a6cb7501549ed859f41648effc8d74063"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the sum of directed areas for faces from given region  <br /></td></tr>
+<tr class="separator:a6cb7501549ed859f41648effc8d74063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa066b3823c0d189be92f99b46d6d1bb1" id="r_aa066b3823c0d189be92f99b46d6d1bb1"><td class="memItemLeft" align="right" valign="top">Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#aa066b3823c0d189be92f99b46d6d1bb1">MR::dirArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const FaceBitSet *fs=nullptr)</td></tr>
+<tr class="memdesc:aa066b3823c0d189be92f99b46d6d1bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the sum of directed areas for faces from given region (or whole mesh)  <br /></td></tr>
+<tr class="separator:aa066b3823c0d189be92f99b46d6d1bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae404353d24dee8a7548853d3711fecaf" id="r_ae404353d24dee8a7548853d3711fecaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ae404353d24dee8a7548853d3711fecaf">MR::projArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const Vector3f &amp;dir, const FaceBitSet &amp;fs)</td></tr>
+<tr class="memdesc:ae404353d24dee8a7548853d3711fecaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the sum of absolute projected area of faces from given region as visible if look from given direction  <br /></td></tr>
+<tr class="separator:ae404353d24dee8a7548853d3711fecaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65325d5765de14230b066e2706dbba82" id="r_a65325d5765de14230b066e2706dbba82"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a65325d5765de14230b066e2706dbba82">MR::projArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const Vector3f &amp;dir, const FaceBitSet *fs=nullptr)</td></tr>
+<tr class="memdesc:a65325d5765de14230b066e2706dbba82"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the sum of absolute projected area of faces from given region (or whole mesh) as visible if look from given direction  <br /></td></tr>
+<tr class="separator:a65325d5765de14230b066e2706dbba82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83e40508b3f05b594da19748c1da2d05" id="r_a83e40508b3f05b594da19748c1da2d05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a83e40508b3f05b594da19748c1da2d05">MR::volume</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const FaceBitSet *region=nullptr)</td></tr>
+<tr class="separator:a83e40508b3f05b594da19748c1da2d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb19030d836bd45767a57eaa6360fa60" id="r_acb19030d836bd45767a57eaa6360fa60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#acb19030d836bd45767a57eaa6360fa60">MR::holePerimiter</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:acb19030d836bd45767a57eaa6360fa60"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the perimeter of the hole specified by one of its edges with no valid left face (left is hole)  <br /></td></tr>
+<tr class="separator:acb19030d836bd45767a57eaa6360fa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f73b1cca987a9e5c8069e711d63330e" id="r_a4f73b1cca987a9e5c8069e711d63330e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a4f73b1cca987a9e5c8069e711d63330e">MR::holeDirArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="separator:a4f73b1cca987a9e5c8069e711d63330e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e30e6955f139ef5eafe8801bfdf8511" id="r_a1e30e6955f139ef5eafe8801bfdf8511"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a1e30e6955f139ef5eafe8801bfdf8511">MR::leftTangent</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:a1e30e6955f139ef5eafe8801bfdf8511"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes unit vector that is both orthogonal to given edge and to the normal of its left triangle, the vector is directed inside left triangle  <br /></td></tr>
+<tr class="separator:a1e30e6955f139ef5eafe8801bfdf8511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0748014e16c8c27ba2438118ae939a1" id="r_af0748014e16c8c27ba2438118ae939a1"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#af0748014e16c8c27ba2438118ae939a1">MR::leftNormal</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="memdesc:af0748014e16c8c27ba2438118ae939a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes triangular face normal from its vertices  <br /></td></tr>
+<tr class="separator:af0748014e16c8c27ba2438118ae939a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaaa231de17fd92490d5ffbdac7d7c16" id="r_aeaaa231de17fd92490d5ffbdac7d7c16"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#aeaaa231de17fd92490d5ffbdac7d7c16">MR::normal</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, FaceId f)</td></tr>
+<tr class="memdesc:aeaaa231de17fd92490d5ffbdac7d7c16"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes triangular face normal from its vertices  <br /></td></tr>
+<tr class="separator:aeaaa231de17fd92490d5ffbdac7d7c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b8d23ea7f7dd04366bf343830af62e" id="r_a48b8d23ea7f7dd04366bf343830af62e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a48b8d23ea7f7dd04366bf343830af62e">MR::dirDblArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v)</td></tr>
+<tr class="memdesc:a48b8d23ea7f7dd04366bf343830af62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes sum of directed double areas of all triangles around given vertex  <br /></td></tr>
+<tr class="separator:a48b8d23ea7f7dd04366bf343830af62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd50f59234a5a8e9ac7133f697d981e" id="r_a0dd50f59234a5a8e9ac7133f697d981e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a0dd50f59234a5a8e9ac7133f697d981e">MR::dblArea</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v)</td></tr>
+<tr class="memdesc:a0dd50f59234a5a8e9ac7133f697d981e"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the length of summed directed double areas of all triangles around given vertex  <br /></td></tr>
+<tr class="separator:a0dd50f59234a5a8e9ac7133f697d981e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fb32b3b62d46ab4122204d35787fa88" id="r_a3fb32b3b62d46ab4122204d35787fa88"><td class="memItemLeft" align="right" valign="top">Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a3fb32b3b62d46ab4122204d35787fa88">MR::normal</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v)</td></tr>
+<tr class="memdesc:a3fb32b3b62d46ab4122204d35787fa88"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes normal in a vertex using sum of directed areas of neighboring triangles  <br /></td></tr>
+<tr class="separator:a3fb32b3b62d46ab4122204d35787fa88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9340b49cc305ca3a42ee906b4b33a3eb" id="r_a9340b49cc305ca3a42ee906b4b33a3eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a9340b49cc305ca3a42ee906b4b33a3eb">MR::normal</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp;p)</td></tr>
+<tr class="separator:a9340b49cc305ca3a42ee906b4b33a3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81332ea392098bb6bfa5694e2af14350" id="r_a81332ea392098bb6bfa5694e2af14350"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a81332ea392098bb6bfa5694e2af14350">MR::pseudonormal</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v, const FaceBitSet *region=nullptr)</td></tr>
+<tr class="separator:a81332ea392098bb6bfa5694e2af14350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3530eb53e71557cf4aed764076418744" id="r_a3530eb53e71557cf4aed764076418744"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a3530eb53e71557cf4aed764076418744">MR::pseudonormal</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e, const FaceBitSet *region=nullptr)</td></tr>
+<tr class="memdesc:a3530eb53e71557cf4aed764076418744"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes normalized half sum of face normals sharing given edge (only (region) faces will be considered);  <br /></td></tr>
+<tr class="separator:a3530eb53e71557cf4aed764076418744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5389586ec02a9b3a7ef5294b75a3c440" id="r_a5389586ec02a9b3a7ef5294b75a3c440"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a5389586ec02a9b3a7ef5294b75a3c440">MR::pseudonormal</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const <a class="el" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp;p, const FaceBitSet *region=nullptr)</td></tr>
+<tr class="separator:a5389586ec02a9b3a7ef5294b75a3c440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af04c9fae0daff536f4098c78b1c10b95" id="r_af04c9fae0daff536f4098c78b1c10b95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#af04c9fae0daff536f4098c78b1c10b95">MR::sumAngles</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v, bool *outBoundaryVert=nullptr)</td></tr>
+<tr class="memdesc:af04c9fae0daff536f4098c78b1c10b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes the sum of triangle angles at given vertex; optionally returns whether the vertex is on boundary  <br /></td></tr>
+<tr class="separator:af04c9fae0daff536f4098c78b1c10b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a190ad3366c13f1e3ed9c12cdc0291177" id="r_a190ad3366c13f1e3ed9c12cdc0291177"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="el" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected</a>&lt; VertBitSet &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a190ad3366c13f1e3ed9c12cdc0291177">MR::findSpikeVertices</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, float minSumAngle, const VertBitSet *region=nullptr, const <a class="el" href="group__BasicStructuresGroup.html#ga51ff94746a41880cd06d3272b5bcf710">ProgressCallback</a> &amp;cb={})</td></tr>
+<tr class="memdesc:a190ad3366c13f1e3ed9c12cdc0291177"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns vertices where the sum of triangle angles is below given threshold  <br /></td></tr>
+<tr class="separator:a190ad3366c13f1e3ed9c12cdc0291177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb5e341e476649b321cdb9f27e72c6d1" id="r_afb5e341e476649b321cdb9f27e72c6d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#afb5e341e476649b321cdb9f27e72c6d1">MR::dihedralAngleSin</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</td></tr>
+<tr class="separator:afb5e341e476649b321cdb9f27e72c6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4456950753150d985e999f060edb469c" id="r_a4456950753150d985e999f060edb469c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a4456950753150d985e999f060edb469c">MR::dihedralAngleCos</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</td></tr>
+<tr class="separator:a4456950753150d985e999f060edb469c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e4cff045080ddf46cb771f7f2fdb8e" id="r_a34e4cff045080ddf46cb771f7f2fdb8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a34e4cff045080ddf46cb771f7f2fdb8e">MR::dihedralAngle</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</td></tr>
+<tr class="separator:a34e4cff045080ddf46cb771f7f2fdb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa776be59eeaaa3ab4503389cbf4f41c3" id="r_aa776be59eeaaa3ab4503389cbf4f41c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#aa776be59eeaaa3ab4503389cbf4f41c3">MR::discreteMeanCurvature</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v)</td></tr>
+<tr class="separator:aa776be59eeaaa3ab4503389cbf4f41c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b08c6deef4fc081ff82d6291456dbdd" id="r_a9b08c6deef4fc081ff82d6291456dbdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a9b08c6deef4fc081ff82d6291456dbdd">MR::discreteMeanCurvature</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</td></tr>
+<tr class="separator:a9b08c6deef4fc081ff82d6291456dbdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065988451e8b7dd6f1686f6e1fdfee06" id="r_a065988451e8b7dd6f1686f6e1fdfee06"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a065988451e8b7dd6f1686f6e1fdfee06">MR::discreteGaussianCurvature</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v, bool *outBoundaryVert=nullptr)</td></tr>
+<tr class="separator:a065988451e8b7dd6f1686f6e1fdfee06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4211e9cc9d627cf077e17c86710226ee" id="r_a4211e9cc9d627cf077e17c86710226ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> UndirectedEdgeBitSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a4211e9cc9d627cf077e17c86710226ee">MR::findCreaseEdges</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, float angleFromPlanar)</td></tr>
+<tr class="memdesc:a4211e9cc9d627cf077e17c86710226ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds all mesh edges where dihedral angle is distinct from planar PI angle on at least given value  <br /></td></tr>
+<tr class="separator:a4211e9cc9d627cf077e17c86710226ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d3212c09f0071984b0865d7d1c05ef0" id="r_a5d3212c09f0071984b0865d7d1c05ef0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a5d3212c09f0071984b0865d7d1c05ef0">MR::leftCotan</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, EdgeId e)</td></tr>
+<tr class="separator:a5d3212c09f0071984b0865d7d1c05ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae88dcc2f46770de755e55f980a67a5f3" id="r_ae88dcc2f46770de755e55f980a67a5f3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#ae88dcc2f46770de755e55f980a67a5f3">MR::cotan</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, UndirectedEdgeId ue)</td></tr>
+<tr class="separator:ae88dcc2f46770de755e55f980a67a5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4d2bbcba0c776cdbc5cbda868db9bb" id="r_a4a4d2bbcba0c776cdbc5cbda868db9bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> QuadraticForm3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a4a4d2bbcba0c776cdbc5cbda868db9bb">MR::quadraticForm</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, VertId v, bool angleWeigted, const FaceBitSet *region=nullptr, const UndirectedEdgeBitSet *creases=nullptr)</td></tr>
+<tr class="separator:a4a4d2bbcba0c776cdbc5cbda868db9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71050839d7665ed8ca2dc8c4b0c523fd" id="r_a71050839d7665ed8ca2dc8c4b0c523fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Box3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a71050839d7665ed8ca2dc8c4b0c523fd">MR::computeBoundingBox</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points, const FaceBitSet *region, const AffineXf3f *toWorld=nullptr)</td></tr>
+<tr class="separator:a71050839d7665ed8ca2dc8c4b0c523fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c72ade2831c2a328e3486b5aa8045bb" id="r_a5c72ade2831c2a328e3486b5aa8045bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a5c72ade2831c2a328e3486b5aa8045bb">MR::averageEdgeLength</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points)</td></tr>
+<tr class="memdesc:a5c72ade2831c2a328e3486b5aa8045bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes average length of an edge in the mesh given by (topology, points)  <br /></td></tr>
+<tr class="separator:a5c72ade2831c2a328e3486b5aa8045bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a161e46c3bf12b517090c9a672b8ec830" id="r_a161e46c3bf12b517090c9a672b8ec830"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a161e46c3bf12b517090c9a672b8ec830">MR::findCenterFromPoints</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points)</td></tr>
+<tr class="memdesc:a161e46c3bf12b517090c9a672b8ec830"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes average position of all valid mesh vertices  <br /></td></tr>
+<tr class="separator:a161e46c3bf12b517090c9a672b8ec830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e9b24b3d309eba7ea1fb20758afd025" id="r_a0e9b24b3d309eba7ea1fb20758afd025"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a0e9b24b3d309eba7ea1fb20758afd025">MR::findCenterFromFaces</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points)</td></tr>
+<tr class="memdesc:a0e9b24b3d309eba7ea1fb20758afd025"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes center of mass considering that density of all triangles is the same  <br /></td></tr>
+<tr class="separator:a0e9b24b3d309eba7ea1fb20758afd025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0140eb8894552101f3fdabe8d842eb25" id="r_a0140eb8894552101f3fdabe8d842eb25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMR.html#a0140eb8894552101f3fdabe8d842eb25">MR::findCenterFromBBox</a> (const <a class="el" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp;topology, const VertCoords &amp;points)</td></tr>
+<tr class="memdesc:a0140eb8894552101f3fdabe8d842eb25"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes bounding box and returns its center  <br /></td></tr>
+<tr class="separator:a0140eb8894552101f3fdabe8d842eb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRMeshMath_8h.html">MRMeshMath.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.FeatureVisualizePropertyType Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1FeatureVisualizePropertyType.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1FeatureVisualizePropertyType-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.FeatureVisualizePropertyType Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a816db2849239f36ae22a24689a550ee0" id="r_a816db2849239f36ae22a24689a550ee0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a816db2849239f36ae22a24689a550ee0">__eq__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:a816db2849239f36ae22a24689a550ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf5b80d8246c060de406c32428be3bdd" id="r_acf5b80d8246c060de406c32428be3bdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf5b80d8246c060de406c32428be3bdd">__getstate__</a> (self)</td></tr>
+<tr class="separator:acf5b80d8246c060de406c32428be3bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3858869b29c5db8352977e03162e40bf" id="r_a3858869b29c5db8352977e03162e40bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3858869b29c5db8352977e03162e40bf">__hash__</a> (self)</td></tr>
+<tr class="separator:a3858869b29c5db8352977e03162e40bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b675d9b7ae14b522a2d81a5a7998d9" id="r_a76b675d9b7ae14b522a2d81a5a7998d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76b675d9b7ae14b522a2d81a5a7998d9">__index__</a> (self)</td></tr>
+<tr class="separator:a76b675d9b7ae14b522a2d81a5a7998d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a034481ce4ae2f1a74e2680af11e8b7ae" id="r_a034481ce4ae2f1a74e2680af11e8b7ae"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a034481ce4ae2f1a74e2680af11e8b7ae">__init__</a> (self, int <a class="el" href="#af257b64a19fb3843b9d55637abab3741">value</a>)</td></tr>
+<tr class="separator:a034481ce4ae2f1a74e2680af11e8b7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44524d186e9c441da0b9905845fa5bd8" id="r_a44524d186e9c441da0b9905845fa5bd8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44524d186e9c441da0b9905845fa5bd8">__int__</a> (self)</td></tr>
+<tr class="separator:a44524d186e9c441da0b9905845fa5bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a501a158687a06c1d212978e884e114b6" id="r_a501a158687a06c1d212978e884e114b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a501a158687a06c1d212978e884e114b6">__ne__</a> (self, typing.Any other)</td></tr>
+<tr class="separator:a501a158687a06c1d212978e884e114b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea276ed6fff2a4b3dc1e782ede0bee3" id="r_a1ea276ed6fff2a4b3dc1e782ede0bee3"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ea276ed6fff2a4b3dc1e782ede0bee3">__repr__</a> (self)</td></tr>
+<tr class="separator:a1ea276ed6fff2a4b3dc1e782ede0bee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc173826aff6a5c6f60e6a71dfb7a06b" id="r_adc173826aff6a5c6f60e6a71dfb7a06b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc173826aff6a5c6f60e6a71dfb7a06b">__setstate__</a> (self, int state)</td></tr>
+<tr class="separator:adc173826aff6a5c6f60e6a71dfb7a06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dde8a0c6a425ee9110e6a87b6bb831a" id="r_a7dde8a0c6a425ee9110e6a87b6bb831a"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dde8a0c6a425ee9110e6a87b6bb831a">__str__</a> (self)</td></tr>
+<tr class="separator:a7dde8a0c6a425ee9110e6a87b6bb831a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc03226b7f3812aca60c1d8b4b9a4e4e" id="r_abc03226b7f3812aca60c1d8b4b9a4e4e"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc03226b7f3812aca60c1d8b4b9a4e4e">name</a> (self)</td></tr>
+<tr class="separator:abc03226b7f3812aca60c1d8b4b9a4e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af257b64a19fb3843b9d55637abab3741" id="r_af257b64a19fb3843b9d55637abab3741"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af257b64a19fb3843b9d55637abab3741">value</a> (self)</td></tr>
+<tr class="separator:af257b64a19fb3843b9d55637abab3741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a3bef98b1fd3c843ac57034155a7dd050" id="r_a3bef98b1fd3c843ac57034155a7dd050"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bef98b1fd3c843ac57034155a7dd050">DetailsOnNameTag</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1FeatureVisualizePropertyType.html">FeatureVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a3bef98b1fd3c843ac57034155a7dd050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac176d74f04279676e92b68a798f60510" id="r_ac176d74f04279676e92b68a798f60510"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac176d74f04279676e92b68a798f60510">Subfeatures</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1FeatureVisualizePropertyType.html">FeatureVisualizePropertyType</a>]</td></tr>
+<tr class="separator:ac176d74f04279676e92b68a798f60510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a3177d32e320d51a9b8b4e64a1fc335d2" id="r_a3177d32e320d51a9b8b4e64a1fc335d2"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3177d32e320d51a9b8b4e64a1fc335d2">_count</a> .ClassVar[<a class="el" href="classmrmeshpy_1_1FeatureVisualizePropertyType.html">FeatureVisualizePropertyType</a>]</td></tr>
+<tr class="separator:a3177d32e320d51a9b8b4e64a1fc335d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Members:
+
+  Subfeatures
+
+  DetailsOnNameTag : If true, show additional details on the name tag, such as point coordinates. Not all features use this.
+
+  _count
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a034481ce4ae2f1a74e2680af11e8b7ae" name="a034481ce4ae2f1a74e2680af11e8b7ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a034481ce4ae2f1a74e2680af11e8b7ae">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FeatureVisualizePropertyType.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a816db2849239f36ae22a24689a550ee0" name="a816db2849239f36ae22a24689a550ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a816db2849239f36ae22a24689a550ee0">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.FeatureVisualizePropertyType.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf5b80d8246c060de406c32428be3bdd" name="acf5b80d8246c060de406c32428be3bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf5b80d8246c060de406c32428be3bdd">&#9670;&#160;</a></span>__getstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.FeatureVisualizePropertyType.__getstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3858869b29c5db8352977e03162e40bf" name="a3858869b29c5db8352977e03162e40bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3858869b29c5db8352977e03162e40bf">&#9670;&#160;</a></span>__hash__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.FeatureVisualizePropertyType.__hash__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76b675d9b7ae14b522a2d81a5a7998d9" name="a76b675d9b7ae14b522a2d81a5a7998d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76b675d9b7ae14b522a2d81a5a7998d9">&#9670;&#160;</a></span>__index__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.FeatureVisualizePropertyType.__index__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44524d186e9c441da0b9905845fa5bd8" name="a44524d186e9c441da0b9905845fa5bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44524d186e9c441da0b9905845fa5bd8">&#9670;&#160;</a></span>__int__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.FeatureVisualizePropertyType.__int__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a501a158687a06c1d212978e884e114b6" name="a501a158687a06c1d212978e884e114b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a501a158687a06c1d212978e884e114b6">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.FeatureVisualizePropertyType.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ea276ed6fff2a4b3dc1e782ede0bee3" name="a1ea276ed6fff2a4b3dc1e782ede0bee3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ea276ed6fff2a4b3dc1e782ede0bee3">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.FeatureVisualizePropertyType.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc173826aff6a5c6f60e6a71dfb7a06b" name="adc173826aff6a5c6f60e6a71dfb7a06b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc173826aff6a5c6f60e6a71dfb7a06b">&#9670;&#160;</a></span>__setstate__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.FeatureVisualizePropertyType.__setstate__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7dde8a0c6a425ee9110e6a87b6bb831a" name="a7dde8a0c6a425ee9110e6a87b6bb831a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dde8a0c6a425ee9110e6a87b6bb831a">&#9670;&#160;</a></span>__str__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.FeatureVisualizePropertyType.__str__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc03226b7f3812aca60c1d8b4b9a4e4e" name="abc03226b7f3812aca60c1d8b4b9a4e4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc03226b7f3812aca60c1d8b4b9a4e4e">&#9670;&#160;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.FeatureVisualizePropertyType.name </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af257b64a19fb3843b9d55637abab3741" name="af257b64a19fb3843b9d55637abab3741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af257b64a19fb3843b9d55637abab3741">&#9670;&#160;</a></span>value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.FeatureVisualizePropertyType.value </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3177d32e320d51a9b8b4e64a1fc335d2" name="a3177d32e320d51a9b8b4e64a1fc335d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3177d32e320d51a9b8b4e64a1fc335d2">&#9670;&#160;</a></span>_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FeatureVisualizePropertyType._count .ClassVar[<a class="el" href="classmrmeshpy_1_1FeatureVisualizePropertyType.html">FeatureVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bef98b1fd3c843ac57034155a7dd050" name="a3bef98b1fd3c843ac57034155a7dd050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bef98b1fd3c843ac57034155a7dd050">&#9670;&#160;</a></span>DetailsOnNameTag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FeatureVisualizePropertyType.DetailsOnNameTag .ClassVar[<a class="el" href="classmrmeshpy_1_1FeatureVisualizePropertyType.html">FeatureVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac176d74f04279676e92b68a798f60510" name="ac176d74f04279676e92b68a798f60510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac176d74f04279676e92b68a798f60510">&#9670;&#160;</a></span>Subfeatures</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.FeatureVisualizePropertyType.Subfeatures .ClassVar[<a class="el" href="classmrmeshpy_1_1FeatureVisualizePropertyType.html">FeatureVisualizePropertyType</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1FeatureVisualizePropertyType.html">FeatureVisualizePropertyType</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

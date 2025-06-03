@@ -1,0 +1,652 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.SelfIntersections.Settings Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1SelfIntersections_1_1Settings.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1SelfIntersections_1_1Settings-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.SelfIntersections.Settings Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings_1_1Method.html">Method</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aaa985ecd891f26687647b5a9efc6d45a" id="r_aaa985ecd891f26687647b5a9efc6d45a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa985ecd891f26687647b5a9efc6d45a">__init__</a> (self)</td></tr>
+<tr class="separator:aaa985ecd891f26687647b5a9efc6d45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae449be75e1fc649fd7bc1e55437678ef" id="r_ae449be75e1fc649fd7bc1e55437678ef"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae449be75e1fc649fd7bc1e55437678ef">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings.html">SelfIntersections.Settings</a> arg0)</td></tr>
+<tr class="separator:ae449be75e1fc649fd7bc1e55437678ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007472cdf93f5d672c3fa255076f8522" id="r_a007472cdf93f5d672c3fa255076f8522"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a007472cdf93f5d672c3fa255076f8522">__init__</a> (self, bool <a class="el" href="#ac0d663f108a4665ae9bd2927cd35abe2">touchIsIntersection</a>, <a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings_1_1Method.html">SelfIntersections.Settings.Method</a> <a class="el" href="#ac3060a95556e4d48f6298f34d7f3c845">method</a>, int <a class="el" href="#a0c3476f00e4895b7e65b31628240cfda">relaxIterations</a>, int <a class="el" href="#a0500ddad8ff8c78ed7afe7df474bc5eb">maxExpand</a>, float <a class="el" href="#a544f03e45a48a2e354089a4662e042fc">subdivideEdgeLen</a>, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> <a class="el" href="#a7f59e857791e7b2e978f86d3313c4106">callback</a>)</td></tr>
+<tr class="separator:a007472cdf93f5d672c3fa255076f8522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f59e857791e7b2e978f86d3313c4106" id="r_a7f59e857791e7b2e978f86d3313c4106"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f59e857791e7b2e978f86d3313c4106">callback</a> (self)</td></tr>
+<tr class="separator:a7f59e857791e7b2e978f86d3313c4106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f3dc7c12f4279c0be5c4b7e6da46d3b" id="r_a8f3dc7c12f4279c0be5c4b7e6da46d3b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f3dc7c12f4279c0be5c4b7e6da46d3b">callback</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> arg1)</td></tr>
+<tr class="separator:a8f3dc7c12f4279c0be5c4b7e6da46d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0500ddad8ff8c78ed7afe7df474bc5eb" id="r_a0500ddad8ff8c78ed7afe7df474bc5eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0500ddad8ff8c78ed7afe7df474bc5eb">maxExpand</a> (self)</td></tr>
+<tr class="separator:a0500ddad8ff8c78ed7afe7df474bc5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b9465467863d45fcd321a3157ea6d36" id="r_a0b9465467863d45fcd321a3157ea6d36"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b9465467863d45fcd321a3157ea6d36">maxExpand</a> (self, int arg1)</td></tr>
+<tr class="separator:a0b9465467863d45fcd321a3157ea6d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3476f00e4895b7e65b31628240cfda" id="r_a0c3476f00e4895b7e65b31628240cfda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c3476f00e4895b7e65b31628240cfda">relaxIterations</a> (self)</td></tr>
+<tr class="separator:a0c3476f00e4895b7e65b31628240cfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a775cb0297a9ad809b7d124be656d195f" id="r_a775cb0297a9ad809b7d124be656d195f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a775cb0297a9ad809b7d124be656d195f">relaxIterations</a> (self, int arg1)</td></tr>
+<tr class="separator:a775cb0297a9ad809b7d124be656d195f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a544f03e45a48a2e354089a4662e042fc" id="r_a544f03e45a48a2e354089a4662e042fc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a544f03e45a48a2e354089a4662e042fc">subdivideEdgeLen</a> (self)</td></tr>
+<tr class="separator:a544f03e45a48a2e354089a4662e042fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9b7b2f93aeb6aa1a14b872e7142317b" id="r_ad9b7b2f93aeb6aa1a14b872e7142317b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9b7b2f93aeb6aa1a14b872e7142317b">subdivideEdgeLen</a> (self, float arg1)</td></tr>
+<tr class="separator:ad9b7b2f93aeb6aa1a14b872e7142317b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d663f108a4665ae9bd2927cd35abe2" id="r_ac0d663f108a4665ae9bd2927cd35abe2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0d663f108a4665ae9bd2927cd35abe2">touchIsIntersection</a> (self)</td></tr>
+<tr class="separator:ac0d663f108a4665ae9bd2927cd35abe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426dfb5b40bc57f8be948d75a51c2d5c" id="r_a426dfb5b40bc57f8be948d75a51c2d5c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426dfb5b40bc57f8be948d75a51c2d5c">touchIsIntersection</a> (self, bool arg1)</td></tr>
+<tr class="separator:a426dfb5b40bc57f8be948d75a51c2d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ac3060a95556e4d48f6298f34d7f3c845" id="r_ac3060a95556e4d48f6298f34d7f3c845"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1SelfIntersections.html">SelfIntersections</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3060a95556e4d48f6298f34d7f3c845">method</a> .<a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings_1_1Method.html">Settings.Method</a></td></tr>
+<tr class="separator:ac3060a95556e4d48f6298f34d7f3c845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a15bb1fd455f21686158f2c1b53b3c5a9" id="r_a15bb1fd455f21686158f2c1b53b3c5a9"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15bb1fd455f21686158f2c1b53b3c5a9">_offsetof_maxExpand</a> = 12</td></tr>
+<tr class="separator:a15bb1fd455f21686158f2c1b53b3c5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5365c7c722130b12429a8ae1e75d0e8c" id="r_a5365c7c722130b12429a8ae1e75d0e8c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5365c7c722130b12429a8ae1e75d0e8c">_offsetof_method</a> = 4</td></tr>
+<tr class="separator:a5365c7c722130b12429a8ae1e75d0e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a705e4bd3e8760d9b3773a52e2c901bf6" id="r_a705e4bd3e8760d9b3773a52e2c901bf6"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a705e4bd3e8760d9b3773a52e2c901bf6">_offsetof_relaxIterations</a> = 8</td></tr>
+<tr class="separator:a705e4bd3e8760d9b3773a52e2c901bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49884e227e4cf7a421e442f2582de94e" id="r_a49884e227e4cf7a421e442f2582de94e"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49884e227e4cf7a421e442f2582de94e">_offsetof_subdivideEdgeLen</a> = 16</td></tr>
+<tr class="separator:a49884e227e4cf7a421e442f2582de94e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae709d47597ea3f02b6d057d09f891b5d" id="r_ae709d47597ea3f02b6d057d09f891b5d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae709d47597ea3f02b6d057d09f891b5d">_offsetof_touchIsIntersection</a> = 0</td></tr>
+<tr class="separator:ae709d47597ea3f02b6d057d09f891b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::SelfIntersections::Settings
+
+Setting set for mesh self-intersections fix
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aaa985ecd891f26687647b5a9efc6d45a" name="aaa985ecd891f26687647b5a9efc6d45a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa985ecd891f26687647b5a9efc6d45a">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="ae449be75e1fc649fd7bc1e55437678ef" name="ae449be75e1fc649fd7bc1e55437678ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae449be75e1fc649fd7bc1e55437678ef">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings.html">SelfIntersections.Settings</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a007472cdf93f5d672c3fa255076f8522" name="a007472cdf93f5d672c3fa255076f8522"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a007472cdf93f5d672c3fa255076f8522">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>touchIsIntersection</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings_1_1Method.html">SelfIntersections.Settings.Method</a></td>          <td class="paramname"><span class="paramname"><em>method</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>relaxIterations</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>maxExpand</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>subdivideEdgeLen</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7f59e857791e7b2e978f86d3313c4106" name="a7f59e857791e7b2e978f86d3313c4106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f59e857791e7b2e978f86d3313c4106">&#9670;&#160;</a></span>callback() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> mrmeshpy.SelfIntersections.Settings.callback </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Callback function
+</pre> 
+</div>
+</div>
+<a id="a8f3dc7c12f4279c0be5c4b7e6da46d3b" name="a8f3dc7c12f4279c0be5c4b7e6da46d3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f3dc7c12f4279c0be5c4b7e6da46d3b">&#9670;&#160;</a></span>callback() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.callback </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0500ddad8ff8c78ed7afe7df474bc5eb" name="a0500ddad8ff8c78ed7afe7df474bc5eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0500ddad8ff8c78ed7afe7df474bc5eb">&#9670;&#160;</a></span>maxExpand() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.SelfIntersections.Settings.maxExpand </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Maximum expand count (edge steps from self-intersecting faces), should be &gt; 0
+</pre> 
+</div>
+</div>
+<a id="a0b9465467863d45fcd321a3157ea6d36" name="a0b9465467863d45fcd321a3157ea6d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b9465467863d45fcd321a3157ea6d36">&#9670;&#160;</a></span>maxExpand() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.maxExpand </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c3476f00e4895b7e65b31628240cfda" name="a0c3476f00e4895b7e65b31628240cfda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3476f00e4895b7e65b31628240cfda">&#9670;&#160;</a></span>relaxIterations() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.SelfIntersections.Settings.relaxIterations </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Maximum relax iterations
+</pre> 
+</div>
+</div>
+<a id="a775cb0297a9ad809b7d124be656d195f" name="a775cb0297a9ad809b7d124be656d195f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a775cb0297a9ad809b7d124be656d195f">&#9670;&#160;</a></span>relaxIterations() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.relaxIterations </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a544f03e45a48a2e354089a4662e042fc" name="a544f03e45a48a2e354089a4662e042fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a544f03e45a48a2e354089a4662e042fc">&#9670;&#160;</a></span>subdivideEdgeLen() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.SelfIntersections.Settings.subdivideEdgeLen </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Edge length for subdivision of holes covers (0.0f means auto)
+FLT_MAX to disable subdivision
+</pre> 
+</div>
+</div>
+<a id="ad9b7b2f93aeb6aa1a14b872e7142317b" name="ad9b7b2f93aeb6aa1a14b872e7142317b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9b7b2f93aeb6aa1a14b872e7142317b">&#9670;&#160;</a></span>subdivideEdgeLen() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.subdivideEdgeLen </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0d663f108a4665ae9bd2927cd35abe2" name="ac0d663f108a4665ae9bd2927cd35abe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d663f108a4665ae9bd2927cd35abe2">&#9670;&#160;</a></span>touchIsIntersection() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.SelfIntersections.Settings.touchIsIntersection </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">If true then count touching faces as self-intersections
+</pre> 
+</div>
+</div>
+<a id="a426dfb5b40bc57f8be948d75a51c2d5c" name="a426dfb5b40bc57f8be948d75a51c2d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426dfb5b40bc57f8be948d75a51c2d5c">&#9670;&#160;</a></span>touchIsIntersection() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SelfIntersections.Settings.touchIsIntersection </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a15bb1fd455f21686158f2c1b53b3c5a9" name="a15bb1fd455f21686158f2c1b53b3c5a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15bb1fd455f21686158f2c1b53b3c5a9">&#9670;&#160;</a></span>_offsetof_maxExpand</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SelfIntersections.Settings._offsetof_maxExpand = 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5365c7c722130b12429a8ae1e75d0e8c" name="a5365c7c722130b12429a8ae1e75d0e8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5365c7c722130b12429a8ae1e75d0e8c">&#9670;&#160;</a></span>_offsetof_method</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SelfIntersections.Settings._offsetof_method = 4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a705e4bd3e8760d9b3773a52e2c901bf6" name="a705e4bd3e8760d9b3773a52e2c901bf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a705e4bd3e8760d9b3773a52e2c901bf6">&#9670;&#160;</a></span>_offsetof_relaxIterations</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SelfIntersections.Settings._offsetof_relaxIterations = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49884e227e4cf7a421e442f2582de94e" name="a49884e227e4cf7a421e442f2582de94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49884e227e4cf7a421e442f2582de94e">&#9670;&#160;</a></span>_offsetof_subdivideEdgeLen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SelfIntersections.Settings._offsetof_subdivideEdgeLen = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae709d47597ea3f02b6d057d09f891b5d" name="ae709d47597ea3f02b6d057d09f891b5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae709d47597ea3f02b6d057d09f891b5d">&#9670;&#160;</a></span>_offsetof_touchIsIntersection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.SelfIntersections.Settings._offsetof_touchIsIntersection = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3060a95556e4d48f6298f34d7f3c845" name="ac3060a95556e4d48f6298f34d7f3c845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3060a95556e4d48f6298f34d7f3c845">&#9670;&#160;</a></span>method</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmrmeshpy_1_1SelfIntersections.html">SelfIntersections</a> mrmeshpy.SelfIntersections.Settings.method .<a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings_1_1Method.html">Settings.Method</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1SelfIntersections.html">SelfIntersections</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1SelfIntersections_1_1Settings.html">Settings</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

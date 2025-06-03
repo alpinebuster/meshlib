@@ -1,0 +1,341 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.SimpleVolumeMinMaxU16 Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1SimpleVolumeMinMaxU16.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1SimpleVolumeMinMaxU16-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.SimpleVolumeMinMaxU16 Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.SimpleVolumeMinMaxU16:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1SimpleVolumeMinMaxU16.png" usemap="#mrmeshpy.SimpleVolumeMinMaxU16_map" alt=""/>
+  <map id="mrmeshpy.SimpleVolumeMinMaxU16_map" name="mrmeshpy.SimpleVolumeMinMaxU16_map">
+<area href="classmrmeshpy_1_1SimpleVolumeU16.html" alt="mrmeshpy.SimpleVolumeU16" shape="rect" coords="0,0,219,24"/>
+<area href="classmrmeshpy_1_1Box__unsigned__short.html" alt="mrmeshpy.Box_unsigned_short" shape="rect" coords="229,0,448,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a59d79b6b79229dcc1b9832ef5e13012c" id="r_a59d79b6b79229dcc1b9832ef5e13012c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59d79b6b79229dcc1b9832ef5e13012c">__init__</a> (self)</td></tr>
+<tr class="separator:a59d79b6b79229dcc1b9832ef5e13012c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae1ceaf26cd3d0fa7d8f55c247e78ba7" id="r_aae1ceaf26cd3d0fa7d8f55c247e78ba7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae1ceaf26cd3d0fa7d8f55c247e78ba7">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1SimpleVolumeMinMaxU16.html">SimpleVolumeMinMaxU16</a> arg0)</td></tr>
+<tr class="separator:aae1ceaf26cd3d0fa7d8f55c247e78ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a045b1823b099da3a5206a5b07c443b38" id="r_a045b1823b099da3a5206a5b07c443b38"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a045b1823b099da3a5206a5b07c443b38">__repr__</a> (self)</td></tr>
+<tr class="separator:a045b1823b099da3a5206a5b07c443b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1SimpleVolumeU16"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1SimpleVolumeU16')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html">mrmeshpy.SimpleVolumeU16</a></td></tr>
+<tr class="memitem:a292d0239390e6aa47dc594102de85ede inherit pub_methods_classmrmeshpy_1_1SimpleVolumeU16" id="r_a292d0239390e6aa47dc594102de85ede"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html#a292d0239390e6aa47dc594102de85ede">heapBytes</a> (self)</td></tr>
+<tr class="separator:a292d0239390e6aa47dc594102de85ede inherit pub_methods_classmrmeshpy_1_1SimpleVolumeU16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1Box__unsigned__short')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">mrmeshpy.Box_unsigned_short</a></td></tr>
+<tr class="memitem:a8cd6552aa211eb5406e964f094fe9c7f inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a8cd6552aa211eb5406e964f094fe9c7f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a8cd6552aa211eb5406e964f094fe9c7f">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> a)</td></tr>
+<tr class="separator:a8cd6552aa211eb5406e964f094fe9c7f inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5132344b4c0a9ad54bef328e5c734138 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a5132344b4c0a9ad54bef328e5c734138"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a5132344b4c0a9ad54bef328e5c734138">__getitem__</a> (self, int e)</td></tr>
+<tr class="separator:a5132344b4c0a9ad54bef328e5c734138 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5132344b4c0a9ad54bef328e5c734138 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a5132344b4c0a9ad54bef328e5c734138"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a5132344b4c0a9ad54bef328e5c734138">__getitem__</a> (self, int e)</td></tr>
+<tr class="separator:a5132344b4c0a9ad54bef328e5c734138 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8dec81d9fb500e148f315e11325884a inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_ad8dec81d9fb500e148f315e11325884a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#ad8dec81d9fb500e148f315e11325884a">__ne__</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> a)</td></tr>
+<tr class="separator:ad8dec81d9fb500e148f315e11325884a inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8f71288ddbb8184f2f67ea032b4c56 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_aaf8f71288ddbb8184f2f67ea032b4c56"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#aaf8f71288ddbb8184f2f67ea032b4c56">__setitem__</a> (self, int arg0, int arg1)</td></tr>
+<tr class="separator:aaf8f71288ddbb8184f2f67ea032b4c56 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41cb2fe4a32588ac88b4e9da09c383ac inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a41cb2fe4a32588ac88b4e9da09c383ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a41cb2fe4a32588ac88b4e9da09c383ac">center</a> (self)</td></tr>
+<tr class="separator:a41cb2fe4a32588ac88b4e9da09c383ac inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a095b316b277e40a621d6973298555cf6 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a095b316b277e40a621d6973298555cf6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a095b316b277e40a621d6973298555cf6">contains</a> (self, int pt)</td></tr>
+<tr class="separator:a095b316b277e40a621d6973298555cf6 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46262744fc96ddaddc4fd15e254e6668 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a46262744fc96ddaddc4fd15e254e6668"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a46262744fc96ddaddc4fd15e254e6668">contains</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> otherbox)</td></tr>
+<tr class="separator:a46262744fc96ddaddc4fd15e254e6668 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8409dd12560a1acda30fb479d7e4fbd8 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a8409dd12560a1acda30fb479d7e4fbd8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a8409dd12560a1acda30fb479d7e4fbd8">corner</a> (self, bool c)</td></tr>
+<tr class="separator:a8409dd12560a1acda30fb479d7e4fbd8 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1394ff2160206ade1e89fe3e4bbf785b inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a1394ff2160206ade1e89fe3e4bbf785b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a1394ff2160206ade1e89fe3e4bbf785b">diagonal</a> (self)</td></tr>
+<tr class="separator:a1394ff2160206ade1e89fe3e4bbf785b inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a3d066c11d6580c0242c91709df4df inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a91a3d066c11d6580c0242c91709df4df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a91a3d066c11d6580c0242c91709df4df">expanded</a> (self, int expansion)</td></tr>
+<tr class="separator:a91a3d066c11d6580c0242c91709df4df inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5802fa9fe1964e1b3321b44d20b76a97 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a5802fa9fe1964e1b3321b44d20b76a97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a5802fa9fe1964e1b3321b44d20b76a97">getBoxClosestPointTo</a> (self, int pt)</td></tr>
+<tr class="separator:a5802fa9fe1964e1b3321b44d20b76a97 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4a3f68f697833e80b08709001e62ed0 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_ac4a3f68f697833e80b08709001e62ed0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#ac4a3f68f697833e80b08709001e62ed0">getDistanceSq</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> b)</td></tr>
+<tr class="separator:ac4a3f68f697833e80b08709001e62ed0 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862610efcce8df84d17b4ef6e78c8b7e inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a862610efcce8df84d17b4ef6e78c8b7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a862610efcce8df84d17b4ef6e78c8b7e">getDistanceSq</a> (self, int pt)</td></tr>
+<tr class="separator:a862610efcce8df84d17b4ef6e78c8b7e inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac99c25015d08a77619168c289b13d59d inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_ac99c25015d08a77619168c289b13d59d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#ac99c25015d08a77619168c289b13d59d">include</a> (self, int pt)</td></tr>
+<tr class="separator:ac99c25015d08a77619168c289b13d59d inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af28be7f81f9a92a6ba4de7239af4cdc1 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_af28be7f81f9a92a6ba4de7239af4cdc1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#af28be7f81f9a92a6ba4de7239af4cdc1">include</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> b)</td></tr>
+<tr class="separator:af28be7f81f9a92a6ba4de7239af4cdc1 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaab059af0d5affa186945711ef16994 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_acaab059af0d5affa186945711ef16994"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#acaab059af0d5affa186945711ef16994">insignificantlyExpanded</a> (self)</td></tr>
+<tr class="separator:acaab059af0d5affa186945711ef16994 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae63ccb070ac6bc70c5b82bc62e037d79 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_ae63ccb070ac6bc70c5b82bc62e037d79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#ae63ccb070ac6bc70c5b82bc62e037d79">intersect</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> b)</td></tr>
+<tr class="separator:ae63ccb070ac6bc70c5b82bc62e037d79 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae68ab21894c3164976d94124ff75f0b3 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_ae68ab21894c3164976d94124ff75f0b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#ae68ab21894c3164976d94124ff75f0b3">intersection</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> b)</td></tr>
+<tr class="separator:ae68ab21894c3164976d94124ff75f0b3 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d26b0481e090458ed4d0869d3ce5b43 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a3d26b0481e090458ed4d0869d3ce5b43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a3d26b0481e090458ed4d0869d3ce5b43">intersects</a> (self, <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a> b)</td></tr>
+<tr class="separator:a3d26b0481e090458ed4d0869d3ce5b43 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a8bb0cd875189153e16d8529a613bef inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a6a8bb0cd875189153e16d8529a613bef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a6a8bb0cd875189153e16d8529a613bef">size</a> (self)</td></tr>
+<tr class="separator:a6a8bb0cd875189153e16d8529a613bef inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4b36d567eebeb6c9b6047e0105056c inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a8b4b36d567eebeb6c9b6047e0105056c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a8b4b36d567eebeb6c9b6047e0105056c">valid</a> (self)</td></tr>
+<tr class="separator:a8b4b36d567eebeb6c9b6047e0105056c inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d078069b486061cc9f09130174e61c2 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a0d078069b486061cc9f09130174e61c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a0d078069b486061cc9f09130174e61c2">volume</a> (self)</td></tr>
+<tr class="separator:a0d078069b486061cc9f09130174e61c2 inherit pub_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_methods_classmrmeshpy_1_1Box__unsigned__short"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_classmrmeshpy_1_1Box__unsigned__short')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">mrmeshpy.Box_unsigned_short</a></td></tr>
+<tr class="memitem:a4821599a39c880ef2a62b39f17c3eeb2 inherit pub_static_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a4821599a39c880ef2a62b39f17c3eeb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">Box_unsigned_short</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a4821599a39c880ef2a62b39f17c3eeb2">fromMinAndSize</a> (int min, int <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a6a8bb0cd875189153e16d8529a613bef">size</a>)</td></tr>
+<tr class="separator:a4821599a39c880ef2a62b39f17c3eeb2 inherit pub_static_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f6f9349cf9707b2f223b5f3e1c2397 inherit pub_static_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_aa8f6f9349cf9707b2f223b5f3e1c2397"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#aa8f6f9349cf9707b2f223b5f3e1c2397">getMaxBoxCorner</a> (int n)</td></tr>
+<tr class="separator:aa8f6f9349cf9707b2f223b5f3e1c2397 inherit pub_static_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ba4896d2e5cc1da49605639f127c551 inherit pub_static_methods_classmrmeshpy_1_1Box__unsigned__short" id="r_a6ba4896d2e5cc1da49605639f127c551"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a6ba4896d2e5cc1da49605639f127c551">getMinBoxCorner</a> (int n)</td></tr>
+<tr class="separator:a6ba4896d2e5cc1da49605639f127c551 inherit pub_static_methods_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_static_attribs_classmrmeshpy_1_1Box__unsigned__short"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_attribs_classmrmeshpy_1_1Box__unsigned__short')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">mrmeshpy.Box_unsigned_short</a></td></tr>
+<tr class="memitem:aa4df425db3c101b501bc9525e1ca376a inherit pub_static_attribs_classmrmeshpy_1_1Box__unsigned__short" id="r_aa4df425db3c101b501bc9525e1ca376a"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#aa4df425db3c101b501bc9525e1ca376a">elements</a> = 1</td></tr>
+<tr class="separator:aa4df425db3c101b501bc9525e1ca376a inherit pub_static_attribs_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html">mrmeshpy.SimpleVolumeU16</a></td></tr>
+<tr class="memitem:ae9dd102a84bd37aa52c903a877bf3bad inherit pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16" id="r_ae9dd102a84bd37aa52c903a877bf3bad"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html#ae9dd102a84bd37aa52c903a877bf3bad">_offsetof_data</a> = 0</td></tr>
+<tr class="separator:ae9dd102a84bd37aa52c903a877bf3bad inherit pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6645971344f96026f0b12ca3658fb0 inherit pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16" id="r_a3b6645971344f96026f0b12ca3658fb0"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html#a3b6645971344f96026f0b12ca3658fb0">_offsetof_dims</a> = 24</td></tr>
+<tr class="separator:a3b6645971344f96026f0b12ca3658fb0 inherit pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ddcf698e0c2ed65c06baa5de53125f5 inherit pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16" id="r_a9ddcf698e0c2ed65c06baa5de53125f5"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html#a9ddcf698e0c2ed65c06baa5de53125f5">_offsetof_voxelSize</a> = 36</td></tr>
+<tr class="separator:a9ddcf698e0c2ed65c06baa5de53125f5 inherit pro_static_attribs_classmrmeshpy_1_1SimpleVolumeU16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classmrmeshpy_1_1Box__unsigned__short"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classmrmeshpy_1_1Box__unsigned__short')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html">mrmeshpy.Box_unsigned_short</a></td></tr>
+<tr class="memitem:a956eb27e0e8cf50760690fda00d97d0f inherit pro_static_attribs_classmrmeshpy_1_1Box__unsigned__short" id="r_a956eb27e0e8cf50760690fda00d97d0f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a956eb27e0e8cf50760690fda00d97d0f">_offsetof_max</a> = 2</td></tr>
+<tr class="separator:a956eb27e0e8cf50760690fda00d97d0f inherit pro_static_attribs_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f67dea799477944c22fbb7de2ad549d inherit pro_static_attribs_classmrmeshpy_1_1Box__unsigned__short" id="r_a5f67dea799477944c22fbb7de2ad549d"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#a5f67dea799477944c22fbb7de2ad549d">_offsetof_min</a> = 0</td></tr>
+<tr class="separator:a5f67dea799477944c22fbb7de2ad549d inherit pro_static_attribs_classmrmeshpy_1_1Box__unsigned__short"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::SimpleVolumeMinMaxU16
+
+represents a box in 3D space subdivided on voxels stored in T;
+and stores minimum and maximum values among all valid voxels
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a59d79b6b79229dcc1b9832ef5e13012c" name="a59d79b6b79229dcc1b9832ef5e13012c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d79b6b79229dcc1b9832ef5e13012c">&#9670;&#160;</a></span>__init__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SimpleVolumeMinMaxU16.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html#a93d4ad21dc73c8014c9dc30cd9ce944f">mrmeshpy.SimpleVolumeU16</a>.</p>
+
+</div>
+</div>
+<a id="aae1ceaf26cd3d0fa7d8f55c247e78ba7" name="aae1ceaf26cd3d0fa7d8f55c247e78ba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae1ceaf26cd3d0fa7d8f55c247e78ba7">&#9670;&#160;</a></span>__init__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.SimpleVolumeMinMaxU16.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SimpleVolumeMinMaxU16.html">SimpleVolumeMinMaxU16</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1SimpleVolumeU16.html#a93d4ad21dc73c8014c9dc30cd9ce944f">mrmeshpy.SimpleVolumeU16</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a045b1823b099da3a5206a5b07c443b38" name="a045b1823b099da3a5206a5b07c443b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a045b1823b099da3a5206a5b07c443b38">&#9670;&#160;</a></span>__repr__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.SimpleVolumeMinMaxU16.__repr__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1Box__unsigned__short.html#adac35583c9afd8d73ffe38a80d705b93">mrmeshpy.Box_unsigned_short</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1SimpleVolumeMinMaxU16.html">SimpleVolumeMinMaxU16</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

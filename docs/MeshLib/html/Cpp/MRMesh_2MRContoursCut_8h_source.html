@@ -1,0 +1,386 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/MRMesh_2MRContoursCut_8h_source.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRContoursCut.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMesh_2MRContoursCut_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRMesh/MRContoursCut.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRMesh_2MRContoursCut_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRVector3_8h.html">MRVector3.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRAffineXf3_8h.html">MRAffineXf3.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRId_8h.html">MRId.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRBitSet_8h.html">MRBitSet.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRIntersectionContour_8h.html">MRIntersectionContour.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="MRExtractIsolines_8h.html">MRExtractIsolines.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRMeshCollidePrecise_8h.html">MRMeshCollidePrecise.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="MRSurfacePath_8h.html">MRSurfacePath.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceMR.html">MR</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// Special data to sort intersections more accurate</span></div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structMR_1_1SortIntersectionsData.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1SortIntersectionsData.html">SortIntersectionsData</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structMR_1_1SortIntersectionsData.html#ac190f44f37a1e2b9ece5d869fe02015d">   19</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; <a class="code hl_variable" href="structMR_1_1SortIntersectionsData.html#ac190f44f37a1e2b9ece5d869fe02015d">otherMesh</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structMR_1_1SortIntersectionsData.html#a3e022423fc25738632598f90c2caf5b1">   20</a></span>    <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceMR.html#a9f26ad2470dbd62255be7fc1cab2b503">ContinuousContours</a>&amp; <a class="code hl_variable" href="structMR_1_1SortIntersectionsData.html#a3e022423fc25738632598f90c2caf5b1">contours</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structMR_1_1SortIntersectionsData.html#a4799d62c8691f94b44fc3c7f3a77bbe4">   21</a></span>    <a class="code hl_typedef" href="namespaceMR.html#ab81d3ad87ff9cd57deee77336ddf83e1">ConvertToIntVector</a> <a class="code hl_variable" href="structMR_1_1SortIntersectionsData.html#a4799d62c8691f94b44fc3c7f3a77bbe4">converter</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structMR_1_1SortIntersectionsData.html#a24cce95182673d88059c5d9a38905fc0">   22</a></span>    <span class="keyword">const</span> AffineXf3f* <a class="code hl_variable" href="structMR_1_1SortIntersectionsData.html#a24cce95182673d88059c5d9a38905fc0">rigidB2A</a>{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structMR_1_1SortIntersectionsData.html#a4ffc178d247321fb6150846084fd616a">   23</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structMR_1_1SortIntersectionsData.html#a4ffc178d247321fb6150846084fd616a">meshAVertsNum</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structMR_1_1SortIntersectionsData.html#a64cd77d679e163bbff985d79336ae2c4">   24</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structMR_1_1SortIntersectionsData.html#a64cd77d679e163bbff985d79336ae2c4">isOtherA</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
+</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// Simple point on mesh, represented by primitive id and coordinate in mesh space</span></div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structMR_1_1OneMeshIntersection.html">   28</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1OneMeshIntersection.html">OneMeshIntersection</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82a2f7402dedcbccbb66d152940301cab25">   30</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82">VariantIndex</a> { <a class="code hl_enumvalue" href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82a94b51ce1acd528ad113406c334425167">Face</a>, <a class="code hl_enumvalue" href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82a2f7402dedcbccbb66d152940301cab25">Edge</a>, <a class="code hl_enumvalue" href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82a807d0c11c8a7da0fb426f9e34901f485">Vertex</a> };</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structMR_1_1OneMeshIntersection.html#ab42f0bd750d88e66c17bce92a1fe733d">   31</a></span>    std::variant&lt;FaceId, EdgeId, VertId&gt; <a class="code hl_variable" href="structMR_1_1OneMeshIntersection.html#ab42f0bd750d88e66c17bce92a1fe733d">primitiveId</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="structMR_1_1OneMeshIntersection.html#ab8b3439c1559deb1b278b9d5c8c2c14d">   33</a></span>    Vector3f <a class="code hl_variable" href="structMR_1_1OneMeshIntersection.html#ab8b3439c1559deb1b278b9d5c8c2c14d">coordinate</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// One contour on mesh</span></div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structMR_1_1OneMeshContour.html">   37</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1OneMeshContour.html">OneMeshContour</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structMR_1_1OneMeshContour.html#a6e1a28642564323f19cdf9f04319d5ef">   39</a></span>    std::vector&lt;OneMeshIntersection&gt; <a class="code hl_variable" href="structMR_1_1OneMeshContour.html#a6e1a28642564323f19cdf9f04319d5ef">intersections</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structMR_1_1OneMeshContour.html#ae2a61041d982700ef3d887aedc03a320">   40</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structMR_1_1OneMeshContour.html#ae2a61041d982700ef3d887aedc03a320">closed</a>{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">   49</a></span><span class="keyword">using </span><a class="code hl_typedef" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">OneMeshContours</a> = std::vector&lt;OneMeshContour&gt;;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">// Divides faces that fully own contours into 3 parts with center in center mass of one of the face contours</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">// if there is more than one contour on face it guarantee to subdivide at least one lone contour on this face</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4123fa411b7305bb9172a398b8cc3c51">   53</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceMR.html#a4123fa411b7305bb9172a398b8cc3c51">subdivideLoneContours</a>( <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> <a class="code hl_typedef" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">OneMeshContours</a>&amp; contours, <a class="code hl_typedef" href="namespaceMR.html#a93482f559c684be16c718d5acd291d3e">FaceHashMap</a>* new2oldMap = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// Converts ordered continuous contours of two meshes to OneMeshContours</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">// converters are required for better precision in case of degenerations</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// note that contours should not have intersections</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>[[nodiscard]]</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespaceMR.html#afb5aa7d969d789218ae67365158331cb">   59</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">OneMeshContours</a> <a class="code hl_function" href="namespaceMR.html#afb5aa7d969d789218ae67365158331cb">getOneMeshIntersectionContours</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; meshA, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; meshB, <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceMR.html#a9f26ad2470dbd62255be7fc1cab2b503">ContinuousContours</a>&amp; contours, <span class="keywordtype">bool</span> getMeshAIntersections,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1CoordinateConverters.html">CoordinateConverters</a>&amp; converters, <span class="keyword">const</span> AffineXf3f* rigidB2A = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// Converts ordered continuous self contours of single meshes to OneMeshContours</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">// converters are required for better precision in case of degenerations</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>[[nodiscard]]</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="namespaceMR.html#ae875a7151ea2bd715ce90d183884bb1b">   65</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">OneMeshContours</a> <a class="code hl_function" href="namespaceMR.html#ae875a7151ea2bd715ce90d183884bb1b">getOneMeshSelfIntersectionContours</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceMR.html#a9f26ad2470dbd62255be7fc1cab2b503">ContinuousContours</a>&amp; contours,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1CoordinateConverters.html">CoordinateConverters</a>&amp; converters, <span class="keyword">const</span> AffineXf3f* rigidB2A = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// Converts OneMeshContours contours representation to Contours3f: set of coordinates</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>[[nodiscard]]</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4484992ff522ddc03cd8234b7b7be226">   70</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#ac93791b17f5bb1ff4a6a7e7f51a7abc9">Contours3f</a> <a class="code hl_function" href="namespaceMR.html#a4484992ff522ddc03cd8234b7b7be226">extractMeshContours</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">OneMeshContours</a>&amp; meshContours );</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="namespaceMR.html#a217b7a3f4fc9168e09f3d423beb790e5">   72</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespaceMR.html#a217b7a3f4fc9168e09f3d423beb790e5">MeshTriPointsConnector</a> = std::function&lt;Expected&lt;SurfacePath&gt;( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a>&amp; start, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a>&amp; <a class="code hl_function" href="group__BasicGroup.html#gab900ba901f90bfe11c4580814af4fbf6">end</a>, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> endIndex )&gt;;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>[[nodiscard]]</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#ga33e04ff2f620e99f7bcd23080433c39f">   81</a></span>MR_BIND_IGNORE <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected&lt;OneMeshContour&gt;</a> <a class="code hl_function" href="group__BooleanGroup.html#ga33e04ff2f620e99f7bcd23080433c39f">convertMeshTriPointsToMeshContour</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> std::vector&lt;MeshTriPoint&gt;&amp; surfaceLine,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_typedef" href="namespaceMR.html#a217b7a3f4fc9168e09f3d423beb790e5">MeshTriPointsConnector</a> connectorFn, std::vector&lt;int&gt;* pivotIndices = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="};">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="structMR_1_1SearchPathSettings.html">   85</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1SearchPathSettings.html">SearchPathSettings</a></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>{</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="structMR_1_1SearchPathSettings.html#a73e36cb0460a39c6bf496d2038aced39">   87</a></span>    <a class="code hl_enumeration" href="group__SurfacePathSubgroup.html#ga0d52c069a53aab9d22c0f2c4e3f262a2">GeodesicPathApprox</a> <a class="code hl_variable" href="structMR_1_1SearchPathSettings.html#a73e36cb0460a39c6bf496d2038aced39">geodesicPathApprox</a>{ <a class="code hl_enumvalue" href="group__SurfacePathSubgroup.html#gga0d52c069a53aab9d22c0f2c4e3f262a2aa9132a8a9b3c0d8c70e577b23e01e70d">GeodesicPathApprox::DijkstraAStar</a> }; </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="structMR_1_1SearchPathSettings.html#aa176e79c6812cb52b0c1dabdaa2e61c3">   88</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMR_1_1SearchPathSettings.html#aa176e79c6812cb52b0c1dabdaa2e61c3">maxReduceIters</a>{ 100 }; </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>[[nodiscard]]</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#ga883d13829f7b1336863883d48777b302">   99</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected&lt;OneMeshContour&gt;</a> <a class="code hl_function" href="group__BooleanGroup.html#ga33e04ff2f620e99f7bcd23080433c39f">convertMeshTriPointsToMeshContour</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> std::vector&lt;MeshTriPoint&gt;&amp; surfaceLine,</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_struct" href="structMR_1_1SearchPathSettings.html">SearchPathSettings</a> searchSettings = {}, std::vector&lt;int&gt;* pivotIndices = nullptr );</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>[[nodiscard]]</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#gafe85b81b6d40ee16ccd3e12919143c43">  110</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected&lt;OneMeshContours&gt;</a> <a class="code hl_function" href="group__BooleanGroup.html#gafe85b81b6d40ee16ccd3e12919143c43">convertMeshTriPointsSurfaceOffsetToMeshContours</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> std::vector&lt;MeshTriPoint&gt;&amp; surfaceLine,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">float</span> offset, <a class="code hl_struct" href="structMR_1_1SearchPathSettings.html">SearchPathSettings</a> searchSettings = {} );</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>[[nodiscard]]</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#ga6f7ebfbd5a56670b4a78787e6318ee7e">  121</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected&lt;OneMeshContours&gt;</a> <a class="code hl_function" href="group__BooleanGroup.html#gafe85b81b6d40ee16ccd3e12919143c43">convertMeshTriPointsSurfaceOffsetToMeshContours</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> std::vector&lt;MeshTriPoint&gt;&amp; surfaceLine,</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">const</span> std::function&lt;<span class="keywordtype">float</span>(<span class="keywordtype">int</span>)&gt;&amp; offsetAtPoint, <a class="code hl_struct" href="structMR_1_1SearchPathSettings.html">SearchPathSettings</a> searchSettings = {});</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>[[nodiscard]]</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#ga698235aeb90b1a947f95fa76eeb78ff3">  132</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected&lt;OneMeshContour&gt;</a> <a class="code hl_function" href="group__BooleanGroup.html#ga698235aeb90b1a947f95fa76eeb78ff3">convertMeshTriPointsToClosedContour</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> std::vector&lt;MeshTriPoint&gt;&amp; surfaceLine,</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <a class="code hl_struct" href="structMR_1_1SearchPathSettings.html">SearchPathSettings</a> searchSettings = {}, std::vector&lt;int&gt;* pivotIndices = nullptr );</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>[[nodiscard]]</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#ga4415eacd7a732188919def7411ee0245">  154</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_struct" href="structMR_1_1OneMeshContour.html">OneMeshContour</a> <a class="code hl_function" href="group__BooleanGroup.html#ga4415eacd7a732188919def7411ee0245">convertSurfacePathWithEndsToMeshContour</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                                                                          <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a>&amp; start, </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                                                                          <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceMR.html#a7798ef4dfda44362083b0aa66a45d6a3">SurfacePath</a>&amp; surfacePath, </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                                                                          <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a>&amp; <a class="code hl_function" href="group__BasicGroup.html#gab900ba901f90bfe11c4580814af4fbf6">end</a> );</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>[[nodiscard]]</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#ga9d5cd0e3c54003e08c1884a7895b3e74">  165</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">OneMeshContours</a> <a class="code hl_function" href="group__BooleanGroup.html#ga9d5cd0e3c54003e08c1884a7895b3e74">convertSurfacePathsToMeshContours</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> std::vector&lt;SurfacePath&gt;&amp; surfacePaths );</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="foldopen" id="foldopen00169" data-start="{" data-end="};">
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="structMR_1_1NewEdgesMap.html">  169</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1NewEdgesMap.html">NewEdgesMap</a></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>{</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="structMR_1_1NewEdgesMap.html#a3af4a8bfbe6579dc273d0b9f368f77aa">  173</a></span>    UndirectedEdgeBitSet <a class="code hl_variable" href="structMR_1_1NewEdgesMap.html#a3af4a8bfbe6579dc273d0b9f368f77aa">splitEdges</a>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="structMR_1_1NewEdgesMap.html#a1d44ed6247b64a9007baa4bbbf2903aa">  178</a></span>    <a class="code hl_typedef" href="namespaceMR.html#af8ad9e1b05a45987a3075d43bf345d68">HashMap&lt;UndirectedEdgeId, int&gt;</a> <a class="code hl_variable" href="structMR_1_1NewEdgesMap.html#a1d44ed6247b64a9007baa4bbbf2903aa">map</a>;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>};</div>
+</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keyword">struct </span><a class="code hl_struct" href="structMR_1_1CutMeshParameters.html">CutMeshParameters</a></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>{</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="structMR_1_1CutMeshParameters.html#a3aaef62dde9c7e4727195071089e409f">  193</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1SortIntersectionsData.html">SortIntersectionsData</a>* <a class="code hl_variable" href="structMR_1_1CutMeshParameters.html#a3aaef62dde9c7e4727195071089e409f">sortData</a>{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="structMR_1_1CutMeshParameters.html#a75222f670fe00aaef7a945b8ccbb3ea9">  195</a></span>    FaceMap* <a class="code hl_variable" href="structMR_1_1CutMeshParameters.html#a75222f670fe00aaef7a945b8ccbb3ea9">new2OldMap</a>{<span class="keyword">nullptr</span>};</div>
+<div class="foldopen" id="foldopen00200" data-start="{" data-end="};">
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33">  200</a></span>    <span class="keyword">enum class</span> <a class="code hl_enumeration" href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33">ForceFill</a></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <a class="code hl_variable" href="structMR_1_1CutMeshParameters.html#a4c3c99dc26d25d555e9ebf6c6dfc5cbf">None</a>, <span class="comment">//&lt; if bad faces occur does not fill anything</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <a class="code hl_enumvalue" href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33a0c6ad70beb3a7e76c3fc7adab7c46acc">Good</a>, <span class="comment">//&lt; fills all faces except bad ones</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <a class="code hl_enumvalue" href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33ab1c94ca2fbc3e78fc30069c8d0f01680">All</a>   <span class="comment">//&lt; fills all faces with bad ones, but on bad faces triangulation can also be bad (may have self-intersections or tunnels)</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno"><a class="line" href="structMR_1_1CutMeshParameters.html#a4c3c99dc26d25d555e9ebf6c6dfc5cbf">  205</a></span>    } forceFillMode{ <a class="code hl_enumvalue" href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33a6adf97f83acf6453d4a6a4b1070f3754">ForceFill::None</a> };</div>
+</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="structMR_1_1CutMeshParameters.html#ae4b1e4cc599311ec4eaa5e0d7f90518b">  208</a></span>    <a class="code hl_struct" href="structMR_1_1NewEdgesMap.html">NewEdgesMap</a>* <a class="code hl_variable" href="structMR_1_1CutMeshParameters.html#ae4b1e4cc599311ec4eaa5e0d7f90518b">new2oldEdgesMap</a>{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>};</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="keyword">struct </span>CutMeshResult</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>{</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="structMR_1_1CutMeshResult.html#a5fd92baa79aac5e503e3310ab91fb400">  218</a></span>    std::vector&lt;EdgePath&gt; <a class="code hl_variable" href="structMR_1_1CutMeshResult.html#a5fd92baa79aac5e503e3310ab91fb400">resultCut</a>;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="structMR_1_1CutMeshResult.html#acc676bb755e4af3c177664745a989954">  221</a></span>    FaceBitSet <a class="code hl_variable" href="structMR_1_1CutMeshResult.html#acc676bb755e4af3c177664745a989954">fbsWithCountourIntersections</a>;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>};</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="group__BooleanGroup.html#gafb1acfb7ea34c1828a3f0e9b415c6dcc">  240</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_struct" href="structMR_1_1CutMeshResult.html">CutMeshResult</a> <a class="code hl_function" href="group__BooleanGroup.html#gafb1acfb7ea34c1828a3f0e9b415c6dcc">cutMesh</a>( <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> <a class="code hl_typedef" href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">OneMeshContours</a>&amp; contours, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1CutMeshParameters.html">CutMeshParameters</a>&amp; params = {} );</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="namespaceMR.html#a634c3caa2efb7688c1bfa187112c6b99">  247</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected&lt;FaceBitSet&gt;</a> <a class="code hl_function" href="namespaceMR.html#a634c3caa2efb7688c1bfa187112c6b99">cutMeshByContour</a>( <a class="code hl_struct" href="structMR_1_1Mesh.html">Mesh</a>&amp; mesh, <span class="keyword">const</span> <a class="code hl_typedef" href="namespaceMR.html#add5a74bcec7c4de3a40927cf2956e5e1">Contour3f</a>&amp; contour, <span class="keyword">const</span> AffineXf3f&amp; xf = {} );</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>} <span class="comment">//namespace MR</span></div>
+<div class="ttc" id="aMRAffineXf3_8h_html"><div class="ttname"><a href="MRAffineXf3_8h.html">MRAffineXf3.h</a></div></div>
+<div class="ttc" id="aMRExtractIsolines_8h_html"><div class="ttname"><a href="MRExtractIsolines_8h.html">MRExtractIsolines.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRBitSet_8h_html"><div class="ttname"><a href="MRMesh_2MRBitSet_8h.html">MRBitSet.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRId_8h_html"><div class="ttname"><a href="MRMesh_2MRId_8h.html">MRId.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRIntersectionContour_8h_html"><div class="ttname"><a href="MRMesh_2MRIntersectionContour_8h.html">MRIntersectionContour.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRMeshCollidePrecise_8h_html"><div class="ttname"><a href="MRMesh_2MRMeshCollidePrecise_8h.html">MRMeshCollidePrecise.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRMeshFwd_8h_html_a08ff09fd7e75c029b08cc255b0734300"><div class="ttname"><a href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a></div><div class="ttdeci">#define MRMESH_API</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:79</div></div>
+<div class="ttc" id="aMRMesh_2MRVector3_8h_html"><div class="ttname"><a href="MRMesh_2MRVector3_8h.html">MRVector3.h</a></div></div>
+<div class="ttc" id="aMRSurfacePath_8h_html"><div class="ttname"><a href="MRSurfacePath_8h.html">MRSurfacePath.h</a></div></div>
+<div class="ttc" id="agroup__BasicGroup_html_gab900ba901f90bfe11c4580814af4fbf6"><div class="ttname"><a href="group__BasicGroup.html#gab900ba901f90bfe11c4580814af4fbf6">MR::end</a></div><div class="ttdeci">MR_BIND_IGNORE auto end(const BitSet &amp;)</div><div class="ttdef"><b>Definition</b> MRMesh/MRBitSet.h:297</div></div>
+<div class="ttc" id="agroup__BooleanGroup_html_ga33e04ff2f620e99f7bcd23080433c39f"><div class="ttname"><a href="group__BooleanGroup.html#ga33e04ff2f620e99f7bcd23080433c39f">MR::convertMeshTriPointsToMeshContour</a></div><div class="ttdeci">MR_BIND_IGNORE MRMESH_API Expected&lt; OneMeshContour &gt; convertMeshTriPointsToMeshContour(const Mesh &amp;mesh, const std::vector&lt; MeshTriPoint &gt; &amp;surfaceLine, MeshTriPointsConnector connectorFn, std::vector&lt; int &gt; *pivotIndices=nullptr)</div><div class="ttdoc">Makes continuous contour by mesh tri points, if first and last meshTriPoint is the same,...</div></div>
+<div class="ttc" id="agroup__BooleanGroup_html_ga4415eacd7a732188919def7411ee0245"><div class="ttname"><a href="group__BooleanGroup.html#ga4415eacd7a732188919def7411ee0245">MR::convertSurfacePathWithEndsToMeshContour</a></div><div class="ttdeci">MRMESH_API OneMeshContour convertSurfacePathWithEndsToMeshContour(const Mesh &amp;mesh, const MeshTriPoint &amp;start, const SurfacePath &amp;surfacePath, const MeshTriPoint &amp;end)</div><div class="ttdoc">Converts SurfacePath to OneMeshContours.</div></div>
+<div class="ttc" id="agroup__BooleanGroup_html_ga698235aeb90b1a947f95fa76eeb78ff3"><div class="ttname"><a href="group__BooleanGroup.html#ga698235aeb90b1a947f95fa76eeb78ff3">MR::convertMeshTriPointsToClosedContour</a></div><div class="ttdeci">MRMESH_API Expected&lt; OneMeshContour &gt; convertMeshTriPointsToClosedContour(const Mesh &amp;mesh, const std::vector&lt; MeshTriPoint &gt; &amp;surfaceLine, SearchPathSettings searchSettings={}, std::vector&lt; int &gt; *pivotIndices=nullptr)</div><div class="ttdoc">Makes closed continuous contour by mesh tri points, note that first and last meshTriPoint should not ...</div></div>
+<div class="ttc" id="agroup__BooleanGroup_html_ga9d5cd0e3c54003e08c1884a7895b3e74"><div class="ttname"><a href="group__BooleanGroup.html#ga9d5cd0e3c54003e08c1884a7895b3e74">MR::convertSurfacePathsToMeshContours</a></div><div class="ttdeci">MRMESH_API OneMeshContours convertSurfacePathsToMeshContours(const Mesh &amp;mesh, const std::vector&lt; SurfacePath &gt; &amp;surfacePaths)</div><div class="ttdoc">Converts SurfacePaths to OneMeshContours.</div></div>
+<div class="ttc" id="agroup__BooleanGroup_html_ga9ecf19b8a704c505e8026abe7e64e38a"><div class="ttname"><a href="group__BooleanGroup.html#ga9ecf19b8a704c505e8026abe7e64e38a">MR::OneMeshContours</a></div><div class="ttdeci">std::vector&lt; OneMeshContour &gt; OneMeshContours</div><div class="ttdoc">Special data type for MR::cutMesh.</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:49</div></div>
+<div class="ttc" id="agroup__BooleanGroup_html_gafb1acfb7ea34c1828a3f0e9b415c6dcc"><div class="ttname"><a href="group__BooleanGroup.html#gafb1acfb7ea34c1828a3f0e9b415c6dcc">MR::cutMesh</a></div><div class="ttdeci">MRMESH_API CutMeshResult cutMesh(Mesh &amp;mesh, const OneMeshContours &amp;contours, const CutMeshParameters &amp;params={})</div><div class="ttdoc">Cuts mesh by given contours.</div></div>
+<div class="ttc" id="agroup__BooleanGroup_html_gafe85b81b6d40ee16ccd3e12919143c43"><div class="ttname"><a href="group__BooleanGroup.html#gafe85b81b6d40ee16ccd3e12919143c43">MR::convertMeshTriPointsSurfaceOffsetToMeshContours</a></div><div class="ttdeci">MRMESH_API Expected&lt; OneMeshContours &gt; convertMeshTriPointsSurfaceOffsetToMeshContours(const Mesh &amp;mesh, const std::vector&lt; MeshTriPoint &gt; &amp;surfaceLine, float offset, SearchPathSettings searchSettings={})</div><div class="ttdoc">Makes continuous contour by iso-line from mesh tri points, if first and last meshTriPoint is the same...</div></div>
+<div class="ttc" id="agroup__SurfacePathSubgroup_html_ga0d52c069a53aab9d22c0f2c4e3f262a2"><div class="ttname"><a href="group__SurfacePathSubgroup.html#ga0d52c069a53aab9d22c0f2c4e3f262a2">MR::GeodesicPathApprox</a></div><div class="ttdeci">GeodesicPathApprox</div><div class="ttdoc">the algorithm to compute approximately geodesic path</div><div class="ttdef"><b>Definition</b> MRSurfacePath.h:41</div></div>
+<div class="ttc" id="agroup__SurfacePathSubgroup_html_gga0d52c069a53aab9d22c0f2c4e3f262a2aa9132a8a9b3c0d8c70e577b23e01e70d"><div class="ttname"><a href="group__SurfacePathSubgroup.html#gga0d52c069a53aab9d22c0f2c4e3f262a2aa9132a8a9b3c0d8c70e577b23e01e70d">MR::GeodesicPathApprox::DijkstraAStar</a></div><div class="ttdeci">@ DijkstraAStar</div><div class="ttdoc">compute edge-only path using A*-search algorithm</div></div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="namespaceMR.html">MR</a></div></div>
+<div class="ttc" id="anamespaceMR_html_a217b7a3f4fc9168e09f3d423beb790e5"><div class="ttname"><a href="namespaceMR.html#a217b7a3f4fc9168e09f3d423beb790e5">MR::MeshTriPointsConnector</a></div><div class="ttdeci">std::function&lt; Expected&lt; SurfacePath &gt;(const MeshTriPoint &amp;start, const MeshTriPoint &amp;end, int startIndex, int endIndex)&gt; MeshTriPointsConnector</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:72</div></div>
+<div class="ttc" id="anamespaceMR_html_a4123fa411b7305bb9172a398b8cc3c51"><div class="ttname"><a href="namespaceMR.html#a4123fa411b7305bb9172a398b8cc3c51">MR::subdivideLoneContours</a></div><div class="ttdeci">MRMESH_API void subdivideLoneContours(Mesh &amp;mesh, const OneMeshContours &amp;contours, FaceHashMap *new2oldMap=nullptr)</div></div>
+<div class="ttc" id="anamespaceMR_html_a4484992ff522ddc03cd8234b7b7be226"><div class="ttname"><a href="namespaceMR.html#a4484992ff522ddc03cd8234b7b7be226">MR::extractMeshContours</a></div><div class="ttdeci">MRMESH_API Contours3f extractMeshContours(const OneMeshContours &amp;meshContours)</div></div>
+<div class="ttc" id="anamespaceMR_html_a634c3caa2efb7688c1bfa187112c6b99"><div class="ttname"><a href="namespaceMR.html#a634c3caa2efb7688c1bfa187112c6b99">MR::cutMeshByContour</a></div><div class="ttdeci">MRMESH_API Expected&lt; FaceBitSet &gt; cutMeshByContour(Mesh &amp;mesh, const Contour3f &amp;contour, const AffineXf3f &amp;xf={})</div></div>
+<div class="ttc" id="anamespaceMR_html_a6d7483b6adbc485e9c9b52eb09cb7735"><div class="ttname"><a href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">MR::Expected</a></div><div class="ttdeci">tl::expected&lt; T, E &gt; Expected</div><div class="ttdef"><b>Definition</b> MRExpected.h:59</div></div>
+<div class="ttc" id="anamespaceMR_html_a7798ef4dfda44362083b0aa66a45d6a3"><div class="ttname"><a href="namespaceMR.html#a7798ef4dfda44362083b0aa66a45d6a3">MR::SurfacePath</a></div><div class="ttdeci">std::vector&lt; MeshEdgePoint &gt; SurfacePath</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:404</div></div>
+<div class="ttc" id="anamespaceMR_html_a93482f559c684be16c718d5acd291d3e"><div class="ttname"><a href="namespaceMR.html#a93482f559c684be16c718d5acd291d3e">MR::FaceHashMap</a></div><div class="ttdeci">HashMap&lt; FaceId, FaceId &gt; FaceHashMap</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:520</div></div>
+<div class="ttc" id="anamespaceMR_html_a9f26ad2470dbd62255be7fc1cab2b503"><div class="ttname"><a href="namespaceMR.html#a9f26ad2470dbd62255be7fc1cab2b503">MR::ContinuousContours</a></div><div class="ttdeci">std::vector&lt; ContinuousContour &gt; ContinuousContours</div><div class="ttdef"><b>Definition</b> MRMesh/MRIntersectionContour.h:18</div></div>
+<div class="ttc" id="anamespaceMR_html_ab81d3ad87ff9cd57deee77336ddf83e1"><div class="ttname"><a href="namespaceMR.html#ab81d3ad87ff9cd57deee77336ddf83e1">MR::ConvertToIntVector</a></div><div class="ttdeci">std::function&lt; Vector3i(const Vector3f &amp;)&gt; ConvertToIntVector</div><div class="ttdoc">float-to-int coordinate converter</div><div class="ttdef"><b>Definition</b> MRMesh/MRPrecisePredicates3.h:47</div></div>
+<div class="ttc" id="anamespaceMR_html_ac93791b17f5bb1ff4a6a7e7f51a7abc9"><div class="ttname"><a href="namespaceMR.html#ac93791b17f5bb1ff4a6a7e7f51a7abc9">MR::Contours3f</a></div><div class="ttdeci">Contours3&lt; float &gt; Contours3f</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:318</div></div>
+<div class="ttc" id="anamespaceMR_html_add5a74bcec7c4de3a40927cf2956e5e1"><div class="ttname"><a href="namespaceMR.html#add5a74bcec7c4de3a40927cf2956e5e1">MR::Contour3f</a></div><div class="ttdeci">Contour3&lt; float &gt; Contour3f</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:310</div></div>
+<div class="ttc" id="anamespaceMR_html_ae875a7151ea2bd715ce90d183884bb1b"><div class="ttname"><a href="namespaceMR.html#ae875a7151ea2bd715ce90d183884bb1b">MR::getOneMeshSelfIntersectionContours</a></div><div class="ttdeci">MRMESH_API OneMeshContours getOneMeshSelfIntersectionContours(const Mesh &amp;mesh, const ContinuousContours &amp;contours, const CoordinateConverters &amp;converters, const AffineXf3f *rigidB2A=nullptr)</div></div>
+<div class="ttc" id="anamespaceMR_html_af8ad9e1b05a45987a3075d43bf345d68"><div class="ttname"><a href="namespaceMR.html#af8ad9e1b05a45987a3075d43bf345d68">MR::HashMap</a></div><div class="ttdeci">phmap::flat_hash_map&lt; K, V, Hash, Eq &gt; HashMap</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:516</div></div>
+<div class="ttc" id="anamespaceMR_html_afb5aa7d969d789218ae67365158331cb"><div class="ttname"><a href="namespaceMR.html#afb5aa7d969d789218ae67365158331cb">MR::getOneMeshIntersectionContours</a></div><div class="ttdeci">MRMESH_API OneMeshContours getOneMeshIntersectionContours(const Mesh &amp;meshA, const Mesh &amp;meshB, const ContinuousContours &amp;contours, bool getMeshAIntersections, const CoordinateConverters &amp;converters, const AffineXf3f *rigidB2A=nullptr)</div></div>
+<div class="ttc" id="astructMR_1_1CoordinateConverters_html"><div class="ttname"><a href="structMR_1_1CoordinateConverters.html">MR::CoordinateConverters</a></div><div class="ttdoc">this struct contains coordinate converters float-int-float</div><div class="ttdef"><b>Definition</b> MRMesh/MRPrecisePredicates3.h:52</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html">MR::CutMeshParameters</a></div><div class="ttdoc">Parameters of MR::cutMesh.</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_a3aaef62dde9c7e4727195071089e409f"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#a3aaef62dde9c7e4727195071089e409f">MR::CutMeshParameters::sortData</a></div><div class="ttdeci">const SortIntersectionsData * sortData</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:193</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_a4c3c99dc26d25d555e9ebf6c6dfc5cbf"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#a4c3c99dc26d25d555e9ebf6c6dfc5cbf">MR::CutMeshParameters::None</a></div><div class="ttdeci">enum MR::CutMeshParameters::ForceFill None</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_a75222f670fe00aaef7a945b8ccbb3ea9"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#a75222f670fe00aaef7a945b8ccbb3ea9">MR::CutMeshParameters::new2OldMap</a></div><div class="ttdeci">FaceMap * new2OldMap</div><div class="ttdoc">This is optional output - map from newly generated faces to old faces (N-1)</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:195</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_ae4b1e4cc599311ec4eaa5e0d7f90518b"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#ae4b1e4cc599311ec4eaa5e0d7f90518b">MR::CutMeshParameters::new2oldEdgesMap</a></div><div class="ttdeci">NewEdgesMap * new2oldEdgesMap</div><div class="ttdoc">Optional output map for each new edge introduced after cut maps edge from old topology or old face.</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:208</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_ae51d141aa40e0f91506f4921b6797a33"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33">MR::CutMeshParameters::ForceFill</a></div><div class="ttdeci">ForceFill</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:201</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_ae51d141aa40e0f91506f4921b6797a33a0c6ad70beb3a7e76c3fc7adab7c46acc"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33a0c6ad70beb3a7e76c3fc7adab7c46acc">MR::CutMeshParameters::ForceFill::Good</a></div><div class="ttdeci">@ Good</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_ae51d141aa40e0f91506f4921b6797a33a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33a6adf97f83acf6453d4a6a4b1070f3754">MR::CutMeshParameters::ForceFill::None</a></div><div class="ttdeci">@ None</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshParameters_html_ae51d141aa40e0f91506f4921b6797a33ab1c94ca2fbc3e78fc30069c8d0f01680"><div class="ttname"><a href="structMR_1_1CutMeshParameters.html#ae51d141aa40e0f91506f4921b6797a33ab1c94ca2fbc3e78fc30069c8d0f01680">MR::CutMeshParameters::ForceFill::All</a></div><div class="ttdeci">@ All</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshResult_html"><div class="ttname"><a href="structMR_1_1CutMeshResult.html">MR::CutMeshResult</a></div></div>
+<div class="ttc" id="astructMR_1_1CutMeshResult_html_a5fd92baa79aac5e503e3310ab91fb400"><div class="ttname"><a href="structMR_1_1CutMeshResult.html#a5fd92baa79aac5e503e3310ab91fb400">MR::CutMeshResult::resultCut</a></div><div class="ttdeci">std::vector&lt; EdgePath &gt; resultCut</div><div class="ttdoc">Paths of new edges on mesh, they represent same contours as input, but already cut.</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:218</div></div>
+<div class="ttc" id="astructMR_1_1CutMeshResult_html_acc676bb755e4af3c177664745a989954"><div class="ttname"><a href="structMR_1_1CutMeshResult.html#acc676bb755e4af3c177664745a989954">MR::CutMeshResult::fbsWithCountourIntersections</a></div><div class="ttdeci">FaceBitSet fbsWithCountourIntersections</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:221</div></div>
+<div class="ttc" id="astructMR_1_1MeshTriPoint_html"><div class="ttname"><a href="structMR_1_1MeshTriPoint.html">MR::MeshTriPoint</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTriPoint.h:23</div></div>
+<div class="ttc" id="astructMR_1_1Mesh_html"><div class="ttname"><a href="structMR_1_1Mesh.html">MR::Mesh</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMesh.h:22</div></div>
+<div class="ttc" id="astructMR_1_1NewEdgesMap_html"><div class="ttname"><a href="structMR_1_1NewEdgesMap.html">MR::NewEdgesMap</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:170</div></div>
+<div class="ttc" id="astructMR_1_1NewEdgesMap_html_a1d44ed6247b64a9007baa4bbbf2903aa"><div class="ttname"><a href="structMR_1_1NewEdgesMap.html#a1d44ed6247b64a9007baa4bbbf2903aa">MR::NewEdgesMap::map</a></div><div class="ttdeci">HashMap&lt; UndirectedEdgeId, int &gt; map</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:178</div></div>
+<div class="ttc" id="astructMR_1_1NewEdgesMap_html_a3af4a8bfbe6579dc273d0b9f368f77aa"><div class="ttname"><a href="structMR_1_1NewEdgesMap.html#a3af4a8bfbe6579dc273d0b9f368f77aa">MR::NewEdgesMap::splitEdges</a></div><div class="ttdeci">UndirectedEdgeBitSet splitEdges</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:173</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshContour_html"><div class="ttname"><a href="structMR_1_1OneMeshContour.html">MR::OneMeshContour</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:38</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshContour_html_a6e1a28642564323f19cdf9f04319d5ef"><div class="ttname"><a href="structMR_1_1OneMeshContour.html#a6e1a28642564323f19cdf9f04319d5ef">MR::OneMeshContour::intersections</a></div><div class="ttdeci">std::vector&lt; OneMeshIntersection &gt; intersections</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:39</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshContour_html_ae2a61041d982700ef3d887aedc03a320"><div class="ttname"><a href="structMR_1_1OneMeshContour.html#ae2a61041d982700ef3d887aedc03a320">MR::OneMeshContour::closed</a></div><div class="ttdeci">bool closed</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:40</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshIntersection_html"><div class="ttname"><a href="structMR_1_1OneMeshIntersection.html">MR::OneMeshIntersection</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:29</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshIntersection_html_aa8be4cdd05697b725ee7e1ae05833f82"><div class="ttname"><a href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82">MR::OneMeshIntersection::VariantIndex</a></div><div class="ttdeci">VariantIndex</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:30</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshIntersection_html_aa8be4cdd05697b725ee7e1ae05833f82a2f7402dedcbccbb66d152940301cab25"><div class="ttname"><a href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82a2f7402dedcbccbb66d152940301cab25">MR::OneMeshIntersection::Edge</a></div><div class="ttdeci">@ Edge</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:30</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshIntersection_html_aa8be4cdd05697b725ee7e1ae05833f82a807d0c11c8a7da0fb426f9e34901f485"><div class="ttname"><a href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82a807d0c11c8a7da0fb426f9e34901f485">MR::OneMeshIntersection::Vertex</a></div><div class="ttdeci">@ Vertex</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:30</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshIntersection_html_aa8be4cdd05697b725ee7e1ae05833f82a94b51ce1acd528ad113406c334425167"><div class="ttname"><a href="structMR_1_1OneMeshIntersection.html#aa8be4cdd05697b725ee7e1ae05833f82a94b51ce1acd528ad113406c334425167">MR::OneMeshIntersection::Face</a></div><div class="ttdeci">@ Face</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:30</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshIntersection_html_ab42f0bd750d88e66c17bce92a1fe733d"><div class="ttname"><a href="structMR_1_1OneMeshIntersection.html#ab42f0bd750d88e66c17bce92a1fe733d">MR::OneMeshIntersection::primitiveId</a></div><div class="ttdeci">std::variant&lt; FaceId, EdgeId, VertId &gt; primitiveId</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:31</div></div>
+<div class="ttc" id="astructMR_1_1OneMeshIntersection_html_ab8b3439c1559deb1b278b9d5c8c2c14d"><div class="ttname"><a href="structMR_1_1OneMeshIntersection.html#ab8b3439c1559deb1b278b9d5c8c2c14d">MR::OneMeshIntersection::coordinate</a></div><div class="ttdeci">Vector3f coordinate</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:33</div></div>
+<div class="ttc" id="astructMR_1_1SearchPathSettings_html"><div class="ttname"><a href="structMR_1_1SearchPathSettings.html">MR::SearchPathSettings</a></div><div class="ttdoc">Geo path search settings.</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:86</div></div>
+<div class="ttc" id="astructMR_1_1SearchPathSettings_html_a73e36cb0460a39c6bf496d2038aced39"><div class="ttname"><a href="structMR_1_1SearchPathSettings.html#a73e36cb0460a39c6bf496d2038aced39">MR::SearchPathSettings::geodesicPathApprox</a></div><div class="ttdeci">GeodesicPathApprox geodesicPathApprox</div><div class="ttdoc">the algorithm to compute approximately geodesic path</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:87</div></div>
+<div class="ttc" id="astructMR_1_1SearchPathSettings_html_aa176e79c6812cb52b0c1dabdaa2e61c3"><div class="ttname"><a href="structMR_1_1SearchPathSettings.html#aa176e79c6812cb52b0c1dabdaa2e61c3">MR::SearchPathSettings::maxReduceIters</a></div><div class="ttdeci">int maxReduceIters</div><div class="ttdoc">the maximum number of iterations to reduce approximate path length and convert it in geodesic path</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:88</div></div>
+<div class="ttc" id="astructMR_1_1SortIntersectionsData_html"><div class="ttname"><a href="structMR_1_1SortIntersectionsData.html">MR::SortIntersectionsData</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:18</div></div>
+<div class="ttc" id="astructMR_1_1SortIntersectionsData_html_a24cce95182673d88059c5d9a38905fc0"><div class="ttname"><a href="structMR_1_1SortIntersectionsData.html#a24cce95182673d88059c5d9a38905fc0">MR::SortIntersectionsData::rigidB2A</a></div><div class="ttdeci">const AffineXf3f * rigidB2A</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:22</div></div>
+<div class="ttc" id="astructMR_1_1SortIntersectionsData_html_a3e022423fc25738632598f90c2caf5b1"><div class="ttname"><a href="structMR_1_1SortIntersectionsData.html#a3e022423fc25738632598f90c2caf5b1">MR::SortIntersectionsData::contours</a></div><div class="ttdeci">const ContinuousContours &amp; contours</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:20</div></div>
+<div class="ttc" id="astructMR_1_1SortIntersectionsData_html_a4799d62c8691f94b44fc3c7f3a77bbe4"><div class="ttname"><a href="structMR_1_1SortIntersectionsData.html#a4799d62c8691f94b44fc3c7f3a77bbe4">MR::SortIntersectionsData::converter</a></div><div class="ttdeci">ConvertToIntVector converter</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:21</div></div>
+<div class="ttc" id="astructMR_1_1SortIntersectionsData_html_a4ffc178d247321fb6150846084fd616a"><div class="ttname"><a href="structMR_1_1SortIntersectionsData.html#a4ffc178d247321fb6150846084fd616a">MR::SortIntersectionsData::meshAVertsNum</a></div><div class="ttdeci">size_t meshAVertsNum</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:23</div></div>
+<div class="ttc" id="astructMR_1_1SortIntersectionsData_html_a64cd77d679e163bbff985d79336ae2c4"><div class="ttname"><a href="structMR_1_1SortIntersectionsData.html#a64cd77d679e163bbff985d79336ae2c4">MR::SortIntersectionsData::isOtherA</a></div><div class="ttdeci">bool isOtherA</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:24</div></div>
+<div class="ttc" id="astructMR_1_1SortIntersectionsData_html_ac190f44f37a1e2b9ece5d869fe02015d"><div class="ttname"><a href="structMR_1_1SortIntersectionsData.html#ac190f44f37a1e2b9ece5d869fe02015d">MR::SortIntersectionsData::otherMesh</a></div><div class="ttdeci">const Mesh &amp; otherMesh</div><div class="ttdef"><b>Definition</b> MRMesh/MRContoursCut.h:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRMesh_2MRContoursCut_8h.html">MRContoursCut.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,705 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.PointsSave Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1PointsSave.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classmrmeshpy_1_1PointsSave-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.PointsSave Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1PointsSave_1_1CtmSavePointsOptions.html">CtmSavePointsOptions</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:afb0049a4222327c7c0cc154ef1172a8f" id="r_afb0049a4222327c7c0cc154ef1172a8f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb0049a4222327c7c0cc154ef1172a8f">toAnySupportedFormat</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, os.PathLike|str|bytes file, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:afb0049a4222327c7c0cc154ef1172a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dc3e9e5b9f7a422129a2bbe931bd221" id="r_a7dc3e9e5b9f7a422129a2bbe931bd221"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dc3e9e5b9f7a422129a2bbe931bd221">toAnySupportedFormat</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, str extension, typing.Any out, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:a7dc3e9e5b9f7a422129a2bbe931bd221"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd05334bf330cfe64e3d906e4ea49d0" id="r_aafd05334bf330cfe64e3d906e4ea49d0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafd05334bf330cfe64e3d906e4ea49d0">toAsc</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, os.PathLike|str|bytes file, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:aafd05334bf330cfe64e3d906e4ea49d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e23348dbe572d2299751677b1629dd2" id="r_a4e23348dbe572d2299751677b1629dd2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e23348dbe572d2299751677b1629dd2">toAsc</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, typing.Any out, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:a4e23348dbe572d2299751677b1629dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93737fa7b229b80ab785dd6cc7eab23f" id="r_a93737fa7b229b80ab785dd6cc7eab23f"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93737fa7b229b80ab785dd6cc7eab23f">toCtm</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, os.PathLike|str|bytes file, <a class="el" href="classmrmeshpy_1_1PointsSave_1_1CtmSavePointsOptions.html">PointsSave.CtmSavePointsOptions</a> options)</td></tr>
+<tr class="separator:a93737fa7b229b80ab785dd6cc7eab23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8c3d1515ccd4eed683d3c695528c4d" id="r_acd8c3d1515ccd4eed683d3c695528c4d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd8c3d1515ccd4eed683d3c695528c4d">toCtm</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, os.PathLike|str|bytes file, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:acd8c3d1515ccd4eed683d3c695528c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e2c023ecfac37431fbbc78226902ce" id="r_ab6e2c023ecfac37431fbbc78226902ce"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6e2c023ecfac37431fbbc78226902ce">toCtm</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, typing.Any out, <a class="el" href="classmrmeshpy_1_1PointsSave_1_1CtmSavePointsOptions.html">PointsSave.CtmSavePointsOptions</a> options)</td></tr>
+<tr class="separator:ab6e2c023ecfac37431fbbc78226902ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b7738f7fdb9008e6c28cae99df4f024" id="r_a8b7738f7fdb9008e6c28cae99df4f024"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b7738f7fdb9008e6c28cae99df4f024">toCtm</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, typing.Any out, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:a8b7738f7fdb9008e6c28cae99df4f024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a56ca6868ef21f1ab6ba05ebd13089d" id="r_a1a56ca6868ef21f1ab6ba05ebd13089d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a56ca6868ef21f1ab6ba05ebd13089d">toPly</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, os.PathLike|str|bytes file, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:a1a56ca6868ef21f1ab6ba05ebd13089d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0fdc1387f63f7e2631559422dcade9b" id="r_aa0fdc1387f63f7e2631559422dcade9b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0fdc1387f63f7e2631559422dcade9b">toPly</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, typing.Any out, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:aa0fdc1387f63f7e2631559422dcade9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80aa6d9050aaefc5d2ecbc1c4226d137" id="r_a80aa6d9050aaefc5d2ecbc1c4226d137"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80aa6d9050aaefc5d2ecbc1c4226d137">toXyz</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, os.PathLike|str|bytes file, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:a80aa6d9050aaefc5d2ecbc1c4226d137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c13d8636effa0dd38a2f760ccc12ecf" id="r_a0c13d8636effa0dd38a2f760ccc12ecf"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c13d8636effa0dd38a2f760ccc12ecf">toXyz</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, typing.Any out, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:a0c13d8636effa0dd38a2f760ccc12ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46b471b79f39852e26e542552a7bc1b8" id="r_a46b471b79f39852e26e542552a7bc1b8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46b471b79f39852e26e542552a7bc1b8">toXyzn</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, os.PathLike|str|bytes file, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:a46b471b79f39852e26e542552a7bc1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae62d16a019ad6b5178abd62eff6c7a3c" id="r_ae62d16a019ad6b5178abd62eff6c7a3c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae62d16a019ad6b5178abd62eff6c7a3c">toXyzn</a> (<a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a> points, typing.Any out, <a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> settings='{}')</td></tr>
+<tr class="separator:ae62d16a019ad6b5178abd62eff6c7a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">This is a namespace.
+</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="afb0049a4222327c7c0cc154ef1172a8f" name="afb0049a4222327c7c0cc154ef1172a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb0049a4222327c7c0cc154ef1172a8f">&#9670;&#160;</a></span>toAnySupportedFormat() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toAnySupportedFormat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">os.PathLike | str | bytes</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">detects the format from file extension and save points to it
+</pre> 
+</div>
+</div>
+<a id="a7dc3e9e5b9f7a422129a2bbe931bd221" name="a7dc3e9e5b9f7a422129a2bbe931bd221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dc3e9e5b9f7a422129a2bbe931bd221">&#9670;&#160;</a></span>toAnySupportedFormat() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toAnySupportedFormat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str</td>          <td class="paramname"><span class="paramname"><em>extension</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">extension in `*.ext` format
+</pre> 
+</div>
+</div>
+<a id="aafd05334bf330cfe64e3d906e4ea49d0" name="aafd05334bf330cfe64e3d906e4ea49d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd05334bf330cfe64e3d906e4ea49d0">&#9670;&#160;</a></span>toAsc() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toAsc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">os.PathLike | str | bytes</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">save points with normals in .xyzn format, and save points without normals in .xyz format
+</pre> 
+</div>
+</div>
+<a id="a4e23348dbe572d2299751677b1629dd2" name="a4e23348dbe572d2299751677b1629dd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e23348dbe572d2299751677b1629dd2">&#9670;&#160;</a></span>toAsc() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toAsc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93737fa7b229b80ab785dd6cc7eab23f" name="a93737fa7b229b80ab785dd6cc7eab23f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93737fa7b229b80ab785dd6cc7eab23f">&#9670;&#160;</a></span>toCtm() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toCtm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">os.PathLike | str | bytes</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsSave_1_1CtmSavePointsOptions.html">PointsSave.CtmSavePointsOptions</a></td>          <td class="paramname"><span class="paramname"><em>options</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">saves in .ctm file
+</pre> 
+</div>
+</div>
+<a id="acd8c3d1515ccd4eed683d3c695528c4d" name="acd8c3d1515ccd4eed683d3c695528c4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8c3d1515ccd4eed683d3c695528c4d">&#9670;&#160;</a></span>toCtm() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toCtm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">os.PathLike | str | bytes</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6e2c023ecfac37431fbbc78226902ce" name="ab6e2c023ecfac37431fbbc78226902ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6e2c023ecfac37431fbbc78226902ce">&#9670;&#160;</a></span>toCtm() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toCtm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsSave_1_1CtmSavePointsOptions.html">PointsSave.CtmSavePointsOptions</a></td>          <td class="paramname"><span class="paramname"><em>options</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b7738f7fdb9008e6c28cae99df4f024" name="a8b7738f7fdb9008e6c28cae99df4f024"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b7738f7fdb9008e6c28cae99df4f024">&#9670;&#160;</a></span>toCtm() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toCtm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a56ca6868ef21f1ab6ba05ebd13089d" name="a1a56ca6868ef21f1ab6ba05ebd13089d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a56ca6868ef21f1ab6ba05ebd13089d">&#9670;&#160;</a></span>toPly() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toPly </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">os.PathLike | str | bytes</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">saves in .ply file
+</pre> 
+</div>
+</div>
+<a id="aa0fdc1387f63f7e2631559422dcade9b" name="aa0fdc1387f63f7e2631559422dcade9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0fdc1387f63f7e2631559422dcade9b">&#9670;&#160;</a></span>toPly() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toPly </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a80aa6d9050aaefc5d2ecbc1c4226d137" name="a80aa6d9050aaefc5d2ecbc1c4226d137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80aa6d9050aaefc5d2ecbc1c4226d137">&#9670;&#160;</a></span>toXyz() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toXyz </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">os.PathLike | str | bytes</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">save points without normals in textual .xyz file;
+each output line contains [x, y, z], where x, y, z are point coordinates
+</pre> 
+</div>
+</div>
+<a id="a0c13d8636effa0dd38a2f760ccc12ecf" name="a0c13d8636effa0dd38a2f760ccc12ecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c13d8636effa0dd38a2f760ccc12ecf">&#9670;&#160;</a></span>toXyz() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toXyz </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46b471b79f39852e26e542552a7bc1b8" name="a46b471b79f39852e26e542552a7bc1b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46b471b79f39852e26e542552a7bc1b8">&#9670;&#160;</a></span>toXyzn() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toXyzn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">os.PathLike | str | bytes</td>          <td class="paramname"><span class="paramname"><em>file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">save points with normals in textual .xyzn file;
+each output line contains [x, y, z, nx, ny, nz], where x, y, z are point coordinates and nx, ny, nz are the components of point normal
+</pre> 
+</div>
+</div>
+<a id="ae62d16a019ad6b5178abd62eff6c7a3c" name="ae62d16a019ad6b5178abd62eff6c7a3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae62d16a019ad6b5178abd62eff6c7a3c">&#9670;&#160;</a></span>toXyzn() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.PointsSave.toXyzn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointCloud.html">PointCloud</a></td>          <td class="paramname"><span class="paramname"><em>points</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Any</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1SaveSettings.html">SaveSettings</a> </td>          <td class="paramname"><span class="paramname"><em>settings</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1PointsSave.html">PointsSave</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

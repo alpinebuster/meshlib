@@ -1,0 +1,876 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.std_vector_PointsProjectionResult Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1std__vector__PointsProjectionResult.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1std__vector__PointsProjectionResult-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.std_vector_PointsProjectionResult Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ab5c573dcc83467880490ec70576e4c40" id="r_ab5c573dcc83467880490ec70576e4c40"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5c573dcc83467880490ec70576e4c40">__bool__</a> (self)</td></tr>
+<tr class="separator:ab5c573dcc83467880490ec70576e4c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8ce23c6c48ae7067e05f63c2925e52d" id="r_ae8ce23c6c48ae7067e05f63c2925e52d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8ce23c6c48ae7067e05f63c2925e52d">__contains__</a> (self, <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> x)</td></tr>
+<tr class="separator:ae8ce23c6c48ae7067e05f63c2925e52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a82811e6b4539f709c57ac52f32d59" id="r_a08a82811e6b4539f709c57ac52f32d59"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08a82811e6b4539f709c57ac52f32d59">__delitem__</a> (self, int arg0)</td></tr>
+<tr class="separator:a08a82811e6b4539f709c57ac52f32d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a4c2731af592c44631e1bcfeee226c" id="r_a84a4c2731af592c44631e1bcfeee226c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84a4c2731af592c44631e1bcfeee226c">__delitem__</a> (self, slice arg0)</td></tr>
+<tr class="separator:a84a4c2731af592c44631e1bcfeee226c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21550cfac269acc56966798938c44716" id="r_a21550cfac269acc56966798938c44716"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21550cfac269acc56966798938c44716">__eq__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a> arg0)</td></tr>
+<tr class="separator:a21550cfac269acc56966798938c44716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b6f857550baad41fb6e3b3322c9e6ac" id="r_a2b6f857550baad41fb6e3b3322c9e6ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b6f857550baad41fb6e3b3322c9e6ac">__getitem__</a> (self, slice s)</td></tr>
+<tr class="separator:a2b6f857550baad41fb6e3b3322c9e6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46b42891f340f09184da95eb031e4f30" id="r_a46b42891f340f09184da95eb031e4f30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46b42891f340f09184da95eb031e4f30">__getitem__</a> (self, int arg0)</td></tr>
+<tr class="separator:a46b42891f340f09184da95eb031e4f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0afbc2c1f55e6229b81233b0c57ee89" id="r_ab0afbc2c1f55e6229b81233b0c57ee89"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0afbc2c1f55e6229b81233b0c57ee89">__init__</a> (self)</td></tr>
+<tr class="separator:ab0afbc2c1f55e6229b81233b0c57ee89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada304a68c5927f82e3183e2ab2dc9320" id="r_ada304a68c5927f82e3183e2ab2dc9320"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada304a68c5927f82e3183e2ab2dc9320">__init__</a> (self, typing.Iterable arg0)</td></tr>
+<tr class="separator:ada304a68c5927f82e3183e2ab2dc9320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acea9d2e6ac434bcd433c8e0468be612c" id="r_acea9d2e6ac434bcd433c8e0468be612c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acea9d2e6ac434bcd433c8e0468be612c">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a> arg0)</td></tr>
+<tr class="separator:acea9d2e6ac434bcd433c8e0468be612c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd6a510251470547c19bee3dac8186e6" id="r_afd6a510251470547c19bee3dac8186e6"><td class="memItemLeft" align="right" valign="top">typing.Iterator[<a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a>]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd6a510251470547c19bee3dac8186e6">__iter__</a> (self)</td></tr>
+<tr class="separator:afd6a510251470547c19bee3dac8186e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab266936a1040fe1169ab93d35d59068a" id="r_ab266936a1040fe1169ab93d35d59068a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab266936a1040fe1169ab93d35d59068a">__len__</a> (self)</td></tr>
+<tr class="separator:ab266936a1040fe1169ab93d35d59068a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06faa60d1e16f2f8c48a6006216f0550" id="r_a06faa60d1e16f2f8c48a6006216f0550"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06faa60d1e16f2f8c48a6006216f0550">__ne__</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a> arg0)</td></tr>
+<tr class="separator:a06faa60d1e16f2f8c48a6006216f0550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef78907e680fd54711ec9bbbb5c9cc6a" id="r_aef78907e680fd54711ec9bbbb5c9cc6a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef78907e680fd54711ec9bbbb5c9cc6a">__setitem__</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> arg1)</td></tr>
+<tr class="separator:aef78907e680fd54711ec9bbbb5c9cc6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad43e452811a4ce4357b49440e32c489" id="r_aad43e452811a4ce4357b49440e32c489"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad43e452811a4ce4357b49440e32c489">__setitem__</a> (self, slice arg0, <a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a> arg1)</td></tr>
+<tr class="separator:aad43e452811a4ce4357b49440e32c489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a291c332d8e014ed9b7b12d6fec056d87" id="r_a291c332d8e014ed9b7b12d6fec056d87"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a291c332d8e014ed9b7b12d6fec056d87">append</a> (self, <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> x)</td></tr>
+<tr class="separator:a291c332d8e014ed9b7b12d6fec056d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca2ae0ba4dc66a3f58b0554980f2b36" id="r_a8ca2ae0ba4dc66a3f58b0554980f2b36"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ca2ae0ba4dc66a3f58b0554980f2b36">clear</a> (self)</td></tr>
+<tr class="separator:a8ca2ae0ba4dc66a3f58b0554980f2b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a722dbc00ab1d48fdbbeb587cb52c49ea" id="r_a722dbc00ab1d48fdbbeb587cb52c49ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a722dbc00ab1d48fdbbeb587cb52c49ea">count</a> (self, <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> x)</td></tr>
+<tr class="separator:a722dbc00ab1d48fdbbeb587cb52c49ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429843c0490126ac2cbd23e153f477bd" id="r_a429843c0490126ac2cbd23e153f477bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a429843c0490126ac2cbd23e153f477bd">data_pointer</a> (self)</td></tr>
+<tr class="separator:a429843c0490126ac2cbd23e153f477bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95099cb6a0332960fc1bed6d113f4dc5" id="r_a95099cb6a0332960fc1bed6d113f4dc5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95099cb6a0332960fc1bed6d113f4dc5">empty</a> (self)</td></tr>
+<tr class="separator:a95099cb6a0332960fc1bed6d113f4dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055ee60216f6cbda963b990726fe11cc" id="r_a055ee60216f6cbda963b990726fe11cc"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a055ee60216f6cbda963b990726fe11cc">extend</a> (self, <a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a> L)</td></tr>
+<tr class="separator:a055ee60216f6cbda963b990726fe11cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ee1f9fcb0b6b4e5a6a84245eb44c42c" id="r_a7ee1f9fcb0b6b4e5a6a84245eb44c42c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ee1f9fcb0b6b4e5a6a84245eb44c42c">extend</a> (self, typing.Iterable L)</td></tr>
+<tr class="separator:a7ee1f9fcb0b6b4e5a6a84245eb44c42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb20ec4f0d369e30e170ffdcb7e79cfb" id="r_aeb20ec4f0d369e30e170ffdcb7e79cfb"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb20ec4f0d369e30e170ffdcb7e79cfb">insert</a> (self, int i, <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> x)</td></tr>
+<tr class="separator:aeb20ec4f0d369e30e170ffdcb7e79cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d7647f31f90007926a144402cb400f" id="r_a90d7647f31f90007926a144402cb400f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90d7647f31f90007926a144402cb400f">pop</a> (self)</td></tr>
+<tr class="separator:a90d7647f31f90007926a144402cb400f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2660a49058e635434e584b19fe268b6" id="r_ae2660a49058e635434e584b19fe268b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2660a49058e635434e584b19fe268b6">pop</a> (self, int i)</td></tr>
+<tr class="separator:ae2660a49058e635434e584b19fe268b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ff6186e19469c2da988b7f4b0cf542e" id="r_a0ff6186e19469c2da988b7f4b0cf542e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ff6186e19469c2da988b7f4b0cf542e">remove</a> (self, <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> x)</td></tr>
+<tr class="separator:a0ff6186e19469c2da988b7f4b0cf542e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace8e1210a308a65a2d657a18b55d7f0b" id="r_ace8e1210a308a65a2d657a18b55d7f0b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace8e1210a308a65a2d657a18b55d7f0b">resize</a> (self, int arg0)</td></tr>
+<tr class="separator:ace8e1210a308a65a2d657a18b55d7f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a4237339854b26173d6f06182ee83dd" id="r_a9a4237339854b26173d6f06182ee83dd"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a4237339854b26173d6f06182ee83dd">resize</a> (self, int arg0, <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> arg1)</td></tr>
+<tr class="separator:a9a4237339854b26173d6f06182ee83dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b2f2e4ecacf2012b6431821ada56bbb" id="r_a5b2f2e4ecacf2012b6431821ada56bbb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b2f2e4ecacf2012b6431821ada56bbb">size</a> (self)</td></tr>
+<tr class="separator:a5b2f2e4ecacf2012b6431821ada56bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aea05b0fae2e846c8d16ae66ec0ec9127" id="r_aea05b0fae2e846c8d16ae66ec0ec9127"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea05b0fae2e846c8d16ae66ec0ec9127">element_type_byte_size</a> = 8</td></tr>
+<tr class="separator:aea05b0fae2e846c8d16ae66ec0ec9127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab0afbc2c1f55e6229b81233b0c57ee89" name="ab0afbc2c1f55e6229b81233b0c57ee89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0afbc2c1f55e6229b81233b0c57ee89">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada304a68c5927f82e3183e2ab2dc9320" name="ada304a68c5927f82e3183e2ab2dc9320"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada304a68c5927f82e3183e2ab2dc9320">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Iterable</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acea9d2e6ac434bcd433c8e0468be612c" name="acea9d2e6ac434bcd433c8e0468be612c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acea9d2e6ac434bcd433c8e0468be612c">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab5c573dcc83467880490ec70576e4c40" name="ab5c573dcc83467880490ec70576e4c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5c573dcc83467880490ec70576e4c40">&#9670;&#160;</a></span>__bool__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_PointsProjectionResult.__bool__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Check whether the list is nonempty
+</pre> 
+</div>
+</div>
+<a id="ae8ce23c6c48ae7067e05f63c2925e52d" name="ae8ce23c6c48ae7067e05f63c2925e52d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ce23c6c48ae7067e05f63c2925e52d">&#9670;&#160;</a></span>__contains__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_PointsProjectionResult.__contains__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return true the container contains ``x``
+</pre> 
+</div>
+</div>
+<a id="a08a82811e6b4539f709c57ac52f32d59" name="a08a82811e6b4539f709c57ac52f32d59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08a82811e6b4539f709c57ac52f32d59">&#9670;&#160;</a></span>__delitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.__delitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Delete the list elements at index ``i``
+</pre> 
+</div>
+</div>
+<a id="a84a4c2731af592c44631e1bcfeee226c" name="a84a4c2731af592c44631e1bcfeee226c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a4c2731af592c44631e1bcfeee226c">&#9670;&#160;</a></span>__delitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.__delitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Delete list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="a21550cfac269acc56966798938c44716" name="a21550cfac269acc56966798938c44716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21550cfac269acc56966798938c44716">&#9670;&#160;</a></span>__eq__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_PointsProjectionResult.__eq__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a46b42891f340f09184da95eb031e4f30" name="a46b42891f340f09184da95eb031e4f30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46b42891f340f09184da95eb031e4f30">&#9670;&#160;</a></span>__getitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> mrmeshpy.std_vector_PointsProjectionResult.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b6f857550baad41fb6e3b3322c9e6ac" name="a2b6f857550baad41fb6e3b3322c9e6ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b6f857550baad41fb6e3b3322c9e6ac">&#9670;&#160;</a></span>__getitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a> mrmeshpy.std_vector_PointsProjectionResult.__getitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>s</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Retrieve list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="afd6a510251470547c19bee3dac8186e6" name="afd6a510251470547c19bee3dac8186e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd6a510251470547c19bee3dac8186e6">&#9670;&#160;</a></span>__iter__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> typing.Iterator[<a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a>] mrmeshpy.std_vector_PointsProjectionResult.__iter__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab266936a1040fe1169ab93d35d59068a" name="ab266936a1040fe1169ab93d35d59068a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab266936a1040fe1169ab93d35d59068a">&#9670;&#160;</a></span>__len__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_PointsProjectionResult.__len__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06faa60d1e16f2f8c48a6006216f0550" name="a06faa60d1e16f2f8c48a6006216f0550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06faa60d1e16f2f8c48a6006216f0550">&#9670;&#160;</a></span>__ne__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_PointsProjectionResult.__ne__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef78907e680fd54711ec9bbbb5c9cc6a" name="aef78907e680fd54711ec9bbbb5c9cc6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef78907e680fd54711ec9bbbb5c9cc6a">&#9670;&#160;</a></span>__setitem__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aad43e452811a4ce4357b49440e32c489" name="aad43e452811a4ce4357b49440e32c489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad43e452811a4ce4357b49440e32c489">&#9670;&#160;</a></span>__setitem__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.__setitem__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">slice</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Assign list elements using a slice object
+</pre> 
+</div>
+</div>
+<a id="a291c332d8e014ed9b7b12d6fec056d87" name="a291c332d8e014ed9b7b12d6fec056d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a291c332d8e014ed9b7b12d6fec056d87">&#9670;&#160;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.append </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Add an item to the end of the list
+</pre> 
+</div>
+</div>
+<a id="a8ca2ae0ba4dc66a3f58b0554980f2b36" name="a8ca2ae0ba4dc66a3f58b0554980f2b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ca2ae0ba4dc66a3f58b0554980f2b36">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Clear the contents
+</pre> 
+</div>
+</div>
+<a id="a722dbc00ab1d48fdbbeb587cb52c49ea" name="a722dbc00ab1d48fdbbeb587cb52c49ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a722dbc00ab1d48fdbbeb587cb52c49ea">&#9670;&#160;</a></span>count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_PointsProjectionResult.count </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return the number of times ``x`` appears in the list
+</pre> 
+</div>
+</div>
+<a id="a429843c0490126ac2cbd23e153f477bd" name="a429843c0490126ac2cbd23e153f477bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a429843c0490126ac2cbd23e153f477bd">&#9670;&#160;</a></span>data_pointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_PointsProjectionResult.data_pointer </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Returns the pointer to the contiguous vector contents, as an integer.
+</pre> 
+</div>
+</div>
+<a id="a95099cb6a0332960fc1bed6d113f4dc5" name="a95099cb6a0332960fc1bed6d113f4dc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95099cb6a0332960fc1bed6d113f4dc5">&#9670;&#160;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.std_vector_PointsProjectionResult.empty </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a055ee60216f6cbda963b990726fe11cc" name="a055ee60216f6cbda963b990726fe11cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055ee60216f6cbda963b990726fe11cc">&#9670;&#160;</a></span>extend() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.extend </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>L</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Extend the list by appending all the items in the given list
+</pre> 
+</div>
+</div>
+<a id="a7ee1f9fcb0b6b4e5a6a84245eb44c42c" name="a7ee1f9fcb0b6b4e5a6a84245eb44c42c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ee1f9fcb0b6b4e5a6a84245eb44c42c">&#9670;&#160;</a></span>extend() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.extend </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typing.Iterable</td>          <td class="paramname"><span class="paramname"><em>L</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Extend the list by appending all the items in the given list
+</pre> 
+</div>
+</div>
+<a id="aeb20ec4f0d369e30e170ffdcb7e79cfb" name="aeb20ec4f0d369e30e170ffdcb7e79cfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb20ec4f0d369e30e170ffdcb7e79cfb">&#9670;&#160;</a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.insert </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Insert an item at a given position.
+</pre> 
+</div>
+</div>
+<a id="a90d7647f31f90007926a144402cb400f" name="a90d7647f31f90007926a144402cb400f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90d7647f31f90007926a144402cb400f">&#9670;&#160;</a></span>pop() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> mrmeshpy.std_vector_PointsProjectionResult.pop </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Remove and return the last item
+</pre> 
+</div>
+</div>
+<a id="ae2660a49058e635434e584b19fe268b6" name="ae2660a49058e635434e584b19fe268b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2660a49058e635434e584b19fe268b6">&#9670;&#160;</a></span>pop() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a> mrmeshpy.std_vector_PointsProjectionResult.pop </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Remove and return the item at index ``i``
+</pre> 
+</div>
+</div>
+<a id="a0ff6186e19469c2da988b7f4b0cf542e" name="a0ff6186e19469c2da988b7f4b0cf542e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ff6186e19469c2da988b7f4b0cf542e">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.remove </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Remove the first item from the list whose value is x. It is an error if there is no such item.
+</pre> 
+</div>
+</div>
+<a id="ace8e1210a308a65a2d657a18b55d7f0b" name="ace8e1210a308a65a2d657a18b55d7f0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace8e1210a308a65a2d657a18b55d7f0b">&#9670;&#160;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a4237339854b26173d6f06182ee83dd" name="a9a4237339854b26173d6f06182ee83dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a4237339854b26173d6f06182ee83dd">&#9670;&#160;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.std_vector_PointsProjectionResult.resize </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1PointsProjectionResult.html">PointsProjectionResult</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b2f2e4ecacf2012b6431821ada56bbb" name="a5b2f2e4ecacf2012b6431821ada56bbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b2f2e4ecacf2012b6431821ada56bbb">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.std_vector_PointsProjectionResult.size </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aea05b0fae2e846c8d16ae66ec0ec9127" name="aea05b0fae2e846c8d16ae66ec0ec9127"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea05b0fae2e846c8d16ae66ec0ec9127">&#9670;&#160;</a></span>element_type_byte_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.std_vector_PointsProjectionResult.element_type_byte_size = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1std__vector__PointsProjectionResult.html">std_vector_PointsProjectionResult</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

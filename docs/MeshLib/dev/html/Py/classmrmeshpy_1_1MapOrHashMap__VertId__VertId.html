@@ -1,0 +1,638 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.MapOrHashMap_VertId_VertId Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.MapOrHashMap_VertId_VertId Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:adca10f24b8b5d5e1e50bc44fec6c4eaf" id="r_adca10f24b8b5d5e1e50bc44fec6c4eaf"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adca10f24b8b5d5e1e50bc44fec6c4eaf">__init__</a> (self)</td></tr>
+<tr class="separator:adca10f24b8b5d5e1e50bc44fec6c4eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d2504255c09695c2deb68650668cf9e" id="r_a2d2504255c09695c2deb68650668cf9e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d2504255c09695c2deb68650668cf9e">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a> arg0)</td></tr>
+<tr class="separator:a2d2504255c09695c2deb68650668cf9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8293c5009765b1a4f2edc97741783b85" id="r_a8293c5009765b1a4f2edc97741783b85"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8293c5009765b1a4f2edc97741783b85">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1std__variant__Vector__Id__VertTag__Id__VertTag__phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">std_variant_Vector_Id_VertTag_Id_VertTag_phmap_flat_hash_map_Id_VertTag_Id_VertTag</a> <a class="el" href="#aea921d6dbbc1265ae7cfdfa7d9dac1eb">var</a>)</td></tr>
+<tr class="separator:a8293c5009765b1a4f2edc97741783b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2b7cb9afc458979433e37ed87e932e8" id="r_ad2b7cb9afc458979433e37ed87e932e8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2b7cb9afc458979433e37ed87e932e8">clear</a> (self)</td></tr>
+<tr class="separator:ad2b7cb9afc458979433e37ed87e932e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b8a0711ec27876df0d7d8c85e4efed" id="r_ab8b8a0711ec27876df0d7d8c85e4efed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8b8a0711ec27876df0d7d8c85e4efed">getHashMap</a> (self)</td></tr>
+<tr class="separator:ab8b8a0711ec27876df0d7d8c85e4efed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b8a0711ec27876df0d7d8c85e4efed" id="r_ab8b8a0711ec27876df0d7d8c85e4efed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8b8a0711ec27876df0d7d8c85e4efed">getHashMap</a> (self)</td></tr>
+<tr class="separator:ab8b8a0711ec27876df0d7d8c85e4efed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab45a15dc0dd8dba83de99bd0723b856" id="r_aab45a15dc0dd8dba83de99bd0723b856"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab45a15dc0dd8dba83de99bd0723b856">getMap</a> (self)</td></tr>
+<tr class="separator:aab45a15dc0dd8dba83de99bd0723b856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab45a15dc0dd8dba83de99bd0723b856" id="r_aab45a15dc0dd8dba83de99bd0723b856"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab45a15dc0dd8dba83de99bd0723b856">getMap</a> (self)</td></tr>
+<tr class="separator:aab45a15dc0dd8dba83de99bd0723b856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a031ddc57b4e873f4a68cee525267e766" id="r_a031ddc57b4e873f4a68cee525267e766"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a031ddc57b4e873f4a68cee525267e766">pushBack</a> (self, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> key, <a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a> val)</td></tr>
+<tr class="separator:a031ddc57b4e873f4a68cee525267e766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a616ab8fbf5af3a661fa0e6d79ee4d30d" id="r_a616ab8fbf5af3a661fa0e6d79ee4d30d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a616ab8fbf5af3a661fa0e6d79ee4d30d">resizeReserve</a> (self, int denseTotalSize, int hashAdditionalCapacity)</td></tr>
+<tr class="separator:a616ab8fbf5af3a661fa0e6d79ee4d30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24db6641c02284a320d4e16b96e2d6d" id="r_ad24db6641c02284a320d4e16b96e2d6d"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad24db6641c02284a320d4e16b96e2d6d">setHashMap</a> (self, <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a> m)</td></tr>
+<tr class="separator:ad24db6641c02284a320d4e16b96e2d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc3651609b537e2e18f4f3813a236a04" id="r_afc3651609b537e2e18f4f3813a236a04"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc3651609b537e2e18f4f3813a236a04">setMap</a> (self, <a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a> m)</td></tr>
+<tr class="separator:afc3651609b537e2e18f4f3813a236a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea921d6dbbc1265ae7cfdfa7d9dac1eb" id="r_aea921d6dbbc1265ae7cfdfa7d9dac1eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1std__variant__Vector__Id__VertTag__Id__VertTag__phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">std_variant_Vector_Id_VertTag_Id_VertTag_phmap_flat_hash_map_Id_VertTag_Id_VertTag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea921d6dbbc1265ae7cfdfa7d9dac1eb">var</a> (self)</td></tr>
+<tr class="separator:aea921d6dbbc1265ae7cfdfa7d9dac1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb0644d04b602187e238df7f676280da" id="r_afb0644d04b602187e238df7f676280da"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb0644d04b602187e238df7f676280da">var</a> (self, <a class="el" href="classmrmeshpy_1_1std__variant__Vector__Id__VertTag__Id__VertTag__phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">std_variant_Vector_Id_VertTag_Id_VertTag_phmap_flat_hash_map_Id_VertTag_Id_VertTag</a> arg1)</td></tr>
+<tr class="separator:afb0644d04b602187e238df7f676280da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3160e1bc067d1e5d57924ce2ef4f1239" id="r_a3160e1bc067d1e5d57924ce2ef4f1239"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3160e1bc067d1e5d57924ce2ef4f1239">createHashMap</a> (int capacity=0)</td></tr>
+<tr class="separator:a3160e1bc067d1e5d57924ce2ef4f1239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760a3f9e34ad4091d6f0c71603314264" id="r_a760a3f9e34ad4091d6f0c71603314264"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a760a3f9e34ad4091d6f0c71603314264">createMap</a> (int <a class="elRef" href="../Cpp/group__VoxelGroup.html#ga1a728fc2d1e7dd47e0f137af620f6985">size</a>=0)</td></tr>
+<tr class="separator:a760a3f9e34ad4091d6f0c71603314264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a2ceef8d7e42d1930cbcb006980198d89" id="r_a2ceef8d7e42d1930cbcb006980198d89"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ceef8d7e42d1930cbcb006980198d89">Dense</a> = <a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a></td></tr>
+<tr class="separator:a2ceef8d7e42d1930cbcb006980198d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ea0a220e57bfe7289778d2c23d1aca" id="r_a45ea0a220e57bfe7289778d2c23d1aca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45ea0a220e57bfe7289778d2c23d1aca">Hash</a> = <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a></td></tr>
+<tr class="separator:a45ea0a220e57bfe7289778d2c23d1aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a83630bccb10765b80ab2761c2d1eddfe" id="r_a83630bccb10765b80ab2761c2d1eddfe"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83630bccb10765b80ab2761c2d1eddfe">_offsetof_var</a> = 0</td></tr>
+<tr class="separator:a83630bccb10765b80ab2761c2d1eddfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::MapOrHashMap&lt;MR::VertId, MR::VertId&gt;
+Aliases:  VertMapOrHashMap
+
+stores a mapping from keys K to values V in one of two forms:
+1) as dense map (vector) preferable when there are few missing keys in a range [0, endKey)
+2) as hash map preferable when valid keys are a small subset of the range
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="adca10f24b8b5d5e1e50bc44fec6c4eaf" name="adca10f24b8b5d5e1e50bc44fec6c4eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adca10f24b8b5d5e1e50bc44fec6c4eaf">&#9670;&#160;</a></span>__init__() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+</div>
+</div>
+<a id="a2d2504255c09695c2deb68650668cf9e" name="a2d2504255c09695c2deb68650668cf9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d2504255c09695c2deb68650668cf9e">&#9670;&#160;</a></span>__init__() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+</div>
+</div>
+<a id="a8293c5009765b1a4f2edc97741783b85" name="a8293c5009765b1a4f2edc97741783b85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8293c5009765b1a4f2edc97741783b85">&#9670;&#160;</a></span>__init__() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__variant__Vector__Id__VertTag__Id__VertTag__phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">std_variant_Vector_Id_VertTag_Id_VertTag_phmap_flat_hash_map_Id_VertTag_Id_VertTag</a></td>          <td class="paramname"><span class="paramname"><em>var</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit aggregate constructor.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad2b7cb9afc458979433e37ed87e932e8" name="ad2b7cb9afc458979433e37ed87e932e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2b7cb9afc458979433e37ed87e932e8">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.clear </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3160e1bc067d1e5d57924ce2ef4f1239" name="a3160e1bc067d1e5d57924ce2ef4f1239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3160e1bc067d1e5d57924ce2ef4f1239">&#9670;&#160;</a></span>createHashMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a> mrmeshpy.MapOrHashMap_VertId_VertId.createHashMap </td>
+          <td>(</td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>capacity</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a760a3f9e34ad4091d6f0c71603314264" name="a760a3f9e34ad4091d6f0c71603314264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a760a3f9e34ad4091d6f0c71603314264">&#9670;&#160;</a></span>createMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a> mrmeshpy.MapOrHashMap_VertId_VertId.createMap </td>
+          <td>(</td>
+          <td class="paramtype">int </td>          <td class="paramname"><span class="paramname"><em>size</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8b8a0711ec27876df0d7d8c85e4efed" name="ab8b8a0711ec27876df0d7d8c85e4efed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8b8a0711ec27876df0d7d8c85e4efed">&#9670;&#160;</a></span>getHashMap() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a> mrmeshpy.MapOrHashMap_VertId_VertId.getHashMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8b8a0711ec27876df0d7d8c85e4efed" name="ab8b8a0711ec27876df0d7d8c85e4efed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8b8a0711ec27876df0d7d8c85e4efed">&#9670;&#160;</a></span>getHashMap() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a> mrmeshpy.MapOrHashMap_VertId_VertId.getHashMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab45a15dc0dd8dba83de99bd0723b856" name="aab45a15dc0dd8dba83de99bd0723b856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab45a15dc0dd8dba83de99bd0723b856">&#9670;&#160;</a></span>getMap() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a> mrmeshpy.MapOrHashMap_VertId_VertId.getMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab45a15dc0dd8dba83de99bd0723b856" name="aab45a15dc0dd8dba83de99bd0723b856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab45a15dc0dd8dba83de99bd0723b856">&#9670;&#160;</a></span>getMap() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a> mrmeshpy.MapOrHashMap_VertId_VertId.getMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a031ddc57b4e873f4a68cee525267e766" name="a031ddc57b4e873f4a68cee525267e766"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a031ddc57b4e873f4a68cee525267e766">&#9670;&#160;</a></span>pushBack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.pushBack </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertId.html">VertId</a></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">appends one element in the map,
+in case of dense map, key must be equal to vector.endId()
+</pre> 
+</div>
+</div>
+<a id="a616ab8fbf5af3a661fa0e6d79ee4d30d" name="a616ab8fbf5af3a661fa0e6d79ee4d30d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a616ab8fbf5af3a661fa0e6d79ee4d30d">&#9670;&#160;</a></span>resizeReserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.resizeReserve </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>denseTotalSize</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>hashAdditionalCapacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">if this stores dense map then resizes it to denseTotalSize;
+if this stores hash map then sets its capacity to size()+hashAdditionalCapacity
+</pre> 
+</div>
+</div>
+<a id="ad24db6641c02284a320d4e16b96e2d6d" name="ad24db6641c02284a320d4e16b96e2d6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad24db6641c02284a320d4e16b96e2d6d">&#9670;&#160;</a></span>setHashMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.setHashMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a></td>          <td class="paramname"><span class="paramname"><em>m</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc3651609b537e2e18f4f3813a236a04" name="afc3651609b537e2e18f4f3813a236a04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc3651609b537e2e18f4f3813a236a04">&#9670;&#160;</a></span>setMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.setMap </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a></td>          <td class="paramname"><span class="paramname"><em>m</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea921d6dbbc1265ae7cfdfa7d9dac1eb" name="aea921d6dbbc1265ae7cfdfa7d9dac1eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea921d6dbbc1265ae7cfdfa7d9dac1eb">&#9670;&#160;</a></span>var() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1std__variant__Vector__Id__VertTag__Id__VertTag__phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">std_variant_Vector_Id_VertTag_Id_VertTag_phmap_flat_hash_map_Id_VertTag_Id_VertTag</a> mrmeshpy.MapOrHashMap_VertId_VertId.var </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">default construction will select dense map
+</pre> 
+</div>
+</div>
+<a id="afb0644d04b602187e238df7f676280da" name="afb0644d04b602187e238df7f676280da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb0644d04b602187e238df7f676280da">&#9670;&#160;</a></span>var() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MapOrHashMap_VertId_VertId.var </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__variant__Vector__Id__VertTag__Id__VertTag__phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">std_variant_Vector_Id_VertTag_Id_VertTag_phmap_flat_hash_map_Id_VertTag_Id_VertTag</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a83630bccb10765b80ab2761c2d1eddfe" name="a83630bccb10765b80ab2761c2d1eddfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83630bccb10765b80ab2761c2d1eddfe">&#9670;&#160;</a></span>_offsetof_var</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.MapOrHashMap_VertId_VertId._offsetof_var = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ceef8d7e42d1930cbcb006980198d89" name="a2ceef8d7e42d1930cbcb006980198d89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ceef8d7e42d1930cbcb006980198d89">&#9670;&#160;</a></span>Dense</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.MapOrHashMap_VertId_VertId.Dense = <a class="el" href="classmrmeshpy_1_1VertMap.html">VertMap</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45ea0a220e57bfe7289778d2c23d1aca" name="a45ea0a220e57bfe7289778d2c23d1aca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ea0a220e57bfe7289778d2c23d1aca">&#9670;&#160;</a></span>Hash</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.MapOrHashMap_VertId_VertId.Hash = <a class="el" href="classmrmeshpy_1_1phmap__flat__hash__map__Id__VertTag__Id__VertTag.html">phmap_flat_hash_map_Id_VertTag_Id_VertTag</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1MapOrHashMap__VertId__VertId.html">MapOrHashMap_VertId_VertId</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

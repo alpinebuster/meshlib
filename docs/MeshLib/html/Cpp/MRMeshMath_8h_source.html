@@ -1,0 +1,536 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/Cpp/MRMeshMath_8h_source.html" />
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRMeshMath.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshMath_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRMeshMath.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRMeshMath_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRVector_8h.html">MRVector.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRMeshTopology_8h.html">MRMeshTopology.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="MRLineSegm_8h.html">MRLineSegm.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="MRMesh_2MRPointOnFace_8h.html">MRPointOnFace.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceMR.html">MR</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespaceMR.html#aa2a7fba3a600699de880615c69671718">   12</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#aa2a7fba3a600699de880615c69671718">orgPnt</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e )</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">return</span> points[ topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#a730ccabca6bf4811fd6b7a2a87bdce13">org</a>( e ) ];</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
+</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="namespaceMR.html#a5cdd8fe5835da1eaf2a4f623c04f00a9">   18</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#a5cdd8fe5835da1eaf2a4f623c04f00a9">destPnt</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e )</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordflow">return</span> points[ topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#a4249f7a97c745af922214ed2ca58f20d">dest</a>( e ) ];</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespaceMR.html#a2ecd5552b4907aa1e0a475427a4cef98">   24</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#a2ecd5552b4907aa1e0a475427a4cef98">edgeVector</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e )</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a5cdd8fe5835da1eaf2a4f623c04f00a9">destPnt</a>( topology, points, e ) - <a class="code hl_function" href="namespaceMR.html#aa2a7fba3a600699de880615c69671718">orgPnt</a>( topology, points, e );</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespaceMR.html#a2298085a06a459719ca28a1f8c583f2a">   30</a></span>[[nodiscard]] <span class="keyword">inline</span> LineSegm3f <a class="code hl_function" href="namespaceMR.html#a2298085a06a459719ca28a1f8c583f2a">edgeSegment</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e )</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> { <a class="code hl_function" href="namespaceMR.html#aa2a7fba3a600699de880615c69671718">orgPnt</a>( topology, points, e ), <a class="code hl_function" href="namespaceMR.html#a5cdd8fe5835da1eaf2a4f623c04f00a9">destPnt</a>( topology, points, e ) };</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespaceMR.html#a7d641e99aa4679047a71ff850e614f60">   36</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#a7d641e99aa4679047a71ff850e614f60">edgePoint</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e, <span class="keywordtype">float</span> f )</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">return</span> f * <a class="code hl_function" href="namespaceMR.html#a5cdd8fe5835da1eaf2a4f623c04f00a9">destPnt</a>( topology, points, e ) + ( 1 - f ) * <a class="code hl_function" href="namespaceMR.html#aa2a7fba3a600699de880615c69671718">orgPnt</a>( topology, points, e );</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespaceMR.html#a537cde697d7f35e3370cd46156a03646">   42</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#a7d641e99aa4679047a71ff850e614f60">edgePoint</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1EdgePoint.html">MeshEdgePoint</a> &amp; ep )</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a7d641e99aa4679047a71ff850e614f60">edgePoint</a>( topology, points, ep.<a class="code hl_variable" href="structMR_1_1EdgePoint.html#aa0fb43077718779351b94f5a803498a6">e</a>, ep.<a class="code hl_variable" href="structMR_1_1EdgePoint.html#aa0e9261e0dcf014db57e19ce882ddcfb">a</a> );</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="namespaceMR.html#ab2b62bcd240ef5b1885ecfec97054a9c">   48</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#ab2b62bcd240ef5b1885ecfec97054a9c">edgeCenter</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e )</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a7d641e99aa4679047a71ff850e614f60">edgePoint</a>( topology, points, e, 0.5f );</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">   54</a></span><a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">getLeftTriPoints</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e, Vector3f &amp; v0, Vector3f &amp; v1, Vector3f &amp; v2 );</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="namespaceMR.html#ad93f2b890a8c5bc9854f7fc4c54f7c55">   57</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">getLeftTriPoints</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e, Vector3f (&amp;v)[3] )</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">getLeftTriPoints</a>( topology, points, e, v[0], v[1], v[2] );</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4f76c7c53566d50dedc2505feaeaa30b">   63</a></span>[[nodiscard]] <span class="keyword">inline</span> <a class="code hl_typedef" href="namespaceMR.html#ac3b4f93ff16dbb5975ce8dec6adc39cf">Triangle3f</a> <a class="code hl_function" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">getLeftTriPoints</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e )</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_typedef" href="namespaceMR.html#ac3b4f93ff16dbb5975ce8dec6adc39cf">Triangle3f</a> res;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_function" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">getLeftTriPoints</a>( topology, points, e, res[0], res[1], res[2] );</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">   71</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">getTriPoints</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f, Vector3f &amp; v0, Vector3f &amp; v1, Vector3f &amp; v2 )</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>{</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_function" href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">getLeftTriPoints</a>( topology, points, topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#a75ce403909333e95eca530fcf3d62e2b">edgeWithLeft</a>( f ), v0, v1, v2 );</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="namespaceMR.html#ac951e8c2b35367642c93bc4c6c72b6f6">   77</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">getTriPoints</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f, Vector3f (&amp;v)[3] )</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_function" href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">getTriPoints</a>( topology, points, f, v[0], v[1], v[2] );</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="namespaceMR.html#a8597debb336c94ce7e51ca1626e71ef4">   83</a></span>[[nodiscard]] <span class="keyword">inline</span> <a class="code hl_typedef" href="namespaceMR.html#ac3b4f93ff16dbb5975ce8dec6adc39cf">Triangle3f</a> <a class="code hl_function" href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">getTriPoints</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f )</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_typedef" href="namespaceMR.html#ac3b4f93ff16dbb5975ce8dec6adc39cf">Triangle3f</a> res;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <a class="code hl_function" href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">getTriPoints</a>( topology, points, f, res[0], res[1], res[2] );</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
+</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="namespaceMR.html#a8833f02470c8a91d3de35ce644fb62d8">   91</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a8833f02470c8a91d3de35ce644fb62d8">triPoint</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp; p );</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="namespaceMR.html#a3cb53a0284adb26bcdc9278da8f476ff">   94</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a3cb53a0284adb26bcdc9278da8f476ff">triCenter</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f );</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="namespaceMR.html#a69db1209a124ce8bdfb38c51922889bb">   97</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a69db1209a124ce8bdfb38c51922889bb">triangleAspectRatio</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f );</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespaceMR.html#ab24719c8c1f71e117f3096280104749c">  100</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#ab24719c8c1f71e117f3096280104749c">circumcircleDiameterSq</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f );</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="namespaceMR.html#a2b0f80c1e8ad5786a1773062c11d2146">  103</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a2b0f80c1e8ad5786a1773062c11d2146">circumcircleDiameter</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f );</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="namespaceMR.html#a547b4e993aea9621b6ba5c6fe68036b2">  106</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> <a class="code hl_function" href="namespaceMR.html#a547b4e993aea9621b6ba5c6fe68036b2">toTriPoint</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f, <span class="keyword">const</span> Vector3f &amp; p );</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="namespaceMR.html#accd52e0cd3e03db73c1e67e0a24b0de2">  109</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> <a class="code hl_function" href="namespaceMR.html#a547b4e993aea9621b6ba5c6fe68036b2">toTriPoint</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1PointOnFace.html">PointOnFace</a>&amp; p );</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="namespaceMR.html#a3aa264819f866f07944440f5a92120c1">  112</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_struct" href="structMR_1_1EdgePoint.html">MeshEdgePoint</a> <a class="code hl_function" href="namespaceMR.html#a3aa264819f866f07944440f5a92120c1">toEdgePoint</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e, <span class="keyword">const</span> Vector3f &amp; p );</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="namespaceMR.html#add0358fa9df433e60bc4d95e83abeff6">  115</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> VertId <a class="code hl_function" href="namespaceMR.html#add0358fa9df433e60bc4d95e83abeff6">getClosestVertex</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1PointOnFace.html">PointOnFace</a> &amp; p );</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="namespaceMR.html#ab90be448411f1e7a917f330cbd45452d">  118</a></span>[[nodiscard]] <span class="keyword">inline</span> VertId <a class="code hl_function" href="namespaceMR.html#add0358fa9df433e60bc4d95e83abeff6">getClosestVertex</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp; p )</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#add0358fa9df433e60bc4d95e83abeff6">getClosestVertex</a>( topology, points, <a class="code hl_struct" href="structMR_1_1PointOnFace.html">PointOnFace</a>{ topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#a32ef296197eb1631ca3af65f4614024a">left</a>( p.<a class="code hl_variable" href="structMR_1_1MeshTriPoint.html#afb2e8376855431a09626f25ffe6039bc">e</a> ), <a class="code hl_function" href="namespaceMR.html#a8833f02470c8a91d3de35ce644fb62d8">triPoint</a>( topology, points, p ) } );</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="namespaceMR.html#ab7641eb2e941e9bc43b5e10d395328f1">  124</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> UndirectedEdgeId <a class="code hl_function" href="namespaceMR.html#ab7641eb2e941e9bc43b5e10d395328f1">getClosestEdge</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1PointOnFace.html">PointOnFace</a> &amp; p );</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="namespaceMR.html#a56215ffe5137000044da948850230c79">  127</a></span>[[nodiscard]] <span class="keyword">inline</span> UndirectedEdgeId <a class="code hl_function" href="namespaceMR.html#ab7641eb2e941e9bc43b5e10d395328f1">getClosestEdge</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp; p )</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#ab7641eb2e941e9bc43b5e10d395328f1">getClosestEdge</a>( topology, points, <a class="code hl_struct" href="structMR_1_1PointOnFace.html">PointOnFace</a>{ topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#a32ef296197eb1631ca3af65f4614024a">left</a>( p.<a class="code hl_variable" href="structMR_1_1MeshTriPoint.html#afb2e8376855431a09626f25ffe6039bc">e</a> ), <a class="code hl_function" href="namespaceMR.html#a8833f02470c8a91d3de35ce644fb62d8">triPoint</a>( topology, points, p ) } );</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
+</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="foldopen" id="foldopen00133" data-start="{" data-end="}">
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="namespaceMR.html#ac6f4e8a904a2f00fdb5a7dc8b4925b19">  133</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#ac6f4e8a904a2f00fdb5a7dc8b4925b19">edgeLength</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e )</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>{</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a2ecd5552b4907aa1e0a475427a4cef98">edgeVector</a>( topology, points, e ).length();</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="namespaceMR.html#a17861476d65a0c34d1f6ae3968133dab">  139</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> UndirectedEdgeScalars <a class="code hl_function" href="namespaceMR.html#a17861476d65a0c34d1f6ae3968133dab">edgeLengths</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points );</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="namespaceMR.html#a8375bb81ce2308e9b03e2e0d5792dcd9">  142</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a8375bb81ce2308e9b03e2e0d5792dcd9">edgeLengthSq</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e )</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>{</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a2ecd5552b4907aa1e0a475427a4cef98">edgeVector</a>( topology, points, e ).lengthSq();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="namespaceMR.html#ae377aac48c0e2e3070f73db2719c9dfe">  148</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#ae377aac48c0e2e3070f73db2719c9dfe">leftDirDblArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e );</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="foldopen" id="foldopen00151" data-start="{" data-end="}">
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">  151</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">dirDblArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f )</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>{</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#ae377aac48c0e2e3070f73db2719c9dfe">leftDirDblArea</a>( topology, points, topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#a75ce403909333e95eca530fcf3d62e2b">edgeWithLeft</a>( f ) );</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>}</div>
+</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="namespaceMR.html#aff94707b83310dd38361b67bf3490f8e">  157</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_class" href="classMR_1_1Vector.html">Vector&lt;Vector3f, VertId&gt;</a> <a class="code hl_function" href="namespaceMR.html#aff94707b83310dd38361b67bf3490f8e">dirDblAreas</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> VertBitSet * region = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="namespaceMR.html#abd3259955c972492f27f1ec056e2fd41">  160</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#abd3259955c972492f27f1ec056e2fd41">dblArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f )</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>{</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">dirDblArea</a>( topology, points, f ).length();</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
+</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="namespaceMR.html#a19abe27ef41cab9ed70e6a0b5d60026e">  166</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a19abe27ef41cab9ed70e6a0b5d60026e">area</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f )</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>{</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">return</span> 0.5f * <a class="code hl_function" href="namespaceMR.html#abd3259955c972492f27f1ec056e2fd41">dblArea</a>( topology, points, f );</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
+</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="namespaceMR.html#a0558eb3364f004c3a1898af28571b3af">  172</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceMR.html#a19abe27ef41cab9ed70e6a0b5d60026e">area</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> FaceBitSet &amp; fs );</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="foldopen" id="foldopen00175" data-start="{" data-end="}">
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="namespaceMR.html#a8bb0dbb5b5768b6c4630c3ceec9b1426">  175</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceMR.html#a19abe27ef41cab9ed70e6a0b5d60026e">area</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> FaceBitSet * fs = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>{</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a19abe27ef41cab9ed70e6a0b5d60026e">area</a>( topology, points, topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#afacf72825c9fa6fc3c32c4206677608e">getFaceIds</a>( fs ) );</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
+</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="namespaceMR.html#a6cb7501549ed859f41648effc8d74063">  181</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3d <a class="code hl_function" href="namespaceMR.html#a6cb7501549ed859f41648effc8d74063">dirArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> FaceBitSet &amp; fs );</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="foldopen" id="foldopen00184" data-start="{" data-end="}">
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="namespaceMR.html#aa066b3823c0d189be92f99b46d6d1bb1">  184</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3d <a class="code hl_function" href="namespaceMR.html#a6cb7501549ed859f41648effc8d74063">dirArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> FaceBitSet * fs = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>{</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a6cb7501549ed859f41648effc8d74063">dirArea</a>( topology, points, topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#afacf72825c9fa6fc3c32c4206677608e">getFaceIds</a>( fs ) );</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
+</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="namespaceMR.html#ae404353d24dee8a7548853d3711fecaf">  190</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceMR.html#ae404353d24dee8a7548853d3711fecaf">projArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> Vector3f &amp; dir, <span class="keyword">const</span> FaceBitSet &amp; fs );</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="foldopen" id="foldopen00193" data-start="{" data-end="}">
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="namespaceMR.html#a65325d5765de14230b066e2706dbba82">  193</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceMR.html#ae404353d24dee8a7548853d3711fecaf">projArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> Vector3f &amp; dir, <span class="keyword">const</span> FaceBitSet * fs = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>{</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#ae404353d24dee8a7548853d3711fecaf">projArea</a>( topology, points, dir, topology.<a class="code hl_function" href="classMR_1_1MeshTopology.html#afacf72825c9fa6fc3c32c4206677608e">getFaceIds</a>( fs ) );</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>}</div>
+</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="namespaceMR.html#a83e40508b3f05b594da19748c1da2d05">  200</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceMR.html#a83e40508b3f05b594da19748c1da2d05">volume</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> FaceBitSet* region = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="namespaceMR.html#acb19030d836bd45767a57eaa6360fa60">  203</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">double</span> <a class="code hl_function" href="namespaceMR.html#acb19030d836bd45767a57eaa6360fa60">holePerimiter</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e );</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4f73b1cca987a9e5c8069e711d63330e">  207</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3d <a class="code hl_function" href="namespaceMR.html#a4f73b1cca987a9e5c8069e711d63330e">holeDirArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e );</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="namespaceMR.html#a1e30e6955f139ef5eafe8801bfdf8511">  210</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a1e30e6955f139ef5eafe8801bfdf8511">leftTangent</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e );</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="foldopen" id="foldopen00213" data-start="{" data-end="}">
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="namespaceMR.html#af0748014e16c8c27ba2438118ae939a1">  213</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_function" href="namespaceMR.html#af0748014e16c8c27ba2438118ae939a1">leftNormal</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e )</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>{</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#ae377aac48c0e2e3070f73db2719c9dfe">leftDirDblArea</a>( topology, points, e ).normalized();</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
+</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="foldopen" id="foldopen00219" data-start="{" data-end="}">
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="namespaceMR.html#aeaaa231de17fd92490d5ffbdac7d7c16">  219</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_enumvalue" href="namespaceMR.html#a09f9590ed4411f71af1c1526458d5dd1afea087517c26fadd409bd4b9dc642555">normal</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, FaceId f )</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>{</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">dirDblArea</a>( topology, points, f ).normalized();</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
+</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="namespaceMR.html#a48b8d23ea7f7dd04366bf343830af62e">  225</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">dirDblArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v );</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="foldopen" id="foldopen00228" data-start="{" data-end="}">
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="namespaceMR.html#a0dd50f59234a5a8e9ac7133f697d981e">  228</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#abd3259955c972492f27f1ec056e2fd41">dblArea</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v )</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>{</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">dirDblArea</a>( topology, points, v ).length();</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>}</div>
+</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="foldopen" id="foldopen00234" data-start="{" data-end="}">
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="namespaceMR.html#a3fb32b3b62d46ab4122204d35787fa88">  234</a></span>[[nodiscard]] <span class="keyword">inline</span> Vector3f <a class="code hl_enumvalue" href="namespaceMR.html#a09f9590ed4411f71af1c1526458d5dd1afea087517c26fadd409bd4b9dc642555">normal</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v )</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>{</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">dirDblArea</a>( topology, points, v ).normalized();</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>}</div>
+</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="namespaceMR.html#a9340b49cc305ca3a42ee906b4b33a3eb">  241</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_enumvalue" href="namespaceMR.html#a09f9590ed4411f71af1c1526458d5dd1afea087517c26fadd409bd4b9dc642555">normal</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp; p );</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno"><a class="line" href="namespaceMR.html#a81332ea392098bb6bfa5694e2af14350">  245</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a81332ea392098bb6bfa5694e2af14350">pseudonormal</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v, <span class="keyword">const</span> FaceBitSet * region = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno"><a class="line" href="namespaceMR.html#a3530eb53e71557cf4aed764076418744">  248</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a81332ea392098bb6bfa5694e2af14350">pseudonormal</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e, <span class="keyword">const</span> FaceBitSet * region = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="namespaceMR.html#a5389586ec02a9b3a7ef5294b75a3c440">  254</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a81332ea392098bb6bfa5694e2af14350">pseudonormal</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> <a class="code hl_struct" href="structMR_1_1MeshTriPoint.html">MeshTriPoint</a> &amp; p, <span class="keyword">const</span> FaceBitSet * region = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="namespaceMR.html#af04c9fae0daff536f4098c78b1c10b95">  257</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#af04c9fae0daff536f4098c78b1c10b95">sumAngles</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v, <span class="keywordtype">bool</span> * outBoundaryVert = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno"><a class="line" href="namespaceMR.html#a190ad3366c13f1e3ed9c12cdc0291177">  260</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <a class="code hl_typedef" href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">Expected&lt;VertBitSet&gt;</a> <a class="code hl_function" href="namespaceMR.html#a190ad3366c13f1e3ed9c12cdc0291177">findSpikeVertices</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keywordtype">float</span> minSumAngle, <span class="keyword">const</span> VertBitSet* region = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <a class="code hl_typedef" href="group__BasicStructuresGroup.html#ga51ff94746a41880cd06d3272b5bcf710">ProgressCallback</a>&amp; cb = {} );</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="namespaceMR.html#afb5e341e476649b321cdb9f27e72c6d1">  266</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#afb5e341e476649b321cdb9f27e72c6d1">dihedralAngleSin</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e );</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4456950753150d985e999f060edb469c">  272</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a4456950753150d985e999f060edb469c">dihedralAngleCos</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e );</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="namespaceMR.html#a34e4cff045080ddf46cb771f7f2fdb8e">  279</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a34e4cff045080ddf46cb771f7f2fdb8e">dihedralAngle</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e );</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno"><a class="line" href="namespaceMR.html#aa776be59eeaaa3ab4503389cbf4f41c3">  283</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#aa776be59eeaaa3ab4503389cbf4f41c3">discreteMeanCurvature</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v );</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno"><a class="line" href="namespaceMR.html#a9b08c6deef4fc081ff82d6291456dbdd">  287</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#aa776be59eeaaa3ab4503389cbf4f41c3">discreteMeanCurvature</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId e );</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="foldopen" id="foldopen00292" data-start="{" data-end="}">
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno"><a class="line" href="namespaceMR.html#a065988451e8b7dd6f1686f6e1fdfee06">  292</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a065988451e8b7dd6f1686f6e1fdfee06">discreteGaussianCurvature</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v, <span class="keywordtype">bool</span> * outBoundaryVert = <span class="keyword">nullptr</span> )</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>{</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    <span class="keywordflow">return</span> 2 * PI_F - <a class="code hl_function" href="namespaceMR.html#af04c9fae0daff536f4098c78b1c10b95">sumAngles</a>( topology, points, v, outBoundaryVert );</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>}</div>
+</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4211e9cc9d627cf077e17c86710226ee">  298</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> UndirectedEdgeBitSet <a class="code hl_function" href="namespaceMR.html#a4211e9cc9d627cf077e17c86710226ee">findCreaseEdges</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keywordtype">float</span> angleFromPlanar );</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno"><a class="line" href="namespaceMR.html#a5d3212c09f0071984b0865d7d1c05ef0">  302</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a5d3212c09f0071984b0865d7d1c05ef0">leftCotan</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, EdgeId e );</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="foldopen" id="foldopen00306" data-start="{" data-end="}">
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno"><a class="line" href="namespaceMR.html#ae88dcc2f46770de755e55f980a67a5f3">  306</a></span>[[nodiscard]] <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#ae88dcc2f46770de755e55f980a67a5f3">cotan</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, UndirectedEdgeId ue )</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>{</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    EdgeId e{ ue };</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceMR.html#a5d3212c09f0071984b0865d7d1c05ef0">leftCotan</a>( topology, points, e ) + <a class="code hl_function" href="namespaceMR.html#a5d3212c09f0071984b0865d7d1c05ef0">leftCotan</a>( topology, points, e.sym() );</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>}</div>
+</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno"><a class="line" href="namespaceMR.html#a4a4d2bbcba0c776cdbc5cbda868db9bb">  315</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> QuadraticForm3f <a class="code hl_function" href="namespaceMR.html#a4a4d2bbcba0c776cdbc5cbda868db9bb">quadraticForm</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, VertId v, <span class="keywordtype">bool</span> angleWeigted,</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keyword">const</span> FaceBitSet * region = <span class="keyword">nullptr</span>, <span class="keyword">const</span> UndirectedEdgeBitSet * creases = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno"><a class="line" href="namespaceMR.html#a71050839d7665ed8ca2dc8c4b0c523fd">  320</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Box3f <a class="code hl_function" href="group__MathGroup.html#ga3b002e846a245cb69384c1d444ea65a0">computeBoundingBox</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points, <span class="keyword">const</span> FaceBitSet* region, <span class="keyword">const</span> AffineXf3f* toWorld = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno"><a class="line" href="namespaceMR.html#a5c72ade2831c2a328e3486b5aa8045bb">  323</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> <span class="keywordtype">float</span> <a class="code hl_function" href="namespaceMR.html#a5c72ade2831c2a328e3486b5aa8045bb">averageEdgeLength</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points );</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno"><a class="line" href="namespaceMR.html#a161e46c3bf12b517090c9a672b8ec830">  326</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a161e46c3bf12b517090c9a672b8ec830">findCenterFromPoints</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points );</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno"><a class="line" href="namespaceMR.html#a0e9b24b3d309eba7ea1fb20758afd025">  329</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a0e9b24b3d309eba7ea1fb20758afd025">findCenterFromFaces</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points );</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno"><a class="line" href="namespaceMR.html#a0140eb8894552101f3fdabe8d842eb25">  332</a></span>[[nodiscard]] <a class="code hl_define" href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a> Vector3f <a class="code hl_function" href="namespaceMR.html#a0140eb8894552101f3fdabe8d842eb25">findCenterFromBBox</a>( <span class="keyword">const</span> <a class="code hl_class" href="classMR_1_1MeshTopology.html">MeshTopology</a> &amp; topology, <span class="keyword">const</span> VertCoords &amp; points );</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>} <span class="comment">//namespace MR</span></div>
+<div class="ttc" id="aMRLineSegm_8h_html"><div class="ttname"><a href="MRLineSegm_8h.html">MRLineSegm.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRMeshFwd_8h_html_a08ff09fd7e75c029b08cc255b0734300"><div class="ttname"><a href="MRMesh_2MRMeshFwd_8h.html#a08ff09fd7e75c029b08cc255b0734300">MRMESH_API</a></div><div class="ttdeci">#define MRMESH_API</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:79</div></div>
+<div class="ttc" id="aMRMesh_2MRMeshTopology_8h_html"><div class="ttname"><a href="MRMesh_2MRMeshTopology_8h.html">MRMeshTopology.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRPointOnFace_8h_html"><div class="ttname"><a href="MRMesh_2MRPointOnFace_8h.html">MRPointOnFace.h</a></div></div>
+<div class="ttc" id="aMRMesh_2MRVector_8h_html"><div class="ttname"><a href="MRMesh_2MRVector_8h.html">MRVector.h</a></div></div>
+<div class="ttc" id="aclassMR_1_1MeshTopology_html"><div class="ttname"><a href="classMR_1_1MeshTopology.html">MR::MeshTopology</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTopology.h:18</div></div>
+<div class="ttc" id="aclassMR_1_1MeshTopology_html_a32ef296197eb1631ca3af65f4614024a"><div class="ttname"><a href="classMR_1_1MeshTopology.html#a32ef296197eb1631ca3af65f4614024a">MR::MeshTopology::left</a></div><div class="ttdeci">FaceId left(EdgeId he) const</div><div class="ttdoc">returns left face of half-edge</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTopology.h:92</div></div>
+<div class="ttc" id="aclassMR_1_1MeshTopology_html_a4249f7a97c745af922214ed2ca58f20d"><div class="ttname"><a href="classMR_1_1MeshTopology.html#a4249f7a97c745af922214ed2ca58f20d">MR::MeshTopology::dest</a></div><div class="ttdeci">VertId dest(EdgeId he) const</div><div class="ttdoc">returns destination vertex of half-edge</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTopology.h:89</div></div>
+<div class="ttc" id="aclassMR_1_1MeshTopology_html_a730ccabca6bf4811fd6b7a2a87bdce13"><div class="ttname"><a href="classMR_1_1MeshTopology.html#a730ccabca6bf4811fd6b7a2a87bdce13">MR::MeshTopology::org</a></div><div class="ttdeci">VertId org(EdgeId he) const</div><div class="ttdoc">returns origin vertex of half-edge</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTopology.h:86</div></div>
+<div class="ttc" id="aclassMR_1_1MeshTopology_html_a75ce403909333e95eca530fcf3d62e2b"><div class="ttname"><a href="classMR_1_1MeshTopology.html#a75ce403909333e95eca530fcf3d62e2b">MR::MeshTopology::edgeWithLeft</a></div><div class="ttdeci">EdgeId edgeWithLeft(FaceId a) const</div><div class="ttdoc">returns valid edge if given vertex is present in the mesh</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTopology.h:222</div></div>
+<div class="ttc" id="aclassMR_1_1MeshTopology_html_afacf72825c9fa6fc3c32c4206677608e"><div class="ttname"><a href="classMR_1_1MeshTopology.html#afacf72825c9fa6fc3c32c4206677608e">MR::MeshTopology::getFaceIds</a></div><div class="ttdeci">const FaceBitSet &amp; getFaceIds(const FaceBitSet *region) const</div><div class="ttdoc">if region pointer is not null then converts it in reference, otherwise returns all valid faces in the...</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTopology.h:276</div></div>
+<div class="ttc" id="aclassMR_1_1Vector_html"><div class="ttname"><a href="classMR_1_1Vector.html">MR::Vector</a></div><div class="ttdoc">std::vector&lt;T&gt;-like container that requires specific indexing type,</div><div class="ttdef"><b>Definition</b> MRMesh/MRVector.h:20</div></div>
+<div class="ttc" id="agroup__BasicStructuresGroup_html_ga51ff94746a41880cd06d3272b5bcf710"><div class="ttname"><a href="group__BasicStructuresGroup.html#ga51ff94746a41880cd06d3272b5bcf710">MR::ProgressCallback</a></div><div class="ttdeci">std::function&lt; bool(float)&gt; ProgressCallback</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:641</div></div>
+<div class="ttc" id="agroup__MathGroup_html_ga3b002e846a245cb69384c1d444ea65a0"><div class="ttname"><a href="group__MathGroup.html#ga3b002e846a245cb69384c1d444ea65a0">MR::computeBoundingBox</a></div><div class="ttdeci">Box&lt; V &gt; computeBoundingBox(const Vector&lt; V, VertId &gt; &amp;points, VertId firstVert, VertId lastVert, const VertBitSet *region=nullptr, const AffineXf&lt; V &gt; *toWorld=nullptr)</div></div>
+<div class="ttc" id="anamespaceMR_html"><div class="ttname"><a href="namespaceMR.html">MR</a></div></div>
+<div class="ttc" id="anamespaceMR_html_a0140eb8894552101f3fdabe8d842eb25"><div class="ttname"><a href="namespaceMR.html#a0140eb8894552101f3fdabe8d842eb25">MR::findCenterFromBBox</a></div><div class="ttdeci">MRMESH_API Vector3f findCenterFromBBox(const MeshTopology &amp;topology, const VertCoords &amp;points)</div><div class="ttdoc">computes bounding box and returns its center</div></div>
+<div class="ttc" id="anamespaceMR_html_a065988451e8b7dd6f1686f6e1fdfee06"><div class="ttname"><a href="namespaceMR.html#a065988451e8b7dd6f1686f6e1fdfee06">MR::discreteGaussianCurvature</a></div><div class="ttdeci">float discreteGaussianCurvature(const MeshTopology &amp;topology, const VertCoords &amp;points, VertId v, bool *outBoundaryVert=nullptr)</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:292</div></div>
+<div class="ttc" id="anamespaceMR_html_a09f9590ed4411f71af1c1526458d5dd1afea087517c26fadd409bd4b9dc642555"><div class="ttname"><a href="namespaceMR.html#a09f9590ed4411f71af1c1526458d5dd1afea087517c26fadd409bd4b9dc642555">MR::NumberStyle::normal</a></div><div class="ttdeci">@ normal</div></div>
+<div class="ttc" id="anamespaceMR_html_a0e9b24b3d309eba7ea1fb20758afd025"><div class="ttname"><a href="namespaceMR.html#a0e9b24b3d309eba7ea1fb20758afd025">MR::findCenterFromFaces</a></div><div class="ttdeci">MRMESH_API Vector3f findCenterFromFaces(const MeshTopology &amp;topology, const VertCoords &amp;points)</div><div class="ttdoc">computes center of mass considering that density of all triangles is the same</div></div>
+<div class="ttc" id="anamespaceMR_html_a161e46c3bf12b517090c9a672b8ec830"><div class="ttname"><a href="namespaceMR.html#a161e46c3bf12b517090c9a672b8ec830">MR::findCenterFromPoints</a></div><div class="ttdeci">MRMESH_API Vector3f findCenterFromPoints(const MeshTopology &amp;topology, const VertCoords &amp;points)</div><div class="ttdoc">computes average position of all valid mesh vertices</div></div>
+<div class="ttc" id="anamespaceMR_html_a17861476d65a0c34d1f6ae3968133dab"><div class="ttname"><a href="namespaceMR.html#a17861476d65a0c34d1f6ae3968133dab">MR::edgeLengths</a></div><div class="ttdeci">MRMESH_API UndirectedEdgeScalars edgeLengths(const MeshTopology &amp;topology, const VertCoords &amp;points)</div><div class="ttdoc">computes and returns the lengths of all edges in the mesh</div></div>
+<div class="ttc" id="anamespaceMR_html_a190ad3366c13f1e3ed9c12cdc0291177"><div class="ttname"><a href="namespaceMR.html#a190ad3366c13f1e3ed9c12cdc0291177">MR::findSpikeVertices</a></div><div class="ttdeci">MRMESH_API Expected&lt; VertBitSet &gt; findSpikeVertices(const MeshTopology &amp;topology, const VertCoords &amp;points, float minSumAngle, const VertBitSet *region=nullptr, const ProgressCallback &amp;cb={})</div><div class="ttdoc">returns vertices where the sum of triangle angles is below given threshold</div></div>
+<div class="ttc" id="anamespaceMR_html_a19abe27ef41cab9ed70e6a0b5d60026e"><div class="ttname"><a href="namespaceMR.html#a19abe27ef41cab9ed70e6a0b5d60026e">MR::area</a></div><div class="ttdeci">float area(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f)</div><div class="ttdoc">returns the area of given face</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:166</div></div>
+<div class="ttc" id="anamespaceMR_html_a1e30e6955f139ef5eafe8801bfdf8511"><div class="ttname"><a href="namespaceMR.html#a1e30e6955f139ef5eafe8801bfdf8511">MR::leftTangent</a></div><div class="ttdeci">MRMESH_API Vector3f leftTangent(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">computes unit vector that is both orthogonal to given edge and to the normal of its left triangle,...</div></div>
+<div class="ttc" id="anamespaceMR_html_a2298085a06a459719ca28a1f8c583f2a"><div class="ttname"><a href="namespaceMR.html#a2298085a06a459719ca28a1f8c583f2a">MR::edgeSegment</a></div><div class="ttdeci">LineSegm3f edgeSegment(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">returns line segment of given edge</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:30</div></div>
+<div class="ttc" id="anamespaceMR_html_a2b0f80c1e8ad5786a1773062c11d2146"><div class="ttname"><a href="namespaceMR.html#a2b0f80c1e8ad5786a1773062c11d2146">MR::circumcircleDiameter</a></div><div class="ttdeci">MRMESH_API float circumcircleDiameter(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f)</div><div class="ttdoc">returns circumcircle diameter of given mesh triangle</div></div>
+<div class="ttc" id="anamespaceMR_html_a2ecd5552b4907aa1e0a475427a4cef98"><div class="ttname"><a href="namespaceMR.html#a2ecd5552b4907aa1e0a475427a4cef98">MR::edgeVector</a></div><div class="ttdeci">Vector3f edgeVector(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">returns vector equal to edge destination point minus edge origin point</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:24</div></div>
+<div class="ttc" id="anamespaceMR_html_a34e4cff045080ddf46cb771f7f2fdb8e"><div class="ttname"><a href="namespaceMR.html#a34e4cff045080ddf46cb771f7f2fdb8e">MR::dihedralAngle</a></div><div class="ttdeci">MRMESH_API float dihedralAngle(const MeshTopology &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</div></div>
+<div class="ttc" id="anamespaceMR_html_a3aa264819f866f07944440f5a92120c1"><div class="ttname"><a href="namespaceMR.html#a3aa264819f866f07944440f5a92120c1">MR::toEdgePoint</a></div><div class="ttdeci">MRMESH_API MeshEdgePoint toEdgePoint(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e, const Vector3f &amp;p)</div><div class="ttdoc">converts edge and 3d point into edge-point representation</div></div>
+<div class="ttc" id="anamespaceMR_html_a3cb53a0284adb26bcdc9278da8f476ff"><div class="ttname"><a href="namespaceMR.html#a3cb53a0284adb26bcdc9278da8f476ff">MR::triCenter</a></div><div class="ttdeci">MRMESH_API Vector3f triCenter(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f)</div><div class="ttdoc">returns the centroid of given triangle</div></div>
+<div class="ttc" id="anamespaceMR_html_a4211e9cc9d627cf077e17c86710226ee"><div class="ttname"><a href="namespaceMR.html#a4211e9cc9d627cf077e17c86710226ee">MR::findCreaseEdges</a></div><div class="ttdeci">MRMESH_API UndirectedEdgeBitSet findCreaseEdges(const MeshTopology &amp;topology, const VertCoords &amp;points, float angleFromPlanar)</div><div class="ttdoc">finds all mesh edges where dihedral angle is distinct from planar PI angle on at least given value</div></div>
+<div class="ttc" id="anamespaceMR_html_a4456950753150d985e999f060edb469c"><div class="ttname"><a href="namespaceMR.html#a4456950753150d985e999f060edb469c">MR::dihedralAngleCos</a></div><div class="ttdeci">MRMESH_API float dihedralAngleCos(const MeshTopology &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</div></div>
+<div class="ttc" id="anamespaceMR_html_a4a4d2bbcba0c776cdbc5cbda868db9bb"><div class="ttname"><a href="namespaceMR.html#a4a4d2bbcba0c776cdbc5cbda868db9bb">MR::quadraticForm</a></div><div class="ttdeci">MRMESH_API QuadraticForm3f quadraticForm(const MeshTopology &amp;topology, const VertCoords &amp;points, VertId v, bool angleWeigted, const FaceBitSet *region=nullptr, const UndirectedEdgeBitSet *creases=nullptr)</div></div>
+<div class="ttc" id="anamespaceMR_html_a4f1ba2ac64996a6cd34ae45a5c002194"><div class="ttname"><a href="namespaceMR.html#a4f1ba2ac64996a6cd34ae45a5c002194">MR::getTriPoints</a></div><div class="ttdeci">void getTriPoints(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f, Vector3f &amp;v0, Vector3f &amp;v1, Vector3f &amp;v2)</div><div class="ttdoc">returns three points of given face</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:71</div></div>
+<div class="ttc" id="anamespaceMR_html_a4f73b1cca987a9e5c8069e711d63330e"><div class="ttname"><a href="namespaceMR.html#a4f73b1cca987a9e5c8069e711d63330e">MR::holeDirArea</a></div><div class="ttdeci">MRMESH_API Vector3d holeDirArea(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div></div>
+<div class="ttc" id="anamespaceMR_html_a547b4e993aea9621b6ba5c6fe68036b2"><div class="ttname"><a href="namespaceMR.html#a547b4e993aea9621b6ba5c6fe68036b2">MR::toTriPoint</a></div><div class="ttdeci">MRMESH_API MeshTriPoint toTriPoint(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f, const Vector3f &amp;p)</div><div class="ttdoc">converts face id and 3d point into barycentric representation</div></div>
+<div class="ttc" id="anamespaceMR_html_a5c72ade2831c2a328e3486b5aa8045bb"><div class="ttname"><a href="namespaceMR.html#a5c72ade2831c2a328e3486b5aa8045bb">MR::averageEdgeLength</a></div><div class="ttdeci">MRMESH_API float averageEdgeLength(const MeshTopology &amp;topology, const VertCoords &amp;points)</div><div class="ttdoc">computes average length of an edge in the mesh given by (topology, points)</div></div>
+<div class="ttc" id="anamespaceMR_html_a5cdd8fe5835da1eaf2a4f623c04f00a9"><div class="ttname"><a href="namespaceMR.html#a5cdd8fe5835da1eaf2a4f623c04f00a9">MR::destPnt</a></div><div class="ttdeci">Vector3f destPnt(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">returns coordinates of the edge destination</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:18</div></div>
+<div class="ttc" id="anamespaceMR_html_a5d3212c09f0071984b0865d7d1c05ef0"><div class="ttname"><a href="namespaceMR.html#a5d3212c09f0071984b0865d7d1c05ef0">MR::leftCotan</a></div><div class="ttdeci">MRMESH_API float leftCotan(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div></div>
+<div class="ttc" id="anamespaceMR_html_a60596c8cd5eca043531d0f0c4ece20c0"><div class="ttname"><a href="namespaceMR.html#a60596c8cd5eca043531d0f0c4ece20c0">MR::dirDblArea</a></div><div class="ttdeci">Vector3f dirDblArea(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f)</div><div class="ttdoc">computes directed double area for a triangular face from its vertices</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:151</div></div>
+<div class="ttc" id="anamespaceMR_html_a69db1209a124ce8bdfb38c51922889bb"><div class="ttname"><a href="namespaceMR.html#a69db1209a124ce8bdfb38c51922889bb">MR::triangleAspectRatio</a></div><div class="ttdeci">MRMESH_API float triangleAspectRatio(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f)</div><div class="ttdoc">returns aspect ratio of given mesh triangle equal to the ratio of the circum-radius to twice its in-r...</div></div>
+<div class="ttc" id="anamespaceMR_html_a6cb7501549ed859f41648effc8d74063"><div class="ttname"><a href="namespaceMR.html#a6cb7501549ed859f41648effc8d74063">MR::dirArea</a></div><div class="ttdeci">MRMESH_API Vector3d dirArea(const MeshTopology &amp;topology, const VertCoords &amp;points, const FaceBitSet &amp;fs)</div><div class="ttdoc">computes the sum of directed areas for faces from given region</div></div>
+<div class="ttc" id="anamespaceMR_html_a6d7483b6adbc485e9c9b52eb09cb7735"><div class="ttname"><a href="namespaceMR.html#a6d7483b6adbc485e9c9b52eb09cb7735">MR::Expected</a></div><div class="ttdeci">tl::expected&lt; T, E &gt; Expected</div><div class="ttdef"><b>Definition</b> MRExpected.h:59</div></div>
+<div class="ttc" id="anamespaceMR_html_a7c31ded9fca5ab0be7fbc73187e14e17"><div class="ttname"><a href="namespaceMR.html#a7c31ded9fca5ab0be7fbc73187e14e17">MR::getLeftTriPoints</a></div><div class="ttdeci">MRMESH_API void getLeftTriPoints(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e, Vector3f &amp;v0, Vector3f &amp;v1, Vector3f &amp;v2)</div><div class="ttdoc">returns three points of left face of e: v0 = orgPnt( e ), v1 = destPnt( e )</div></div>
+<div class="ttc" id="anamespaceMR_html_a7d641e99aa4679047a71ff850e614f60"><div class="ttname"><a href="namespaceMR.html#a7d641e99aa4679047a71ff850e614f60">MR::edgePoint</a></div><div class="ttdeci">Vector3f edgePoint(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e, float f)</div><div class="ttdoc">returns a point on the edge: origin point for f=0 and destination point for f=1</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:36</div></div>
+<div class="ttc" id="anamespaceMR_html_a81332ea392098bb6bfa5694e2af14350"><div class="ttname"><a href="namespaceMR.html#a81332ea392098bb6bfa5694e2af14350">MR::pseudonormal</a></div><div class="ttdeci">MRMESH_API Vector3f pseudonormal(const MeshTopology &amp;topology, const VertCoords &amp;points, VertId v, const FaceBitSet *region=nullptr)</div></div>
+<div class="ttc" id="anamespaceMR_html_a8375bb81ce2308e9b03e2e0d5792dcd9"><div class="ttname"><a href="namespaceMR.html#a8375bb81ce2308e9b03e2e0d5792dcd9">MR::edgeLengthSq</a></div><div class="ttdeci">float edgeLengthSq(const MeshTopology &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</div><div class="ttdoc">returns squared Euclidean length of the edge (faster to compute than length)</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:142</div></div>
+<div class="ttc" id="anamespaceMR_html_a83e40508b3f05b594da19748c1da2d05"><div class="ttname"><a href="namespaceMR.html#a83e40508b3f05b594da19748c1da2d05">MR::volume</a></div><div class="ttdeci">MRMESH_API double volume(const MeshTopology &amp;topology, const VertCoords &amp;points, const FaceBitSet *region=nullptr)</div></div>
+<div class="ttc" id="anamespaceMR_html_a8833f02470c8a91d3de35ce644fb62d8"><div class="ttname"><a href="namespaceMR.html#a8833f02470c8a91d3de35ce644fb62d8">MR::triPoint</a></div><div class="ttdeci">MRMESH_API Vector3f triPoint(const MeshTopology &amp;topology, const VertCoords &amp;points, const MeshTriPoint &amp;p)</div><div class="ttdoc">computes coordinates of point given as face and barycentric representation</div></div>
+<div class="ttc" id="anamespaceMR_html_aa2a7fba3a600699de880615c69671718"><div class="ttname"><a href="namespaceMR.html#aa2a7fba3a600699de880615c69671718">MR::orgPnt</a></div><div class="ttdeci">Vector3f orgPnt(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">returns coordinates of the edge origin</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:12</div></div>
+<div class="ttc" id="anamespaceMR_html_aa776be59eeaaa3ab4503389cbf4f41c3"><div class="ttname"><a href="namespaceMR.html#aa776be59eeaaa3ab4503389cbf4f41c3">MR::discreteMeanCurvature</a></div><div class="ttdeci">MRMESH_API float discreteMeanCurvature(const MeshTopology &amp;topology, const VertCoords &amp;points, VertId v)</div></div>
+<div class="ttc" id="anamespaceMR_html_ab24719c8c1f71e117f3096280104749c"><div class="ttname"><a href="namespaceMR.html#ab24719c8c1f71e117f3096280104749c">MR::circumcircleDiameterSq</a></div><div class="ttdeci">MRMESH_API float circumcircleDiameterSq(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f)</div><div class="ttdoc">returns squared circumcircle diameter of given mesh triangle</div></div>
+<div class="ttc" id="anamespaceMR_html_ab2b62bcd240ef5b1885ecfec97054a9c"><div class="ttname"><a href="namespaceMR.html#ab2b62bcd240ef5b1885ecfec97054a9c">MR::edgeCenter</a></div><div class="ttdeci">Vector3f edgeCenter(const MeshTopology &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</div><div class="ttdoc">computes the center of given edge</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:48</div></div>
+<div class="ttc" id="anamespaceMR_html_ab7641eb2e941e9bc43b5e10d395328f1"><div class="ttname"><a href="namespaceMR.html#ab7641eb2e941e9bc43b5e10d395328f1">MR::getClosestEdge</a></div><div class="ttdeci">MRMESH_API UndirectedEdgeId getClosestEdge(const MeshTopology &amp;topology, const VertCoords &amp;points, const PointOnFace &amp;p)</div><div class="ttdoc">returns one of three face edges, closest to given point</div></div>
+<div class="ttc" id="anamespaceMR_html_abd3259955c972492f27f1ec056e2fd41"><div class="ttname"><a href="namespaceMR.html#abd3259955c972492f27f1ec056e2fd41">MR::dblArea</a></div><div class="ttdeci">float dblArea(const MeshTopology &amp;topology, const VertCoords &amp;points, FaceId f)</div><div class="ttdoc">returns twice the area of given face</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:160</div></div>
+<div class="ttc" id="anamespaceMR_html_ac3b4f93ff16dbb5975ce8dec6adc39cf"><div class="ttname"><a href="namespaceMR.html#ac3b4f93ff16dbb5975ce8dec6adc39cf">MR::Triangle3f</a></div><div class="ttdeci">Triangle3&lt; float &gt; Triangle3f</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshFwd.h:391</div></div>
+<div class="ttc" id="anamespaceMR_html_ac6f4e8a904a2f00fdb5a7dc8b4925b19"><div class="ttname"><a href="namespaceMR.html#ac6f4e8a904a2f00fdb5a7dc8b4925b19">MR::edgeLength</a></div><div class="ttdeci">float edgeLength(const MeshTopology &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</div><div class="ttdoc">returns Euclidean length of the edge</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:133</div></div>
+<div class="ttc" id="anamespaceMR_html_acb19030d836bd45767a57eaa6360fa60"><div class="ttname"><a href="namespaceMR.html#acb19030d836bd45767a57eaa6360fa60">MR::holePerimiter</a></div><div class="ttdeci">MRMESH_API double holePerimiter(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">computes the perimeter of the hole specified by one of its edges with no valid left face (left is hol...</div></div>
+<div class="ttc" id="anamespaceMR_html_add0358fa9df433e60bc4d95e83abeff6"><div class="ttname"><a href="namespaceMR.html#add0358fa9df433e60bc4d95e83abeff6">MR::getClosestVertex</a></div><div class="ttdeci">MRMESH_API VertId getClosestVertex(const MeshTopology &amp;topology, const VertCoords &amp;points, const PointOnFace &amp;p)</div><div class="ttdoc">returns one of three face vertices, closest to given point</div></div>
+<div class="ttc" id="anamespaceMR_html_ae377aac48c0e2e3070f73db2719c9dfe"><div class="ttname"><a href="namespaceMR.html#ae377aac48c0e2e3070f73db2719c9dfe">MR::leftDirDblArea</a></div><div class="ttdeci">MRMESH_API Vector3f leftDirDblArea(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">computes directed double area of left triangular face of given edge</div></div>
+<div class="ttc" id="anamespaceMR_html_ae404353d24dee8a7548853d3711fecaf"><div class="ttname"><a href="namespaceMR.html#ae404353d24dee8a7548853d3711fecaf">MR::projArea</a></div><div class="ttdeci">MRMESH_API double projArea(const MeshTopology &amp;topology, const VertCoords &amp;points, const Vector3f &amp;dir, const FaceBitSet &amp;fs)</div><div class="ttdoc">computes the sum of absolute projected area of faces from given region as visible if look from given ...</div></div>
+<div class="ttc" id="anamespaceMR_html_ae88dcc2f46770de755e55f980a67a5f3"><div class="ttname"><a href="namespaceMR.html#ae88dcc2f46770de755e55f980a67a5f3">MR::cotan</a></div><div class="ttdeci">float cotan(const MeshTopology &amp;topology, const VertCoords &amp;points, UndirectedEdgeId ue)</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:306</div></div>
+<div class="ttc" id="anamespaceMR_html_af04c9fae0daff536f4098c78b1c10b95"><div class="ttname"><a href="namespaceMR.html#af04c9fae0daff536f4098c78b1c10b95">MR::sumAngles</a></div><div class="ttdeci">MRMESH_API float sumAngles(const MeshTopology &amp;topology, const VertCoords &amp;points, VertId v, bool *outBoundaryVert=nullptr)</div><div class="ttdoc">computes the sum of triangle angles at given vertex; optionally returns whether the vertex is on boun...</div></div>
+<div class="ttc" id="anamespaceMR_html_af0748014e16c8c27ba2438118ae939a1"><div class="ttname"><a href="namespaceMR.html#af0748014e16c8c27ba2438118ae939a1">MR::leftNormal</a></div><div class="ttdeci">Vector3f leftNormal(const MeshTopology &amp;topology, const VertCoords &amp;points, EdgeId e)</div><div class="ttdoc">computes triangular face normal from its vertices</div><div class="ttdef"><b>Definition</b> MRMeshMath.h:213</div></div>
+<div class="ttc" id="anamespaceMR_html_afb5e341e476649b321cdb9f27e72c6d1"><div class="ttname"><a href="namespaceMR.html#afb5e341e476649b321cdb9f27e72c6d1">MR::dihedralAngleSin</a></div><div class="ttdeci">MRMESH_API float dihedralAngleSin(const MeshTopology &amp;topology, const VertCoords &amp;points, UndirectedEdgeId e)</div></div>
+<div class="ttc" id="anamespaceMR_html_aff94707b83310dd38361b67bf3490f8e"><div class="ttname"><a href="namespaceMR.html#aff94707b83310dd38361b67bf3490f8e">MR::dirDblAreas</a></div><div class="ttdeci">MRMESH_API Vector&lt; Vector3f, VertId &gt; dirDblAreas(const MeshTopology &amp;topology, const VertCoords &amp;points, const VertBitSet *region=nullptr)</div><div class="ttdoc">computes and returns the directed double area for every (region) vertex in the mesh</div></div>
+<div class="ttc" id="astructMR_1_1EdgePoint_html"><div class="ttname"><a href="structMR_1_1EdgePoint.html">MR::EdgePoint</a></div><div class="ttdoc">encodes a point on an edge of mesh or of polyline</div><div class="ttdef"><b>Definition</b> MREdgePoint.h:11</div></div>
+<div class="ttc" id="astructMR_1_1EdgePoint_html_aa0e9261e0dcf014db57e19ce882ddcfb"><div class="ttname"><a href="structMR_1_1EdgePoint.html#aa0e9261e0dcf014db57e19ce882ddcfb">MR::EdgePoint::a</a></div><div class="ttdeci">SegmPointf a</div><div class="ttdoc">a in [0,1], a=0 =&gt; point is in org( e ), a=1 =&gt; point is in dest( e )</div><div class="ttdef"><b>Definition</b> MREdgePoint.h:13</div></div>
+<div class="ttc" id="astructMR_1_1EdgePoint_html_aa0fb43077718779351b94f5a803498a6"><div class="ttname"><a href="structMR_1_1EdgePoint.html#aa0fb43077718779351b94f5a803498a6">MR::EdgePoint::e</a></div><div class="ttdeci">EdgeId e</div><div class="ttdef"><b>Definition</b> MREdgePoint.h:12</div></div>
+<div class="ttc" id="astructMR_1_1MeshTriPoint_html"><div class="ttname"><a href="structMR_1_1MeshTriPoint.html">MR::MeshTriPoint</a></div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTriPoint.h:23</div></div>
+<div class="ttc" id="astructMR_1_1MeshTriPoint_html_afb2e8376855431a09626f25ffe6039bc"><div class="ttname"><a href="structMR_1_1MeshTriPoint.html#afb2e8376855431a09626f25ffe6039bc">MR::MeshTriPoint::e</a></div><div class="ttdeci">EdgeId e</div><div class="ttdef"><b>Definition</b> MRMesh/MRMeshTriPoint.h:24</div></div>
+<div class="ttc" id="astructMR_1_1PointOnFace_html"><div class="ttname"><a href="structMR_1_1PointOnFace.html">MR::PointOnFace</a></div><div class="ttdoc">a point located on some mesh's face</div><div class="ttdef"><b>Definition</b> MRMesh/MRPointOnFace.h:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_3b80d7f2783cad7ee402cf6b731f4ae2.html">MRMesh</a></li><li class="navelem"><a class="el" href="MRMeshMath_8h.html">MRMeshMath.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

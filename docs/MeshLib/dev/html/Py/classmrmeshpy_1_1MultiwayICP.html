@@ -1,0 +1,607 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.MultiwayICP Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1MultiwayICP.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="classmrmeshpy_1_1MultiwayICP-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.MultiwayICP Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a969d7635d6c7452579cc28cf034aab82" id="r_a969d7635d6c7452579cc28cf034aab82"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a969d7635d6c7452579cc28cf034aab82">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1Vector__MeshOrPointsXf__ObjId.html">Vector_MeshOrPointsXf_ObjId</a> objects, <a class="el" href="classmrmeshpy_1_1MultiwayICPSamplingParameters.html">MultiwayICPSamplingParameters</a> samplingParams)</td></tr>
+<tr class="separator:a969d7635d6c7452579cc28cf034aab82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae6a2eddfded74a19e3dae8cd997edac" id="r_aae6a2eddfded74a19e3dae8cd997edac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector__AffineXf3f__ObjId.html">Vector_AffineXf3f_ObjId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae6a2eddfded74a19e3dae8cd997edac">calculateTransformations</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> cb='{}')</td></tr>
+<tr class="separator:aae6a2eddfded74a19e3dae8cd997edac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5cdb3ff62ae142e6bfc4387e2362db0" id="r_ac5cdb3ff62ae142e6bfc4387e2362db0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector__AffineXf3f__ObjId.html">Vector_AffineXf3f_ObjId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5cdb3ff62ae142e6bfc4387e2362db0">calculateTransformationsFixFirst</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> cb='{}')</td></tr>
+<tr class="separator:ac5cdb3ff62ae142e6bfc4387e2362db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8bf1c85a0fe0a2997fba1c977252cd8" id="r_ae8bf1c85a0fe0a2997fba1c977252cd8"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8bf1c85a0fe0a2997fba1c977252cd8">devEnableIndependentEquationsMode</a> (self, bool on)</td></tr>
+<tr class="separator:ae8bf1c85a0fe0a2997fba1c977252cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a058301501b6fc86078b555ac0009707c" id="r_a058301501b6fc86078b555ac0009707c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a058301501b6fc86078b555ac0009707c">devIndependentEquationsModeEnabled</a> (self)</td></tr>
+<tr class="separator:a058301501b6fc86078b555ac0009707c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee422a21ba55b18860bcb102de2a4719" id="r_aee422a21ba55b18860bcb102de2a4719"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1IICPTreeIndexer.html">IICPTreeIndexer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee422a21ba55b18860bcb102de2a4719">getCascadeIndexer</a> (self)</td></tr>
+<tr class="separator:aee422a21ba55b18860bcb102de2a4719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea81a09206a0164c1052b07807f191e4" id="r_aea81a09206a0164c1052b07807f191e4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea81a09206a0164c1052b07807f191e4">getMeanSqDistToPlane</a> (self, <a class="el" href="classmrmeshpy_1_1std__optional__double.html">std_optional_double</a> value='{}')</td></tr>
+<tr class="separator:aea81a09206a0164c1052b07807f191e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d11bbbb585811f4cee95c41ecdfb510" id="r_a0d11bbbb585811f4cee95c41ecdfb510"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d11bbbb585811f4cee95c41ecdfb510">getMeanSqDistToPoint</a> (self, <a class="el" href="classmrmeshpy_1_1std__optional__double.html">std_optional_double</a> value='{}')</td></tr>
+<tr class="separator:a0d11bbbb585811f4cee95c41ecdfb510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e6e94412ded10a2eb38575947d8ff8a" id="r_a5e6e94412ded10a2eb38575947d8ff8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e6e94412ded10a2eb38575947d8ff8a">getNumActivePairs</a> (self)</td></tr>
+<tr class="separator:a5e6e94412ded10a2eb38575947d8ff8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc70be60848f05430e81b92be04f47a" id="r_aafc70be60848f05430e81b92be04f47a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafc70be60848f05430e81b92be04f47a">getNumSamples</a> (self)</td></tr>
+<tr class="separator:aafc70be60848f05430e81b92be04f47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2903bd045834cc33e913b039654743cf" id="r_a2903bd045834cc33e913b039654743cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector__Vector__Vector__ICPGroupPairs__Id__ICPElemtTag__Id__ICPElemtTag__int.html">Vector_Vector_Vector_ICPGroupPairs_Id_ICPElemtTag_Id_ICPElemtTag_int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2903bd045834cc33e913b039654743cf">getPairsPerLayer</a> (self)</td></tr>
+<tr class="separator:a2903bd045834cc33e913b039654743cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e53a75241559e2e304aca5782fb617" id="r_a30e53a75241559e2e304aca5782fb617"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1ICPProperties.html">ICPProperties</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30e53a75241559e2e304aca5782fb617">getParams</a> (self)</td></tr>
+<tr class="separator:a30e53a75241559e2e304aca5782fb617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1454a66ad32caafe585c81d740bd15a1" id="r_a1454a66ad32caafe585c81d740bd15a1"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1454a66ad32caafe585c81d740bd15a1">getStatusInfo</a> (self)</td></tr>
+<tr class="separator:a1454a66ad32caafe585c81d740bd15a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6147b02eef605d04c670cb8aee37d837" id="r_a6147b02eef605d04c670cb8aee37d837"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6147b02eef605d04c670cb8aee37d837">resamplePoints</a> (self, <a class="el" href="classmrmeshpy_1_1MultiwayICPSamplingParameters.html">MultiwayICPSamplingParameters</a> samplingParams)</td></tr>
+<tr class="separator:a6147b02eef605d04c670cb8aee37d837"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bdf7c5455e8fbcf01f4a6ca07e63190" id="r_a0bdf7c5455e8fbcf01f4a6ca07e63190"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bdf7c5455e8fbcf01f4a6ca07e63190">setParams</a> (self, <a class="el" href="classmrmeshpy_1_1ICPProperties.html">ICPProperties</a> prop)</td></tr>
+<tr class="separator:a0bdf7c5455e8fbcf01f4a6ca07e63190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a611eadb91135f4814342f55e294e92f2" id="r_a611eadb91135f4814342f55e294e92f2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a611eadb91135f4814342f55e294e92f2">setPerIterationCallback</a> (self, <a class="el" href="classmrmeshpy_1_1func__void__from__int.html">func_void_from_int</a> callback)</td></tr>
+<tr class="separator:a611eadb91135f4814342f55e294e92f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81a36e43b2fc7a8a6c7c1b3138d9b6f2" id="r_a81a36e43b2fc7a8a6c7c1b3138d9b6f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81a36e43b2fc7a8a6c7c1b3138d9b6f2">updateAllPointPairs</a> (self, <a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> cb='{}')</td></tr>
+<tr class="separator:a81a36e43b2fc7a8a6c7c1b3138d9b6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aff4c4275a0ffd576904b61e78374363c" id="r_aff4c4275a0ffd576904b61e78374363c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff4c4275a0ffd576904b61e78374363c">PairsPerLayer</a> = <a class="el" href="classmrmeshpy_1_1Vector__Vector__Vector__ICPGroupPairs__Id__ICPElemtTag__Id__ICPElemtTag__int.html">Vector_Vector_Vector_ICPGroupPairs_Id_ICPElemtTag_Id_ICPElemtTag_int</a></td></tr>
+<tr class="separator:aff4c4275a0ffd576904b61e78374363c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::MultiwayICP
+
+This class allows you to register many objects having similar parts
+and known initial approximations of orientations/locations using
+Iterative Closest Points (ICP) point-to-point or point-to-plane algorithms
+\\snippet cpp-samples/GlobalRegistration.cpp 0
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a969d7635d6c7452579cc28cf034aab82" name="a969d7635d6c7452579cc28cf034aab82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a969d7635d6c7452579cc28cf034aab82">&#9670;&#160;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MultiwayICP.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector__MeshOrPointsXf__ObjId.html">Vector_MeshOrPointsXf_ObjId</a></td>          <td class="paramname"><span class="paramname"><em>objects</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MultiwayICPSamplingParameters.html">MultiwayICPSamplingParameters</a></td>          <td class="paramname"><span class="paramname"><em>samplingParams</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aae6a2eddfded74a19e3dae8cd997edac" name="aae6a2eddfded74a19e3dae8cd997edac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae6a2eddfded74a19e3dae8cd997edac">&#9670;&#160;</a></span>calculateTransformations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector__AffineXf3f__ObjId.html">Vector_AffineXf3f_ObjId</a> mrmeshpy.MultiwayICP.calculateTransformations </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> </td>          <td class="paramname"><span class="paramname"><em>cb</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">runs ICP algorithm given input objects, transformations, and parameters;
+\\return adjusted transformations of all objects to reach registered state
+the transformation of the last object is fixed and does not change here
+</pre> 
+</div>
+</div>
+<a id="ac5cdb3ff62ae142e6bfc4387e2362db0" name="ac5cdb3ff62ae142e6bfc4387e2362db0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5cdb3ff62ae142e6bfc4387e2362db0">&#9670;&#160;</a></span>calculateTransformationsFixFirst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector__AffineXf3f__ObjId.html">Vector_AffineXf3f_ObjId</a> mrmeshpy.MultiwayICP.calculateTransformationsFixFirst </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> </td>          <td class="paramname"><span class="paramname"><em>cb</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">runs ICP algorithm given input objects, transformations, and parameters;
+\\return adjusted transformations of all objects to reach registered state
+the transformation of the first object is fixed and does not change here
+</pre> 
+</div>
+</div>
+<a id="ae8bf1c85a0fe0a2997fba1c977252cd8" name="ae8bf1c85a0fe0a2997fba1c977252cd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8bf1c85a0fe0a2997fba1c977252cd8">&#9670;&#160;</a></span>devEnableIndependentEquationsMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MultiwayICP.devEnableIndependentEquationsMode </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>on</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a058301501b6fc86078b555ac0009707c" name="a058301501b6fc86078b555ac0009707c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a058301501b6fc86078b555ac0009707c">&#9670;&#160;</a></span>devIndependentEquationsModeEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.MultiwayICP.devIndependentEquationsModeEnabled </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">if in independent equations mode - creates separate equation system for each object
+otherwise creates single large equation system for all objects
+</pre> 
+</div>
+</div>
+<a id="aee422a21ba55b18860bcb102de2a4719" name="aee422a21ba55b18860bcb102de2a4719"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee422a21ba55b18860bcb102de2a4719">&#9670;&#160;</a></span>getCascadeIndexer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1IICPTreeIndexer.html">IICPTreeIndexer</a> mrmeshpy.MultiwayICP.getCascadeIndexer </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns pointer to class that is used to navigate among layers of cascade registration
+if nullptr - cascade mode is not used
+</pre> 
+</div>
+</div>
+<a id="aea81a09206a0164c1052b07807f191e4" name="aea81a09206a0164c1052b07807f191e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea81a09206a0164c1052b07807f191e4">&#9670;&#160;</a></span>getMeanSqDistToPlane()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.MultiwayICP.getMeanSqDistToPlane </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__optional__double.html">std_optional_double</a> </td>          <td class="paramname"><span class="paramname"><em>value</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes root-mean-square deviation from points to target planes
+or the standard deviation from given value if present
+</pre> 
+</div>
+</div>
+<a id="a0d11bbbb585811f4cee95c41ecdfb510" name="a0d11bbbb585811f4cee95c41ecdfb510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d11bbbb585811f4cee95c41ecdfb510">&#9670;&#160;</a></span>getMeanSqDistToPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.MultiwayICP.getMeanSqDistToPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1std__optional__double.html">std_optional_double</a> </td>          <td class="paramname"><span class="paramname"><em>value</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes root-mean-square deviation between points
+or the standard deviation from given value if present
+</pre> 
+</div>
+</div>
+<a id="a5e6e94412ded10a2eb38575947d8ff8a" name="a5e6e94412ded10a2eb38575947d8ff8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e6e94412ded10a2eb38575947d8ff8a">&#9670;&#160;</a></span>getNumActivePairs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MultiwayICP.getNumActivePairs </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes the number of active point pairs
+</pre> 
+</div>
+</div>
+<a id="aafc70be60848f05430e81b92be04f47a" name="aafc70be60848f05430e81b92be04f47a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafc70be60848f05430e81b92be04f47a">&#9670;&#160;</a></span>getNumSamples()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> int mrmeshpy.MultiwayICP.getNumSamples </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">computes the number of samples able to form pairs
+</pre> 
+</div>
+</div>
+<a id="a2903bd045834cc33e913b039654743cf" name="a2903bd045834cc33e913b039654743cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2903bd045834cc33e913b039654743cf">&#9670;&#160;</a></span>getPairsPerLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector__Vector__Vector__ICPGroupPairs__Id__ICPElemtTag__Id__ICPElemtTag__int.html">Vector_Vector_Vector_ICPGroupPairs_Id_ICPElemtTag_Id_ICPElemtTag_int</a> mrmeshpy.MultiwayICP.getPairsPerLayer </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns all pairs of all layers
+</pre> 
+</div>
+</div>
+<a id="a30e53a75241559e2e304aca5782fb617" name="a30e53a75241559e2e304aca5782fb617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30e53a75241559e2e304aca5782fb617">&#9670;&#160;</a></span>getParams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1ICPProperties.html">ICPProperties</a> mrmeshpy.MultiwayICP.getParams </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1454a66ad32caafe585c81d740bd15a1" name="a1454a66ad32caafe585c81d740bd15a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1454a66ad32caafe585c81d740bd15a1">&#9670;&#160;</a></span>getStatusInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str mrmeshpy.MultiwayICP.getStatusInfo </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">returns status info string
+</pre> 
+</div>
+</div>
+<a id="a6147b02eef605d04c670cb8aee37d837" name="a6147b02eef605d04c670cb8aee37d837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6147b02eef605d04c670cb8aee37d837">&#9670;&#160;</a></span>resamplePoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.MultiwayICP.resamplePoints </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MultiwayICPSamplingParameters.html">MultiwayICPSamplingParameters</a></td>          <td class="paramname"><span class="paramname"><em>samplingParams</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">select pairs with origin samples on all objects
+</pre> 
+</div>
+</div>
+<a id="a0bdf7c5455e8fbcf01f4a6ca07e63190" name="a0bdf7c5455e8fbcf01f4a6ca07e63190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bdf7c5455e8fbcf01f4a6ca07e63190">&#9670;&#160;</a></span>setParams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MultiwayICP.setParams </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1ICPProperties.html">ICPProperties</a></td>          <td class="paramname"><span class="paramname"><em>prop</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">tune algorithm params before run calculateTransformations()
+</pre> 
+</div>
+</div>
+<a id="a611eadb91135f4814342f55e294e92f2" name="a611eadb91135f4814342f55e294e92f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a611eadb91135f4814342f55e294e92f2">&#9670;&#160;</a></span>setPerIterationCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.MultiwayICP.setPerIterationCallback </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__void__from__int.html">func_void_from_int</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">sets callback that will be called for each iteration
+</pre> 
+</div>
+</div>
+<a id="a81a36e43b2fc7a8a6c7c1b3138d9b6f2" name="a81a36e43b2fc7a8a6c7c1b3138d9b6f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81a36e43b2fc7a8a6c7c1b3138d9b6f2">&#9670;&#160;</a></span>updateAllPointPairs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.MultiwayICP.updateAllPointPairs </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1func__bool__from__float.html">func_bool_from_float</a> </td>          <td class="paramname"><span class="paramname"><em>cb</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'{}'</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">in each pair updates the target data and performs basic filtering (activation)
+in cascade mode only useful for stats update
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aff4c4275a0ffd576904b61e78374363c" name="aff4c4275a0ffd576904b61e78374363c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff4c4275a0ffd576904b61e78374363c">&#9670;&#160;</a></span>PairsPerLayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">mrmeshpy.MultiwayICP.PairsPerLayer = <a class="el" href="classmrmeshpy_1_1Vector__Vector__Vector__ICPGroupPairs__Id__ICPElemtTag__Id__ICPElemtTag__int.html">Vector_Vector_Vector_ICPGroupPairs_Id_ICPElemtTag_Id_ICPElemtTag_int</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1MultiwayICP.html">MultiwayICP</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRMakeSphereMesh.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRMakeSphereMesh_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRMeshC/MRMakeSphereMesh.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRMeshC_2MRMakeSphereMesh_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRMeshFwd_8h.html">MRMeshFwd.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="structMRSphereParams.html">    8</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRSphereParams.html">MRSphereParams</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="structMRSphereParams.html#a4439c01e0e27173543a6da34336b2024">   10</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRSphereParams.html#a4439c01e0e27173543a6da34336b2024">radius</a>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structMRSphereParams.html#a5f59105f7d8815267e7e295ce861e739">   11</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMRSphereParams.html#a5f59105f7d8815267e7e295ce861e739">numMeshVertices</a>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMakeSphereMesh_8h.html#a70d7cdb50802dba4e98e7a604d503cd2">   12</a></span>} <a class="code hl_typedef" href="MRMeshC_2MRMakeSphereMesh_8h.html#a70d7cdb50802dba4e98e7a604d503cd2">MRSphereParams</a>;</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMakeSphereMesh_8h.html#a5c9ffdd8d709f51595e68919c613dd3d">   15</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRSphereParams.html">MRSphereParams</a> <a class="code hl_function" href="MRMeshC_2MRMakeSphereMesh_8h.html#a5c9ffdd8d709f51595e68919c613dd3d">mrSphereParamsNew</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMakeSphereMesh_8h.html#a231e4781dee5f4f4a0a55d15cbf65e3e">   18</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* <a class="code hl_function" href="MRMeshC_2MRMakeSphereMesh_8h.html#a231e4781dee5f4f4a0a55d15cbf65e3e">mrMakeSphere</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMRSphereParams.html">MRSphereParams</a>* params );</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structMRMakeUVSphereParameters.html">   21</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRMakeUVSphereParameters.html">MRMakeUVSphereParameters</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structMRMakeUVSphereParameters.html#aedc7390bb236cdc9cf5301bbe25ece8e">   23</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRMakeUVSphereParameters.html#aedc7390bb236cdc9cf5301bbe25ece8e">radius</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structMRMakeUVSphereParameters.html#ad8c1e08a0f485ea2145d4e2125289750">   24</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMRMakeUVSphereParameters.html#ad8c1e08a0f485ea2145d4e2125289750">horizontalResolution</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structMRMakeUVSphereParameters.html#af470017e8fbca8a02433a21aea67d8c1">   25</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMRMakeUVSphereParameters.html#af470017e8fbca8a02433a21aea67d8c1">verticalResolution</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMakeSphereMesh_8h.html#a41c0d7764dfcf6146b1fd10215d17d66">   26</a></span>} <a class="code hl_typedef" href="MRMeshC_2MRMakeSphereMesh_8h.html#a41c0d7764dfcf6146b1fd10215d17d66">MRMakeUVSphereParameters</a>;</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMakeSphereMesh_8h.html#aa5376c56e30df5e92308fc374ce57228">   29</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRMakeUVSphereParameters.html">MRMakeUVSphereParameters</a> <a class="code hl_function" href="MRMeshC_2MRMakeSphereMesh_8h.html#aa5376c56e30df5e92308fc374ce57228">mrMakeUvSphereParametersNew</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="MRMeshC_2MRMakeSphereMesh_8h.html#aff3a5d40e4c9735457f46bb94fd6fefa">   32</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* <a class="code hl_function" href="MRMeshC_2MRMakeSphereMesh_8h.html#aff3a5d40e4c9735457f46bb94fd6fefa">mrMakeUVSphere</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structMRMakeUVSphereParameters.html">MRMakeUVSphereParameters</a>* params );</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div>
+<div class="ttc" id="aMRMeshC_2MRMakeSphereMesh_8h_html_a231e4781dee5f4f4a0a55d15cbf65e3e"><div class="ttname"><a href="MRMeshC_2MRMakeSphereMesh_8h.html#a231e4781dee5f4f4a0a55d15cbf65e3e">mrMakeSphere</a></div><div class="ttdeci">MRMESHC_API MRMesh * mrMakeSphere(const MRSphereParams *params)</div><div class="ttdoc">creates a mesh of sphere with irregular triangulation</div></div>
+<div class="ttc" id="aMRMeshC_2MRMakeSphereMesh_8h_html_a41c0d7764dfcf6146b1fd10215d17d66"><div class="ttname"><a href="MRMeshC_2MRMakeSphereMesh_8h.html#a41c0d7764dfcf6146b1fd10215d17d66">MRMakeUVSphereParameters</a></div><div class="ttdeci">struct MRMakeUVSphereParameters MRMakeUVSphereParameters</div><div class="ttdoc">parameters for mrMakeUVSphere</div></div>
+<div class="ttc" id="aMRMeshC_2MRMakeSphereMesh_8h_html_a5c9ffdd8d709f51595e68919c613dd3d"><div class="ttname"><a href="MRMeshC_2MRMakeSphereMesh_8h.html#a5c9ffdd8d709f51595e68919c613dd3d">mrSphereParamsNew</a></div><div class="ttdeci">MRMESHC_API MRSphereParams mrSphereParamsNew(void)</div><div class="ttdoc">initializes a default instance</div></div>
+<div class="ttc" id="aMRMeshC_2MRMakeSphereMesh_8h_html_a70d7cdb50802dba4e98e7a604d503cd2"><div class="ttname"><a href="MRMeshC_2MRMakeSphereMesh_8h.html#a70d7cdb50802dba4e98e7a604d503cd2">MRSphereParams</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN struct MRSphereParams MRSphereParams</div><div class="ttdoc">parameters for mrMakeSphere</div></div>
+<div class="ttc" id="aMRMeshC_2MRMakeSphereMesh_8h_html_aa5376c56e30df5e92308fc374ce57228"><div class="ttname"><a href="MRMeshC_2MRMakeSphereMesh_8h.html#aa5376c56e30df5e92308fc374ce57228">mrMakeUvSphereParametersNew</a></div><div class="ttdeci">MRMESHC_API MRMakeUVSphereParameters mrMakeUvSphereParametersNew(void)</div><div class="ttdoc">initializes a default instance</div></div>
+<div class="ttc" id="aMRMeshC_2MRMakeSphereMesh_8h_html_aff3a5d40e4c9735457f46bb94fd6fefa"><div class="ttname"><a href="MRMeshC_2MRMakeSphereMesh_8h.html#aff3a5d40e4c9735457f46bb94fd6fefa">mrMakeUVSphere</a></div><div class="ttdeci">MRMESHC_API MRMesh * mrMakeUVSphere(const MRMakeUVSphereParameters *params)</div><div class="ttdoc">creates a mesh of sphere with regular triangulation (parallels and meridians)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html">MRMeshFwd.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a07cb85df391b65224a89339236e03c2e"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div><div class="ttdeci">#define MR_EXTERN_C_BEGIN</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:26</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a4c0dd57de0c70036b4a1e14f71d2fe11"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div><div class="ttdeci">#define MR_EXTERN_C_END</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:27</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a7b372c6d0fd65239f731902623e752c5"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a></div><div class="ttdeci">struct MRMesh MRMesh</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:47</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_ab8a099cc7166020a82c2f96fa5043ae6"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a></div><div class="ttdeci">#define MRMESHC_API</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:19</div></div>
+<div class="ttc" id="astructMRMakeUVSphereParameters_html"><div class="ttname"><a href="structMRMakeUVSphereParameters.html">MRMakeUVSphereParameters</a></div><div class="ttdoc">parameters for mrMakeUVSphere</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMakeSphereMesh.h:22</div></div>
+<div class="ttc" id="astructMRMakeUVSphereParameters_html_ad8c1e08a0f485ea2145d4e2125289750"><div class="ttname"><a href="structMRMakeUVSphereParameters.html#ad8c1e08a0f485ea2145d4e2125289750">MRMakeUVSphereParameters::horizontalResolution</a></div><div class="ttdeci">int horizontalResolution</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMakeSphereMesh.h:24</div></div>
+<div class="ttc" id="astructMRMakeUVSphereParameters_html_aedc7390bb236cdc9cf5301bbe25ece8e"><div class="ttname"><a href="structMRMakeUVSphereParameters.html#aedc7390bb236cdc9cf5301bbe25ece8e">MRMakeUVSphereParameters::radius</a></div><div class="ttdeci">float radius</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMakeSphereMesh.h:23</div></div>
+<div class="ttc" id="astructMRMakeUVSphereParameters_html_af470017e8fbca8a02433a21aea67d8c1"><div class="ttname"><a href="structMRMakeUVSphereParameters.html#af470017e8fbca8a02433a21aea67d8c1">MRMakeUVSphereParameters::verticalResolution</a></div><div class="ttdeci">int verticalResolution</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMakeSphereMesh.h:25</div></div>
+<div class="ttc" id="astructMRSphereParams_html"><div class="ttname"><a href="structMRSphereParams.html">MRSphereParams</a></div><div class="ttdoc">parameters for mrMakeSphere</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMakeSphereMesh.h:9</div></div>
+<div class="ttc" id="astructMRSphereParams_html_a4439c01e0e27173543a6da34336b2024"><div class="ttname"><a href="structMRSphereParams.html#a4439c01e0e27173543a6da34336b2024">MRSphereParams::radius</a></div><div class="ttdeci">float radius</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMakeSphereMesh.h:10</div></div>
+<div class="ttc" id="astructMRSphereParams_html_a5f59105f7d8815267e7e295ce861e739"><div class="ttname"><a href="structMRSphereParams.html#a5f59105f7d8815267e7e295ce861e739">MRSphereParams::numMeshVertices</a></div><div class="ttdeci">int numMeshVertices</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMakeSphereMesh.h:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRMakeSphereMesh_8h.html">MRMakeSphereMesh.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

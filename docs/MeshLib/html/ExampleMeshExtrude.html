@@ -1,0 +1,319 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<link rel="canonical" href="https://meshlib.io/documentation/ExampleMeshExtrude.html" />
+
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<!-- No Index Part -->
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Documentation: Mesh extrude</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Documentation
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('ExampleMeshExtrude.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Mesh extrude</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Example of extrude faces on mesh</p>
+<div class="tabbed"></div><div class="tabbed"><ul>
+<li><b class="tab-title">C++</b> <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;MRMesh/MRBitSet.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="codeRef" href="./Cpp/MRBitSetParallelFor_8h.html">MRMesh/MRBitSetParallelFor.h</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRId.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRMesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRMeshExtrude.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRMeshLoad.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRMeshSave.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMesh/MRRegionBoundary.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// Load mesh</span></div>
+<div class="line">    <a class="code hl_structRef" href="./Cpp/structMR_1_1Mesh.html">MR::Mesh</a> mesh = *<a class="code hl_functionRef" href="./Cpp/group__MeshLoadGroup.html#gac9118492a6cd095ff8e563c0987fc477">MR::MeshLoad::fromAnySupportedFormat</a>( <span class="stringliteral">&quot;mesh.stl&quot;</span> );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Select faces to extrude</span></div>
+<div class="line">    MR::FaceBitSet facesToExtrude;</div>
+<div class="line">    facesToExtrude.autoResizeSet( MR::FaceId( 1 ) );</div>
+<div class="line">    facesToExtrude.autoResizeSet( MR::FaceId( 2 ) );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Create duplicated verts on region boundary</span></div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/namespaceMR.html#a22f39580f90cbdb1bd5c77bd7b922251">MR::makeDegenerateBandAroundRegion</a>( mesh, facesToExtrude );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Find vertices that will be moved</span></div>
+<div class="line">    <span class="keyword">auto</span> vertsForMove = <a class="code hl_functionRef" href="./Cpp/namespaceMR.html#a42bfb820a74ca491a32df3c3c86c8053">MR::getIncidentVerts</a>( mesh.<a class="code hl_variableRef" href="./Cpp/structMR_1_1Mesh.html#a91b13898794821d7f88845ebaa6cc1c4">topology</a>, facesToExtrude );</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/group__BasicGroup.html#ga6f038e999890735ffdb5f8119eb5650e">MR::BitSetParallelFor</a>( vertsForMove, [&amp;] ( MR::VertId v )</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// Move each vertex</span></div>
+<div class="line">        mesh.<a class="code hl_variableRef" href="./Cpp/structMR_1_1Mesh.html#a9c8ead50efe2f8a111848b488f0a6aca">points</a>[v] += MR::Vector3f::plusZ();</div>
+<div class="line">    } );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Invalidate internal caches after manual changing</span></div>
+<div class="line">    mesh.<a class="code hl_functionRef" href="./Cpp/structMR_1_1Mesh.html#ac4cfa4d1a1f01bbcf883f4e96079e505">invalidateCaches</a>();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Save mesh</span></div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/group__MeshSaveGroup.html#ga6f98b4f73676fa32a7e3573939cb76b9">MR::MeshSave::toAnySupportedFormat</a>( mesh, <span class="stringliteral">&quot;extrudedMesh.stl&quot;</span> );</div>
+<div class="line">}</div>
+<div class="ttc" id="aMRBitSetParallelFor_8h_html"><div class="ttname"><a href="./Cpp/MRBitSetParallelFor_8h.html">MRBitSetParallelFor.h</a></div></div>
+<div class="ttc" id="agroup__BasicGroup_html_ga6f038e999890735ffdb5f8119eb5650e"><div class="ttname"><a href="./Cpp/group__BasicGroup.html#ga6f038e999890735ffdb5f8119eb5650e">MR::BitSetParallelFor</a></div><div class="ttdeci">auto BitSetParallelFor(const BS &amp;bs, F &amp;&amp;f, Cb &amp;&amp;... cb)</div></div>
+<div class="ttc" id="agroup__MeshLoadGroup_html_gac9118492a6cd095ff8e563c0987fc477"><div class="ttname"><a href="./Cpp/group__MeshLoadGroup.html#gac9118492a6cd095ff8e563c0987fc477">MR::MeshLoad::fromAnySupportedFormat</a></div><div class="ttdeci">MRMESH_API Expected&lt; Mesh &gt; fromAnySupportedFormat(const std::filesystem::path &amp;file, const MeshLoadSettings &amp;settings={})</div></div>
+<div class="ttc" id="agroup__MeshSaveGroup_html_ga6f98b4f73676fa32a7e3573939cb76b9"><div class="ttname"><a href="./Cpp/group__MeshSaveGroup.html#ga6f98b4f73676fa32a7e3573939cb76b9">MR::MeshSave::toAnySupportedFormat</a></div><div class="ttdeci">MRMESH_API Expected&lt; void &gt; toAnySupportedFormat(const Mesh &amp;mesh, const std::filesystem::path &amp;file, const SaveSettings &amp;settings={})</div></div>
+<div class="ttc" id="anamespaceMR_html_a22f39580f90cbdb1bd5c77bd7b922251"><div class="ttname"><a href="./Cpp/namespaceMR.html#a22f39580f90cbdb1bd5c77bd7b922251">MR::makeDegenerateBandAroundRegion</a></div><div class="ttdeci">MRMESH_API void makeDegenerateBandAroundRegion(Mesh &amp;mesh, const FaceBitSet &amp;region, const MakeDegenerateBandAroundRegionParams &amp;params={})</div></div>
+<div class="ttc" id="anamespaceMR_html_a42bfb820a74ca491a32df3c3c86c8053"><div class="ttname"><a href="./Cpp/namespaceMR.html#a42bfb820a74ca491a32df3c3c86c8053">MR::getIncidentVerts</a></div><div class="ttdeci">MRMESH_API VertBitSet getIncidentVerts(const MeshTopology &amp;topology, const FaceBitSet &amp;faces)</div></div>
+<div class="ttc" id="astructMR_1_1Mesh_html"><div class="ttname"><a href="./Cpp/structMR_1_1Mesh.html">MR::Mesh</a></div></div>
+<div class="ttc" id="astructMR_1_1Mesh_html_a91b13898794821d7f88845ebaa6cc1c4"><div class="ttname"><a href="./Cpp/structMR_1_1Mesh.html#a91b13898794821d7f88845ebaa6cc1c4">MR::Mesh::topology</a></div><div class="ttdeci">MeshTopology topology</div></div>
+<div class="ttc" id="astructMR_1_1Mesh_html_a9c8ead50efe2f8a111848b488f0a6aca"><div class="ttname"><a href="./Cpp/structMR_1_1Mesh.html#a9c8ead50efe2f8a111848b488f0a6aca">MR::Mesh::points</a></div><div class="ttdeci">VertCoords points</div></div>
+<div class="ttc" id="astructMR_1_1Mesh_html_ac4cfa4d1a1f01bbcf883f4e96079e505"><div class="ttname"><a href="./Cpp/structMR_1_1Mesh.html#ac4cfa4d1a1f01bbcf883f4e96079e505">MR::Mesh::invalidateCaches</a></div><div class="ttdeci">MRMESH_API void invalidateCaches(bool pointsChanged=true)</div></div>
+</div><!-- fragment --></li>
+<li><b class="tab-title">Python</b> <div class="fragment"><div class="line"><span class="keyword">import</span> meshlib.mrmeshpy <span class="keyword">as</span> mrmeshpy</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Load mesh</span></div>
+<div class="line">mesh = <a class="code hl_functionRef" href="./Py/namespacemrmeshpy.html#ac870d6fee4e3b3e3dcf73bc12a21d0f5">mrmeshpy.loadMesh</a>(<span class="stringliteral">&quot;mesh.stl&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Prepare region to extrude</span></div>
+<div class="line">faces_to_extrude = <a class="code hl_classRef" href="./Py/classmrmeshpy_1_1FaceBitSet.html">mrmeshpy.FaceBitSet</a>()</div>
+<div class="line">faces_to_extrude.resize(3, <span class="keyword">False</span>)</div>
+<div class="line">faces_to_extrude.set(<a class="code hl_classRef" href="./Py/classmrmeshpy_1_1FaceId.html">mrmeshpy.FaceId</a>(1), <span class="keyword">True</span>)</div>
+<div class="line">faces_to_extrude.set(<a class="code hl_classRef" href="./Py/classmrmeshpy_1_1FaceId.html">mrmeshpy.FaceId</a>(2), <span class="keyword">True</span>)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Create duplicated verts on region boundary</span></div>
+<div class="line"><a class="code hl_functionRef" href="./Py/namespacemrmeshpy.html#a05d6a4fb89f478b3c28ff98fba1e0ef0">mrmeshpy.makeDegenerateBandAroundRegion</a>(mesh, faces_to_extrude)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Find vertices that will be moved</span></div>
+<div class="line">verts_for_move = <a class="code hl_functionRef" href="./Py/namespacemrmeshpy.html#a0b05af3f125b6853ff531d62a294ab10">mrmeshpy.getIncidentVerts</a>(mesh.topology, faces_to_extrude)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Move each vertex</span></div>
+<div class="line"><span class="keywordflow">for</span> v <span class="keywordflow">in</span> range(verts_for_move.size()):</div>
+<div class="line">    <span class="keywordflow">if</span> verts_for_move.test(<a class="code hl_classRef" href="./Py/classmrmeshpy_1_1VertId.html">mrmeshpy.VertId</a>(v)):</div>
+<div class="line">        mesh.points.vec[v] += <a class="code hl_classRef" href="./Py/classmrmeshpy_1_1Vector3f.html">mrmeshpy.Vector3f</a>(0.0, 0.0, 1.0)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Invalidate internal caches after manual changing</span></div>
+<div class="line">mesh.invalidateCaches()</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Save mesh</span></div>
+<div class="line"><a class="code hl_functionRef" href="./Py/namespacemrmeshpy.html#a0f6b2b16672621f1c75bbd082c1ca388">mrmeshpy.saveMesh</a>(mesh, <span class="stringliteral">&quot;extrudedMesh.stl&quot;</span>)</div>
+<div class="ttc" id="aclassmrmeshpy_1_1FaceBitSet_html"><div class="ttname"><a href="./Py/classmrmeshpy_1_1FaceBitSet.html">mrmeshpy::FaceBitSet</a></div></div>
+<div class="ttc" id="aclassmrmeshpy_1_1FaceId_html"><div class="ttname"><a href="./Py/classmrmeshpy_1_1FaceId.html">mrmeshpy::FaceId</a></div></div>
+<div class="ttc" id="aclassmrmeshpy_1_1Vector3f_html"><div class="ttname"><a href="./Py/classmrmeshpy_1_1Vector3f.html">mrmeshpy::Vector3f</a></div></div>
+<div class="ttc" id="aclassmrmeshpy_1_1VertId_html"><div class="ttname"><a href="./Py/classmrmeshpy_1_1VertId.html">mrmeshpy::VertId</a></div></div>
+<div class="ttc" id="anamespacemrmeshpy_html_a05d6a4fb89f478b3c28ff98fba1e0ef0"><div class="ttname"><a href="./Py/namespacemrmeshpy.html#a05d6a4fb89f478b3c28ff98fba1e0ef0">mrmeshpy::makeDegenerateBandAroundRegion</a></div><div class="ttdeci">None makeDegenerateBandAroundRegion(Mesh mesh, FaceBitSet region, MakeDegenerateBandAroundRegionParams params='{}')</div></div>
+<div class="ttc" id="anamespacemrmeshpy_html_a0b05af3f125b6853ff531d62a294ab10"><div class="ttname"><a href="./Py/namespacemrmeshpy.html#a0b05af3f125b6853ff531d62a294ab10">mrmeshpy::getIncidentVerts</a></div><div class="ttdeci">VertBitSet getIncidentVerts(MeshTopology topology, UndirectedEdgeBitSet edges, VertBitSet store)</div></div>
+<div class="ttc" id="anamespacemrmeshpy_html_a0f6b2b16672621f1c75bbd082c1ca388"><div class="ttname"><a href="./Py/namespacemrmeshpy.html#a0f6b2b16672621f1c75bbd082c1ca388">mrmeshpy::saveMesh</a></div><div class="ttdeci">None saveMesh(Mesh mesh, os.PathLike|str|bytes file, SaveSettings settings='{}')</div></div>
+<div class="ttc" id="anamespacemrmeshpy_html_ac870d6fee4e3b3e3dcf73bc12a21d0f5"><div class="ttname"><a href="./Py/namespacemrmeshpy.html#ac870d6fee4e3b3e3dcf73bc12a21d0f5">mrmeshpy::loadMesh</a></div><div class="ttdeci">Mesh loadMesh(os.PathLike|str|bytes file, MeshLoadSettings settings='{}')</div></div>
+</div><!-- fragment --></li>
+<li><b class="tab-title">C</b> <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRBitSet.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMesh.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMeshExtrude.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMeshLoad.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRMeshSave.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;MRMeshC/MRRegionBoundary.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[] )</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// Load mesh</span></div>
+<div class="line">    <a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMeshLoad_8h.html#a704835da8dd3d463cc476961c6d7e5bb">mrMeshLoadFromAnySupportedFormat</a>( <span class="stringliteral">&quot;mesh.stl&quot;</span>, NULL );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Select faces to extrude</span></div>
+<div class="line">    <a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a>* facesToExtrude = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRBitSet_8h.html#a6c463de59771e69b448f9a5db732aa28">mrFaceBitSetNew</a>( 0, <span class="keyword">false</span> );</div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRBitSet_8h.html#a601f9fb0815d2c1a417a4b81860ff403">mrBitSetAutoResizeSet</a>( (<a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a>*)facesToExtrude, 1, <span class="keyword">true</span> );</div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRBitSet_8h.html#a601f9fb0815d2c1a417a4b81860ff403">mrBitSetAutoResizeSet</a>( (<a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a>*)facesToExtrude, 2, <span class="keyword">true</span> );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Create duplicated verts on region boundary</span></div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMeshExtrude_8h.html#a496ea3736594942a1f31fe40c4b13da2">mrMakeDegenerateBandAroundRegion</a>( mesh, facesToExtrude );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Find vertices that will be moved</span></div>
+<div class="line">    <a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a>* vertsToMove = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRRegionBoundary_8h.html#a6083573f89219e6d74bcfa82efefd4ef">mrGetIncidentVertsFromFaces</a>( <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMesh_8h.html#a2f5d81f940456a9ae80511fb12f71669">mrMeshTopology</a>( mesh ), facesToExtrude );</div>
+<div class="line">    <a class="code hl_structRef" href="./Cpp/structMRVector3f.html">MRVector3f</a>* points = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMesh_8h.html#abbd1a9c366f2fd8fbb39374056143b91">mrMeshPointsRef</a>( mesh );</div>
+<div class="line">    <a class="code hl_structRef" href="./Cpp/structMRVector3f.html">MRVector3f</a> shift = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRVector3_8h.html#a7b48c0138214953e3422885c1c8afb90">mrVector3fPlusZ</a>();</div>
+<div class="line">    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMesh_8h.html#a338ca340ee0427b7d5e466b57d585c2e">mrMeshPointsNum</a>( mesh ); ++i )</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRBitSet_8h.html#a74be3074ad7bf91877c10cbb1473dc6f">mrBitSetTest</a>( (<a class="code hl_typedefRef" href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a>*)vertsToMove, i ) )</div>
+<div class="line">            points[i] = <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRVector3_8h.html#a249854d0f317c4bfbb5b3976bcd8d0b7">mrVector3fAdd</a>( &amp;points[i], &amp;shift );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Invalidate internal caches after manual changing</span></div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMesh_8h.html#aef136fb43c5c1355894125da908ba183">mrMeshInvalidateCaches</a>( mesh, <span class="keyword">true</span> );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Save mesh</span></div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMeshSave_8h.html#a71b21c5fc445077f0a812d5b3991dd0b">mrMeshSaveToAnySupportedFormat</a>( mesh, <span class="stringliteral">&quot;extrudedMesh.stl&quot;</span>, NULL, NULL );</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRBitSet_8h.html#a8edd3bbe85ba162bd70a7bd90ae63fd5">mrVertBitSetFree</a>( vertsToMove );</div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRBitSet_8h.html#a2372aa7f8cb4d5dff3e71bc29ac620bf">mrFaceBitSetFree</a>( facesToExtrude );</div>
+<div class="line">    <a class="code hl_functionRef" href="./Cpp/MRMeshC_2MRMesh_8h.html#ae5d22b5eec3af73293e031ea6346310d">mrMeshFree</a>( mesh );</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="aMRMeshC_2MRBitSet_8h_html_a2372aa7f8cb4d5dff3e71bc29ac620bf"><div class="ttname"><a href="./Cpp/MRMeshC_2MRBitSet_8h.html#a2372aa7f8cb4d5dff3e71bc29ac620bf">mrFaceBitSetFree</a></div><div class="ttdeci">MRMESHC_API void mrFaceBitSetFree(MRFaceBitSet *fbs)</div></div>
+<div class="ttc" id="aMRMeshC_2MRBitSet_8h_html_a601f9fb0815d2c1a417a4b81860ff403"><div class="ttname"><a href="./Cpp/MRMeshC_2MRBitSet_8h.html#a601f9fb0815d2c1a417a4b81860ff403">mrBitSetAutoResizeSet</a></div><div class="ttdeci">MRMESHC_API void mrBitSetAutoResizeSet(MRBitSet *bs, size_t pos, bool value)</div></div>
+<div class="ttc" id="aMRMeshC_2MRBitSet_8h_html_a6c463de59771e69b448f9a5db732aa28"><div class="ttname"><a href="./Cpp/MRMeshC_2MRBitSet_8h.html#a6c463de59771e69b448f9a5db732aa28">mrFaceBitSetNew</a></div><div class="ttdeci">MRMESHC_API MRFaceBitSet * mrFaceBitSetNew(size_t numBits, bool fillValue)</div></div>
+<div class="ttc" id="aMRMeshC_2MRBitSet_8h_html_a74be3074ad7bf91877c10cbb1473dc6f"><div class="ttname"><a href="./Cpp/MRMeshC_2MRBitSet_8h.html#a74be3074ad7bf91877c10cbb1473dc6f">mrBitSetTest</a></div><div class="ttdeci">MRMESHC_API bool mrBitSetTest(const MRBitSet *bs, size_t index)</div></div>
+<div class="ttc" id="aMRMeshC_2MRBitSet_8h_html_a8edd3bbe85ba162bd70a7bd90ae63fd5"><div class="ttname"><a href="./Cpp/MRMeshC_2MRBitSet_8h.html#a8edd3bbe85ba162bd70a7bd90ae63fd5">mrVertBitSetFree</a></div><div class="ttdeci">MRMESHC_API void mrVertBitSetFree(MRVertBitSet *vbs)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshExtrude_8h_html_a496ea3736594942a1f31fe40c4b13da2"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshExtrude_8h.html#a496ea3736594942a1f31fe40c4b13da2">mrMakeDegenerateBandAroundRegion</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN MRMESHC_API void mrMakeDegenerateBandAroundRegion(MRMesh *mesh, const MRFaceBitSet *region)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a46d18b867dd2cbd31dd009e01658ba44"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a46d18b867dd2cbd31dd009e01658ba44">MRVertBitSet</a></div><div class="ttdeci">struct MRVertBitSet MRVertBitSet</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a7b372c6d0fd65239f731902623e752c5"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a></div><div class="ttdeci">struct MRMesh MRMesh</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a87ea817dc8204ed7e311d55fd9252cfc"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#a87ea817dc8204ed7e311d55fd9252cfc">MRFaceBitSet</a></div><div class="ttdeci">struct MRFaceBitSet MRFaceBitSet</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_ad2c8567a61ac1e952ded2abbb02ff204"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshFwd_8h.html#ad2c8567a61ac1e952ded2abbb02ff204">MRBitSet</a></div><div class="ttdeci">struct MRBitSet MRBitSet</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshLoad_8h_html_a704835da8dd3d463cc476961c6d7e5bb"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshLoad_8h.html#a704835da8dd3d463cc476961c6d7e5bb">mrMeshLoadFromAnySupportedFormat</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN MRMESHC_API MRMesh * mrMeshLoadFromAnySupportedFormat(const char *file, MRString **errorStr)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshSave_8h_html_a71b21c5fc445077f0a812d5b3991dd0b"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMeshSave_8h.html#a71b21c5fc445077f0a812d5b3991dd0b">mrMeshSaveToAnySupportedFormat</a></div><div class="ttdeci">MR_EXTERN_C_BEGIN MRMESHC_API void mrMeshSaveToAnySupportedFormat(const MRMesh *mesh, const char *file, const MRSaveSettings *settings, MRString **errorStr)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMesh_8h_html_a2f5d81f940456a9ae80511fb12f71669"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMesh_8h.html#a2f5d81f940456a9ae80511fb12f71669">mrMeshTopology</a></div><div class="ttdeci">MRMESHC_API const MRMeshTopology * mrMeshTopology(const MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMesh_8h_html_a338ca340ee0427b7d5e466b57d585c2e"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMesh_8h.html#a338ca340ee0427b7d5e466b57d585c2e">mrMeshPointsNum</a></div><div class="ttdeci">MRMESHC_API size_t mrMeshPointsNum(const MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMesh_8h_html_abbd1a9c366f2fd8fbb39374056143b91"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMesh_8h.html#abbd1a9c366f2fd8fbb39374056143b91">mrMeshPointsRef</a></div><div class="ttdeci">MRMESHC_API MRVector3f * mrMeshPointsRef(MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMesh_8h_html_ae5d22b5eec3af73293e031ea6346310d"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMesh_8h.html#ae5d22b5eec3af73293e031ea6346310d">mrMeshFree</a></div><div class="ttdeci">MRMESHC_API void mrMeshFree(MRMesh *mesh)</div></div>
+<div class="ttc" id="aMRMeshC_2MRMesh_8h_html_aef136fb43c5c1355894125da908ba183"><div class="ttname"><a href="./Cpp/MRMeshC_2MRMesh_8h.html#aef136fb43c5c1355894125da908ba183">mrMeshInvalidateCaches</a></div><div class="ttdeci">MRMESHC_API void mrMeshInvalidateCaches(MRMesh *mesh, bool pointsChanged)</div></div>
+<div class="ttc" id="aMRMeshC_2MRRegionBoundary_8h_html_a6083573f89219e6d74bcfa82efefd4ef"><div class="ttname"><a href="./Cpp/MRMeshC_2MRRegionBoundary_8h.html#a6083573f89219e6d74bcfa82efefd4ef">mrGetIncidentVertsFromFaces</a></div><div class="ttdeci">MRMESHC_API MRVertBitSet * mrGetIncidentVertsFromFaces(const MRMeshTopology *topology, const MRFaceBitSet *faces)</div></div>
+<div class="ttc" id="aMRMeshC_2MRVector3_8h_html_a249854d0f317c4bfbb5b3976bcd8d0b7"><div class="ttname"><a href="./Cpp/MRMeshC_2MRVector3_8h.html#a249854d0f317c4bfbb5b3976bcd8d0b7">mrVector3fAdd</a></div><div class="ttdeci">MRMESHC_API MRVector3f mrVector3fAdd(const MRVector3f *a, const MRVector3f *b)</div></div>
+<div class="ttc" id="aMRMeshC_2MRVector3_8h_html_a7b48c0138214953e3422885c1c8afb90"><div class="ttname"><a href="./Cpp/MRMeshC_2MRVector3_8h.html#a7b48c0138214953e3422885c1c8afb90">mrVector3fPlusZ</a></div><div class="ttdeci">MRMESHC_API MRVector3f mrVector3fPlusZ(void)</div></div>
+<div class="ttc" id="astructMRVector3f_html"><div class="ttname"><a href="./Cpp/structMRVector3f.html">MRVector3f</a></div></div>
+</div><!-- fragment --></li>
+</ul>
+</div><div class="tabbed"></div> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

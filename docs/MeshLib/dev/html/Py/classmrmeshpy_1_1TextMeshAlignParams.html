@@ -1,0 +1,827 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib Python Docs: mrmeshpy.TextMeshAlignParams Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib Python Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classmrmeshpy_1_1TextMeshAlignParams.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="classmrmeshpy_1_1TextMeshAlignParams-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mrmeshpy.TextMeshAlignParams Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for mrmeshpy.TextMeshAlignParams:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="classmrmeshpy_1_1TextMeshAlignParams.png" usemap="#mrmeshpy.TextMeshAlignParams_map" alt=""/>
+  <map id="mrmeshpy.TextMeshAlignParams_map" name="mrmeshpy.TextMeshAlignParams_map">
+<area href="classmrmeshpy_1_1SymbolMeshParams.html" alt="mrmeshpy.SymbolMeshParams" shape="rect" coords="0,0,198,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a253a6c2d4ea3ebc89386085636d36ce1" id="r_a253a6c2d4ea3ebc89386085636d36ce1"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a253a6c2d4ea3ebc89386085636d36ce1">__init__</a> (self)</td></tr>
+<tr class="separator:a253a6c2d4ea3ebc89386085636d36ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f4e1878c008b30662c59a442e7f9d2" id="r_af0f4e1878c008b30662c59a442e7f9d2"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0f4e1878c008b30662c59a442e7f9d2">__init__</a> (self, <a class="el" href="classmrmeshpy_1_1TextMeshAlignParams.html">TextMeshAlignParams</a> arg0)</td></tr>
+<tr class="separator:af0f4e1878c008b30662c59a442e7f9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0143426333f9af60f5d1a57c6a9f0379" id="r_a0143426333f9af60f5d1a57c6a9f0379"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0143426333f9af60f5d1a57c6a9f0379">direction</a> (self)</td></tr>
+<tr class="separator:a0143426333f9af60f5d1a57c6a9f0379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0030498ff70f2bc9fd55d95d9884d1e" id="r_aa0030498ff70f2bc9fd55d95d9884d1e"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0030498ff70f2bc9fd55d95d9884d1e">direction</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> arg1)</td></tr>
+<tr class="separator:aa0030498ff70f2bc9fd55d95d9884d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1bab2cd95900d11713a0ef6c9c3a77a" id="r_ad1bab2cd95900d11713a0ef6c9c3a77a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1bab2cd95900d11713a0ef6c9c3a77a">fontBasedSizeCalc</a> (self)</td></tr>
+<tr class="separator:ad1bab2cd95900d11713a0ef6c9c3a77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a789927da792dd74ec2736014e96ed69b" id="r_a789927da792dd74ec2736014e96ed69b"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a789927da792dd74ec2736014e96ed69b">fontBasedSizeCalc</a> (self, bool arg1)</td></tr>
+<tr class="separator:a789927da792dd74ec2736014e96ed69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f482c3cb0a5861dd1399b8493d4d6fe" id="r_a0f482c3cb0a5861dd1399b8493d4d6fe"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f482c3cb0a5861dd1399b8493d4d6fe">fontHeight</a> (self)</td></tr>
+<tr class="separator:a0f482c3cb0a5861dd1399b8493d4d6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a493d1dcb1321e4a99eda872486735686" id="r_a493d1dcb1321e4a99eda872486735686"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a493d1dcb1321e4a99eda872486735686">fontHeight</a> (self, float arg1)</td></tr>
+<tr class="separator:a493d1dcb1321e4a99eda872486735686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2e033e7442132701b783bfe22bfef66" id="r_ac2e033e7442132701b783bfe22bfef66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2e033e7442132701b783bfe22bfef66">pivotPoint</a> (self)</td></tr>
+<tr class="separator:ac2e033e7442132701b783bfe22bfef66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55407c58ed4aa2fee161374ecaf00533" id="r_a55407c58ed4aa2fee161374ecaf00533"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55407c58ed4aa2fee161374ecaf00533">pivotPoint</a> (self, <a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> arg1)</td></tr>
+<tr class="separator:a55407c58ed4aa2fee161374ecaf00533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1612e78d055f3a3480de0ceb600025c7" id="r_a1612e78d055f3a3480de0ceb600025c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1MeshTriPoint.html">MeshTriPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1612e78d055f3a3480de0ceb600025c7">startPoint</a> (self)</td></tr>
+<tr class="separator:a1612e78d055f3a3480de0ceb600025c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7da967f9696926986a5661670535e07" id="r_ae7da967f9696926986a5661670535e07"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7da967f9696926986a5661670535e07">startPoint</a> (self, <a class="el" href="classmrmeshpy_1_1MeshTriPoint.html">MeshTriPoint</a> arg1)</td></tr>
+<tr class="separator:ae7da967f9696926986a5661670535e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaebf927d962d6149f6b88b66206b43a0" id="r_aaebf927d962d6149f6b88b66206b43a0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaebf927d962d6149f6b88b66206b43a0">surfaceOffset</a> (self)</td></tr>
+<tr class="separator:aaebf927d962d6149f6b88b66206b43a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fbed4447a4c764ec9e06f9f3ab65c1c" id="r_a5fbed4447a4c764ec9e06f9f3ab65c1c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fbed4447a4c764ec9e06f9f3ab65c1c">surfaceOffset</a> (self, float arg1)</td></tr>
+<tr class="separator:a5fbed4447a4c764ec9e06f9f3ab65c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab86cb838c028e679db5bb9e52a064e73" id="r_ab86cb838c028e679db5bb9e52a064e73"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab86cb838c028e679db5bb9e52a064e73">textMaximumMovement</a> (self)</td></tr>
+<tr class="separator:ab86cb838c028e679db5bb9e52a064e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e5a88bb061c3bcf7858593326b367b7" id="r_a8e5a88bb061c3bcf7858593326b367b7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e5a88bb061c3bcf7858593326b367b7">textMaximumMovement</a> (self, float arg1)</td></tr>
+<tr class="separator:a8e5a88bb061c3bcf7858593326b367b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad6c44ccccf5b97277d7cb7ac0bc606" id="r_a3ad6c44ccccf5b97277d7cb7ac0bc606"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ad6c44ccccf5b97277d7cb7ac0bc606">textNormal</a> (self)</td></tr>
+<tr class="separator:a3ad6c44ccccf5b97277d7cb7ac0bc606"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a779a82e87e83c19721194f06cc29f24c" id="r_a779a82e87e83c19721194f06cc29f24c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a779a82e87e83c19721194f06cc29f24c">textNormal</a> (self, <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> arg1)</td></tr>
+<tr class="separator:a779a82e87e83c19721194f06cc29f24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmrmeshpy_1_1SymbolMeshParams')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html">mrmeshpy.SymbolMeshParams</a></td></tr>
+<tr class="memitem:a3a4a6f82ac46e675b87187cd83ebe813 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a3a4a6f82ac46e675b87187cd83ebe813"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1AlignType.html">AlignType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a3a4a6f82ac46e675b87187cd83ebe813">align</a> (self)</td></tr>
+<tr class="separator:a3a4a6f82ac46e675b87187cd83ebe813 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f054401c787e300ed7ae86eee637a2a inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a2f054401c787e300ed7ae86eee637a2a"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a2f054401c787e300ed7ae86eee637a2a">align</a> (self, <a class="el" href="classmrmeshpy_1_1AlignType.html">AlignType</a> arg1)</td></tr>
+<tr class="separator:a2f054401c787e300ed7ae86eee637a2a inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f0764fb3d0db8ef7ff8e96ccf471b7d inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a3f0764fb3d0db8ef7ff8e96ccf471b7d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a3f0764fb3d0db8ef7ff8e96ccf471b7d">fontDetalization</a> (self)</td></tr>
+<tr class="separator:a3f0764fb3d0db8ef7ff8e96ccf471b7d inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae709a9e7f7e5afd7714ced583d0a3610 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_ae709a9e7f7e5afd7714ced583d0a3610"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#ae709a9e7f7e5afd7714ced583d0a3610">fontDetalization</a> (self, int arg1)</td></tr>
+<tr class="separator:ae709a9e7f7e5afd7714ced583d0a3610 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b0a2901853859b9524fbe88fbe5761 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a91b0a2901853859b9524fbe88fbe5761"><td class="memItemLeft" align="right" valign="top">pathlib.Path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a91b0a2901853859b9524fbe88fbe5761">pathToFontFile</a> (self)</td></tr>
+<tr class="separator:a91b0a2901853859b9524fbe88fbe5761 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f8b87c4ecbd8e410d9c2fee017e76b7 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a6f8b87c4ecbd8e410d9c2fee017e76b7"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a6f8b87c4ecbd8e410d9c2fee017e76b7">pathToFontFile</a> (self, os.PathLike|str|bytes arg1)</td></tr>
+<tr class="separator:a6f8b87c4ecbd8e410d9c2fee017e76b7 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ef111ab6c1a6c440197b9d3630f15f inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a13ef111ab6c1a6c440197b9d3630f15f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a13ef111ab6c1a6c440197b9d3630f15f">symbolsDistanceAdditionalOffset</a> (self)</td></tr>
+<tr class="separator:a13ef111ab6c1a6c440197b9d3630f15f inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd81cfec2efff5594e0817209aff661 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a9cd81cfec2efff5594e0817209aff661"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a9cd81cfec2efff5594e0817209aff661">symbolsDistanceAdditionalOffset</a> (self, <a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> arg1)</td></tr>
+<tr class="separator:a9cd81cfec2efff5594e0817209aff661 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3be3afbd605c5df0a5ee2cfedb83818c inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_a3be3afbd605c5df0a5ee2cfedb83818c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a3be3afbd605c5df0a5ee2cfedb83818c">symbolsThicknessOffsetModifier</a> (self)</td></tr>
+<tr class="separator:a3be3afbd605c5df0a5ee2cfedb83818c inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af44fc74d88eb9e5459bbe2837fcc588c inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_af44fc74d88eb9e5459bbe2837fcc588c"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#af44fc74d88eb9e5459bbe2837fcc588c">symbolsThicknessOffsetModifier</a> (self, float arg1)</td></tr>
+<tr class="separator:af44fc74d88eb9e5459bbe2837fcc588c inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adccc61832dd4488e8da274e4b6313df2 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_adccc61832dd4488e8da274e4b6313df2"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#adccc61832dd4488e8da274e4b6313df2">text</a> (self)</td></tr>
+<tr class="separator:adccc61832dd4488e8da274e4b6313df2 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ebb54f704807dc7cfb3f584cf94fd0 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams" id="r_aa2ebb54f704807dc7cfb3f584cf94fd0"><td class="memItemLeft" align="right" valign="top">None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#aa2ebb54f704807dc7cfb3f584cf94fd0">text</a> (self, str arg1)</td></tr>
+<tr class="separator:aa2ebb54f704807dc7cfb3f584cf94fd0 inherit pub_methods_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:aeb940856daaedfb480db2b3aae1c2f28" id="r_aeb940856daaedfb480db2b3aae1c2f28"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb940856daaedfb480db2b3aae1c2f28">_offsetof_direction</a> = 116</td></tr>
+<tr class="separator:aeb940856daaedfb480db2b3aae1c2f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae90392b9c681e1b2b33d38f4f8a6479f" id="r_ae90392b9c681e1b2b33d38f4f8a6479f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae90392b9c681e1b2b33d38f4f8a6479f">_offsetof_fontBasedSizeCalc</a> = 148</td></tr>
+<tr class="separator:ae90392b9c681e1b2b33d38f4f8a6479f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499325f75f1d03b5af6b19eed91c11a8" id="r_a499325f75f1d03b5af6b19eed91c11a8"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a499325f75f1d03b5af6b19eed91c11a8">_offsetof_fontHeight</a> = 136</td></tr>
+<tr class="separator:a499325f75f1d03b5af6b19eed91c11a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c47f813fd46b33408bdc1ebff5ab54" id="r_ab5c47f813fd46b33408bdc1ebff5ab54"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5c47f813fd46b33408bdc1ebff5ab54">_offsetof_pivotPoint</a> = 108</td></tr>
+<tr class="separator:ab5c47f813fd46b33408bdc1ebff5ab54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49f3b602ec42a459688d4d1d1d51967f" id="r_a49f3b602ec42a459688d4d1d1d51967f"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f3b602ec42a459688d4d1d1d51967f">_offsetof_startPoint</a> = 96</td></tr>
+<tr class="separator:a49f3b602ec42a459688d4d1d1d51967f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1af0f94d6c409cd8df10da99f35391c" id="r_af1af0f94d6c409cd8df10da99f35391c"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1af0f94d6c409cd8df10da99f35391c">_offsetof_surfaceOffset</a> = 140</td></tr>
+<tr class="separator:af1af0f94d6c409cd8df10da99f35391c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c17ecce3083fd647c209841ccf48db" id="r_a77c17ecce3083fd647c209841ccf48db"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77c17ecce3083fd647c209841ccf48db">_offsetof_textMaximumMovement</a> = 144</td></tr>
+<tr class="separator:a77c17ecce3083fd647c209841ccf48db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3b19bcbb6fd41560ffbd5c9edf03299" id="r_aa3b19bcbb6fd41560ffbd5c9edf03299"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3b19bcbb6fd41560ffbd5c9edf03299">_offsetof_textNormal</a> = 128</td></tr>
+<tr class="separator:aa3b19bcbb6fd41560ffbd5c9edf03299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html">mrmeshpy.SymbolMeshParams</a></td></tr>
+<tr class="memitem:aa0b3ccd37fdc54abe60fbf30f7a6e585 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams" id="r_aa0b3ccd37fdc54abe60fbf30f7a6e585"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#aa0b3ccd37fdc54abe60fbf30f7a6e585">_offsetof_align</a> = 48</td></tr>
+<tr class="separator:aa0b3ccd37fdc54abe60fbf30f7a6e585 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0edc58ed9eb9ebe55a71fd39430747a8 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams" id="r_a0edc58ed9eb9ebe55a71fd39430747a8"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a0edc58ed9eb9ebe55a71fd39430747a8">_offsetof_fontDetalization</a> = 32</td></tr>
+<tr class="separator:a0edc58ed9eb9ebe55a71fd39430747a8 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af9762b38b5af139f29836c6b56bed5 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams" id="r_a8af9762b38b5af139f29836c6b56bed5"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#a8af9762b38b5af139f29836c6b56bed5">_offsetof_pathToFontFile</a> = 56</td></tr>
+<tr class="separator:a8af9762b38b5af139f29836c6b56bed5 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8ac1384dc8bacaad2843d8c0ef1c817 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams" id="r_ae8ac1384dc8bacaad2843d8c0ef1c817"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#ae8ac1384dc8bacaad2843d8c0ef1c817">_offsetof_symbolsDistanceAdditionalOffset</a> = 36</td></tr>
+<tr class="separator:ae8ac1384dc8bacaad2843d8c0ef1c817 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa2bc0c8d027c54a181f7d0aa285ca22 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams" id="r_aaa2bc0c8d027c54a181f7d0aa285ca22"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#aaa2bc0c8d027c54a181f7d0aa285ca22">_offsetof_symbolsThicknessOffsetModifier</a> = 44</td></tr>
+<tr class="separator:aaa2bc0c8d027c54a181f7d0aa285ca22 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfc4f113e79ca51d844ed96f96729290 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams" id="r_acfc4f113e79ca51d844ed96f96729290"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#acfc4f113e79ca51d844ed96f96729290">_offsetof_text</a> = 0</td></tr>
+<tr class="separator:acfc4f113e79ca51d844ed96f96729290 inherit pro_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_attribs_classmrmeshpy_1_1SymbolMeshParams')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html">mrmeshpy.SymbolMeshParams</a></td></tr>
+<tr class="memitem:ade468cb51c637957be158e1e0270f5e3 inherit pub_static_attribs_classmrmeshpy_1_1SymbolMeshParams" id="r_ade468cb51c637957be158e1e0270f5e3"><td class="memItemLeft" align="right" valign="top">typing&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#ade468cb51c637957be158e1e0270f5e3">MaxGeneratedFontHeight</a> = 5.826000213623047</td></tr>
+<tr class="separator:ade468cb51c637957be158e1e0270f5e3 inherit pub_static_attribs_classmrmeshpy_1_1SymbolMeshParams"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Generated from:  MR::TextMeshAlignParams
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a253a6c2d4ea3ebc89386085636d36ce1" name="a253a6c2d4ea3ebc89386085636d36ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a253a6c2d4ea3ebc89386085636d36ce1">&#9670;&#160;</a></span>__init__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit default constructor.
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#ab455b8585019151079a93eb1527ef580">mrmeshpy.SymbolMeshParams</a>.</p>
+
+</div>
+</div>
+<a id="af0f4e1878c008b30662c59a442e7f9d2" name="af0f4e1878c008b30662c59a442e7f9d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0f4e1878c008b30662c59a442e7f9d2">&#9670;&#160;</a></span>__init__() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.__init__ </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1TextMeshAlignParams.html">TextMeshAlignParams</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Implicit copy constructor.
+</pre> 
+<p>Reimplemented from <a class="el" href="classmrmeshpy_1_1SymbolMeshParams.html#ab455b8585019151079a93eb1527ef580">mrmeshpy.SymbolMeshParams</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0143426333f9af60f5d1a57c6a9f0379" name="a0143426333f9af60f5d1a57c6a9f0379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0143426333f9af60f5d1a57c6a9f0379">&#9670;&#160;</a></span>direction() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> mrmeshpy.TextMeshAlignParams.direction </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Direction of text
+</pre> 
+</div>
+</div>
+<a id="aa0030498ff70f2bc9fd55d95d9884d1e" name="aa0030498ff70f2bc9fd55d95d9884d1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0030498ff70f2bc9fd55d95d9884d1e">&#9670;&#160;</a></span>direction() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.direction </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1bab2cd95900d11713a0ef6c9c3a77a" name="ad1bab2cd95900d11713a0ef6c9c3a77a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1bab2cd95900d11713a0ef6c9c3a77a">&#9670;&#160;</a></span>fontBasedSizeCalc() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> bool mrmeshpy.TextMeshAlignParams.fontBasedSizeCalc </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">If true then size of each symbol will be calculated from font height, otherwise - on bounding box of the text
+</pre> 
+</div>
+</div>
+<a id="a789927da792dd74ec2736014e96ed69b" name="a789927da792dd74ec2736014e96ed69b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a789927da792dd74ec2736014e96ed69b">&#9670;&#160;</a></span>fontBasedSizeCalc() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.fontBasedSizeCalc </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f482c3cb0a5861dd1399b8493d4d6fe" name="a0f482c3cb0a5861dd1399b8493d4d6fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f482c3cb0a5861dd1399b8493d4d6fe">&#9670;&#160;</a></span>fontHeight() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.TextMeshAlignParams.fontHeight </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Font height, meters
+</pre> 
+</div>
+</div>
+<a id="a493d1dcb1321e4a99eda872486735686" name="a493d1dcb1321e4a99eda872486735686"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a493d1dcb1321e4a99eda872486735686">&#9670;&#160;</a></span>fontHeight() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.fontHeight </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac2e033e7442132701b783bfe22bfef66" name="ac2e033e7442132701b783bfe22bfef66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2e033e7442132701b783bfe22bfef66">&#9670;&#160;</a></span>pivotPoint() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a> mrmeshpy.TextMeshAlignParams.pivotPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Position of the startPoint in a text bounding box
+(0, 0) - bottom left, (0, 1) - bottom right, (0.5, 0.5) - center, (1, 1) - top right
+</pre> 
+</div>
+</div>
+<a id="a55407c58ed4aa2fee161374ecaf00533" name="a55407c58ed4aa2fee161374ecaf00533"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55407c58ed4aa2fee161374ecaf00533">&#9670;&#160;</a></span>pivotPoint() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.pivotPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector2f.html">Vector2f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1612e78d055f3a3480de0ceb600025c7" name="a1612e78d055f3a3480de0ceb600025c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1612e78d055f3a3480de0ceb600025c7">&#9670;&#160;</a></span>startPoint() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1MeshTriPoint.html">MeshTriPoint</a> mrmeshpy.TextMeshAlignParams.startPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Start coordinate on mesh, represent lowest left corner of text
+</pre> 
+</div>
+</div>
+<a id="ae7da967f9696926986a5661670535e07" name="ae7da967f9696926986a5661670535e07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7da967f9696926986a5661670535e07">&#9670;&#160;</a></span>startPoint() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.startPoint </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1MeshTriPoint.html">MeshTriPoint</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaebf927d962d6149f6b88b66206b43a0" name="aaebf927d962d6149f6b88b66206b43a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaebf927d962d6149f6b88b66206b43a0">&#9670;&#160;</a></span>surfaceOffset() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.TextMeshAlignParams.surfaceOffset </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Text mesh inside and outside offset of input mesh
+</pre> 
+</div>
+</div>
+<a id="a5fbed4447a4c764ec9e06f9f3ab65c1c" name="a5fbed4447a4c764ec9e06f9f3ab65c1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fbed4447a4c764ec9e06f9f3ab65c1c">&#9670;&#160;</a></span>surfaceOffset() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.surfaceOffset </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab86cb838c028e679db5bb9e52a064e73" name="ab86cb838c028e679db5bb9e52a064e73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab86cb838c028e679db5bb9e52a064e73">&#9670;&#160;</a></span>textMaximumMovement() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> float mrmeshpy.TextMeshAlignParams.textMaximumMovement </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Maximum possible movement of text mesh alignment, meters
+</pre> 
+</div>
+</div>
+<a id="a8e5a88bb061c3bcf7858593326b367b7" name="a8e5a88bb061c3bcf7858593326b367b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e5a88bb061c3bcf7858593326b367b7">&#9670;&#160;</a></span>textMaximumMovement() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.textMaximumMovement </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ad6c44ccccf5b97277d7cb7ac0bc606" name="a3ad6c44ccccf5b97277d7cb7ac0bc606"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ad6c44ccccf5b97277d7cb7ac0bc606">&#9670;&#160;</a></span>textNormal() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a> mrmeshpy.TextMeshAlignParams.textNormal </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Text normal to surface, if nullptr - use mesh normal at `startPoint`
+</pre> 
+</div>
+</div>
+<a id="a779a82e87e83c19721194f06cc29f24c" name="a779a82e87e83c19721194f06cc29f24c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a779a82e87e83c19721194f06cc29f24c">&#9670;&#160;</a></span>textNormal() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> None mrmeshpy.TextMeshAlignParams.textNormal </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmrmeshpy_1_1Vector3f.html">Vector3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aeb940856daaedfb480db2b3aae1c2f28" name="aeb940856daaedfb480db2b3aae1c2f28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb940856daaedfb480db2b3aae1c2f28">&#9670;&#160;</a></span>_offsetof_direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_direction = 116</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae90392b9c681e1b2b33d38f4f8a6479f" name="ae90392b9c681e1b2b33d38f4f8a6479f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae90392b9c681e1b2b33d38f4f8a6479f">&#9670;&#160;</a></span>_offsetof_fontBasedSizeCalc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_fontBasedSizeCalc = 148</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a499325f75f1d03b5af6b19eed91c11a8" name="a499325f75f1d03b5af6b19eed91c11a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499325f75f1d03b5af6b19eed91c11a8">&#9670;&#160;</a></span>_offsetof_fontHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_fontHeight = 136</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5c47f813fd46b33408bdc1ebff5ab54" name="ab5c47f813fd46b33408bdc1ebff5ab54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5c47f813fd46b33408bdc1ebff5ab54">&#9670;&#160;</a></span>_offsetof_pivotPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_pivotPoint = 108</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49f3b602ec42a459688d4d1d1d51967f" name="a49f3b602ec42a459688d4d1d1d51967f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49f3b602ec42a459688d4d1d1d51967f">&#9670;&#160;</a></span>_offsetof_startPoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_startPoint = 96</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af1af0f94d6c409cd8df10da99f35391c" name="af1af0f94d6c409cd8df10da99f35391c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1af0f94d6c409cd8df10da99f35391c">&#9670;&#160;</a></span>_offsetof_surfaceOffset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_surfaceOffset = 140</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77c17ecce3083fd647c209841ccf48db" name="a77c17ecce3083fd647c209841ccf48db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c17ecce3083fd647c209841ccf48db">&#9670;&#160;</a></span>_offsetof_textMaximumMovement</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_textMaximumMovement = 144</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3b19bcbb6fd41560ffbd5c9edf03299" name="aa3b19bcbb6fd41560ffbd5c9edf03299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3b19bcbb6fd41560ffbd5c9edf03299">&#9670;&#160;</a></span>_offsetof_textNormal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typing mrmeshpy.TextMeshAlignParams._offsetof_textNormal = 128</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="mrmeshpy_8pyi.html">mrmeshpy.pyi</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacemrmeshpy.html">mrmeshpy</a></li><li class="navelem"><a class="el" href="classmrmeshpy_1_1TextMeshAlignParams.html">TextMeshAlignParams</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>

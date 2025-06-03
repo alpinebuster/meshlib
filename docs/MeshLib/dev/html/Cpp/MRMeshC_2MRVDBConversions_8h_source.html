@@ -1,0 +1,263 @@
+<!-- HTML header for doxygen 1.11.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta name="robots" content="noindex"/>
+<script type="text/javascript">
+  !function () {
+    var currentHost = window.location.hostname;
+    var currentPath = window.location.pathname;
+    if (currentHost === 'meshinspector.github.io' && !currentPath.includes('/MeshLib/dev/')) {
+      var newPath = currentPath.replace('/MeshLib/html', '/documentation');
+      var newURL = 'https://meshlib.io' + newPath + window.location.search + window.location.hash;
+      window.location.replace(newURL);
+    }
+  }();
+</script>
+<script>
+  !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx";;analytics.SNIPPET_VERSION="5.2.0";
+  analytics.load("Fi7y6F1GgFvTTomYo8zvETBoGHkDDxGx");
+  analytics.page();
+  }}();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MBPLX27B');</script>
+  <!-- End Google Tag Manager -->
+<meta name="robots" content="noindex, nofollow">
+ <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MeshLib C++ Docs: MRVDBConversions.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="CustomStyle.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeTabs.init()
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBPLX27B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><a href="https://meshlib.io/"><img alt="Logo" src="favicon.ico"/></a></td>
+  <td id="projectalign">
+   <div id="projectname">MeshLib C++ Docs
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('MRMeshC_2MRVDBConversions_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MRMeshC/MRVDBConversions.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="MRMeshC_2MRVDBConversions_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRVoxelsFwd_8h.html">MRVoxelsFwd.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="MRMeshC_2MRAffineXf_8h.html">MRAffineXf.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// Conversion type</span></div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66">    8</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66a8da60118239ad7b7baba1daa7f251437">   10</a></span>    <a class="code hl_enumvalue" href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66a8da60118239ad7b7baba1daa7f251437">MRMeshToVolumeSettingsTypeSigned</a>, <span class="comment">// only closed meshes can be converted with signed type</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_enumvalue" href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66ad09687fd330b69f9f92b925324c122d1">MRMeshToVolumeSettingsTypeUnsigned</a> <span class="comment">// this type leads to shell like iso-surfaces</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#a21f688bf9fdb189b7d53d814297049a0">   12</a></span>} <a class="code hl_enumeration" href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a>;</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// Parameters structure for meshToVolume function</span></div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structMRMeshToVolumeSettings.html">   15</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structMRMeshToVolumeSettings.html#a6be44a348adb0147372be4b6f49d8013">   17</a></span>    <a class="code hl_enumeration" href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a> <a class="code hl_variable" href="structMRMeshToVolumeSettings.html#a6be44a348adb0147372be4b6f49d8013">type</a>; <span class="comment">// Conversion type</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structMRMeshToVolumeSettings.html#adfbb3b9385369a7eb23f6ec9261ea748">   18</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRMeshToVolumeSettings.html#adfbb3b9385369a7eb23f6ec9261ea748">surfaceOffset</a>; <span class="comment">// the number of voxels around surface to calculate distance in (should be positive)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structMRMeshToVolumeSettings.html#a9dd30ca07a73a9295dcbd01f98ba25a9">   19</a></span>    <a class="code hl_struct" href="structMRVector3f.html">MRVector3f</a> <a class="code hl_variable" href="structMRMeshToVolumeSettings.html#a9dd30ca07a73a9295dcbd01f98ba25a9">voxelSize</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structMRMeshToVolumeSettings.html#ad284c56b0cd2dc09209b87192950a104">   20</a></span>    <a class="code hl_struct" href="structMRAffineXf3f.html">MRAffineXf3f</a> <a class="code hl_variable" href="structMRMeshToVolumeSettings.html#ad284c56b0cd2dc09209b87192950a104">worldXf</a>; <span class="comment">// mesh initial transform</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structMRMeshToVolumeSettings.html#ab06378bf65d78b7323ceb4ace401d1f6">   21</a></span>    <a class="code hl_struct" href="structMRAffineXf3f.html">MRAffineXf3f</a>* <a class="code hl_variable" href="structMRMeshToVolumeSettings.html#ab06378bf65d78b7323ceb4ace401d1f6">outXf</a>; <span class="comment">// optional output: xf to original mesh (respecting worldXf)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structMRMeshToVolumeSettings.html#ab10a18914d44ee29bbfed783f4910fe8">   22</a></span>    <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a> <a class="code hl_variable" href="structMRMeshToVolumeSettings.html#ab10a18914d44ee29bbfed783f4910fe8">cb</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#af59f460f86cc5f5cfbdccc88afb9425a">   23</a></span>} <a class="code hl_typedef" href="MRMeshC_2MRVDBConversions_8h.html#af59f460f86cc5f5cfbdccc88afb9425a">MRMeshToVolumeSettings</a>;</div>
+</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#a5588d14e5872e6fddc5fdfd3f1b4ff71">   25</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a> <a class="code hl_function" href="MRMeshC_2MRVDBConversions_8h.html#a5588d14e5872e6fddc5fdfd3f1b4ff71">mrVdbConversionsMeshToVolumeSettingsNew</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// eval min max value from FloatGrid</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#a2b51c2f5ff47083ac363add98127c62f">   28</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="MRMeshC_2MRVDBConversions_8h.html#a2b51c2f5ff47083ac363add98127c62f">mrVdbConversionsEvalGridMinMax</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a>* grid, <span class="keywordtype">float</span>* min, <span class="keywordtype">float</span>* max );</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// convert mesh to volume in (0,0,0)-(dim.x,dim.y,dim.z) grid box</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#aeb35123b366bfc825528bae62105af05">   31</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRVdbVolume.html">MRVdbVolume</a> <a class="code hl_function" href="MRMeshC_2MRVDBConversions_8h.html#aeb35123b366bfc825528bae62105af05">mrVdbConversionsMeshToVolume</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* mesh, <span class="keyword">const</span> <a class="code hl_struct" href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a>* settings, <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a>** errorStr );</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">// fills VdbVolume data from FloatGrid (does not fill voxels size, cause we expect it outside)</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#ac51b5972a98776adb6111a1ba2be4b8d">   34</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRVdbVolume.html">MRVdbVolume</a> <a class="code hl_function" href="MRMeshC_2MRVDBConversions_8h.html#ac51b5972a98776adb6111a1ba2be4b8d">mrVdbConversionsFloatGridToVdbVolume</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a>* grid );</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html">   37</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html#a964ad008d08c69083b2944629deb5c5f">   40</a></span>    <a class="code hl_struct" href="structMRVector3f.html">MRVector3f</a> <a class="code hl_variable" href="structMRGridToMeshSettings.html#a964ad008d08c69083b2944629deb5c5f">voxelSize</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html#ab19c87781b493e404967e9daca3e4593">   42</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRGridToMeshSettings.html#ab19c87781b493e404967e9daca3e4593">isoValue</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html#abd93b68cab0508e17337f89bc93b1635">   44</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structMRGridToMeshSettings.html#abd93b68cab0508e17337f89bc93b1635">adaptivity</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html#a17ece63df1f3938108a7b08b5b26ab88">   46</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMRGridToMeshSettings.html#a17ece63df1f3938108a7b08b5b26ab88">maxFaces</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html#a4c36e4cf9596765206137962c766ee16">   48</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structMRGridToMeshSettings.html#a4c36e4cf9596765206137962c766ee16">maxVertices</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html#ae4f25adf40385844dd64f3241cc97879">   49</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structMRGridToMeshSettings.html#ae4f25adf40385844dd64f3241cc97879">relaxDisorientedTriangles</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structMRGridToMeshSettings.html#a74bb91e2da12140d389ee2e9a0b93329">   51</a></span>    <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a> <a class="code hl_variable" href="structMRGridToMeshSettings.html#a74bb91e2da12140d389ee2e9a0b93329">cb</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#a9b32ebfac5b30064a910551cb205f8f3">   52</a></span>} <a class="code hl_typedef" href="MRMeshC_2MRVDBConversions_8h.html#a9b32ebfac5b30064a910551cb205f8f3">MRGridToMeshSettings</a>;</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#a8aeec2f03120c5296c5a04bba0718de9">   54</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_struct" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a> <a class="code hl_function" href="MRMeshC_2MRVDBConversions_8h.html#a8aeec2f03120c5296c5a04bba0718de9">mrVdbConversionsGridToMeshSettingsNew</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="MRMeshC_2MRVDBConversions_8h.html#acb0060e1c24f897daac93765fb7cbbac">   57</a></span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a> <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a>* <a class="code hl_function" href="MRMeshC_2MRVDBConversions_8h.html#acb0060e1c24f897daac93765fb7cbbac">mrVdbConversionsGridToMesh</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a>* grid, <span class="keyword">const</span> <a class="code hl_struct" href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a>* settings, <a class="code hl_typedef" href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a>** errorStr );</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><a class="code hl_define" href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div>
+<div class="ttc" id="aMRMeshC_2MRAffineXf_8h_html"><div class="ttname"><a href="MRMeshC_2MRAffineXf_8h.html">MRAffineXf.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a07cb85df391b65224a89339236e03c2e"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a07cb85df391b65224a89339236e03c2e">MR_EXTERN_C_BEGIN</a></div><div class="ttdeci">#define MR_EXTERN_C_BEGIN</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:26</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a466dd32565f9e71946208ad0428aa09d"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a466dd32565f9e71946208ad0428aa09d">MRProgressCallback</a></div><div class="ttdeci">bool(* MRProgressCallback)(float)</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:55</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a4c0dd57de0c70036b4a1e14f71d2fe11"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a4c0dd57de0c70036b4a1e14f71d2fe11">MR_EXTERN_C_END</a></div><div class="ttdeci">#define MR_EXTERN_C_END</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:27</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a7b372c6d0fd65239f731902623e752c5"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a7b372c6d0fd65239f731902623e752c5">MRMesh</a></div><div class="ttdeci">struct MRMesh MRMesh</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:47</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_a89b45a4728b7f2a3281d78d9164162fe"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#a89b45a4728b7f2a3281d78d9164162fe">MRString</a></div><div class="ttdeci">typedefMR_EXTERN_C_BEGIN struct MRString MRString</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:32</div></div>
+<div class="ttc" id="aMRMeshC_2MRMeshFwd_8h_html_ab8a099cc7166020a82c2f96fa5043ae6"><div class="ttname"><a href="MRMeshC_2MRMeshFwd_8h.html#ab8a099cc7166020a82c2f96fa5043ae6">MRMESHC_API</a></div><div class="ttdeci">#define MRMESHC_API</div><div class="ttdef"><b>Definition</b> MRMeshC/MRMeshFwd.h:19</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_a2b51c2f5ff47083ac363add98127c62f"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#a2b51c2f5ff47083ac363add98127c62f">mrVdbConversionsEvalGridMinMax</a></div><div class="ttdeci">MRMESHC_API void mrVdbConversionsEvalGridMinMax(const MRFloatGrid *grid, float *min, float *max)</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_a5588d14e5872e6fddc5fdfd3f1b4ff71"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#a5588d14e5872e6fddc5fdfd3f1b4ff71">mrVdbConversionsMeshToVolumeSettingsNew</a></div><div class="ttdeci">MRMESHC_API MRMeshToVolumeSettings mrVdbConversionsMeshToVolumeSettingsNew(void)</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_a7c5a04688d4449870c8b2c5260cf5f66"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66">MRMeshToVolumeSettingsType</a></div><div class="ttdeci">MRMeshToVolumeSettingsType</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:9</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_a7c5a04688d4449870c8b2c5260cf5f66a8da60118239ad7b7baba1daa7f251437"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66a8da60118239ad7b7baba1daa7f251437">MRMeshToVolumeSettingsTypeSigned</a></div><div class="ttdeci">@ MRMeshToVolumeSettingsTypeSigned</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:10</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_a7c5a04688d4449870c8b2c5260cf5f66ad09687fd330b69f9f92b925324c122d1"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#a7c5a04688d4449870c8b2c5260cf5f66ad09687fd330b69f9f92b925324c122d1">MRMeshToVolumeSettingsTypeUnsigned</a></div><div class="ttdeci">@ MRMeshToVolumeSettingsTypeUnsigned</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:11</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_a8aeec2f03120c5296c5a04bba0718de9"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#a8aeec2f03120c5296c5a04bba0718de9">mrVdbConversionsGridToMeshSettingsNew</a></div><div class="ttdeci">MRMESHC_API MRGridToMeshSettings mrVdbConversionsGridToMeshSettingsNew(void)</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_a9b32ebfac5b30064a910551cb205f8f3"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#a9b32ebfac5b30064a910551cb205f8f3">MRGridToMeshSettings</a></div><div class="ttdeci">struct MRGridToMeshSettings MRGridToMeshSettings</div><div class="ttdoc">parameters of OpenVDB Grid to Mesh conversion using Dual Marching Cubes algorithm</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_ac51b5972a98776adb6111a1ba2be4b8d"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#ac51b5972a98776adb6111a1ba2be4b8d">mrVdbConversionsFloatGridToVdbVolume</a></div><div class="ttdeci">MRMESHC_API MRVdbVolume mrVdbConversionsFloatGridToVdbVolume(const MRFloatGrid *grid)</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_acb0060e1c24f897daac93765fb7cbbac"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#acb0060e1c24f897daac93765fb7cbbac">mrVdbConversionsGridToMesh</a></div><div class="ttdeci">MRMESHC_API MRMesh * mrVdbConversionsGridToMesh(const MRFloatGrid *grid, const MRGridToMeshSettings *settings, MRString **errorStr)</div><div class="ttdoc">converts OpenVDB Grid into mesh using Dual Marching Cubes algorithm</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_aeb35123b366bfc825528bae62105af05"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#aeb35123b366bfc825528bae62105af05">mrVdbConversionsMeshToVolume</a></div><div class="ttdeci">MRMESHC_API MRVdbVolume mrVdbConversionsMeshToVolume(const MRMesh *mesh, const MRMeshToVolumeSettings *settings, MRString **errorStr)</div></div>
+<div class="ttc" id="aMRMeshC_2MRVDBConversions_8h_html_af59f460f86cc5f5cfbdccc88afb9425a"><div class="ttname"><a href="MRMeshC_2MRVDBConversions_8h.html#af59f460f86cc5f5cfbdccc88afb9425a">MRMeshToVolumeSettings</a></div><div class="ttdeci">struct MRMeshToVolumeSettings MRMeshToVolumeSettings</div></div>
+<div class="ttc" id="aMRMeshC_2MRVoxelsFwd_8h_html"><div class="ttname"><a href="MRMeshC_2MRVoxelsFwd_8h.html">MRVoxelsFwd.h</a></div></div>
+<div class="ttc" id="aMRMeshC_2MRVoxelsFwd_8h_html_af3c5dfecb50dabe99223058baf376150"><div class="ttname"><a href="MRMeshC_2MRVoxelsFwd_8h.html#af3c5dfecb50dabe99223058baf376150">MRFloatGrid</a></div><div class="ttdeci">typedefMR_EXTERN_C_BEGIN struct MRFloatGrid MRFloatGrid</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVoxelsFwd.h:7</div></div>
+<div class="ttc" id="astructMRAffineXf3f_html"><div class="ttname"><a href="structMRAffineXf3f.html">MRAffineXf3f</a></div><div class="ttdoc">affine transformation: y = A*x + b, where A in VxV, and b in V</div><div class="ttdef"><b>Definition</b> MRMeshC/MRAffineXf.h:10</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html"><div class="ttname"><a href="structMRGridToMeshSettings.html">MRGridToMeshSettings</a></div><div class="ttdoc">parameters of OpenVDB Grid to Mesh conversion using Dual Marching Cubes algorithm</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:38</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html_a17ece63df1f3938108a7b08b5b26ab88"><div class="ttname"><a href="structMRGridToMeshSettings.html#a17ece63df1f3938108a7b08b5b26ab88">MRGridToMeshSettings::maxFaces</a></div><div class="ttdeci">int maxFaces</div><div class="ttdoc">if the mesh exceeds this number of faces, an error returns</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:46</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html_a4c36e4cf9596765206137962c766ee16"><div class="ttname"><a href="structMRGridToMeshSettings.html#a4c36e4cf9596765206137962c766ee16">MRGridToMeshSettings::maxVertices</a></div><div class="ttdeci">int maxVertices</div><div class="ttdoc">if the mesh exceeds this number of vertices, an error returns</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:48</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html_a74bb91e2da12140d389ee2e9a0b93329"><div class="ttname"><a href="structMRGridToMeshSettings.html#a74bb91e2da12140d389ee2e9a0b93329">MRGridToMeshSettings::cb</a></div><div class="ttdeci">MRProgressCallback cb</div><div class="ttdoc">to receive progress and request cancellation</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:51</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html_a964ad008d08c69083b2944629deb5c5f"><div class="ttname"><a href="structMRGridToMeshSettings.html#a964ad008d08c69083b2944629deb5c5f">MRGridToMeshSettings::voxelSize</a></div><div class="ttdeci">MRVector3f voxelSize</div><div class="ttdoc">the size of each voxel in the grid</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:40</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html_ab19c87781b493e404967e9daca3e4593"><div class="ttname"><a href="structMRGridToMeshSettings.html#ab19c87781b493e404967e9daca3e4593">MRGridToMeshSettings::isoValue</a></div><div class="ttdeci">float isoValue</div><div class="ttdoc">layer of grid with this value would be converted in mesh; isoValue can be negative only in level set ...</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:42</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html_abd93b68cab0508e17337f89bc93b1635"><div class="ttname"><a href="structMRGridToMeshSettings.html#abd93b68cab0508e17337f89bc93b1635">MRGridToMeshSettings::adaptivity</a></div><div class="ttdeci">float adaptivity</div><div class="ttdoc">adaptivity - [0.0;1.0] ratio of combining small triangles into bigger ones (curvature can be lost on ...</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:44</div></div>
+<div class="ttc" id="astructMRGridToMeshSettings_html_ae4f25adf40385844dd64f3241cc97879"><div class="ttname"><a href="structMRGridToMeshSettings.html#ae4f25adf40385844dd64f3241cc97879">MRGridToMeshSettings::relaxDisorientedTriangles</a></div><div class="ttdeci">bool relaxDisorientedTriangles</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:49</div></div>
+<div class="ttc" id="astructMRMeshToVolumeSettings_html"><div class="ttname"><a href="structMRMeshToVolumeSettings.html">MRMeshToVolumeSettings</a></div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:16</div></div>
+<div class="ttc" id="astructMRMeshToVolumeSettings_html_a6be44a348adb0147372be4b6f49d8013"><div class="ttname"><a href="structMRMeshToVolumeSettings.html#a6be44a348adb0147372be4b6f49d8013">MRMeshToVolumeSettings::type</a></div><div class="ttdeci">MRMeshToVolumeSettingsType type</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:17</div></div>
+<div class="ttc" id="astructMRMeshToVolumeSettings_html_a9dd30ca07a73a9295dcbd01f98ba25a9"><div class="ttname"><a href="structMRMeshToVolumeSettings.html#a9dd30ca07a73a9295dcbd01f98ba25a9">MRMeshToVolumeSettings::voxelSize</a></div><div class="ttdeci">MRVector3f voxelSize</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:19</div></div>
+<div class="ttc" id="astructMRMeshToVolumeSettings_html_ab06378bf65d78b7323ceb4ace401d1f6"><div class="ttname"><a href="structMRMeshToVolumeSettings.html#ab06378bf65d78b7323ceb4ace401d1f6">MRMeshToVolumeSettings::outXf</a></div><div class="ttdeci">MRAffineXf3f * outXf</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:21</div></div>
+<div class="ttc" id="astructMRMeshToVolumeSettings_html_ab10a18914d44ee29bbfed783f4910fe8"><div class="ttname"><a href="structMRMeshToVolumeSettings.html#ab10a18914d44ee29bbfed783f4910fe8">MRMeshToVolumeSettings::cb</a></div><div class="ttdeci">MRProgressCallback cb</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:22</div></div>
+<div class="ttc" id="astructMRMeshToVolumeSettings_html_ad284c56b0cd2dc09209b87192950a104"><div class="ttname"><a href="structMRMeshToVolumeSettings.html#ad284c56b0cd2dc09209b87192950a104">MRMeshToVolumeSettings::worldXf</a></div><div class="ttdeci">MRAffineXf3f worldXf</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:20</div></div>
+<div class="ttc" id="astructMRMeshToVolumeSettings_html_adfbb3b9385369a7eb23f6ec9261ea748"><div class="ttname"><a href="structMRMeshToVolumeSettings.html#adfbb3b9385369a7eb23f6ec9261ea748">MRMeshToVolumeSettings::surfaceOffset</a></div><div class="ttdeci">float surfaceOffset</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVDBConversions.h:18</div></div>
+<div class="ttc" id="astructMRVdbVolume_html"><div class="ttname"><a href="structMRVdbVolume.html">MRVdbVolume</a></div><div class="ttdef"><b>Definition</b> MRMeshC/MRVoxelsFwd.h:12</div></div>
+<div class="ttc" id="astructMRVector3f_html"><div class="ttname"><a href="structMRVector3f.html">MRVector3f</a></div><div class="ttdoc">three-dimensional vector of floats</div><div class="ttdef"><b>Definition</b> MRMeshC/MRVector3.h:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.11.0-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dde369ebb89469603743f5002eed69cd.html">MeshLib</a></li><li class="navelem"><a class="el" href="dir_4c7ccc9b91e63e9e00b4c1745f04306a.html">source</a></li><li class="navelem"><a class="el" href="dir_9de905cc127d1bc2fe28de0c234022ea.html">MRMeshC</a></li><li class="navelem"><a class="el" href="MRMeshC_2MRVDBConversions_8h.html">MRVDBConversions.h</a></li>
+    <li class="footer">Generated by <a rel="nofollow" href="https://www.doxygen.nl/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.11.0 </li>
+  </ul>
+</div>
+</body>
+</html>
