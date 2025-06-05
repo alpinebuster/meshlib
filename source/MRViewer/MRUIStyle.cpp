@@ -139,6 +139,24 @@ void init()
     data.filter = FilterType::Linear;
     textureGbSec->update( data );
 
+    auto& textureGbGray = getTexture( TextureType::GradientBtnGray );
+    if ( !textureGbGray )
+        textureGbGray = std::make_unique<ImGuiImage>();
+    auto grayStartColor = ColorTheme::getRibbonColor( ColorTheme::RibbonColorsType::RibbonButtonClicked );
+    auto grayEndColor = grayStartColor - Color( 13, 13, 11, 0 );
+    data.resolution = Vector2i( 4, 2 );
+    data.pixels = {
+        grayStartColor,
+        grayStartColor + Color( 15, 15, 15, 0 ),
+        grayStartColor - Color( 10, 10, 10, 0 ),
+        ColorTheme::getRibbonColor( ColorTheme::RibbonColorsType::GradBtnDisableStart ),
+        grayEndColor,
+        grayEndColor + Color( 15, 15, 15, 0 ),
+        grayEndColor - Color( 10, 10, 10, 0 ),
+        ColorTheme::getRibbonColor( ColorTheme::RibbonColorsType::GradBtnDisableEnd ),
+    };
+    data.filter = FilterType::Linear;
+    textureGbGray->update( data );
 
     auto& textureR = getTexture( TextureType::RainbowRect );
     if ( !textureR )
@@ -1870,13 +1888,13 @@ void notificationFrame( NotificationType type, const std::string& str, float sca
 
     auto width = ImGui::GetContentRegionAvail().x;
     Color bgColor = ColorTheme::getRibbonColor( ColorTheme::RibbonColorsType::BackgroundSecStyle );
-    auto textSize = ImGui::CalcTextSize( str.c_str(), nullptr, false, width - StyleConsts::Notification::cTextFramePadding.x );
+    auto textSize = ImGui::CalcTextSize( str.c_str(), nullptr, false, width - StyleConsts::Notification::cTextFramePadding.x * scaling );
 
     auto pos = ImGui::GetCursorPos();
     auto sPos = ImGui::GetCursorScreenPos();
-    drawList->AddRectFilled( sPos, sPos + ImVec2( width, textSize.y + 2 * StyleConsts::Notification::cTextFramePadding.y ), bgColor.getUInt32(),
+    drawList->AddRectFilled( sPos, sPos + ImVec2( width, textSize.y + 2 * StyleConsts::Notification::cTextFramePadding.y * scaling ), bgColor.getUInt32(),
         scaling * StyleConsts::Notification::cTextFrameRounding );
-    ImGui::SetCursorPos( pos + StyleConsts::Notification::cTextFramePadding );
+    ImGui::SetCursorPos( pos + StyleConsts::Notification::cTextFramePadding * scaling );
     transparentTextWrapped( "%s", str.c_str() );
     
     auto iconsFont = RibbonFontManager::getFontByTypeStatic( RibbonFontManager::FontType::Icons );
@@ -1886,7 +1904,7 @@ void notificationFrame( NotificationType type, const std::string& str, float sca
         ImGui::PushFont( iconsFont );
     }
 
-    ImGui::SetCursorPos( pos + ImVec2( StyleConsts::Notification::cTextFramePadding.y, StyleConsts::Notification::cTextFramePadding.y ) );
+    ImGui::SetCursorPos( pos + ImVec2( StyleConsts::Notification::cTextFramePadding.y * scaling, StyleConsts::Notification::cTextFramePadding.y * scaling ) );
     ImGui::PushStyleColor( ImGuiCol_Text, UI::notificationChar( type ).second );
     ImGui::Text( "%s", UI::notificationChar( type ).first );
     ImGui::PopStyleColor();
@@ -1898,7 +1916,7 @@ void notificationFrame( NotificationType type, const std::string& str, float sca
     }
 
     ImGui::SetCursorPos( pos );
-    ImGui::Dummy( ImVec2( width, textSize.y + 2 * StyleConsts::Notification::cTextFramePadding.y ) );
+    ImGui::Dummy( ImVec2( width, textSize.y + 2 * StyleConsts::Notification::cTextFramePadding.y * scaling ) );
 }
 
 void setTooltipIfHovered( const std::string& text, float scaling )
