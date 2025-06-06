@@ -14,4 +14,7 @@ var postWasmLoad = function () {
     instance.x = 20; // 20
     console.log("class_hello: ", Module.MyClass.getStringFromInstance(instance)); // "hello"
     instance.delete();
+
+    var testV3f = new Module.Vector3f(1.3, 43.2, 43.2);
+    console.log('testV3f length: ', testV3f.length());
 };

@@ -13,4 +13,4 @@ class MRHTTPRequestHandler(server.SimpleHTTPRequestHandler):
         self.send_header("Cross-Origin-Opener-Policy", "same-origin")
 
 if __name__ == '__main__':
-    server.test(HandlerClass=MRHTTPRequestHandler)
+    server.test(HandlerClass=MRHTTPRequestHandler, port=9310)
