@@ -59,30 +59,30 @@ EMSCRIPTEN_BINDINGS(Vector3f_module) {
 // ------------------------------------------------------------------------
 // 2. Bind the Embind interface for Vector3<int> (i.e., Vector3i)
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS(Vector3i_module) {
-    class_<Vector3<int>>("Vector3i")
-        .constructor<>()
-        .constructor<int, int, int>()
-        .property("x", &Vector3<int>::x)
-        .property("y", &Vector3<int>::y)
-        .property("z", &Vector3<int>::z)
-        .function("lengthSq", &Vector3<int>::lengthSq)
-        // For integer vectors, length() is not provided because it returns auto (the length of the integer has no practical meaning), and it is not bound here
-        // Nor bind normalized, furthestBasisVector, perpendicular (they do not work for integers)
-        .function("get", select_overload<const int&(int) const>(&Vector3<int>::operator[]))
-        .function("set", select_overload<int&(int)>(&Vector3<int>::operator[]))
-        .class_function("diagonal", &Vector3<int>::diagonal)
-        ;
+// EMSCRIPTEN_BINDINGS(Vector3i_module) {
+//     class_<Vector3<int>>("Vector3i")
+//         .constructor<>()
+//         .constructor<int, int, int>()
+//         .property("x", &Vector3<int>::x)
+//         .property("y", &Vector3<int>::y)
+//         .property("z", &Vector3<int>::z)
+//         .function("lengthSq", &Vector3<int>::lengthSq)
+//         // For integer vectors, length() is not provided because it returns auto (the length of the integer has no practical meaning), and it is not bound here
+//         // Nor bind normalized, furthestBasisVector, perpendicular (they do not work for integers)
+//         .function("get", select_overload<const int&(int) const>(&Vector3<int>::operator[]))
+//         .function("set", select_overload<int&(int)>(&Vector3<int>::operator[]))
+//         .class_function("diagonal", &Vector3<int>::diagonal)
+//         ;
 
-    // Bind the free functions related to Vector3<int>
-    function("distanceSq_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&distanceSq<int>));
-    function("sqr_i", select_overload<int(const Vector3<int>&)>(&sqr<int>));
-    // The cross, dot, mixed, mult, div, etc. can also be bound to integers, but it should be noted that the result type is also an integer
-    function("cross_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&cross<int>));
-    function("dot_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&dot<int>));
-    function("mixed_i", select_overload<int(const Vector3<int>&, const Vector3<int>&, const Vector3<int>&)>(&mixed<int>));
-    function("mult_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&mult<int>));
-    function("div_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&div<int>));
-    function("angle_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&angle<int>));
-    function("unitVector3_i", select_overload<Vector3<int>(int, int)>(&unitVector3<int>));
-}
+//     // Bind the free functions related to Vector3<int>
+//     function("distanceSq_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&distanceSq<int>));
+//     function("sqr_i", select_overload<int(const Vector3<int>&)>(&sqr<int>));
+//     // The cross, dot, mixed, mult, div, etc. can also be bound to integers, but it should be noted that the result type is also an integer
+//     function("cross_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&cross<int>));
+//     function("dot_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&dot<int>));
+//     function("mixed_i", select_overload<int(const Vector3<int>&, const Vector3<int>&, const Vector3<int>&)>(&mixed<int>));
+//     function("mult_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&mult<int>));
+//     function("div_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&div<int>));
+//     function("angle_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&angle<int>));
+//     function("unitVector3_i", select_overload<Vector3<int>(int, int)>(&unitVector3<int>));
+// }
