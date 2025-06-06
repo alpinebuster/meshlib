@@ -249,6 +249,7 @@ IF(MESHLIB_BUILD_MRVIEWER)
 
   IF(MR_EMSCRIPTEN)
     include(EmscriptenHelpers)
+    add_subdirectory(${PROJECT_SOURCE_DIR}/MRJavaScript ./MRJavaScript)
     mr_emscripten_pack_directory("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/assets" "/")
     IF(NOT MR_DISABLE_EMSCRIPTEN_ASYNCIFY)
       mr_emscripten_set_async_func_list("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/wasm_async_func_list.txt")
@@ -257,7 +258,6 @@ IF(MESHLIB_BUILD_MRVIEWER)
 
   add_subdirectory(${PROJECT_SOURCE_DIR}/imgui ./imgui)
   add_subdirectory(${PROJECT_SOURCE_DIR}/MRViewer ./MRViewer)
-  add_subdirectory(${PROJECT_SOURCE_DIR}/MRJavaScript ./MRJavaScript)
   add_subdirectory(${PROJECT_SOURCE_DIR}/MRCommonPlugins ./MRCommonPlugins)
 
   IF(MESHLIB_BUILD_MESHVIEWER)
