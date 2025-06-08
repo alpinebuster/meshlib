@@ -60,7 +60,7 @@ struct TriangulationParameters
 
     /**
      * \brief Critical length of hole (all holes with length less then this value will be filled)
-     * \details If value is subzero it is set automaticly to 0.7*bbox.diagonal()
+     * \details If value is subzero it is set automatically to 0.7*bbox.diagonal()
      */
     float critHoleLength = -FLT_MAX;
 

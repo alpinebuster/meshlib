@@ -24,7 +24,7 @@ Vector3<int> unitVector3FromInt(int azimuth, int altitude) {
 // ------------------------------------------------------------------------
 // 1. Bind the Embind interface for Vector3<float> (i.e., Vector3f)
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS(Vector3f_module) {
+EMSCRIPTEN_BINDINGS(Vector3fModule) {
     class_<Vector3<float>>("Vector3f")
         // Constructor: Parameterless construction and construction of three floating-point parameters (x,y,z)
         .constructor<>()
@@ -78,7 +78,7 @@ EMSCRIPTEN_BINDINGS(Vector3f_module) {
 // ------------------------------------------------------------------------
 // 2. Bind the Embind interface for Vector3<int> (i.e., Vector3i)
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS(Vector3i_module) {
+EMSCRIPTEN_BINDINGS(Vector3iModule) {
     class_<Vector3<int>>("Vector3i")
         .constructor<>()
         .constructor<int, int, int>()

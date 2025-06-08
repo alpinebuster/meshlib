@@ -1,5 +1,6 @@
-#include <MRMesh/MRMesh.h>
 #include <emscripten/bind.h>
+
+#include <MRMesh/MRMesh.h>
 
 #include "MRJavaScript.h"
 
