@@ -22,10 +22,10 @@ Vector3<int> unitVector3FromInt(int azimuth, int altitude) {
 }
 
 // ------------------------------------------------------------------------
-// 1. Bind the Embind interface for Vector3<float> (i.e., Vector3f)
+// 1. Bind the Embind interface for Vector3<float> (i.e., Vector3F)
 // ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS(Vector3fModule) {
-    class_<Vector3<float>>("Vector3f")
+    class_<Vector3<float>>("Vector3F")
         // Constructor: Parameterless construction and construction of three floating-point parameters (x,y,z)
         .constructor<>()
         .constructor<float, float, float>()
@@ -63,20 +63,20 @@ EMSCRIPTEN_BINDINGS(Vector3fModule) {
         .element(&std::pair<Vector3<float>, Vector3<float>>::second);
     
     // Below, bind the free functions related to Vector3<float> as well
-    function("distanceSq_f", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&distanceSq<float>));
-    function("distance_f", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&distance<float>));
-    function("cross_f", select_overload<Vector3<float>(const Vector3<float>&, const Vector3<float>&)>(&cross<float>));
-    function("dot_f", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&dot<float>));
-    function("sqr_f", select_overload<float(const Vector3<float>&)>(&sqr<float>));
-    function("mixed_f", select_overload<float(const Vector3<float>&, const Vector3<float>&, const Vector3<float>&)>(&mixed<float>));
-    function("mult_f", select_overload<Vector3<float>(const Vector3<float>&, const Vector3<float>&)>(&mult<float>));
-    function("div_f", select_overload<Vector3<float>(const Vector3<float>&, const Vector3<float>&)>(&div<float>));
-    function("angle_f", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&angle<float>));
-    function("unitVector3_f", select_overload<Vector3<float>(float, float)>(&unitVector3<float>));
+    function("distanceSqF", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&distanceSq<float>));
+    function("distanceF", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&distance<float>));
+    function("crossF", select_overload<Vector3<float>(const Vector3<float>&, const Vector3<float>&)>(&cross<float>));
+    function("dotF", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&dot<float>));
+    function("sqrF", select_overload<float(const Vector3<float>&)>(&sqr<float>));
+    function("mixedF", select_overload<float(const Vector3<float>&, const Vector3<float>&, const Vector3<float>&)>(&mixed<float>));
+    function("multF", select_overload<Vector3<float>(const Vector3<float>&, const Vector3<float>&)>(&mult<float>));
+    function("divF", select_overload<Vector3<float>(const Vector3<float>&, const Vector3<float>&)>(&div<float>));
+    function("angleF", select_overload<float(const Vector3<float>&, const Vector3<float>&)>(&angle<float>));
+    function("unitVector3F", select_overload<Vector3<float>(float, float)>(&unitVector3<float>));
 }
 
 // ------------------------------------------------------------------------
-// 2. Bind the Embind interface for Vector3<int> (i.e., Vector3i)
+// 2. Bind the Embind interface for Vector3<int> (i.e., Vector3I)
 // ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS(Vector3iModule) {
     class_<Vector3<int>>("Vector3i")
@@ -94,15 +94,15 @@ EMSCRIPTEN_BINDINGS(Vector3iModule) {
         ;
 
     // Bind the free functions related to Vector3<int>
-    function("distanceSq_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&distanceSq<int>));
-    function("sqr_i", select_overload<int(const Vector3<int>&)>(&sqr<int>));
+    function("distanceSqI", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&distanceSq<int>));
+    function("sqrI", select_overload<int(const Vector3<int>&)>(&sqr<int>));
     // The cross, dot, mixed, mult, div, etc. can also be bound to integers, but it should be noted that the result type is also an integer
-    function("cross_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&cross<int>));
-    function("dot_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&dot<int>));
-    function("mixed_i", select_overload<int(const Vector3<int>&, const Vector3<int>&, const Vector3<int>&)>(&mixed<int>));
-    function("mult_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&mult<int>));
-    function("div_i", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&div<int>));
-    function("angle_i", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&angle<int>));
-    // We don't use `function( "unitVector3_i", select_overload<Vector3<int>( int, int )>( &unitVector3<int> ) );` directly
-    function("unitVector3_i", &unitVector3FromInt);
+    function("crossI", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&cross<int>));
+    function("dotI", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&dot<int>));
+    function("mixedI", select_overload<int(const Vector3<int>&, const Vector3<int>&, const Vector3<int>&)>(&mixed<int>));
+    function("multI", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&mult<int>));
+    function("divI", select_overload<Vector3<int>(const Vector3<int>&, const Vector3<int>&)>(&div<int>));
+    function("angleI", select_overload<int(const Vector3<int>&, const Vector3<int>&)>(&angle<int>));
+    // We don't use `function( "unitVector3I", select_overload<Vector3<int>( int, int )>( &unitVector3<int> ) );` directly
+    function("unitVector3I", &unitVector3FromInt);
 }

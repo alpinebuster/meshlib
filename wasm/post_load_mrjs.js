@@ -43,4 +43,14 @@ var postWasmLoad = function () {
     console.log("Color 1 Scaled Alpha:", scaledAlpha);
 
 
+    // `*Id` (e.g.EdgeId)
+    const eid = new Module.EdgeId(3); // default
+    const eid3 = Module.EdgeId.fromUndirected(new Module.UndirectedEdgeId(21));
+    console.log(eid.valid());             // true
+    console.log(eid.sym().toInt());       // 2
+    console.log(eid.undirected().toInt()) // 1
+    console.log(eid.even());              // false
+    console.log(eid.sym().even());        // true
+
+    console.log(eid3.valid());            // true
 };

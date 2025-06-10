@@ -7,7 +7,6 @@
 using namespace emscripten;
 using namespace MR;
 
-
 // ------------------------------------------------------------------------
 // Color constructed and operated on using integers
 // ------------------------------------------------------------------------
