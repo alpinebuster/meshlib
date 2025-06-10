@@ -39,11 +39,11 @@
 //   This `201709` is what GCC 10 sets on `-std=c++20` (presumably to indicate incomplete implementation?).
 //   Other compilers we use don't have this issue.
 // Also note `__CUDACC__` - currently our Cuda code is compiled as C++17 (compiler doesn't support C++20?),
-//   and we carefully avoid headers incomaptible with C++17.
+//   and we carefully avoid headers incompatible with C++17.
 #if MR_CPP_STANDARD_DATE < 201709 && !defined(__CUDACC__)
 #error Must enable C++20 or newer!
 #endif
-// -- Curently we have no macros that don't work with the old preprocessor. Leaving the check here to possibly be enabled later.
+// -- Currently we have no macros that don't work with the old preprocessor. Leaving the check here to possibly be enabled later.
 // Reject old MSVC preprocessor.
 // Note that we exclude Cuda here. Not 100% sure if it has a good preprocessor, or we just avoid including the headers sensitive to it in Cuda.
 // #if defined(_MSC_VER) && !defined(__clang__) && (!defined(_MSVC_TRADITIONAL) || _MSVC_TRADITIONAL == 1) && !defined(__CUDACC__)
