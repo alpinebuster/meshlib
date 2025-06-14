@@ -65,7 +65,7 @@ var statusElement = document.getElementById("status"),
                             spinnerElement.style.display = "none",
                             statusElement.style.display = "none",
                             logoElement.style.display = "none",
-                            meshFileLoader.style.display = "flex",
+                            meshFileLoaderElement && (meshFileLoaderElement.style.display = "block"),
                             clearWasmLoadProgress(),
                             postWasmLoad()
                         )
@@ -84,7 +84,7 @@ var statusElement = document.getElementById("status"),
 Module.setStatus("Downloading...");
 window.onerror = function (e) {
     Module.setStatus("Exception thrown, see JavaScript console");
-    meshFileLoader.style.display = "none";
+    if (meshFileLoaderElement) meshFileLoaderElement.style.display = "none";
     spinnerElement.style.display = "none";
     statusElement.style.display = "none";
     Module.setStatus = function (e) {
