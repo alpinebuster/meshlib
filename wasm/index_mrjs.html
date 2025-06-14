@@ -6,9 +6,9 @@
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.7" />
         <title>MRJS</title>
-        <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="main.css">
-        <link rel="preload" href="tool_not_supp.svg">
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+        <link rel="preload" href="tool_not_supp.svg" as="image">
     </head>
 
     <body class="dark-theme adaptive-theme">
@@ -48,18 +48,52 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="spinner" id="spinner"></div>
-        <div class="logo" id="logo"></div>
-        <div class="emscripten" id="status">Downloading...</div>
-        <div class="progress-bg dark-progress adaptive-progress" id="progress-holder">
-            <div class="progress" id="progress">
+        <!-- <div class="logo" id="logo"></div> -->
+
+        <div class="progress-section" id="wasm-progress-section">
+            <div class="stage-indicator">
+                <div class="stage" id="stage-download">
+                    <div class="stage-title">Resource Acquisition</div>
+                    <div class="stage-description">Loading main resource package</div>
+                </div>
+                <div class="stage" id="stage-wasm">
+                    <div class="stage-title">WebAssembly</div>
+                    <div class="stage-description">Compilation and instantiation</div>
+                </div>
+                <div class="stage" id="stage-embind">
+                    <div class="stage-title">Embind Initialization</div>
+                    <div class="stage-description">Building the type system</div>
+                </div>
+                <div class="stage" id="stage-runtime">
+                    <div class="stage-title">Runtime Preparation</div>
+                    <div class="stage-description">Memory and function binding</div>
+                </div>
+                <div class="stage" id="stage-ready">
+                    <div class="stage-title">Application Ready</div>
+                    <div class="stage-description">Ready to use</div>
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="wasm-progress-fill"></div>
+                </div>
+                <div class="progress-text" id="wasm-progress-text">0%</div>
+            </div>
+            <div class="status-display" id="wasm-status-display">
+                Ready to start loading...
+            </div>     
+
+            <div class="progress-section">
+                <h3>Real-time Logs</h3>
+                <div class="logs" id="logs"></div>
             </div>
         </div>
-        <canvas class="emscripten" id="canvas" oncontextmenu=event.preventDefault() tabindex=-1></canvas>
 
         <script src="post_load_mrjs.js"></script>
-        <script src="wasm_loader.js"></script>
+        <script src="wasm_loader_mrjs.js"></script>
         <script src="error.js"></script>
 
         <script type="text/javascript" async src="MRJavaScript.js"></script>
