@@ -13,6 +13,7 @@ var clearWasmLoadProgress = function () {
 var statusElement = document.getElementById("status"),
     logoElement = document.getElementById("logo"),
     spinnerElement = document.getElementById("spinner"),
+    meshFileLoaderElement = document.getElementById("meshFileLoader"),
     Module = {
         preRun: [],
         postRun: [],
@@ -64,6 +65,7 @@ var statusElement = document.getElementById("status"),
                             spinnerElement.style.display = "none",
                             statusElement.style.display = "none",
                             logoElement.style.display = "none",
+                            meshFileLoader.style.display = "flex",
                             clearWasmLoadProgress(),
                             postWasmLoad()
                         )
@@ -82,6 +84,7 @@ var statusElement = document.getElementById("status"),
 Module.setStatus("Downloading...");
 window.onerror = function (e) {
     Module.setStatus("Exception thrown, see JavaScript console");
+    meshFileLoader.style.display = "none";
     spinnerElement.style.display = "none";
     statusElement.style.display = "none";
     Module.setStatus = function (e) {
