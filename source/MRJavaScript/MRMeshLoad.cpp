@@ -60,22 +60,28 @@ public:
 		}
 	}
 
-	// Load from binary data (more useful for web applications)
+	// Load from binary data (e.g. STL, more useful for web applications)
 	static val fromBinaryData( const val& data, const std::string& extension )
 	{
 		try
 		{
 			// Convert JavaScript Uint8Array to string stream
-			std::string binaryStr;
+			// std::string binaryStr;
+			// Instead of converting to string, work directly with the raw data
+			std::vector<uint8_t> binaryData;
 			int length = data["length"].as<int>();
-			binaryStr.reserve( length );
+			// binaryStr.reserve( length );
+			binaryData.reserve(length);
 
 			for ( int i = 0; i < length; ++i )
 			{
-				binaryStr += static_cast< char >( data[i].as<uint8_t>() );
+				// binaryStr += static_cast< char >( data[i].as<uint8_t>() );
+				binaryData.push_back(data[i].as<uint8_t>());
 			}
 
-			std::istringstream stream( binaryStr, std::ios::binary );
+			// std::istringstream stream( binaryStr, std::ios::binary );
+			std::stringstream stream;
+			stream.write(reinterpret_cast<const char*>(binaryData.data()), binaryData.size());
 
 			// Choose appropriate loader based on extension
 			Expected<Mesh> result;

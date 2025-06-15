@@ -257,7 +257,7 @@ val MeshWrapper::fillHoles() const
     meshData.set("vertexCount", pointCount);
     meshData.set("indices", triangleArray);
     meshData.set("triangleCount", triangleCount);
-    
+
     return meshData;
 }
 
