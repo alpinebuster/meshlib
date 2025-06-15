@@ -72,7 +72,7 @@ class MeshFileLoader {
             this.updateProgress(30);
 
             // Call your WASM mesh loader - this is where your actual code would go
-            const result = await Module.MeshLoad.fromBinaryData(uint8Array, fileExtension);
+            const result = await Module.MeshLoadWrapper.fromBinaryData(uint8Array, fileExtension);
 
             this.updateProgress(80);
 
@@ -187,12 +187,15 @@ class MeshFileLoader {
                 <div class="info-value">${boxSize.x} × ${boxSize.y} × ${boxSize.z}</div>
             </div>
         `;
-
         this.meshInfo.style.display = 'block';
+
+        // Fill holes
+        const holesFilledMesh = mesh.fillHoles();
+        console.log("holesFilledMesh: ", JSON.stringify(holesFilledMesh));
     }
 }
 
-var postWasmLoad = function () {
+const postWasmLoad = function () {
     registerErrorHandling();
 
     // ccall
@@ -263,3 +266,5 @@ var postWasmLoad = function () {
     // Load a mesh from binary data
     let mfl = new MeshFileLoader();
 };
+
+export default postWasmLoad;

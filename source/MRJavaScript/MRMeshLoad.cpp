@@ -133,9 +133,9 @@ public:
 };
 
 // Embind declarations
-EMSCRIPTEN_BINDINGS( MeshLoadModule )
+EMSCRIPTEN_BINDINGS( MeshLoadWrapperModule )
 {
-	class_<MeshLoadWrapper>( "MeshLoad" )
+	class_<MeshLoadWrapper>( "MeshLoadWrapper" )
 		.class_function( "fromFile", &MeshLoadWrapper::fromFile )
 		.class_function( "fromBinaryData", &MeshLoadWrapper::fromBinaryData );
 }
