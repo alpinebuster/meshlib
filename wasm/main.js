@@ -213,23 +213,29 @@ function addPoint() {
 }
 
 function fillHoles() {
-    debugger;
-    const newMeshArr = gFileLoader.getHolesFilledMesh();
+    const newMeshData = gFileLoader.getHolesFilledMesh();
+    const vertices = newMeshData.vertices;
+    const indices = newMeshData.indices;
 
-    const newPositions = new Float32Array(newMeshArr);
+    const newVertices = new Float32Array(vertices);
+    const newIndices = new Uint16Array(indices);
     const newGeometry = new THREE.BufferGeometry();
-    newGeometry.setAttribute('position', new THREE.BufferAttribute(newPositions, 3));
+    newGeometry.setAttribute('position', new THREE.BufferAttribute(newVertices, 3));
+
+    // 🔧 Automatically calculate the normal to ensure normal lighting effects
+    newGeometry.computeVertexNormals();
+
+    newGeometry.setIndex(new THREE.BufferAttribute(newIndices, 1));
     const newMaterial = new THREE.MeshPhongMaterial({
-        color: 0xFFFFFF,
-        specular: 100,
-        shininess: 100,
-        side: THREE.DoubleSide,
+        // color: 0xFFFFFF,
+        // specular: 100,
+        // shininess: 100,
+        // side: THREE.DoubleSide,
         vertexColors: true
     });
     const newMesh = new THREE.Mesh(newGeometry, newMaterial);
 
     scene.add(newMesh);
-    console.log("s")
 }
 
 function removePoint() {

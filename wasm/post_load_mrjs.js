@@ -192,6 +192,9 @@ class MeshFileLoader {
 }
 
 const postWasmLoad = function (_m) {
+    // const canvasEle = document.getElementById('wasm-canvas-container');
+    // canvasEle.style.display = 'block';
+
     // ccall
     _m.ccall('printtt', 'void', [], []);
     // function

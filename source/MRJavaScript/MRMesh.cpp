@@ -224,23 +224,106 @@ val MeshWrapper::fillHoles() const
 		FillHoleParams params;
 		fillHole( meshCopy, e, params );
 	}
+
+    // === Export point data ===
 	auto _points = meshCopy.points;
-    size_t totalElements = _points.size() * 3;
-    const float* data = reinterpret_cast<const float*>(_points.data());
+	size_t pointCount = _points.size();
+	size_t totalPointElements = pointCount * 3;
+    const float* pointData = reinterpret_cast<const float*>(_points.data());
 
     // Create a JavaScript array directly and populate it - avoiding intermediate conversion steps
-    val result = val::array();
+    val pointsArray = val::array();
     // Pre-allocate the array length to improve performance
-    result.set("length", totalElements);
+    pointsArray.set("length", totalPointElements);
     // Batch setting values - faster than pushing them one by one
-    for (size_t i = 0; i < totalElements; ++i) {
-        result.set(i, val(data[i]));
+    for (size_t i = 0; i < totalPointElements; ++i) {
+        pointsArray.set(i, val(pointData[i]));
     }
 
-	// auto memView = typed_memory_view( _points.size() * 3, reinterpret_cast< const float* >( _points.data() ) );
+    // === Export triangle data ===
+	Triangulation _tri = meshCopy.topology.getTriangulation();
+	size_t triangleCount = _tri.size();
+	size_t totalTriElements = triangleCount * 3; // Each triangle has three indexes
+	const int* triData = reinterpret_cast<const int*>(_tri.data());
 
-	return result;
+	val triangleArray = val::array();
+    triangleArray.set("length", totalTriElements);
+	for (size_t i = 0; i < totalTriElements; ++i) {
+		triangleArray.set(i, val(triData[i]));
+	}
+	
+    val meshData = val::object();
+    meshData.set("vertices", pointsArray);
+    meshData.set("vertexCount", pointCount);
+    meshData.set("indices", triangleArray);
+    meshData.set("triangleCount", triangleCount);
+    
+    return meshData;
 }
+
+// // A more efficient version: Use typed arrays（Typed Arrays）
+// val exportMeshDataOptimized() {
+//     auto _points = meshCopy.points;
+//     Triangulation _tri = meshCopy.topology.getTriangulation();
+    
+//     // === Export point data using Float32Array ===
+//     size_t totalPointElements = _points.size() * 3;
+//     const float* pointData = reinterpret_cast<const float*>(_points.data());
+    
+//     // Create a Float32Array and directly copy the memory
+//     val pointsBuffer = val::global("Float32Array").new_(totalPointElements);
+//     // Use the memory operations of emscripten to batch copy data
+//     val pointsMemoryView = val::global("HEAPF32");
+//     size_t pointsOffset = reinterpret_cast<size_t>(pointData) / sizeof(float);
+    
+//     // This is more efficient because it avoids setting each element one by one
+//     pointsBuffer.call<void>("set", 
+//         pointsMemoryView.call<val>("subarray", pointsOffset, pointsOffset + totalPointElements));
+    
+//     // === Export the triangular index data using Uint32Array ===
+//     size_t triangleCount = _tri.getTriangleCount();
+//     size_t totalTriangleElements = triangleCount * 3;
+    
+//     val triangleBuffer = val::global("Uint32Array").new_(totalTriangleElements);
+    
+//     // If the triangular data is in contiguous memory
+//     if (auto* triangleData = _tri.getRawTriangleData()) {
+//         const uint32_t* triData = reinterpret_cast<const uint32_t*>(triangleData);
+//         val triangleMemoryView = val::global("HEAPU32");
+//         size_t triangleOffset = reinterpret_cast<size_t>(triData) / sizeof(uint32_t);
+        
+//         triangleBuffer.call<void>("set",
+//             triangleMemoryView.call<val>("subarray", triangleOffset, triangleOffset + totalTriangleElements));
+//     }
+//     // If data needs to be constructed manually
+//     else {
+//         // Create a temporary buffer
+//         std::vector<uint32_t> tempTriangleData;
+//         tempTriangleData.reserve(totalTriangleElements);
+        
+//         for (size_t i = 0; i < triangleCount; ++i) {
+//             ThreeVertIds triangle = _tri.getTriangle(i);
+//             tempTriangleData.push_back(static_cast<uint32_t>(triangle[0]));
+//             tempTriangleData.push_back(static_cast<uint32_t>(triangle[1]));
+//             tempTriangleData.push_back(static_cast<uint32_t>(triangle[2]));
+//         }
+        
+//         // Batch copy to the JavaScript array
+//         val triangleMemoryView = val::global("HEAPU32");
+//         size_t tempOffset = reinterpret_cast<size_t>(tempTriangleData.data()) / sizeof(uint32_t);
+//         triangleBuffer.call<void>("set",
+//             triangleMemoryView.call<val>("subarray", tempOffset, tempOffset + totalTriangleElements));
+//     }
+    
+//     // === Return the optimized data structure ===
+//     val meshData = val::object();
+//     meshData.set("vertices", pointsBuffer);      // Float32Array
+//     meshData.set("indices", triangleBuffer);     // Uint32Array
+//     meshData.set("vertexCount", _points.size());
+//     meshData.set("triangleCount", triangleCount);
+    
+//     return meshData;
+// }
 
 // Point projection
 val MeshWrapper::projectPoint( const val& point, float maxDistance ) const
