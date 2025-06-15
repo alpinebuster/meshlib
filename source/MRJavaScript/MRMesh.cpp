@@ -10,6 +10,7 @@
 #include <MRMesh/MRExpected.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
+#include <MRMesh/MRMeshFillHole.h>
 
 #include "MRMesh.h"
 
@@ -19,103 +20,40 @@ using namespace MR;
 namespace MRJS
 {
 
-// // Auxiliary function: Convert C++ vector to JavaScript Float32Array
-// val vectorToFloat32Array(const std::vector<Vector3f>& vec) {
-//     return val(typed_memory_view(vec.size() * 3, reinterpret_cast<const float*>(vec.data())));
-// }
+// ------------------------------------------------------------------------
+// `Mesh`
+// ------------------------------------------------------------------------
+// Convert C++ vector to JavaScript Float32Array
+val vector3fToFloat32Array( const std::vector<Vector3f>& vec )
+{
+	// REF: [Memory Views](`https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#memory-views`)
+	return val( typed_memory_view( vec.size() * 3, reinterpret_cast< const float* >( vec.data() ) ) );
+}
 
-// // Auxiliary function: Convert triangulation data into a JavaScript array
-// val triangulationToJS(const Triangulation& t) {
-//     std::vector<uint32_t> flatTris;
-//     for (const auto& tri : t) {
-//         flatTris.push_back(tri[0].get());
-//         flatTris.push_back(tri[1].get());
-//         flatTris.push_back(tri[2].get());
-//     }
-//     return val::array(flatTris);
-// }
+EMSCRIPTEN_BINDINGS( MeshModule )
+{
+	class_<Mesh>( "Mesh" )
+		.constructor<>()
+		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
 
-// EMSCRIPTEN_BINDINGS(Mesh) {
-//     class_<Mesh>("Mesh")
-//         .constructor<>()
-//         .function("getBoundingBox", &Mesh::getBoundingBox)
-//         .function("computeBoundingBox", select_overload<Box3f() const>(&Mesh::computeBoundingBox))
-//         .function("averageEdgeLength", &Mesh::averageEdgeLength)
-//         .function("area", select_overload<double() const>(&Mesh::area))
-//         .function("volume", select_overload<double() const>(&Mesh::volume))
-//         .function("signedDistance", select_overload<float(const Vector3f&) const>(&Mesh::signedDistance))
-//         .function("projectPoint", select_overload<MeshProjectionResult(const Vector3f&, float, const FaceBitSet*, const AffineXf3f*) const>(&Mesh::projectPoint))
-//         .function("transform", select_overload<void(const AffineXf3f&, const VertBitSet*)>(&Mesh::transform))
-//         .function("pack", select_overload<void(const PartMapping&, bool)>(&Mesh::pack))
-//         .function("getPoints", &Mesh::points)
-//         .function("getTopology", &Mesh::topology);
+	function( "computeVertexNormals", +[] ( const Mesh& mesh )
+	{
+		std::vector<Vector3f> normals;
+		for ( VertId v{ 0 }; v < mesh.topology.vertSize(); ++v )
+		{
+			if ( mesh.topology.hasVert( v ) )
+			{
+				normals.push_back( mesh.normal( v ) );
+			}
+		}
+		return vector3fToFloat32Array( normals );
+	} );
+}
 
-// EMSCRIPTEN_BINDINGS(MeshLoad) {
-//     function("fromObj", select_overload<Expected<Mesh>(const std::filesystem::path&, const MeshLoadSettings&)>(&MeshLoad::fromObj));
-//     function("fromOff", select_overload<Expected<Mesh>(const std::filesystem::path&, const MeshLoadSettings&)>(&MeshLoad::fromOff));
-//     function("fromPly", select_overload<Expected<Mesh>(const std::filesystem::path&, const MeshLoadSettings&)>(&MeshLoad::fromPly));
-//     function("fromAnyStl", select_overload<Expected<Mesh>(const std::filesystem::path&, const MeshLoadSettings&)>(&MeshLoad::fromAnyStl));
-//     function("fromAnySupportedFormat", select_overload<Expected<Mesh>(const std::filesystem::path&, const MeshLoadSettings&)>(&MeshLoad::fromAnySupportedFormat));
 
-//     // 内存加载版本
-//     function("fromObjData", +[](const std::string& data) -> Mesh {
-//         std::istringstream stream(data);
-//         auto mesh = MeshLoad::fromObj(stream).value();
-//         return mesh;
-//     });
-
-//     function("fromOffData", +[](const std::string& data) -> Mesh {
-//         std::istringstream stream(data);
-//         auto mesh = MeshLoad::fromOff(stream).value();
-//         return mesh;
-//     });
-
-//     function("fromPlyData", +[](const std::string& data) -> Mesh {
-//         std::istringstream stream(data);
-//         auto mesh = MeshLoad::fromPly(stream).value();
-//         return mesh;
-//     });
-
-//     function("fromStlData", +[](const std::string& data) -> Mesh {
-//         std::istringstream stream(data);
-//         auto mesh = MeshLoad::fromAnyStl(stream).value();
-//         return mesh;
-//     });
-// }
-
-// EMSCRIPTEN_BINDINGS(MeshStatic) {
-//     function("fromTriangles", +[](const std::vector<Vector3f>& vertices, const std::vector<uint32_t>& indices) -> Mesh {
-//         VertCoords vertCoords;
-//         vertCoords.resize(vertices.size());
-//         for (size_t i = 0; i < vertices.size(); ++i) {
-//             vertCoords[VertId(i)] = vertices[i];
-//         }
-
-//         Triangulation tris;
-//         for (size_t i = 0; i < indices.size(); i += 3) {
-//             tris.push_back({ 
-//                 VertId(indices[i]), 
-//                 VertId(indices[i+1]), 
-//                 VertId(indices[i+2]) 
-//             });
-//         }
-
-//         return Mesh::fromTriangles(std::move(vertCoords), tris).value();
-//     });
-// }
-
-// EMSCRIPTEN_BINDINGS(MeshUtils) {
-//     function("computeVertexNormals", +[](const Mesh& mesh) {
-//         std::vector<Vector3f> normals;
-//         for (VertId v{0}; v < mesh.topology.vertSize(); ++v) {
-//             if (mesh.topology.hasVert(v)) {
-//                 normals.push_back(mesh.normal(v));
-//             }
-//         }
-//         return vectorToFloat32Array(normals);
-//     });
-// }
-
+// ------------------------------------------------------------------------
+// Wrappers for `Mesh`
+// ------------------------------------------------------------------------
 // Helper function to create Vector3f from JavaScript array
 Vector3f arrayToVector3f( const val& arr )
 {
@@ -142,7 +80,9 @@ val box3fToObject( const Box<Vector3<float>>& box )
 }
 
 // Wrapper class for Mesh to provide JavaScript-friendly interface
-MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
+MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m )
+{
+}
 
 // Static factory methods for creating meshes from various sources
 val MeshWrapper::fromTriangles( const val& vertexCoords, const val& triangles )
@@ -192,7 +132,10 @@ val MeshWrapper::fromTriangles( const val& vertexCoords, const val& triangles )
 }
 
 // Geometric queries
-val MeshWrapper::getBoundingBox() const { return box3fToObject( mesh.getBoundingBox() ); }
+val MeshWrapper::getBoundingBox() const
+{
+	return box3fToObject( mesh.getBoundingBox() );
+}
 
 val MeshWrapper::getVertexPosition( int vertId ) const
 {
@@ -212,15 +155,30 @@ void MeshWrapper::setVertexPosition( int vertId, const val& position )
 	}
 }
 
-int MeshWrapper::getVertexCount() const { return ( int )mesh.topology.lastValidVert() + 1; }
+int MeshWrapper::getVertexCount() const
+{
+	return ( int )mesh.topology.lastValidVert() + 1;
+}
 
-int MeshWrapper::getFaceCount() const { return ( int )mesh.topology.lastValidFace() + 1; }
+int MeshWrapper::getFaceCount() const
+{
+	return ( int )mesh.topology.lastValidFace() + 1;
+}
 
-double MeshWrapper::getVolume() const { return mesh.volume(); }
+double MeshWrapper::getVolume() const
+{
+	return mesh.volume();
+}
 
-double MeshWrapper::getArea() const { return mesh.area(); }
+double MeshWrapper::getArea() const
+{
+	return mesh.area();
+}
 
-val MeshWrapper::findCenter() const { return vector3fToArray( mesh.findCenterFromBBox() ); }
+val MeshWrapper::findCenter() const
+{
+	return vector3fToArray( mesh.findCenterFromBBox() );
+}
 
 // Face operations
 val MeshWrapper::getFaceVertices( int faceId ) const
@@ -255,6 +213,33 @@ val MeshWrapper::getFaceNormal( int faceId ) const
 		}
 	}
 	return val::null();
+}
+
+val MeshWrapper::fillHoles() const
+{
+	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
+	Mesh meshCopy = mesh;
+	for ( EdgeId e : holeEdges )
+	{
+		FillHoleParams params;
+		fillHole( meshCopy, e, params );
+	}
+	auto _points = meshCopy.points;
+    size_t totalElements = _points.size() * 3;
+    const float* data = reinterpret_cast<const float*>(_points.data());
+
+    // Create a JavaScript array directly and populate it - avoiding intermediate conversion steps
+    val result = val::array();
+    // Pre-allocate the array length to improve performance
+    result.set("length", totalElements);
+    // Batch setting values - faster than pushing them one by one
+    for (size_t i = 0; i < totalElements; ++i) {
+        result.set(i, val(data[i]));
+    }
+
+	// auto memView = typed_memory_view( _points.size() * 3, reinterpret_cast< const float* >( _points.data() ) );
+
+	return result;
 }
 
 // Point projection
@@ -309,14 +294,17 @@ void MeshWrapper::transform( const val& matrix )
 }
 
 // Pack mesh (optimize memory layout)
-void MeshWrapper::pack() { mesh.pack(); }
-
-
-EMSCRIPTEN_BINDINGS( MeshModule )
+void MeshWrapper::pack()
 {
-	class_<MeshWrapper>( "Mesh" )
+	mesh.pack();
+}
+
+
+EMSCRIPTEN_BINDINGS( MeshWrapperModule )
+{
+	class_<MeshWrapper>( "MeshWrapper" )
 		.constructor<>()
-		// .constructor<const Mesh&>()
+		.constructor<const Mesh&>()
 		.class_function( "fromTriangles", &MeshWrapper::fromTriangles )
 
 		// Geometric properties
@@ -334,6 +322,8 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		// Face operations
 		.function( "getFaceVertices", &MeshWrapper::getFaceVertices )
 		.function( "getFaceNormal", &MeshWrapper::getFaceNormal )
+
+		.function( "fillHoles", &MeshWrapper::fillHoles )
 
 		// Spatial queries
 		.function( "projectPoint", &MeshWrapper::projectPoint )

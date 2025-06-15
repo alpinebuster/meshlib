@@ -1,3 +1,6 @@
+import createModule from './MRJavaScript.js';
+import postWasmLoad from './post_load_mrjs.js';
+
 // Define the various stages of embind loading and their weights.
 const LOADING_STAGES = [
     {
@@ -184,79 +187,7 @@ class EmbindProgressTracker {
     }
 }
 
-const progressTracker = new EmbindProgressTracker();
-var meshFileLoaderElement = document.getElementById("meshFileLoader");
 
-Module = {
-    preRun: [],
-    postRun: [],
-    print: function () {
-        var e = document.getElementById("output");
-        return e && (e.value = ""),
-            function (t) {
-                arguments.length > 1 && (t = Array.prototype.slice.call(arguments).join(" "));
-                console.log(t);
-                e && (e.value += t + "\n", e.scrollTop = e.scrollHeight);
-            }
-    }(),
-    preRun: [
-        function () {
-            progressTracker.log('Execute the pre-run hook.');
-            progressTracker.updateStage(1);
-        }
-    ],
-    postRun: [
-        function () {
-            progressTracker.log('Execute the post-run hook.');
-            progressTracker.updateStage(4);
-            setTimeout(() => {
-                progressTracker.completeLoading();
-            }, 200);
-        }
-    ],
-    setStatus: function (text) {
-        // Intercept and enhance the embind status messages.
-        progressTracker.log(`Embind Status: ${text}`);
-
-        if (text.includes('Downloading') || text.includes('Loading')) {
-            progressTracker.updateStage(0);
-
-            // Attempt to parse the progress information.
-            const progressMatch = text.match(/\((\d+)\/(\d+)\)/);
-            if (progressMatch) {
-                const [, current, total] = progressMatch;
-                const progress = (parseInt(current) / parseInt(total)) * 100;
-                progressTracker.updateStageProgress(progress);
-            }
-        } else if (text.includes('Compiling') || text.includes('Instantiating')) {
-            progressTracker.updateStage(1);
-        } else if (text.includes('Running') || text.includes('Initializing')) {
-            progressTracker.updateStage(3);
-        } else if (text === '') {
-            // An empty status usually indicates completion.
-            progressTracker.updateStage(4);
-        }
-    },
-    onRuntimeInitialized: function () {
-        progressTracker.log('Runtime initialization complete.', 'success');
-        progressTracker.hideLoader();
-
-        meshFileLoaderElement && (meshFileLoaderElement.style.display = "block");
-        postWasmLoad();
-    },
-    onAbort: function (what) {
-        progressTracker.log(`Loading aborted: ${what}`, 'error');
-        progressTracker.statusDisplay.textContent = 'Loading failed.';
-    },
-
-    totalDependencies: 0,
-    monitorRunDependencies: function (e) {
-        this.totalDependencies = Math.max(this.totalDependencies, e);
-        Module.setStatus(e ? "Preparing... (" + (this.totalDependencies - e) + "/" + this.totalDependencies + ")" : "All downloads complete.");
-    }
-};
-
-Module.setStatus("Downloading...");
 window.onerror = function (e) {
     Module.setStatus("Exception thrown, see JavaScript console");
     if (meshFileLoaderElement) meshFileLoaderElement.style.display = "none";
@@ -265,4 +196,158 @@ window.onerror = function (e) {
     Module.setStatus = function (e) {
         e && Module.printErr("[post-exception status] " + e);
     }
+}
+
+function createModuleConfiguration(progressTracker, meshFileLoaderElement, postWasmLoadHook) {
+    return {
+        preRun: [
+            function () {
+                progressTracker.log('Execute the pre-run hook.');
+                progressTracker.updateStage(1);
+            }
+        ],
+        postRun: [
+            function () {
+                progressTracker.log('Execute the post-run hook.');
+                progressTracker.updateStage(4);
+                setTimeout(() => {
+                    progressTracker.completeLoading();
+                }, 200);
+            }
+        ],
+        // Intercept and enhance the embind status messages
+        setStatus: function (text) {
+            progressTracker.log(`Embind Status: ${text}`);
+
+            // NOTE: Update different loading stages based on status text
+            if (text.includes('Downloading') || text.includes('Loading')) {
+                progressTracker.updateStage(0);
+
+                // Attempt to parse the progress information.
+                const progressMatch = text.match(/\((\d+)\/(\d+)\)/);
+                if (progressMatch) {
+                    const [, current, total] = progressMatch;
+                    const progress = (parseInt(current) / parseInt(total)) * 100;
+                    progressTracker.updateStageProgress(progress);
+                }
+            } else if (text.includes('Compiling') || text.includes('Instantiating')) {
+                progressTracker.updateStage(1);
+            } else if (text.includes('Running') || text.includes('Initializing')) {
+                progressTracker.updateStage(3);
+            } else if (text === '') {
+                // An empty status usually indicates completion
+                progressTracker.updateStage(4);
+            }
+        },
+        onRuntimeInitialized: function () {
+            progressTracker.log('Runtime initialization complete.', 'success');
+            progressTracker.hideLoader();
+
+            if (meshFileLoaderElement) {
+                meshFileLoaderElement.style.display = "block";
+            }
+
+            if (typeof postWasmLoadHook === 'function') {
+                postWasmLoadHook();
+            }
+        },
+        onAbort: function (reason) {
+            progressTracker.log(`Loading aborted: ${reason}`, 'error');
+            progressTracker.statusDisplay.textContent = 'Loading failed.';
+        },
+
+        totalDependencies: 0,
+        monitorRunDependencies: function (remaining) {
+            this.totalDependencies = Math.max(this.totalDependencies, remaining);
+            const completed = this.totalDependencies - remaining;
+            const statusText = remaining ? 
+                `Preparing... (${completed}/${this.totalDependencies})` : 
+                "All downloads complete.";
+            this.setStatus(statusText);
+        },
+        print: function () {
+            const outputElement = document.getElementById("output");
+
+            if (outputElement) {
+                outputElement.value = "";
+            }
+            
+            // Return the actual print function
+            return function (message) {
+                // Dealing with the situation of multiple parameters
+                if (arguments.length > 1) {
+                    message = Array.prototype.slice.call(arguments).join(" ");
+                }
+
+                console.log(message);
+
+                if (outputElement) {
+                    outputElement.value += message + "\n";
+                    outputElement.scrollTop = outputElement.scrollHeight;
+                }
+            }
+        }(),
+    };
+}
+
+export async function initializeWasmModule(options = {}) {
+    const progressTracker = new EmbindProgressTracker();
+
+    let logoElement = document.getElementById("logo");
+    let spinnerElement = document.getElementById("spinner");
+    let meshFileLoaderElement = document.getElementById('meshFileLoader');
+
+    const {
+        postWasmLoadHook = (m) => console.log('Running postWasmLoadHook!!!'),
+        onProgress = null,
+        onError = null
+    } = options;
+
+    try {
+        // Set the initial state
+        progressTracker.updateStage(0);
+        progressTracker.log('Starting WASM module initialization...');
+
+        const moduleConfig = createModuleConfiguration(
+            progressTracker, 
+            meshFileLoaderElement, 
+            postWasmLoadHook,
+        );
+
+        // If custom progress callbacks are provided, integrate them into the configuration
+        if (onProgress) {
+            const originalSetStatus = moduleConfig.setStatus;
+            moduleConfig.setStatus = function(text) {
+                originalSetStatus.call(this, text);
+                onProgress(text, progressTracker.currentStage);
+            };
+        }
+        moduleConfig.setStatus("Downloading...");
+
+        // NOTE: Call the factory function of the Emscripten module and pass in the configuration
+        const Module = await createModule(moduleConfig);
+        const fileLoader = postWasmLoad(Module);
+        progressTracker.log('WASM module successfully initialized', 'success');
+
+        return {
+            Module: Module,
+            fileLoader: fileLoader,
+        };
+    } catch (error) {
+        const errorMessage = `Failed to initialize WASM module: ${error.message}`;
+        progressTracker.log(errorMessage, 'error');
+
+        if (meshFileLoaderElement) meshFileLoaderElement.style.display = "none";
+        spinnerElement.style.display = "none";
+
+        if (onError) {
+            onError(error);
+        } else {
+            throw error;
+        }
+    }
+}
+
+export function loadWasmModule() {
+    return initializeWasmModule();
 }
