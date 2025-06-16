@@ -74,7 +74,6 @@ class MeshFileLoader {
             this.updateProgress(30);
 
             // Call your WASM mesh loader - this is where your actual code would go
-            // const result = await this._m.MeshLoadWrapper.fromBinaryData(arrayBuffer, fileExtension);
             const result = await this._m.MeshLoadWrapper.fromBinaryData(uint8Array, fileExtension);
             this.mesh = result.mesh;
 

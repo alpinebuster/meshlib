@@ -129,9 +129,7 @@ async function init() {
     document.addEventListener( 'pointermove', onPointerMove );
     window.addEventListener( 'resize', onWindowResize );
 
-    /*******
-	 * Curves
-	 *********/
+    // Curves
     for ( let i = 0; i < splinePointsLength; i ++ ) {
         addSplineObject( positions[ i ] );
     }
@@ -218,7 +216,7 @@ function fillHoles() {
     const indices = newMeshData.indices;
 
     const newVertices = new Float32Array(vertices);
-    const newIndices = new Uint16Array(indices);
+    const newIndices = new Uint32Array(indices);
     const newGeometry = new THREE.BufferGeometry();
     newGeometry.setAttribute('position', new THREE.BufferAttribute(newVertices, 3));
 

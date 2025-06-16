@@ -40,7 +40,10 @@ val expectedToJs( const Expected<T>& expected )
 // Wrapper for MeshLoad functions
 class MeshLoadWrapper {
 public:
-	// Load from file path (for environments that support file system)
+	// Load from emscripten **virtual** file path
+	// In JS:
+	//   `FS.createDataFile("/", "model_name.stl", data, true, true);`
+	// 
 	static val fromFile( const std::string& filePath )
 	{
 		auto result = MeshLoad::fromAnySupportedFormat( filePath );
@@ -68,20 +71,21 @@ public:
 			// Convert JavaScript Uint8Array to string stream
 			// std::string binaryStr;
 			// Instead of converting to string, work directly with the raw data
-			std::vector<uint8_t> binaryData;
-			int length = data["length"].as<int>();
+			// std::vector<uint8_t> binaryData;
+			const size_t length = data["length"].as<size_t>();
 			// binaryStr.reserve( length );
-			binaryData.reserve(length);
-
+			// binaryData.reserve(length);
+			std::vector<uint8_t> binaryData(length);
 			for ( int i = 0; i < length; ++i )
 			{
 				// binaryStr += static_cast< char >( data[i].as<uint8_t>() );
-				binaryData.push_back(data[i].as<uint8_t>());
+				// binaryData.push_back(data[i].as<uint8_t>());
+				binaryData[i] = data[i].as<uint8_t>();
 			}
 
 			// std::istringstream stream( binaryStr, std::ios::binary );
-			std::stringstream stream;
-			stream.write(reinterpret_cast<const char*>(binaryData.data()), binaryData.size());
+			std::stringstream stream(std::ios::in | std::ios::out | std::ios::binary);
+			stream.write(reinterpret_cast<const char*>(binaryData.data()), length);
 
 			// Choose appropriate loader based on extension
 			Expected<Mesh> result;
