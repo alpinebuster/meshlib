@@ -218,6 +218,7 @@ val MeshWrapper::getFaceNormal( int faceId ) const
 val MeshWrapper::fillHoles() const
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
+	// TODO: More performance gains? 
 	Mesh meshCopy = mesh;
 	for ( EdgeId e : holeEdges )
 	{

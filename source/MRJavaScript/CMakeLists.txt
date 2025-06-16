@@ -25,7 +25,10 @@ IF(MR_EMSCRIPTEN)
   # REF: 
   #   1. `https://emscripten.org/docs/tools_reference/settings_reference.html#exported-runtime-methods`
   #   2. `https://emscripten.org/docs/tools_reference/settings_reference.html#exported-functions`
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createModule -s ENVIRONMENT=web,worker -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"FS\"]' --emit-tsd ${PROJECT_NAME}.d.ts")
+  #
+  # Set target env: `-s ENVIRONMENT=web,worker`
+  #
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshLib -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"FS\"]' --emit-tsd ${PROJECT_NAME}.d.ts")
   target_link_libraries(${PROJECT_NAME} PRIVATE
     tbb
     zip

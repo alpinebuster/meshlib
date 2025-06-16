@@ -221,7 +221,7 @@ function fillHoles() {
     newGeometry.setAttribute('position', new THREE.BufferAttribute(newVertices, 3));
 
     // 🔧 Automatically calculate the normal to ensure normal lighting effects
-    newGeometry.computeVertexNormals();
+    // newGeometry.computeVertexNormals();
 
     newGeometry.setIndex(new THREE.BufferAttribute(newIndices, 1));
     const newMaterial = new THREE.MeshPhongMaterial({
