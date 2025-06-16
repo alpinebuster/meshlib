@@ -70,13 +70,19 @@ class MeshFileLoader {
             const arrayBuffer = await this.readFileAsArrayBuffer(file);
             const uint8Array = new Uint8Array(arrayBuffer);
 
+            const ptr = this._m._malloc(uint8Array.byteLength);
+            this._m.HEAPU8.set(uint8Array, ptr);
+
             // Simulate progress updates during processing
             this.updateProgress(30);
-
             // Call your WASM mesh loader - this is where your actual code would go
-            const result = await this._m.MeshLoadWrapper.fromBinaryData(uint8Array, fileExtension);
-            this.mesh = result.mesh;
+            // const result = await this._m.MeshLoadWrapper.fromBinaryData(uint8Array, fileExtension);
+            // HACK: Performance optimization by utilizing the `typed_memory_view()` of emscripten
+            const result = await this._m.MeshLoadWrapper.fromBinaryData(ptr, uint8Array.byteLength, fileExtension);
+            // NOTE: Remember to free after processing
+            this._m._free(ptr);
 
+            this.mesh = result.mesh;
             this.updateProgress(80);
 
             if (result.success) {
