@@ -1,10 +1,16 @@
 {
   "name": "@alpinebuster/meshlib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS/TS binding for the meshlib.",
   "type": "module",
   "main": "lib/node/index.js",
   "browser": "lib/web/index.js",
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "build": "./bundle.sh",
+    "prepare": "npm run build",
+    "test": "jest"
+  },
   "keywords": [
     "meshlib-binding",
     "3d",
@@ -20,11 +26,14 @@
     "url": "git+https://github.com/alpinebuster/meshlib.git"
   },
   "license": "Apache-2.0",
-  "scripts": {
-    "build": "./bundle.sh",
-    "prepare": "npm run build",
-    "test": "jest"
-  },
+  "files": [
+      "lib",
+      "src",
+      "CONTRIBUTING",
+      "LICENSE",
+      "README.md",
+      "package.json"
+],
   "devDependencies": {
     "@types/emscripten": "^1.40.1",
     "@types/jest": "^30.0.0",
