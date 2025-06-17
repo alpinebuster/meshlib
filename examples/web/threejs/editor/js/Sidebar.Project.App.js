@@ -1,11 +1,9 @@
 import * as THREE from 'three';
-
 import { zipSync, strToU8 } from 'three/addons/libs/fflate.module.js';
 
 import { UIButton, UICheckbox, UIPanel, UIInput, UIRow, UIText } from './libs/ui.js';
 
 function SidebarProjectApp( editor ) {
-
 	const config = editor.config;
 	const signals = editor.signals;
 	const strings = editor.strings;
@@ -37,9 +35,7 @@ function SidebarProjectApp( editor ) {
 
 	const editableRow = new UIRow();
 	const editable = new UICheckbox( config.getKey( 'project/editable' ) ).setLeft( '100px' ).onChange( function () {
-
 		config.setKey( 'project/editable', this.getValue() );
-
 	} );
 
 	editableRow.add( new UIText( strings.getKey( 'sidebar/project/app/editable' ) ).setClass( 'Label' ) );
@@ -56,21 +52,15 @@ function SidebarProjectApp( editor ) {
 	playButton.setMarginLeft( '120px' );
 	playButton.setMarginBottom( '10px' );
 	playButton.onClick( function () {
-
 		if ( isPlaying === false ) {
-
 			isPlaying = true;
 			playButton.setTextContent( strings.getKey( 'sidebar/project/app/stop' ) );
 			signals.startPlayer.dispatch();
-
 		} else {
-
 			isPlaying = false;
 			playButton.setTextContent( strings.getKey( 'sidebar/project/app/play' ) );
 			signals.stopPlayer.dispatch();
-
 		}
-
 	} );
 
 	container.add( playButton );
@@ -82,7 +72,6 @@ function SidebarProjectApp( editor ) {
 	publishButton.setMarginLeft( '120px' );
 	publishButton.setMarginBottom( '10px' );
 	publishButton.onClick( function () {
-
 		const toZip = {};
 
 		//
@@ -101,70 +90,54 @@ function SidebarProjectApp( editor ) {
 		const title = config.getKey( 'project/title' );
 
 		const manager = new THREE.LoadingManager( function () {
-
 			const zipped = zipSync( toZip, { level: 9 } );
 
 			const blob = new Blob( [ zipped.buffer ], { type: 'application/zip' } );
 
 			save( blob, ( title !== '' ? title : 'untitled' ) + '.zip' );
-
 		} );
 
 		const loader = new THREE.FileLoader( manager );
 		loader.load( 'js/libs/app/index.html', function ( content ) {
-
 			content = content.replace( '<!-- title -->', title );
 
 			let editButton = '';
 
 			if ( config.getKey( 'project/editable' ) ) {
-
 				editButton = [
 					'			let button = document.createElement( \'a\' );',
-					'			button.href = \'https://threejs.org/editor/#file=\' + location.href.split( \'/\' ).slice( 0, - 1 ).join( \'/\' ) + \'/app.json\';',
+					'			button.href = \'http://localhost:9320/#file=\' + location.href.split( \'/\' ).slice( 0, - 1 ).join( \'/\' ) + \'/app.json\';',
 					'			button.style.cssText = \'position: absolute; bottom: 20px; right: 20px; padding: 10px 16px; color: #fff; border: 1px solid #fff; border-radius: 20px; text-decoration: none;\';',
 					'			button.target = \'_blank\';',
 					'			button.textContent = \'EDIT\';',
 					'			document.body.appendChild( button );',
 				].join( '\n' );
-
 			}
 
 			content = content.replace( '\t\t\t/* edit button */', editButton );
 
 			toZip[ 'index.html' ] = strToU8( content );
-
 		} );
 		loader.load( 'js/libs/app.js', function ( content ) {
-
 			toZip[ 'js/app.js' ] = strToU8( content );
-
 		} );
-		loader.load( '../build/three.core.js', function ( content ) {
-
+		loader.load( '../node_modules/three/build/three.core.js', function ( content ) {
 			toZip[ 'js/three.core.js' ] = strToU8( content );
-
 		} );
-		loader.load( '../build/three.module.js', function ( content ) {
-
+		loader.load( '../node_modules/three/build/three.module.js', function ( content ) {
 			toZip[ 'js/three.module.js' ] = strToU8( content );
-
 		} );
-
 	} );
 	container.add( publishButton );
 
 	// Signals
 
 	signals.editorCleared.add( function () {
-
 		title.setValue( '' );
 		config.setKey( 'project/title', '' );
-
 	} );
 
 	return container;
-
 }
 
 export { SidebarProjectApp };

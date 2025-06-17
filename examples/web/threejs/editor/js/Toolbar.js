@@ -1,7 +1,6 @@
 import { UIPanel, UIButton, UICheckbox } from './libs/ui.js';
 
 function Toolbar( editor ) {
-
 	const signals = editor.signals;
 	const strings = editor.strings;
 
@@ -18,9 +17,7 @@ function Toolbar( editor ) {
 	translate.dom.className = 'Button selected';
 	translate.dom.appendChild( translateIcon );
 	translate.onClick( function () {
-
 		signals.transformModeChanged.dispatch( 'translate' );
-
 	} );
 	container.add( translate );
 
@@ -31,9 +28,7 @@ function Toolbar( editor ) {
 	const rotate = new UIButton();
 	rotate.dom.appendChild( rotateIcon );
 	rotate.onClick( function () {
-
 		signals.transformModeChanged.dispatch( 'rotate' );
-
 	} );
 	container.add( rotate );
 
@@ -44,41 +39,44 @@ function Toolbar( editor ) {
 	const scale = new UIButton();
 	scale.dom.appendChild( scaleIcon );
 	scale.onClick( function () {
-
 		signals.transformModeChanged.dispatch( 'scale' );
-
 	} );
 	container.add( scale );
 
 	const local = new UICheckbox( false );
 	local.dom.title = strings.getKey( 'toolbar/local' );
 	local.onChange( function () {
-
 		signals.spaceChanged.dispatch( this.getValue() === true ? 'local' : 'world' );
-
 	} );
 	container.add( local );
 
 	//
 
-	signals.transformModeChanged.add( function ( mode ) {
+	const fillHolesIcon = document.createElement( 'img' );
+	fillHolesIcon.title = strings.getKey( 'toolbar/fillHoles' );
+	fillHolesIcon.src = 'images/manipulate.svg';
+	const fillHoles = new UIButton();
+	fillHoles.dom.appendChild( fillHolesIcon );
+	fillHoles.onClick( function () {
+		// editor.mrmesh.fillHoles();
+	} );
+	container.add( fillHoles );
 
+	// 
+
+	signals.transformModeChanged.add( function ( mode ) {
 		translate.dom.classList.remove( 'selected' );
 		rotate.dom.classList.remove( 'selected' );
 		scale.dom.classList.remove( 'selected' );
 
 		switch ( mode ) {
-
 			case 'translate': translate.dom.classList.add( 'selected' ); break;
 			case 'rotate': rotate.dom.classList.add( 'selected' ); break;
 			case 'scale': scale.dom.classList.add( 'selected' ); break;
-
 		}
-
 	} );
 
 	return container;
-
 }
 
 export { Toolbar };

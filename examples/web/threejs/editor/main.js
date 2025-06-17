@@ -19,31 +19,31 @@ const editor = new Editor();
 window.editor = editor; // Expose editor to Console
 window.THREE = THREE; // Expose THREE to APP Scripts and Console
 
-const viewport = new Viewport(editor);
-document.body.appendChild(viewport.dom);
+const viewport = new Viewport( editor );
+document.body.appendChild( viewport.dom );
 
-const toolbar = new Toolbar(editor);
-document.body.appendChild(toolbar.dom);
+const toolbar = new Toolbar( editor );
+document.body.appendChild( toolbar.dom );
 
-const script = new Script(editor);
-document.body.appendChild(script.dom);
+const script = new Script( editor );
+document.body.appendChild( script.dom );
 
-const player = new Player(editor);
-document.body.appendChild(player.dom);
+const player = new Player( editor );
+document.body.appendChild( player.dom) ;
 
-const sidebar = new Sidebar(editor);
-document.body.appendChild(sidebar.dom);
+const sidebar = new Sidebar( editor );
+document.body.appendChild( sidebar.dom );
 
-const menubar = new Menubar(editor);
-document.body.appendChild(menubar.dom);
+const menubar = new Menubar( editor );
+document.body.appendChild( menubar.dom );
 
-const resizer = new Resizer(editor);
-document.body.appendChild(resizer.dom);
+const resizer = new Resizer( editor );
+document.body.appendChild( resizer.dom );
 
 //
 
 editor.storage.init(function () {
-	editor.storage.get(async function (state) {
+	editor.storage.get(async function ( state ) {
 		if (isLoadingFromHash) return;
 
 		if (state !== undefined) {
@@ -81,37 +81,37 @@ editor.storage.init(function () {
 
 	const signals = editor.signals;
 
-	signals.geometryChanged.add(saveState);
-	signals.objectAdded.add(saveState);
-	signals.objectChanged.add(saveState);
-	signals.objectRemoved.add(saveState);
-	signals.materialChanged.add(saveState);
-	signals.sceneBackgroundChanged.add(saveState);
-	signals.sceneEnvironmentChanged.add(saveState);
-	signals.sceneFogChanged.add(saveState);
-	signals.sceneGraphChanged.add(saveState);
-	signals.scriptChanged.add(saveState);
-	signals.historyChanged.add(saveState);
+	signals.geometryChanged.add( saveState );
+	signals.objectAdded.add( saveState );
+	signals.objectChanged.add( saveState );
+	signals.objectRemoved.add( saveState );
+	signals.materialChanged.add( saveState );
+	signals.sceneBackgroundChanged.add( saveState );
+	signals.sceneEnvironmentChanged.add( saveState );
+	signals.sceneFogChanged.add( saveState );
+	signals.sceneGraphChanged.add( saveState );
+	signals.scriptChanged.add( saveState );
+	signals.historyChanged.add( saveState );
 });
 editor.initMRMesh();
 
 //
 
-document.addEventListener('dragover', function (event) {
+document.addEventListener('dragover', function ( event ) {
 	event.preventDefault();
 	event.dataTransfer.dropEffect = 'copy';
 });
 
-document.addEventListener('drop', function (event) {
+document.addEventListener('drop', function ( event ) {
 	event.preventDefault();
 
-	if (event.dataTransfer.types[0] === 'text/plain') return; // Outliner drop
+	if ( event.dataTransfer.types[0] === 'text/plain' ) return; // Outliner drop
 
-	if (event.dataTransfer.items) {
+	if ( event.dataTransfer.items ) {
 		// DataTransferItemList supports folders
-		editor.loader.loadItemList(event.dataTransfer.items);
+		editor.loader.loadItemList( event.dataTransfer.items );
 	} else {
-		editor.loader.loadFiles(event.dataTransfer.files);
+		editor.loader.loadFiles( event.dataTransfer.files );
 	}
 });
 
@@ -119,7 +119,7 @@ function onWindowResize() {
 	editor.signals.windowResize.dispatch();
 }
 
-window.addEventListener('resize', onWindowResize);
+window.addEventListener( 'resize', onWindowResize );
 
 onWindowResize();
 
@@ -128,10 +128,10 @@ onWindowResize();
 let isLoadingFromHash = false;
 const hash = window.location.hash;
 
-if (hash.slice(1, 6) === 'file=') {
+if ( hash.slice(1, 6) === 'file=' ) {
 	const file = hash.slice(6);
 
-	if (confirm(editor.strings.getKey('prompt/file/open'))) {
+	if (confirm(editor.strings.getKey( 'prompt/file/open' ))) {
 		const loader = new THREE.FileLoader();
 		loader.crossOrigin = '';
 		loader.load(file, function (text) {
@@ -147,9 +147,9 @@ if (hash.slice(1, 6) === 'file=') {
 
 // ServiceWorker
 
-if ('serviceWorker' in navigator) {
+if ( 'serviceWorker' in navigator ) {
 	try {
-		navigator.serviceWorker.register('sw.js');
+		navigator.serviceWorker.register( 'sw.js' );
 	} catch (error) {
 	}
 }

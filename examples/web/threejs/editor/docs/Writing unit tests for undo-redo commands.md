@@ -57,7 +57,6 @@ Open the unit test file `test/unit/editor/TestDoSomethingCommand.js` and paste f
 module( "DoSomethingCommand" );
 
 test("Test DoSomethingCommand (Undo and Redo)", function() {
-
     var editor = new Editor();
 
     var box = aBox( 'Name your box' );
@@ -72,8 +71,6 @@ test("Test DoSomethingCommand (Undo and Redo)", function() {
 
 
     // your test begins here...
-
-
 } );
 ```
 

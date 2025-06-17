@@ -1,9 +1,9 @@
-import { UIBreak, UIButton, UIInteger, UIPanel, UIRow, UIText } from './libs/ui.js';
+import { FFmpeg } from "@ffmpeg/ffmpeg";
 
+import { UIBreak, UIButton, UIInteger, UIPanel, UIRow, UIText } from './libs/ui.js';
 import { APP } from './libs/app.js';
 
 function SidebarProjectVideo( editor ) {
-
 	const strings = editor.strings;
 
 	const container = new UIPanel();
@@ -17,11 +17,9 @@ function SidebarProjectVideo( editor ) {
 	// Resolution
 
 	function toDiv2() {
-
 		// Make sure dimensions are divisible by 2 (requirement of libx264)
 
 		this.setValue( 2 * Math.floor( this.getValue() / 2 ) );
-
 	}
 
 	const resolutionRow = new UIRow();
@@ -58,7 +56,6 @@ function SidebarProjectVideo( editor ) {
 	renderButton.setWidth( '170px' );
 	renderButton.setMarginLeft( '120px' );
 	renderButton.onClick( async () => {
-
 		const player = new APP.Player();
 		player.load( editor.toJSON() );
 		player.setPixelRatio( 1 );
@@ -134,29 +131,21 @@ function SidebarProjectVideo( editor ) {
 
 		//
 
-		const { createFFmpeg, fetchFile } = FFmpeg; // eslint-disable-line no-undef
-		const ffmpeg = createFFmpeg( { log: true } );
-
+		// const { createFFmpeg, fetchFile } = FFmpeg; // eslint-disable-line no-undef
+		// const ffmpeg = createFFmpeg( { log: true } );
+		const ffmpeg = new FFmpeg();
 		await ffmpeg.load();
 
 		ffmpeg.setProgress( ( { ratio } ) => {
-
 			encodingStatus.textContent = `( ${ Math.floor( ratio * 100 ) }% )`;
-
 		} );
 
 		output.addEventListener( 'unload', function () {
-
 			if ( video.src.startsWith( 'blob:' ) ) {
-
 				URL.revokeObjectURL( video.src );
-
 			} else {
-
 				ffmpeg.exit();
-
 			}
-
 		} );
 
 		const fps = videoFPS.getValue();
@@ -166,11 +155,9 @@ function SidebarProjectVideo( editor ) {
 		//
 
 		await ( async function () {
-
 			let currentTime = 0;
 
 			for ( let i = 0; i < frames; i ++ ) {
-
 				player.render( currentTime );
 
 				const num = i.toString().padStart( 5, '0' );
@@ -183,7 +170,6 @@ function SidebarProjectVideo( editor ) {
 				const frame = i + 1;
 				const progress = Math.floor( frame / frames * 100 );
 				writeFileStatus.textContent = `${ frame } / ${ frames } ( ${ progress }% )`;
-
 			}
 
 			encodingText.hidden = false;
@@ -194,10 +180,8 @@ function SidebarProjectVideo( editor ) {
 			const videoData = ffmpeg.FS( 'readFile', 'out.mp4' );
 
 			for ( let i = 0; i < frames; i ++ ) {
-
 				const num = i.toString().padStart( 5, '0' );
 				ffmpeg.FS( 'unlink', `tmp.${num}.png` );
-
 			}
 
 			ffmpeg.FS( 'unlink', 'out.mp4' );
@@ -212,22 +196,18 @@ function SidebarProjectVideo( editor ) {
 
 			video.src = URL.createObjectURL( new Blob( [ videoData.buffer ], { type: 'video/mp4' } ) );
 			video.hidden = false;
-
 		} )();
 
 		player.dispose();
-
 	} );
 	container.add( renderButton );
 
 	//
 
 	return container;
-
 }
 
 function formatFileSize( sizeB, K = 1024 ) {
-
 	if ( sizeB === 0 ) return '0B';
 
 	const sizes = [ sizeB, sizeB / K, sizeB / K / K ].reverse();
@@ -236,7 +216,6 @@ function formatFileSize( sizeB, K = 1024 ) {
 
 	return new Intl.NumberFormat( 'en-us', { useGrouping: true, maximumFractionDigits: 1 } )
 		.format( sizes[ index ] ) + units[ index ];
-
 }
 
 export { SidebarProjectVideo };

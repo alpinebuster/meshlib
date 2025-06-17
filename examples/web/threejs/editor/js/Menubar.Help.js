@@ -1,7 +1,6 @@
 import { UIPanel, UIRow } from './libs/ui.js';
 
 function MenubarHelp( editor ) {
-
 	const strings = editor.strings;
 
 	const container = new UIPanel();
@@ -22,9 +21,7 @@ function MenubarHelp( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( strings.getKey( 'menubar/help/source_code' ) );
 	option.onClick( function () {
-
-		window.open( 'https://github.com/mrdoob/three.js/tree/master/editor', '_blank' );
-
+		window.open( 'https://github.com/alpinebuster/meshlib/tree/dev/examples/web/threejs/', '_blank' );
 	} );
 	options.add( option );
 
@@ -48,9 +45,7 @@ function MenubarHelp( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( strings.getKey( 'menubar/help/about' ) );
 	option.onClick( function () {
-
-		window.open( 'https://threejs.org', '_blank' );
-
+		window.open( 'https://github.com/alpinebuster/meshlib/tree/dev/examples/web/threejs/README.md', '_blank' );
 	} );
 	options.add( option );
 
@@ -61,13 +56,12 @@ function MenubarHelp( editor ) {
 	option.setTextContent( strings.getKey( 'menubar/help/manual' ) );
 	option.onClick( function () {
 
-		window.open( 'https://github.com/mrdoob/three.js/wiki/Editor-Manual', '_blank' );
+		window.open( 'https://github.com/alpinebuster/meshlib/tree/dev/examples/web/threejs/Editor-Manual.md', '_blank' );
 
 	} );
 	options.add( option );
 
 	return container;
-
 }
 
 export { MenubarHelp };

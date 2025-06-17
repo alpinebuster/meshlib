@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import type { ServerOptions, BuildOptions } from 'vite'
 
 // Utilizing TypeScript's type inference, defineConfig will automatically infer the correct type
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 	return {
 		root: 'editor',
 
@@ -14,6 +14,7 @@ export default defineConfig(({ command, mode }) => {
 					// Add more pages as needed
 					// about: resolve(__dirname, 'editor/about.html'),
 				},
+				// NOTE: Mainly affects **production** construction, suitable for controlling which dependencies are not packaged
 				// Tell Vite that these modules are external and not to try to package them
 				// external: [
 				// 	'three',
@@ -47,12 +48,14 @@ export default defineConfig(({ command, mode }) => {
 				'three-gpu-pathtracer',
 				'three-mesh-bvh',
 			],
+			// NOTE: Primarily affects dependency pre-builds in **development** environments and applies to performance optimization during development
 			// Explicitly excluding these dependencies prevents Vite from trying to pre-build them
-			// exclude: [
-			// 	'three',
-			// 	'three-gpu-pathtracer',
-			// 	'three-mesh-bvh'
-			// ],
+			exclude: [
+				// 'three',
+				// 'three-gpu-pathtracer',
+				// 'three-mesh-bvh',
+				"@ffmpeg/ffmpeg", "@ffmpeg/util",
+			],
 
 			esbuildOptions: {
 				target: 'esnext',
@@ -71,7 +74,7 @@ export default defineConfig(({ command, mode }) => {
 		server: {
 			port: 9320,
 			host: 'localhost',
-			open: true,
+			// open: true,
 			fs: {
 				// REF: `https://vite.dev/config/server-options.html#server-fs-allow`
 				strict: command === 'build',
@@ -119,9 +122,6 @@ export default defineConfig(({ command, mode }) => {
 		// Path Alias Configuration - Make Import Paths Simpler
 		resolve: {
 			alias: {
-				// '@': resolve(__dirname, 'editor'),
-				// '@components': resolve(__dirname, 'editor/components'),
-				// '@utils': resolve(__dirname, 'editor/utils')
 				'three/addons/': resolve(__dirname, 'node_modules/three/examples/jsm/'),
 				'three/examples/': resolve(__dirname, 'node_modules/three/examples/')
 			}

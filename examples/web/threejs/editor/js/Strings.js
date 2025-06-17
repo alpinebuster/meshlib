@@ -787,6 +787,7 @@ function Strings( config ) {
 			'toolbar/rotate': 'Rotate',
 			'toolbar/scale': 'Scale',
 			'toolbar/local': 'Local',
+			'toolbar/fillHoles': 'Fill Holes',
 
 			'viewport/controls/grid': 'Grid',
 			'viewport/controls/helpers': 'Helpers',
@@ -1593,6 +1594,7 @@ function Strings( config ) {
 			'toolbar/rotate': '旋转',
 			'toolbar/scale': '缩放',
 			'toolbar/local': '本地',
+			'toolbar/fillHoles': '封闭全部空洞',
 
 			'viewport/controls/grid': '网格',
 			'viewport/controls/helpers': '辅助',

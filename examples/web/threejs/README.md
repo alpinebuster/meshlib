@@ -1,6 +1,6 @@
 # ThreeJS supports for `meshlib`
 
-Just serve the file `editor/index.html` and you will be fine.
+🙂 Simple threejs editor for meshlib development.
 
 ## Getting Started
 

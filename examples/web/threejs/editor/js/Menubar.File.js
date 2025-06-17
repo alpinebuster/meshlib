@@ -1,7 +1,6 @@
 import { UIPanel, UIRow, UIHorizontalRule } from './libs/ui.js';
 
 function MenubarFile( editor ) {
-
 	const strings = editor.strings;
 
 	const saveArrayBuffer = editor.utils.saveArrayBuffer;
@@ -23,18 +22,14 @@ function MenubarFile( editor ) {
 
 	const newProjectSubmenuTitle = new UIRow().setTextContent( strings.getKey( 'menubar/file/new' ) ).addClass( 'option' ).addClass( 'submenu-title' );
 	newProjectSubmenuTitle.onMouseOver( function () {
-
 		const { top, right } = this.dom.getBoundingClientRect();
 		const { paddingTop } = getComputedStyle( this.dom );
 		newProjectSubmenu.setLeft( right + 'px' );
 		newProjectSubmenu.setTop( top - parseFloat( paddingTop ) + 'px' );
 		newProjectSubmenu.setDisplay( 'block' );
-
 	} );
 	newProjectSubmenuTitle.onMouseOut( function () {
-
 		newProjectSubmenu.setDisplay( 'none' );
-
 	} );
 	options.add( newProjectSubmenuTitle );
 
@@ -45,13 +40,9 @@ function MenubarFile( editor ) {
 
 	let option = new UIRow().setTextContent( strings.getKey( 'menubar/file/new/empty' ) ).setClass( 'option' );
 	option.onClick( function () {
-
 		if ( confirm( strings.getKey( 'prompt/file/open' ) ) ) {
-
 			editor.clear();
-
 		}
-
 	} );
 	newProjectSubmenu.add( option );
 
@@ -72,32 +63,22 @@ function MenubarFile( editor ) {
 	const loader = new THREE.FileLoader();
 
 	for ( let i = 0; i < examples.length; i ++ ) {
-
 		( function ( i ) {
-
 			const example = examples[ i ];
 
 			const option = new UIRow();
 			option.setClass( 'option' );
 			option.setTextContent( strings.getKey( example.title ) );
 			option.onClick( function () {
-
 				if ( confirm( strings.getKey( 'prompt/file/open' ) ) ) {
-
 					loader.load( 'examples/' + example.file, function ( text ) {
-
 						editor.clear();
 						editor.fromJSON( JSON.parse( text ) );
-
 					} );
-
 				}
-
 			} );
 			newProjectSubmenu.add( option );
-
 		} )( i );
-
 	}
 
 	// Open
@@ -111,38 +92,28 @@ function MenubarFile( editor ) {
 	openProjectInput.type = 'file';
 	openProjectInput.accept = '.json';
 	openProjectInput.addEventListener( 'change', async function () {
-
 		const file = openProjectInput.files[ 0 ];
 
 		if ( file === undefined ) return;
 
 		try {
-
 			const json = JSON.parse( await file.text() );
 
 			async function onEditorCleared() {
-
 				await editor.fromJSON( json );
 
 				editor.signals.editorCleared.remove( onEditorCleared );
-
 			}
 
 			editor.signals.editorCleared.add( onEditorCleared );
 
 			editor.clear();
-
 		} catch ( e ) {
-
 			alert( strings.getKey( 'prompt/file/failedToOpenProject' ) );
 			console.error( e );
-
 		} finally {
-
 			form.reset();
-
 		}
-
 	} );
 
 	openProjectForm.appendChild( openProjectInput );
@@ -151,13 +122,9 @@ function MenubarFile( editor ) {
 		.addClass( 'option' )
 		.setTextContent( strings.getKey( 'menubar/file/open' ) )
 		.onClick( function () {
-
 			if ( confirm( strings.getKey( 'prompt/file/open' ) ) ) {
-
 				openProjectInput.click();
-
 			}
-
 		} );
 
 	options.add( option );
@@ -168,11 +135,9 @@ function MenubarFile( editor ) {
 		.addClass( 'option' )
 		.setTextContent( strings.getKey( 'menubar/file/save' ) )
 		.onClick( function () {
-
 			const json = editor.toJSON();
 			const blob = new Blob( [ JSON.stringify( json ) ], { type: 'application/json' } );
 			editor.utils.save( blob, 'project.json' );
-
 		} );
 
 	options.add( option );
@@ -191,10 +156,8 @@ function MenubarFile( editor ) {
 	fileInput.multiple = true;
 	fileInput.type = 'file';
 	fileInput.addEventListener( 'change', function () {
-
 		editor.loader.loadFiles( fileInput.files );
 		form.reset();
-
 	} );
 	form.appendChild( fileInput );
 
@@ -202,9 +165,7 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( strings.getKey( 'menubar/file/import' ) );
 	option.onClick( function () {
-
 		fileInput.click();
-
 	} );
 	options.add( option );
 
@@ -212,18 +173,14 @@ function MenubarFile( editor ) {
 
 	const fileExportSubmenuTitle = new UIRow().setTextContent( strings.getKey( 'menubar/file/export' ) ).addClass( 'option' ).addClass( 'submenu-title' );
 	fileExportSubmenuTitle.onMouseOver( function () {
-
 		const { top, right } = this.dom.getBoundingClientRect();
 		const { paddingTop } = getComputedStyle( this.dom );
 		fileExportSubmenu.setLeft( right + 'px' );
 		fileExportSubmenu.setTop( top - parseFloat( paddingTop ) + 'px' );
 		fileExportSubmenu.setDisplay( 'block' );
-
 	} );
 	fileExportSubmenuTitle.onMouseOut( function () {
-
 		fileExportSubmenu.setDisplay( 'none' );
-
 	} );
 	options.add( fileExportSubmenuTitle );
 
@@ -236,14 +193,11 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'DRC' );
 	option.onClick( async function () {
-
 		const object = editor.selected;
 
 		if ( object === null || object.isMesh === undefined ) {
-
 			alert( strings.getKey( 'prompt/file/export/noMeshSelected' ) );
 			return;
-
 		}
 
 		const { DRACOExporter } = await import( 'three/addons/exporters/DRACOExporter.js' );
@@ -263,7 +217,6 @@ function MenubarFile( editor ) {
 		// TODO: Change to DRACOExporter's parse( geometry, onParse )?
 		const result = exporter.parse( object, options );
 		saveArrayBuffer( result, 'model.drc' );
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -273,16 +226,13 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'GLB' );
 	option.onClick( async function () {
-
 		const scene = editor.scene;
 		const animations = getAnimations( scene );
 
 		const optimizedAnimations = [];
 
 		for ( const animation of animations ) {
-
 			optimizedAnimations.push( animation.clone().optimize() );
-
 		}
 
 		const { GLTFExporter } = await import( 'three/addons/exporters/GLTFExporter.js' );
@@ -290,11 +240,8 @@ function MenubarFile( editor ) {
 		const exporter = new GLTFExporter();
 
 		exporter.parse( scene, function ( result ) {
-
 			saveArrayBuffer( result, 'scene.glb' );
-
 		}, undefined, { binary: true, animations: optimizedAnimations } );
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -304,16 +251,13 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'GLTF' );
 	option.onClick( async function () {
-
 		const scene = editor.scene;
 		const animations = getAnimations( scene );
 
 		const optimizedAnimations = [];
 
 		for ( const animation of animations ) {
-
 			optimizedAnimations.push( animation.clone().optimize() );
-
 		}
 
 		const { GLTFExporter } = await import( 'three/addons/exporters/GLTFExporter.js' );
@@ -321,12 +265,8 @@ function MenubarFile( editor ) {
 		const exporter = new GLTFExporter();
 
 		exporter.parse( scene, function ( result ) {
-
 			saveString( JSON.stringify( result, null, 2 ), 'scene.gltf' );
-
 		}, undefined, { animations: optimizedAnimations } );
-
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -336,14 +276,11 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'OBJ' );
 	option.onClick( async function () {
-
 		const object = editor.selected;
 
 		if ( object === null ) {
-
 			alert( strings.getKey( 'prompt/file/export/noObjectSelected' ) );
 			return;
-
 		}
 
 		const { OBJExporter } = await import( 'three/addons/exporters/OBJExporter.js' );
@@ -351,7 +288,6 @@ function MenubarFile( editor ) {
 		const exporter = new OBJExporter();
 
 		saveString( exporter.parse( object ), 'model.obj' );
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -361,17 +297,13 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'PLY' );
 	option.onClick( async function () {
-
 		const { PLYExporter } = await import( 'three/addons/exporters/PLYExporter.js' );
 
 		const exporter = new PLYExporter();
 
 		exporter.parse( editor.scene, function ( result ) {
-
 			saveArrayBuffer( result, 'model.ply' );
-
 		} );
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -381,17 +313,13 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'PLY (BINARY)' );
 	option.onClick( async function () {
-
 		const { PLYExporter } = await import( 'three/addons/exporters/PLYExporter.js' );
 
 		const exporter = new PLYExporter();
 
 		exporter.parse( editor.scene, function ( result ) {
-
 			saveArrayBuffer( result, 'model-binary.ply' );
-
 		}, { binary: true } );
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -401,13 +329,11 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'STL' );
 	option.onClick( async function () {
-
 		const { STLExporter } = await import( 'three/addons/exporters/STLExporter.js' );
 
 		const exporter = new STLExporter();
 
 		saveString( exporter.parse( editor.scene ), 'model.stl' );
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -417,13 +343,11 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'STL (BINARY)' );
 	option.onClick( async function () {
-
 		const { STLExporter } = await import( 'three/addons/exporters/STLExporter.js' );
 
 		const exporter = new STLExporter();
 
 		saveArrayBuffer( exporter.parse( editor.scene, { binary: true } ), 'model-binary.stl' );
-
 	} );
 	fileExportSubmenu.add( option );
 
@@ -433,34 +357,27 @@ function MenubarFile( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( 'USDZ' );
 	option.onClick( async function () {
-
 		const { USDZExporter } = await import( 'three/addons/exporters/USDZExporter.js' );
 
 		const exporter = new USDZExporter();
 
 		saveArrayBuffer( await exporter.parseAsync( editor.scene ), 'model.usdz' );
-
 	} );
 	fileExportSubmenu.add( option );
 
 	//
 
 	function getAnimations( scene ) {
-
 		const animations = [];
 
 		scene.traverse( function ( object ) {
-
 			animations.push( ... object.animations );
-
 		} );
 
 		return animations;
-
 	}
 
 	return container;
-
 }
 
 export { MenubarFile };

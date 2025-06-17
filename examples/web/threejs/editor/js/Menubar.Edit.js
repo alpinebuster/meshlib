@@ -8,7 +8,6 @@ import { SetPositionCommand } from './commands/SetPositionCommand.js';
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
 
 function MenubarEdit( editor ) {
-
 	const strings = editor.strings;
 
 	const container = new UIPanel();
@@ -30,9 +29,7 @@ function MenubarEdit( editor ) {
 	undo.setTextContent( strings.getKey( 'menubar/edit/undo' ) );
 	undo.add( new UIText( 'CTRL+Z' ).setClass( 'key' ) );
 	undo.onClick( function () {
-
 		editor.undo();
-
 	} );
 	options.add( undo );
 
@@ -43,31 +40,23 @@ function MenubarEdit( editor ) {
 	redo.setTextContent( strings.getKey( 'menubar/edit/redo' ) );
 	redo.add( new UIText( 'CTRL+SHIFT+Z' ).setClass( 'key' ) );
 	redo.onClick( function () {
-
 		editor.redo();
-
 	} );
 	options.add( redo );
 
 	function onHistoryChanged() {
-
 		const history = editor.history;
 
 		undo.setClass( 'option' );
 		redo.setClass( 'option' );
 
 		if ( history.undos.length == 0 ) {
-
 			undo.setClass( 'inactive' );
-
 		}
 
 		if ( history.redos.length == 0 ) {
-
 			redo.setClass( 'inactive' );
-
 		}
-
 	}
 
 	editor.signals.historyChanged.add( onHistoryChanged );
@@ -83,7 +72,6 @@ function MenubarEdit( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( strings.getKey( 'menubar/edit/center' ) );
 	option.onClick( function () {
-
 		const object = editor.selected;
 
 		if ( object === null || object.parent === null ) return; // avoid centering the camera or scene
@@ -97,7 +85,6 @@ function MenubarEdit( editor ) {
 		newPosition.z = object.position.z - center.z;
 
 		editor.execute( new SetPositionCommand( editor, object, newPosition ) );
-
 	} );
 	options.add( option );
 
@@ -107,7 +94,6 @@ function MenubarEdit( editor ) {
 	option.setClass( 'option' );
 	option.setTextContent( strings.getKey( 'menubar/edit/clone' ) );
 	option.onClick( function () {
-
 		let object = editor.selected;
 
 		if ( object === null || object.parent === null ) return; // avoid cloning the camera or scene
@@ -115,7 +101,6 @@ function MenubarEdit( editor ) {
 		object = clone( object );
 
 		editor.execute( new AddObjectCommand( editor, object ) );
-
 	} );
 	options.add( option );
 
@@ -126,20 +111,15 @@ function MenubarEdit( editor ) {
 	option.setTextContent( strings.getKey( 'menubar/edit/delete' ) );
 	option.add( new UIText( 'DEL' ).setClass( 'key' ) );
 	option.onClick( function () {
-
 		const object = editor.selected;
 
 		if ( object !== null && object.parent !== null ) {
-
 			editor.execute( new RemoveObjectCommand( editor, object ) );
-
 		}
-
 	} );
 	options.add( option );
 
 	return container;
-
 }
 
 export { MenubarEdit };
