@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {createMeshLib} from '@alpinebuster/meshlib';
 
 import { Config } from './Config.js';
 import { Loader } from './Loader.js';
@@ -131,6 +132,8 @@ function Editor() {
 	this.viewportShading = 'default';
 
 	this.addCamera( this.camera );
+
+	// this.mrmesh = await createMeshLib();
 
 }
 

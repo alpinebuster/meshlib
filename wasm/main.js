@@ -224,13 +224,7 @@ function fillHoles() {
     // newGeometry.computeVertexNormals();
 
     newGeometry.setIndex(new THREE.BufferAttribute(newIndices, 1));
-    const newMaterial = new THREE.MeshPhongMaterial({
-        color: 0xff9c7c,
-        // specular: 100,
-        // shininess: 100,
-        // side: THREE.DoubleSide,
-        vertexColors: true,
-    });
+    const newMaterial = new THREE.MeshNormalMaterial();
     const newMesh = new THREE.Mesh(newGeometry, newMaterial);
     newMesh.castShadow = true;
     newMesh.receiveShadow = true;

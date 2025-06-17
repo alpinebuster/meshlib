@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import type { UserConfig, ServerOptions, BuildOptions } from 'vite'
+import type { ServerOptions, BuildOptions } from 'vite'
 
 // Utilizing TypeScript's type inference, defineConfig will automatically infer the correct type
 export default defineConfig({
@@ -44,7 +44,7 @@ export default defineConfig({
 		include: [
 			'three',
 			'three-gpu-pathtracer',
-			'three-mesh-bvh'
+			'three-mesh-bvh',
 		],
 		// Explicitly excluding these dependencies prevents Vite from trying to pre-build them
 		// exclude: [
@@ -53,13 +53,18 @@ export default defineConfig({
 		// 	'three-mesh-bvh'
 		// ],
 
-		// ESBuild configuration for dependency pre-builds
-		// esbuildOptions: {
-		// 	target: 'es2020',
-		// 	define: {
-		// 		global: 'globalThis',  // Ensuring that Three.js works in all environments
-		// 	}
-		// }
+		esbuildOptions: {
+			target: 'esnext',
+			// Explicit support for the top-level `await` feature
+			supported: {
+				'top-level-await': true
+			},
+			define: {
+				global: 'globalThis',  // Ensuring that Three.js works in all environments
+			},
+			// Set the output format to ESM
+			format: 'esm',
+		}
 	},
 
 	server: {
