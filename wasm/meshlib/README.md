@@ -19,7 +19,7 @@ npm install meshlib
 ```js
 import { createMeshLib } from 'meshlib';
 
-const LazPerf = await createMeshLib();
+const mrmesh = await createMeshLib();
 ```
 
 ## Local Development
@@ -28,6 +28,13 @@ Change `function ccall(ident: any, returnType?: (string | null) | undefined, arg
 to `function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: (IArguments|any[]) | undefined, opts?: any | undefined): any;`, more at <https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/emscripten/index.d.ts> and <https://github.com/emscripten-core/emscripten/issues/24579>.
 
 ```sh
-npm run install
+npm install
 npm run build
+```
+
+## Release
+
+```sh
+npm login
+npm publish --tag beta --access public
 ```
