@@ -1,32 +1,26 @@
 import { UIElement } from './libs/ui.js';
 
 function Resizer( editor ) {
-
 	const signals = editor.signals;
 
 	const dom = document.createElement( 'div' );
 	dom.id = 'resizer';
 
 	function onPointerDown( event ) {
-
 		if ( event.isPrimary === false ) return;
 
 		dom.ownerDocument.addEventListener( 'pointermove', onPointerMove );
 		dom.ownerDocument.addEventListener( 'pointerup', onPointerUp );
-
 	}
 
 	function onPointerUp( event ) {
-
 		if ( event.isPrimary === false ) return;
 
 		dom.ownerDocument.removeEventListener( 'pointermove', onPointerMove );
 		dom.ownerDocument.removeEventListener( 'pointerup', onPointerUp );
-
 	}
 
 	function onPointerMove( event ) {
-
 		// PointerEvent's movementX/movementY are 0 in WebKit
 
 		if ( event.isPrimary === false ) return;
@@ -36,7 +30,8 @@ function Resizer( editor ) {
 
 		const cX = clientX < 0 ? 0 : clientX > offsetWidth ? offsetWidth : clientX;
 
-		const x = Math.max( 335, offsetWidth - cX ); // .TabbedPanel min-width: 335px
+		// HACK
+		const x = Math.max( 312, offsetWidth - cX ); // .TabbedPanel min-width: 312px
 
 		dom.style.right = x + 'px';
 
@@ -46,13 +41,11 @@ function Resizer( editor ) {
 		document.getElementById( 'viewport' ).style.right = x + 'px';
 
 		signals.windowResize.dispatch();
-
 	}
 
 	dom.addEventListener( 'pointerdown', onPointerDown );
 
 	return new UIElement( dom );
-
 }
 
 export { Resizer };

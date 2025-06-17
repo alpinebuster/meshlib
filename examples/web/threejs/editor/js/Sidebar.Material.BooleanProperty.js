@@ -2,7 +2,6 @@ import { UICheckbox, UIRow, UIText } from './libs/ui.js';
 import { SetMaterialValueCommand } from './commands/SetMaterialValueCommand.js';
 
 function SidebarMaterialBooleanProperty( editor, property, name ) {
-
 	const signals = editor.signals;
 
 	const container = new UIRow();
@@ -16,17 +15,12 @@ function SidebarMaterialBooleanProperty( editor, property, name ) {
 	let material = null;
 
 	function onChange() {
-
 		if ( material[ property ] !== boolean.getValue() ) {
-
 			editor.execute( new SetMaterialValueCommand( editor, object, property, boolean.getValue(), materialSlot ) );
-
 		}
-
 	}
 
 	function update( currentObject, currentMaterialSlot = 0 ) {
-
 		object = currentObject;
 		materialSlot = currentMaterialSlot;
 
@@ -36,16 +30,11 @@ function SidebarMaterialBooleanProperty( editor, property, name ) {
 		material = editor.getObjectMaterial( object, materialSlot );
 
 		if ( property in material ) {
-
 			boolean.setValue( material[ property ] );
 			container.setDisplay( '' );
-
 		} else {
-
 			container.setDisplay( 'none' );
-
 		}
-
 	}
 
 	//
@@ -54,7 +43,6 @@ function SidebarMaterialBooleanProperty( editor, property, name ) {
 	signals.materialChanged.add( update );
 
 	return container;
-
 }
 
 export { SidebarMaterialBooleanProperty };

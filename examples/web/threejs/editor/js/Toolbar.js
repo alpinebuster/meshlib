@@ -50,18 +50,6 @@ function Toolbar( editor ) {
 	} );
 	container.add( local );
 
-	//
-
-	const fillHolesIcon = document.createElement( 'img' );
-	fillHolesIcon.title = strings.getKey( 'toolbar/fillHoles' );
-	fillHolesIcon.src = 'images/manipulate.svg';
-	const fillHoles = new UIButton();
-	fillHoles.dom.appendChild( fillHolesIcon );
-	fillHoles.onClick( function () {
-		// editor.mrmesh.fillHoles();
-	} );
-	container.add( fillHoles );
-
 	// 
 
 	signals.transformModeChanged.add( function ( mode ) {

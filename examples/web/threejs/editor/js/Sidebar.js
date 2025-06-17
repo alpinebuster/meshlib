@@ -6,7 +6,6 @@ import { SidebarProject } from './Sidebar.Project.js';
 import { SidebarSettings } from './Sidebar.Settings.js';
 
 function Sidebar( editor ) {
-
 	const strings = editor.strings;
 
 	const container = new UITabbedPanel();
@@ -27,15 +26,12 @@ function Sidebar( editor ) {
 	container.select( 'scene' );
 
 	const sidebarPropertiesResizeObserver = new ResizeObserver( function () {
-
 		sidebarProperties.tabsDiv.setWidth( getComputedStyle( container.dom ).width );
-
 	} );
 
 	sidebarPropertiesResizeObserver.observe( container.tabsDiv.dom );
 
 	return container;
-
 }
 
 export { Sidebar };

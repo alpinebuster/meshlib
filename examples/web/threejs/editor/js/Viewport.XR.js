@@ -6,9 +6,7 @@ import { InteractiveGroup } from 'three/addons/interactive/InteractiveGroup.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
 class XR {
-
 	constructor( editor, controls ) {
-
 		const selector = editor.selector;
 		const signals = editor.signals;
 
@@ -19,17 +17,15 @@ class XR {
 		const camera = new THREE.PerspectiveCamera();
 
 		const onSessionStarted = async ( session ) => {
-
 			camera.copy( editor.camera );
 
 			const sidebar = document.getElementById( 'sidebar' );
-			sidebar.style.width = '350px';
+			sidebar.style.width = '312px'; /* HACK */
 			sidebar.style.height = '700px';
 
 			//
 
 			if ( controllers === null ) {
-
 				const geometry = new THREE.BufferGeometry();
 				geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( [ 0, 0, 0, 0, 0, - 5 ], 3 ) );
 
@@ -38,24 +34,19 @@ class XR {
 				const raycaster = new THREE.Raycaster();
 
 				function onSelect( event ) {
-
 					const controller = event.target;
 
 					controller1.userData.active = false;
 					controller2.userData.active = false;
 
 					if ( controller === controller1 ) {
-
 						controller1.userData.active = true;
 						controller1.add( line );
-
 					}
 
 					if ( controller === controller2 ) {
-
 						controller2.userData.active = true;
 						controller2.add( line );
-
 					}
 
 					raycaster.setFromXRController( controller );
@@ -63,20 +54,16 @@ class XR {
 					const intersects = selector.getIntersects( raycaster );
 
 					if ( intersects.length > 0 ) {
-
 						// Ignore menu clicks
 
 						const intersect = intersects[ 0 ];
 						if ( intersect.object === group.children[ 0 ] ) return;
-
 					}
 
 					signals.intersectionsDetected.dispatch( intersects );
-
 				}
 
 				function onControllerEvent( event ) {
-
 					const controller = event.target;
 
 					if ( controller.userData.active === false ) return;
@@ -84,7 +71,6 @@ class XR {
 					controls.getRaycaster().setFromXRController( controller );
 
 					switch ( event.type ) {
-
 						case 'selectstart':
 							controls.pointerDown( null );
 							break;
@@ -97,9 +83,7 @@ class XR {
 							controls.pointerHover( null );
 							controls.pointerMove( null );
 							break;
-
 					}
-
 				}
 
 				controllers = new THREE.Group();
@@ -144,7 +128,6 @@ class XR {
 
 				group.listenToXRControllerEvents( controller1 );
 				group.listenToXRControllerEvents( controller2 );
-
 			}
 
 			editor.sceneHelpers.add( group );
@@ -154,11 +137,9 @@ class XR {
 			renderer.xr.addEventListener( 'sessionend', onSessionEnded );
 
 			await renderer.xr.setSession( session );
-
 		};
 
 		const onSessionEnded = async () => {
-
 			editor.sceneHelpers.remove( group );
 			editor.sceneHelpers.remove( controllers );
 
@@ -173,7 +154,6 @@ class XR {
 
 			signals.windowResize.dispatch();
 			signals.leaveXR.dispatch();
-
 		};
 
 		// signals
@@ -181,42 +161,28 @@ class XR {
 		const sessionInit = { optionalFeatures: [ 'local-floor' ] };
 
 		signals.enterXR.add( ( mode ) => {
-
 			if ( 'xr' in navigator ) {
-
 				navigator.xr.requestSession( mode, sessionInit )
 					.then( onSessionStarted );
-
 			}
-
 		} );
 
 		signals.offerXR.add( function ( mode ) {
-
 			if ( 'xr' in navigator ) {
-
 				navigator.xr.offerSession( mode, sessionInit )
 					.then( onSessionStarted );
 
 				signals.leaveXR.add( function () {
-
 					navigator.xr.offerSession( mode, sessionInit )
 						.then( onSessionStarted );
-
 				} );
-
 			}
-
 		} );
 
 		signals.rendererCreated.add( ( value ) => {
-
 			renderer = value;
-
 		} );
-
 	}
-
 }
 
 export { XR };
