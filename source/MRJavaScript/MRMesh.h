@@ -193,6 +193,8 @@ public:
      */
     val projectPoint( const val& point, float maxDistance = std::numeric_limits<float>::max() ) const;
 
+    val fillHoles() const;
+
     // Transformation method
     /**
      * @brief Applies an affine transformation to the mesh
