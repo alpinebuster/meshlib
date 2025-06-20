@@ -93,6 +93,7 @@ editor.storage.init(function () {
 	signals.scriptChanged.add( saveState );
 	signals.historyChanged.add( saveState );
 });
+// HACK
 editor.initMRMesh();
 
 //

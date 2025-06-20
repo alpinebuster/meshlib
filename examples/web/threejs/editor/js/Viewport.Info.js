@@ -1,7 +1,6 @@
 import { UIPanel, UIBreak, UIText } from './libs/ui.js';
 
 function ViewportInfo( editor ) {
-
 	const signals = editor.signals;
 	const strings = editor.strings;
 
@@ -44,43 +43,30 @@ function ViewportInfo( editor ) {
 	//
 
 	function update() {
-
 		const scene = editor.scene;
 
 		let objects = 0, vertices = 0, triangles = 0;
 
 		for ( let i = 0, l = scene.children.length; i < l; i ++ ) {
-
 			const object = scene.children[ i ];
 
 			object.traverseVisible( function ( object ) {
-
 				objects ++;
 
 				if ( object.isMesh || object.isPoints ) {
-
 					const geometry = object.geometry;
 
 					vertices += geometry.attributes.position.count;
 
 					if ( object.isMesh ) {
-
 						if ( geometry.index !== null ) {
-
 							triangles += geometry.index.count / 3;
-
 						} else {
-
 							triangles += geometry.attributes.position.count / 3;
-
 						}
-
 					}
-
 				}
-
 			} );
-
 		}
 
 		objectsText.setValue( editor.utils.formatNumber( objects ) );
@@ -97,41 +83,33 @@ function ViewportInfo( editor ) {
 
 		const trianglesStringKey = ( pluralRules.select( triangles ) === 'one' ) ? 'viewport/info/triangle' : 'viewport/info/triangles';
 		trianglesUnitText.setValue( strings.getKey( trianglesStringKey ) );
-
 	}
 
 	function updateFrametime( frametime ) {
-
 		frametimeText.setValue( Number( frametime ).toFixed( 2 ) );
-
 	}
 
 	//
 
 	editor.signals.pathTracerUpdated.add( function ( samples ) {
-
 		samples = Math.floor( samples );
 
 		samplesText.setValue( samples );
 
 		const samplesStringKey = ( pluralRules.select( samples ) === 'one' ) ? 'viewport/info/sample' : 'viewport/info/samples';
 		samplesUnitText.setValue( strings.getKey( samplesStringKey ) );
-
 	} );
 
 	editor.signals.viewportShadingChanged.add( function () {
-
 		const isRealisticShading = ( editor.viewportShading === 'realistic' );
 
 		samplesText.setHidden( ! isRealisticShading );
 		samplesUnitText.setHidden( ! isRealisticShading );
 
 		container.setBottom( isRealisticShading ? '32px' : '20px' );
-
 	} );
 
 	return container;
-
 }
 
 export { ViewportInfo };

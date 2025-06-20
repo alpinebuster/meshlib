@@ -55,10 +55,8 @@ function SidebarMaterial( editor ) {
 	const materialUUID = new UIInput().setWidth( '102px' ).setFontSize( '12px' ).setDisabled( true );
 	const materialUUIDRenew = new UIButton( strings.getKey( 'sidebar/material/new' ) ).setMarginLeft( '7px' );
 	materialUUIDRenew.onClick( function () {
-
 		materialUUID.setValue( THREE.MathUtils.generateUUID() );
 		update();
-
 	} );
 
 	materialUUIDRow.add( new UIText( strings.getKey( 'sidebar/material/uuid' ) ).setClass( 'Label' ) );
@@ -71,9 +69,7 @@ function SidebarMaterial( editor ) {
 
 	const materialNameRow = new UIRow();
 	const materialName = new UIInput().setWidth( '150px' ).setFontSize( '12px' ).onChange( function () {
-
 		editor.execute( new SetMaterialValueCommand( editor, editor.selected, 'name', materialName.getValue(), currentMaterialSlot ) );
-
 	} );
 
 	materialNameRow.add( new UIText( strings.getKey( 'sidebar/material/name' ) ).setClass( 'Label' ) );
@@ -401,21 +397,15 @@ function SidebarMaterial( editor ) {
 	const materialUserDataRow = new UIRow();
 	const materialUserData = new UITextArea().setWidth( '150px' ).setHeight( '40px' ).setFontSize( '12px' ).onChange( update );
 	materialUserData.onKeyUp( function () {
-
 		try {
-
 			JSON.parse( materialUserData.getValue() );
 
 			materialUserData.dom.classList.add( 'success' );
 			materialUserData.dom.classList.remove( 'fail' );
-
 		} catch ( error ) {
-
 			materialUserData.dom.classList.remove( 'success' );
 			materialUserData.dom.classList.add( 'fail' );
-
 		}
-
 	} );
 
 	materialUserDataRow.add( new UIText( strings.getKey( 'sidebar/material/userdata' ) ).setClass( 'Label' ) );
@@ -428,60 +418,45 @@ function SidebarMaterial( editor ) {
 	const exportJson = new UIButton( strings.getKey( 'sidebar/material/export' ) );
 	exportJson.setMarginLeft( '120px' );
 	exportJson.onClick( function () {
-
 		const object = editor.selected;
 		const material = Array.isArray( object.material ) ? object.material[ currentMaterialSlot ] : object.material;
 
 		let output = material.toJSON();
 
 		try {
-
 			output = JSON.stringify( output, null, '\t' );
 			output = output.replace( /[\n\t]+([\d\.e\-\[\]]+)/g, '$1' );
-
 		} catch ( e ) {
-
 			output = JSON.stringify( output );
-
 		}
 
 		editor.utils.save( new Blob( [ output ] ), `${ materialName.getValue() || 'material' }.json` );
-
 	} );
 	container.add( exportJson );
 
 	//
 
 	function update() {
-
 		const previousSelectedSlot = currentMaterialSlot;
 
 		currentMaterialSlot = parseInt( materialSlotSelect.getValue() );
 
 		if ( currentMaterialSlot !== previousSelectedSlot ) {
-
 			editor.signals.materialChanged.dispatch( currentObject, currentMaterialSlot );
-
 		}
 
 		let material = editor.getObjectMaterial( currentObject, currentMaterialSlot );
 
 		if ( material ) {
-
 			if ( material.uuid !== undefined && material.uuid !== materialUUID.getValue() ) {
-
 				editor.execute( new SetMaterialValueCommand( editor, currentObject, 'uuid', materialUUID.getValue(), currentMaterialSlot ) );
-
 			}
 
 			if ( material.type !== materialClass.getValue() ) {
-
 				material = new materialClasses[ materialClass.getValue() ]();
 
 				if ( material.type === 'RawShaderMaterial' ) {
-
 					material.vertexShader = vertexShaderVariables + material.vertexShader;
-
 				}
 
 				const currentMaterial = currentObject.material;
@@ -497,35 +472,24 @@ function SidebarMaterial( editor ) {
 					];
 
 					for ( const property of properties ) {
-
 						const value = currentMaterial[ property ];
 
 						if ( value === null ) continue;
 
 						if ( value[ 'clone' ] !== undefined ) {
-
 							material[ property ] = value.clone();
-
 						} else {
-
 							material[ property ] = value;
-
 						}
-
 					}
-
 				}
 
 				if ( Array.isArray( currentMaterial ) ) {
-
 					// don't remove the entire multi-material. just the material of the selected slot
 
 					editor.removeMaterial( currentMaterial[ currentMaterialSlot ] );
-
 				} else {
-
 					editor.removeMaterial( currentMaterial );
-
 				}
 
 				editor.execute( new SetMaterialCommand( editor, currentObject, material, currentMaterialSlot ), strings.getKey( 'command/SetMaterial' ) + ': ' + materialClass.getValue() );
@@ -535,100 +499,68 @@ function SidebarMaterial( editor ) {
 				// Also there should be means to create a unique
 				// copy for the current object explicitly and to
 				// attach the current material to other objects.
-
 			}
 
 			try {
-
 				const userData = JSON.parse( materialUserData.getValue() );
 				if ( JSON.stringify( material.userData ) != JSON.stringify( userData ) ) {
-
 					editor.execute( new SetMaterialValueCommand( editor, currentObject, 'userData', userData, currentMaterialSlot ) );
-
 				}
-
 			} catch ( exception ) {
-
 				console.warn( exception );
-
 			}
 
 			refreshUI();
-
 		}
-
 	}
 
 	//
 
 	function setRowVisibility() {
-
 		const material = currentObject.material;
 
 		if ( Array.isArray( material ) ) {
-
 			materialSlotRow.setDisplay( '' );
-
 		} else {
-
 			materialSlotRow.setDisplay( 'none' );
-
 		}
-
 	}
 
 	function refreshUI() {
-
 		if ( ! currentObject ) return;
 
 		let material = currentObject.material;
 
 		if ( Array.isArray( material ) ) {
-
 			const slotOptions = {};
 
 			currentMaterialSlot = Math.max( 0, Math.min( material.length, currentMaterialSlot ) );
 
 			for ( let i = 0; i < material.length; i ++ ) {
-
 				slotOptions[ i ] = String( i + 1 ) + ': ' + material[ i ].name;
-
 			}
 
 			materialSlotSelect.setOptions( slotOptions ).setValue( currentMaterialSlot );
-
 		}
 
 		material = editor.getObjectMaterial( currentObject, currentMaterialSlot );
 
 		if ( material.uuid !== undefined ) {
-
 			materialUUID.setValue( material.uuid );
-
 		}
 
 		if ( material.name !== undefined ) {
-
 			materialName.setValue( material.name );
-
 		}
 
 		if ( currentObject.isMesh ) {
-
 			materialClass.setOptions( meshMaterialOptions );
-
 		} else if ( currentObject.isSprite ) {
-
 			materialClass.setOptions( spriteMaterialOptions );
-
 		} else if ( currentObject.isPoints ) {
-
 			materialClass.setOptions( pointsMaterialOptions );
-
 		} else if ( currentObject.isLine ) {
-
 			materialClass.setOptions( lineMaterialOptions );
-
 		}
 
 		materialClass.setValue( material.type );
@@ -636,57 +568,41 @@ function SidebarMaterial( editor ) {
 		setRowVisibility();
 
 		try {
-
 			materialUserData.setValue( JSON.stringify( material.userData, null, '  ' ) );
-
 		} catch ( error ) {
-
 			console.log( error );
-
 		}
 
 		materialUserData.setBorderColor( 'transparent' );
 		materialUserData.setBackgroundColor( '' );
-
 	}
 
 	// events
 
 	signals.objectSelected.add( function ( object ) {
-
 		let hasMaterial = false;
 
 		if ( object && object.material ) {
-
 			hasMaterial = true;
 
 			if ( Array.isArray( object.material ) && object.material.length === 0 ) {
-
 				hasMaterial = false;
-
 			}
-
 		}
 
 		if ( hasMaterial ) {
-
 			currentObject = object;
 			refreshUI();
 			container.setDisplay( '' );
-
 		} else {
-
 			currentObject = null;
 			container.setDisplay( 'none' );
-
 		}
-
 	} );
 
 	signals.materialChanged.add( refreshUI );
 
 	return container;
-
 }
 
 const materialClasses = {

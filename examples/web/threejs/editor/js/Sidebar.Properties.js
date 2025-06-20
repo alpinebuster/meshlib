@@ -6,7 +6,6 @@ import { SidebarMaterial } from './Sidebar.Material.js';
 import { SidebarScript } from './Sidebar.Script.js';
 
 function SidebarProperties( editor ) {
-
 	const strings = editor.strings;
 
 	const container = new UITabbedPanel();
@@ -19,13 +18,9 @@ function SidebarProperties( editor ) {
 	container.select( 'objectTab' );
 
 	function getTabByTabId( tabs, tabId ) {
-
 		return tabs.find( function ( tab ) {
-
 			return tab.dom.id === tabId;
-
 		} );
-
 	}
 
 	const geometryTab = getTabByTabId( container.tabs, 'geometryTab' );
@@ -33,7 +28,6 @@ function SidebarProperties( editor ) {
 	const scriptTab = getTabByTabId( container.tabs, 'scriptTab' );
 
 	function toggleTabs( object ) {
-
 		container.setHidden( object === null );
 
 		if ( object === null ) return;
@@ -47,19 +41,12 @@ function SidebarProperties( editor ) {
 		// set active tab
 
 		if ( container.selected === 'geometryTab' ) {
-
 			container.select( geometryTab.isHidden() ? 'objectTab' : 'geometryTab' );
-
 		} else if ( container.selected === 'materialTab' ) {
-
 			container.select( materialTab.isHidden() ? 'objectTab' : 'materialTab' );
-
 		} else if ( container.selected === 'scriptTab' ) {
-
 			container.select( scriptTab.isHidden() ? 'objectTab' : 'scriptTab' );
-
 		}
-
 	}
 
 	editor.signals.objectSelected.add( toggleTabs );
@@ -67,7 +54,6 @@ function SidebarProperties( editor ) {
 	toggleTabs( editor.selected );
 
 	return container;
-
 }
 
 export { SidebarProperties };

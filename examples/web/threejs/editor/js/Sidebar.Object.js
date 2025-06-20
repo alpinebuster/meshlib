@@ -136,6 +136,44 @@ function SidebarObject( editor ) {
 
 	container.add( objectResetRow );
 
+
+	// wasm
+
+	const wasmOperationRow = new UIRow();
+	const wasmOpFillholes = new UIButton(strings.getKey('sidebar/object/wasmFillholes')).setMarginLeft('7px').onClick(function () {
+		const currentUUID = editor.selected.uuid;
+		if (currentUUID) {
+			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const newMeshData = editor.wasmObject[currentUUID].fillHoles();
+				const vertices = newMeshData.vertices;
+				const indices = newMeshData.indices;
+			
+				const newVertices = new Float32Array(vertices);
+				const newIndices = new Uint32Array(indices);
+				const newGeometry = new THREE.BufferGeometry();
+				newGeometry.setAttribute('position', new THREE.BufferAttribute(newVertices, 3));
+			
+				// 🔧 Automatically calculate the normal to ensure normal lighting effects
+				// newGeometry.computeVertexNormals();
+			
+				newGeometry.setIndex(new THREE.BufferAttribute(newIndices, 1));
+				const newMaterial = new THREE.MeshNormalMaterial();
+				const holesFilledMesh = new THREE.Mesh(newGeometry, newMaterial);
+				holesFilledMesh.castShadow = true;
+				holesFilledMesh.receiveShadow = true;
+				// holesFilledMesh.scale.set(2, 2, 2);
+
+				editor.addObject( holesFilledMesh, editor.selected )
+				editor.select( holesFilledMesh );
+			}
+		}
+	} );
+
+	wasmOperationRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
+	wasmOperationRow.add( wasmOpFillholes );
+
+	container.add( wasmOperationRow );
+
 	// fov
 
 	const objectFovRow = new UIRow();

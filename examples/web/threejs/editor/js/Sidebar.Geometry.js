@@ -146,7 +146,6 @@ function SidebarGeometry( editor ) {
 		} catch ( exception ) {
 			console.warn( exception );
 		}
-
 	} );
 	geometryUserData.onKeyUp( function () {
 		try {

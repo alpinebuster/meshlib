@@ -5,14 +5,16 @@ class AddObjectCommand extends Command {
 	/**
 	 * @param {Editor} editor
 	 * @param {THREE.Object3D|null} [object=null]
+	 * @param {any|null} [wasmObject=null]
 	 * @constructor
 	 */
-	constructor( editor, object = null ) {
+	constructor( editor, object=null, wasmObject=null ) {
 		super( editor );
 
 		this.type = 'AddObjectCommand';
 
 		this.object = object;
+		this.wasmObject = wasmObject;
 
 		if ( object !== null ) {
 			this.name = editor.strings.getKey( 'command/AddObject' ) + ': ' + object.name;
@@ -21,6 +23,7 @@ class AddObjectCommand extends Command {
 
 	execute() {
 		this.editor.addObject( this.object );
+		this.editor.addWasmObject( this.object.uuid, this.wasmObject );
 		this.editor.select( this.object );
 	}
 
