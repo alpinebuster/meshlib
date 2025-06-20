@@ -1,6 +1,7 @@
+# At project root directory, building image with:
 #
-# docker build -t zzz/em_meshlib-build-server -f ./emscriptenDockerfile  .
-# docker run --rm -it zzz/em_meshlib-build-server bash
+#  `docker build -t zzz/em-build-server -f ./docker/emscriptenDockerfile .`
+#  `docker run --rm -it zzz/em-build-server bash`
 #
 FROM emscripten/emsdk:4.0.10
 
@@ -23,9 +24,8 @@ Pin-Priority: 1001\
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-## prepare thirdparty
-RUN mkdir /home/MeshLib
-WORKDIR "/home/MeshLib"
+## Prepare thirdparty
+WORKDIR /home/MeshLib
 
 #copy files
 COPY . .
@@ -55,7 +55,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     unzip awscliv2.zip && \
     sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
 
-WORKDIR "/home/"
+WORKDIR /home/
 RUN rm -rf MeshLib
 
 # Add a new user "actions-runner" with user id 8877
