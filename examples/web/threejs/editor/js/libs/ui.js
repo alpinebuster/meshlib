@@ -151,6 +151,31 @@ class UISpan extends UIElement {
 class UIDiv extends UIElement {
 	constructor() {
 		super( document.createElement( 'div' ) );
+		const scope = this;
+		scope.dom.addEventListener( 'wheel', onMouseWheel, { passive: false } );
+		
+		function onMouseWheel( event ) {
+			const el = event.currentTarget;
+
+			const maxScrollSpaceX = el.scrollWidth - el.clientWidth;
+			if ( el.scrollWidth == el.clientWidth ) return;
+			const currentScrollLeft = el.scrollLeft;
+
+			const isScrollingForward = event.deltaY > 0;
+			const isScrollingBackward = event.deltaY < 0;
+
+			const canScrollRight = currentScrollLeft < maxScrollSpaceX;
+			const canScrollLeft = currentScrollLeft > 0;
+
+			const shouldScrollHorizontally =
+				( isScrollingForward && canScrollRight ) || ( isScrollingBackward && canScrollLeft );
+
+			if ( shouldScrollHorizontally ) {
+				event.preventDefault(); // Block default vertical scrolling of parent element
+				event.stopPropagation(); // Prevent event bubbling from causing parent scrolling
+				el.scrollLeft += event.deltaY;
+			}
+		}
 	}
 }
 

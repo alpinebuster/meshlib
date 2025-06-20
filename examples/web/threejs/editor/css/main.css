@@ -71,7 +71,10 @@ textarea, input { outline: none; } /* osx */
 	position: relative;
 	display: block;
 	width: 100%;
-	min-width: 312px; /* HACK */
+	/* HACK: 312px will break the horizontal scrolling
+	 * because the scroll bar itself has 15px of width.
+	 */
+	min-width: 297px;
 }
 
 .TabbedPanel .Tabs {
@@ -133,26 +136,20 @@ textarea, input { outline: none; } /* osx */
 /* CodeMirror */
 
 .CodeMirror {
-
 	position: absolute !important;
 	top: 37px;
 	width: 100% !important;
 	height: calc(100% - 37px) !important;
-
 }
 
 	.CodeMirror .errorLine {
-
 		background: rgba(255,0,0,0.25);
-
 	}
 
 	.CodeMirror .esprima-error {
-
 		color: #f00;
 		text-align: right;
 		padding: 0 20px;
-
 	}
 
 /* outliner */
@@ -175,27 +172,19 @@ textarea, input { outline: none; } /* osx */
 	}
 
 #outliner .option {
-
 	border: 1px solid transparent;
-
 }
 
 #outliner .option.drag {
-
 	border: 1px dashed #999;
-
 }
 
 #outliner .option.dragTop {
-
 	border-top: 1px dashed #999;
-
 }
 
 #outliner .option.dragBottom {
-
 	border-bottom: 1px dashed #999;
-
 }
 
 #outliner .type {

@@ -1,9 +1,7 @@
 import * as THREE from 'three';
 
 class EditorControls extends THREE.EventDispatcher {
-
 	constructor( object ) {
-
 		super();
 
 		// API
@@ -41,23 +39,18 @@ class EditorControls extends THREE.EventDispatcher {
 		var changeEvent = { type: 'change' };
 
 		this.focus = function ( target ) {
-
 			var distance;
 
 			box.setFromObject( target );
 
 			if ( box.isEmpty() === false ) {
-
 				box.getCenter( center );
 				distance = box.getBoundingSphere( sphere ).radius;
-
 			} else {
-
 				// Focusing on an Group, AmbientLight, etc
 
 				center.setFromMatrixPosition( target.matrixWorld );
 				distance = 0.1;
-
 			}
 
 			delta.set( 0, 0, 1 );
@@ -67,11 +60,9 @@ class EditorControls extends THREE.EventDispatcher {
 			object.position.copy( center ).add( delta );
 
 			scope.dispatchEvent( changeEvent );
-
 		};
 
 		this.pan = function ( delta ) {
-
 			var distance = object.position.distanceTo( center );
 
 			delta.multiplyScalar( distance * scope.panSpeed );
@@ -81,11 +72,9 @@ class EditorControls extends THREE.EventDispatcher {
 			center.add( delta );
 
 			scope.dispatchEvent( changeEvent );
-
 		};
 
 		this.zoom = function ( delta ) {
-
 			var distance = object.position.distanceTo( center );
 
 			delta.multiplyScalar( distance * scope.zoomSpeed );
@@ -97,11 +86,9 @@ class EditorControls extends THREE.EventDispatcher {
 			object.position.add( delta );
 
 			scope.dispatchEvent( changeEvent );
-
 		};
 
 		this.rotate = function ( delta ) {
-
 			vector.copy( object.position ).sub( center );
 
 			spherical.setFromVector3( vector );
@@ -118,22 +105,18 @@ class EditorControls extends THREE.EventDispatcher {
 			object.lookAt( center );
 
 			scope.dispatchEvent( changeEvent );
-
 		};
 
 		//
 
 		function onPointerDown( event ) {
-
 			if ( scope.enabled === false ) return;
 
 			if ( pointers.length === 0 ) {
-
 				domElement.setPointerCapture( event.pointerId );
 
 				domElement.ownerDocument.addEventListener( 'pointermove', onPointerMove );
 				domElement.ownerDocument.addEventListener( 'pointerup', onPointerUp );
-
 			}
 
 			//
@@ -145,39 +128,26 @@ class EditorControls extends THREE.EventDispatcher {
 			addPointer( event );
 
 			if ( event.pointerType === 'touch' ) {
-
 				onTouchStart( event );
-
 			} else {
-
 				onMouseDown( event );
-
 			}
-
 		}
 
 		function onPointerMove( event ) {
-
 			if ( scope.enabled === false ) return;
 
 			if ( event.pointerType === 'touch' ) {
-
 				onTouchMove( event );
-
 			} else {
-
 				onMouseMove( event );
-
 			}
-
 		}
 
 		function onPointerUp( event ) {
-
 			removePointer( event );
 
 			switch ( pointers.length ) {
-
 				case 0:
 
 					domElement.releasePointerCapture( event.pointerId );
@@ -196,83 +166,58 @@ class EditorControls extends THREE.EventDispatcher {
 					onTouchStart( { pointerId: pointerId, pageX: position.x, pageY: position.y } );
 
 					break;
-
 			}
-
 		}
 
 		// mouse
 
 		function onMouseDown( event ) {
-
 			if ( event.button === 0 ) {
-
 				state = STATE.ROTATE;
-
 			} else if ( event.button === 1 ) {
-
 				state = STATE.ZOOM;
-
 			} else if ( event.button === 2 ) {
-
 				state = STATE.PAN;
-
 			}
 
 			pointerOld.set( event.clientX, event.clientY );
-
 		}
 
 		function onMouseMove( event ) {
-
 			pointer.set( event.clientX, event.clientY );
 
 			var movementX = pointer.x - pointerOld.x;
 			var movementY = pointer.y - pointerOld.y;
 
 			if ( state === STATE.ROTATE ) {
-
 				scope.rotate( delta.set( - movementX, - movementY, 0 ) );
-
 			} else if ( state === STATE.ZOOM ) {
-
 				scope.zoom( delta.set( 0, 0, movementY ) );
-
 			} else if ( state === STATE.PAN ) {
-
 				scope.pan( delta.set( - movementX, movementY, 0 ) );
-
 			}
 
 			pointerOld.set( event.clientX, event.clientY );
-
 		}
 
 		function onMouseUp() {
-
 			state = STATE.NONE;
-
 		}
 
 		function onMouseWheel( event ) {
-
 			if ( scope.enabled === false ) return;
 
 			event.preventDefault();
 
 			// Normalize deltaY due to https://bugzilla.mozilla.org/show_bug.cgi?id=1392460
 			scope.zoom( delta.set( 0, 0, event.deltaY > 0 ? 1 : - 1 ) );
-
 		}
 
 		function contextmenu( event ) {
-
 			event.preventDefault();
-
 		}
 
 		this.connect = function ( element ) {
-
 			if ( domElement !== null ) this.disconnect();
 
 			domElement = element;
@@ -282,11 +227,9 @@ class EditorControls extends THREE.EventDispatcher {
 			domElement.addEventListener( 'wheel', onMouseWheel, { passive: false } );
 
 			domElement.addEventListener( 'pointerdown', onPointerDown );
-
 		};
 
 		this.disconnect = function () {
-
 			domElement.removeEventListener( 'contextmenu', contextmenu );
 			domElement.removeEventListener( 'dblclick', onMouseUp );
 			domElement.removeEventListener( 'wheel', onMouseWheel );
@@ -294,7 +237,6 @@ class EditorControls extends THREE.EventDispatcher {
 			domElement.removeEventListener( 'pointerdown', onPointerDown );
 
 			domElement = null;
-
 		};
 
 		// touch
@@ -305,11 +247,9 @@ class EditorControls extends THREE.EventDispatcher {
 		var prevDistance = null;
 
 		function onTouchStart( event ) {
-
 			trackPointer( event );
 
 			switch ( pointers.length ) {
-
 				case 1:
 					touches[ 0 ].set( event.pageX, event.pageY, 0 ).divideScalar( window.devicePixelRatio );
 					touches[ 1 ].set( event.pageX, event.pageY, 0 ).divideScalar( window.devicePixelRatio );
@@ -323,35 +263,27 @@ class EditorControls extends THREE.EventDispatcher {
 					touches[ 1 ].set( position.x, position.y, 0 ).divideScalar( window.devicePixelRatio );
 					prevDistance = touches[ 0 ].distanceTo( touches[ 1 ] );
 					break;
-
 			}
 
 			prevTouches[ 0 ].copy( touches[ 0 ] );
 			prevTouches[ 1 ].copy( touches[ 1 ] );
-
 		}
 
 
 		function onTouchMove( event ) {
-
 			trackPointer( event );
 
 			function getClosest( touch, touches ) {
-
 				var closest = touches[ 0 ];
 
 				for ( var touch2 of touches ) {
-
 					if ( closest.distanceTo( touch ) > touch2.distanceTo( touch ) ) closest = touch2;
-
 				}
 
 				return closest;
-
 			}
 
 			switch ( pointers.length ) {
-
 				case 1:
 					touches[ 0 ].set( event.pageX, event.pageY, 0 ).divideScalar( window.devicePixelRatio );
 					touches[ 1 ].set( event.pageX, event.pageY, 0 ).divideScalar( window.devicePixelRatio );
@@ -359,7 +291,6 @@ class EditorControls extends THREE.EventDispatcher {
 					break;
 
 				case 2:
-
 					var position = getSecondPointerPosition( event );
 
 					touches[ 0 ].set( event.pageX, event.pageY, 0 ).divideScalar( window.devicePixelRatio );
@@ -377,74 +308,52 @@ class EditorControls extends THREE.EventDispatcher {
 					scope.pan( offset0.add( offset1 ) );
 
 					break;
-
 			}
 
 			prevTouches[ 0 ].copy( touches[ 0 ] );
 			prevTouches[ 1 ].copy( touches[ 1 ] );
-
 		}
 
 		function addPointer( event ) {
-
 			pointers.push( event.pointerId );
-
 		}
 
 		function removePointer( event ) {
-
 			delete pointerPositions[ event.pointerId ];
 
 			for ( var i = 0; i < pointers.length; i ++ ) {
-
 				if ( pointers[ i ] == event.pointerId ) {
-
 					pointers.splice( i, 1 );
 					return;
-
 				}
-
 			}
-
 		}
 
 		function isTrackingPointer( event ) {
-
 			for ( var i = 0; i < pointers.length; i ++ ) {
-
 				if ( pointers[ i ] == event.pointerId ) return true;
-
 			}
 
 			return false;
-
 		}
 
 		function trackPointer( event ) {
-
 			var position = pointerPositions[ event.pointerId ];
 
 			if ( position === undefined ) {
-
 				position = new THREE.Vector2();
 				pointerPositions[ event.pointerId ] = position;
-
 			}
 
 			position.set( event.pageX, event.pageY );
-
 		}
 
 		function getSecondPointerPosition( event ) {
-
 			var pointerId = ( event.pointerId === pointers[ 0 ] ) ? pointers[ 1 ] : pointers[ 0 ];
 
 			return pointerPositions[ pointerId ];
-
 		}
-
 	}
-
 }
 
 export { EditorControls };
