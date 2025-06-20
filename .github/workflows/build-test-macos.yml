@@ -63,6 +63,11 @@ jobs:
         with:
           submodules: true
 
+      - name: Checkout third-party submodules
+        run: |
+          # Download sub-submodules for certain submodules. We don't recurse above in Checkout to improve build performance. See: https://github.com/actions/checkout/issues/1779
+          git submodule update --init --recursive --depth 1 thirdparty/mrbind
+
       - name: Setup Homebrew prefix
         id: brew
         run: |
@@ -154,6 +159,8 @@ jobs:
       - name: Upload Macos Distribution
         if: ${{ inputs.upload_artifacts && matrix.config == 'Release' }}
         uses: actions/upload-artifact@v4
+        env:
+          ACTIONS_ARTIFACT_UPLOAD_TIMEOUT_MS: 1800000
         with:
           name: Distributives_macos-${{matrix.os}}
           path: meshlib_${{matrix.os}}.pkg
