@@ -140,7 +140,11 @@ function SidebarObject( editor ) {
 	// wasm
 
 	const wasmOperationRow = new UIRow();
-	const wasmOpFillholes = new UIButton(strings.getKey('sidebar/object/wasmFillholes')).setMarginLeft('7px').onClick(function () {
+
+	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmSelector') ).setMarginLeft( '7px' ).onClick(function () {
+		// REF: `https://threejs.org/docs/#examples/en/math/MeshSurfaceSampler`
+	});
+	const wasmOpFillholes = new UIButton( strings.getKey( 'sidebar/object/wasmFillholes') ).setMarginLeft( '7px' ).onClick(function () {
 		const currentUUID = editor.selected.uuid;
 		if (currentUUID) {
 			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
@@ -159,6 +163,7 @@ function SidebarObject( editor ) {
 				newGeometry.setIndex(new THREE.BufferAttribute(newIndices, 1));
 				const newMaterial = new THREE.MeshNormalMaterial();
 				const holesFilledMesh = new THREE.Mesh(newGeometry, newMaterial);
+				holesFilledMesh.name = `wasm-${editor.select.name}`;
 				holesFilledMesh.castShadow = true;
 				holesFilledMesh.receiveShadow = true;
 				// holesFilledMesh.scale.set(2, 2, 2);
@@ -170,9 +175,13 @@ function SidebarObject( editor ) {
 	} );
 
 	wasmOperationRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
-	wasmOperationRow.add( wasmOpFillholes );
+	wasmOperationRow.add(wasmOpSelector);
+
+	const wasmOpsRow = new UIRow();
+	wasmOpsRow.add( wasmOpFillholes );
 
 	container.add( wasmOperationRow );
+	container.add( wasmOpsRow );
 
 	// fov
 

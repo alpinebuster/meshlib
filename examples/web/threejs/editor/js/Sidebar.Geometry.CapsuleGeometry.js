@@ -5,7 +5,6 @@ import { UIDiv, UIRow, UIText, UINumber, UIInteger } from './libs/ui.js';
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -67,7 +66,6 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		radius.setValue( parameters.radius );
@@ -75,23 +73,17 @@ function GeometryParametersPanel( editor, object ) {
 		capSegments.setValue( parameters.capSegments );
 		radialSegments.setValue( parameters.radialSegments );
 		heightSegments.setValue( parameters.heightSegments );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.CapsuleGeometry(
 			radius.getValue(),
 			height.getValue(),
@@ -99,11 +91,9 @@ function GeometryParametersPanel( editor, object ) {
 			radialSegments.getValue(),
 			heightSegments.getValue()
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

@@ -6,7 +6,6 @@ import { UIPoints3 } from './libs/ui.three.js';
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -86,7 +85,6 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		tubularSegments.setValue( parameters.tubularSegments );
@@ -99,23 +97,17 @@ function GeometryParametersPanel( editor, object ) {
 		tension.setValue( parameters.path.tension );
 
 		tensionRow.setDisplay( curveType.getValue() == 'catmullrom' ? '' : 'none' );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		tensionRow.setDisplay( curveType.getValue() == 'catmullrom' ? '' : 'none' );
 
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.TubeGeometry(
@@ -129,7 +121,6 @@ function GeometryParametersPanel( editor, object ) {
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

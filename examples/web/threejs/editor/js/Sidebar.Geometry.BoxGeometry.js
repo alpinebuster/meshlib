@@ -5,7 +5,6 @@ import { UIDiv, UIRow, UIText, UINumber, UIInteger } from './libs/ui.js';
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -77,7 +76,6 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		width.setValue( parameters.width );
@@ -86,23 +84,17 @@ function GeometryParametersPanel( editor, object ) {
 		widthSegments.setValue( parameters.widthSegments );
 		heightSegments.setValue( parameters.heightSegments );
 		depthSegments.setValue( parameters.depthSegments );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.BoxGeometry(
 			width.getValue(),
 			height.getValue(),
@@ -111,11 +103,9 @@ function GeometryParametersPanel( editor, object ) {
 			heightSegments.getValue(),
 			depthSegments.getValue()
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

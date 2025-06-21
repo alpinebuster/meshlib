@@ -5,7 +5,6 @@ import { UIDiv, UIRow, UIText, UIInteger, UICheckbox, UINumber } from './libs/ui
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -77,7 +76,6 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		radiusTop.setValue( parameters.radiusTop );
@@ -86,23 +84,17 @@ function GeometryParametersPanel( editor, object ) {
 		radialSegments.setValue( parameters.radialSegments );
 		heightSegments.setValue( parameters.heightSegments );
 		openEnded.setValue( parameters.openEnded );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.CylinderGeometry(
 			radiusTop.getValue(),
 			radiusBottom.getValue(),
@@ -111,11 +103,9 @@ function GeometryParametersPanel( editor, object ) {
 			heightSegments.getValue(),
 			openEnded.getValue()
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

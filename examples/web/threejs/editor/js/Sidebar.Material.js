@@ -14,7 +14,6 @@ import { SidebarMaterialRangeValueProperty } from './Sidebar.Material.RangeValue
 import { SidebarMaterialProgram } from './Sidebar.Material.Program.js';
 
 function SidebarMaterial( editor ) {
-
 	const signals = editor.signals;
 	const strings = editor.strings;
 

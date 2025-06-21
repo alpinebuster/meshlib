@@ -65,7 +65,7 @@ function SidebarGeometry( editor ) {
 
 	// buffergeometry
 
-	container.add( new SidebarGeometryBufferGeometry( editor ) );
+	container.add(new SidebarGeometryBufferGeometry(editor));
 
 	// Size
 

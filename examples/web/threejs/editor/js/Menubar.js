@@ -8,7 +8,6 @@ import { MenubarHelp } from './Menubar.Help.js';
 import { MenubarStatus } from './Menubar.Status.js';
 
 function Menubar( editor ) {
-
 	const container = new UIPanel();
 	container.setId( 'menubar' );
 
@@ -21,7 +20,6 @@ function Menubar( editor ) {
 	container.add( new MenubarStatus( editor ) );
 
 	return container;
-
 }
 
 export { Menubar };

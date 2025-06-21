@@ -4,7 +4,6 @@ import { UINumber, UIPanel, UIRow, UISelect, UIText } from './libs/ui.js';
 import { UIBoolean } from './libs/ui.three.js';
 
 function SidebarProjectRenderer( editor ) {
-
 	const config = editor.config;
 	const signals = editor.signals;
 	const strings = editor.strings;
@@ -44,12 +43,10 @@ function SidebarProjectRenderer( editor ) {
 	shadowsRow.add( shadowTypeSelect );
 
 	function updateShadows() {
-
 		currentRenderer.shadowMap.enabled = shadowsBoolean.getValue();
 		currentRenderer.shadowMap.type = parseFloat( shadowTypeSelect.getValue() );
 
 		signals.rendererUpdated.dispatch();
-
 	}
 
 	// Tonemapping
@@ -79,19 +76,16 @@ function SidebarProjectRenderer( editor ) {
 	toneMappingRow.add( toneMappingExposure );
 
 	function updateToneMapping() {
-
 		toneMappingExposure.setDisplay( toneMappingSelect.getValue() === '0' ? 'none' : '' );
 
 		currentRenderer.toneMapping = parseFloat( toneMappingSelect.getValue() );
 		currentRenderer.toneMappingExposure = toneMappingExposure.getValue();
 		signals.rendererUpdated.dispatch();
-
 	}
 
 	//
 
 	function createRenderer() {
-
 		currentRenderer = new THREE.WebGLRenderer( { antialias: antialiasBoolean.getValue() } );
 		currentRenderer.shadowMap.enabled = shadowsBoolean.getValue();
 		currentRenderer.shadowMap.type = parseFloat( shadowTypeSelect.getValue() );
@@ -100,16 +94,13 @@ function SidebarProjectRenderer( editor ) {
 
 		signals.rendererCreated.dispatch( currentRenderer );
 		signals.rendererUpdated.dispatch();
-
 	}
 
 	createRenderer();
 
-
 	// Signals
 
 	signals.editorCleared.add( function () {
-
 		currentRenderer.shadowMap.enabled = true;
 		currentRenderer.shadowMap.type = THREE.PCFShadowMap;
 		currentRenderer.toneMapping = THREE.NoToneMapping;
@@ -122,11 +113,9 @@ function SidebarProjectRenderer( editor ) {
 		toneMappingExposure.setDisplay( currentRenderer.toneMapping === 0 ? 'none' : '' );
 
 		signals.rendererUpdated.dispatch();
-
 	} );
 
 	signals.rendererUpdated.add( function () {
-
 		config.setKey(
 			'project/renderer/antialias', antialiasBoolean.getValue(),
 			'project/renderer/shadows', shadowsBoolean.getValue(),
@@ -134,11 +123,9 @@ function SidebarProjectRenderer( editor ) {
 			'project/renderer/toneMapping', parseFloat( toneMappingSelect.getValue() ),
 			'project/renderer/toneMappingExposure', toneMappingExposure.getValue()
 		);
-
 	} );
 
 	return container;
-
 }
 
 export { SidebarProjectRenderer };

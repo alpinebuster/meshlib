@@ -1,7 +1,6 @@
 import { UIRow, UIText, UISpan, UIBreak, UICheckbox } from './libs/ui.js';
 
 function SidebarGeometryBufferGeometry( editor ) {
-
 	const strings = editor.strings;
 
 	const signals = editor.signals;
@@ -9,14 +8,12 @@ function SidebarGeometryBufferGeometry( editor ) {
 	const container = new UIRow();
 
 	function update( object ) {
-
 		if ( object === null ) return; // objectSelected.dispatch( null )
 		if ( object === undefined ) return;
 
 		const geometry = object.geometry;
 
 		if ( geometry ) {
-
 			container.clear();
 			container.setDisplay( 'block' );
 
@@ -33,23 +30,19 @@ function SidebarGeometryBufferGeometry( editor ) {
 			const index = geometry.index;
 
 			if ( index !== null ) {
-
 				containerAttributes.add( new UIText( strings.getKey( 'sidebar/geometry/buffer_geometry/index' ) ).setWidth( '80px' ) );
 				containerAttributes.add( new UIText( editor.utils.formatNumber( index.count ) ).setFontSize( '12px' ) );
 				containerAttributes.add( new UIBreak() );
-
 			}
 
 			const attributes = geometry.attributes;
 
 			for ( const name in attributes ) {
-
 				const attribute = attributes[ name ];
 
 				containerAttributes.add( new UIText( name ).setWidth( '80px' ) );
 				containerAttributes.add( new UIText( editor.utils.formatNumber( attribute.count ) + ' (' + attribute.itemSize + ')' ).setFontSize( '12px' ) );
 				containerAttributes.add( new UIBreak() );
-
 			}
 
 			container.add( attributesRow );
@@ -60,7 +53,6 @@ function SidebarGeometryBufferGeometry( editor ) {
 			const hasMorphTargets = Object.keys( morphAttributes ).length > 0;
 
 			if ( hasMorphTargets === true ) {
-
 				// morph attributes
 
 				const rowMorphAttributes = new UIRow();
@@ -72,13 +64,11 @@ function SidebarGeometryBufferGeometry( editor ) {
 				rowMorphAttributes.add( containerMorphAttributes );
 
 				for ( const name in morphAttributes ) {
-
 					const morphTargets = morphAttributes[ name ];
 
 					containerMorphAttributes.add( new UIText( name ).setWidth( '80px' ) );
 					containerMorphAttributes.add( new UIText( editor.utils.formatNumber( morphTargets.length ) ).setFontSize( '12px' ) );
 					containerMorphAttributes.add( new UIBreak() );
-
 				}
 
 				container.add( rowMorphAttributes );
@@ -94,22 +84,16 @@ function SidebarGeometryBufferGeometry( editor ) {
 				rowMorphRelative.add( checkboxMorphRelative );
 
 				container.add( rowMorphRelative );
-
 			}
-
 		} else {
-
 			container.setDisplay( 'none' );
-
 		}
-
 	}
 
 	signals.objectSelected.add( update );
 	signals.geometryChanged.add( update );
 
 	return container;
-
 }
 
 export { SidebarGeometryBufferGeometry };

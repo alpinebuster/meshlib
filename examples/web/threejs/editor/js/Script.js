@@ -4,7 +4,6 @@ import { SetScriptValueCommand } from './commands/SetScriptValueCommand.js';
 import { SetMaterialValueCommand } from './commands/SetMaterialValueCommand.js';
 
 function Script( editor ) {
-
 	const signals = editor.signals;
 	const strings = editor.strings;
 
@@ -22,7 +21,6 @@ function Script( editor ) {
 	header.add( title );
 
 	const buttonSVG = ( function () {
-
 		const svg = document.createElementNS( 'http://www.w3.org/2000/svg', 'svg' );
 		svg.setAttribute( 'width', 32 );
 		svg.setAttribute( 'height', 32 );
@@ -31,7 +29,6 @@ function Script( editor ) {
 		path.setAttribute( 'stroke', '#fff' );
 		svg.appendChild( path );
 		return svg;
-
 	} )();
 
 	const close = new UIElement( buttonSVG );
@@ -40,9 +37,7 @@ function Script( editor ) {
 	close.setRight( '1px' );
 	close.setCursor( 'pointer' );
 	close.onClick( function () {
-
 		container.setDisplay( 'none' );
-
 	} );
 	header.add( close );
 
@@ -50,9 +45,7 @@ function Script( editor ) {
 	let renderer;
 
 	signals.rendererCreated.add( function ( newRenderer ) {
-
 		renderer = newRenderer;
-
 	} );
 
 
@@ -74,26 +67,20 @@ function Script( editor ) {
 	} );
 	codemirror.setOption( 'theme', 'monokai' );
 	codemirror.on( 'change', function () {
-
 		if ( codemirror.state.focused === false ) return;
 
 		clearTimeout( delay );
 		delay = setTimeout( function () {
-
 			const value = codemirror.getValue();
 
 			if ( ! validate( value ) ) return;
 
 			if ( typeof ( currentScript ) === 'object' ) {
-
 				if ( value !== currentScript.source ) {
-
 					editor.execute( new SetScriptValueCommand( editor, currentObject, currentScript, 'source', value ) );
-
 				}
 
 				return;
-
 			}
 
 			if ( currentScript !== 'programInfo' ) return;
@@ -101,39 +88,29 @@ function Script( editor ) {
 			const json = JSON.parse( value );
 
 			if ( JSON.stringify( currentObject.material.defines ) !== JSON.stringify( json.defines ) ) {
-
 				const cmd = new SetMaterialValueCommand( editor, currentObject, 'defines', json.defines );
 				cmd.updatable = false;
 				editor.execute( cmd );
-
 			}
 
 			if ( JSON.stringify( currentObject.material.uniforms ) !== JSON.stringify( json.uniforms ) ) {
-
 				const cmd = new SetMaterialValueCommand( editor, currentObject, 'uniforms', json.uniforms );
 				cmd.updatable = false;
 				editor.execute( cmd );
-
 			}
 
 			if ( JSON.stringify( currentObject.material.attributes ) !== JSON.stringify( json.attributes ) ) {
-
 				const cmd = new SetMaterialValueCommand( editor, currentObject, 'attributes', json.attributes );
 				cmd.updatable = false;
 				editor.execute( cmd );
-
 			}
-
 		}, 300 );
-
 	} );
 
 	// prevent backspace from deleting objects
 	const wrapper = codemirror.getWrapperElement();
 	wrapper.addEventListener( 'keydown', function ( event ) {
-
 		event.stopPropagation();
-
 	} );
 
 	// validate
@@ -142,86 +119,60 @@ function Script( editor ) {
 	const widgets = [];
 
 	const validate = function ( string ) {
-
 		let valid;
 		let errors = [];
 
 		return codemirror.operation( function () {
-
 			while ( errorLines.length > 0 ) {
-
 				codemirror.removeLineClass( errorLines.shift(), 'background', 'errorLine' );
-
 			}
 
 			while ( widgets.length > 0 ) {
-
 				codemirror.removeLineWidget( widgets.shift() );
-
 			}
 
 			//
 
 			switch ( currentMode ) {
-
 				case 'javascript':
-
 					try {
-
 						const syntax = esprima.parse( string, { tolerant: true } );
 						errors = syntax.errors;
-
 					} catch ( error ) {
-
 						errors.push( {
-
 							lineNumber: error.lineNumber - 1,
 							message: error.message
-
 						} );
-
 					}
 
 					for ( let i = 0; i < errors.length; i ++ ) {
-
 						const error = errors[ i ];
 						error.message = error.message.replace( /Line [0-9]+: /, '' );
-
 					}
 
 					break;
 
 				case 'json':
-
 					errors = [];
 
 					jsonlint.parseError = function ( message, info ) {
-
 						message = message.split( '\n' )[ 3 ];
 
 						errors.push( {
-
 							lineNumber: info.loc.first_line - 1,
 							message: message
-
 						} );
-
 					};
 
 					try {
-
 						jsonlint.parse( string );
-
 					} catch ( error ) {
-
 						// ignore failed error recovery
-
 					}
 
 					break;
 
 				case 'glsl':
-
 					currentObject.material[ currentScript ] = string;
 					currentObject.material.needsUpdate = true;
 					signals.materialChanged.dispatch( currentObject, 0 ); // TODO: Add multi-material support
@@ -232,7 +183,6 @@ function Script( editor ) {
 					const parseMessage = /^(?:ERROR|WARNING): \d+:(\d+): (.*)/g;
 
 					for ( let i = 0, n = programs.length; i !== n; ++ i ) {
-
 						const diagnostics = programs[ i ].diagnostics;
 
 						if ( diagnostics === undefined ||
@@ -244,27 +194,20 @@ function Script( editor ) {
 						const lineOffset = shaderInfo.prefix.split( /\r\n|\r|\n/ ).length;
 
 						while ( true ) {
-
 							const parseResult = parseMessage.exec( shaderInfo.log );
 							if ( parseResult === null ) break;
 
 							errors.push( {
-
 								lineNumber: parseResult[ 1 ] - lineOffset,
 								message: parseResult[ 2 ]
-
 							} );
-
 						} // messages
 
 						break;
-
 					} // programs
-
 			} // mode switch
 
 			for ( let i = 0; i < errors.length; i ++ ) {
-
 				const error = errors[ i ];
 
 				const message = document.createElement( 'div' );
@@ -279,13 +222,10 @@ function Script( editor ) {
 				const widget = codemirror.addLineWidget( lineNumber, message );
 
 				widgets.push( widget );
-
 			}
 
 			return valid !== undefined ? valid : errors.length === 0;
-
 		} );
-
 	};
 
 	// tern js autocomplete
@@ -297,133 +237,91 @@ function Script( editor ) {
 
 	codemirror.setOption( 'extraKeys', {
 		'Ctrl-Space': function ( cm ) {
-
 			server.complete( cm );
-
 		},
 		'Ctrl-I': function ( cm ) {
-
 			server.showType( cm );
-
 		},
 		'Ctrl-O': function ( cm ) {
-
 			server.showDocs( cm );
-
 		},
 		'Alt-.': function ( cm ) {
-
 			server.jumpToDef( cm );
-
 		},
 		'Alt-,': function ( cm ) {
-
 			server.jumpBack( cm );
-
 		},
 		'Ctrl-Q': function ( cm ) {
-
 			server.rename( cm );
-
 		},
 		'Ctrl-.': function ( cm ) {
-
 			server.selectName( cm );
-
 		}
 	} );
 
 	codemirror.on( 'cursorActivity', function ( cm ) {
-
 		if ( currentMode !== 'javascript' ) return;
 		server.updateArgHints( cm );
-
 	} );
 
 	codemirror.on( 'keypress', function ( cm, kb ) {
-
 		if ( currentMode !== 'javascript' ) return;
 		if ( /[\w\.]/.exec( kb.key ) ) {
-
 			server.complete( cm );
-
 		}
-
 	} );
 
 
 	//
 
 	signals.editorCleared.add( function () {
-
 		container.setDisplay( 'none' );
-
 	} );
 
 	function setTitle( object, script ) {
-
 		if ( typeof script === 'object' ) {
-
 			title.setValue( object.name + ' / ' + script.name );
-
 		} else {
-
 			switch ( script ) {
-
 				case 'vertexShader':
-
 					title.setValue( object.material.name + ' / ' + strings.getKey( 'script/title/vertexShader' ) );
 					break;
 
 				case 'fragmentShader':
-
 					title.setValue( object.material.name + ' / ' + strings.getKey( 'script/title/fragmentShader' ) );
 					break;
 
 				case 'programInfo':
-
 					title.setValue( object.material.name + ' / ' + strings.getKey( 'script/title/programInfo' ) );
 					break;
 
 				default:
-
 					throw new Error( 'setTitle: Unknown script' );
-
 			}
-
 		}
-
 	}
 
 	signals.editScript.add( function ( object, script ) {
-
 		let mode, source;
 
 		if ( typeof ( script ) === 'object' ) {
-
 			mode = 'javascript';
 			source = script.source;
-
 		} else {
-
 			switch ( script ) {
-
 				case 'vertexShader':
-
 					mode = 'glsl';
 					source = object.material.vertexShader || '';
 
 					break;
 
 				case 'fragmentShader':
-
 					mode = 'glsl';
 					source = object.material.fragmentShader || '';
 
 					break;
 
 				case 'programInfo':
-
 					mode = 'json';
 					const json = {
 						defines: object.material.defines,
@@ -435,11 +333,8 @@ function Script( editor ) {
 					break;
 
 				default:
-
 					throw new Error( 'editScript: Unknown script' );
-
 			}
-
 		}
 
 		setTitle( object, script );
@@ -453,51 +348,37 @@ function Script( editor ) {
 		codemirror.clearHistory();
 		if ( mode === 'json' ) mode = { name: 'javascript', json: true };
 		codemirror.setOption( 'mode', mode );
-
 	} );
 
 	signals.scriptRemoved.add( function ( script ) {
-
 		if ( currentScript === script ) {
-
 			container.setDisplay( 'none' );
-
 		}
-
 	} );
 
 	signals.objectChanged.add( function ( object ) {
-
 		if ( object !== currentObject ) return;
 
 		if ( [ 'programInfo', 'vertexShader', 'fragmentShader' ].includes( currentScript ) ) return;
 
 		setTitle( currentObject, currentScript );
-
 	} );
 
 	signals.scriptChanged.add( function ( script ) {
-
 		if ( script === currentScript ) {
-
 			setTitle( currentObject, currentScript );
-
 		}
-
 	} );
 
 	signals.materialChanged.add( function ( object, slot ) {
-
 		if ( object !== currentObject ) return;
 
 		// TODO: Adds multi-material support
 
 		setTitle( currentObject, currentScript );
-
 	} );
 
 	return container;
-
 }
 
 export { Script };

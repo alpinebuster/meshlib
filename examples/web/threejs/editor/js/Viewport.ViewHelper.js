@@ -3,9 +3,7 @@ import { UIPanel } from './libs/ui.js';
 import { ViewHelper as ViewHelperBase } from 'three/addons/helpers/ViewHelper.js';
 
 class ViewHelper extends ViewHelperBase {
-
 	constructor( editorCamera, container ) {
-
 		super( editorCamera, container.dom );
 
 		const panel = new UIPanel();
@@ -17,23 +15,17 @@ class ViewHelper extends ViewHelperBase {
 		panel.setWidth( '128px' );
 
 		panel.dom.addEventListener( 'pointerup', ( event ) => {
-
 			event.stopPropagation();
 
 			this.handleClick( event );
-
 		} );
 
 		panel.dom.addEventListener( 'pointerdown', function ( event ) {
-
 			event.stopPropagation();
-
 		} );
 
 		container.add( panel );
-
 	}
-
 }
 
 export { ViewHelper };

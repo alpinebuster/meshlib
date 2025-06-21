@@ -2,7 +2,6 @@ import { UINumber, UIRow, UIText } from './libs/ui.js';
 import { SetMaterialValueCommand } from './commands/SetMaterialValueCommand.js';
 
 function SidebarMaterialNumberProperty( editor, property, name, range = [ - Infinity, Infinity ], precision = 2 ) {
-
 	const signals = editor.signals;
 
 	const container = new UIRow();
@@ -16,17 +15,12 @@ function SidebarMaterialNumberProperty( editor, property, name, range = [ - Infi
 	let material = null;
 
 	function onChange() {
-
 		if ( material[ property ] !== number.getValue() ) {
-
 			editor.execute( new SetMaterialValueCommand( editor, object, property, number.getValue(), materialSlot ) );
-
 		}
-
 	}
 
 	function update( currentObject, currentMaterialSlot = 0 ) {
-
 		object = currentObject;
 		materialSlot = currentMaterialSlot;
 
@@ -36,16 +30,11 @@ function SidebarMaterialNumberProperty( editor, property, name, range = [ - Infi
 		material = editor.getObjectMaterial( object, materialSlot );
 
 		if ( property in material ) {
-
 			number.setValue( material[ property ] );
 			container.setDisplay( '' );
-
 		} else {
-
 			container.setDisplay( 'none' );
-
 		}
-
 	}
 
 	//
@@ -54,7 +43,6 @@ function SidebarMaterialNumberProperty( editor, property, name, range = [ - Infi
 	signals.materialChanged.add( update );
 
 	return container;
-
 }
 
 export { SidebarMaterialNumberProperty };

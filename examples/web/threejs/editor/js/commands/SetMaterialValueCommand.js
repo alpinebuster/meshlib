@@ -1,7 +1,6 @@
 import { Command } from '../Command.js';
 
 class SetMaterialValueCommand extends Command {
-
 	/**
 	 * @param {Editor} editor
 	 * @param {THREE.Object3D|null} [object=null]
@@ -11,7 +10,6 @@ class SetMaterialValueCommand extends Command {
 	 * @constructor
 	 */
 	constructor( editor, object = null, attributeName = '', newValue = null, materialSlot = - 1 ) {
-
 		super( editor );
 
 		this.type = 'SetMaterialValueCommand';
@@ -27,11 +25,9 @@ class SetMaterialValueCommand extends Command {
 		this.newValue = newValue;
 
 		this.attributeName = attributeName;
-
 	}
 
 	execute() {
-
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
 
 		material[ this.attributeName ] = this.newValue;
@@ -39,11 +35,9 @@ class SetMaterialValueCommand extends Command {
 
 		this.editor.signals.objectChanged.dispatch( this.object );
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	undo() {
-
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
 
 		material[ this.attributeName ] = this.oldValue;
@@ -51,17 +45,13 @@ class SetMaterialValueCommand extends Command {
 
 		this.editor.signals.objectChanged.dispatch( this.object );
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	update( cmd ) {
-
 		this.newValue = cmd.newValue;
-
 	}
 
 	toJSON() {
-
 		const output = super.toJSON( this );
 
 		output.objectUuid = this.object.uuid;
@@ -71,11 +61,9 @@ class SetMaterialValueCommand extends Command {
 		output.materialSlot = this.materialSlot;
 
 		return output;
-
 	}
 
 	fromJSON( json ) {
-
 		super.fromJSON( json );
 
 		this.attributeName = json.attributeName;
@@ -83,9 +71,7 @@ class SetMaterialValueCommand extends Command {
 		this.newValue = json.newValue;
 		this.object = this.editor.objectByUuid( json.objectUuid );
 		this.materialSlot = json.materialSlot;
-
 	}
-
 }
 
 export { SetMaterialValueCommand };

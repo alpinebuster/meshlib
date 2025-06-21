@@ -5,7 +5,6 @@ import { UIBreak, UIButton, UIInteger, UIPanel, UIRow, UISelect, UIText } from '
 import { ViewportPathtracer } from './Viewport.Pathtracer.js';
 
 function SidebarProjectImage( editor ) {
-
 	const strings = editor.strings;
 
 	const container = new UIPanel();
@@ -40,9 +39,7 @@ function SidebarProjectImage( editor ) {
 	container.add( samplesRow );
 
 	function refreshShadingRow() {
-
 		samplesRow.setHidden( shadingTypeSelect.getValue() !== 'realistic' );
-
 	}
 
 	refreshShadingRow();
@@ -68,41 +65,28 @@ function SidebarProjectImage( editor ) {
 	renderButton.setWidth( '170px' );
 	renderButton.setMarginLeft( '120px' );
 	renderButton.onClick( async () => {
-
 		if ( shadingTypeSelect.getValue() === 'realistic' ) {
-
 			let isMaterialsValid = true;
 
 			editor.scene.traverseVisible( ( object ) => {
-
 				if ( object.isMesh ) {
-
 					const materials = Array.isArray( object.material ) ? object.material : [ object.material ];
 
 					for ( let i = 0; i < materials.length; i ++ ) {
-
 						const material = materials[ i ];
 
 						if ( ! material.isMeshStandardMaterial ) {
-
 							isMaterialsValid = false;
 							return;
-
 						}
-
 					}
-
 				}
-
 			} );
 
 			if ( isMaterialsValid === false ) {
-
 				alert( strings.getKey( 'prompt/rendering/realistic/unsupportedMaterial' ) );
 				return;
-
 			}
-
 		}
 
 		//
@@ -156,16 +140,13 @@ function SidebarProjectImage( editor ) {
 		//
 
 		switch ( shadingTypeSelect.getValue() ) {
-
 			case 'solid':
-
 				renderer.render( scene, camera );
 				renderer.dispose();
 
 				break;
 
 			case 'realistic':
-
 				const status = document.createElement( 'div' );
 				status.style.position = 'absolute';
 				status.style.top = '10px';
@@ -182,15 +163,12 @@ function SidebarProjectImage( editor ) {
 				const maxSamples = Math.max( pathTracerMinSamples, Math.min( pathTracerMaxSamples, samplesNumber.getValue() ) );
 
 				function animate() {
-
 					if ( output.closed === true ) return;
 
 					const samples = Math.floor( pathTracer.getSamples() ) + 1;
 
 					if ( samples < maxSamples ) {
-
 						requestAnimationFrame( animate );
-
 					}
 
 					pathTracer.update();
@@ -200,26 +178,20 @@ function SidebarProjectImage( editor ) {
 					status.textContent = `${ samples } / ${ maxSamples } ( ${ progress }% )`;
 
 					if ( progress === 100 ) {
-
 						status.textContent += ' ✓';
-
 					}
-
 				}
 
 				animate();
 
 				break;
-
 		}
-
 	} );
 	container.add( renderButton );
 
 	//
 
 	return container;
-
 }
 
 export { SidebarProjectImage };

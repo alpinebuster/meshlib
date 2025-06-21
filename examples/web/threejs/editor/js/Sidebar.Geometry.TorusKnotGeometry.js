@@ -5,7 +5,6 @@ import { UIDiv, UIRow, UIText, UIInteger, UINumber } from './libs/ui.js';
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -77,7 +76,6 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		radius.setValue( parameters.radius );
@@ -86,23 +84,17 @@ function GeometryParametersPanel( editor, object ) {
 		radialSegments.setValue( parameters.radialSegments );
 		p.setValue( parameters.p );
 		q.setValue( parameters.q );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.TorusKnotGeometry(
 			radius.getValue(),
 			tube.getValue(),
@@ -111,11 +103,9 @@ function GeometryParametersPanel( editor, object ) {
 			p.getValue(),
 			q.getValue()
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

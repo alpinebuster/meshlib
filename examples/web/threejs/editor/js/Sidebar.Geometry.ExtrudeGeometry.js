@@ -5,7 +5,6 @@ import { UIDiv, UIRow, UIText, UIInteger, UICheckbox, UIButton, UINumber } from 
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -22,7 +21,6 @@ function GeometryParametersPanel( editor, object ) {
 	options.bevelSize = options.bevelSize !== undefined ? options.bevelSize : bevelThickness - 0.1;
 	options.bevelOffset = options.bevelOffset !== undefined ? options.bevelOffset : 0;
 	options.bevelSegments = options.bevelSegments !== undefined ? options.bevelSegments : 3;
-
 
 	// curveSegments
 
@@ -112,27 +110,20 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function updateBevelRow( enabled ) {
-
 		if ( enabled === true ) {
-
 			thicknessRow.setDisplay( '' );
 			sizeRow.setDisplay( '' );
 			offsetRow.setDisplay( '' );
 			segmentsRow.setDisplay( '' );
-
 		} else {
-
 			thicknessRow.setDisplay( 'none' );
 			sizeRow.setDisplay( 'none' );
 			offsetRow.setDisplay( 'none' );
 			segmentsRow.setDisplay( 'none' );
-
 		}
-
 	}
 
 	function refreshUI() {
-
 		const options = object.geometry.parameters.options;
 
 		curveSegments.setValue( options.curveSegments );
@@ -145,23 +136,17 @@ function GeometryParametersPanel( editor, object ) {
 		segments.setValue( options.bevelSegments );
 
 		updateBevelRow( options.bevelEnabled );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		updateBevelRow( enabled.getValue() );
 
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.ExtrudeGeometry(
@@ -177,20 +162,16 @@ function GeometryParametersPanel( editor, object ) {
 				bevelSegments: segments !== undefined ? segments.getValue() : options.bevelSegments
 			}
 		) ) );
-
 	}
 
 	function toShape() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.ShapeGeometry(
 			parameters.shapes,
 			options.curveSegments
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

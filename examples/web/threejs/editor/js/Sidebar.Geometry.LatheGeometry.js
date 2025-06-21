@@ -6,7 +6,6 @@ import { UIPoints2 } from './libs/ui.three.js';
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -58,41 +57,32 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		points.setValue( parameters.points, false );
 		segments.setValue( parameters.segments );
 		phiStart.setValue( parameters.phiStart * THREE.MathUtils.RAD2DEG );
 		phiLength.setValue( parameters.phiLength * THREE.MathUtils.RAD2DEG );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.LatheGeometry(
 			points.getValue(),
 			segments.getValue(),
 			phiStart.getValue() * THREE.MathUtils.DEG2RAD,
 			phiLength.getValue() * THREE.MathUtils.DEG2RAD
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

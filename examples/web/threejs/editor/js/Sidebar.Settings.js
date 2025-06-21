@@ -4,7 +4,6 @@ import { SidebarSettingsShortcuts } from './Sidebar.Settings.Shortcuts.js';
 import { SidebarSettingsHistory } from './Sidebar.Settings.History.js';
 
 function SidebarSettings( editor ) {
-
 	const config = editor.config;
 	const strings = editor.strings;
 
@@ -18,9 +17,7 @@ function SidebarSettings( editor ) {
 	// language
 
 	const options = Object.fromEntries( [ 'en', 'fr', 'zh', 'ja', 'ko', 'fa' ].map( locale => {
-
 		return [ locale, new Intl.DisplayNames( locale, { type: 'language' } ).of( locale ) ];
-
 	} ) );
 
 	const languageRow = new UIRow();
@@ -28,17 +25,13 @@ function SidebarSettings( editor ) {
 	language.setOptions( options );
 
 	if ( config.getKey( 'language' ) !== undefined ) {
-
 		language.setValue( config.getKey( 'language' ) );
-
 	}
 
 	language.onChange( function () {
-
 		const value = this.getValue();
 
 		editor.config.setKey( 'language', value );
-
 	} );
 
 	languageRow.add( new UIText( strings.getKey( 'sidebar/settings/language' ) ).setClass( 'Label' ) );
@@ -52,7 +45,6 @@ function SidebarSettings( editor ) {
 	container.add( new SidebarSettingsHistory( editor ) );
 
 	return container;
-
 }
 
 export { SidebarSettings };

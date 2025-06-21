@@ -23,7 +23,7 @@ class AddObjectCommand extends Command {
 
 	execute() {
 		this.editor.addObject( this.object );
-		this.editor.addWasmObject( this.object.uuid, this.wasmObject );
+		if (this.wasmObject) this.editor.addWasmObject( this.object.uuid, this.wasmObject );
 		this.editor.select( this.object );
 	}
 

@@ -7,7 +7,6 @@ import { SidebarProjectImage } from './Sidebar.Project.Image.js';
 import { SidebarProjectVideo } from './Sidebar.Project.Video.js';
 
 function SidebarProject( editor ) {
-
 	const container = new UISpan();
 
 	container.add( new SidebarProjectRenderer( editor ) );
@@ -19,13 +18,10 @@ function SidebarProject( editor ) {
 	container.add( new SidebarProjectImage( editor ) );
 
 	if ( 'SharedArrayBuffer' in window ) {
-
 		container.add( new SidebarProjectVideo( editor ) );
-
 	}
 
 	return container;
-
 }
 
 export { SidebarProject };

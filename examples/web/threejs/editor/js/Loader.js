@@ -1,9 +1,9 @@
 import * as THREE from 'three';
 import { TGALoader } from 'three/addons/loaders/TGALoader.js';
+import { unzipSync, strFromU8 } from 'three/addons/libs/fflate.module.js';
 
 import { AddObjectCommand } from './commands/AddObjectCommand.js';
 import { LoaderUtils } from './LoaderUtils.js';
-import { unzipSync, strFromU8 } from 'three/addons/libs/fflate.module.js';
 
 function Loader( editor ) {
 	const scope = this;

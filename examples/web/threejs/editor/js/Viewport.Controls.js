@@ -1,7 +1,6 @@
 import { UIPanel, UISelect } from './libs/ui.js';
 
 function ViewportControls( editor ) {
-
 	const signals = editor.signals;
 
 	const container = new UIPanel();
@@ -25,13 +24,9 @@ function ViewportControls( editor ) {
 	signals.cameraAdded.add( update );
 	signals.cameraRemoved.add( update );
 	signals.objectChanged.add( function ( object ) {
-
 		if ( object.isCamera ) {
-
 			update();
-
 		}
-
 	} );
 
 	// shading
@@ -40,14 +35,11 @@ function ViewportControls( editor ) {
 	shadingSelect.setOptions( { 'realistic': 'realistic', 'solid': 'solid', 'normals': 'normals', 'wireframe': 'wireframe' } );
 	shadingSelect.setValue( 'solid' );
 	shadingSelect.onChange( function () {
-
 		editor.setViewportShading( this.getValue() );
-
 	} );
 	container.add( shadingSelect );
 
 	signals.editorCleared.add( function () {
-
 		editor.setViewportCamera( editor.camera.uuid );
 
 		shadingSelect.setValue( 'solid' );
@@ -62,16 +54,13 @@ function ViewportControls( editor ) {
 	//
 
 	function update() {
-
 		const options = {};
 
 		const cameras = editor.cameras;
 
 		for ( const key in cameras ) {
-
 			const camera = cameras[ key ];
 			options[ camera.uuid ] = camera.name;
-
 		}
 
 		cameraSelect.setOptions( options );
@@ -82,11 +71,9 @@ function ViewportControls( editor ) {
 
 		cameraSelect.setValue( selectedCamera.uuid );
 		editor.setViewportCamera( selectedCamera.uuid );
-
 	}
 
 	return container;
-
 }
 
 export { ViewportControls };

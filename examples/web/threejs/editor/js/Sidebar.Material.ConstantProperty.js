@@ -2,7 +2,6 @@ import { UIRow, UISelect, UIText } from './libs/ui.js';
 import { SetMaterialValueCommand } from './commands/SetMaterialValueCommand.js';
 
 function SidebarMaterialConstantProperty( editor, property, name, options ) {
-
 	const signals = editor.signals;
 
 	const container = new UIRow();
@@ -16,19 +15,14 @@ function SidebarMaterialConstantProperty( editor, property, name, options ) {
 	let material = null;
 
 	function onChange() {
-
 		const value = parseInt( constant.getValue() );
 
 		if ( material[ property ] !== value ) {
-
 			editor.execute( new SetMaterialValueCommand( editor, object, property, value, materialSlot ) );
-
 		}
-
 	}
 
 	function update( currentObject, currentMaterialSlot = 0 ) {
-
 		object = currentObject;
 		materialSlot = currentMaterialSlot;
 
@@ -38,16 +32,11 @@ function SidebarMaterialConstantProperty( editor, property, name, options ) {
 		material = editor.getObjectMaterial( object, materialSlot );
 
 		if ( property in material ) {
-
 			constant.setValue( material[ property ] );
 			container.setDisplay( '' );
-
 		} else {
-
 			container.setDisplay( 'none' );
-
 		}
-
 	}
 
 	//
@@ -56,7 +45,6 @@ function SidebarMaterialConstantProperty( editor, property, name, options ) {
 	signals.materialChanged.add( update );
 
 	return container;
-
 }
 
 export { SidebarMaterialConstantProperty };

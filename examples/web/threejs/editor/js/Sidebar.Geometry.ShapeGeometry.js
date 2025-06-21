@@ -5,7 +5,6 @@ import { UIDiv, UIRow, UIText, UIInteger, UIButton } from './libs/ui.js';
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -31,46 +30,35 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		curveSegments.setValue( parameters.curveSegments );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function changeShape() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.ShapeGeometry(
 			parameters.shapes,
 			curveSegments.getValue()
 		) ) );
-
 	}
 
 	function toExtrude() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.ExtrudeGeometry(
 			parameters.shapes, {
 				curveSegments: curveSegments.getValue()
 			}
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

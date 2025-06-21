@@ -3,7 +3,6 @@ import { UIBreak, UIPanel, UIRow, UIText, UIListbox, UIButton } from './libs/ui.
 import { SetMaterialCommand } from './commands/SetMaterialCommand.js';
 
 function SidebarProjectMaterials( editor ) {
-
 	const signals = editor.signals;
 	const strings = editor.strings;
 
@@ -28,47 +27,34 @@ function SidebarProjectMaterials( editor ) {
 		const selectedObject = editor.selected;
 
 		if ( selectedObject !== null ) {
-
 			const oldMaterial = selectedObject.material;
 
 			// only passing materials to objects with a material property (e.g. avoid assigning material to THREE.Group)
 
 			if ( oldMaterial !== undefined ) {
-
 				const material = editor.getMaterialById( parseInt( listbox.getValue() ) );
 
 				if ( material !== undefined ) {
-
 					editor.removeMaterial( oldMaterial );
 					editor.execute( new SetMaterialCommand( editor, selectedObject, material ) );
 					editor.addMaterial( material );
-
 				}
-
 			}
-
 		}
-
 	} );
 	buttonsRow.add( assignMaterial );
 
 	// Signals
 
 	function refreshMaterialBrowserUI() {
-
 		listbox.setItems( Object.values( editor.materials ) );
-
 	}
 
 	signals.objectSelected.add( function ( object ) {
-
 		if ( object !== null ) {
-
 			const index = Object.values( editor.materials ).indexOf( object.material );
 			listbox.selectIndex( index );
-
 		}
-
 	} );
 
 	signals.materialAdded.add( refreshMaterialBrowserUI );
@@ -76,7 +62,6 @@ function SidebarProjectMaterials( editor ) {
 	signals.materialRemoved.add( refreshMaterialBrowserUI );
 
 	return container;
-
 }
 
 export { SidebarProjectMaterials };

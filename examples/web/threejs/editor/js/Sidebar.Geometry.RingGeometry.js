@@ -5,7 +5,6 @@ import { UIDiv, UIRow, UIText, UIInteger, UINumber } from './libs/ui.js';
 import { SetGeometryCommand } from './commands/SetGeometryCommand.js';
 
 function GeometryParametersPanel( editor, object ) {
-
 	const strings = editor.strings;
 	const signals = editor.signals;
 
@@ -77,7 +76,6 @@ function GeometryParametersPanel( editor, object ) {
 	//
 
 	function refreshUI() {
-
 		const parameters = object.geometry.parameters;
 
 		innerRadius.setValue( parameters.innerRadius );
@@ -86,23 +84,17 @@ function GeometryParametersPanel( editor, object ) {
 		phiSegments.setValue( parameters.phiSegments );
 		thetaStart.setValue( parameters.thetaStart * THREE.MathUtils.RAD2DEG );
 		thetaLength.setValue( parameters.thetaLength * THREE.MathUtils.RAD2DEG );
-
 	}
 
 	signals.geometryChanged.add( function ( mesh ) {
-
 		if ( mesh === object ) {
-
 			refreshUI();
-
 		}
-
 	} );
 
 	//
 
 	function update() {
-
 		editor.execute( new SetGeometryCommand( editor, object, new THREE.RingGeometry(
 			innerRadius.getValue(),
 			outerRadius.getValue(),
@@ -111,11 +103,9 @@ function GeometryParametersPanel( editor, object ) {
 			thetaStart.getValue() * THREE.MathUtils.DEG2RAD,
 			thetaLength.getValue() * THREE.MathUtils.DEG2RAD
 		) ) );
-
 	}
 
 	return container;
-
 }
 
 export { GeometryParametersPanel };

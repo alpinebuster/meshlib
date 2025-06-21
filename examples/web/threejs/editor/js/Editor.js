@@ -113,7 +113,7 @@ function Editor() {
 	this.sceneHelpers.add( new THREE.HemisphereLight( 0xffffff, 0x888888, 2 ) );
 
 	this.wasmObject = {};
-	this.object = {};
+	// this.object = {};
 	this.geometries = {};
 	this.materials = {};
 	this.textures = {};
@@ -478,6 +478,7 @@ Editor.prototype = {
 
 		this.signals.sceneGraphChanged.active = true;
 
+		this.wasmObject = {};
 		this.geometries = {};
 		this.materials = {};
 		this.textures = {};
