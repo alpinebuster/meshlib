@@ -2,7 +2,6 @@ import { Command } from '../Command.js';
 import { ObjectLoader } from 'three';
 
 class SetMaterialCommand extends Command {
-
 	/**
 	 * @param {Editor} editor
 	 * @param {THREE.Object3D|null} object
@@ -11,7 +10,6 @@ class SetMaterialCommand extends Command {
 	 * @constructor
 	 */
 	constructor( editor, object = null, newMaterial = null, materialSlot = - 1 ) {
-
 		super( editor );
 
 		this.type = 'SetMaterialCommand';
@@ -22,27 +20,21 @@ class SetMaterialCommand extends Command {
 
 		this.oldMaterial = ( object !== null ) ? editor.getObjectMaterial( object, materialSlot ) : null;
 		this.newMaterial = newMaterial;
-
 	}
 
 	execute() {
-
 		this.editor.setObjectMaterial( this.object, this.materialSlot, this.newMaterial );
 
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	undo() {
-
 		this.editor.setObjectMaterial( this.object, this.materialSlot, this.oldMaterial );
 
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	toJSON() {
-
 		const output = super.toJSON( this );
 
 		output.objectUuid = this.object.uuid;
@@ -51,11 +43,9 @@ class SetMaterialCommand extends Command {
 		output.materialSlot = this.materialSlot;
 
 		return output;
-
 	}
 
 	fromJSON( json ) {
-
 		super.fromJSON( json );
 
 		this.object = this.editor.objectByUuid( json.objectUuid );
@@ -64,17 +54,13 @@ class SetMaterialCommand extends Command {
 		this.materialSlot = json.materialSlot;
 
 		function parseMaterial( json ) {
-
 			const loader = new ObjectLoader();
 			const images = loader.parseImages( json.images );
 			const textures = loader.parseTextures( json.textures, images );
 			const materials = loader.parseMaterials( [ json ], textures );
 			return materials[ json.uuid ];
-
 		}
-
 	}
-
 }
 
 export { SetMaterialCommand };

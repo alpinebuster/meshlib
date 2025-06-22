@@ -1,5 +1,4 @@
 function Strings( config ) {
-
 	const language = config.getKey( 'language' );
 
 	const values = {
@@ -402,10 +401,8 @@ function Strings( config ) {
 			'script/title/vertexShader': 'شیدر راس',
 			'script/title/fragmentShader': 'شیدر فرگمنت',
 			'script/title/programInfo': 'خواص برنامه'
-
 		},
 		en: {
-
 			'prompt/file/open': 'Any unsaved data will be lost. Are you sure?',
 			'prompt/file/failedToOpenProject': 'Failed to open project!',
 			'prompt/file/export/noMeshSelected': 'No Mesh selected!',
@@ -810,11 +807,9 @@ function Strings( config ) {
 			'script/title/vertexShader': 'Vertex Shader',
 			'script/title/fragmentShader': 'Fragment Shader',
 			'script/title/programInfo': 'Program Properties'
-
 		},
 
 		fr: {
-
 			'prompt/file/open': 'Toutes les données non enregistrées seront perdues Êtes-vous sûr ?',
 			'prompt/file/failedToOpenProject': 'Échec de l\'ouverture du projet !',
 			'prompt/file/export/noMeshSelected': 'Aucun maillage sélectionné !',
@@ -1213,11 +1208,9 @@ function Strings( config ) {
 			'script/title/vertexShader': 'Vertex Shader',
 			'script/title/fragmentShader': 'Fragment Shader',
 			'script/title/programInfo': 'Propriétés du programme'
-
 		},
 
 		zh: {
-
 			'prompt/file/open': '您确定吗？未保存的数据将会丢失。',
 			'prompt/file/failedToOpenProject': '无法打开项目！',
 			'prompt/file/export/noMeshSelected': '未选择网格！',
@@ -1622,11 +1615,9 @@ function Strings( config ) {
 			'script/title/vertexShader': '顶点着色器',
 			'script/title/fragmentShader': '片段着色器',
 			'script/title/programInfo': '程序属性'
-
 		},
 
 		ja: {
-
 			'prompt/file/open': '保存されていないデータは失われます。 本気ですか？',
 			'prompt/file/failedToOpenProject': 'プロジェクトを開くことができませんでした!',
 			'prompt/file/export/noMeshSelected': 'メッシュが選択されていません!',
@@ -2025,7 +2016,6 @@ function Strings( config ) {
 			'script/title/vertexShader': '頂点シェーダー',
 			'script/title/fragmentShader': 'フラグメントシェーダ',
 			'script/title/programInfo': 'プログラムのプロパティ'
-
 		},
 
 		ko: {
@@ -2431,15 +2421,10 @@ function Strings( config ) {
 	};
 
 	return {
-
 		getKey: function ( key ) {
-
 			return values[ language ][ key ] || '???';
-
 		}
-
 	};
-
 }
 
 export { Strings };

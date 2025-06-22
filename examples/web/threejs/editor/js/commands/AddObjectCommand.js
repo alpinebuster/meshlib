@@ -8,12 +8,14 @@ class AddObjectCommand extends Command {
 	 * @param {any|null} [wasmObject=null]
 	 * @constructor
 	 */
-	constructor( editor, object=null, wasmObject=null ) {
+	constructor( editor, object=null, parent=null, index=null, wasmObject=null ) {
 		super( editor );
 
 		this.type = 'AddObjectCommand';
 
 		this.object = object;
+		this.parent = parent;
+		this.index = index;
 		this.wasmObject = wasmObject;
 
 		if ( object !== null ) {
@@ -22,7 +24,7 @@ class AddObjectCommand extends Command {
 	}
 
 	execute() {
-		this.editor.addObject( this.object );
+		this.editor.addObject( this.object, this.parent, this.index );
 		if (this.wasmObject) this.editor.addWasmObject( this.object.uuid, this.wasmObject );
 		this.editor.select( this.object );
 	}

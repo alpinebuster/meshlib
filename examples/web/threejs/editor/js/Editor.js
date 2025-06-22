@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh';
 import { createMeshLib } from '@alpinebuster/meshlib';
 
 import { Config } from './Config.js';
@@ -7,6 +8,11 @@ import { History as _History } from './History.js';
 import { Strings } from './Strings.js';
 import { Storage as _Storage } from './Storage.js';
 import { Selector } from './Selector.js';
+
+// Installation of the acceleration module
+THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree;
+THREE.BufferGeometry.prototype.disposeBoundsTree = disposeBoundsTree;
+THREE.Mesh.prototype.raycast = acceleratedRaycast;
 
 var _DEFAULT_CAMERA = new THREE.PerspectiveCamera( 50, 1, 0.01, 1000 );
 _DEFAULT_CAMERA.name = 'Camera';
@@ -165,7 +171,7 @@ Editor.prototype = {
 		this.wasmObject[uuid] = mrmeshObj;
 	},
 
-	addObject: function( object, parent, index ) {
+	addObject: function( object, parent=null, index=null ) {
 		var scope = this;
 
 		object.traverse(function ( child ) {
@@ -176,7 +182,7 @@ Editor.prototype = {
 			scope.addHelper( child );
 		});
 
-		if ( parent === undefined ) {
+		if ( parent === undefined || parent === null ) {
 			this.scene.add( object );
 		} else {
 			parent.children.splice( index, 0, object );

@@ -448,7 +448,6 @@ function SidebarScene( editor ) {
 		if ( editor.selected !== null ) signals.objectChanged.dispatch( editor.selected );
 	} );
 
-
 	signals.objectSelected.add( function ( object ) {
 		if ( ignoreObjectSelectedSignal === true ) return;
 

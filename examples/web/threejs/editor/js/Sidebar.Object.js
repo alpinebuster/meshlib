@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { UISelect, UIPanel, UIRow, UIInput, UIButton, UIColor, UICheckbox, UIInteger, UITextArea, UIText, UINumber } from './libs/ui.js';
 import { UIBoolean } from './libs/ui.three.js';
 
+import { AddObjectCommand } from './commands/AddObjectCommand.js';
+import { RemoveObjectCommand } from './commands/RemoveObjectCommand.js';
 import { SetUuidCommand } from './commands/SetUuidCommand.js';
 import { SetValueCommand } from './commands/SetValueCommand.js';
 import { SetPositionCommand } from './commands/SetPositionCommand.js';
@@ -136,13 +138,96 @@ function SidebarObject( editor ) {
 
 	container.add( objectResetRow );
 
-
 	// wasm
 
 	const wasmOperationRow = new UIRow();
 
+	let selectorMode = false;
+	let _cur_intersect = null;
+	const clicked = [];
+	const pointMaterial = new THREE.PointsMaterial({ color: 0xff0000, size: 3 });
+	let pointGeo = new THREE.BufferGeometry();
+	const pointCloud = new THREE.Points(pointGeo, pointMaterial);
+	pointCloud.name = 'wasm-selector-point';
+
+	const curveMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
+	let curveLine = new THREE.Line(new THREE.BufferGeometry(), curveMaterial);
+	curveLine.name = 'wasm-selector-curve';
+
 	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmSelector') ).setMarginLeft( '7px' ).onClick(function () {
-		// REF: `https://threejs.org/docs/#examples/en/math/MeshSurfaceSampler`
+		if (!editor.selected) return;
+
+		selectorMode = !selectorMode;
+		if (selectorMode) {
+			wasmOpSelector.addClass( 'selected' );
+
+			pointGeo.dispose();
+			pointGeo = new THREE.BufferGeometry();
+			curveLine.geometry.dispose();
+			curveLine.geometry = new THREE.BufferGeometry();
+
+			if (editor.selected.children.length > 0) {
+				const subMeshes = editor.selected.children.filter(child => child.isMesh);
+				subMeshes.forEach((subMesh, i) => {
+					if (subMesh.isMesh) {
+						editor.execute( new RemoveObjectCommand( editor, subMesh ) );
+					}
+				});
+			}
+		} else {
+			wasmOpSelector.removeClass( 'selected' );
+			editor.execute( new RemoveObjectCommand( editor, pointCloud ) );
+			editor.execute( new RemoveObjectCommand( editor, curveLine ) );
+		}
+	});
+	signals.intersectionsDetected.add( ( intersects ) => {
+		if (selectorMode && intersects.length > 0) {
+			const _intersected_object = intersects[ 0 ].object;
+			if (editor.selected !== _intersected_object) return;
+
+			if ( _intersected_object.userData.object !== undefined ) {
+				_cur_intersect = _intersected_object.userData.object;
+			} else {
+				_cur_intersect = _intersected_object;
+			}
+
+			clicked.push(intersects[0].point.clone());
+			console.log("pts: ", clicked);
+			
+			// DO NOT use this, because he bottom of Three.js' `BufferGeometry` is fixed-length,
+			// and when `setFromPoints(clicked)` has more new points than the original,
+			// Three.js can't automatically expand the size of the buffer that already exists.
+			//
+			// pointGeo.setFromPoints(clicked);
+			//
+			pointGeo.dispose();
+			pointGeo = new THREE.BufferGeometry().setFromPoints(clicked);
+			pointCloud.geometry = pointGeo;
+
+			if (clicked.length == 1) {
+				editor.execute( new AddObjectCommand( editor, pointCloud, editor.selected ) );
+			}
+			if (clicked.length >= 2) {
+				const curve = new THREE.CatmullRomCurve3(clicked, clicked.length > 2, 'centripetal');
+				// Sample a number of points on the curve and then fit the surface
+				const pts = curve.getPoints(clicked.length * 6);
+				
+				// Nearest point lookup
+				const projectedSurfacePts = pts.map(p => {
+					const target = new THREE.Vector3();
+					_cur_intersect.geometry.boundsTree.closestPointToPoint(p, target);
+
+					return target.point.clone();
+				});
+
+				debugger;
+				curveLine.geometry.dispose();
+				curveLine.geometry = new THREE.BufferGeometry().setFromPoints(projectedSurfacePts);
+			}
+			if (clicked.length == 2) {
+				editor.execute( new AddObjectCommand( editor, curveLine, editor.selected ) );
+			}
+		}
 	});
 	const wasmOpFillholes = new UIButton( strings.getKey( 'sidebar/object/wasmFillholes') ).setMarginLeft( '7px' ).onClick(function () {
 		const currentUUID = editor.selected.uuid;
@@ -673,7 +758,7 @@ function SidebarObject( editor ) {
 		if ( object !== editor.selected ) return;
 
 		updateUI( object );
-	} );
+	});
 
 	function updateUI( object ) {
 		objectType.setValue( object.type );

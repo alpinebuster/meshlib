@@ -1,6 +1,6 @@
 # At project root directory, building image with:
 #
-#  `docker build -t zzz/em-build-server -f ./docker/emscriptenDockerfile .`
+#  `docker build -t zzz/em-build-server -f ./docker/emscripten.Dockerfile .`
 #  `docker run --rm -it zzz/em-build-server bash`
 #
 FROM emscripten/emsdk:4.0.10

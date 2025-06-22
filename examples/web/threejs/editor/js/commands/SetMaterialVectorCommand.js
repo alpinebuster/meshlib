@@ -1,7 +1,6 @@
 import { Command } from '../Command.js';
 
 class SetMaterialVectorCommand extends Command {
-
 	/**
 	 *
 	 * @param {Editor} editor
@@ -12,7 +11,6 @@ class SetMaterialVectorCommand extends Command {
 	 * @constructor
 	 */
 	constructor( editor, object = null, attributeName = '', newValue = null, materialSlot = - 1 ) {
-
 		super( editor );
 
 		this.type = 'SetMaterialVectorCommand';
@@ -28,37 +26,29 @@ class SetMaterialVectorCommand extends Command {
 		this.newValue = newValue;
 
 		this.attributeName = attributeName;
-
 	}
 
 	execute() {
-
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
 
 		material[ this.attributeName ].fromArray( this.newValue );
 
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	undo() {
-
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
 
 		material[ this.attributeName ].fromArray( this.oldValue );
 
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	update( cmd ) {
-
 		this.newValue = cmd.newValue;
-
 	}
 
 	toJSON() {
-
 		const output = super.toJSON( this );
 
 		output.objectUuid = this.object.uuid;
@@ -68,11 +58,9 @@ class SetMaterialVectorCommand extends Command {
 		output.materialSlot = this.materialSlot;
 
 		return output;
-
 	}
 
 	fromJSON( json ) {
-
 		super.fromJSON( json );
 
 		this.object = this.editor.objectByUuid( json.objectUuid );
@@ -80,9 +68,7 @@ class SetMaterialVectorCommand extends Command {
 		this.oldValue = json.oldValue;
 		this.newValue = json.newValue;
 		this.materialSlot = json.materialSlot;
-
 	}
-
 }
 
 export { SetMaterialVectorCommand };

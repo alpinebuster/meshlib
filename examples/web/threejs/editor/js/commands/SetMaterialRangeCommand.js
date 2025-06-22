@@ -1,7 +1,6 @@
 import { Command } from '../Command.js';
 
 class SetMaterialRangeCommand extends Command {
-
 	/**
 	 * @param {Editor} editor
 	 * @param {THREE.Object3D|null} [object=null]
@@ -12,7 +11,6 @@ class SetMaterialRangeCommand extends Command {
 	 * @constructor
 	 */
 	constructor( editor, object = null, attributeName = '', newMinValue = - Infinity, newMaxValue = Infinity, materialSlot = - 1 ) {
-
 		super( editor );
 
 		this.type = 'SetMaterialRangeCommand';
@@ -28,11 +26,9 @@ class SetMaterialRangeCommand extends Command {
 		this.newRange = [ newMinValue, newMaxValue ];
 
 		this.attributeName = attributeName;
-
 	}
 
 	execute() {
-
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
 
 		material[ this.attributeName ] = [ ...this.newRange ];
@@ -40,11 +36,9 @@ class SetMaterialRangeCommand extends Command {
 
 		this.editor.signals.objectChanged.dispatch( this.object );
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	undo() {
-
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
 
 		material[ this.attributeName ] = [ ...this.oldRange ];
@@ -52,17 +46,13 @@ class SetMaterialRangeCommand extends Command {
 
 		this.editor.signals.objectChanged.dispatch( this.object );
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	update( cmd ) {
-
 		this.newRange = [ ...cmd.newRange ];
-
 	}
 
 	toJSON() {
-
 		const output = super.toJSON( this );
 
 		output.objectUuid = this.object.uuid;
@@ -72,11 +62,9 @@ class SetMaterialRangeCommand extends Command {
 		output.materialSlot = this.materialSlot;
 
 		return output;
-
 	}
 
 	fromJSON( json ) {
-
 		super.fromJSON( json );
 
 		this.attributeName = json.attributeName;
@@ -84,9 +72,7 @@ class SetMaterialRangeCommand extends Command {
 		this.newRange = [ ...json.newRange ];
 		this.object = this.editor.objectByUuid( json.objectUuid );
 		this.materialSlot = json.materialSlot;
-
 	}
-
 }
 
 export { SetMaterialRangeCommand };

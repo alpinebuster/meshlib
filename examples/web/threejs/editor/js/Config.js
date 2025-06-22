@@ -44,6 +44,12 @@ function Config() {
 			return storage[ key ];
 		},
 
+		/**
+		 * The `arguments` object is used to iterate through all the parameters passed to the function during the function call. In each iteration:
+		 *
+		 *	1. `arguments[i]` retrieves the current parameter, which is treated as the `key`.
+		 *	2. `arguments[i + 1]` retrieves the next parameter, which is treated as the `value`.
+		 */
 		setKey: function () { // key, value, key, value ...
 			for ( let i = 0, l = arguments.length; i < l; i += 2 ) {
 				storage[ arguments[ i ] ] = arguments[ i + 1 ];

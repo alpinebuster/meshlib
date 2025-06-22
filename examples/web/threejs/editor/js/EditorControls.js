@@ -149,7 +149,6 @@ class EditorControls extends THREE.EventDispatcher {
 
 			switch ( pointers.length ) {
 				case 0:
-
 					domElement.releasePointerCapture( event.pointerId );
 
 					domElement.ownerDocument.removeEventListener( 'pointermove', onPointerMove );
@@ -158,7 +157,6 @@ class EditorControls extends THREE.EventDispatcher {
 					break;
 
 				case 1:
-
 					var pointerId = pointers[ 0 ];
 					var position = pointerPositions[ pointerId ];
 
@@ -256,7 +254,6 @@ class EditorControls extends THREE.EventDispatcher {
 					break;
 
 				case 2:
-
 					var position = getSecondPointerPosition( event );
 
 					touches[ 0 ].set( event.pageX, event.pageY, 0 ).divideScalar( window.devicePixelRatio );

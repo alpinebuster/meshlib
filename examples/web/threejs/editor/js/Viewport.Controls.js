@@ -44,7 +44,6 @@ function ViewportControls( editor ) {
 
 		shadingSelect.setValue( 'solid' );
 		editor.setViewportShading( shadingSelect.getValue() );
-
 	} );
 
 	signals.cameraResetted.add( update );

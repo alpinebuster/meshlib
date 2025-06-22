@@ -2,7 +2,6 @@ import { Command } from '../Command.js';
 import { ObjectLoader } from 'three';
 
 class SetMaterialMapCommand extends Command {
-
 	/**
 	 * @param {Editor} editor
 	 * @param {THREE.Object3D|null} [object=null]
@@ -12,7 +11,6 @@ class SetMaterialMapCommand extends Command {
 	 * @constructor
 	 */
 	constructor( editor, object = null, mapName = '', newMap = null, materialSlot = - 1 ) {
-
 		super( editor );
 
 		this.type = 'SetMaterialMapCommand';
@@ -27,11 +25,9 @@ class SetMaterialMapCommand extends Command {
 		this.newMap = newMap;
 
 		this.mapName = mapName;
-
 	}
 
 	execute() {
-
 		if ( this.oldMap !== null && this.oldMap !== undefined ) this.oldMap.dispose();
 
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
@@ -40,22 +36,18 @@ class SetMaterialMapCommand extends Command {
 		material.needsUpdate = true;
 
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	undo() {
-
 		const material = this.editor.getObjectMaterial( this.object, this.materialSlot );
 
 		material[ this.mapName ] = this.oldMap;
 		material.needsUpdate = true;
 
 		this.editor.signals.materialChanged.dispatch( this.object, this.materialSlot );
-
 	}
 
 	toJSON() {
-
 		const output = super.toJSON( this );
 
 		output.objectUuid = this.object.uuid;
@@ -69,7 +61,6 @@ class SetMaterialMapCommand extends Command {
 		// serializes a map (THREE.Texture)
 
 		function serializeMap( map ) {
-
 			if ( map === null || map === undefined ) return null;
 
 			const meta = {
@@ -85,7 +76,6 @@ class SetMaterialMapCommand extends Command {
 			json.sourceFile = map.sourceFile;
 
 			return json;
-
 		}
 
 		// Note: The function 'extractFromCache' is copied from Object3D.toJSON()
@@ -94,24 +84,18 @@ class SetMaterialMapCommand extends Command {
 		// remove metadata on each item
 		// and return as array
 		function extractFromCache( cache ) {
-
 			const values = [];
 			for ( const key in cache ) {
-
 				const data = cache[ key ];
 				delete data.metadata;
 				values.push( data );
-
 			}
 
 			return values;
-
 		}
-
 	}
 
 	fromJSON( json ) {
-
 		super.fromJSON( json );
 
 		this.object = this.editor.objectByUuid( json.objectUuid );
@@ -121,24 +105,18 @@ class SetMaterialMapCommand extends Command {
 		this.materialSlot = json.materialSlot;
 
 		function parseTexture( json ) {
-
 			let map = null;
 			if ( json !== null ) {
-
 				const loader = new ObjectLoader();
 				const images = loader.parseImages( json.images );
 				const textures = loader.parseTextures( [ json ], images );
 				map = textures[ json.uuid ];
 				map.sourceFile = json.sourceFile;
-
 			}
 
 			return map;
-
 		}
-
 	}
-
 }
 
 export { SetMaterialMapCommand };

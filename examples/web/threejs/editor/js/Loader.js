@@ -435,7 +435,7 @@ function Loader( editor ) {
 					const mesh = new THREE.Mesh( geometry, material );
 					mesh.name = filename;
 
-					editor.execute(new AddObjectCommand(editor, mesh, mrmeshObj));
+					editor.execute(new AddObjectCommand(editor, mesh, null, null, mrmeshObj));
 
 					// NOTE: Remember to free after processing
 					editor.mrmesh._free(ptr);

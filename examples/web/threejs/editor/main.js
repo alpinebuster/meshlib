@@ -93,6 +93,7 @@ editor.storage.init(function () {
 	signals.scriptChanged.add( saveState );
 	signals.historyChanged.add( saveState );
 });
+
 // HACK
 editor.initMRMesh();
 
@@ -136,10 +137,8 @@ if ( hash.slice(1, 6) === 'file=' ) {
 		const loader = new THREE.FileLoader();
 		loader.crossOrigin = '';
 		loader.load(file, function (text) {
-
 			editor.clear();
 			editor.fromJSON(JSON.parse(text));
-
 		});
 
 		isLoadingFromHash = true;

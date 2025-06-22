@@ -56,9 +56,13 @@ function ViewportInfo( editor ) {
 				if ( object.isMesh || object.isPoints ) {
 					const geometry = object.geometry;
 
-					vertices += geometry.attributes.position.count;
+					if (geometry.attributes.position) {
+						vertices += geometry.attributes.position.count;
+					}
 
 					if ( object.isMesh ) {
+						geometry.computeBoundsTree();
+
 						if ( geometry.index !== null ) {
 							triangles += geometry.index.count / 3;
 						} else {
