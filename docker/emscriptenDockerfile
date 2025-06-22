@@ -39,6 +39,9 @@ WORKDIR /home/meshlib
 
 # Copy files
 COPY . .
+# Fix the issue with line endings when developing on a Windows but running on a UNIX docker container
+# Change the EOL for all files from `CRLF` to `LF`
+RUN find . -type f -exec sed -i 's/\r$//' {} \;
 
 # Build thirdparty
 ENV MR_STATE=DOCKER_BUILD

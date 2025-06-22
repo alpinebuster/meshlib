@@ -54,6 +54,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 				// 'three',
 				// 'three-gpu-pathtracer',
 				// 'three-mesh-bvh',
+				// FIXME: Why windows needs this but unix systems not?
+				'@alpinebuster/meshlib',
 				"@ffmpeg/ffmpeg", "@ffmpeg/util",
 			],
 
@@ -72,7 +74,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 		},
 
 		server: {
-			port: 9320,
+			port: 3320,
 			host: 'localhost',
 			// open: true,
 			fs: {
@@ -99,7 +101,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 			},
 
 			hmr: {
-				port: 9321,
+				port: 3321,
 				overlay: true,  // Displaying error overlays in the browser
 			},
 
