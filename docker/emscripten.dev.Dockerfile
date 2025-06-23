@@ -1,5 +1,5 @@
 # Optimized Dockerfile with git submodules and thirdparty build in layers
-# Build from project root with: docker compose up --build
+# Build from project root with: docker compose up --build <service_name>
 #
 FROM emscripten/emsdk:4.0.10
 
@@ -32,11 +32,6 @@ Pin-Priority: 1001\
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Create user early to avoid permission issues with git operations
-# Add a new user "zzz" with user id 8877 to match your original setup
-RUN useradd -u 8877 -m zzz && \
-    sudo chmod -R 777 /emsdk/upstream/emscripten/
-
 # Set up working directory and change ownership
 WORKDIR /meshlib
 
@@ -46,7 +41,6 @@ COPY . .
 # Change the EOL for all files from `CRLF` to `LF`
 # RUN find . -type f -exec sed -i 's/\r$//' {} \;
 RUN find scripts/ -name "*.sh" -type f -exec sed -i 's/\r$//' {} \; && \
-    chown -R zzz:zzz scripts/*.sh && \
     chmod +x scripts/*.sh
 
 # Set environment variables for thirdparty build
@@ -56,29 +50,29 @@ ENV MR_EMSCRIPTEN=ON
 # Build thirdparty dependencies for default wasm configuration (multithreaded, 32-bit)
 # This is the most commonly used configuration, so we build it first
 RUN echo "Building thirdparty dependencies (default: multithreaded, 32-bit)..." && \
-    ./scripts/build_thirdparty.sh && \
-    ./scripts/cmake_install.sh /usr/local/lib/emscripten && \
-    echo "Cleaning up build artifacts to reduce layer size..." && \
-    rm -rf bin include lib share thirdparty_build
+    ./scripts/build_thirdparty.sh
+    # ./scripts/cmake_install.sh /usr/local/lib/emscripten && \
+    # echo "Cleaning up build artifacts to reduce layer size..." && \
+    # rm -rf bin include lib share thirdparty_build
 
 # Build thirdparty dependencies for single-threaded configuration
 # This creates a separate installation to avoid conflicts
 ENV MR_EMSCRIPTEN_SINGLE=ON
 RUN echo "Building thirdparty dependencies (single-threaded, 32-bit)..." && \
-    ./scripts/build_thirdparty.sh && \
-    ./scripts/cmake_install.sh /usr/local/lib/emscripten-single && \
-    echo "Cleaning up build artifacts..." && \
-    rm -rf bin include lib share thirdparty_build
+    ./scripts/build_thirdparty.sh
+    # ./scripts/cmake_install.sh /usr/local/lib/emscripten-single && \
+    # echo "Cleaning up build artifacts..." && \
+    # rm -rf bin include lib share thirdparty_build
 
 # Build thirdparty dependencies for 64-bit WASM configuration
 # Reset single-threaded flag and enable 64-bit WASM
 ENV MR_EMSCRIPTEN_SINGLE=OFF
 ENV MR_EMSCRIPTEN_WASM64=ON
 RUN echo "Building thirdparty dependencies (multithreaded, 64-bit)..." && \
-    ./scripts/build_thirdparty.sh && \
-    ./scripts/cmake_install.sh /usr/local/lib/emscripten-wasm64 && \
-    echo "Cleaning up build artifacts..." && \
-    rm -rf bin include lib share thirdparty_build
+    ./scripts/build_thirdparty.sh
+    # ./scripts/cmake_install.sh /usr/local/lib/emscripten-wasm64 && \
+    # echo "Cleaning up build artifacts..." && \
+    # rm -rf bin include lib share thirdparty_build
 
 # Reset environment variables to default state
 ENV MR_EMSCRIPTEN_WASM64=OFF
@@ -90,8 +84,8 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update && \
     rm -rf awscliv2.zip aws/
 
-# Switch back to non-root user for security
-USER zzz
+# TODO: Switch to non-root user for security
+# USER zzz
 
 # Set default environment variables for source build
 ENV MESHLIB_BUILD_RELEASE=ON

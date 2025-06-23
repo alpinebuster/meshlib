@@ -22,18 +22,15 @@ services:
     image: zzz/meshlib-emscripten-build-server
     pull_policy: never
     container_name: meshlib_emscripten_build_server
-    # Mount the current project directory into the container
     volumes:
       - ./cmake:/meshlib/cmake
       - ./source:/meshlib/source
       - ./wasm:/meshlib/wasm
-      # Optional: Create a volume for build artifacts to persist between runs
-      - meshlib-build-cache:/meshlib/build
+      - ./CMakeLists.txt:/meshlib/CMakeLists.txt
+      # FIXME: Create a volume for build artifacts to persist between runs (Optional)
+      # - meshlib-build-cache:/meshlib/build
       # Cache CMake configuration to speed up subsequent builds
-      - meshlib-cmake-cache:/meshlib/.cmake
-    # Set working directory to the mounted project root
-    working_dir: /meshlib
-    # Environment variables matching your workflow configuration
+      # - meshlib-cmake-cache:/meshlib/.cmake
     environment:
       - MR_EMSCRIPTEN=ON
       - MESHLIB_BUILD_RELEASE=ON
@@ -41,20 +38,15 @@ services:
       - MR_EMSCRIPTEN_SINGLE=OFF  # Default to multithreaded
       - MR_EMSCRIPTEN_WASM64=OFF  # Default to 32-bit
       - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23 -DMR_PCH_USE_EXTRA_HEADERS=ON
-      - HOME=/home/zzz
       - DEBIAN_FRONTEND=noninteractive
       # Point to the pre-built thirdparty libraries
-      - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten
+      # - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten
     # Override the command to run your build process
     command: >
       bash -c "
         echo '=== MeshLib Emscripten Build (Multithreaded, 32-bit) ===' &&
         echo 'Git submodules and thirdparty dependencies are pre-built in the Docker image.' &&
         echo 'Starting source code build...' &&
-        
-        # Configure git for the mounted project directory
-        git config --global --add safe.directory /workspace &&
-        
         # Build the main source code
         echo 'Running build_source.sh...' &&
         ./scripts/build_source.sh &&
@@ -85,9 +77,8 @@ services:
       - ./cmake:/meshlib/cmake
       - ./source:/meshlib/source
       - ./wasm:/meshlib/wasm
-      - meshlib-build-cache-single:/workspace/build
+      # - meshlib-build-cache-single:/workspace/build
       - meshlib-cmake-cache-single:/workspace/.cmake
-    working_dir: /meshlib
     environment:
       - MR_EMSCRIPTEN=ON
       - MESHLIB_BUILD_RELEASE=ON
@@ -95,16 +86,12 @@ services:
       - MR_EMSCRIPTEN_SINGLE=ON   # Single-threaded build
       - MR_EMSCRIPTEN_WASM64=OFF
       - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23 -DMR_PCH_USE_EXTRA_HEADERS=ON
-      - HOME=/home/zzz
       # Point to the single-threaded thirdparty libraries
-      - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten-single
+      # - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten-single
     command: >
       bash -c "
         echo '=== MeshLib Emscripten Build (Single-threaded, 32-bit) ===' &&
         echo 'Using pre-built single-threaded thirdparty dependencies.' &&
-        
-        git config --global --add safe.directory /workspace &&
-        
         echo 'Building source code in single-threaded mode...' &&
         ./scripts/build_source.sh &&
         
@@ -112,7 +99,7 @@ services:
         tail -f /dev/null
       "
     # Use profiles to avoid running this by default
-    # Run with: docker-compose --profile singlethreaded up
+    # Run with: `docker compose --profile singlethreaded up`
     profiles:
       - singlethreaded
     tty: true
@@ -130,9 +117,8 @@ services:
       - ./cmake:/meshlib/cmake
       - ./source:/meshlib/source
       - ./wasm:/meshlib/wasm
-      - meshlib-build-cache-wasm64:/meshlib/build
+      # - meshlib-build-cache-wasm64:/meshlib/build
       - meshlib-cmake-cache-wasm64:/meshlib/.cmake
-    working_dir: /meshlib
     environment:
       - MR_EMSCRIPTEN=ON
       - MESHLIB_BUILD_RELEASE=ON
@@ -140,16 +126,12 @@ services:
       - MR_EMSCRIPTEN_SINGLE=OFF
       - MR_EMSCRIPTEN_WASM64=ON   # 64-bit WASM build
       - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23 -DMR_PCH_USE_EXTRA_HEADERS=ON
-      - HOME=/home/zzz
       # Point to the 64-bit WASM thirdparty libraries
-      - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten-wasm64
+      # - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten-wasm64
     command: >
       bash -c "
         echo '=== MeshLib Emscripten Build (Multithreaded, 64-bit WASM) ===' &&
         echo 'Using pre-built 64-bit WASM thirdparty dependencies.' &&
-        
-        git config --global --add safe.directory /workspace &&
-        
         echo 'Building source code in 64-bit WASM mode...' &&
         ./scripts/build_source.sh &&
         
@@ -157,7 +139,7 @@ services:
         tail -f /dev/null
       "
     # Use profiles to avoid running this by default
-    # Run with: docker-compose --profile wasm64 up
+    # Run with: `docker compose --profile wasm64 up`
     profiles:
       - wasm64
     tty: true

@@ -144,6 +144,7 @@ function SidebarObject( editor ) {
 
 	let selectorMode = false;
 	let _cur_intersect = null;
+	let draggingIndex = -1;
 	const clicked = [];
 	const pointMaterial = new THREE.PointsMaterial({ color: 0xff0000, size: 3 });
 	let pointGeo = new THREE.BufferGeometry();
@@ -532,7 +533,6 @@ function SidebarObject( editor ) {
 		} catch ( e ) {
 			output = JSON.stringify( output );
 		}
-
 
 		editor.utils.save( new Blob( [ output ] ), `${ objectName.getValue() || 'object' }.json` );
 	} );
