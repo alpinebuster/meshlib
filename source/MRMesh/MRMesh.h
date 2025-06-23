@@ -67,7 +67,7 @@ struct [[nodiscard]] Mesh
     [[nodiscard]] Vector3f edgeVector( EdgeId e ) const { return MR::edgeVector( topology, points, e ); }
 
     /// returns line segment of given edge
-    [[nodiscard]] LineSegm3f edgeSegment( EdgeId e ) const { return MR::edgeSegment( topology, points, e ); }
+    [[nodiscard]] MRMESH_API LineSegm3f edgeSegment( EdgeId e ) const;
 
     /// returns a point on the edge: origin point for f=0 and destination point for f=1
     [[nodiscard]] Vector3f edgePoint( EdgeId e, float f ) const { return MR::edgePoint( topology, points, e, f ); }
@@ -196,6 +196,10 @@ struct [[nodiscard]] Mesh
 
     /// computes triangular face normal from its vertices
     [[nodiscard]] Vector3f normal( FaceId f ) const { return MR::normal( topology, points, f ); }
+
+    /// returns the plane containing given triangular face with normal looking outwards
+    [[nodiscard]] MRMESH_API Plane3f getPlane3f( FaceId f ) const;
+    [[nodiscard]] MRMESH_API Plane3d getPlane3d( FaceId f ) const;
 
     /// computes sum of directed double areas of all triangles around given vertex
     [[nodiscard]] Vector3f dirDblArea( VertId v ) const { return MR::dirDblArea( topology, points, v ); }
