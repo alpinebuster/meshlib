@@ -31,12 +31,19 @@ Pin-Priority: 1001\
         dbus-x11 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+RUN --mount=type=cache,target=/root/.npm \
+    npm install -g typescript
 
 # Set up working directory and change ownership
 WORKDIR /meshlib
 
 # Copy files
-COPY . .
+COPY .git .git
+COPY cmake cmake
+COPY thirdparty thirdparty
+COPY scripts scripts
+COPY source source
+COPY requirements requirements
 # Fix the issue with line endings when developing on a Windows but running on a UNIX docker container
 # Change the EOL for all files from `CRLF` to `LF`
 # RUN find . -type f -exec sed -i 's/\r$//' {} \;
@@ -50,29 +57,29 @@ ENV MR_EMSCRIPTEN=ON
 # Build thirdparty dependencies for default wasm configuration (multithreaded, 32-bit)
 # This is the most commonly used configuration, so we build it first
 RUN echo "Building thirdparty dependencies (default: multithreaded, 32-bit)..." && \
-    ./scripts/build_thirdparty.sh
-    # ./scripts/cmake_install.sh /usr/local/lib/emscripten && \
-    # echo "Cleaning up build artifacts to reduce layer size..." && \
-    # rm -rf bin include lib share thirdparty_build
+    ./scripts/build_thirdparty.sh && \
+    ./scripts/cmake_install.sh /usr/local/lib/emscripten && \
+    echo "Cleaning up build artifacts to reduce layer size..." && \
+    rm -rf bin include lib share thirdparty_build
 
 # Build thirdparty dependencies for single-threaded configuration
 # This creates a separate installation to avoid conflicts
 ENV MR_EMSCRIPTEN_SINGLE=ON
 RUN echo "Building thirdparty dependencies (single-threaded, 32-bit)..." && \
-    ./scripts/build_thirdparty.sh
-    # ./scripts/cmake_install.sh /usr/local/lib/emscripten-single && \
-    # echo "Cleaning up build artifacts..." && \
-    # rm -rf bin include lib share thirdparty_build
+    ./scripts/build_thirdparty.sh && \
+    ./scripts/cmake_install.sh /usr/local/lib/emscripten-single && \
+    echo "Cleaning up build artifacts..." && \
+    rm -rf bin include lib share thirdparty_build
 
 # Build thirdparty dependencies for 64-bit WASM configuration
 # Reset single-threaded flag and enable 64-bit WASM
 ENV MR_EMSCRIPTEN_SINGLE=OFF
 ENV MR_EMSCRIPTEN_WASM64=ON
 RUN echo "Building thirdparty dependencies (multithreaded, 64-bit)..." && \
-    ./scripts/build_thirdparty.sh
-    # ./scripts/cmake_install.sh /usr/local/lib/emscripten-wasm64 && \
-    # echo "Cleaning up build artifacts..." && \
-    # rm -rf bin include lib share thirdparty_build
+    ./scripts/build_thirdparty.sh && \
+    ./scripts/cmake_install.sh /usr/local/lib/emscripten-wasm64 && \
+    echo "Cleaning up build artifacts..." && \
+    rm -rf bin include lib share thirdparty_build
 
 # Reset environment variables to default state
 ENV MR_EMSCRIPTEN_WASM64=OFF

@@ -27,25 +27,28 @@ services:
       - ./source:/meshlib/source
       - ./wasm:/meshlib/wasm
       - ./CMakeLists.txt:/meshlib/CMakeLists.txt
-      # FIXME: Create a volume for build artifacts to persist between runs (Optional)
-      # - meshlib-build-cache:/meshlib/build
-      # Cache CMake configuration to speed up subsequent builds
-      # - meshlib-cmake-cache:/meshlib/.cmake
+      - ./meshlib-config.cmake.in:/meshlib/meshlib-config.cmake.in
+      # Create a volume for build artifacts to persist between runs (Optional)
+      - meshlib-build-cache:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
+      - MESHLIB_KEEP_BUILD=ON
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=OFF  # Default to multithreaded
       - MR_EMSCRIPTEN_WASM64=OFF  # Default to 32-bit
-      - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23 -DMR_PCH_USE_EXTRA_HEADERS=ON
+      - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23
+      - DMR_PCH_USE_EXTRA_HEADERS=ON
       - DEBIAN_FRONTEND=noninteractive
-      # Point to the pre-built thirdparty libraries
-      # - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten
     # Override the command to run your build process
     command: >
       bash -c "
         echo '=== MeshLib Emscripten Build (Multithreaded, 32-bit) ===' &&
         echo 'Git submodules and thirdparty dependencies are pre-built in the Docker image.' &&
+        ln -s /usr/local/lib/emscripten/bin /meshlib/bin &&
+        ln -s /usr/local/lib/emscripten/include /meshlib/include &&
+        ln -s /usr/local/lib/emscripten/lib /meshlib/lib &&
+        ln -s /usr/local/lib/emscripten/share /meshlib/share &&
         echo 'Starting source code build...' &&
         # Build the main source code
         echo 'Running build_source.sh...' &&
@@ -62,8 +65,6 @@ services:
     # Keep container running for debugging and interaction
     tty: true
     stdin_open: true
-    # Network mode for better performance (optional)
-    network_mode: "bridge"
 
   # Alternative service for different build configurations
   meshlib-emscripten-build-singlethreaded:
@@ -77,21 +78,27 @@ services:
       - ./cmake:/meshlib/cmake
       - ./source:/meshlib/source
       - ./wasm:/meshlib/wasm
-      # - meshlib-build-cache-single:/workspace/build
-      - meshlib-cmake-cache-single:/workspace/.cmake
+      - ./CMakeLists.txt:/meshlib/CMakeLists.txt
+      - ./meshlib-config.cmake.in:/meshlib/meshlib-config.cmake.in
+      - meshlib-build-cache-single:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
+      - MESHLIB_KEEP_BUILD=ON
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=ON   # Single-threaded build
       - MR_EMSCRIPTEN_WASM64=OFF
-      - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23 -DMR_PCH_USE_EXTRA_HEADERS=ON
-      # Point to the single-threaded thirdparty libraries
-      # - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten-single
+      - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23
+      - DMR_PCH_USE_EXTRA_HEADERS=ON
+      - DEBIAN_FRONTEND=noninteractive
     command: >
       bash -c "
         echo '=== MeshLib Emscripten Build (Single-threaded, 32-bit) ===' &&
         echo 'Using pre-built single-threaded thirdparty dependencies.' &&
+        ln -s /usr/local/lib/emscripten-single/bin /meshlib/bin &&
+        ln -s /usr/local/lib/emscripten-single/include /meshlib/include &&
+        ln -s /usr/local/lib/emscripten-single/lib /meshlib/lib &&
+        ln -s /usr/local/lib/emscripten-single/share /meshlib/share &&
         echo 'Building source code in single-threaded mode...' &&
         ./scripts/build_source.sh &&
         
@@ -117,21 +124,27 @@ services:
       - ./cmake:/meshlib/cmake
       - ./source:/meshlib/source
       - ./wasm:/meshlib/wasm
-      # - meshlib-build-cache-wasm64:/meshlib/build
-      - meshlib-cmake-cache-wasm64:/meshlib/.cmake
+      - ./CMakeLists.txt:/meshlib/CMakeLists.txt
+      - ./meshlib-config.cmake.in:/meshlib/meshlib-config.cmake.in
+      - meshlib-build-cache-wasm64:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
+      - MESHLIB_KEEP_BUILD=ON
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=OFF
       - MR_EMSCRIPTEN_WASM64=ON   # 64-bit WASM build
-      - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23 -DMR_PCH_USE_EXTRA_HEADERS=ON
-      # Point to the 64-bit WASM thirdparty libraries
-      # - CMAKE_PREFIX_PATH=/usr/local/lib/emscripten-wasm64
+      - MR_CMAKE_OPTIONS=-DMR_CXX_STANDARD=23
+      - DMR_PCH_USE_EXTRA_HEADERS=ON
+      - DEBIAN_FRONTEND=noninteractive
     command: >
       bash -c "
         echo '=== MeshLib Emscripten Build (Multithreaded, 64-bit WASM) ===' &&
         echo 'Using pre-built 64-bit WASM thirdparty dependencies.' &&
+        ln -s /usr/local/lib/emscripten-wasm64/bin /meshlib/bin &&
+        ln -s /usr/local/lib/emscripten-wasm64/include /meshlib/include &&
+        ln -s /usr/local/lib/emscripten-wasm64/lib /meshlib/lib &&
+        ln -s /usr/local/lib/emscripten-wasm64/share /meshlib/share &&
         echo 'Building source code in 64-bit WASM mode...' &&
         ./scripts/build_source.sh &&
         
