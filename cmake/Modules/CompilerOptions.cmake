@@ -171,7 +171,6 @@ IF(MR_EMSCRIPTEN)
     "-s USE_GLFW=3"
     "-s USE_ZLIB=1"
     "-s FULL_ES3=1"
-    # "-s EXPORT_ES6=1"
     "-s USE_LIBPNG=1"
   )
 
@@ -183,6 +182,8 @@ IF(MR_EMSCRIPTEN)
     # uncomment to enable source map for debugging in browsers (slow)
     #set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -gsource-map")
 
+    # REF: `https://emscripten.org/docs/tools_reference/settings_reference.html#maximum-memory`,
+    # `https://github.com/emscripten-core/emscripten/issues/22794#issuecomment-2445501403`
     IF(MR_EMSCRIPTEN_WASM64)
       set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s MAXIMUM_MEMORY=16GB") # wasm-ld: maximum memory [...] cannot be greater than 17179869184
     ELSE()

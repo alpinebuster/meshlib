@@ -92,7 +92,10 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     rm -rf awscliv2.zip aws/
 
 # TODO: Switch to non-root user for security
-# USER zzz
+RUN useradd -ms /bin/bash zzz && \
+    sudo chmod -R 777 /emsdk/upstream/emscripten/
+RUN chown -R zzz:zzz /meshlib
+USER zzz
 
 # Set default environment variables for source build
 ENV MESHLIB_BUILD_RELEASE=ON
