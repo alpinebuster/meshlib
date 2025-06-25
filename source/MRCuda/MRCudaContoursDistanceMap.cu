@@ -2,6 +2,7 @@
 #include "MRCudaBasic.h"
 #include "MRCudaFloat.cuh"
 #include "MRCudaInplaceStack.cuh"
+#include "MRCudaLineSegm.cuh"
 
 #include <float.h>
 
@@ -10,22 +11,9 @@ namespace MR
 namespace Cuda
 {
 
-__device__ float2 closestPointOnLineSegm( const float2& pt, const float2& a, const float2& b )
-{
-    const auto ab = b - a;
-    const auto dt = dot( pt - a, ab );
-    const auto abLengthSq = lengthSq( ab );
-    if ( dt <= 0 )
-        return a;
-    if ( dt >= abLengthSq )
-        return b;
-    auto ratio = dt / abLengthSq;
-    return a * ( 1 - ratio ) + b * ratio;
-}
-
 __global__ void kernel(
     const float2 originPoint, const int2 resolution, const float2 pixelSize,
-    const Node2* __restrict__ nodes, const float2* __restrict__ polylinePoints, const int* __restrict__ orgs,
+    const Polyline2Data polyline,
     float* dists, const size_t chunkSize, size_t chunkOffset )
 {
     if ( chunkSize == 0 )
@@ -65,7 +53,7 @@ __global__ void kernel(
 
     auto getSubTask = [&] ( int n )
     {
-        return SubTask{ n, lengthSq( nodes[n].box.getBoxClosestPointTo( pt ) - pt ) };
+        return SubTask{ n, lengthSq( polyline.nodes[n].box.getBoxClosestPointTo( pt ) - pt ) };
     };
 
     addSubTask( getSubTask( 0 ) );
@@ -74,15 +62,15 @@ __global__ void kernel(
     {
         const auto s = subtasks.top();
         subtasks.pop();
-        const auto& node = nodes[s.n];
+        const auto& node = polyline.nodes[s.n];
         if ( s.distSq >= resDistSq )
             continue;
 
         if ( node.leaf() )
         {
             const auto lineId = node.leafId();
-            float2 a = polylinePoints[orgs[2 * lineId]];
-            float2 b = polylinePoints[orgs[2 * lineId + 1]];
+            float2 a = polyline.points[polyline.orgs[2 * lineId]];
+            float2 b = polyline.points[polyline.orgs[2 * lineId + 1]];
             auto proj = closestPointOnLineSegm( pt, a, b );
 
             float distSq = lengthSq( proj - pt );
@@ -111,7 +99,7 @@ __global__ void kernel(
 
 void contoursDistanceMapProjectionKernel( 
     const float2 originPoint, const int2 resolution, const float2 pixelSize,
-    const Node2* nodes, const float2* polylinePoints, const int* orgs, float* dists,
+    const Polyline2Data polyline, float* dists,
     const size_t chunkSize, size_t chunkOffset )
 {
     constexpr int maxThreadsPerBlock = 640;
@@ -120,7 +108,7 @@ void contoursDistanceMapProjectionKernel(
     // kernel
     kernel<<< numBlocks, maxThreadsPerBlock >>>(
         originPoint, resolution, pixelSize,
-        nodes, polylinePoints, orgs, dists, chunkSize, chunkOffset );
+        polyline, dists, chunkSize, chunkOffset );
 }
 
 }
