@@ -28,7 +28,20 @@ IF(MR_EMSCRIPTEN)
   #
   # Set target env: `-s ENVIRONMENT=web,worker,node` (see `../../cmake/Modules/CompilerOptions.cmake`)
   #
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshLib -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"FS\"]' --emit-tsd ${PROJECT_NAME}.d.ts")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshLib -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"FS\"]'")
+
+  # FIXME:
+  # REF: `https://github.com/emscripten-core/emscripten/issues/24620`
+  #
+  # /tmp/emscripten_temp_9x4nuxmx/tsgen.js:500
+  #     wasmMemory = new WebAssembly.Memory({
+  #                  ^
+  # TypeError: Cannot convert a BigInt value to a number
+  #
+  IF(NOT MR_EMSCRIPTEN_WASM64)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --emit-tsd ${PROJECT_NAME}.d.ts")
+  ENDIF()
+
   target_link_libraries(${PROJECT_NAME} PRIVATE
     MRMesh
     MRIOExtras
@@ -42,3 +55,6 @@ ENDIF() # MR_EMSCRIPTEN
 IF(MR_PCH)
   TARGET_PRECOMPILE_HEADERS(${PROJECT_NAME} REUSE_FROM MRPch)
 ENDIF()
+
+install(TARGETS ${PROJECT_NAME} DESTINATION "${MR_BIN_DIR}")
+install(FILES ${LIB_LIST} DESTINATION "${MR_RESOURCES_DIR}")
