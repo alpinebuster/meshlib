@@ -12,7 +12,7 @@ class Selector {
 
 		// signals
 
-		signals.intersectionsDetected.add( ( intersects ) => {
+		signals.intersectionsDetected.add( ( intersects, source, event ) => {
 			if ( intersects.length > 0 ) {
 				const object = intersects[ 0 ].object;
 
@@ -27,6 +27,14 @@ class Selector {
 				this.select( null );
 			}
 		} );
+	}
+
+	getPointerIntersect( point, camera, object ) {
+		mouse.set( ( point.x * 2 ) - 1, - ( point.y * 2 ) + 1 );
+
+		raycaster.setFromCamera( mouse, camera );
+
+		return raycaster.intersectObject( object, false );
 	}
 
 	getIntersects( raycaster ) {

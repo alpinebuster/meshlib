@@ -17,8 +17,9 @@ import { SidebarObjectAnimation } from './Sidebar.Object.Animation.js';
 
 function SidebarObject( editor ) {
 	const strings = editor.strings;
-
+	const selector = editor.selector;
 	const signals = editor.signals;
+	const camera = editor.camera;
 
 	const container = new UIPanel();
 	container.setBorderTop( '0' );
@@ -181,8 +182,24 @@ function SidebarObject( editor ) {
 			editor.execute( new RemoveObjectCommand( editor, curveLine ) );
 		}
 	});
-	signals.intersectionsDetected.add( ( intersects ) => {
+	signals.intersectionsDetected.add( ( intersects, source, event ) => {
 		if (selectorMode && intersects.length > 0) {
+			// 1. Check if you clicked on a point
+			const intersectedPoints = selector.getPointerIntersect( source.position, camera, pointCloud );
+			if ( intersectedPoints.length > 0 ) {
+				const idx = intersectedPoints[0].index;
+				if ( event.altKey ) {
+					clicked.splice( idx, 1 );
+					refreshPoints();
+					refreshCurve();
+				} else {
+					draggingIndex = idx;
+				}
+
+				return;
+			}
+			
+        	// 2. No point intersected → check mesh surface
 			const _intersected_object = intersects[ 0 ].object;
 			if (editor.selected !== _intersected_object) return;
 
@@ -193,43 +210,63 @@ function SidebarObject( editor ) {
 			}
 
 			clicked.push(intersects[0].point.clone());
-			console.log("pts: ", clicked);
-			
-			// DO NOT use this, because he bottom of Three.js' `BufferGeometry` is fixed-length,
-			// and when `setFromPoints(clicked)` has more new points than the original,
-			// Three.js can't automatically expand the size of the buffer that already exists.
-			//
-			// pointGeo.setFromPoints(clicked);
-			//
-			pointGeo.dispose();
-			pointGeo = new THREE.BufferGeometry().setFromPoints(clicked);
-			pointCloud.geometry = pointGeo;
+			// console.log("pts: ", clicked);
 
-			if (clicked.length == 1) {
-				editor.execute( new AddObjectCommand( editor, pointCloud, editor.selected ) );
-			}
-			if (clicked.length >= 2) {
-				const curve = new THREE.CatmullRomCurve3(clicked, clicked.length > 2, 'centripetal');
-				// Sample a number of points on the curve and then fit the surface
-				const pts = curve.getPoints(clicked.length * 6);
-				
-				// Nearest point lookup
-				const projectedSurfacePts = pts.map(p => {
-					const target = new THREE.Vector3();
-					_cur_intersect.geometry.boundsTree.closestPointToPoint(p, target);
-
-					return target.point.clone();
-				});
-
-				debugger;
-				curveLine.geometry.dispose();
-				curveLine.geometry = new THREE.BufferGeometry().setFromPoints(projectedSurfacePts);
-			}
-			if (clicked.length == 2) {
-				editor.execute( new AddObjectCommand( editor, curveLine, editor.selected ) );
-			}
+			refreshPoints();
+			refreshCurve();
 		}
 	});
+	signals.mouseMoving.add( ( onMovingPosition, event ) => {
+        if ( draggingIndex < 0 ) return;
+		// console.log("onMovingPosition: ", onMovingPosition);
+		const intersects = selector.getPointerIntersects( onMovingPosition, camera );
+		if ( intersects.length > 0 ) {
+			const intersect = intersects[ 0 ];
+
+			clicked[draggingIndex].copy( intersect.point );
+			// console.log("intersect: ", intersect);
+			refreshPoints();
+			refreshCurve();
+		}
+	});
+	function refreshPoints() {
+		// DO NOT use this, because he bottom of Three.js' `BufferGeometry` is fixed-length,
+		// and when `setFromPoints(clicked)` has more new points than the original,
+		// Three.js can't automatically expand the size of the buffer that already exists.
+		//
+		// pointGeo.setFromPoints(clicked);
+		//
+		pointGeo.dispose();
+		pointGeo = new THREE.BufferGeometry().setFromPoints(clicked);
+		pointGeo.attributes.position.needsUpdate = true;
+		pointCloud.geometry = pointGeo;
+
+		if ( clicked.length == 1 ) {
+			editor.execute( new AddObjectCommand( editor, pointCloud, editor.selected ) );
+		}
+	}
+	function refreshCurve() {
+		if (clicked.length >= 2) {
+			const curve = new THREE.CatmullRomCurve3(clicked, clicked.length > 2, 'centripetal');
+			// Sample a number of points on the curve and then fit the surface
+			const pts = curve.getPoints(clicked.length * 6);
+			
+			// Nearest point lookup
+			const projectedSurfacePts = pts.map(p => {
+				const target = new THREE.Vector3();
+				_cur_intersect.geometry.boundsTree.closestPointToPoint(p, target);
+
+				return target.point.clone();
+			});
+
+			curveLine.geometry.dispose();
+			curveLine.geometry = new THREE.BufferGeometry().setFromPoints(projectedSurfacePts);
+		}
+		if (clicked.length == 2) {
+			editor.execute( new AddObjectCommand( editor, curveLine, editor.selected ) );
+		}
+	}
+
 	const wasmOpFillholes = new UIButton( strings.getKey( 'sidebar/object/wasmFillholes') ).setMarginLeft( '7px' ).onClick(function () {
 		const currentUUID = editor.selected.uuid;
 		if (currentUUID) {

@@ -60,7 +60,9 @@ class XR {
 						if ( intersect.object === group.children[ 0 ] ) return;
 					}
 
-					signals.intersectionsDetected.dispatch( intersects );
+					const origin = raycaster.ray.origin.clone();
+					const direction = raycaster.ray.direction.clone();
+					signals.intersectionsDetected.dispatch( intersects, {origin, direction}, event );
 				}
 
 				function onControllerEvent( event ) {

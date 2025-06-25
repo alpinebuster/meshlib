@@ -93,9 +93,7 @@ function Viewport( editor ) {
 			switch ( transformControls.getMode() ) {
 				case 'translate':
 					if ( ! objectPositionOnDown.equals( object.position ) ) {
-
 						editor.execute( new SetPositionCommand( editor, object, object.position, objectPositionOnDown ) );
-
 					}
 
 					break;
@@ -148,39 +146,50 @@ function Viewport( editor ) {
 	const onDownPosition = new THREE.Vector2();
 	const onUpPosition = new THREE.Vector2();
 	const onDoubleClickPosition = new THREE.Vector2();
+	const onMovingPosition = new THREE.Vector2();
 
 	function getMousePosition( dom, x, y ) {
 		const rect = dom.getBoundingClientRect();
 		return [ ( x - rect.left ) / rect.width, ( y - rect.top ) / rect.height ];
 	}
 
-	function handleClick() {
+	function handleClick( event ) {
 		if ( onDownPosition.distanceTo( onUpPosition ) === 0 ) {
 			const intersects = selector.getPointerIntersects( onUpPosition, camera );
-			signals.intersectionsDetected.dispatch( intersects );
+			signals.intersectionsDetected.dispatch( intersects, {position: onUpPosition}, event );
 
 			render();
 		}
 	}
 
 	function onMouseDown( event ) {
-		// event.preventDefault();
-
 		if ( event.target !== renderer.domElement ) return;
 
 		const array = getMousePosition( container.dom, event.clientX, event.clientY );
 		onDownPosition.fromArray( array );
 
-		document.addEventListener( 'mouseup', onMouseUp );
+		container.dom.addEventListener( 'mousemove', onMouseMove );
+		container.dom.addEventListener( 'mouseup', onMouseUp );
+	}
+
+	function onMouseMove( event ) {
+		event.preventDefault();
+		event.stopPropagation();
+		if ( event.target !== renderer.domElement ) return;
+
+		const array = getMousePosition( container.dom, event.clientX, event.clientY );
+		onMovingPosition.fromArray( array );
+		signals.mouseMoving.dispatch( onMovingPosition, event );
 	}
 
 	function onMouseUp( event ) {
 		const array = getMousePosition( container.dom, event.clientX, event.clientY );
 		onUpPosition.fromArray( array );
 
-		handleClick();
+		handleClick( event );
 
-		document.removeEventListener( 'mouseup', onMouseUp );
+		container.dom.removeEventListener( 'mousemove', onMouseMove );
+		container.dom.removeEventListener( 'mouseup', onMouseUp );
 	}
 
 	function onTouchStart( event ) {
@@ -189,7 +198,7 @@ function Viewport( editor ) {
 		const array = getMousePosition( container.dom, touch.clientX, touch.clientY );
 		onDownPosition.fromArray( array );
 
-		document.addEventListener( 'touchend', onTouchEnd );
+		container.dom.addEventListener( 'touchend', onTouchEnd );
 	}
 
 	function onTouchEnd( event ) {
@@ -198,7 +207,7 @@ function Viewport( editor ) {
 		const array = getMousePosition( container.dom, touch.clientX, touch.clientY );
 		onUpPosition.fromArray( array );
 
-		handleClick();
+		handleClick( event );
 
 		document.removeEventListener( 'touchend', onTouchEnd );
 	}
@@ -214,7 +223,6 @@ function Viewport( editor ) {
 
 			signals.objectFocused.dispatch( intersect.object );
 		}
-
 	}
 
 	container.dom.addEventListener( 'mousedown', onMouseDown );
@@ -259,7 +267,6 @@ function Viewport( editor ) {
 
 	signals.rendererUpdated.add( function () {
 		scene.traverse( function ( child ) {
-
 			if ( child.material !== undefined ) {
 				child.material.needsUpdate = true;
 			}
@@ -288,12 +295,10 @@ function Viewport( editor ) {
 		if ( window.matchMedia ) {
 			const mediaQuery = window.matchMedia( '(prefers-color-scheme: dark)' );
 			mediaQuery.addEventListener( 'change', function ( event ) {
-
 				renderer.setClearColor( event.matches ? 0x333333 : 0xaaaaaa );
 				updateGridColors( grid1, grid2, event.matches ? GRID_COLORS_DARK : GRID_COLORS_LIGHT );
 
 				render();
-
 			} );
 
 			renderer.setClearColor( mediaQuery.matches ? 0x333333 : 0xaaaaaa );
@@ -383,7 +388,6 @@ function Viewport( editor ) {
 		if ( object === transformControls.object ) {
 			transformControls.detach();
 		}
-
 	} );
 
 	signals.materialChanged.add( function () {

@@ -94,6 +94,7 @@ function Editor() {
 		scriptRemoved: new Signal(),
 
 		windowResize: new Signal(),
+		mouseMoving: new Signal(),
 
 		showHelpersChanged: new Signal(),
 		refreshSidebarObject3D: new Signal(),
