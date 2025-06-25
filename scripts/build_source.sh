@@ -31,7 +31,7 @@ else
     MR_EMSCRIPTEN="OFF"
   fi
 fi
-echo "Emscripten ${MR_EMSCRIPTEN}, singlethread ${MR_EMSCRIPTEN_SINGLETHREAD}, 64-bit ${MR_EMSCRIPTEN_WASM64}"
+echo "Emscripten ${MR_EMSCRIPTEN}, singlethread ${MR_EMSCRIPTEN_SINGLETHREAD}, 64-bit ${MR_EMSCRIPTEN_WASM64:-0}"
 
 if [ $MR_EMSCRIPTEN == "ON" ]; then
   if [[ $MR_EMSCRIPTEN_SINGLE == "ON" ]]; then
@@ -163,11 +163,11 @@ if [ "${MESHLIB_BUILD_DEBUG}" = "ON" ]; then
 fi
 
 if [ "${MESHLIB_BUILD_RELEASE}" = "ON" ]; then
-  printf "\rAutoinstall script successfully finished. You could run ./build/Release/bin/MRTest next\n\n"
+  printf "\rAutoinstall script successfully finished. You could run ./build/Release/bin/MRTest next by serving MRTest.html.\n\n"
 else
   if [ "${MESHLIB_BUILD_DEBUG}" = "ON" ]; then
-    printf "\rAutoinstall script successfully finished. You could run ./build/Debug/bin/MRTest next\n\n"
+    printf "\rAutoinstall script successfully finished. You could run ./build/Debug/bin/MRTest next by serving MRTest.html.\n\n"
   else
-    printf "\rNothing was built\n\n"
+    printf "\rNothing was built.\n\n"
   fi
 fi

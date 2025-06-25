@@ -30,26 +30,14 @@ IF(MR_EMSCRIPTEN)
   #
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshLib -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"FS\"]' --emit-tsd ${PROJECT_NAME}.d.ts")
   target_link_libraries(${PROJECT_NAME} PRIVATE
-    tbb
-    zip
-    gtest
-    -Wl,--whole-archive
     MRMesh
     MRIOExtras
     MRSymbolMesh
-    MRVoxels
-    -Wl,--no-whole-archive
+    tbb
+    jsoncpp
     ${MRJS_OPTIONAL_DEPENDENCIES}
   )
-ELSE() # NOT MR_EMSCRIPTEN
-  add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
-  target_link_libraries(${PROJECT_NAME} PRIVATE
-    MRMesh
-  )
 ENDIF() # MR_EMSCRIPTEN
-
-install(TARGETS ${PROJECT_NAME} DESTINATION "${MR_BIN_DIR}")
-install(FILES ${LIB_LIST} DESTINATION "${MR_RESOURCES_DIR}")
 
 IF(MR_PCH)
   TARGET_PRECOMPILE_HEADERS(${PROJECT_NAME} REUSE_FROM MRPch)
