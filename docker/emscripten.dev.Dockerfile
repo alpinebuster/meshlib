@@ -44,6 +44,7 @@ COPY thirdparty thirdparty
 COPY scripts scripts
 COPY source source
 COPY requirements requirements
+COPY wasm wasm
 # Fix the issue with line endings when developing on a Windows but running on a UNIX docker container
 # Change the EOL for all files from `CRLF` to `LF`
 # RUN find . -type f -exec sed -i 's/\r$//' {} \;
@@ -94,8 +95,9 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 # TODO: Switch to non-root user for security
 RUN useradd -ms /bin/bash zzz && \
     sudo chmod -R 777 /emsdk/upstream/emscripten/
-RUN chown -R zzz:zzz /meshlib
-USER zzz
+RUN chown -R zzz:zzz /meshlib/ && \
+    sudo chmod -R 777 /meshlib/
+# USER zzz
 
 # Set default environment variables for source build
 ENV MESHLIB_BUILD_RELEASE=ON
