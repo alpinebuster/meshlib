@@ -24,9 +24,9 @@ T sqr( const T& x )
 using Box2f = Box<Vector2f>;
 using Box3f = Box<Vector3f>;
 
-EMSCRIPTEN_BINDINGS( box_module )
+EMSCRIPTEN_BINDINGS( BoxModule )
 {
-	class_<Box2f>( "Box2F" )
+	class_<Box2f>( "Box2f" )
 		// Constructors
 		.constructor<>()
 		.constructor<const Vector2f&, const Vector2f&>()
@@ -60,7 +60,7 @@ EMSCRIPTEN_BINDINGS( box_module )
 		.function( "expanded", &Box2f::expanded )
 		.function( "insignificantlyExpanded", &Box2f::insignificantlyExpanded );
 
-	class_<Box3f>( "Box3F" )
+	class_<Box3f>( "Box3f" )
 		// Constructors
 		.constructor<>()
 		.constructor<const Vector3f&, const Vector3f&>()

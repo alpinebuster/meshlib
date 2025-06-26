@@ -25,9 +25,9 @@ Vector3<int> unitVector3FromInt( int azimuth, int altitude )
 // ------------------------------------------------------------------------
 // 1. Bind the Embind interface for Vector3<float> (i.e., Vector3F)
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS( Vector3FModule )
+EMSCRIPTEN_BINDINGS( Vector3fModule )
 {
-    class_<Vector3<float>>( "Vector3F" )
+    class_<Vector3<float>>( "Vector3f" )
         // Constructor: Parameterless construction and construction of three floating-point parameters (x,y,z)
         .constructor<>()
         .constructor<float, float, float>()
@@ -60,29 +60,29 @@ EMSCRIPTEN_BINDINGS( Vector3FModule )
         .class_function( "minusZ", &Vector3<float>::minusZ );
 
     // Bind `std::pair<Vector3f, Vector3f>`
-    value_array<std::pair<Vector3<float>, Vector3<float>>>( "Vector3FPair" )
+    value_array<std::pair<Vector3<float>, Vector3<float>>>( "Vector3fPair" )
         .element( &std::pair<Vector3<float>, Vector3<float>>::first )
         .element( &std::pair<Vector3<float>, Vector3<float>>::second );
 
     // Below, bind the free functions related to Vector3<float> as well
-    function( "distanceSqF", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &distanceSq<float> ) );
-    function( "distanceF", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &distance<float> ) );
-    function( "crossF", select_overload<Vector3<float>( const Vector3<float>&, const Vector3<float>& )>( &cross<float> ) );
-    function( "dotF", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &dot<float> ) );
-    function( "sqrF", select_overload<float( const Vector3<float>& )>( &sqr<float> ) );
-    function( "mixedF", select_overload<float( const Vector3<float>&, const Vector3<float>&, const Vector3<float>& )>( &mixed<float> ) );
-    function( "multF", select_overload<Vector3<float>( const Vector3<float>&, const Vector3<float>& )>( &mult<float> ) );
-    function( "divF", select_overload<Vector3<float>( const Vector3<float>&, const Vector3<float>& )>( &div<float> ) );
-    function( "angleF", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &angle<float> ) );
-    function( "unitVector3F", select_overload<Vector3<float>( float, float )>( &unitVector3<float> ) );
+    function( "distanceSq", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &distanceSq<float> ) );
+    function( "distance", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &distance<float> ) );
+    function( "cross", select_overload<Vector3<float>( const Vector3<float>&, const Vector3<float>& )>( &cross<float> ) );
+    function( "dot", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &dot<float> ) );
+    function( "sqr", select_overload<float( const Vector3<float>& )>( &sqr<float> ) );
+    function( "mixed", select_overload<float( const Vector3<float>&, const Vector3<float>&, const Vector3<float>& )>( &mixed<float> ) );
+    function( "mult", select_overload<Vector3<float>( const Vector3<float>&, const Vector3<float>& )>( &mult<float> ) );
+    function( "div", select_overload<Vector3<float>( const Vector3<float>&, const Vector3<float>& )>( &div<float> ) );
+    function( "angle", select_overload<float( const Vector3<float>&, const Vector3<float>& )>( &angle<float> ) );
+    function( "unitVector3", select_overload<Vector3<float>( float, float )>( &unitVector3<float> ) );
 }
 
 // ------------------------------------------------------------------------
 // 2. Bind the Embind interface for Vector3<int> (i.e., Vector3I)
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS( Vector3IModule )
+EMSCRIPTEN_BINDINGS( Vector3iModule )
 {
-    class_<Vector3<int>>( "Vector3I" )
+    class_<Vector3<int>>( "Vector3i" )
         .constructor<>()
         .constructor<int, int, int>()
 
@@ -146,30 +146,30 @@ EMSCRIPTEN_BINDINGS( Vector3IModule )
         .class_function( "minusY", &Vector3<int>::minusY )
         .class_function( "minusZ", &Vector3<int>::minusZ );
 
-    value_array<std::pair<Vector3<int>, Vector3<int>>>( "Vector3IPair" )
+    value_array<std::pair<Vector3<int>, Vector3<int>>>( "Vector3iPair" )
         .element( &std::pair<Vector3<int>, Vector3<int>>::first )
         .element( &std::pair<Vector3<int>, Vector3<int>>::second );
 
     // Bind the free functions related to Vector3<int>
-    function( "distanceSqI", select_overload<int( const Vector3<int>&, const Vector3<int>& )>( &distanceSq<int> ) );
-    function( "sqrI", select_overload<int( const Vector3<int>& )>( &sqr<int> ) );
+    function( "distanceSq", select_overload<int( const Vector3<int>&, const Vector3<int>& )>( &distanceSq<int> ) );
+    function( "sqr", select_overload<int( const Vector3<int>& )>( &sqr<int> ) );
     // The cross, dot, mixed, mult, div, etc. can also be bound to integers, but it should be noted that the result type is also an integer
-    function( "crossI", select_overload<Vector3<int>( const Vector3<int>&, const Vector3<int>& )>( &cross<int> ) );
-    function( "dotI", select_overload<int( const Vector3<int>&, const Vector3<int>& )>( &dot<int> ) );
-    function( "mixedI", select_overload<int( const Vector3<int>&, const Vector3<int>&, const Vector3<int>& )>( &mixed<int> ) );
-    function( "multI", select_overload<Vector3<int>( const Vector3<int>&, const Vector3<int>& )>( &mult<int> ) );
-    function( "divI", select_overload<Vector3<int>( const Vector3<int>&, const Vector3<int>& )>( &div<int> ) );
-    function( "angleI", select_overload<int( const Vector3<int>&, const Vector3<int>& )>( &angle<int> ) );
+    function( "cross", select_overload<Vector3<int>( const Vector3<int>&, const Vector3<int>& )>( &cross<int> ) );
+    function( "dot", select_overload<int( const Vector3<int>&, const Vector3<int>& )>( &dot<int> ) );
+    function( "mixed", select_overload<int( const Vector3<int>&, const Vector3<int>&, const Vector3<int>& )>( &mixed<int> ) );
+    function( "mult", select_overload<Vector3<int>( const Vector3<int>&, const Vector3<int>& )>( &mult<int> ) );
+    function( "div", select_overload<Vector3<int>( const Vector3<int>&, const Vector3<int>& )>( &div<int> ) );
+    function( "angle", select_overload<int( const Vector3<int>&, const Vector3<int>& )>( &angle<int> ) );
     // We don't use `function( "unitVector3I", select_overload<Vector3<int>( int, int )>( &unitVector3<int> ) );` directly as `std::cos` and `std::sin` doesn't supports `int`
-    function( "unitVector3I", &unitVector3FromInt );
+    function( "unitVector3", &unitVector3FromInt );
 }
 
 // ------------------------------------------------------------------------
 // 3. Bind the Embind interface for Vector3<double> (i.e., Vector3D)
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS( Vector3DModule )
+EMSCRIPTEN_BINDINGS( Vector3dModule )
 {
-    class_<Vector3<double>>( "Vector3D" )
+    class_<Vector3<double>>( "Vector3d" )
         .constructor<>()
         .constructor<double, double, double>()
 
@@ -201,24 +201,24 @@ EMSCRIPTEN_BINDINGS( Vector3DModule )
         .element( &std::pair<Vector3<double>, Vector3<double>>::second );
 
     // Below, bind the free functions related to Vector3<double> as well
-    function( "distanceSqD", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &distanceSq<double> ) );
-    function( "distanceD", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &distance<double> ) );
-    function( "crossD", select_overload<Vector3<double>( const Vector3<double>&, const Vector3<double>& )>( &cross<double> ) );
-    function( "dotD", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &dot<double> ) );
-    function( "sqrD", select_overload<double( const Vector3<double>& )>( &sqr<double> ) );
-    function( "mixedD", select_overload<double( const Vector3<double>&, const Vector3<double>&, const Vector3<double>& )>( &mixed<double> ) );
-    function( "multD", select_overload<Vector3<double>( const Vector3<double>&, const Vector3<double>& )>( &mult<double> ) );
-    function( "divD", select_overload<Vector3<double>( const Vector3<double>&, const Vector3<double>& )>( &div<double> ) );
-    function( "angleD", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &angle<double> ) );
-    function( "unitVector3D", select_overload<Vector3<double>( double, double )>( &unitVector3<double> ) );
+    function( "distanceSq", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &distanceSq<double> ) );
+    function( "distance", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &distance<double> ) );
+    function( "cross", select_overload<Vector3<double>( const Vector3<double>&, const Vector3<double>& )>( &cross<double> ) );
+    function( "dot", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &dot<double> ) );
+    function( "sqr", select_overload<double( const Vector3<double>& )>( &sqr<double> ) );
+    function( "mixed", select_overload<double( const Vector3<double>&, const Vector3<double>&, const Vector3<double>& )>( &mixed<double> ) );
+    function( "mult", select_overload<Vector3<double>( const Vector3<double>&, const Vector3<double>& )>( &mult<double> ) );
+    function( "div", select_overload<Vector3<double>( const Vector3<double>&, const Vector3<double>& )>( &div<double> ) );
+    function( "angle", select_overload<double( const Vector3<double>&, const Vector3<double>& )>( &angle<double> ) );
+    function( "unitVector3", select_overload<Vector3<double>( double, double )>( &unitVector3<double> ) );
 }
 
 // ------------------------------------------------------------------------
 // 4. Bind the Embind interface for Vector3<long long> (i.e., Vector3LL)
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS( Vector3LLModule )
+EMSCRIPTEN_BINDINGS( Vector3llModule )
 {
-    class_<Vector3<long long>>( "Vector3LL" )
+    class_<Vector3<long long>>( "Vector3ll" )
         .constructor<>()
         .constructor<long long, long long, long long>()
 
@@ -272,30 +272,30 @@ EMSCRIPTEN_BINDINGS( Vector3LLModule )
         .class_function( "minusZ", &Vector3<long long>::minusZ );
 
     // Bind `std::pair<Vector3d, Vector3d>`
-    value_array<std::pair<Vector3<long long>, Vector3<long long>>>( "Vector3LLPair" )
+    value_array<std::pair<Vector3<long long>, Vector3<long long>>>( "Vector3llPair" )
         .element( &std::pair<Vector3<long long>, Vector3<long long>>::first )
         .element( &std::pair<Vector3<long long>, Vector3<long long>>::second );
 
     // Below, bind the free functions related to Vector3<long long> as well
-    function( "distanceSqLL", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &distanceSq<long long> ) );
-    function( "distanceLL", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &distance<long long> ) );
-    function( "crossLL", select_overload<Vector3<long long>( const Vector3<long long>&, const Vector3<long long>& )>( &cross<long long> ) );
-    function( "dotLL", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &dot<long long> ) );
-    function( "sqrLL", select_overload<long long( const Vector3<long long>& )>( &sqr<long long> ) );
-    function( "mixedLL", select_overload<long long( const Vector3<long long>&, const Vector3<long long>&, const Vector3<long long>& )>( &mixed<long long> ) );
-    function( "multLL", select_overload<Vector3<long long>( const Vector3<long long>&, const Vector3<long long>& )>( &mult<long long> ) );
-    function( "divLL", select_overload<Vector3<long long>( const Vector3<long long>&, const Vector3<long long>& )>( &div<long long> ) );
-    function( "angleLL", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &angle<long long> ) );
-    function( "unitVector3LL", optional_override([](long long x, long long y) -> Vector3d {
+    function( "distanceSq", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &distanceSq<long long> ) );
+    function( "distance", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &distance<long long> ) );
+    function( "cross", select_overload<Vector3<long long>( const Vector3<long long>&, const Vector3<long long>& )>( &cross<long long> ) );
+    function( "dot", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &dot<long long> ) );
+    function( "sqr", select_overload<long long( const Vector3<long long>& )>( &sqr<long long> ) );
+    function( "mixed", select_overload<long long( const Vector3<long long>&, const Vector3<long long>&, const Vector3<long long>& )>( &mixed<long long> ) );
+    function( "mult", select_overload<Vector3<long long>( const Vector3<long long>&, const Vector3<long long>& )>( &mult<long long> ) );
+    function( "div", select_overload<Vector3<long long>( const Vector3<long long>&, const Vector3<long long>& )>( &div<long long> ) );
+    function( "angle", select_overload<long long( const Vector3<long long>&, const Vector3<long long>& )>( &angle<long long> ) );
+    function( "unitVector3", optional_override([](long long x, long long y) -> Vector3d {
         double dx = static_cast<double>(x);
         double dy = static_cast<double>(y);
         return unitVector3(dx, dy);
     }));
 }
 
-EMSCRIPTEN_BINDINGS( Vector3BModule )
+EMSCRIPTEN_BINDINGS( Vector3bModule )
 {
-    class_<Vector3<bool>>( "Vector3B" )
+    class_<Vector3<bool>>( "Vector3b" )
         .constructor<>()
         .constructor<bool, bool, bool>()
 
@@ -316,11 +316,11 @@ EMSCRIPTEN_BINDINGS( Vector3BModule )
         .class_function( "minusY", &Vector3<bool>::minusY )
         .class_function( "minusZ", &Vector3<bool>::minusZ );
 
-    value_array<std::pair<Vector3<bool>, Vector3<bool>>>( "Vector3BPair" )
+    value_array<std::pair<Vector3<bool>, Vector3<bool>>>( "Vector3bPair" )
         .element( &std::pair<Vector3<bool>, Vector3<bool>>::first )
         .element( &std::pair<Vector3<bool>, Vector3<bool>>::second );
 
     // Bind the free functions related to Vector3<bool>
-    function( "distanceSqB", select_overload<bool( const Vector3<bool>&, const Vector3<bool>& )>( &distanceSq<bool> ) );
-    function( "sqrB", select_overload<bool( const Vector3<bool>& )>( &sqr<bool> ) );
+    function( "distanceSq", select_overload<bool( const Vector3<bool>&, const Vector3<bool>& )>( &distanceSq<bool> ) );
+    function( "sqr", select_overload<bool( const Vector3<bool>& )>( &sqr<bool> ) );
 }

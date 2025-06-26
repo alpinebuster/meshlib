@@ -5,9 +5,9 @@
 using namespace emscripten;
 using namespace MR;
 
-EMSCRIPTEN_BINDINGS( Vector2FModule )
+EMSCRIPTEN_BINDINGS( Vector2fModule )
 {
-    class_<Vector2<float>>( "Vector2F" )
+    class_<Vector2<float>>( "Vector2f" )
         .constructor<>()                      // Default constructor (0,0)
         .constructor<float, float>()          // From two floats
         .constructor<const Vector2<float>&>() // Copy constructor
@@ -33,9 +33,9 @@ EMSCRIPTEN_BINDINGS( Vector2FModule )
         .class_function( "minusY", &Vector2<float>::minusY );
 }
 
-EMSCRIPTEN_BINDINGS( Vector2IModule )
+EMSCRIPTEN_BINDINGS( Vector2iModule )
 {
-    class_<Vector2<int>>( "Vector2I" )
+    class_<Vector2<int>>( "Vector2i" )
         .constructor<>()
         .constructor<int, int>()
         .constructor<const Vector2<int>&>()
@@ -59,9 +59,9 @@ EMSCRIPTEN_BINDINGS( Vector2IModule )
         .class_function( "minusY", &Vector2<int>::minusY );
 }
 
-EMSCRIPTEN_BINDINGS( Vector2BModule )
+EMSCRIPTEN_BINDINGS( Vector2bModule )
 {
-    class_<Vector2<bool>>( "Vector2B" )
+    class_<Vector2<bool>>( "Vector2b" )
         .constructor<>()
         .constructor<bool, bool>()
         .constructor<const Vector2<bool>&>()
