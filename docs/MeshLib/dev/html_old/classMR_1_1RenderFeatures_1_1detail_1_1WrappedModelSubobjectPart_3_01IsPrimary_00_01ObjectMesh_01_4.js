@@ -1,4 +1,0 @@
-var classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectMesh_01_4 =
-[
-    [ "getGlobalAlphaForAllViewports", "classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectMesh_01_4.html#a98fb60d113de6080f63304ef5b027c96", null ]
-];

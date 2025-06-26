@@ -1,5 +1,0 @@
-var classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectPoints_01_4 =
-[
-    [ "getGlobalAlphaForAllViewports", "classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectPoints_01_4.html#a25cd4c097cab3308a09d7bed882d916f", null ],
-    [ "getPointSize", "classMR_1_1RenderFeatures_1_1detail_1_1WrappedModelSubobjectPart_3_01IsPrimary_00_01ObjectPoints_01_4.html#ab8af8dcf5138af62a9672ae2ac1145db", null ]
-];

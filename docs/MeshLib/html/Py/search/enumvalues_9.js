@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['plusx_0',['PlusX',['../../Cpp/group__DistanceMapGroup.html#gab7acb4543154d042c297e5823fb633b6aac53fa7ccf60e6f59512da11975eb8a7',1,'MR::PlusX'],['../../Cpp/group__DistanceMapGroup.html#gab7acb4543154d042c297e5823fb633b6aac53fa7ccf60e6f59512da11975eb8a7',1,'MR::PlusX'],['../../Cpp/group__VolumeIndexerGroup.html#gaa7203f0917dc651aa1261d90d266752eaac53fa7ccf60e6f59512da11975eb8a7',1,'MR::PlusX'],['../../Cpp/group__VolumeIndexerGroup.html#gaa7203f0917dc651aa1261d90d266752eaac53fa7ccf60e6f59512da11975eb8a7',1,'MR::PlusX']]],
-  ['plusy_1',['PlusY',['../../Cpp/group__DistanceMapGroup.html#gab7acb4543154d042c297e5823fb633b6a89241a914ba5d59de9168c4416e69c4a',1,'MR::PlusY'],['../../Cpp/group__DistanceMapGroup.html#gab7acb4543154d042c297e5823fb633b6a89241a914ba5d59de9168c4416e69c4a',1,'MR::PlusY'],['../../Cpp/group__VolumeIndexerGroup.html#gaa7203f0917dc651aa1261d90d266752ea89241a914ba5d59de9168c4416e69c4a',1,'MR::PlusY'],['../../Cpp/group__VolumeIndexerGroup.html#gaa7203f0917dc651aa1261d90d266752ea89241a914ba5d59de9168c4416e69c4a',1,'MR::PlusY']]],
-  ['plusz_2',['PlusZ',['../../Cpp/group__VolumeIndexerGroup.html#gaa7203f0917dc651aa1261d90d266752ea59bb9bd5dd05e7aa8aca793a81266bb9',1,'MR::PlusZ'],['../../Cpp/group__VolumeIndexerGroup.html#gaa7203f0917dc651aa1261d90d266752ea59bb9bd5dd05e7aa8aca793a81266bb9',1,'MR::PlusZ']]]
-];
