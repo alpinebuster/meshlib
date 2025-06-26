@@ -292,3 +292,35 @@ EMSCRIPTEN_BINDINGS( Vector3LLModule )
         return unitVector3(dx, dy);
     }));
 }
+
+EMSCRIPTEN_BINDINGS( Vector3BModule )
+{
+    class_<Vector3<bool>>( "Vector3B" )
+        .constructor<>()
+        .constructor<bool, bool, bool>()
+
+        .property( "x", &Vector3<bool>::x )
+        .property( "y", &Vector3<bool>::y )
+        .property( "z", &Vector3<bool>::z )
+
+        .function( "lengthSq", &Vector3<bool>::lengthSq )
+        .function( "length", &Vector3<bool>::length )
+        .function( "get", select_overload<const bool& ( int ) const>( &Vector3<bool>::operator[] ) )
+        .function( "set", select_overload<bool& ( int )>( &Vector3<bool>::operator[] ) )
+
+        .class_function( "diagonal", &Vector3<bool>::diagonal )
+        .class_function( "plusX", &Vector3<bool>::plusX )
+        .class_function( "plusY", &Vector3<bool>::plusY )
+        .class_function( "plusZ", &Vector3<bool>::plusZ )
+        .class_function( "minusX", &Vector3<bool>::minusX )
+        .class_function( "minusY", &Vector3<bool>::minusY )
+        .class_function( "minusZ", &Vector3<bool>::minusZ );
+
+    value_array<std::pair<Vector3<bool>, Vector3<bool>>>( "Vector3BPair" )
+        .element( &std::pair<Vector3<bool>, Vector3<bool>>::first )
+        .element( &std::pair<Vector3<bool>, Vector3<bool>>::second );
+
+    // Bind the free functions related to Vector3<bool>
+    function( "distanceSqB", select_overload<bool( const Vector3<bool>&, const Vector3<bool>& )>( &distanceSq<bool> ) );
+    function( "sqrB", select_overload<bool( const Vector3<bool>& )>( &sqr<bool> ) );
+}

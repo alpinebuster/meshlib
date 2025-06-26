@@ -11,7 +11,7 @@ echo "You could find output in ${logfile}"
 MR_EMSCRIPTEN_SINGLETHREAD=0
 if [[ $OSTYPE == "linux"* ]]; then
   if [ ! -n "$MR_EMSCRIPTEN" ]; then
-    read -t 5 -p "Build with emscripten? Press (y) in 5 seconds to build (y/s/l/N) (s - singlethreaded, l - 64-bit)" -rsn 1
+    read -t 5 -p "Build with emscripten? Press (y) in 5 seconds to build (y/s/l/o/N) (s - singlethreaded, l - 64-bit, o - SDK only)" -rsn 1
     echo;
     case $REPLY in
       Y|y)
@@ -22,6 +22,9 @@ if [[ $OSTYPE == "linux"* ]]; then
       L|l)
         MR_EMSCRIPTEN="ON"
         MR_EMSCRIPTEN_WASM64=1;;
+      o|O)
+        MR_EMSCRIPTEN="ON"
+        MR_EMSCRIPTEN_SDK="ON";;
       *)
         MR_EMSCRIPTEN="OFF";;
     esac
@@ -31,7 +34,7 @@ else
     MR_EMSCRIPTEN="OFF"
   fi
 fi
-echo "Emscripten ${MR_EMSCRIPTEN}, singlethread ${MR_EMSCRIPTEN_SINGLETHREAD}, 64-bit ${MR_EMSCRIPTEN_WASM64:-0}"
+echo "Emscripten ${MR_EMSCRIPTEN}, singlethread ${MR_EMSCRIPTEN_SINGLETHREAD}, 64-bit ${MR_EMSCRIPTEN_WASM64:-0}, SDK only ${MR_EMSCRIPTEN_SDK:-0}"
 
 if [ $MR_EMSCRIPTEN == "ON" ]; then
   if [[ $MR_EMSCRIPTEN_SINGLE == "ON" ]]; then
@@ -103,6 +106,7 @@ if [ "${MR_EMSCRIPTEN}" == "ON" ]; then
     -D MR_EMSCRIPTEN=1 \
     -D MR_EMSCRIPTEN_SINGLETHREAD=${MR_EMSCRIPTEN_SINGLETHREAD} \
     -D MR_EMSCRIPTEN_WASM64=${MR_EMSCRIPTEN_WASM64} \
+    -D MR_EMSCRIPTEN_SDK=${MR_EMSCRIPTEN_SDK} \
   "
 fi
 
@@ -163,11 +167,15 @@ if [ "${MESHLIB_BUILD_DEBUG}" = "ON" ]; then
 fi
 
 if [ "${MESHLIB_BUILD_RELEASE}" = "ON" ]; then
-  printf "\rAutoinstall script successfully finished. You could run ./build/Release/bin/MRTest next by serving MRTest.html.\n\n"
+  printf "\rAutoinstall script successfully finished.\n\n"
 else
   if [ "${MESHLIB_BUILD_DEBUG}" = "ON" ]; then
-    printf "\rAutoinstall script successfully finished. You could run ./build/Debug/bin/MRTest next by serving MRTest.html.\n\n"
+    printf "\rAutoinstall script successfully finished.\n\n"
   else
     printf "\rNothing was built.\n\n"
   fi
+fi
+
+if [ ! "${MR_EMSCRIPTEN_SDK}" = "ON" ]; then
+  printf "\rYou could run ./build/Release/bin/MRTest next by serving MRTest.html.\n\n"
 fi
