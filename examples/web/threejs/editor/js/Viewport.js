@@ -153,6 +153,22 @@ function Viewport( editor ) {
 		return [ ( x - rect.left ) / rect.width, ( y - rect.top ) / rect.height ];
 	}
 
+	function onKeyDown( event ) {
+		event.stopPropagation();
+
+		switch ( event.code ) {
+			case 'Enter':
+				signals.keyDown.dispatch( event );
+				break;
+
+			case 'ArrowUp':
+				break;
+
+			case 'ArrowDown':
+				break;
+		}
+	}
+
 	function handleClick( event ) {
 		if ( onDownPosition.distanceTo( onUpPosition ) === 0 ) {
 			const intersects = selector.getPointerIntersects( onUpPosition, camera );
@@ -167,6 +183,7 @@ function Viewport( editor ) {
 
 		const array = getMousePosition( container.dom, event.clientX, event.clientY );
 		onDownPosition.fromArray( array );
+		signals.mouseDown.dispatch( onDownPosition, event );
 
 		container.dom.addEventListener( 'mousemove', onMouseMove );
 		container.dom.addEventListener( 'mouseup', onMouseUp );
@@ -185,6 +202,7 @@ function Viewport( editor ) {
 	function onMouseUp( event ) {
 		const array = getMousePosition( container.dom, event.clientX, event.clientY );
 		onUpPosition.fromArray( array );
+		signals.mouseUp.dispatch( onUpPosition, event );
 
 		handleClick( event );
 
@@ -225,6 +243,7 @@ function Viewport( editor ) {
 		}
 	}
 
+	container.dom.addEventListener( 'keydown', onKeyDown );
 	container.dom.addEventListener( 'mousedown', onMouseDown );
 	container.dom.addEventListener( 'touchstart', onTouchStart, { passive: false } );
 	container.dom.addEventListener( 'dblclick', onDoubleClick );

@@ -3,10 +3,10 @@ declare namespace RuntimeExports {
     /**
      * @param {string|null=} returnType
      * @param {Array=} argTypes
-     * @param {Arguments|Array=} args
+     * @param {Array=} args
      * @param {Object=} opts
      */
-    function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: (IArguments|any[]) | undefined, opts?: any | undefined): any;
+    function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: any[] | undefined, opts?: any | undefined): any;
     let HEAPU8: any;
     namespace FS {
         export let root: any;
@@ -125,7 +125,7 @@ declare namespace RuntimeExports {
         export function mmap(stream: any, length: any, position: any, prot: any, flags: any): any;
         export function msync(stream: any, buffer: any, offset: any, length: any, mmapFlags: any): any;
         export function ioctl(stream: any, cmd: any, arg: any): any;
-        export function readFile(path: any, opts?: {}): any;
+        export function readFile(path: any, opts?: {}): Uint8Array<any>;
         export function writeFile(path: any, data: any, opts?: {}): void;
         export function cwd(): any;
         export function chdir(path: any): void;
@@ -198,10 +198,9 @@ declare class FSNode {
     get isDevice(): any;
 }
 interface WasmModule {
-  _printtt(): void;
   _malloc(_0: number): number;
+  _printtt(): void;
   _free(_0: number): void;
-  _emsGetPointerSize(): number;
 }
 
 type EmbindString = ArrayBuffer|Uint8Array|Uint8ClampedArray|Int8Array|string;
@@ -210,8 +209,56 @@ export interface ClassHandle {
   delete(): void;
   deleteLater(): this;
   isDeleted(): boolean;
+  // @ts-ignore - If targeting lower than ESNext, this symbol might not exist.
+  [Symbol.dispose](): void;
   clone(): this;
 }
+export interface Box2f extends ClassHandle {
+  min: Vector2f;
+  max: Vector2f;
+  valid(): boolean;
+  diagonal(): number;
+  volume(): number;
+  includeBox(_0: Box2f): void;
+  containsBox(_0: Box2f): boolean;
+  intersects(_0: Box2f): boolean;
+  intersection(_0: Box2f): Box2f;
+  intersect(_0: Box2f): Box2f;
+  getDistanceSqToBox(_0: Box2f): number;
+  insignificantlyExpanded(): Box2f;
+  center(): Vector2f;
+  size(): Vector2f;
+  include(_0: Vector2f): void;
+  contains(_0: Vector2f): boolean;
+  getBoxClosestPointTo(_0: Vector2f): Vector2f;
+  getDistanceSqToPoint(_0: Vector2f): number;
+  expanded(_0: Vector2f): Box2f;
+  corner(_0: Vector2b): Vector2f;
+}
+
+export interface Box3f extends ClassHandle {
+  min: Vector3f;
+  max: Vector3f;
+  valid(): boolean;
+  diagonal(): number;
+  volume(): number;
+  includeBox(_0: Box3f): void;
+  containsBox(_0: Box3f): boolean;
+  intersects(_0: Box3f): boolean;
+  intersection(_0: Box3f): Box3f;
+  intersect(_0: Box3f): Box3f;
+  getDistanceSqToBox(_0: Box3f): number;
+  insignificantlyExpanded(): Box3f;
+  center(): Vector3f;
+  size(): Vector3f;
+  include(_0: Vector3f): void;
+  contains(_0: Vector3f): boolean;
+  getBoxClosestPointTo(_0: Vector3f): Vector3f;
+  getDistanceSqToPoint(_0: Vector3f): number;
+  expanded(_0: Vector3f): Box3f;
+  corner(_0: Vector3b): Vector3f;
+}
+
 export interface Color extends ClassHandle {
   r: number;
   g: number;
@@ -230,7 +277,7 @@ export interface MyClass extends ClassHandle {
 }
 
 export interface Mesh extends ClassHandle {
-  signedDistance(_0: Vector3F): number;
+  signedDistance(_0: Vector3f): number;
 }
 
 export interface MeshWrapper extends ClassHandle {
@@ -318,48 +365,81 @@ export interface VertId extends ClassHandle {
 export interface MeshLoadWrapper extends ClassHandle {
 }
 
-export interface Vector3F extends ClassHandle {
+export interface Vector2f extends ClassHandle {
+  x: number;
+  y: number;
+  length(): number;
+  lengthSq(): number;
+  normalized(): Vector2f;
+  perpendicular(): Vector2f;
+  isFinite(): boolean;
+  furthestBasisVector(): Vector2f;
+  get(_0: number): number;
+  set(_0: number): number;
+}
+
+export interface Vector2i extends ClassHandle {
+  x: number;
+  y: number;
+  length(): number;
+  lengthSq(): number;
+  perpendicular(): Vector2i;
+  furthestBasisVector(): Vector2i;
+  get(_0: number): number;
+  set(_0: number): number;
+}
+
+export interface Vector2b extends ClassHandle {
+  x: boolean;
+  y: boolean;
+  length(): number;
+  lengthSq(): boolean;
+  get(_0: number): boolean;
+  set(_0: number): boolean;
+}
+
+export interface Vector3f extends ClassHandle {
   x: number;
   y: number;
   z: number;
   lengthSq(): number;
   length(): number;
-  normalized(): Vector3F;
-  furthestBasisVector(): Vector3F;
+  normalized(): Vector3f;
+  furthestBasisVector(): Vector3f;
   unsignZeroValues(): void;
   isFinite(): boolean;
   get(_0: number): number;
   set(_0: number): number;
-  perpendicular(): Vector3FPair;
+  perpendicular(): Vector3fPair;
 }
 
-export type Vector3FPair = [ Vector3F, Vector3F ];
+export type Vector3fPair = [ Vector3f, Vector3f ];
 
-export interface Vector3I extends ClassHandle {
+export interface Vector3i extends ClassHandle {
   x: number;
   y: number;
   z: number;
   lengthSq(): number;
   length(): number;
-  normalized(): Vector3F;
-  furthestBasisVector(): Vector3I;
-  perpendicular(): Vector3FPair;
-  unsignZeroValues(): Vector3F;
+  normalized(): Vector3f;
+  furthestBasisVector(): Vector3i;
+  perpendicular(): Vector3fPair;
+  unsignZeroValues(): Vector3f;
   isFinite(): boolean;
   get(_0: number): number;
   set(_0: number): number;
 }
 
-export type Vector3IPair = [ Vector3I, Vector3I ];
+export type Vector3iPair = [ Vector3i, Vector3i ];
 
-export interface Vector3D extends ClassHandle {
+export interface Vector3d extends ClassHandle {
   x: number;
   y: number;
   z: number;
   lengthSq(): number;
   length(): number;
-  normalized(): Vector3D;
-  furthestBasisVector(): Vector3D;
+  normalized(): Vector3d;
+  furthestBasisVector(): Vector3d;
   unsignZeroValues(): void;
   isFinite(): boolean;
   get(_0: number): number;
@@ -367,40 +447,52 @@ export interface Vector3D extends ClassHandle {
   perpendicular(): Vector3DPair;
 }
 
-export type Vector3DPair = [ Vector3D, Vector3D ];
+export type Vector3DPair = [ Vector3d, Vector3d ];
 
-export interface Vector3LL extends ClassHandle {
+export interface Vector3ll extends ClassHandle {
   x: bigint;
   y: bigint;
   z: bigint;
   lengthSq(): bigint;
   length(): number;
-  normalized(): Vector3F;
-  furthestBasisVector(): Vector3LL;
-  perpendicular(): Vector3FPair;
-  unsignZeroValues(): Vector3F;
+  normalized(): Vector3f;
+  furthestBasisVector(): Vector3ll;
+  perpendicular(): Vector3fPair;
+  unsignZeroValues(): Vector3f;
   isFinite(): boolean;
   get(_0: number): bigint;
   set(_0: number): bigint;
 }
 
-export type Vector3LLPair = [ Vector3LL, Vector3LL ];
+export type Vector3llPair = [ Vector3ll, Vector3ll ];
 
-export interface Vector4F extends ClassHandle {
+export interface Vector3b extends ClassHandle {
+  x: boolean;
+  y: boolean;
+  z: boolean;
+  lengthSq(): boolean;
+  length(): number;
+  get(_0: number): boolean;
+  set(_0: number): boolean;
+}
+
+export type Vector3bPair = [ Vector3b, Vector3b ];
+
+export interface Vector4f extends ClassHandle {
   x: number;
   y: number;
   z: number;
   w: number;
   lengthSq(): number;
   length(): number;
-  normalized(): Vector4F;
-  proj3d(): Vector3F;
+  normalized(): Vector4f;
+  proj3d(): Vector3f;
   isFinite(): boolean;
   get(_0: number): number;
   set(_0: number): number;
 }
 
-export interface Vector4I extends ClassHandle {
+export interface Vector4i extends ClassHandle {
   x: number;
   y: number;
   z: number;
@@ -411,11 +503,25 @@ export interface Vector4I extends ClassHandle {
 }
 
 interface EmbindModule {
+  Box2f: {
+    new(): Box2f;
+    new(_0: Vector2f, _1: Vector2f): Box2f;
+    fromMinAndSize(_0: Vector2f, _1: Vector2f): Box2f;
+    getMinBoxCorner(_0: Vector2f): Vector2b;
+    getMaxBoxCorner(_0: Vector2f): Vector2b;
+  };
+  Box3f: {
+    new(): Box3f;
+    new(_0: Vector3f, _1: Vector3f): Box3f;
+    fromMinAndSize(_0: Vector3f, _1: Vector3f): Box3f;
+    getMinBoxCorner(_0: Vector3f): Vector3b;
+    getMaxBoxCorner(_0: Vector3f): Vector3b;
+  };
   Color: {
     new(): Color;
     new(_0: number, _1: number, _2: number): Color;
     new(_0: number, _1: number, _2: number, _3: number): Color;
-    new(_0: Vector4I): Color;
+    new(_0: Vector4i): Color;
     white(): Color;
     black(): Color;
     gray(): Color;
@@ -426,8 +532,8 @@ interface EmbindModule {
     brown(): Color;
     purple(): Color;
     transparent(): Color;
-    fromVector3I(_0: Vector3I): Color;
-    fromVector4I(_0: Vector4I): Color;
+    fromVector3I(_0: Vector3i): Color;
+    fromVector4I(_0: Vector4i): Color;
   };
   ColorAdd(_0: Color, _1: Color): Color;
   ColorSub(_0: Color, _1: Color): Color;
@@ -471,111 +577,154 @@ interface EmbindModule {
     fromFile(_0: EmbindString): any;
     fromBinaryData(_0: number, _1: number, _2: EmbindString): any;
   };
-  Vector3F: {
-    new(): Vector3F;
-    new(_0: number, _1: number, _2: number): Vector3F;
-    diagonal(_0: number): Vector3F;
-    plusX(): Vector3F;
-    plusY(): Vector3F;
-    plusZ(): Vector3F;
-    minusX(): Vector3F;
-    minusY(): Vector3F;
-    minusZ(): Vector3F;
+  Vector2f: {
+    new(): Vector2f;
+    new(_0: number, _1: number): Vector2f;
+    new(_0: Vector2f): Vector2f;
+    diagonal(_0: number): Vector2f;
+    plusX(): Vector2f;
+    plusY(): Vector2f;
+    minusX(): Vector2f;
+    minusY(): Vector2f;
   };
-  distanceSqF(_0: Vector3F, _1: Vector3F): number;
-  distanceF(_0: Vector3F, _1: Vector3F): number;
-  crossF(_0: Vector3F, _1: Vector3F): Vector3F;
-  dotF(_0: Vector3F, _1: Vector3F): number;
-  sqrF(_0: Vector3F): number;
-  mixedF(_0: Vector3F, _1: Vector3F, _2: Vector3F): number;
-  multF(_0: Vector3F, _1: Vector3F): Vector3F;
-  divF(_0: Vector3F, _1: Vector3F): Vector3F;
-  angleF(_0: Vector3F, _1: Vector3F): number;
-  unitVector3F(_0: number, _1: number): Vector3F;
-  Vector3I: {
-    new(): Vector3I;
-    new(_0: number, _1: number, _2: number): Vector3I;
-    diagonal(_0: number): Vector3I;
-    plusX(): Vector3I;
-    plusY(): Vector3I;
-    plusZ(): Vector3I;
-    minusX(): Vector3I;
-    minusY(): Vector3I;
-    minusZ(): Vector3I;
+  Vector2i: {
+    new(): Vector2i;
+    new(_0: number, _1: number): Vector2i;
+    new(_0: Vector2i): Vector2i;
+    diagonal(_0: number): Vector2i;
+    plusX(): Vector2i;
+    plusY(): Vector2i;
+    minusX(): Vector2i;
+    minusY(): Vector2i;
   };
-  distanceSqI(_0: Vector3I, _1: Vector3I): number;
-  sqrI(_0: Vector3I): number;
-  crossI(_0: Vector3I, _1: Vector3I): Vector3I;
-  dotI(_0: Vector3I, _1: Vector3I): number;
-  mixedI(_0: Vector3I, _1: Vector3I, _2: Vector3I): number;
-  multI(_0: Vector3I, _1: Vector3I): Vector3I;
-  divI(_0: Vector3I, _1: Vector3I): Vector3I;
-  angleI(_0: Vector3I, _1: Vector3I): number;
-  unitVector3I(_0: number, _1: number): Vector3I;
-  Vector3D: {
-    new(): Vector3D;
-    new(_0: number, _1: number, _2: number): Vector3D;
-    diagonal(_0: number): Vector3D;
-    plusX(): Vector3D;
-    plusY(): Vector3D;
-    plusZ(): Vector3D;
-    minusX(): Vector3D;
-    minusY(): Vector3D;
-    minusZ(): Vector3D;
+  Vector2b: {
+    new(): Vector2b;
+    new(_0: boolean, _1: boolean): Vector2b;
+    new(_0: Vector2b): Vector2b;
+    diagonal(_0: boolean): Vector2b;
+    plusX(): Vector2b;
+    plusY(): Vector2b;
+    minusX(): Vector2b;
+    minusY(): Vector2b;
   };
-  distanceSqD(_0: Vector3D, _1: Vector3D): number;
-  distanceD(_0: Vector3D, _1: Vector3D): number;
-  crossD(_0: Vector3D, _1: Vector3D): Vector3D;
-  dotD(_0: Vector3D, _1: Vector3D): number;
-  sqrD(_0: Vector3D): number;
-  mixedD(_0: Vector3D, _1: Vector3D, _2: Vector3D): number;
-  multD(_0: Vector3D, _1: Vector3D): Vector3D;
-  divD(_0: Vector3D, _1: Vector3D): Vector3D;
-  angleD(_0: Vector3D, _1: Vector3D): number;
-  unitVector3D(_0: number, _1: number): Vector3D;
-  Vector3LL: {
-    new(): Vector3LL;
-    new(_0: bigint, _1: bigint, _2: bigint): Vector3LL;
-    diagonal(_0: bigint): Vector3LL;
-    plusX(): Vector3LL;
-    plusY(): Vector3LL;
-    plusZ(): Vector3LL;
-    minusX(): Vector3LL;
-    minusY(): Vector3LL;
-    minusZ(): Vector3LL;
+  Vector3f: {
+    new(): Vector3f;
+    new(_0: number, _1: number, _2: number): Vector3f;
+    diagonal(_0: number): Vector3f;
+    plusX(): Vector3f;
+    plusY(): Vector3f;
+    plusZ(): Vector3f;
+    minusX(): Vector3f;
+    minusY(): Vector3f;
+    minusZ(): Vector3f;
   };
-  distanceSqLL(_0: Vector3LL, _1: Vector3LL): bigint;
-  distanceLL(_0: Vector3LL, _1: Vector3LL): bigint;
-  crossLL(_0: Vector3LL, _1: Vector3LL): Vector3LL;
-  dotLL(_0: Vector3LL, _1: Vector3LL): bigint;
-  sqrLL(_0: Vector3LL): bigint;
-  mixedLL(_0: Vector3LL, _1: Vector3LL, _2: Vector3LL): bigint;
-  multLL(_0: Vector3LL, _1: Vector3LL): Vector3LL;
-  divLL(_0: Vector3LL, _1: Vector3LL): Vector3LL;
-  angleLL(_0: Vector3LL, _1: Vector3LL): bigint;
-  unitVector3LL(_0: bigint, _1: bigint): Vector3D;
-  Vector4F: {
-    new(): Vector4F;
-    new(_0: number, _1: number, _2: number, _3: number): Vector4F;
-    diagonal(_0: number): Vector4F;
+  distanceSqf(_0: Vector3f, _1: Vector3f): number;
+  distancef(_0: Vector3f, _1: Vector3f): number;
+  crossf(_0: Vector3f, _1: Vector3f): Vector3f;
+  dotf(_0: Vector3f, _1: Vector3f): number;
+  sqrf(_0: Vector3f): number;
+  mixedf(_0: Vector3f, _1: Vector3f, _2: Vector3f): number;
+  multf(_0: Vector3f, _1: Vector3f): Vector3f;
+  divf(_0: Vector3f, _1: Vector3f): Vector3f;
+  anglef(_0: Vector3f, _1: Vector3f): number;
+  unitVector3f(_0: number, _1: number): Vector3f;
+  Vector3i: {
+    new(): Vector3i;
+    new(_0: number, _1: number, _2: number): Vector3i;
+    diagonal(_0: number): Vector3i;
+    plusX(): Vector3i;
+    plusY(): Vector3i;
+    plusZ(): Vector3i;
+    minusX(): Vector3i;
+    minusY(): Vector3i;
+    minusZ(): Vector3i;
   };
-  distanceSq4F(_0: Vector4F, _1: Vector4F): number;
-  distance4F(_0: Vector4F, _1: Vector4F): number;
-  dot4F(_0: Vector4F, _1: Vector4F): number;
-  sqr4F(_0: Vector4F): number;
-  mult4F(_0: Vector4F, _1: Vector4F): Vector4F;
-  div4F(_0: Vector4F, _1: Vector4F): Vector4F;
-  Vector4I: {
-    new(): Vector4I;
-    new(_0: number, _1: number, _2: number, _3: number): Vector4I;
-    diagonal(_0: number): Vector4I;
+  distanceSqi(_0: Vector3i, _1: Vector3i): number;
+  sqri(_0: Vector3i): number;
+  crossi(_0: Vector3i, _1: Vector3i): Vector3i;
+  doti(_0: Vector3i, _1: Vector3i): number;
+  mixedi(_0: Vector3i, _1: Vector3i, _2: Vector3i): number;
+  multi(_0: Vector3i, _1: Vector3i): Vector3i;
+  divi(_0: Vector3i, _1: Vector3i): Vector3i;
+  anglei(_0: Vector3i, _1: Vector3i): number;
+  unitVector3i(_0: number, _1: number): Vector3i;
+  Vector3d: {
+    new(): Vector3d;
+    new(_0: number, _1: number, _2: number): Vector3d;
+    diagonal(_0: number): Vector3d;
+    plusX(): Vector3d;
+    plusY(): Vector3d;
+    plusZ(): Vector3d;
+    minusX(): Vector3d;
+    minusY(): Vector3d;
+    minusZ(): Vector3d;
   };
-  distanceSq4I(_0: Vector4I, _1: Vector4I): number;
-  distance4I(_0: Vector4I, _1: Vector4I): number;
-  dot4I(_0: Vector4I, _1: Vector4I): number;
-  sqr4I(_0: Vector4I): number;
-  mult4I(_0: Vector4I, _1: Vector4I): Vector4I;
-  div4I(_0: Vector4I, _1: Vector4I): Vector4I;
+  distanceSqd(_0: Vector3d, _1: Vector3d): number;
+  distanced(_0: Vector3d, _1: Vector3d): number;
+  crossd(_0: Vector3d, _1: Vector3d): Vector3d;
+  dotd(_0: Vector3d, _1: Vector3d): number;
+  sqrd(_0: Vector3d): number;
+  mixedd(_0: Vector3d, _1: Vector3d, _2: Vector3d): number;
+  multd(_0: Vector3d, _1: Vector3d): Vector3d;
+  divd(_0: Vector3d, _1: Vector3d): Vector3d;
+  angled(_0: Vector3d, _1: Vector3d): number;
+  unitVector3d(_0: number, _1: number): Vector3d;
+  Vector3ll: {
+    new(): Vector3ll;
+    new(_0: bigint, _1: bigint, _2: bigint): Vector3ll;
+    diagonal(_0: bigint): Vector3ll;
+    plusX(): Vector3ll;
+    plusY(): Vector3ll;
+    plusZ(): Vector3ll;
+    minusX(): Vector3ll;
+    minusY(): Vector3ll;
+    minusZ(): Vector3ll;
+  };
+  distanceSqll(_0: Vector3ll, _1: Vector3ll): bigint;
+  distancell(_0: Vector3ll, _1: Vector3ll): bigint;
+  crossll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
+  dotll(_0: Vector3ll, _1: Vector3ll): bigint;
+  sqrll(_0: Vector3ll): bigint;
+  mixedll(_0: Vector3ll, _1: Vector3ll, _2: Vector3ll): bigint;
+  multll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
+  divll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
+  anglell(_0: Vector3ll, _1: Vector3ll): bigint;
+  unitVector3ll(_0: bigint, _1: bigint): Vector3d;
+  Vector3b: {
+    new(): Vector3b;
+    new(_0: boolean, _1: boolean, _2: boolean): Vector3b;
+    diagonal(_0: boolean): Vector3b;
+    plusX(): Vector3b;
+    plusY(): Vector3b;
+    plusZ(): Vector3b;
+    minusX(): Vector3b;
+    minusY(): Vector3b;
+    minusZ(): Vector3b;
+  };
+  distanceSqb(_0: Vector3b, _1: Vector3b): boolean;
+  sqrb(_0: Vector3b): boolean;
+  Vector4f: {
+    new(): Vector4f;
+    new(_0: number, _1: number, _2: number, _3: number): Vector4f;
+    diagonal(_0: number): Vector4f;
+  };
+  distanceSq4f(_0: Vector4f, _1: Vector4f): number;
+  distance4f(_0: Vector4f, _1: Vector4f): number;
+  dot4f(_0: Vector4f, _1: Vector4f): number;
+  sqr4f(_0: Vector4f): number;
+  mult4f(_0: Vector4f, _1: Vector4f): Vector4f;
+  div4f(_0: Vector4f, _1: Vector4f): Vector4f;
+  Vector4i: {
+    new(): Vector4i;
+    new(_0: number, _1: number, _2: number, _3: number): Vector4i;
+    diagonal(_0: number): Vector4i;
+  };
+  distanceSq4i(_0: Vector4i, _1: Vector4i): number;
+  distance4i(_0: Vector4i, _1: Vector4i): number;
+  dot4i(_0: Vector4i, _1: Vector4i): number;
+  sqr4i(_0: Vector4i): number;
+  mult4i(_0: Vector4i, _1: Vector4i): Vector4i;
+  div4i(_0: Vector4i, _1: Vector4i): Vector4i;
 }
 
 export type MainModule = WasmModule & typeof RuntimeExports & EmbindModule;

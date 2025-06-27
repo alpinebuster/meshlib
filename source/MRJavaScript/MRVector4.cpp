@@ -31,12 +31,12 @@ EMSCRIPTEN_BINDINGS( Vector4fModule )
         .class_function( "diagonal", &Vector4<float>::diagonal );
 
     // Bind the free function related to `Vector4<float>`
-    function( "distanceSq4", select_overload<float( const Vector4<float>&, const Vector4<float>& )>( &distanceSq<float> ) );
-    function( "distance4", select_overload<float( const Vector4<float>&, const Vector4<float>& )>( &distance<float> ) );
-    function( "dot4", select_overload<float( const Vector4<float>&, const Vector4<float>& )>( &dot<float> ) );
-    function( "sqr4", select_overload<float( const Vector4<float>& )>( &sqr<float> ) );
-    function( "mult4", select_overload<Vector4<float>( const Vector4<float>&, const Vector4<float>& )>( &mult<float> ) );
-    function( "div4", select_overload<Vector4<float>( const Vector4<float>&, const Vector4<float>& )>( &div<float> ) );
+    function( "distanceSq4f", select_overload<float( const Vector4<float>&, const Vector4<float>& )>( &distanceSq<float> ) );
+    function( "distance4f", select_overload<float( const Vector4<float>&, const Vector4<float>& )>( &distance<float> ) );
+    function( "dot4f", select_overload<float( const Vector4<float>&, const Vector4<float>& )>( &dot<float> ) );
+    function( "sqr4f", select_overload<float( const Vector4<float>& )>( &sqr<float> ) );
+    function( "mult4f", select_overload<Vector4<float>( const Vector4<float>&, const Vector4<float>& )>( &mult<float> ) );
+    function( "div4f", select_overload<Vector4<float>( const Vector4<float>&, const Vector4<float>& )>( &div<float> ) );
 }
 
 // ------------------------------------------------------------------------
@@ -60,10 +60,10 @@ EMSCRIPTEN_BINDINGS( Vector4iModule )
         .class_function( "diagonal", &Vector4<int>::diagonal );
 
     // Bind the free function related to `Vector4<int>`
-    function( "distanceSq4", select_overload<int( const Vector4<int>&, const Vector4<int>& )>( &distanceSq<int> ) );
-    function( "distance4", select_overload<int( const Vector4<int>&, const Vector4<int>& )>( &distance<int> ) );
-    function( "dot4", select_overload<int( const Vector4<int>&, const Vector4<int>& )>( &dot<int> ) );
-    function( "sqr4", select_overload<int( const Vector4<int>& )>( &sqr<int> ) );
-    function( "mult4", select_overload<Vector4<int>( const Vector4<int>&, const Vector4<int>& )>( &mult<int> ) );
-    function( "div4", select_overload<Vector4<int>( const Vector4<int>&, const Vector4<int>& )>( &div<int> ) );
+    function( "distanceSq4i", select_overload<int( const Vector4<int>&, const Vector4<int>& )>( &distanceSq<int> ) );
+    function( "distance4i", select_overload<int( const Vector4<int>&, const Vector4<int>& )>( &distance<int> ) );
+    function( "dot4i", select_overload<int( const Vector4<int>&, const Vector4<int>& )>( &dot<int> ) );
+    function( "sqr4i", select_overload<int( const Vector4<int>& )>( &sqr<int> ) );
+    function( "mult4i", select_overload<Vector4<int>( const Vector4<int>&, const Vector4<int>& )>( &mult<int> ) );
+    function( "div4i", select_overload<Vector4<int>( const Vector4<int>&, const Vector4<int>& )>( &div<int> ) );
 }

@@ -229,6 +229,12 @@ function SidebarObject( editor ) {
 			refreshCurve();
 		}
 	});
+	signals.mouseUp.add( ( onUpPosition, event ) => {
+		draggingIndex = -1;
+	});
+	signals.keyDown.add( ( event ) => {
+		console.log("keydown: ", event)
+	});
 	function refreshPoints() {
 		// DO NOT use this, because he bottom of Three.js' `BufferGeometry` is fixed-length,
 		// and when `setFromPoints(clicked)` has more new points than the original,
