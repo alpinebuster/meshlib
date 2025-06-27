@@ -11,7 +11,7 @@ echo "You could find output in ${logfile}"
 MR_EMSCRIPTEN_SINGLETHREAD=0
 if [[ $OSTYPE == "linux"* ]]; then
   if [ ! -n "$MR_EMSCRIPTEN" ]; then
-    read -t 5 -p "Build with emscripten? Press (y) in 5 seconds to build (y/s/l/o/N) (s - singlethreaded, l - 64-bit, o - SDK only)" -rsn 1
+    read -t 5 -p "Build with emscripten? Press (y) in 5 seconds to build (y/s/l/N) (s - singlethreaded, l - 64-bit)" -rsn 1
     echo;
     case $REPLY in
       Y|y)
@@ -22,12 +22,20 @@ if [[ $OSTYPE == "linux"* ]]; then
       L|l)
         MR_EMSCRIPTEN="ON"
         MR_EMSCRIPTEN_WASM64=1;;
-      o|O)
-        MR_EMSCRIPTEN="ON"
-        MR_EMSCRIPTEN_SDK="ON";;
       *)
         MR_EMSCRIPTEN="OFF";;
     esac
+
+    if [ $MR_EMSCRIPTEN == "ON" ]; then
+      read -t 5 -p "Build with SDK only? Press (y) in 5 seconds to build (y/N)" -rsn 1
+      echo;
+      case $REPLY in
+        Y|y)
+          MR_EMSCRIPTEN_SDK="ON";;
+        *)
+          MR_EMSCRIPTEN_SDK="OFF";;
+      esac
+    fi
   fi
 else
   if [ ! -n "$MR_EMSCRIPTEN" ]; then
