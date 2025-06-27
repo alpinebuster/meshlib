@@ -270,6 +270,14 @@ export interface Color extends ClassHandle {
   set(_0: number): number;
 }
 
+export interface StdVectorf extends ClassHandle {
+  push_back(_0: number): void;
+  resize(_0: number, _1: number): void;
+  size(): number;
+  get(_0: number): number | undefined;
+  set(_0: number, _1: number): boolean;
+}
+
 export interface MyClass extends ClassHandle {
   x: number;
   readonly x_readonly: number;
@@ -363,6 +371,62 @@ export interface VertId extends ClassHandle {
 }
 
 export interface MeshLoadWrapper extends ClassHandle {
+}
+
+export interface Vectori extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  get(_0: number): number;
+  set(_0: number): number;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: number): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: number): void;
+  autoResizeAt(_0: number): number;
+  autoResizeSet(_0: number, _1: number): void;
+  pushBack(_0: number): void;
+  popBack(): void;
+  front(): number;
+  back(): number;
+  beginId(): number;
+  backId(): number;
+  endId(): number;
+  capacity(): number;
+  reserve(_0: number): void;
+  heapBytes(): number;
+  equals(_0: Vectori): boolean;
+  notEquals(_0: Vectori): boolean;
+  getData(): any;
+  getDataConst(): any;
+}
+
+export interface Vectorf extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  get(_0: number): number;
+  set(_0: number): number;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: number): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: number): void;
+  autoResizeAt(_0: number): number;
+  autoResizeSet(_0: number, _1: number): void;
+  pushBack(_0: number): void;
+  popBack(): void;
+  front(): number;
+  back(): number;
+  beginId(): number;
+  backId(): number;
+  endId(): number;
+  capacity(): number;
+  reserve(_0: number): void;
+  heapBytes(): number;
+  equals(_0: Vectorf): boolean;
+  notEquals(_0: Vectorf): boolean;
+  getData(): any;
+  getDataConst(): any;
 }
 
 export interface Vector2f extends ClassHandle {
@@ -541,6 +605,9 @@ interface EmbindModule {
   ColorMulRev(_0: Color, _1: number): Color;
   ColorDiv(_0: Color, _1: number): Color;
   ColorBlend(_0: Color, _1: Color): Color;
+  StdVectorf: {
+    new(): StdVectorf;
+  };
   lerp(_0: number, _1: number, _2: number): number;
   MyClass: {
     new(_0: number, _1: EmbindString): MyClass;
@@ -549,6 +616,7 @@ interface EmbindModule {
   Mesh: {
     new(): Mesh;
   };
+  cutMeshWithPolyline(_0: Mesh, _1: StdVectorf, _2: number): any;
   computeVertexNormals(_0: Mesh): any;
   MeshWrapper: {
     new(): MeshWrapper;
@@ -577,6 +645,18 @@ interface EmbindModule {
     fromFile(_0: EmbindString): any;
     fromBinaryData(_0: number, _1: number, _2: EmbindString): any;
   };
+  Vectori: {
+    new(): Vectori;
+    new(_0: number): Vectori;
+    new(_0: number, _1: number): Vectori;
+  };
+  Vectorf: {
+    new(): Vectorf;
+    new(_0: number): Vectorf;
+    new(_0: number, _1: number): Vectorf;
+  };
+  getAti(_0: Vectori, _1: number, _2: number): number;
+  getAtf(_0: Vectorf, _1: number, _2: number): number;
   Vector2f: {
     new(): Vector2f;
     new(_0: number, _1: number): Vector2f;
