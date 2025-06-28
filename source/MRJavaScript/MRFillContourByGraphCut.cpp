@@ -33,7 +33,7 @@ public:
 	MeshSegmentation( const Mesh& mesh ) : mesh_( mesh )
 	{
 		// Initialize with a default edge metric (you may want to customize this)
-		// For example, edge length metric:
+		// e.g. `discreteAbsMeanCurvatureMetric()` & `edgeCurvMetric()`
 		edgeMetric_ = discreteAbsMeanCurvatureMetric( mesh_ );
 	}
 
@@ -183,5 +183,5 @@ EMSCRIPTEN_BINDINGS( MeshSegmentationModule )
 	class_<MeshSegmentation>( "MeshSegmentation" )
 		.constructor<const Mesh&>()
 
-		.function( "createSurroundingContour", &MeshSegmentation::segmentByPoints );
+		.function( "segmentByPoints", &MeshSegmentation::segmentByPoints );
 }

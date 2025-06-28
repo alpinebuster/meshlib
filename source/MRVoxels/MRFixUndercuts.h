@@ -20,7 +20,7 @@ namespace FixUndercuts
 // bottomExtension - this parameter specifies how long should bottom prolongation be, if (bottomExtension <= 0) bottomExtension = 2*voxelSize
 //   if mesh is not closed this is used to prolong hole and make bottom
 // 
-// if voxelSize == 0.0f it will be counted automaticly
+// if voxelSize == 0.0f it will be counted automatically
 [[deprecated( "Use fix( mesh, params )" )]]
 MRVOXELS_API Expected<void> fixUndercuts( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f );
 
