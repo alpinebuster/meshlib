@@ -11,6 +11,11 @@ using DoubleVector = Vector<double, size_t>;
 
 EMSCRIPTEN_BINDINGS( VectorModule )
 {
+    register_vector<int>( "StdVectori" );
+    register_vector<float>( "StdVectorf" );
+    register_vector<double>( "StdVectord" );
+    register_vector<long long>( "StdVectorll" );
+
     class_<IntVector>( "Vectori" )
         .constructor<>()                           // Default constructor
         .constructor<size_t>()                     // Size constructor  

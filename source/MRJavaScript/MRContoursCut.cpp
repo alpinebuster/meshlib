@@ -226,6 +226,5 @@ BoolResults cutAndExtrudeMeshWithPolyline( Mesh * mesh, float coordinates[], int
 
 EMSCRIPTEN_BINDINGS( ContoursCutModule )
 {
-    register_vector<float>("StdVectorf");
     function( "cutMeshWithPolyline", &cutMeshWithPolyline );
 }
