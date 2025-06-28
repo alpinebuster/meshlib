@@ -270,12 +270,15 @@ export interface Color extends ClassHandle {
   set(_0: number): number;
 }
 
-export interface StdVectorf extends ClassHandle {
-  push_back(_0: number): void;
-  resize(_0: number, _1: number): void;
-  size(): number;
-  get(_0: number): number | undefined;
-  set(_0: number, _1: number): boolean;
+export interface MeshSegmentation extends ClassHandle {
+  segmentByPoints(_0: StdVectorf, _1: StdVectorf): any;
+}
+
+export interface FixParams extends ClassHandle {
+  voxelSize: number;
+  bottomExtension: number;
+  smooth: boolean;
+  findParameters: FindParams;
 }
 
 export interface MyClass extends ClassHandle {
@@ -371,6 +374,67 @@ export interface VertId extends ClassHandle {
 }
 
 export interface MeshLoadWrapper extends ClassHandle {
+}
+
+export interface OffsetParameters extends ClassHandle {
+  closeHolesInHoleWindingNumber: boolean;
+  windingNumberThreshold: number;
+  windingNumberBeta: number;
+  memoryEfficient: boolean;
+  signDetectionMode: SignDetectionMode;
+}
+
+export interface SharpOffsetParameters extends OffsetParameters {
+  minNewVertDev: number;
+  maxNewRank2VertDev: number;
+  maxNewRank3VertDev: number;
+  maxOldVertPosCorrection: number;
+}
+
+export interface GeneralOffsetParameters extends SharpOffsetParameters {
+  mode: OffsetMode;
+}
+
+export interface OffsetModeValue<T extends number> {
+  value: T;
+}
+export type OffsetMode = OffsetModeValue<0>|OffsetModeValue<1>|OffsetModeValue<2>;
+
+export interface SignDetectionModeValue<T extends number> {
+  value: T;
+}
+export type SignDetectionMode = SignDetectionModeValue<0>|SignDetectionModeValue<1>|SignDetectionModeValue<2>|SignDetectionModeValue<3>|SignDetectionModeValue<4>;
+
+export interface StdVectori extends ClassHandle {
+  push_back(_0: number): void;
+  resize(_0: number, _1: number): void;
+  size(): number;
+  get(_0: number): number | undefined;
+  set(_0: number, _1: number): boolean;
+}
+
+export interface StdVectorf extends ClassHandle {
+  push_back(_0: number): void;
+  resize(_0: number, _1: number): void;
+  size(): number;
+  get(_0: number): number | undefined;
+  set(_0: number, _1: number): boolean;
+}
+
+export interface StdVectord extends ClassHandle {
+  push_back(_0: number): void;
+  resize(_0: number, _1: number): void;
+  size(): number;
+  get(_0: number): number | undefined;
+  set(_0: number, _1: number): boolean;
+}
+
+export interface StdVectorll extends ClassHandle {
+  push_back(_0: bigint): void;
+  resize(_0: number, _1: bigint): void;
+  size(): number;
+  get(_0: number): bigint | undefined;
+  set(_0: number, _1: bigint): boolean;
 }
 
 export interface Vectori extends ClassHandle {
@@ -476,6 +540,11 @@ export interface Vector3f extends ClassHandle {
   set(_0: number): number;
   perpendicular(): Vector3fPair;
 }
+
+export type FindParams = {
+  upDirection: Vector3f,
+  wallAngle: number
+};
 
 export type Vector3fPair = [ Vector3f, Vector3f ];
 
@@ -605,8 +674,11 @@ interface EmbindModule {
   ColorMulRev(_0: Color, _1: number): Color;
   ColorDiv(_0: Color, _1: number): Color;
   ColorBlend(_0: Color, _1: Color): Color;
-  StdVectorf: {
-    new(): StdVectorf;
+  MeshSegmentation: {
+    new(_0: Mesh): MeshSegmentation;
+  };
+  FixParams: {
+    new(): FixParams;
   };
   lerp(_0: number, _1: number, _2: number): number;
   MyClass: {
@@ -616,7 +688,7 @@ interface EmbindModule {
   Mesh: {
     new(): Mesh;
   };
-  cutMeshWithPolyline(_0: Mesh, _1: StdVectorf, _2: number): any;
+  calculateRecommendedVoxelSize(_0: Mesh, _1: number): number;
   computeVertexNormals(_0: Mesh): any;
   MeshWrapper: {
     new(): MeshWrapper;
@@ -644,6 +716,31 @@ interface EmbindModule {
   MeshLoadWrapper: {
     fromFile(_0: EmbindString): any;
     fromBinaryData(_0: number, _1: number, _2: EmbindString): any;
+  };
+  OffsetParameters: {
+    new(): OffsetParameters;
+  };
+  SharpOffsetParameters: {
+    new(): SharpOffsetParameters;
+  };
+  GeneralOffsetParameters: {
+    new(): GeneralOffsetParameters;
+  };
+  OffsetMode: {Smooth: OffsetModeValue<0>, Standard: OffsetModeValue<1>, Sharpening: OffsetModeValue<2>};
+  SignDetectionMode: {Unsigned: SignDetectionModeValue<0>, OpenVDB: SignDetectionModeValue<1>, ProjectionNormal: SignDetectionModeValue<2>, WindingRule: SignDetectionModeValue<3>, HoleWindingRule: SignDetectionModeValue<4>};
+  thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
+  StdVectori: {
+    new(): StdVectori;
+  };
+  StdVectorf: {
+    new(): StdVectorf;
+  };
+  cutMeshWithPolyline(_0: Mesh, _1: StdVectorf, _2: number): any;
+  StdVectord: {
+    new(): StdVectord;
+  };
+  StdVectorll: {
+    new(): StdVectorll;
   };
   Vectori: {
     new(): Vectori;
@@ -698,6 +795,10 @@ interface EmbindModule {
     minusY(): Vector3f;
     minusZ(): Vector3f;
   };
+  createFindParams(_0: number, _1: number, _2: number, _3: number): FindParams;
+  createFixParams(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
+  fixUndercuts(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
+  fixUndercutsThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   distanceSqf(_0: Vector3f, _1: Vector3f): number;
   distancef(_0: Vector3f, _1: Vector3f): number;
   crossf(_0: Vector3f, _1: Vector3f): Vector3f;
