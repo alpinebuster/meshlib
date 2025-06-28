@@ -60,6 +60,7 @@ var updateEvents = function () {
     Module["canvas"].removeEventListener("mouseup", GLFW.onMouseButtonUp, true);
     Module["canvas"].removeEventListener("wheel", GLFW.onMouseWheel, true);
     Module["canvas"].removeEventListener("mousewheel", GLFW.onMouseWheel, true);
+    Module["canvas"].removeEventListener("dragover", GLFW.onDragover, true);
 
     // make own touch events callbacks
     var touchEventProcess = function (event, funcName) {
@@ -201,6 +202,15 @@ var updateEvents = function () {
         preventFunc(event)
     }
 
+    GLFW.onDragover = function (event) {
+        if (!GLFW.active)
+            return;
+        Browser.setMouseCoords(event.pageX, event.pageY);
+        Module.ccall('emsDragOver', 'void', ['number', 'number'], [Browser.mouseX, Browser.mouseY]);
+        event.preventDefault();
+        return false
+    }
+
     // add new events
     Module["canvas"].addEventListener("pointermove", GLFW.onMousemove, true);
     Module["canvas"].addEventListener("pointerdown", GLFW.onMouseButtonDown, true);
@@ -208,7 +218,18 @@ var updateEvents = function () {
     Module["canvas"].addEventListener("pointerup", GLFW.onMouseButtonUp, true);
     Module["canvas"].addEventListener("wheel", GLFW.onMouseWheel, true);
     Module["canvas"].addEventListener("mousewheel", GLFW.onMouseWheel, true);
-    addEventListener('blur', (event) => {
+    Module["canvas"].addEventListener("dragover", GLFW.onDragover, true);
+    Module["canvas"].addEventListener("dragenter", (e) => {
+        Module.ccall('emsDragEnter', 'void', [], []);
+    }, true);
+    Module["canvas"].addEventListener("dragleave", (e) => {
+        Module.ccall('emsDragLeave', 'void', [], []);
+        // enforce several frames to toggle animation on drag left
+        for (var i = 0; i < 500; i += 100)
+            setTimeout(function () { Module.ccall('emsPostEmptyEvent', 'void', ['number'], [1]); }, i);
+    }, true);
+
+    addEventListener('blur', (e) => {
         Module.ccall('emsDropEvents', 'void', [], []);
     });
     // prevent others

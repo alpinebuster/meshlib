@@ -14,6 +14,7 @@
 #include "MRRibbonMenu.h"
 #include "MRGetSystemInfoJson.h"
 #include "MRSpaceMouseHandler.h"
+#include "MRDragDropHandler.h"
 #include "MRSpaceMouseHandlerHidapi.h"
 #include "MRSpaceMouseHandler3dxMacDriver.h"
 #include "MRRenderGLHelpers.h"
@@ -61,6 +62,8 @@
 #include "MRSceneCache.h"
 #include "MRViewerTitle.h"
 #include "MRViewportCornerController.h"
+#include "MRWebRequest.h"
+#include "MRMesh/MRCube.h"
 
 #ifndef __EMSCRIPTEN__
 #include <boost/exception/diagnostic_information.hpp>
@@ -128,7 +131,6 @@ EMSCRIPTEN_KEEPALIVE void emsForceSettingsSave()
 
 }
 #endif
-#include "MRMesh/MRCube.h"
 
 static void glfw_mouse_press( GLFWwindow* /*window*/, int button, int action, int modifier )
 {
@@ -625,7 +627,9 @@ int Viewer::launch( const LaunchParams& params )
     }
     if ( params.close )
         launchShut();
+
     CommandLoop::removeCommands( true );
+
     return EXIT_SUCCESS;
 }
 
@@ -832,6 +836,8 @@ int Viewer::launchInit_( const LaunchParams& params )
             touchpadController_ = std::make_unique<TouchpadController>();
         touchpadController_->connect( this );
         touchpadController_->initialize( window );
+
+        dragDropAdvancedHandler_ = getDragDropHandler( window );
     }
 
     CommandLoop::setState( CommandLoop::StartPosition::AfterWindowInit );
@@ -941,6 +947,18 @@ void Viewer::launchShut()
         settingsMng_->saveSettings( *this );
     }
 
+    {
+        spdlog::info( "Wait and process unfinished web requests." );
+        /// wait for all remaining requests
+        for ( int i = 0; i < 3; ++i ) // maximum 3 iterations
+        {
+            WebRequest::waitRemainingAsync();
+            if ( CommandLoop::empty() )
+                break;
+            CommandLoop::processCommands();
+        }
+    }
+
     for ( auto& viewport : viewport_list )
         viewport.shut();
     shutdownPlugins_();
@@ -966,6 +984,8 @@ void Viewer::launchShut()
     if ( touchpadController_ )
         touchpadController_->reset();
 
+    dragDropAdvancedHandler_.reset();
+
     glfwDestroyWindow( window );
     glfwTerminate();
     glInitialized_ = false;
@@ -974,6 +994,12 @@ void Viewer::launchShut()
 
     /// removes references on all cached objects before shared libraries with plugins are unloaded
     SceneCache::invalidateAll();
+
+    {
+        // some requests might be sent during shutdown, just wait for them but don't process
+        spdlog::info( "Wait and DON'T process unfinished web requests." );
+        WebRequest::waitRemainingAsync();
+    }
 
     /// disconnect all slots before shared libraries with plugins are unloaded
     mouseDownSignal = {};
