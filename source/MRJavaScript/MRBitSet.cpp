@@ -8,7 +8,11 @@
 using namespace emscripten;
 using namespace MR;
 
-EMSCRIPTEN_BINDINGS( BoostDynamicBitsetModule ) {
+// TODO: V2
+
+
+EMSCRIPTEN_BINDINGS( __internalBoostDynamicBitsetModule )
+{
     using BoostDynamicBitset = boost::dynamic_bitset<std::uint64_t>;
 
     class_<BoostDynamicBitset>("__InternalDynamicBitset")
@@ -24,6 +28,8 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
         .constructor<>()
         .constructor<size_t>()
         .constructor<size_t, bool>()
+        // .smart_ptr<std::shared_ptr<BitSet>>()
+        .smart_ptr<std::shared_ptr<BitSet>>( "shared_ptr<BitSet>" ) 
         .class_function( "createWithBool", optional_override( [] ( size_t numBits, bool fillValue )
         {
             return BitSet( numBits, fillValue );
@@ -79,10 +85,36 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
 
 EMSCRIPTEN_BINDINGS( TypedBitSetModule )
 {
+    // NOTE:
+    // 
+    // Interface 'FaceBitSet' incorrectly extends interface 'BitSet'.
+    // Types of property 'test' are incompatible.
+    //     Type '(_0: FaceId) => boolean' is not assignable to type '(_0: number) => boolean'.
+    //     Types of parameters '_0' and '_0' are incompatible.
+    //         Type 'number' is not assignable to type 'FaceId'.ts(2430)
+    // 
+    // class_<FaceBitSet>( "FaceBitSet" )
     class_<FaceBitSet, base<BitSet>>( "FaceBitSet" )
-        // class_<FaceBitSet>( "FaceBitSet" )
         .constructor<>()
         .constructor<const BitSet&>()
+        // NOTE: This will not work!
+        // .smart_ptr<std::shared_ptr<FaceBitSet>>()
+        // 
+        // In embind, the `class_<T>` has two overloaded `.smart_ptr()` methods:
+        // 
+        // ✅ When there is no base class, use:
+        // 
+        // ```cpp
+        // .smart_ptr<std::shared_ptr<T>>()
+        // ```
+        // 
+        // ✅ When there is a base class, you must provide the name of the smart pointer as a string:
+        // 
+        // ```cpp
+        // .smart_ptr<std::shared_ptr<T>>("shared_ptr<T>")
+        // ```
+        // 
+        .smart_ptr<std::shared_ptr<FaceBitSet>>( "shared_ptr<FaceBitSet>" ) 
         // The factory function replaces the overloaded constructor
         .class_function( "createWithSize", optional_override( [] ( size_t numBits )
         {
@@ -113,8 +145,13 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         } ), return_value_policy::reference() )
 
         // Type-safe bit operations
+        // NOTE:
         .function( "test", &FaceBitSet::test )
-        .function( "test_set", &FaceBitSet::test_set )
+        // .function( "test", select_overload<bool ( FaceId ) const>( &FaceBitSet::test ) )
+        .function( "testFromInt", optional_override([](const FaceBitSet& self, int index) {
+            return self.test(FaceId{index});
+        }) )
+        .function( "testSet", &FaceBitSet::test_set )
         .function( "set", select_overload<FaceBitSet & ( FaceId, bool )>( &FaceBitSet::set ), return_value_policy::reference() )
         .function( "setAll", select_overload<FaceBitSet & ( )>( &FaceBitSet::set ), return_value_policy::reference() )
         .function( "setRange", select_overload<FaceBitSet & ( FaceId, FaceBitSet::size_type, bool )>( &FaceBitSet::set ), return_value_policy::reference() )
@@ -124,9 +161,9 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .function( "flip", select_overload<FaceBitSet & ( FaceId )>( &FaceBitSet::flip ), return_value_policy::reference() )
         .function( "flipAll", select_overload<FaceBitSet & ( )>( &FaceBitSet::flip ), return_value_policy::reference() )
 
-        .function( "find_first", &FaceBitSet::find_first )
-        .function( "find_next", &FaceBitSet::find_next )
-        .function( "find_last", &FaceBitSet::find_last )
+        .function( "findFirst", &FaceBitSet::find_first )
+        .function( "findNext", &FaceBitSet::find_next )
+        .function( "findLast", &FaceBitSet::find_last )
         .function( "nthSetBit", &FaceBitSet::nthSetBit )
 
         .function( "bitwiseAndAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator&= ), return_value_policy::reference() )
@@ -134,8 +171,8 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .function( "bitwiseXorAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator^= ), return_value_policy::reference() )
         .function( "subtractAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator-= ), return_value_policy::reference() )
 
-        .function( "is_subset_of", &FaceBitSet::is_subset_of )
-        .function( "is_proper_subset_of", &FaceBitSet::is_proper_subset_of )
+        .function( "isSubsetOf", &FaceBitSet::is_subset_of )
+        .function( "isProperSubset)f", &FaceBitSet::is_proper_subset_of )
         .function( "intersects", &FaceBitSet::intersects )
 
         .function( "autoResizeSet", select_overload<void( FaceId, bool )>( &FaceBitSet::autoResizeSet ) )
@@ -146,38 +183,49 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .function( "endId", &FaceBitSet::endId )
         .class_function( "beginId", &FaceBitSet::beginId );
 
-    class_<VertBitSet>( "VertBitSet" )
-        .constructor<>();
+    // class_<VertBitSet>( "VertBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<VertBitSet>>( "shared_ptr<VertBitSet>" );
 
-    class_<EdgeBitSet>( "EdgeBitSet" )
-        .constructor<>();
+    // class_<EdgeBitSet>( "EdgeBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<EdgeBitSet>>( "shared_ptr<EdgeBitSet>" );
 
-    class_<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" )
-        .constructor<>();
+    // class_<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "shared_ptr<UndirectedEdgeBitSet>" );
 
-    class_<PixelBitSet>( "PixelBitSet" )
-        .constructor<>();
+    // class_<PixelBitSet>( "PixelBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<PixelBitSet>>( "shared_ptr<PixelBitSet>" );
 
-    class_<VoxelBitSet>( "VoxelBitSet" )
-        .constructor<>();
+    // class_<VoxelBitSet>( "VoxelBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<VoxelBitSet>>( "shared_ptr<VoxelBitSet>" );
 
-    class_<RegionBitSet>( "RegionBitSet" )
-        .constructor<>();
+    // class_<RegionBitSet>( "RegionBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<RegionBitSet>>( "shared_ptr<RegionBitSet>" );
 
-    class_<NodeBitSet>( "NodeBitSet" )
-        .constructor<>();
+    // class_<NodeBitSet>( "NodeBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<NodeBitSet>>( "shared_ptr<NodeBitSet>" );
 
-    class_<ObjBitSet>( "ObjBitSet" )
-        .constructor<>();
+    // class_<ObjBitSet>( "ObjBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<ObjBitSet>>( "shared_ptr<ObjBitSet>" );
 
-    class_<TextureBitSet>( "TextureBitSet" )
-        .constructor<>();
+    // class_<TextureBitSet>( "TextureBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<TextureBitSet>>( "shared_ptr<TextureBitSet>" );
 
-    class_<GraphVertBitSet>( "GraphVertBitSet" )
-        .constructor<>();
+    // class_<GraphVertBitSet>( "GraphVertBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "shared_ptr<GraphVertBitSet>" );
 
-    class_<GraphEdgeBitSet>( "GraphEdgeBitSet" )
-        .constructor<>();
+    // class_<GraphEdgeBitSet>( "GraphEdgeBitSet" )
+    //     .constructor<>()
+    //     .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "shared_ptr<GraphEdgeBitSet>" );
 }
 
 // To support operator overloading in JavaScript, add global functions

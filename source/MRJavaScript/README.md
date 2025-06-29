@@ -1,5 +1,10 @@
 # JS/TS Bindings
 
+## TODOs
+
+- V2: In version 2, use functions to generate emscripten binding code to reduce redundancy
+- V3: In version 3, use clang's ast api to parse C++ source code then generate emscripten binding code
+
 ## NOTEs
 In the C++ standard library you’ll encounter several “pointer” types, each with different ownership and lifetime semantics:
 

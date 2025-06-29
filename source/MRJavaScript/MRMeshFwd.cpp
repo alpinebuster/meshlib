@@ -6,6 +6,8 @@
 using namespace emscripten;
 using namespace MR;
 
+// TODO: V2
+
 EMSCRIPTEN_BINDINGS( MRIdModule )
 {
     // 1) Expose `NoInit` as an empty value type
@@ -17,6 +19,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<Id<UndirectedEdgeTag>>( "UndirectedEdgeId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<Id<UndirectedEdgeTag>>>( "shared_ptr<Id<UndirectedEdgeTag>>" ) 
 
         .function( "valid", &Id<UndirectedEdgeTag>::valid )
         .function( "toInt", select_overload<int() const>( static_cast<int( Id<UndirectedEdgeTag>::* )() const >( &Id<UndirectedEdgeTag>::operator int ) ) )
@@ -34,6 +37,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
         // Constructors
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<Id<EdgeTag>>>( "shared_ptr<Id<EdgeTag>>" ) 
         .class_function( "fromUndirected", optional_override( []( const UndirectedEdgeId& u ) {return Id<EdgeTag>( u );}))
 
         // Validity check
@@ -63,6 +67,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<Id<FaceTag>>( "FaceId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<Id<FaceTag>>>( "shared_ptr<Id<FaceTag>>" ) 
 
         .function( "valid", &Id<FaceTag>::valid )
         .function( "toInt", select_overload<int () const>( static_cast<int( Id<FaceTag>::* ) () const>( &Id<FaceTag>::operator int )))
@@ -79,6 +84,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<Id<VertTag>>( "VertId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<Id<VertTag>>>( "shared_ptr<Id<VertTag>>" ) 
 
         .function( "valid", &Id<VertTag>::valid )
         .function( "toInt", select_overload<int() const>( static_cast<int ( Id<VertTag>::* ) () const>( &Id<VertTag>::operator int ) ) )
@@ -95,6 +101,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<PixelId>( "PixelId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<PixelId>>( "shared_ptr<PixelId>" ) 
 
         .function( "valid", &PixelId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( PixelId::* ) ( ) const >( &PixelId::operator int ) ) )
@@ -111,6 +118,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<VoxelId>( "VoxelId" )
         .constructor<>()
         .constructor<size_t>()
+        .smart_ptr<std::shared_ptr<VoxelId>>( "shared_ptr<VoxelId>" ) 
 
         .function( "valid", &VoxelId::valid )
         .function( "toInt", select_overload<size_t() const>( static_cast< size_t ( VoxelId::* ) ( ) const >( &VoxelId::operator size_t ) ) )
@@ -127,6 +135,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<RegionId>( "RegionId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<RegionId>>( "shared_ptr<RegionId>" ) 
 
         .function( "valid", &RegionId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( RegionId::* ) ( ) const >( &RegionId::operator int ) ) )
@@ -143,6 +152,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<NodeId>( "NodeId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<NodeId>>( "shared_ptr<NodeId>" ) 
 
         .function( "valid", &NodeId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( NodeId::* ) ( ) const >( &NodeId::operator int ) ) )
@@ -159,6 +169,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<ObjId>( "ObjId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<ObjId>>( "shared_ptr<ObjId>" ) 
 
         .function( "valid", &ObjId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( ObjId::* ) ( ) const >( &ObjId::operator int ) ) )
@@ -175,6 +186,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<TextureId>( "TextureId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<TextureId>>( "shared_ptr<TextureId>" ) 
 
         .function( "valid", &TextureId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( TextureId::* ) ( ) const >( &TextureId::operator int ) ) )
@@ -191,6 +203,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<GraphVertId>( "GraphVertId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<GraphVertId>>( "shared_ptr<GraphVertId>" ) 
 
         .function( "valid", &GraphVertId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( GraphVertId::* ) ( ) const >( &GraphVertId::operator int ) ) )
@@ -207,6 +220,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<GraphEdgeId>( "GraphEdgeId" )
         .constructor<>()
         .constructor<int>()
+        .smart_ptr<std::shared_ptr<GraphEdgeId>>( "shared_ptr<GraphEdgeId>" ) 
 
         .function( "valid", &GraphEdgeId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( GraphEdgeId::* ) ( ) const >( &GraphEdgeId::operator int ) ) )
