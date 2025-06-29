@@ -172,42 +172,23 @@ EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
         .function("setNew2OldMap", &MakeDegenerateBandAroundRegionParamsWrapper::setNew2OldMap)
         .function("getNew2OldMap", &MakeDegenerateBandAroundRegionParamsWrapper::getNew2OldMap);
 
-	
-    class_<MakeDegenerateBandAroundRegionParams>( "MakeDegenerateBandAroundRegionParams" )
+
+	class_<MakeDegenerateBandAroundRegionParams>( "MakeDegenerateBandAroundRegionParams" )
 		.constructor<>()
-        // .property( "outNewFaces",
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> FaceBitSet* {
-        //         return self.outNewFaces;
-        //     }),
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, FaceBitSet* val) {
-        //         self.outNewFaces = val;
-        //     })
-        // )
-        // .property( "outExtrudedEdges",
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> UndirectedEdgeBitSet* {
-        //         return self.outExtrudedEdges;
-        //     }),
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, UndirectedEdgeBitSet* val) {
-        //         self.outExtrudedEdges = val;
-        //     })
-        // )
-        // .property( "maxEdgeLength",
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> float* {
-        //         return self.maxEdgeLength;
-        //     }),
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, float* val) {
-        //         self.maxEdgeLength = val;
-        //     })
-        // )
-        // .property( "new2OldMap",
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> VertHashMap* {
-        //         return self.new2OldMap;
-        //     }),
-        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, VertHashMap* val) {
-        //         self.new2OldMap = val;
-        //     })
-		// )
-		;
+		.property( "outNewFaces", &MakeDegenerateBandAroundRegionParams::outNewFaces, return_value_policy::reference() )
+		.property( "outExtrudedEdges", &MakeDegenerateBandAroundRegionParams::outExtrudedEdges, return_value_policy::reference() )
+		.property( "new2OldMap", &MakeDegenerateBandAroundRegionParams::new2OldMap, return_value_policy::reference() )
+				
+		.function( "getMaxEdgeLength", optional_override( [] ( MakeDegenerateBandAroundRegionParams& self )
+		{
+			if ( !self.maxEdgeLength ) throw std::runtime_error( "maxEdgeLength is null" );
+			return *self.maxEdgeLength;
+		}))
+		.function( "setMaxEdgeLength", optional_override( [] ( MakeDegenerateBandAroundRegionParams& self, float v )
+		{
+			if ( !self.maxEdgeLength ) self.maxEdgeLength = new float;
+			*self.maxEdgeLength = v;
+		}));
 
 	function( "makeDegenerateBandAroundRegion", &makeDegenerateBandAroundRegion );
 }

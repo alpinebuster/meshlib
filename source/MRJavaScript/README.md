@@ -2,8 +2,8 @@
 
 ## TODOs
 
-- V2: In version 2, use functions to generate emscripten binding code to reduce redundancy
-- V3: In version 3, use clang's ast api to parse C++ source code then generate emscripten binding code
+- V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
+- V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
 
 ## NOTEs
 In the C++ standard library you’ll encounter several “pointer” types, each with different ownership and lifetime semantics:
