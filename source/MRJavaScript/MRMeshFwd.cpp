@@ -91,4 +91,132 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
         .function( "decrement", select_overload<Id<VertTag>&()>( &Id<VertTag>::operator++ ) )
         .function( "incrementByInt", select_overload<Id<VertTag>( int )>( &Id<VertTag>::operator-- ) )
         .function( "decrementByInt", select_overload<Id<VertTag>( int )>( &Id<VertTag>::operator++ ) );
+
+    class_<PixelId>( "PixelId" )
+        .constructor<>()
+        .constructor<int>()
+
+        .function( "valid", &PixelId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast< int ( PixelId::* ) ( ) const >( &PixelId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const PixelId& self ) { return bool( self ); }))
+        .function( "get", &PixelId::get )
+        .function( "equals", optional_override([](const PixelId& self, const PixelId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const PixelId& self, const PixelId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const PixelId& self, const PixelId& other){ return self < other; }) )
+        .function( "increment", select_overload<PixelId&()>( &PixelId::operator-- ) )
+        .function( "decrement", select_overload<PixelId&()>( &PixelId::operator++ ) )
+        .function( "incrementByInt", select_overload<PixelId( int )>( &PixelId::operator-- ) )
+        .function( "decrementByInt", select_overload<PixelId( int )>( &PixelId::operator++ ) );
+
+    class_<VoxelId>( "VoxelId" )
+        .constructor<>()
+        .constructor<size_t>()
+
+        .function( "valid", &VoxelId::valid )
+        .function( "toInt", select_overload<size_t() const>( static_cast< size_t ( VoxelId::* ) ( ) const >( &VoxelId::operator size_t ) ) )
+        .function( "toBool", optional_override( [] ( const VoxelId& self ) { return bool( self ); }))
+        .function( "get", &VoxelId::get )
+        .function( "equals", optional_override([](const VoxelId& self, const VoxelId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const VoxelId& self, const VoxelId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const VoxelId& self, const VoxelId& other){ return self < other; }) )
+        .function( "increment", select_overload<VoxelId&()>( &VoxelId::operator-- ) )
+        .function( "decrement", select_overload<VoxelId&()>( &VoxelId::operator++ ) )
+        .function( "incrementByInt", select_overload<VoxelId( int )>( &VoxelId::operator-- ) )
+        .function( "decrementByInt", select_overload<VoxelId( int )>( &VoxelId::operator++ ) );
+
+    class_<RegionId>( "RegionId" )
+        .constructor<>()
+        .constructor<int>()
+
+        .function( "valid", &RegionId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast< int ( RegionId::* ) ( ) const >( &RegionId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const RegionId& self ) { return bool( self ); }))
+        .function( "get", &RegionId::get )
+        .function( "equals", optional_override([](const RegionId& self, const RegionId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const RegionId& self, const RegionId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const RegionId& self, const RegionId& other){ return self < other; }) )
+        .function( "increment", select_overload<RegionId&()>( &RegionId::operator-- ) )
+        .function( "decrement", select_overload<RegionId&()>( &RegionId::operator++ ) )
+        .function( "incrementByInt", select_overload<RegionId( int )>( &RegionId::operator-- ) )
+        .function( "decrementByInt", select_overload<RegionId( int )>( &RegionId::operator++ ) );
+
+    class_<NodeId>( "NodeId" )
+        .constructor<>()
+        .constructor<int>()
+
+        .function( "valid", &NodeId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast< int ( NodeId::* ) ( ) const >( &NodeId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const NodeId& self ) { return bool( self ); }))
+        .function( "get", &NodeId::get )
+        .function( "equals", optional_override([](const NodeId& self, const NodeId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const NodeId& self, const NodeId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const NodeId& self, const NodeId& other){ return self < other; }) )
+        .function( "increment", select_overload<NodeId&()>( &NodeId::operator-- ) )
+        .function( "decrement", select_overload<NodeId&()>( &NodeId::operator++ ) )
+        .function( "incrementByInt", select_overload<NodeId( int )>( &NodeId::operator-- ) )
+        .function( "decrementByInt", select_overload<NodeId( int )>( &NodeId::operator++ ) );
+
+    class_<ObjId>( "ObjId" )
+        .constructor<>()
+        .constructor<int>()
+
+        .function( "valid", &ObjId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast< int ( ObjId::* ) ( ) const >( &ObjId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const ObjId& self ) { return bool( self ); }))
+        .function( "get", &ObjId::get )
+        .function( "equals", optional_override([](const ObjId& self, const ObjId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const ObjId& self, const ObjId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const ObjId& self, const ObjId& other){ return self < other; }) )
+        .function( "increment", select_overload<ObjId&()>( &ObjId::operator-- ) )
+        .function( "decrement", select_overload<ObjId&()>( &ObjId::operator++ ) )
+        .function( "incrementByInt", select_overload<ObjId( int )>( &ObjId::operator-- ) )
+        .function( "decrementByInt", select_overload<ObjId( int )>( &ObjId::operator++ ) );
+
+    class_<TextureId>( "TextureId" )
+        .constructor<>()
+        .constructor<int>()
+
+        .function( "valid", &TextureId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast< int ( TextureId::* ) ( ) const >( &TextureId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const TextureId& self ) { return bool( self ); }))
+        .function( "get", &TextureId::get )
+        .function( "equals", optional_override([](const TextureId& self, const TextureId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const TextureId& self, const TextureId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const TextureId& self, const TextureId& other){ return self < other; }) )
+        .function( "increment", select_overload<TextureId&()>( &TextureId::operator-- ) )
+        .function( "decrement", select_overload<TextureId&()>( &TextureId::operator++ ) )
+        .function( "incrementByInt", select_overload<TextureId( int )>( &TextureId::operator-- ) )
+        .function( "decrementByInt", select_overload<TextureId( int )>( &TextureId::operator++ ) );
+
+    class_<GraphVertId>( "GraphVertId" )
+        .constructor<>()
+        .constructor<int>()
+
+        .function( "valid", &GraphVertId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast< int ( GraphVertId::* ) ( ) const >( &GraphVertId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const GraphVertId& self ) { return bool( self ); }))
+        .function( "get", &GraphVertId::get )
+        .function( "equals", optional_override([](const GraphVertId& self, const GraphVertId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const GraphVertId& self, const GraphVertId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const GraphVertId& self, const GraphVertId& other){ return self < other; }) )
+        .function( "increment", select_overload<GraphVertId&()>( &GraphVertId::operator-- ) )
+        .function( "decrement", select_overload<GraphVertId&()>( &GraphVertId::operator++ ) )
+        .function( "incrementByInt", select_overload<GraphVertId( int )>( &GraphVertId::operator-- ) )
+        .function( "decrementByInt", select_overload<GraphVertId( int )>( &GraphVertId::operator++ ) );
+
+    class_<GraphEdgeId>( "GraphEdgeId" )
+        .constructor<>()
+        .constructor<int>()
+
+        .function( "valid", &GraphEdgeId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast< int ( GraphEdgeId::* ) ( ) const >( &GraphEdgeId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const GraphEdgeId& self ) { return bool( self ); }))
+        .function( "get", &GraphEdgeId::get )
+        .function( "equals", optional_override([](const GraphEdgeId& self, const GraphEdgeId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const GraphEdgeId& self, const GraphEdgeId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const GraphEdgeId& self, const GraphEdgeId& other){ return self < other; }) )
+        .function( "increment", select_overload<GraphEdgeId&()>( &GraphEdgeId::operator-- ) )
+        .function( "decrement", select_overload<GraphEdgeId&()>( &GraphEdgeId::operator++ ) )
+        .function( "incrementByInt", select_overload<GraphEdgeId( int )>( &GraphEdgeId::operator-- ) )
+        .function( "decrementByInt", select_overload<GraphEdgeId( int )>( &GraphEdgeId::operator++ ) );
 }
