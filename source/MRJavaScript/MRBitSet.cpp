@@ -183,49 +183,49 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .function( "endId", &FaceBitSet::endId )
         .class_function( "beginId", &FaceBitSet::beginId );
 
-    // class_<VertBitSet>( "VertBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<VertBitSet>>( "shared_ptr<VertBitSet>" );
+    class_<VertBitSet>( "VertBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<VertBitSet>>( "shared_ptr<VertBitSet>" );
 
-    // class_<EdgeBitSet>( "EdgeBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<EdgeBitSet>>( "shared_ptr<EdgeBitSet>" );
+    class_<EdgeBitSet>( "EdgeBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<EdgeBitSet>>( "shared_ptr<EdgeBitSet>" );
 
-    // class_<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "shared_ptr<UndirectedEdgeBitSet>" );
+    class_<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "shared_ptr<UndirectedEdgeBitSet>" );
 
-    // class_<PixelBitSet>( "PixelBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<PixelBitSet>>( "shared_ptr<PixelBitSet>" );
+    class_<PixelBitSet>( "PixelBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<PixelBitSet>>( "shared_ptr<PixelBitSet>" );
 
-    // class_<VoxelBitSet>( "VoxelBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<VoxelBitSet>>( "shared_ptr<VoxelBitSet>" );
+    class_<VoxelBitSet>( "VoxelBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<VoxelBitSet>>( "shared_ptr<VoxelBitSet>" );
 
-    // class_<RegionBitSet>( "RegionBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<RegionBitSet>>( "shared_ptr<RegionBitSet>" );
+    class_<RegionBitSet>( "RegionBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<RegionBitSet>>( "shared_ptr<RegionBitSet>" );
 
-    // class_<NodeBitSet>( "NodeBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<NodeBitSet>>( "shared_ptr<NodeBitSet>" );
+    class_<NodeBitSet>( "NodeBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<NodeBitSet>>( "shared_ptr<NodeBitSet>" );
 
-    // class_<ObjBitSet>( "ObjBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<ObjBitSet>>( "shared_ptr<ObjBitSet>" );
+    class_<ObjBitSet>( "ObjBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<ObjBitSet>>( "shared_ptr<ObjBitSet>" );
 
-    // class_<TextureBitSet>( "TextureBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<TextureBitSet>>( "shared_ptr<TextureBitSet>" );
+    class_<TextureBitSet>( "TextureBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<TextureBitSet>>( "shared_ptr<TextureBitSet>" );
 
-    // class_<GraphVertBitSet>( "GraphVertBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "shared_ptr<GraphVertBitSet>" );
+    class_<GraphVertBitSet>( "GraphVertBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "shared_ptr<GraphVertBitSet>" );
 
-    // class_<GraphEdgeBitSet>( "GraphEdgeBitSet" )
-    //     .constructor<>()
-    //     .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "shared_ptr<GraphEdgeBitSet>" );
+    class_<GraphEdgeBitSet>( "GraphEdgeBitSet" )
+        .constructor<>()
+        .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "shared_ptr<GraphEdgeBitSet>" );
 }
 
 // To support operator overloading in JavaScript, add global functions

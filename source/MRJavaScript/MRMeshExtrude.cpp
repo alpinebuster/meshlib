@@ -137,22 +137,26 @@ EMSCRIPTEN_BINDINGS( HashMapBindings )
 			return values;
 		} ) );
 
-	// class_<FaceHashMap>( "FaceHashMap" )
-	// 	.constructor<>();
+	class_<FaceHashMap>( "FaceHashMap" )
+		.constructor<>()
+        .smart_ptr<std::shared_ptr<FaceHashMap>>( "shared_ptr<FaceHashMap>" ) ;
 
-	// class_<EdgeHashMap>( "EdgeHashMap" )
-	// 	.constructor<>();
+	class_<EdgeHashMap>( "EdgeHashMap" )
+		.constructor<>()
+        .smart_ptr<std::shared_ptr<EdgeHashMap>>( "shared_ptr<EdgeHashMap>" ) ;
 
-	// class_<UndirectedEdgeHashMap>( "UndirectedEdgeHashMap" )
-	// 	.constructor<>();
+	class_<UndirectedEdgeHashMap>( "UndirectedEdgeHashMap" )
+		.constructor<>()
+        .smart_ptr<std::shared_ptr<UndirectedEdgeHashMap>>( "shared_ptr<UndirectedEdgeHashMap>" ) ;
 
-	// class_<WholeEdgeHashMap>( "WholeEdgeHashMap" )
-	// 	.constructor<>();
+	class_<WholeEdgeHashMap>( "WholeEdgeHashMap" )
+		.constructor<>()
+        .smart_ptr<std::shared_ptr<WholeEdgeHashMap>>( "shared_ptr<WholeEdgeHashMap>" ) ;
 }
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 {
-    class_<MakeDegenerateBandAroundRegionParamsWrapper>( "MakeDegenerateBandAroundRegionParams" )
+    class_<MakeDegenerateBandAroundRegionParamsWrapper>( "MakeDegenerateBandAroundRegionParamsWrapper" )
         .constructor<>()
 
         .function("setMaxEdgeLength", &MakeDegenerateBandAroundRegionParamsWrapper::setMaxEdgeLength)
@@ -167,6 +171,43 @@ EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 
         .function("setNew2OldMap", &MakeDegenerateBandAroundRegionParamsWrapper::setNew2OldMap)
         .function("getNew2OldMap", &MakeDegenerateBandAroundRegionParamsWrapper::getNew2OldMap);
+
+	
+    class_<MakeDegenerateBandAroundRegionParams>( "MakeDegenerateBandAroundRegionParams" )
+		.constructor<>()
+        // .property( "outNewFaces",
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> FaceBitSet* {
+        //         return self.outNewFaces;
+        //     }),
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, FaceBitSet* val) {
+        //         self.outNewFaces = val;
+        //     })
+        // )
+        // .property( "outExtrudedEdges",
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> UndirectedEdgeBitSet* {
+        //         return self.outExtrudedEdges;
+        //     }),
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, UndirectedEdgeBitSet* val) {
+        //         self.outExtrudedEdges = val;
+        //     })
+        // )
+        // .property( "maxEdgeLength",
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> float* {
+        //         return self.maxEdgeLength;
+        //     }),
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, float* val) {
+        //         self.maxEdgeLength = val;
+        //     })
+        // )
+        // .property( "new2OldMap",
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self) -> VertHashMap* {
+        //         return self.new2OldMap;
+        //     }),
+        //     optional_override([](MakeDegenerateBandAroundRegionParams& self, VertHashMap* val) {
+        //         self.new2OldMap = val;
+        //     })
+		// )
+		;
 
 	function( "makeDegenerateBandAroundRegion", &makeDegenerateBandAroundRegion );
 }
