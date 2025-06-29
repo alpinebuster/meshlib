@@ -93,8 +93,8 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
     //     Types of parameters '_0' and '_0' are incompatible.
     //         Type 'number' is not assignable to type 'FaceId'.ts(2430)
     // 
-    // class_<FaceBitSet>( "FaceBitSet" )
-    class_<FaceBitSet, base<BitSet>>( "FaceBitSet" )
+    // class_<FaceBitSet, base<BitSet>>( "FaceBitSet" )
+    class_<FaceBitSet>( "FaceBitSet" )
         .constructor<>()
         .constructor<const BitSet&>()
         // NOTE: This will not work!
@@ -146,8 +146,8 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
 
         // Type-safe bit operations
         // NOTE:
-        .function( "test", &FaceBitSet::test )
         // .function( "test", select_overload<bool ( FaceId ) const>( &FaceBitSet::test ) )
+        .function( "test", &FaceBitSet::test )
         .function( "testFromInt", optional_override([](const FaceBitSet& self, int index) {
             return self.test(FaceId{index});
         }) )
@@ -172,7 +172,7 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .function( "subtractAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator-= ), return_value_policy::reference() )
 
         .function( "isSubsetOf", &FaceBitSet::is_subset_of )
-        .function( "isProperSubset)f", &FaceBitSet::is_proper_subset_of )
+        .function( "isProperSubsetOf", &FaceBitSet::is_proper_subset_of )
         .function( "intersects", &FaceBitSet::intersects )
 
         .function( "autoResizeSet", select_overload<void( FaceId, bool )>( &FaceBitSet::autoResizeSet ) )

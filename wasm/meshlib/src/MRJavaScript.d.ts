@@ -213,6 +213,109 @@ export interface ClassHandle {
   [Symbol.dispose](): void;
   clone(): this;
 }
+export interface __InternalDynamicBitset extends ClassHandle {
+  size(): number;
+  count(): number;
+  empty(): boolean;
+  clear(): void;
+  find_first(): number;
+  find_next(_0: number): number;
+  resize(_0: number, _1: boolean): void;
+  push_back(_0: boolean): void;
+  pop_back(): void;
+}
+
+export interface BitSet extends ClassHandle {
+  test(_0: number): boolean;
+  set(_0: number, _1: boolean): BitSet;
+  setAll(): BitSet;
+  setRange(_0: number, _1: number, _2: boolean): BitSet;
+  reset(_0: number): BitSet;
+  resetAll(): BitSet;
+  resetRange(_0: number, _1: number): BitSet;
+  flip(_0: number): BitSet;
+  flipAll(): BitSet;
+  find_last(): number;
+  nthSetBit(_0: number): number;
+  bitwiseAndAssign(_0: BitSet): BitSet;
+  bitwiseOrAssign(_0: BitSet): BitSet;
+  bitwiseXorAssign(_0: BitSet): BitSet;
+  subtractAssign(_0: BitSet): BitSet;
+  subtract(_0: BitSet, _1: number): BitSet;
+  autoResizeSet(_0: number, _1: boolean): void;
+  autoResizeSetRange(_0: number, _1: number, _2: boolean): void;
+  autoResizeTestSet(_0: number, _1: boolean): boolean;
+  heapBytes(): number;
+  resizeWithReserve(_0: number): void;
+  backId(): number;
+  endId(): number;
+}
+
+export interface FaceBitSet extends ClassHandle {
+  copyFrom(_0: BitSet): FaceBitSet;
+  moveFrom(_0: BitSet): FaceBitSet;
+  testFromInt(_0: number): boolean;
+  setAll(): FaceBitSet;
+  resetAll(): FaceBitSet;
+  flipAll(): FaceBitSet;
+  bitwiseAndAssign(_0: FaceBitSet): FaceBitSet;
+  bitwiseOrAssign(_0: FaceBitSet): FaceBitSet;
+  bitwiseXorAssign(_0: FaceBitSet): FaceBitSet;
+  subtractAssign(_0: FaceBitSet): FaceBitSet;
+  isSubsetOf(_0: FaceBitSet): boolean;
+  isProperSubsetOf(_0: FaceBitSet): boolean;
+  intersects(_0: FaceBitSet): boolean;
+  test(_0: FaceId): boolean;
+  testSet(_0: FaceId, _1: boolean): boolean;
+  set(_0: FaceId, _1: boolean): FaceBitSet;
+  setRange(_0: FaceId, _1: number, _2: boolean): FaceBitSet;
+  reset(_0: FaceId): FaceBitSet;
+  resetRange(_0: FaceId, _1: number): FaceBitSet;
+  flip(_0: FaceId): FaceBitSet;
+  findFirst(): FaceId;
+  findNext(_0: FaceId): FaceId;
+  findLast(): FaceId;
+  nthSetBit(_0: number): FaceId;
+  autoResizeSet(_0: FaceId, _1: boolean): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: boolean): void;
+  autoResizeTestSet(_0: FaceId, _1: boolean): boolean;
+  backId(): FaceId;
+  endId(): FaceId;
+}
+
+export interface VertBitSet extends ClassHandle {
+}
+
+export interface EdgeBitSet extends ClassHandle {
+}
+
+export interface UndirectedEdgeBitSet extends ClassHandle {
+}
+
+export interface PixelBitSet extends ClassHandle {
+}
+
+export interface VoxelBitSet extends ClassHandle {
+}
+
+export interface RegionBitSet extends ClassHandle {
+}
+
+export interface NodeBitSet extends ClassHandle {
+}
+
+export interface ObjBitSet extends ClassHandle {
+}
+
+export interface TextureBitSet extends ClassHandle {
+}
+
+export interface GraphVertBitSet extends ClassHandle {
+}
+
+export interface GraphEdgeBitSet extends ClassHandle {
+}
+
 export interface Box2f extends ClassHandle {
   min: Vector2f;
   max: Vector2f;
@@ -281,6 +384,142 @@ export interface FixParams extends ClassHandle {
   findParameters: FindParams;
 }
 
+export interface EdgeHashMapEntries extends ClassHandle {
+  size(): number;
+  get(_0: number): EdgeIdPair | undefined;
+  push_back(_0: EdgeIdPair): void;
+  resize(_0: number, _1: EdgeIdPair): void;
+  set(_0: number, _1: EdgeIdPair): boolean;
+}
+
+export interface UndirectedEdgeHashMapEntries extends ClassHandle {
+  size(): number;
+  get(_0: number): UndirectedEdgeIdPair | undefined;
+  push_back(_0: UndirectedEdgeIdPair): void;
+  resize(_0: number, _1: UndirectedEdgeIdPair): void;
+  set(_0: number, _1: UndirectedEdgeIdPair): boolean;
+}
+
+export interface WholeEdgeHashMapEntries extends ClassHandle {
+  size(): number;
+  get(_0: number): UndirectedE2EIdPair | undefined;
+  push_back(_0: UndirectedE2EIdPair): void;
+  resize(_0: number, _1: UndirectedE2EIdPair): void;
+  set(_0: number, _1: UndirectedE2EIdPair): boolean;
+}
+
+export interface FaceHashMapEntries extends ClassHandle {
+  size(): number;
+  get(_0: number): FaceIdPair | undefined;
+  push_back(_0: FaceIdPair): void;
+  resize(_0: number, _1: FaceIdPair): void;
+  set(_0: number, _1: FaceIdPair): boolean;
+}
+
+export interface VertHashMapEntries extends ClassHandle {
+  size(): number;
+  get(_0: number): VertIdPair | undefined;
+  push_back(_0: VertIdPair): void;
+  resize(_0: number, _1: VertIdPair): void;
+  set(_0: number, _1: VertIdPair): boolean;
+}
+
+export interface VectorEdgeId extends ClassHandle {
+  size(): number;
+  get(_0: number): EdgeId | undefined;
+  push_back(_0: EdgeId): void;
+  resize(_0: number, _1: EdgeId): void;
+  set(_0: number, _1: EdgeId): boolean;
+}
+
+export interface VectorUndirectedEdgeId extends ClassHandle {
+  size(): number;
+  get(_0: number): UndirectedEdgeId | undefined;
+  push_back(_0: UndirectedEdgeId): void;
+  resize(_0: number, _1: UndirectedEdgeId): void;
+  set(_0: number, _1: UndirectedEdgeId): boolean;
+}
+
+export interface VectorFaceId extends ClassHandle {
+  size(): number;
+  get(_0: number): FaceId | undefined;
+  push_back(_0: FaceId): void;
+  resize(_0: number, _1: FaceId): void;
+  set(_0: number, _1: FaceId): boolean;
+}
+
+export interface VectorVertId extends ClassHandle {
+  size(): number;
+  get(_0: number): VertId | undefined;
+  push_back(_0: VertId): void;
+  resize(_0: number, _1: VertId): void;
+  set(_0: number, _1: VertId): boolean;
+}
+
+export interface VectorPixelId extends ClassHandle {
+  size(): number;
+  get(_0: number): PixelId | undefined;
+  push_back(_0: PixelId): void;
+  resize(_0: number, _1: PixelId): void;
+  set(_0: number, _1: PixelId): boolean;
+}
+
+export interface VectorVoxelId extends ClassHandle {
+  size(): number;
+  get(_0: number): VoxelId | undefined;
+  push_back(_0: VoxelId): void;
+  resize(_0: number, _1: VoxelId): void;
+  set(_0: number, _1: VoxelId): boolean;
+}
+
+export interface VectorRegionId extends ClassHandle {
+  size(): number;
+  get(_0: number): RegionId | undefined;
+  push_back(_0: RegionId): void;
+  resize(_0: number, _1: RegionId): void;
+  set(_0: number, _1: RegionId): boolean;
+}
+
+export interface VectorNodeId extends ClassHandle {
+  size(): number;
+  get(_0: number): NodeId | undefined;
+  push_back(_0: NodeId): void;
+  resize(_0: number, _1: NodeId): void;
+  set(_0: number, _1: NodeId): boolean;
+}
+
+export interface VectorObjId extends ClassHandle {
+  size(): number;
+  get(_0: number): ObjId | undefined;
+  push_back(_0: ObjId): void;
+  resize(_0: number, _1: ObjId): void;
+  set(_0: number, _1: ObjId): boolean;
+}
+
+export interface VectorTextureId extends ClassHandle {
+  size(): number;
+  get(_0: number): TextureId | undefined;
+  push_back(_0: TextureId): void;
+  resize(_0: number, _1: TextureId): void;
+  set(_0: number, _1: TextureId): boolean;
+}
+
+export interface VectorGraphVertId extends ClassHandle {
+  size(): number;
+  get(_0: number): GraphVertId | undefined;
+  push_back(_0: GraphVertId): void;
+  resize(_0: number, _1: GraphVertId): void;
+  set(_0: number, _1: GraphVertId): boolean;
+}
+
+export interface VectorGraphEdgeId extends ClassHandle {
+  size(): number;
+  get(_0: number): GraphEdgeId | undefined;
+  push_back(_0: GraphEdgeId): void;
+  resize(_0: number, _1: GraphEdgeId): void;
+  set(_0: number, _1: GraphEdgeId): boolean;
+}
+
 export interface MyClass extends ClassHandle {
   x: number;
   readonly x_readonly: number;
@@ -308,6 +547,69 @@ export interface MeshWrapper extends ClassHandle {
   pack(): void;
 }
 
+export interface __phmap_internal_FlatHashMapPolicy_VertId extends ClassHandle {
+}
+
+export interface __phmap_internal_raw_hash_set_VertId extends ClassHandle {
+  size(): number;
+  clear(): void;
+}
+
+export interface __phmap_internal_raw_hash_map_VertId extends ClassHandle {
+}
+
+export interface FaceHashMapWrapper extends ClassHandle {
+  set(_0: FaceId, _1: FaceId): void;
+  get(_0: FaceId): FaceId;
+  has(_0: FaceId): boolean;
+}
+
+export interface VertHashMap extends ClassHandle {
+  keys(): VectorVertId;
+  values(): VectorVertId;
+  insert(_0: VertId, _1: VertId): void;
+  get(_0: VertId): any;
+  has(_0: VertId): boolean;
+  erase(_0: VertId): void;
+}
+
+export interface FaceHashMap extends ClassHandle {
+}
+
+export interface EdgeHashMap extends ClassHandle {
+}
+
+export interface UndirectedEdgeHashMap extends ClassHandle {
+}
+
+export interface WholeEdgeHashMap extends ClassHandle {
+}
+
+export interface MakeDegenerateBandAroundRegionParamsWrapper extends ClassHandle {
+  setMaxEdgeLength(_0: number): void;
+  clearMaxEdgeLength(): void;
+  setOutNewFaces(_0: FaceBitSet | null): void;
+  getOutNewFaces(): FaceBitSet | null;
+  setOutExtrudedEdges(_0: UndirectedEdgeBitSet | null): void;
+  getOutExtrudedEdges(): UndirectedEdgeBitSet | null;
+  setNew2OldMap(_0: VertHashMap | null): void;
+  getNew2OldMap(): VertHashMap | null;
+  getMaxEdgeLength(): number | undefined;
+}
+
+export interface MakeDegenerateBandAroundRegionParams extends ClassHandle {
+  outNewFaces: FaceBitSet | null;
+  outExtrudedEdges: UndirectedEdgeBitSet | null;
+  new2OldMap: VertHashMap | null;
+  getMaxEdgeLength(): number;
+  setMaxEdgeLength(_0: number): void;
+}
+
+export interface FillHoleParams extends ClassHandle {
+  makeDegenerateBand: boolean;
+  maxPolygonSubdivisions: number;
+}
+
 export type NoInit = {
 
 };
@@ -325,6 +627,8 @@ export interface UndirectedEdgeId extends ClassHandle {
   incrementByInt(_0: number): UndirectedEdgeId;
   decrementByInt(_0: number): UndirectedEdgeId;
 }
+
+export type UndirectedEdgeIdPair = [ UndirectedEdgeId, UndirectedEdgeId ];
 
 export interface EdgeId extends ClassHandle {
   valid(): boolean;
@@ -345,6 +649,10 @@ export interface EdgeId extends ClassHandle {
   decrementByInt(_0: number): EdgeId;
 }
 
+export type EdgeIdPair = [ EdgeId, EdgeId ];
+
+export type UndirectedE2EIdPair = [ UndirectedEdgeId, EdgeId ];
+
 export interface FaceId extends ClassHandle {
   valid(): boolean;
   toInt(): number;
@@ -359,6 +667,8 @@ export interface FaceId extends ClassHandle {
   decrementByInt(_0: number): FaceId;
 }
 
+export type FaceIdPair = [ FaceId, FaceId ];
+
 export interface VertId extends ClassHandle {
   valid(): boolean;
   toInt(): number;
@@ -371,6 +681,120 @@ export interface VertId extends ClassHandle {
   decrement(): VertId;
   incrementByInt(_0: number): VertId;
   decrementByInt(_0: number): VertId;
+}
+
+export type VertIdPair = [ VertId, VertId ];
+
+export interface PixelId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: PixelId): boolean;
+  notEquals(_0: PixelId): boolean;
+  lessThan(_0: PixelId): boolean;
+  increment(): PixelId;
+  decrement(): PixelId;
+  incrementByInt(_0: number): PixelId;
+  decrementByInt(_0: number): PixelId;
+}
+
+export interface VoxelId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: VoxelId): boolean;
+  notEquals(_0: VoxelId): boolean;
+  lessThan(_0: VoxelId): boolean;
+  increment(): VoxelId;
+  decrement(): VoxelId;
+  incrementByInt(_0: number): VoxelId;
+  decrementByInt(_0: number): VoxelId;
+}
+
+export interface RegionId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: RegionId): boolean;
+  notEquals(_0: RegionId): boolean;
+  lessThan(_0: RegionId): boolean;
+  increment(): RegionId;
+  decrement(): RegionId;
+  incrementByInt(_0: number): RegionId;
+  decrementByInt(_0: number): RegionId;
+}
+
+export interface NodeId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: NodeId): boolean;
+  notEquals(_0: NodeId): boolean;
+  lessThan(_0: NodeId): boolean;
+  increment(): NodeId;
+  decrement(): NodeId;
+  incrementByInt(_0: number): NodeId;
+  decrementByInt(_0: number): NodeId;
+}
+
+export interface ObjId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: ObjId): boolean;
+  notEquals(_0: ObjId): boolean;
+  lessThan(_0: ObjId): boolean;
+  increment(): ObjId;
+  decrement(): ObjId;
+  incrementByInt(_0: number): ObjId;
+  decrementByInt(_0: number): ObjId;
+}
+
+export interface TextureId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: TextureId): boolean;
+  notEquals(_0: TextureId): boolean;
+  lessThan(_0: TextureId): boolean;
+  increment(): TextureId;
+  decrement(): TextureId;
+  incrementByInt(_0: number): TextureId;
+  decrementByInt(_0: number): TextureId;
+}
+
+export interface GraphVertId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: GraphVertId): boolean;
+  notEquals(_0: GraphVertId): boolean;
+  lessThan(_0: GraphVertId): boolean;
+  increment(): GraphVertId;
+  decrement(): GraphVertId;
+  incrementByInt(_0: number): GraphVertId;
+  decrementByInt(_0: number): GraphVertId;
+}
+
+export interface GraphEdgeId extends ClassHandle {
+  valid(): boolean;
+  toInt(): number;
+  toBool(): boolean;
+  get(): number;
+  equals(_0: GraphEdgeId): boolean;
+  notEquals(_0: GraphEdgeId): boolean;
+  lessThan(_0: GraphEdgeId): boolean;
+  increment(): GraphEdgeId;
+  decrement(): GraphEdgeId;
+  incrementByInt(_0: number): GraphEdgeId;
+  decrementByInt(_0: number): GraphEdgeId;
 }
 
 export interface MeshLoadWrapper extends ClassHandle {
@@ -405,6 +829,26 @@ export interface SignDetectionModeValue<T extends number> {
 }
 export type SignDetectionMode = SignDetectionModeValue<0>|SignDetectionModeValue<1>|SignDetectionModeValue<2>|SignDetectionModeValue<3>|SignDetectionModeValue<4>;
 
+export interface Plane3f extends ClassHandle {
+  d: number;
+  n: Vector3f;
+  negate(): Plane3f;
+  positive(): Plane3f;
+  normalized(): Plane3f;
+  distance(_0: Vector3f): number;
+  project(_0: Vector3f): Vector3f;
+}
+
+export interface Plane3d extends ClassHandle {
+  d: number;
+  n: Vector3d;
+  negate(): Plane3d;
+  positive(): Plane3d;
+  normalized(): Plane3d;
+  distance(_0: Vector3d): number;
+  project(_0: Vector3d): Vector3d;
+}
+
 export interface StdVectori extends ClassHandle {
   push_back(_0: number): void;
   resize(_0: number, _1: number): void;
@@ -430,6 +874,14 @@ export interface StdVectord extends ClassHandle {
 }
 
 export interface StdVectorll extends ClassHandle {
+  push_back(_0: bigint): void;
+  resize(_0: number, _1: bigint): void;
+  size(): number;
+  get(_0: number): bigint | undefined;
+  set(_0: number, _1: bigint): boolean;
+}
+
+export interface StdVectorUint64 extends ClassHandle {
   push_back(_0: bigint): void;
   resize(_0: number, _1: bigint): void;
   size(): number;
@@ -636,6 +1088,64 @@ export interface Vector4i extends ClassHandle {
 }
 
 interface EmbindModule {
+  __InternalDynamicBitset: {
+    new(): __InternalDynamicBitset;
+    new(_0: number): __InternalDynamicBitset;
+    new(_0: number, _1: boolean): __InternalDynamicBitset;
+  };
+  BitSet: {
+    new(): BitSet;
+    new(_0: number): BitSet;
+    new(_0: number, _1: boolean): BitSet;
+    createWithBool(_0: number, _1: boolean): BitSet;
+    beginId(): number;
+  };
+  FaceBitSet: {
+    new(): FaceBitSet;
+    new(_0: BitSet): FaceBitSet;
+    createWithSize(_0: number): FaceBitSet;
+    createWithValue(_0: number, _1: boolean): FaceBitSet;
+    createFromBitSet(_0: BitSet): FaceBitSet;
+    createFromBitSetMove(_0: BitSet): FaceBitSet;
+    beginId(): FaceId;
+  };
+  VertBitSet: {
+    new(): VertBitSet;
+  };
+  EdgeBitSet: {
+    new(): EdgeBitSet;
+  };
+  UndirectedEdgeBitSet: {
+    new(): UndirectedEdgeBitSet;
+  };
+  PixelBitSet: {
+    new(): PixelBitSet;
+  };
+  VoxelBitSet: {
+    new(): VoxelBitSet;
+  };
+  RegionBitSet: {
+    new(): RegionBitSet;
+  };
+  NodeBitSet: {
+    new(): NodeBitSet;
+  };
+  ObjBitSet: {
+    new(): ObjBitSet;
+  };
+  TextureBitSet: {
+    new(): TextureBitSet;
+  };
+  GraphVertBitSet: {
+    new(): GraphVertBitSet;
+  };
+  GraphEdgeBitSet: {
+    new(): GraphEdgeBitSet;
+  };
+  faceBitSetAnd(_0: FaceBitSet, _1: FaceBitSet): FaceBitSet;
+  faceBitSetOr(_0: FaceBitSet, _1: FaceBitSet): FaceBitSet;
+  faceBitSetXor(_0: FaceBitSet, _1: FaceBitSet): FaceBitSet;
+  faceBitSetSub(_0: FaceBitSet, _1: FaceBitSet): FaceBitSet;
   Box2f: {
     new(): Box2f;
     new(_0: Vector2f, _1: Vector2f): Box2f;
@@ -680,6 +1190,57 @@ interface EmbindModule {
   FixParams: {
     new(): FixParams;
   };
+  EdgeHashMapEntries: {
+    new(): EdgeHashMapEntries;
+  };
+  UndirectedEdgeHashMapEntries: {
+    new(): UndirectedEdgeHashMapEntries;
+  };
+  WholeEdgeHashMapEntries: {
+    new(): WholeEdgeHashMapEntries;
+  };
+  FaceHashMapEntries: {
+    new(): FaceHashMapEntries;
+  };
+  VertHashMapEntries: {
+    new(): VertHashMapEntries;
+  };
+  VectorEdgeId: {
+    new(): VectorEdgeId;
+  };
+  VectorUndirectedEdgeId: {
+    new(): VectorUndirectedEdgeId;
+  };
+  VectorFaceId: {
+    new(): VectorFaceId;
+  };
+  VectorVertId: {
+    new(): VectorVertId;
+  };
+  VectorPixelId: {
+    new(): VectorPixelId;
+  };
+  VectorVoxelId: {
+    new(): VectorVoxelId;
+  };
+  VectorRegionId: {
+    new(): VectorRegionId;
+  };
+  VectorNodeId: {
+    new(): VectorNodeId;
+  };
+  VectorObjId: {
+    new(): VectorObjId;
+  };
+  VectorTextureId: {
+    new(): VectorTextureId;
+  };
+  VectorGraphVertId: {
+    new(): VectorGraphVertId;
+  };
+  VectorGraphEdgeId: {
+    new(): VectorGraphEdgeId;
+  };
   lerp(_0: number, _1: number, _2: number): number;
   MyClass: {
     new(_0: number, _1: EmbindString): MyClass;
@@ -688,6 +1249,7 @@ interface EmbindModule {
   Mesh: {
     new(): Mesh;
   };
+  smoothExtractedRegionBoundary(_0: Mesh, _1: number): void;
   calculateRecommendedVoxelSize(_0: Mesh, _1: number): number;
   computeVertexNormals(_0: Mesh): any;
   MeshWrapper: {
@@ -695,24 +1257,170 @@ interface EmbindModule {
     new(_0: Mesh): MeshWrapper;
     fromTriangles(_0: any, _1: any): any;
   };
+  __phmap_internal_FlatHashMapPolicy_VertId: {};
+  __phmap_internal_raw_hash_set_VertId: {};
+  __phmap_internal_raw_hash_map_VertId: {};
+  FaceHashMapWrapper: {
+    new(): FaceHashMapWrapper;
+  };
+  VertHashMap: {
+    new(): VertHashMap;
+  };
+  FaceHashMap: {
+    new(): FaceHashMap;
+  };
+  EdgeHashMap: {
+    new(): EdgeHashMap;
+  };
+  UndirectedEdgeHashMap: {
+    new(): UndirectedEdgeHashMap;
+  };
+  WholeEdgeHashMap: {
+    new(): WholeEdgeHashMap;
+  };
+  MakeDegenerateBandAroundRegionParamsWrapper: {
+    new(): MakeDegenerateBandAroundRegionParamsWrapper;
+  };
+  MakeDegenerateBandAroundRegionParams: {
+    new(): MakeDegenerateBandAroundRegionParams;
+  };
+  makeDegenerateBandAroundRegion(_0: Mesh, _1: FaceBitSet, _2: MakeDegenerateBandAroundRegionParams): void;
+  FillHoleParams: {
+    new(): FillHoleParams;
+  };
+  fillHoles(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): void;
   noInit: NoInit;
   UndirectedEdgeId: {
     new(): UndirectedEdgeId;
     new(_0: number): UndirectedEdgeId;
   };
+  makeUndirectedEdgeId(_0: number): UndirectedEdgeId;
+  addUndirectedEdgeId(_0: UndirectedEdgeId, _1: number): UndirectedEdgeId;
+  addUndirectedEdgeIdUInt(_0: UndirectedEdgeId, _1: number): UndirectedEdgeId;
+  addUndirectedEdgeIdSize(_0: UndirectedEdgeId, _1: number): UndirectedEdgeId;
+  subUndirectedEdgeId(_0: UndirectedEdgeId, _1: number): UndirectedEdgeId;
+  subUndirectedEdgeIdUInt(_0: UndirectedEdgeId, _1: number): UndirectedEdgeId;
+  subUndirectedEdgeIdSize(_0: UndirectedEdgeId, _1: number): UndirectedEdgeId;
   EdgeId: {
     new(): EdgeId;
     new(_0: number): EdgeId;
     fromUndirected(_0: UndirectedEdgeId): EdgeId;
   };
+  makeEdgeId(_0: number): EdgeId;
+  addEdgeId(_0: EdgeId, _1: number): EdgeId;
+  addEdgeIdUInt(_0: EdgeId, _1: number): EdgeId;
+  addEdgeIdSize(_0: EdgeId, _1: number): EdgeId;
+  subEdgeId(_0: EdgeId, _1: number): EdgeId;
+  subEdgeIdUInt(_0: EdgeId, _1: number): EdgeId;
+  subEdgeIdSize(_0: EdgeId, _1: number): EdgeId;
+  fillHole(_0: Mesh, _1: EdgeId, _2: FillHoleParams): void;
+  extendHoleWithFunc(_0: Mesh, _1: EdgeId, _2: any): EdgeId;
+  makeDegenerateBandAroundHole(_0: Mesh, _1: EdgeId): EdgeId;
+  extendHoleWithFuncAndOutput(_0: Mesh, _1: EdgeId, _2: any): any;
+  makeDegenerateBandAroundHoleWithOutput(_0: Mesh, _1: EdgeId): any;
   FaceId: {
     new(): FaceId;
     new(_0: number): FaceId;
   };
+  makeFaceId(_0: number): FaceId;
+  addFaceId(_0: FaceId, _1: number): FaceId;
+  addFaceIdUInt(_0: FaceId, _1: number): FaceId;
+  addFaceIdSize(_0: FaceId, _1: number): FaceId;
+  subFaceId(_0: FaceId, _1: number): FaceId;
+  subFaceIdUInt(_0: FaceId, _1: number): FaceId;
+  subFaceIdSize(_0: FaceId, _1: number): FaceId;
   VertId: {
     new(): VertId;
     new(_0: number): VertId;
   };
+  makeVertId(_0: number): VertId;
+  addVertId(_0: VertId, _1: number): VertId;
+  addVertIdUInt(_0: VertId, _1: number): VertId;
+  addVertIdSize(_0: VertId, _1: number): VertId;
+  subVertId(_0: VertId, _1: number): VertId;
+  subVertIdUInt(_0: VertId, _1: number): VertId;
+  subVertIdSize(_0: VertId, _1: number): VertId;
+  PixelId: {
+    new(): PixelId;
+    new(_0: number): PixelId;
+  };
+  addPixelId(_0: PixelId, _1: number): PixelId;
+  addPixelIdUInt(_0: PixelId, _1: number): PixelId;
+  addPixelIdSize(_0: PixelId, _1: number): PixelId;
+  subPixelId(_0: PixelId, _1: number): PixelId;
+  subPixelIdUInt(_0: PixelId, _1: number): PixelId;
+  subPixelIdSize(_0: PixelId, _1: number): PixelId;
+  VoxelId: {
+    new(): VoxelId;
+    new(_0: number): VoxelId;
+  };
+  makeVoxelId(_0: number): VoxelId;
+  addVoxelId(_0: VoxelId, _1: number): VoxelId;
+  addVoxelIdUInt(_0: VoxelId, _1: number): VoxelId;
+  addVoxelIdSize(_0: VoxelId, _1: number): VoxelId;
+  subVoxelId(_0: VoxelId, _1: number): VoxelId;
+  subVoxelIdUInt(_0: VoxelId, _1: number): VoxelId;
+  subVoxelIdSize(_0: VoxelId, _1: number): VoxelId;
+  RegionId: {
+    new(): RegionId;
+    new(_0: number): RegionId;
+  };
+  addRegionId(_0: RegionId, _1: number): RegionId;
+  addRegionIdUInt(_0: RegionId, _1: number): RegionId;
+  addRegionIdSize(_0: RegionId, _1: number): RegionId;
+  subRegionId(_0: RegionId, _1: number): RegionId;
+  subRegionIdUInt(_0: RegionId, _1: number): RegionId;
+  subRegionIdSize(_0: RegionId, _1: number): RegionId;
+  NodeId: {
+    new(): NodeId;
+    new(_0: number): NodeId;
+  };
+  addNodeId(_0: NodeId, _1: number): NodeId;
+  addNodeIdUInt(_0: NodeId, _1: number): NodeId;
+  addNodeIdSize(_0: NodeId, _1: number): NodeId;
+  subNodeId(_0: NodeId, _1: number): NodeId;
+  subNodeIdUInt(_0: NodeId, _1: number): NodeId;
+  subNodeIdSize(_0: NodeId, _1: number): NodeId;
+  ObjId: {
+    new(): ObjId;
+    new(_0: number): ObjId;
+  };
+  addObjId(_0: ObjId, _1: number): ObjId;
+  addObjIdUInt(_0: ObjId, _1: number): ObjId;
+  addObjIdSize(_0: ObjId, _1: number): ObjId;
+  subObjId(_0: ObjId, _1: number): ObjId;
+  subObjIdUInt(_0: ObjId, _1: number): ObjId;
+  subObjIdSize(_0: ObjId, _1: number): ObjId;
+  TextureId: {
+    new(): TextureId;
+    new(_0: number): TextureId;
+  };
+  addTextureId(_0: TextureId, _1: number): TextureId;
+  addTextureIdUInt(_0: TextureId, _1: number): TextureId;
+  addTextureIdSize(_0: TextureId, _1: number): TextureId;
+  subTextureId(_0: TextureId, _1: number): TextureId;
+  subTextureIdUInt(_0: TextureId, _1: number): TextureId;
+  subTextureIdSize(_0: TextureId, _1: number): TextureId;
+  GraphVertId: {
+    new(): GraphVertId;
+    new(_0: number): GraphVertId;
+  };
+  addGraphVertId(_0: GraphVertId, _1: number): GraphVertId;
+  addGraphVertIdUInt(_0: GraphVertId, _1: number): GraphVertId;
+  addGraphVertIdSize(_0: GraphVertId, _1: number): GraphVertId;
+  subGraphVertId(_0: GraphVertId, _1: number): GraphVertId;
+  subGraphVertIdUInt(_0: GraphVertId, _1: number): GraphVertId;
+  subGraphVertIdSize(_0: GraphVertId, _1: number): GraphVertId;
+  GraphEdgeId: {
+    new(): GraphEdgeId;
+    new(_0: number): GraphEdgeId;
+  };
+  addGraphEdgeId(_0: GraphEdgeId, _1: number): GraphEdgeId;
+  addGraphEdgeIdUInt(_0: GraphEdgeId, _1: number): GraphEdgeId;
+  addGraphEdgeIdSize(_0: GraphEdgeId, _1: number): GraphEdgeId;
+  subGraphEdgeId(_0: GraphEdgeId, _1: number): GraphEdgeId;
+  subGraphEdgeIdUInt(_0: GraphEdgeId, _1: number): GraphEdgeId;
+  subGraphEdgeIdSize(_0: GraphEdgeId, _1: number): GraphEdgeId;
   MeshLoadWrapper: {
     fromFile(_0: EmbindString): any;
     fromBinaryData(_0: number, _1: number, _2: EmbindString): any;
@@ -729,6 +1437,22 @@ interface EmbindModule {
   OffsetMode: {Smooth: OffsetModeValue<0>, Standard: OffsetModeValue<1>, Sharpening: OffsetModeValue<2>};
   SignDetectionMode: {Unsigned: SignDetectionModeValue<0>, OpenVDB: SignDetectionModeValue<1>, ProjectionNormal: SignDetectionModeValue<2>, WindingRule: SignDetectionModeValue<3>, HoleWindingRule: SignDetectionModeValue<4>};
   thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
+  Plane3f: {
+    new(): Plane3f;
+    new(_0: Plane3d): Plane3f;
+    new(_0: Vector3f, _1: number): Plane3f;
+    fromDirAndPt(_0: Vector3f, _1: Vector3f): Plane3f;
+  };
+  extendHole(_0: Mesh, _1: EdgeId, _2: Plane3f): EdgeId;
+  extendAllHoles(_0: Mesh, _1: Plane3f): VectorEdgeId;
+  extendHoleWithOutput(_0: Mesh, _1: EdgeId, _2: Plane3f): any;
+  extendAllHolesWithOutput(_0: Mesh, _1: Plane3f): any;
+  Plane3d: {
+    new(): Plane3d;
+    new(_0: Plane3f): Plane3d;
+    new(_0: Vector3d, _1: number): Plane3d;
+    fromDirAndPt(_0: Vector3d, _1: Vector3d): Plane3d;
+  };
   StdVectori: {
     new(): StdVectori;
   };
@@ -741,6 +1465,9 @@ interface EmbindModule {
   };
   StdVectorll: {
     new(): StdVectorll;
+  };
+  StdVectorUint64: {
+    new(): StdVectorUint64;
   };
   Vectori: {
     new(): Vectori;
@@ -799,6 +1526,8 @@ interface EmbindModule {
   createFixParams(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
   fixUndercuts(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
+  buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
+  buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
   distanceSqf(_0: Vector3f, _1: Vector3f): number;
   distancef(_0: Vector3f, _1: Vector3f): number;
   crossf(_0: Vector3f, _1: Vector3f): Vector3f;
