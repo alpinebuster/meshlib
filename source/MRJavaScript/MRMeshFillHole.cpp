@@ -1,9 +1,12 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
+#include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFillHole.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRPlane3.h>
+#include <MRMesh/MRId.h>
 
 using namespace emscripten;
 using namespace MR;
@@ -30,6 +33,7 @@ val extendHoleWithOutput( Mesh& mesh, EdgeId a, const Plane3f& plane )
 	val returnObj = val::object();
 	returnObj.set( "edgeId", result );
 	returnObj.set( "newFaces", outNewFaces );
+
 	return returnObj;
 }
 
@@ -48,6 +52,7 @@ val extendAllHoles_withOutput( Mesh& mesh, const Plane3f& plane )
 	val returnObj = val::object();
 	returnObj.set( "edgeIds", result );
 	returnObj.set( "newFaces", outNewFaces );
+
 	return returnObj;
 }
 
@@ -61,6 +66,7 @@ EdgeId extendHoleFuncBasic( Mesh& mesh, EdgeId a, val jsFunc )
 		val result = jsFunc( pos );
 		return result.as<Vector3f>();
 	};
+
 	return extendHole( mesh, a, cppFunc, nullptr );
 }
 // Version with output parameter
@@ -78,6 +84,7 @@ val extendHoleFuncWithOutput( Mesh& mesh, EdgeId a, val jsFunc )
 	val returnObj = val::object();
 	returnObj.set( "edgeId", result );
 	returnObj.set( "newFaces", outNewFaces );
+
 	return returnObj;
 }
 
@@ -115,6 +122,7 @@ val makeDegenerateBandAroundHoleWithOutput( Mesh& mesh, EdgeId a )
 	val returnObj = val::object();
 	returnObj.set( "edgeId", result );
 	returnObj.set( "newFaces", outNewFaces );
+
 	return returnObj;
 }
 

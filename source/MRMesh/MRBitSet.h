@@ -7,7 +7,7 @@
 #include "MRPch/MRBindingMacros.h"
 #define BOOST_DYNAMIC_BITSET_DONT_USE_FRIENDS
 #pragma warning(push)
-#pragma warning(disable: 4643) //Forward declaring in namespace std is not permitted by the C++ Standard.
+#pragma warning(disable: 4643) // Forward declaring in namespace std is not permitted by the C++ Standard.
 #include <boost/dynamic_bitset.hpp>
 #pragma warning(pop)
 #include <iterator>

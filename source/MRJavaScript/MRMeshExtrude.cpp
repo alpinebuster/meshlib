@@ -11,5 +11,8 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 {
+	class_<MakeDegenerateBandAroundRegionParams>( "MakeDegenerateBandAroundRegionParams" )
+		.constructor<>();
+	
 	function( "makeDegenerateBandAroundRegion", &makeDegenerateBandAroundRegion );
 }

@@ -9,6 +9,20 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( IdModule )
 {
+	// Register vector structures of `Id()`
+    register_vector<EdgeId>("VectorEdgeId");
+    register_vector<UndirectedEdgeId>("VectorUndirectedEdgeId");
+    register_vector<FaceId>("VectorFaceId");
+    register_vector<VertId>("VectorVertId");
+    register_vector<PixelId>("VectorPixelId");
+    register_vector<VoxelId>("VectorVoxelId");
+    register_vector<RegionId>("VectorRegionId");
+    register_vector<NodeId>("VectorNodeId");
+    register_vector<ObjId>("VectorObjId");
+    register_vector<TextureId>("VectorTextureId");
+    register_vector<GraphVertId>("VectorGraphVertId");
+    register_vector<GraphEdgeId>("VectorGraphEdgeId");
+
     // Alternative functions for user-defined literals (JavaScript does not support user-defined literals)
     // function("makeEdgeId", +[](int i) { return EdgeId{i}; });
     function("makeEdgeId", static_cast<EdgeId (*)(int)>( [](int i) { return EdgeId{ i }; } ));

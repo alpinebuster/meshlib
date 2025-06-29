@@ -2,9 +2,20 @@
 #include <emscripten/val.h>
 
 #include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRId.h>
+#include <MRMesh/MRMeshFwd.h>
 
 using namespace emscripten;
 using namespace MR;
+
+EMSCRIPTEN_BINDINGS( BoostDynamicBitsetModule ) {
+    using BoostDynamicBitset = boost::dynamic_bitset<std::uint64_t>;
+
+    class_<BoostDynamicBitset>("__InternalDynamicBitset")
+        .constructor<>()
+        .constructor<size_t>() // Optional, for bypass construction checks only
+        .constructor<size_t, bool>();
+}
 
 // BitSet base class bindings
 EMSCRIPTEN_BINDINGS( BitSetModule )
@@ -13,6 +24,10 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
         .constructor<>()
         .constructor<size_t>()
         .constructor<size_t, bool>()
+        .class_function( "createWithBool", optional_override( [] ( size_t numBits, bool fillValue )
+        {
+            return BitSet( numBits, fillValue );
+        } ) )
 
         // Basic operations
         .function( "size", &BitSet::size )
@@ -38,11 +53,11 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
         .function( "nthSetBit", &BitSet::nthSetBit )
 
         // Collection operations
-        .function("bitwiseAndAssign", select_overload<BitSet&(const BitSet&)>(&BitSet::operator&=), return_value_policy::reference())
-        .function("bitwiseOrAssign", select_overload<BitSet&(const BitSet&)>(&BitSet::operator|=), return_value_policy::reference())
-        .function("bitwiseXorAssign", select_overload<BitSet&(const BitSet&)>(&BitSet::operator^=), return_value_policy::reference())
-        .function("subtractAssign", select_overload<BitSet&(const BitSet&)>(&BitSet::operator-=), return_value_policy::reference())
-        .function("subtract", select_overload<BitSet&(const BitSet&, int)>(&BitSet::subtract), return_value_policy::reference())
+        .function( "bitwiseAndAssign", select_overload<BitSet & ( const BitSet& )>( &BitSet::operator&= ), return_value_policy::reference() )
+        .function( "bitwiseOrAssign", select_overload<BitSet & ( const BitSet& )>( &BitSet::operator|= ), return_value_policy::reference() )
+        .function( "bitwiseXorAssign", select_overload<BitSet & ( const BitSet& )>( &BitSet::operator^= ), return_value_policy::reference() )
+        .function( "subtractAssign", select_overload<BitSet & ( const BitSet& )>( &BitSet::operator-= ), return_value_policy::reference() )
+        .function( "subtract", select_overload<BitSet & ( const BitSet&, int )>( &BitSet::subtract ), return_value_policy::reference() )
 
         // Automatic resize operation
         .function( "autoResizeSet", select_overload<void( size_t, bool )>( &BitSet::autoResizeSet ) )
@@ -65,30 +80,37 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
 EMSCRIPTEN_BINDINGS( TypedBitSetModule )
 {
     class_<FaceBitSet, base<BitSet>>( "FaceBitSet" )
+        // class_<FaceBitSet>( "FaceBitSet" )
         .constructor<>()
         .constructor<const BitSet&>()
         // The factory function replaces the overloaded constructor
-        .class_function("createWithSize", optional_override([](size_t numBits) {
-            return FaceBitSet(numBits);
-        }))
-        .class_function("createWithValue", optional_override([](size_t numBits, bool fillValue) {
-            return FaceBitSet(numBits, fillValue);
-        }))
-        .class_function("createFromBitSet", optional_override([](const BitSet& src) {
-            return FaceBitSet(src);
-        }))
-        .class_function("createFromBitSetMove", optional_override([](BitSet&& src) {
-            return FaceBitSet(std::move(src));
-        }))
+        .class_function( "createWithSize", optional_override( [] ( size_t numBits )
+        {
+            return FaceBitSet( numBits );
+        } ) )
+        .class_function( "createWithValue", optional_override( [] ( size_t numBits, bool fillValue )
+        {
+            return FaceBitSet( numBits, fillValue );
+        } ) )
+        .class_function( "createFromBitSet", optional_override( [] ( const BitSet& src )
+        {
+            return FaceBitSet( src );
+        } ) )
+        .class_function( "createFromBitSetMove", optional_override( [] ( BitSet&& src )
+        {
+            return FaceBitSet( std::move( src ) );
+        } ) )
         // The instance method is used for replication and movement
-        .function("copyFrom", optional_override([](FaceBitSet& self, const BitSet& src) -> FaceBitSet& {
-            self = FaceBitSet(src);
+        .function( "copyFrom", optional_override( [] ( FaceBitSet& self, const BitSet& src ) -> FaceBitSet&
+        {
+            self = FaceBitSet( src );
             return self;
-        }), return_value_policy::reference())
-        .function("moveFrom", optional_override([](FaceBitSet& self, BitSet&& src) -> FaceBitSet& {
-            self = FaceBitSet(std::move(src));
+        } ), return_value_policy::reference() )
+        .function( "moveFrom", optional_override( [] ( FaceBitSet& self, BitSet&& src ) -> FaceBitSet&
+        {
+            self = FaceBitSet( std::move( src ) );
             return self;
-        }), return_value_policy::reference())
+        } ), return_value_policy::reference() )
 
         // Type-safe bit operations
         .function( "test", &FaceBitSet::test )
@@ -107,10 +129,10 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .function( "find_last", &FaceBitSet::find_last )
         .function( "nthSetBit", &FaceBitSet::nthSetBit )
 
-        .function("bitwiseAndAssign", select_overload<FaceBitSet&(const FaceBitSet&)>(&FaceBitSet::operator&=), return_value_policy::reference())
-        .function("bitwiseOrAssign", select_overload<FaceBitSet&(const FaceBitSet&)>(&FaceBitSet::operator|=), return_value_policy::reference())
-        .function("bitwiseXorAssign", select_overload<FaceBitSet&(const FaceBitSet&)>(&FaceBitSet::operator^=), return_value_policy::reference())
-        .function("subtractAssign", select_overload<FaceBitSet&(const FaceBitSet&)>(&FaceBitSet::operator-=), return_value_policy::reference())
+        .function( "bitwiseAndAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator&= ), return_value_policy::reference() )
+        .function( "bitwiseOrAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator|= ), return_value_policy::reference() )
+        .function( "bitwiseXorAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator^= ), return_value_policy::reference() )
+        .function( "subtractAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator-= ), return_value_policy::reference() )
 
         .function( "is_subset_of", &FaceBitSet::is_subset_of )
         .function( "is_proper_subset_of", &FaceBitSet::is_proper_subset_of )

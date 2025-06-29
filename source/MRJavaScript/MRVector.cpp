@@ -15,6 +15,7 @@ EMSCRIPTEN_BINDINGS( VectorModule )
     register_vector<float>( "StdVectorf" );
     register_vector<double>( "StdVectord" );
     register_vector<long long>( "StdVectorll" );
+    register_vector<uint64_t>( "StdVectorUint64" );
 
     class_<IntVector>( "Vectori" )
         .constructor<>()                           // Default constructor
