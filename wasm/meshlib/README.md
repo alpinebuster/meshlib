@@ -71,4 +71,5 @@ npm run build
 ```sh
 npm login
 npm publish --tag beta --access public
+npm publish --tag latest --access public
 ```

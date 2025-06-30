@@ -327,6 +327,8 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.constructor<const Mesh&>()
 		.class_function( "fromTriangles", &MeshWrapper::fromTriangles )
 
+		.property( "mesh", &MeshWrapper::mesh )
+
 		// Geometric properties
 		.function( "getBoundingBox", &MeshWrapper::getBoundingBox )
 		.function( "getVertexCount", &MeshWrapper::getVertexCount )

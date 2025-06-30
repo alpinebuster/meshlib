@@ -72,9 +72,19 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
  * @param coordinatesLength 
  * @return val 
  */
-val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates, int coordinatesLength )
+val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 {
 	std::vector<Vector3f> polyline;
+
+    int coordinatesLength = coordinates.size();
+    if (coordinatesLength % 3 != 0) {	
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "Coordinates length must be a multiple of 3!" );
+
+		return obj;
+    }
+
 	polyline.reserve( coordinatesLength / 3 );
 
 	for ( size_t i = 0; i < coordinatesLength; i += 3 )

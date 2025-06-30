@@ -531,6 +531,7 @@ export interface Mesh extends ClassHandle {
 }
 
 export interface MeshWrapper extends ClassHandle {
+  mesh: Mesh;
   getBoundingBox(): any;
   getVertexCount(): number;
   getFaceCount(): number;
@@ -1459,7 +1460,7 @@ interface EmbindModule {
   StdVectorf: {
     new(): StdVectorf;
   };
-  cutMeshWithPolyline(_0: Mesh, _1: StdVectorf, _2: number): any;
+  cutMeshWithPolyline(_0: Mesh, _1: StdVectorf): any;
   StdVectord: {
     new(): StdVectord;
   };
