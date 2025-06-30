@@ -157,10 +157,10 @@ function SidebarObject( editor ) {
 	curveLine.name = 'wasm-selector-curve';
 
 	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmSelector') ).setMarginLeft( '7px' ).onClick(function () {
-		if (!editor.selected) return;
+		if ( !editor.selected ) return;
 
 		selectorMode = !selectorMode;
-		if (selectorMode) {
+		if ( selectorMode ) {
 			wasmOpSelector.addClass( 'selected' );
 
 			pointGeo.dispose();
@@ -168,12 +168,10 @@ function SidebarObject( editor ) {
 			curveLine.geometry.dispose();
 			curveLine.geometry = new THREE.BufferGeometry();
 
-			if (editor.selected.children.length > 0) {
-				const subMeshes = editor.selected.children.filter(child => child.isMesh);
-				subMeshes.forEach((subMesh, i) => {
-					if (subMesh.isMesh) {
-						editor.execute( new RemoveObjectCommand( editor, subMesh ) );
-					}
+			if ( editor.selected.children.length > 0 ) {
+				const subMeshes = editor.selected.children.filter( child => child.isLine || child.isPoints );
+				subMeshes.forEach( ( subMesh, i ) => {
+					editor.execute( new RemoveObjectCommand( editor, subMesh ) );
 				});
 			}
 		} else {
@@ -183,7 +181,7 @@ function SidebarObject( editor ) {
 		}
 	});
 	signals.intersectionsDetected.add( ( intersects, source, event ) => {
-		if (selectorMode && intersects.length > 0) {
+		if ( selectorMode && intersects.length > 0 ) {
 			// 1. Check if you clicked on a point
 			const intersectedPoints = selector.getPointerIntersect( source.position, camera, pointCloud );
 			if ( intersectedPoints.length > 0 ) {
@@ -201,7 +199,7 @@ function SidebarObject( editor ) {
 			
         	// 2. No point intersected → check mesh surface
 			const _intersected_object = intersects[ 0 ].object;
-			if (editor.selected !== _intersected_object) return;
+			if ( editor.selected !== _intersected_object ) return;
 
 			if ( _intersected_object.userData.object !== undefined ) {
 				_cur_intersect = _intersected_object.userData.object;
@@ -209,7 +207,7 @@ function SidebarObject( editor ) {
 				_cur_intersect = _intersected_object;
 			}
 
-			clicked.push(intersects[0].point.clone());
+			clicked.push( intersects[0].point.clone() );
 			// console.log("pts: ", clicked);
 
 			refreshPoints();
@@ -233,7 +231,9 @@ function SidebarObject( editor ) {
 		draggingIndex = -1;
 	});
 	signals.keyDown.add( ( event ) => {
-		console.log("keydown: ", event)
+		if ( event.code == 'Enter' ) {
+			console.log("keydown: ", event)
+		}
 	});
 	function refreshPoints() {
 		// DO NOT use this, because he bottom of Three.js' `BufferGeometry` is fixed-length,
@@ -302,15 +302,26 @@ function SidebarObject( editor ) {
 			}
 		}
 	} );
+	const wasmOpSelectedInverter = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelectedInverter') ).setMarginLeft( '7px' ).onClick(function () {
+		if (!editor.selected) return;
+	});
+	const wasmOpSelectedDeleter = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelectedDeleter') ).setMarginLeft( '7px' ).onClick(function () {
+		if (!editor.selected) return;
+	});
 
 	wasmOperationRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
-	wasmOperationRow.add(wasmOpSelector);
 
-	const wasmOpsRow = new UIRow();
-	wasmOpsRow.add( wasmOpFillholes );
+	const wasmOpsRowHole = new UIRow();
+	wasmOpsRowHole.add(wasmOpFillholes);
+	
+	const wasmOpsRowSelector = new UIRow();
+	wasmOpsRowSelector.add( wasmOpSelector );
+	wasmOpsRowSelector.add( wasmOpSelectedInverter );
+	wasmOpsRowSelector.add( wasmOpSelectedDeleter );
 
 	container.add( wasmOperationRow );
-	container.add( wasmOpsRow );
+	container.add( wasmOpsRowHole );
+	container.add( wasmOpsRowSelector );
 
 	// fov
 

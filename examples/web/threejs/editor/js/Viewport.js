@@ -156,9 +156,10 @@ function Viewport( editor ) {
 	function onKeyDown( event ) {
 		event.stopPropagation();
 
+		signals.keyDown.dispatch( event );
+
 		switch ( event.code ) {
 			case 'Enter':
-				signals.keyDown.dispatch( event );
 				break;
 
 			case 'ArrowUp':
@@ -243,7 +244,7 @@ function Viewport( editor ) {
 		}
 	}
 
-	container.dom.addEventListener( 'keydown', onKeyDown );
+	document.addEventListener( 'keydown', onKeyDown );
 	container.dom.addEventListener( 'mousedown', onMouseDown );
 	container.dom.addEventListener( 'touchstart', onTouchStart, { passive: false } );
 	container.dom.addEventListener( 'dblclick', onDoubleClick );
