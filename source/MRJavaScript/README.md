@@ -1,5 +1,42 @@
 # JS/TS Bindings
 
+## Design Guide
+
+Use `val(typed_memory_view(...))` & `HEAPU8.set(uint8Array, ptr)` to improve performance by avoiding copy ops.
+
+```cpp
+class MeshWrapper {
+// ...
+
+public:
+    std::vector<Vector3f> points;
+    std::vector<Vector3i> faces;
+
+    const float* vertexDataPtr() const { return reinterpret_cast<const float*>(points.data()); }
+    size_t vertexCount() const { return points.size(); }
+
+    const int* faceDataPtr() const { return reinterpret_cast<const int*>(faces.data()); }
+    size_t faceIndexCount() const { return faces.size() * 3; }
+
+// ...
+};
+
+val getVertexPositions(MeshWrapper& mw) const {
+    return val(typed_memory_view(mw.vertexCount() * 3, mw.vertexDataPtr())); // Float32Array
+}
+```
+
+```js
+// ...
+
+const uint8Array = new Uint8Array(contents);
+const ptr = Module._malloc(uint8Array.byteLength);
+Module.HEAPU8.set(uint8Array, ptr);
+const result = await Module.MeshLoadWrapper.fromBinaryData(ptr, uint8Array.byteLength, 'stl');
+
+// ...
+```
+
 ## TODOs
 
 - V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy

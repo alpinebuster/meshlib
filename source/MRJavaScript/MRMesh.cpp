@@ -46,6 +46,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 				normals.push_back( mesh.normal( v ) );
 			}
 		}
+		
 		return vector3fToFloat32Array( normals );
 	} );
 }
