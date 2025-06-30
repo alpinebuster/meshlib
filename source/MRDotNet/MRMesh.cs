@@ -43,6 +43,19 @@ namespace MR
 
         #region C_STRUCTS
 
+        // parameters for \ref mrMakeCylinder
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct MRMakeCylinderAdvancedParameters 
+        {
+            public float radius0 = 1.0f;
+            public float radius1 = 1.0f;
+            public float startAngle = 0.0f;
+            public float arcSize = 1.0f;
+            public float length = 2.0f;
+            public int resolution = 32;
+            public MRMakeCylinderAdvancedParameters() { }
+        }
+
         /// parameters for \ref mrMakeTorus
         [StructLayout(LayoutKind.Sequential)]
         internal struct MRMakeTorusParameters
@@ -213,6 +226,14 @@ namespace MR
         {
             #region C_FUNCTIONS
 
+            // initializes a default instance
+            [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
+            private static extern MRMakeCylinderAdvancedParameters mrMakeCylinderAdvancedParametersNew();
+
+            /// creates a mesh representing a cylinder with given parameters
+            [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
+            private static extern IntPtr mrMakeCylinderAdvanced(ref MRMakeCylinderAdvancedParameters parameters);
+
             /// tightly packs all arrays eliminating lone edges and invalid faces and vertices
             [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
             private static extern void mrMeshTopologyPack(IntPtr top);
@@ -229,19 +250,31 @@ namespace MR
             /// returns three vertex ids for valid triangles (which can be accessed by FaceId),
             /// vertex ids for invalid triangles are undefined, and shall not be read
             [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
-            private static extern ref MRTriangulation mrMeshTopologyGetTriangulation(IntPtr top);
+            private static extern unsafe MRTriangulation* mrMeshTopologyGetTriangulation(IntPtr top);
+
+            [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
+            private static extern unsafe void mrTriangulationFree(MRTriangulation* p);
 
             /// returns the number of face records including invalid ones
             [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
             private static extern ulong mrMeshTopologyFaceSize(IntPtr top);
+
             /// returns one edge with no valid left face for every boundary in the mesh
             [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
-            private static extern ref MREdgePath mrMeshTopologyFindHoleRepresentiveEdges(IntPtr top);
+            private static extern unsafe MREdgePath* mrMeshTopologyFindHoleRepresentiveEdges(IntPtr top);
+
+            [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
+            private static extern unsafe void mrEdgePathFree(MREdgePath* p);
 
             /// gets 3 vertices of given triangular face;
             /// the vertices are returned in counter-clockwise order if look from mesh outside
             [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
             private static extern void mrMeshTopologyGetLeftTriVerts(IntPtr top, EdgeId a, ref VertId v0, ref VertId v1, ref VertId v2);
+
+            /// gets 3 vertices of given triangular face;
+            /// the vertices are returned in counter-clockwise order if look from mesh outside
+            [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
+            private static extern void mrMeshTopologyGetTriVerts(IntPtr top, FaceId f, ref VertId v0, ref VertId v1, ref VertId v2);
 
             /// returns the number of hole loops in the mesh;
             /// \param holeRepresentativeEdges optional output of the smallest edge id with no valid left face in every hole
@@ -315,6 +348,10 @@ namespace MR
             /// computes the closest point on mesh (or its region) to given point
             [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
             private static extern MRMeshProjectionResult mrFindProjection(ref MRVector3f pt, ref MRMeshPart mp, ref MRFindProjectionParameters parameters);
+
+            /// converts face id and 3d point into barycentric representation
+            [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
+            private static extern MRMeshTriPoint mrToTriPoint(IntPtr mesh, FaceId f, MRVector3f point);
 
             [DllImport("MRMeshC", CharSet = CharSet.Ansi)]
             private static extern IntPtr mrStringData(IntPtr str);
@@ -470,13 +507,14 @@ namespace MR
                 }
             }
             /// info about triangles
-            public TriangulationReadOnly Triangulation
+            public unsafe TriangulationReadOnly Triangulation
             {
                 get
                 {
                     if (triangulation_ is null)
                     {
-                        var mrtriangulation = mrMeshTopologyGetTriangulation(meshTopology_);
+                        var p = mrMeshTopologyGetTriangulation(meshTopology_);
+                        var mrtriangulation = *p;
                         triangulation_ = new Triangulation((int)mrtriangulation.size);
                         int sizeOfThreeVertIds = Marshal.SizeOf(typeof(ThreeVertIds));
 
@@ -486,18 +524,20 @@ namespace MR
                             IntPtr currentTriangulationPtr = IntPtr.Add(triangulationPtr, i * sizeOfThreeVertIds);
                             triangulation_.Add(Marshal.PtrToStructure<ThreeVertIds>(currentTriangulationPtr));
                         }
+                        mrTriangulationFree(p);
                     }
                     return triangulation_.AsReadOnly();
                 }
             }
             /// edges with no valid left face for every boundary in the mesh
-            public EdgePathReadOnly HoleRepresentiveEdges
+            public unsafe EdgePathReadOnly HoleRepresentiveEdges
             {
                 get
                 {
                     if (holeRepresentiveEdges_ is null)
                     {
-                        var mrEdges = mrMeshTopologyFindHoleRepresentiveEdges(meshTopology_);
+                        var p = mrMeshTopologyFindHoleRepresentiveEdges(meshTopology_);
+                        var mrEdges = *p;
                         holeRepresentiveEdges_ = new EdgePath((int)mrEdges.size);
                         int sizeOfEdgeId = Marshal.SizeOf(typeof(EdgeId));
 
@@ -507,6 +547,7 @@ namespace MR
                             IntPtr currentEdgePtr = IntPtr.Add(edgesPtr, i * sizeOfEdgeId);
                             holeRepresentiveEdges_.Add(Marshal.PtrToStructure<EdgeId>(currentEdgePtr));
                         }
+                        mrEdgePathFree(p);
                     }
 
                     return holeRepresentiveEdges_.AsReadOnly();
@@ -533,6 +574,39 @@ namespace MR
 
                 return res;
             }
+
+            /// gets 3 vertices of given triangular face;
+            /// the vertices are returned in counter-clockwise order if look from mesh outside
+            public VertId[] GetTriVerts(FaceId faceId)
+            {
+                VertId[] res = new VertId[3];
+                VertId v0 = new VertId();
+                VertId v1 = new VertId();
+                VertId v2 = new VertId();
+
+                FaceId mrFaceId = new FaceId();
+                mrFaceId.Id = faceId.Id;
+
+                mrMeshTopologyGetTriVerts(meshTopology_, mrFaceId, ref v0, ref v1, ref v2);
+                res[0].Id = v0.Id;
+                res[1].Id = v1.Id;
+                res[2].Id = v2.Id;
+
+                return res;
+            }
+
+            public MeshTriPoint ToTriPoint(FaceId f, Vector3f p)
+            {
+                MRVector3f v = new MRVector3f();
+                v.x = p.X; v.y = p.Y; v.z = p.Z;
+                MRMeshTriPoint mr = mrToTriPoint(mesh_, f, v);
+                MeshTriPoint res = new MeshTriPoint();
+                res.e = mr.e;
+                res.bary.a = mr.bary.a;
+                res.bary.b = mr.bary.b;
+                return res;
+            }
+
             /// transforms all points
             public void Transform(AffineXf3f xf)
             {
@@ -674,7 +748,7 @@ namespace MR
                 {
                     for (int i = 0; i < points.Count; i++)
                     {
-                        Marshal.StructureToPtr(points[i], IntPtr.Add(nativePoints, i * sizeOfVector3f), false);
+                        Marshal.StructureToPtr(points[i].vec_, IntPtr.Add(nativePoints, i * sizeOfVector3f), false);
                     }
 
                     for (int i = 0; i < triangles.Count; i++)
@@ -697,6 +771,20 @@ namespace MR
             {
                 return new Mesh(mrMakeCube(ref size.vec_, ref baseCoords.vec_));
             }
+
+            /// creates a cylinder with given parameters
+            public static Mesh MakeCylinder(float radius0, float radius1, float startAngle, float arcSize, float length, int resolution)
+            {
+                MRMakeCylinderAdvancedParameters mrMakeCylinderAdvancedParameters = mrMakeCylinderAdvancedParametersNew();
+                mrMakeCylinderAdvancedParameters.radius0 = radius0;
+                mrMakeCylinderAdvancedParameters.radius1 = radius1;
+                mrMakeCylinderAdvancedParameters.startAngle = startAngle;
+                mrMakeCylinderAdvancedParameters.arcSize = arcSize;
+                mrMakeCylinderAdvancedParameters.length = length;
+                mrMakeCylinderAdvancedParameters.resolution = resolution;
+                return new Mesh(mrMakeCylinderAdvanced(ref mrMakeCylinderAdvancedParameters));
+            }
+
             /// creates a sphere of given radius and vertex count
             public static Mesh MakeSphere(float radius, int vertexCount)
             {

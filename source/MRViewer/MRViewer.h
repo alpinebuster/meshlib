@@ -31,6 +31,9 @@ class ViewerTitle;
 
 class SpaceMouseHandler;
 
+class IDragDropHandler;
+
+class CornerControllerObject;
 // This struct contains rules for viewer launch
 struct LaunchParams
 {
@@ -74,7 +77,7 @@ struct FileLoadOptions
     /// true here will replace existing scene even if more than one file is open
     bool forceReplaceScene = false;
 
-    /// if this callback is set - it is called once when all obects are added to scene
+    /// if this callback is set - it is called once when all objects are added to scene
     /// top level objects only are present here
     FilesLoadedCallback loadedCallback;
 };
@@ -485,7 +488,7 @@ public:
     std::vector<std::string> commandArgs;
 
     std::shared_ptr<ObjectMesh> basisAxes;
-    std::shared_ptr<ObjectMesh> basisViewController;
+    std::unique_ptr<CornerControllerObject> basisViewController;
     std::shared_ptr<ObjectMesh> globalBasisAxes;
     std::shared_ptr<ObjectMesh> rotationSphere;
     // Stores clipping plane mesh
@@ -540,10 +543,14 @@ public:
     RenderSignal postDrawPreViewportSignal; // signal is called after scene draw but after before viewport.postDraw()
     RenderSignal postDrawSignal; // signal is called after scene draw
     // Scene events
+    using ObjectsLoadedSignal = boost::signals2::signal<void( const std::vector<std::shared_ptr<Object>>& objs, const std::string& errors, const std::string& warnings )>;
     using DragDropSignal = boost::signals2::signal<bool( const std::vector<std::filesystem::path>& paths ), SignalStopHandler>;
     using PostResizeSignal = boost::signals2::signal<void( int x, int y )>;
     using PostRescaleSignal = boost::signals2::signal<void( float xscale, float yscale )>;
     using InterruptCloseSignal = boost::signals2::signal<bool(), SignalStopHandler>;
+    ObjectsLoadedSignal objectsLoadedSignal; // signal is called when objects are loaded by Viewer::loadFiles  function
+    CursorEntranceSignal dragEntranceSignal; // signal is called on drag enter/leave the window
+    MouseMoveSignal dragOverSignal; // signal is called on drag coordinate changed
     DragDropSignal dragDropSignal; // signal is called on drag and drop file
     PostResizeSignal postResizeSignal; // signal is called after window resize
     PostRescaleSignal postRescaleSignal; // signal is called after window rescale
@@ -593,6 +600,12 @@ public:
     [[nodiscard]] const RecentFilesStore &recentFilesStore() const { return *recentFilesStore_; }
     [[nodiscard]] RecentFilesStore &recentFilesStore() { return *recentFilesStore_; }
 
+    /// returns whether to sort the filenames received from Drag&Drop in lexicographical order before adding them in scene
+    [[nodiscard]] bool getSortDroppedFiles() const { return sortDroppedFiles_; }
+
+    /// sets whether to sort the filenames received from Drag&Drop in lexicographical order before adding them in scene
+    void setSortDroppedFiles( bool value ) { sortDroppedFiles_ = value; }
+
 private:
     Viewer();
     ~Viewer();
@@ -633,6 +646,7 @@ private:
     std::unique_ptr<SpaceMouseController> spaceMouseController_;
     std::unique_ptr<TouchesController> touchesController_;
     std::unique_ptr<MouseController> mouseController_;
+    std::unique_ptr<IDragDropHandler> dragDropAdvancedHandler_;
 
     std::unique_ptr<RecentFilesStore> recentFilesStore_;
     std::unique_ptr<FrameCounter> frameCounter_;
@@ -690,6 +704,8 @@ private:
     bool dirtyScene_{ false };
 
     bool hasScaledFramebuffer_{ false };
+
+    bool sortDroppedFiles_{ true };
 
     LaunchParams launchParams_;
 

@@ -1,0 +1,79 @@
+# At project root directory, building image with:
+#
+#  `docker build -t zzz/em-build-server -f ./docker/emscripten.Dockerfile .`
+#  `docker run --rm -it zzz/em-build-server bash`
+#
+FROM emscripten/emsdk:4.0.10
+
+# Update and install req
+# Install yaru-theme-icon to fix `Icon 'dialog-warning' not present in theme Yaru: 'glib warning'` while testing
+RUN \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    export DEBIAN_FRONTEND=noninteractive; \
+    export DEBCONF_NONINTERACTIVE_SEEN=true; \
+    echo 'tzdata tzdata/Areas select Etc' | debconf-set-selections; \
+    echo 'tzdata tzdata/Zones/Etc select UTC' | debconf-set-selections; \ 
+    apt-get update -qqy && \
+    apt-get install -qqy --no-install-recommends gpg-agent software-properties-common && \
+    echo '\
+Package: *\n\
+Pin: release o=LP-PPA-mozillateam\n\
+Pin-Priority: 1001\
+    ' | tee /etc/apt/preferences.d/mozilla-firefox && \
+    add-apt-repository -y ppa:mozillateam/ppa && \
+    apt-get install -qqy --no-install-recommends \
+        tzdata \
+        git \
+        firefox \
+        pkg-config \
+        xvfb \
+        yaru-theme-icon \
+        ninja-build \
+        dbus-x11 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+## Prepare thirdparty
+WORKDIR /home/meshlib
+
+# Copy files
+COPY . .
+# Fix the issue with line endings when developing on a Windows but running on a UNIX docker container
+# Change the EOL for all files from `CRLF` to `LF`
+RUN find . -type f -exec sed -i 's/\r$//' {} \;
+
+# Build thirdparty
+ENV MR_STATE=DOCKER_BUILD
+ENV MR_EMSCRIPTEN=ON
+RUN ./scripts/build_thirdparty.sh && \
+    ./scripts/cmake_install.sh /usr/local/lib/emscripten && \
+    rm -rf bin include lib share thirdparty_build
+
+ENV MR_EMSCRIPTEN_SINGLE=ON
+RUN ./scripts/build_thirdparty.sh && \
+    ./scripts/cmake_install.sh /usr/local/lib/emscripten-single && \
+    rm -rf bin include lib share thirdparty_build
+
+ENV MR_EMSCRIPTEN_SINGLE=OFF
+ENV MR_EMSCRIPTEN_WASM64=ON
+RUN ./scripts/build_thirdparty.sh && \
+    ./scripts/cmake_install.sh /usr/local/lib/emscripten-wasm64 && \
+    rm -rf bin include lib share thirdparty_build
+
+ENV MR_EMSCRIPTEN_WASM64=OFF
+
+# Install aws cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+
+WORKDIR /home/
+RUN rm -rf meshlib
+
+# Add a new user "actions-runner" with user id 8877
+RUN useradd -u 8877 -m user && \
+    sudo chmod -R 777 /emsdk/upstream/emscripten/
+
+# Change to non-root privilege
+USER user

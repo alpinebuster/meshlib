@@ -133,6 +133,9 @@ public:
     void getTriVerts( FaceId f, ThreeVertIds & v ) const { getLeftTriVerts( edgeWithLeft( f ), v ); }
     [[nodiscard]] ThreeVertIds getTriVerts( FaceId f ) const { return getLeftTriVerts( edgeWithLeft( f ) ); }
 
+    /// return true if triangular face (f) has (v) as one of its vertices
+    [[nodiscard]] bool isTriVert( FaceId f, VertId v ) const { auto vs = getTriVerts( f ); return v == vs[0] || v == vs[1] || v == vs[2]; }
+
     /// returns three vertex ids for valid triangles, invalid triangles are skipped
     [[nodiscard]] MRMESH_API std::vector<ThreeVertIds> getAllTriVerts() const;
 
@@ -446,28 +449,20 @@ public:
         bool rearrangeTriangles = false );
 
     /// the same but copies only portion of (from) specified by fromFaces,
-    MRMESH_API void addPartByMask( const MeshTopology & from, const FaceBitSet & fromFaces, const PartMapping & map = {} );
+    MRMESH_API void addPartByMask( const MeshTopology & from, const FaceBitSet * fromFaces, const PartMapping & map = {} );
+    void addPartByMask( const MeshTopology & from, const FaceBitSet & fromFaces, const PartMapping & map = {} )
+        { addPartByMask( from, &fromFaces, map ); }
 
     /// this version has more parameters
     /// \param flipOrientation if true then every from triangle is inverted before adding
     /// \param thisContours contours on this mesh (no left face) that have to be stitched with
     /// \param fromContours contours on from mesh during addition (no left face if flipOrientation otherwise no right face)
-    MRMESH_API void addPartByMask( const MeshTopology & from, const FaceBitSet & fromFaces, bool flipOrientation = false,
+    MRMESH_API void addPartByMask( const MeshTopology & from, const FaceBitSet * fromFaces, bool flipOrientation = false,
         const std::vector<EdgePath> & thisContours = {}, const std::vector<EdgePath> & fromContours = {},
         const PartMapping & map = {} );
-
-    /// fromFaces contains mapping from this-topology (considering it is empty) to from-topology
-    MRMESH_API void addPartByFaceMap( const MeshTopology & from, const FaceMap & fromFaces, bool flipOrientation = false,
+    void addPartByMask( const MeshTopology & from, const FaceBitSet & fromFaces, bool flipOrientation = false,
         const std::vector<EdgePath> & thisContours = {}, const std::vector<EdgePath> & fromContours = {},
-        const PartMapping & map = {} );
-
-    /// both addPartByMask and addPartByFaceMap call this general implementation
-    template<typename I>
-    MRMESH_API void addPartBy( const MeshTopology & from, I fbegin, I fend, size_t fcount, bool flipOrientation = false,
-        const std::vector<EdgePath> & thisContours = {},
-        const std::vector<EdgePath> & fromContours = {},
-        const PartMapping & map = {} );
-
+        const PartMapping & map = {} ) { addPartByMask( from, &fromFaces, flipOrientation, thisContours, fromContours, map ); }
 
     /// for each triangle selects edgeWithLeft with minimal origin vertex
     MRMESH_API void rotateTriangles();

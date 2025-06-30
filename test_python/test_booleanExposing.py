@@ -51,7 +51,7 @@ def test_boolean_exposing():
     assert filteredOldFacesA.count() == 6
 
 
-def test_unite_may_meshes():
+def test_unite_many_meshes():
     size = mrmesh.Vector3f.diagonal(2)
     poses = [
         mrmesh.Vector3f.diagonal(-1),
@@ -86,8 +86,10 @@ def test_intersection_contours():
     else:
         intersections = mrmesh.findCollidingEdgeTrisPrecise(meshA,meshB,conv)
     orderedIntersections = mrmesh.orderIntersectionContours(meshA.topology,meshA.topology,intersections)
-    aConts = mrmesh.getOneMeshIntersectionContours(meshA,meshB,orderedIntersections,True,conv)
-    bConts = mrmesh.getOneMeshIntersectionContours(meshA,meshB,orderedIntersections,False,conv)
+
+    aConts = mrmesh.OneMeshContours()
+    bConts = mrmesh.OneMeshContours()
+    mrmesh.getOneMeshIntersectionContours(meshA,meshB,orderedIntersections,aConts,bConts,conv)
     assert aConts[0].intersections.size() > 0
     assert aConts[0].closed
     assert aConts[0].intersections.size() == bConts[0].intersections.size()

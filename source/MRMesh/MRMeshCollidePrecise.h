@@ -26,19 +26,49 @@ inline bool operator==( const EdgeTri& a, const EdgeTri& b )
     return a.edge.undirected() == b.edge.undirected() && a.tri == b.tri;
 }
 
-struct PreciseCollisionResult
+/// if isEdgeATriB() == true,  then stores edge from mesh A and triangle from mesh B
+/// if isEdgeATriB() == false, then stores edge from mesh B and triangle from mesh A
+struct VarEdgeTri
 {
-    /// each edge is directed to have its origin inside and its destination outside of the other mesh
-    std::vector<EdgeTri> edgesAtrisB;
-    std::vector<EdgeTri> edgesBtrisA;
+    EdgeId edge;
+    struct FlaggedTri
+    {
+        unsigned int isEdgeATriB : 1 = 0;
+        unsigned int face : 31 = 0;
+        bool operator==( const FlaggedTri& ) const = default;
+    } flaggedTri;
+
+    [[nodiscard]] FaceId tri() const { return FaceId( flaggedTri.face ); }
+    [[nodiscard]] bool isEdgeATriB() const { return bool( flaggedTri.isEdgeATriB ); }
+    [[nodiscard]] EdgeTri edgeTri() const { return EdgeTri( edge, tri() ); }
+
+    [[nodiscard]] bool valid() const { return edge.valid(); }
+    [[nodiscard]] explicit operator bool() const { return edge.valid(); }
+
+    VarEdgeTri() = default;
+    VarEdgeTri( bool isEdgeATriB, EdgeId e, FaceId t )
+    {
+        assert( t.valid() );
+        edge = e;
+        flaggedTri.isEdgeATriB = isEdgeATriB;
+        flaggedTri.face = t;
+    }
+    VarEdgeTri( bool isEdgeATriB, const EdgeTri& et ) : VarEdgeTri( isEdgeATriB, et.edge, et.tri ) {}
+
+    [[nodiscard]] bool operator==( const VarEdgeTri& ) const = default;
 };
+static_assert( sizeof( VarEdgeTri ) == 8 );
+
+/// In each VarEdgeTri = pair of (intersected edge, intersected triangle), the intersected edge
+/// is directed from negative half-space of the intersected triangle B to its positive half-space
+using PreciseCollisionResult = std::vector<VarEdgeTri>;
 
 /**
  * \brief finds all pairs of colliding edges from one mesh and triangle from another mesh
  * \param rigidB2A rigid transformation from B-mesh space to A mesh space, nullptr considered as identity transformation
  * \param anyIntersection if true then the function returns as fast as it finds any intersection
  */
-MRMESH_API PreciseCollisionResult findCollidingEdgeTrisPrecise( const MeshPart & a, const MeshPart & b, 
+MRMESH_API PreciseCollisionResult findCollidingEdgeTrisPrecise( const MeshPart & a, const MeshPart & b,
     ConvertToIntVector conv, const AffineXf3f* rigidB2A = nullptr, bool anyIntersection = false );
 
 /**
@@ -61,6 +91,11 @@ MRMESH_API std::vector<EdgeTri> findCollidingEdgeTrisPrecise(
     const Mesh & a, const std::vector<FaceId> & facesA,
     const Mesh & b, const std::vector<EdgeId> & edgesB,
     ConvertToIntVector conv, const AffineXf3f * rigidB2A = nullptr );
+
+/**
+ * \brief creates simple converters from Vector3f to Vector3i and back in mesh part area range
+ */
+MRMESH_API CoordinateConverters getVectorConverters( const MeshPart& a );
 
 /**
  * \brief creates simple converters from Vector3f to Vector3i and back in mesh parts area range

@@ -82,6 +82,11 @@ jobs:
         with:
           submodules: true
 
+      - name: Checkout third-party submodules
+        run: |
+          # Download sub-submodules for certain submodules. We don't recurse above in Checkout to improve build performance. See: https://github.com/actions/checkout/issues/1779
+          git submodule update --init --recursive --depth 1 thirdparty/mrbind
+
       - name: Collect runner's system stats
         if: ${{ inputs.internal_build }}
         continue-on-error: true
@@ -172,7 +177,7 @@ jobs:
 
       - name: Restore Dependencies
         if:   ${{ env.BUILD_C_SHARP == 'true' }}
-        uses: codebeltnet/dotnet-restore@1cf30dd0fdddac25bc7dcb559c6d0c310fb0d472 # v2
+        uses: codebeltnet/dotnet-restore@7a827ce5193af33b950d0fedfc0277cab2ff8887 # v2
         with:
           projects: 'source/**/*.csproj'
 
@@ -221,7 +226,7 @@ jobs:
 
       - name: Build .NET
         if:   ${{ env.BUILD_C_SHARP == 'true' }}
-        run: msbuild -m source\MeshLibDotNet.sln -p:Configuration=${{ matrix.config }}
+        run: msbuild -m source\MeshLibDotNet.sln -p:Configuration=${{ matrix.config }} -t:restore -t:build
 
       - name: Build .NET examples
         if:   ${{ env.BUILD_C_SHARP == 'true' }}
@@ -263,6 +268,7 @@ jobs:
         run: py -3 scripts\run_c_sharp_unit_test_script.py ${{ matrix.config }}
 
       - name: Python Sanity Tests
+        timeout-minutes: 8
         working-directory: source\x64\${{ matrix.config }}
         run: py -3 ..\..\..\scripts\run_python_test_script.py -d '..\test_python'
 

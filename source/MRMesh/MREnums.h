@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MRMeshFwd.h"
+
 namespace MR
 {
 
@@ -59,11 +61,25 @@ enum class ColoringType
     VertsColorMap  ///< Use different color (taken from verts colormap) for each vertex
 };
 
+/// returns string representation of enum values
+[[nodiscard]] MRMESH_API const char * asString( ColoringType ct );
+
 enum class UseAABBTree : char
 {
     No,  // AABB-tree of the mesh will not be used, even if it is available
     Yes, // AABB-tree of the mesh will be used even if it has to be constructed
     YesIfAlreadyConstructed, // AABB-tree of the mesh will be used if it was previously constructed and available, and will not be used otherwise
+};
+
+/// the algorithm to compute approximately geodesic path
+enum class GeodesicPathApprox : char
+{
+    /// compute edge-only path by building it from start and end simultaneously
+    DijkstraBiDir,
+    /// compute edge-only path using A*-search algorithm
+    DijkstraAStar,
+    /// use Fast Marching algorithm
+    FastMarching
 };
 
 } //namespace MR

@@ -32,24 +32,19 @@ void testMeshCollidePrecise( void )
     MRMeshPart meshBPart = { meshB, NULL };
     MRCoordinateConverters conv = mrGetVectorConverters( &meshAPart, &meshBPart, NULL );
 
-    MRPreciseCollisionResult* intersections = mrFindCollidingEdgeTrisPrecise( &meshAPart, &meshBPart, conv.toInt, NULL, false );
-    const MRVectorEdgeTri edgesAtrisB = mrPreciseCollisionResultEdgesAtrisB( intersections );
-    const MRVectorEdgeTri edgesBtrisA = mrPreciseCollisionResultEdgesBtrisA( intersections );
-    // FIXME: the results are platform-dependent
-    //TEST_ASSERT( edgesAtrisB.size == 80 )
-    //TEST_ASSERT( edgesBtrisA.size == 72 )
-    TEST_ASSERT( edgesAtrisB.size != 0 )
-    TEST_ASSERT( edgesBtrisA.size != 0 )
+    MRVectorVarEdgeTri* intersections = mrFindCollidingEdgeTrisPrecise( &meshAPart, &meshBPart, conv.toInt, NULL, false );
+    TEST_ASSERT_INT_EQUAL( (int)intersections->size, 152 )
 
     const MRMeshTopology* meshATop = mrMeshTopology( meshA );
     const MRMeshTopology* meshBTop = mrMeshTopology( meshB );
     MRContinuousContours* contours = mrOrderIntersectionContours( meshATop, meshBTop, intersections );
-    TEST_ASSERT( mrContinuousContoursSize( contours ) == 4 )
-    // FIXME: the results are platform-dependent
-    //TEST_ASSERT( mrContinuousContoursGet( contours, 0 ).size == 69 )
-    //TEST_ASSERT( mrContinuousContoursGet( contours, 1 ).size == 71 )
-    //TEST_ASSERT( mrContinuousContoursGet( contours, 2 ).size == 7 )
-    //TEST_ASSERT( mrContinuousContoursGet( contours, 3 ).size == 9 )
+    TEST_ASSERT_INT_EQUAL( (int)mrContinuousContoursSize( contours ), 4 )
+    TEST_ASSERT_INT_EQUAL( (int)mrContinuousContoursGet( contours, 0 ).size, 71 )
+    TEST_ASSERT_INT_EQUAL( (int)mrContinuousContoursGet( contours, 1 ).size, 7 )
+    TEST_ASSERT( mrContinuousContoursGet( contours, 2 ).size == 69 || // without FMA instruction (default settings for x86 or old compilers for ARM)
+                 mrContinuousContoursGet( contours, 2 ).size == 71 ); // with FMA instruction (modern compilers for ARM)
+    TEST_ASSERT( mrContinuousContoursGet( contours, 3 ).size == 9 ||  // without FMA instruction (default settings for x86 or old compilers for ARM)
+                 mrContinuousContoursGet( contours, 3 ).size == 7 );  // with FMA instruction (modern compilers for ARM)
 
     MROneMeshContours* meshAContours = mrGetOneMeshIntersectionContours( meshA, meshB, contours, true, &conv, NULL );
     MROneMeshContours* meshBContours = mrGetOneMeshIntersectionContours( meshA, meshB, contours, false, &conv, NULL );
@@ -66,7 +61,7 @@ void testMeshCollidePrecise( void )
 
     mrContinuousContoursFree( contours );
 
-    mrPreciseCollisionResultFree( intersections );
+    mrVectorVarEdgeTriFree( intersections );
 
     mrConvertToFloatVectorFree( conv.toFloat );
     mrConvertToIntVectorFree( conv.toInt );

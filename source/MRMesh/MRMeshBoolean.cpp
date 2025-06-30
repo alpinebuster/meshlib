@@ -22,6 +22,8 @@
 #include "MRBox.h"
 #include "MRContoursStitch.h"
 #include "MREdgePaths.h"
+#include "MRRingIterator.h"
+#include "MRParallelFor.h"
 
 namespace
 {
@@ -74,32 +76,6 @@ void gatherEdgeInfo( const MeshTopology& topology, EdgeId e, FaceBitSet& faces, 
         faces.set( r );
     orgs.set( topology.org( e ) );
     dests.set( topology.dest( e ) );
-}
-
-OneMeshContours getOtherMeshContoursByHint( const OneMeshContours& aContours, const ContinuousContours& contours,
-    const AffineXf3f* rigidB2A = nullptr )
-{
-    AffineXf3f inverseXf;
-    if ( rigidB2A )
-        inverseXf = rigidB2A->inverse();
-    OneMeshContours bMeshContours = aContours;
-    for ( int j = 0; j < bMeshContours.size(); ++j )
-    {
-        const auto& inCont = contours[j];
-        auto& outCont = bMeshContours[j].intersections;
-        assert( inCont.size() == outCont.size() );
-        ParallelFor( inCont, [&] ( size_t i )
-        {
-            const auto& inInter = inCont[i];
-            auto& outInter = outCont[i];
-            outInter.primitiveId = inInter.isEdgeATriB ?
-                std::variant<FaceId, EdgeId, VertId>( inInter.tri ) :
-                std::variant<FaceId, EdgeId, VertId>( inInter.edge );
-            if ( rigidB2A )
-                outInter.coordinate = inverseXf( outCont[i].coordinate );
-        } );
-    }
-    return bMeshContours;
 }
 
 }
@@ -166,32 +142,34 @@ std::vector<JoinedSelfLoops> findSelfContoursMapping( const ContinuousContours& 
     int i = 0;
     while ( visitedConts.any() )
     {
-        size_t first{ ~size_t( 0 ) };
-        for ( auto next : visitedConts )
+        size_t first = visitedConts.find_first();
+        visitedConts.reset( first );
+        auto fInter = contours[first][0];
+        tbb::task_group_context ctx;
+        ParallelFor( visitedConts.beginId(), visitedConts.endId(), [&] ( size_t next )
         {
-            if ( first == ~size_t( 0 ) )
-            {
-                first = next;
-                visitedConts.reset( first );
-                continue;
-            }
-            auto fInter = contours[first][0];
+            if ( ctx.is_group_execution_cancelled() || !visitedConts.test( next ) )
+                return;
             int rot = 0;
             for ( const auto& nInter : contours[next] )
             {
+                if ( ctx.is_group_execution_cancelled() )
+                    return;
                 ++rot;
-                if ( fInter.isEdgeATriB == nInter.isEdgeATriB )
+                if ( fInter.isEdgeATriB() == nInter.isEdgeATriB() )
                     continue;
-                if ( fInter.tri != nInter.tri )
+                if ( fInter.tri() != nInter.tri() )
                     continue;
                 if ( fInter.edge != nInter.edge.sym() )
                     continue;
-                visitedConts.reset( next );
-                holePairs[i++] = { int( first ),int( next ),rot - 1 };
-
-                break;
+                if ( ctx.cancel_group_execution() )
+                {
+                    visitedConts.reset( next );
+                    holePairs[i++] = { int( first ),int( next ),rot - 1 };
+                }
+                return;
             }
-        }
+        } );
     }
     return holePairs;
 }
@@ -248,9 +226,9 @@ LoneProccessingState subdivideSelfLone( Mesh& mesh, const CoordinateConverters& 
                 break;
             }
         }
-
-        visitedLone.reset( otherLoneIndex );
-        if ( contours[loneIndex].front().isEdgeATriB )
+        assert( loneIndex != -1 );
+        assert( otherLoneIndex != -1 );
+        if ( contours[loneIndex].front().isEdgeATriB() )
             std::swap( loneIndex, otherLoneIndex );
         fLone[i] = contours[loneIndex];
         joinedELone[i] = contours[otherLoneIndex];
@@ -276,7 +254,7 @@ Expected<MR::Mesh> selfBoolean( const Mesh& inMesh )
     Mesh mesh = inMesh;
 
     int iters = 0;
-    const int cMaxFixLoneIterations = 10;
+    const int cMaxFixLoneIterations = 3; // lets not do it many times
     for ( ;; ++iters )
     {
         // find intersections
@@ -296,37 +274,62 @@ Expected<MR::Mesh> selfBoolean( const Mesh& inMesh )
             break;
         }
     }
-    intersections = {};
 
     auto holePairs = detail::findSelfContoursMapping( contours );
     auto meshCpy = mesh; // for now lets do copy each time, TODO: do copy only if needed
     auto intContours = getOneMeshSelfIntersectionContours( mesh, contours, converters );
 
     // update non-closed
-    ParallelFor( contours, [&] ( size_t cId )
+    ParallelFor( holePairs, [&] ( size_t hpId )
     {
-        auto& cc = contours[cId];
-        if ( isClosed( cc ) )
+        auto [f, s, r] = holePairs[hpId];
+        auto& cf = contours[f];
+        if ( isClosed( cf ) )
             return;
 
-        if ( cc.capacity() < cc.size() + 2 )
-            cc.reserve( cc.size() + 2 );
-        auto& ic = intContours[cId];
-        if ( ic.intersections.capacity() < ic.intersections.size() + 2 )
-            ic.intersections.reserve( ic.intersections.size() + 2 );
+        if ( cf.capacity() < 2 * cf.size() + 3 )
+            cf.reserve( 2 * cf.size() + 3 );
+        auto& icf = intContours[f].intersections;
+        if ( icf.capacity() < 2 * icf.size() + 3 )
+            icf.reserve( 2 * icf.size() + 3 );
 
-        auto prev = mesh.topology.prev( cc.front().edge );
-        auto next = mesh.topology.next( cc.back().edge );
+        auto& cs = contours[s];
+        auto& ics = intContours[s].intersections;
+
+        auto prev = mesh.topology.prev( cf.front().edge );
+        auto next = mesh.topology.next( cf.back().edge );
         auto svId = mesh.topology.dest( prev );
         auto fvId = mesh.topology.dest( next );
 
-        auto prevVET = VariableEdgeTri{ {prev,cc.front().tri},cc.front().isEdgeATriB };
-        auto nextVET = VariableEdgeTri{ {next,cc.back().tri},cc.back().isEdgeATriB };
+        auto triFVerts = mesh.topology.getTriVerts( cf.front().tri() );
+        auto triBVerts = mesh.topology.getTriVerts( cf.back().tri() );
+        if ( !( svId == triFVerts[0] || svId == triFVerts[1] || svId == triFVerts[2] ) ||
+            !( fvId == triBVerts[0] || fvId == triBVerts[1] || fvId == triBVerts[2] ) )
+        {
+            // complex disjointed contour, TODO: support this case
+            cs.clear();
+            cf.clear();
+            ics.clear();
+            icf.clear();
+            return;
+        }
 
-        cc.insert( cc.begin(), prevVET );
-        cc.insert( cc.end(), nextVET );
-        ic.intersections.insert( ic.intersections.begin(), OneMeshIntersection{ .primitiveId = svId,.coordinate = mesh.points[svId] } );
-        ic.intersections.insert( ic.intersections.end(), OneMeshIntersection{ .primitiveId = fvId,.coordinate = mesh.points[fvId] } );
+        auto prevVET = cf.front();
+        auto nextVET = cf.back();
+        cf.insert( cf.begin(), prevVET );
+        cf.insert( cf.end(), nextVET );
+        cf.insert( cf.end(), std::make_move_iterator( cs.begin() ), std::make_move_iterator( cs.end() ) );
+        cf.insert( cf.end(), prevVET );
+        cs.clear();
+
+        auto prevOMI = OneMeshIntersection{ .primitiveId = svId,.coordinate = mesh.points[svId] };
+        auto nextOMI = OneMeshIntersection{ .primitiveId = fvId,.coordinate = mesh.points[fvId] };     
+        icf.insert( icf.begin(), prevOMI );
+        icf.insert( icf.end(), nextOMI );
+        icf.insert( icf.end(), std::make_move_iterator( ics.begin() ), std::make_move_iterator( ics.end() ) );
+        icf.insert( icf.end(), prevOMI );
+        ics.clear();
+        intContours[f].closed = true;
     } );
 
     auto sortData = std::make_unique<SortIntersectionsData>( SortIntersectionsData{ meshCpy, contours, converters.toInt,nullptr, meshCpy.topology.vertSize(), false } );
@@ -336,7 +339,7 @@ Expected<MR::Mesh> selfBoolean( const Mesh& inMesh )
 
     for ( auto [f, s, r] : holePairs )
     {
-        if ( isClosed( contours[f] ) )
+        if ( !contours[s].empty() ) // isClosed( contours[f] )
         {
             const auto& leftLoopF = cutRes.resultCut[f];
             auto rightLoopF = cutAlongEdgeLoop( mesh, leftLoopF );
@@ -349,20 +352,24 @@ Expected<MR::Mesh> selfBoolean( const Mesh& inMesh )
         }
         else
         {
-            auto leftContF = cutRes.resultCut[f]; // intentional copy
-            auto& leftContS = cutRes.resultCut[s];
-            assert( mesh.topology.dest( leftContF.back() ) == mesh.topology.org( leftContS.front() ) );
-            assert( mesh.topology.dest( leftContS.back() ) == mesh.topology.org( leftContF.front() ) );
-            leftContF.insert( leftContF.end(), leftContS.begin(), leftContS.end() );
-            auto rightContF = cutAlongEdgeLoop( mesh, leftContF );
-            leftContF.resize( leftContF.size() / 2 );
-            reverse( leftContS );
-            EdgePath rightContS;
-            rightContS.insert( rightContS.begin(), rightContF.begin() + rightContF.size() / 2, rightContF.end() );
-            rightContF.resize( rightContF.size() / 2 );
-            reverse( rightContF );
-            stitchContours( mesh.topology, leftContF, leftContS );
-            stitchContours( mesh.topology, rightContF, rightContS );
+            if ( !isEdgeLoop( mesh.topology, cutRes.resultCut[f] ) )
+                continue; // skip for now for simplicity, TODO: how could this be?
+            auto leftFirstLoops = splitOnSimpleLoops( mesh.topology, { std::move( cutRes.resultCut[f] ) } );
+            if ( leftFirstLoops.size() != 1 )
+                continue; // skip for now for simplicity, TODO: support this case
+            auto& leftFirstLoop = leftFirstLoops[0];
+
+            auto rightFirstLoop = cutAlongEdgeLoop( mesh, leftFirstLoop );
+            EdgePath leftSecondPart( leftFirstLoop.begin() + leftFirstLoop.size() / 2, leftFirstLoop.end() );
+            leftFirstLoop.resize( leftSecondPart.size() );
+            reverse( leftSecondPart );
+            
+            EdgePath rightSecondPart( rightFirstLoop.begin() + rightFirstLoop.size() / 2, rightFirstLoop.end() );
+            rightFirstLoop.resize( rightSecondPart.size() );
+            reverse( rightSecondPart );
+
+            stitchContours( mesh.topology, leftFirstLoop, leftSecondPart );
+            stitchContours( mesh.topology, rightSecondPart, rightFirstLoop );
         }
     }
 
@@ -374,7 +381,9 @@ Contours3f findIntersectionContours( const Mesh& meshA, const Mesh& meshB, const
     auto converters = getVectorConverters( meshA, meshB, rigidB2A );
     auto intersections = findCollidingEdgeTrisPrecise( meshA, meshB, converters.toInt, rigidB2A );
     auto contours = orderIntersectionContours( meshA.topology, meshB.topology, intersections );
-    return extractIntersectionContours( meshA, meshB, contours, converters, rigidB2A );
+    Contours3f res;
+    getOneMeshIntersectionContours( meshA, meshB, contours, nullptr, nullptr, converters, rigidB2A, &res );
+    return res;
 }
 
 BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operation, const BooleanParameters& params, BooleanInternalParameters intParams )
@@ -427,7 +436,7 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
         for ( int i = 0; i < loneContoursIds.size(); ++i )
         {
             const auto& contour = contours[loneContoursIds[i]];
-            if ( contour[0].isEdgeATriB )
+            if ( contour[0].isEdgeATriB() )
                 loneB.push_back( contour );
             else
                 loneA.push_back( contour );
@@ -440,16 +449,16 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
         if ( !loneA.empty() && needCutMeshA )
         {
             aSubdivided = true;
-            auto loneIntsA = getOneMeshIntersectionContours( meshA, meshB, loneA, true, converters, params.rigidB2A );
-            auto loneIntsAonB = getOneMeshIntersectionContours( meshA, meshB, loneA, false, converters, params.rigidB2A );
+            OneMeshContours loneIntsA, loneIntsAonB;
+            getOneMeshIntersectionContours( meshA, meshB, loneA, &loneIntsA, &loneIntsAonB, converters, params.rigidB2A );
             removeLoneDegeneratedContours( meshB.topology, loneIntsA, loneIntsAonB );
             subdivideLoneContours( meshA, loneIntsA, &new2orgSubdivideMapA );
         }
         if ( !loneB.empty() && needCutMeshB )
         {
             bSubdivided = true;
-            auto loneIntsB = getOneMeshIntersectionContours( meshA, meshB, loneB, false, converters, params.rigidB2A );
-            auto loneIntsBonA = getOneMeshIntersectionContours( meshA, meshB, loneB, true, converters, params.rigidB2A );
+            OneMeshContours loneIntsB, loneIntsBonA;
+            getOneMeshIntersectionContours( meshA, meshB, loneB, &loneIntsBonA, &loneIntsB, converters, params.rigidB2A );
             removeLoneDegeneratedContours( meshA.topology, loneIntsB, loneIntsBonA );
             subdivideLoneContours( meshB, loneIntsB, &new2orgSubdivideMapB );
         }
@@ -487,6 +496,7 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
             {
                 if ( bSubdivided || !intParams.originalMeshB )
                 {
+                    Timer t( "meshBCopyBuffer" );
                     meshBCopyBuffer = meshB;
                     if ( !intParams.originalMeshB )
                         intParams.originalMeshB = &meshBCopyBuffer;
@@ -507,6 +517,7 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
         {
             if ( aSubdivided || !intParams.originalMeshA )
             {
+                Timer t( "meshACopyBuffer" );
                 meshACopyBuffer = meshA;
                 if ( !intParams.originalMeshA )
                     intParams.originalMeshA = &meshACopyBuffer;
@@ -521,15 +532,11 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
     }
     taskGroup.wait();
 
-    if ( needCutMeshA )
-        meshAContours = getOneMeshIntersectionContours( meshA, meshB, contours, true, converters, params.rigidB2A );
-    if ( needCutMeshB )
-    {
-        if ( needCutMeshA )
-            meshBContours = getOtherMeshContoursByHint( meshAContours, contours, params.rigidB2A );
-        else
-            meshBContours = getOneMeshIntersectionContours( meshA, meshB, contours, false, converters, params.rigidB2A );
-    }
+    if ( needCutMeshA || needCutMeshB )
+        getOneMeshIntersectionContours( meshA, meshB, contours,
+            needCutMeshA ? &meshAContours : nullptr,
+            needCutMeshB ? &meshBContours : nullptr,
+            converters, params.rigidB2A );
 
     if ( mainCb && !mainCb( 0.33f ) )
         return { .errorString = stringOperationCanceled() };
@@ -543,11 +550,14 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
     {
         taskGroup.run( [&] ()
         {
+            Timer t( "CutMeshA" );
             FaceMap* cut2oldAPtr = params.mapper ? &params.mapper->maps[int( BooleanResultMapper::MapObject::A )].cut2origin : nullptr;
             // cut meshes
             CutMeshParameters cmParams;
             cmParams.sortData = dataForA.get();
             cmParams.new2OldMap = cut2oldAPtr;
+            if ( params.forceCut )
+                cmParams.forceFillMode = CutMeshParameters::ForceFill::All;
             auto res = cutMesh( meshA, meshAContours, cmParams );
             meshAContours.clear();
             meshAContours.shrink_to_fit(); // free memory
@@ -575,11 +585,14 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
     }
     if ( needCutMeshB && !params.outPreCutB )
     {
+        Timer t( "CutMeshB" );
         FaceMap* cut2oldBPtr = params.mapper ? &params.mapper->maps[int( BooleanResultMapper::MapObject::B )].cut2origin : nullptr;
         // cut meshes
         CutMeshParameters cmParams;
         cmParams.sortData = dataForB.get();
         cmParams.new2OldMap = cut2oldBPtr;
+        if ( params.forceCut )
+            cmParams.forceFillMode = CutMeshParameters::ForceFill::All;
         auto res = cutMesh( meshB, meshBContours, cmParams );
         meshBContours.clear();
         meshBContours.shrink_to_fit(); // free memory
@@ -601,13 +614,13 @@ BooleanResult booleanImpl( Mesh&& meshA, Mesh&& meshB, BooleanOperation operatio
     taskGroup.wait();
 
 
-    if ( result.meshABadContourFaces.any() )
+    if ( !params.forceCut && result.meshABadContourFaces.any() )
     {
         result.errorString = "Bad contour on " + std::to_string( result.meshABadContourFaces.count() ) + " mesh A faces, " +
             "probably mesh B has self-intersections on contours lying on these faces.";
         return result;
     }
-    else if ( result.meshBBadContourFaces.any() )
+    else if ( !params.forceCut && result.meshBBadContourFaces.any() )
     {
         result.errorString = "Bad contour on " + std::to_string( result.meshBBadContourFaces.count() ) + " mesh B faces, " +
             "probably mesh A has self-intersections on contours lying on these faces.";
@@ -646,7 +659,7 @@ Expected<BooleanResultPoints> getBooleanPoints( const Mesh& meshA, const Mesh& m
 
     const auto converters = getVectorConverters( meshA, meshB, rigidB2A );
     const auto intersections = findCollidingEdgeTrisPrecise( meshA, meshB, converters.toInt, rigidB2A );
-    result.intersectionPoints.reserve( intersections.edgesAtrisB.size() + intersections.edgesBtrisA.size() );
+    result.intersectionPoints.reserve( intersections.size() );
 
     FaceBitSet collFacesA, collFacesB;
     VertBitSet destVertsA, destVertsB, orgVertsA, orgVertsB;
@@ -656,21 +669,24 @@ Expected<BooleanResultPoints> getBooleanPoints( const Mesh& meshA, const Mesh& m
     orgVertsB.resize( meshB.topology.lastValidVert() + 1 );
     destVertsA.resize( meshA.topology.lastValidVert() + 1 );
     destVertsB.resize( meshB.topology.lastValidVert() + 1 );
-    for ( const auto& et : intersections.edgesAtrisB )
+    for ( const auto& et : intersections )
     {
-        gatherEdgeInfo( meshA.topology, et.edge, collFacesA, orgVertsA, destVertsA );
-        collFacesB.set( et.tri );
+        if ( et.isEdgeATriB() )
+        {
+            gatherEdgeInfo( meshA.topology, et.edge, collFacesA, orgVertsA, destVertsA );
+            collFacesB.set( et.tri() );
 
-        const auto isect = findEdgeTriIntersectionPoint( meshA, et.edge, meshB, et.tri, converters, rigidB2A, EdgeTriComponent::Tri );
-        result.intersectionPoints.emplace_back( isect );
-    }
-    for ( const auto& et : intersections.edgesBtrisA )
-    {
-        gatherEdgeInfo( meshB.topology, et.edge, collFacesB, orgVertsB, destVertsB );
-        collFacesA.set( et.tri );
+            const auto isect = findEdgeTriIntersectionPoint( meshA, et.edge, meshB, et.tri(), converters, rigidB2A, EdgeTriComponent::Tri );
+            result.intersectionPoints.emplace_back( isect );
+        }
+        else
+        {
+            gatherEdgeInfo( meshB.topology, et.edge, collFacesB, orgVertsB, destVertsB );
+            collFacesA.set( et.tri() );
 
-        const auto isect = findEdgeTriIntersectionPoint( meshB, et.edge, meshA, et.tri, converters, rigidB2A, EdgeTriComponent::Edge );
-        result.intersectionPoints.emplace_back( isect );
+            const auto isect = findEdgeTriIntersectionPoint( meshB, et.edge, meshA, et.tri(), converters, rigidB2A, EdgeTriComponent::Edge );
+            result.intersectionPoints.emplace_back( isect );
+        }
     }
 
     if ( orgVertsA.intersects( destVertsA ) || orgVertsB.intersects( destVertsB ) )

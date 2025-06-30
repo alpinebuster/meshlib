@@ -3,6 +3,7 @@
 #include "MRVector2.h"
 #include "MRLine.h"
 #include "MRAABBTreePolyline.h"
+#include "MRInplaceStack.h"
 #include "MRIntersectionPrecomputes2.h"
 #include "MRRayBoxIntersection2.h"
 
@@ -11,46 +12,39 @@ namespace MR
 
 bool isPointInsidePolyline( const Polyline2& polyline, const Vector2f& point )
 {
-    constexpr int maxTreeDepth = 32;
-
     const auto& tree = polyline.getAABBTree();
     if ( tree.nodes().size() == 0 )
         return false;
 
-    auto rayBoxIntersect = [] ( const Box2f& box, const Vector2f& rayStart )->bool
+    // we consider plusX ray here
+    auto rayBoxIntersect = [] ( const Box2f& box, const Vector2f& plusXRayStart )->bool
     {
-        if ( box.max.x <= rayStart.x )
+        if ( box.max.x <= plusXRayStart.x )
             return false;
-        if ( box.max.y <= rayStart.y )
+        if ( box.max.y <= plusXRayStart.y )
             return false;
-        if ( box.min.y > rayStart.y )
+        if ( box.min.y > plusXRayStart.y )
             return false;
         return true;
     };
     if ( !rayBoxIntersect( tree[tree.rootNodeId()].box, point ) )
         return false;
 
-    NodeId nodesStack[maxTreeDepth];
-    int currentNode = 0;
-    nodesStack[0] = tree.rootNodeId();
+    InplaceStack<NoInitNodeId, 32> nodesStack;
+    nodesStack.push( tree.rootNodeId() );
 
     int intersectionCounter = 0;
-    while ( currentNode >= 0 )
+    while ( !nodesStack.empty() )
     {
-        if ( currentNode >= maxTreeDepth ) // max depth exceeded
-        {
-            assert( false );
-            break;
-        }
-
-        const auto& node = tree[nodesStack[currentNode--]];
+        const auto& node = tree[nodesStack.top()];
+        nodesStack.pop();
         if ( node.leaf() )
         {
-            auto uEId = node.leafId();
             if ( node.box.min.x >= point.x )
                 ++intersectionCounter;
             else
             {
+                auto uEId = node.leafId();
                 const auto& org = polyline.orgPnt( uEId );
                 const auto& dest = polyline.destPnt( uEId );
 
@@ -67,9 +61,9 @@ bool isPointInsidePolyline( const Polyline2& polyline, const Vector2f& point )
         else
         {
             if ( rayBoxIntersect( tree[node.l].box, point ) )
-                nodesStack[++currentNode] = node.l;
+                nodesStack.push( node.l );
             if ( rayBoxIntersect( tree[node.r].box, point ) )
-                nodesStack[++currentNode] = node.r;
+                nodesStack.push( node.r );
         }
     }
     return ( intersectionCounter % 2 ) == 1;
@@ -89,8 +83,16 @@ void rayPolylineIntersectAll_( const Polyline2& polyline, const Line2<T>& line, 
     if ( tree.nodes().empty() )
         return;
 
+    // we `insignificantlyExpand` boxes to avoid leaks due to float errors
+    // (small intersection of neighbor boxes guarantee that both of them will be considered as candidates of connection area)
+
+    auto rayExpBoxIntersect = [] ( const auto& box, const auto& point, auto& t0, auto& t1, const auto& rayPrec )
+    {
+        return rayBoxIntersect( box.insignificantlyExpanded(), point, t0, t1, rayPrec );
+    };
+
     T s = rayStart, e = rayEnd;
-    if( !rayBoxIntersect( Box2<T>{ tree[tree.rootNodeId()].box }, line.p, s, e, prec ) )
+    if( !rayExpBoxIntersect( Box2<T>{ tree[tree.rootNodeId()].box }, line.p, s, e, prec ) )
         return;
 
     constexpr int maxTreeDepth = 32;
@@ -125,9 +127,9 @@ void rayPolylineIntersectAll_( const Polyline2& polyline, const Line2<T>& line, 
             {
                 T lStart = rayStart, lEnd = rayEnd;
                 T rStart = rayStart, rEnd = rayEnd;
-                if( rayBoxIntersect( Box2<T>{ tree[node.l].box }, line.p, lStart, lEnd, prec ) )
+                if( rayExpBoxIntersect( Box2<T>{ tree[node.l].box }, line.p, lStart, lEnd, prec ) )
                 {
-                    if( rayBoxIntersect( Box2<T>{ tree[node.r].box }, line.p, rStart, rEnd, prec ) )
+                    if( rayExpBoxIntersect( Box2<T>{ tree[node.r].box }, line.p, rStart, rEnd, prec ) )
                     {
                         if( lStart > rStart )
                         {
@@ -147,7 +149,7 @@ void rayPolylineIntersectAll_( const Polyline2& polyline, const Line2<T>& line, 
                 }
                 else
                 {
-                    if( rayBoxIntersect( Box2<T>{ tree[node.r].box }, line.p, rStart, rEnd, prec ) )
+                    if( rayExpBoxIntersect( Box2<T>{ tree[node.r].box }, line.p, rStart, rEnd, prec ) )
                     {
                         nodesStack[++currentNode] = { node.r,rStart };
                     }

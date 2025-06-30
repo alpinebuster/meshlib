@@ -39,11 +39,11 @@
 //   This `201709` is what GCC 10 sets on `-std=c++20` (presumably to indicate incomplete implementation?).
 //   Other compilers we use don't have this issue.
 // Also note `__CUDACC__` - currently our Cuda code is compiled as C++17 (compiler doesn't support C++20?),
-//   and we carefully avoid headers incomaptible with C++17.
+//   and we carefully avoid headers incompatible with C++17.
 #if MR_CPP_STANDARD_DATE < 201709 && !defined(__CUDACC__)
 #error Must enable C++20 or newer!
 #endif
-// -- Curently we have no macros that don't work with the old preprocessor. Leaving the check here to possibly be enabled later.
+// -- Currently we have no macros that don't work with the old preprocessor. Leaving the check here to possibly be enabled later.
 // Reject old MSVC preprocessor.
 // Note that we exclude Cuda here. Not 100% sure if it has a good preprocessor, or we just avoid including the headers sensitive to it in Cuda.
 // #if defined(_MSC_VER) && !defined(__clang__) && (!defined(_MSVC_TRADITIONAL) || _MSVC_TRADITIONAL == 1) && !defined(__CUDACC__)
@@ -118,6 +118,10 @@ MR_CANONICAL_TYPEDEFS( (template <typename T> class MRMESH_CLASS), Id,
     ( GraphEdgeId,      Id<GraphEdgeTag>      )
 )
 
+MR_CANONICAL_TYPEDEFS( (template <typename T> class MRMESH_CLASS), NoInitId,
+    ( NoInitNodeId, NoInitId<NodeTag> )
+)
+
 template <typename T, typename I = size_t> class MRMESH_CLASS Buffer;
 struct PackMapping;
 
@@ -134,20 +138,23 @@ using EdgeLoops = std::vector<EdgeLoop>;
 
 class MRMESH_CLASS BitSet;
 
-MR_CANONICAL_TYPEDEFS( (template <typename T> class MRMESH_CLASS), TaggedBitSet,
-    ( FaceBitSet,           TaggedBitSet<FaceTag>           )
-    ( VertBitSet,           TaggedBitSet<VertTag>           )
-    ( EdgeBitSet,           TaggedBitSet<EdgeTag>           )
-    ( UndirectedEdgeBitSet, TaggedBitSet<UndirectedEdgeTag> )
-    ( PixelBitSet,          TaggedBitSet<PixelTag>          )
-    ( VoxelBitSet,          TaggedBitSet<VoxelTag>          )
-    ( RegionBitSet,         TaggedBitSet<RegionTag>         )
-    ( NodeBitSet,           TaggedBitSet<NodeTag>           )
-    ( ObjBitSet,            TaggedBitSet<ObjTag>            )
-    ( TextureBitSet,        TaggedBitSet<TextureTag>        )
-    ( GraphVertBitSet,      TaggedBitSet<GraphVertTag>      )
-    ( GraphEdgeBitSet,      TaggedBitSet<GraphEdgeTag>      )
+MR_CANONICAL_TYPEDEFS( (template <typename I> class MRMESH_CLASS), TypedBitSet,
+    ( FaceBitSet,           TypedBitSet<FaceId>           )
+    ( VertBitSet,           TypedBitSet<VertId>           )
+    ( EdgeBitSet,           TypedBitSet<EdgeId>           )
+    ( UndirectedEdgeBitSet, TypedBitSet<UndirectedEdgeId> )
+    ( PixelBitSet,          TypedBitSet<PixelId>          )
+    ( VoxelBitSet,          TypedBitSet<VoxelId>          )
+    ( RegionBitSet,         TypedBitSet<RegionId>         )
+    ( NodeBitSet,           TypedBitSet<NodeId>           )
+    ( ObjBitSet,            TypedBitSet<ObjId>            )
+    ( TextureBitSet,        TypedBitSet<TextureId>        )
+    ( GraphVertBitSet,      TypedBitSet<GraphVertId>      )
+    ( GraphEdgeBitSet,      TypedBitSet<GraphEdgeId>      )
 )
+
+template<typename T>
+using TaggedBitSet = TypedBitSet<Id<T>>;
 
 MR_CANONICAL_TYPEDEFS( (template <typename T> class MRMESH_CLASS), SetBitIteratorT,
     ( SetBitIterator,               SetBitIteratorT<BitSet>               )
@@ -345,6 +352,7 @@ MR_CANONICAL_TYPEDEFS( (template <typename V> struct MRMESH_CLASS), Box,
 template <typename T> using MinMax = Box<T>;
 using MinMaxf = MinMax<float>;
 using MinMaxd = MinMax<double>;
+using MinMaxi = MinMax<int>;
 
 template <typename T> using Box1 = Box<T>;
 template <typename T> using Box2 = Box<Vector2<T>>;

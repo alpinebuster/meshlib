@@ -25,13 +25,24 @@ if [[ $OSTYPE == "linux"* ]]; then
       *)
         MR_EMSCRIPTEN="OFF";;
     esac
+
+    if [ $MR_EMSCRIPTEN == "ON" ]; then
+      read -t 5 -p "Build with SDK only? Press (y) in 5 seconds to build (y/N)" -rsn 1
+      echo;
+      case $REPLY in
+        Y|y)
+          MR_EMSCRIPTEN_SDK="ON";;
+        *)
+          MR_EMSCRIPTEN_SDK="OFF";;
+      esac
+    fi
   fi
 else
   if [ ! -n "$MR_EMSCRIPTEN" ]; then
     MR_EMSCRIPTEN="OFF"
   fi
 fi
-echo "Emscripten ${MR_EMSCRIPTEN}, singlethread ${MR_EMSCRIPTEN_SINGLETHREAD}, 64-bit ${MR_EMSCRIPTEN_WASM64}"
+echo "Emscripten ${MR_EMSCRIPTEN}, singlethread ${MR_EMSCRIPTEN_SINGLETHREAD}, 64-bit ${MR_EMSCRIPTEN_WASM64:-0}, SDK only ${MR_EMSCRIPTEN_SDK:-0}"
 
 if [ $MR_EMSCRIPTEN == "ON" ]; then
   if [[ $MR_EMSCRIPTEN_SINGLE == "ON" ]]; then
@@ -103,6 +114,7 @@ if [ "${MR_EMSCRIPTEN}" == "ON" ]; then
     -D MR_EMSCRIPTEN=1 \
     -D MR_EMSCRIPTEN_SINGLETHREAD=${MR_EMSCRIPTEN_SINGLETHREAD} \
     -D MR_EMSCRIPTEN_WASM64=${MR_EMSCRIPTEN_WASM64} \
+    -D MR_EMSCRIPTEN_SDK=${MR_EMSCRIPTEN_SDK} \
   "
 fi
 
@@ -163,11 +175,15 @@ if [ "${MESHLIB_BUILD_DEBUG}" = "ON" ]; then
 fi
 
 if [ "${MESHLIB_BUILD_RELEASE}" = "ON" ]; then
-  printf "\rAutoinstall script successfully finished. You could run ./build/Release/bin/MRTest next\n\n"
+  printf "\rAutoinstall script successfully finished.\n\n"
 else
   if [ "${MESHLIB_BUILD_DEBUG}" = "ON" ]; then
-    printf "\rAutoinstall script successfully finished. You could run ./build/Debug/bin/MRTest next\n\n"
+    printf "\rAutoinstall script successfully finished.\n\n"
   else
-    printf "\rNothing was built\n\n"
+    printf "\rNothing was built.\n\n"
   fi
+fi
+
+if [ ! "${MR_EMSCRIPTEN_SDK}" = "ON" ]; then
+  printf "\rYou could run ./build/Release/bin/MRTest next by serving MRTest.html.\n\n"
 fi

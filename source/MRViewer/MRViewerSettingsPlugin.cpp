@@ -272,6 +272,14 @@ void ViewerSettingsPlugin::drawApplicationTab_( float menuWidth, float menuScali
     ImGui::PushStyleVar( ImGuiStyleVar_ItemSpacing, { style.ItemSpacing.x, style.ItemSpacing.y * 1.5f } );
     drawThemeSelector_( menuScaling );
 
+    ImGui::SetNextItemWidth( 200.0f * menuScaling );
+    UI::drag<RatioUnit>( "UI Scale", tempUserScaling_, 0.01f, 0.5f, 4.0f );
+    if ( ImGui::IsItemDeactivatedAfterEdit() )
+    {
+        viewer->getMenuPlugin()->setUserScaling( tempUserScaling_ );
+        tempUserScaling_ = viewer->getMenuPlugin()->getUserScaling();
+    }
+
     bool savedDialogsBackUp = viewer->getMenuPlugin()->isSavedDialogPositionsEnabled();
     bool savedDialogsVal = savedDialogsBackUp;
     UI::checkbox( "Save Tool Window Positions", &savedDialogsVal );
@@ -312,6 +320,11 @@ void ViewerSettingsPlugin::drawApplicationTab_( float menuWidth, float menuScali
                                                 std::bind( &RibbonMenu::getAutoCloseBlockingPlugins, ribbonMenu ),
                                                 std::bind( &RibbonMenu::setAutoCloseBlockingPlugins, ribbonMenu, std::placeholders::_1 ) );
         UI::setTooltipIfHovered( "Automatically close blocking tool when another blocking tool is activated", menuScaling );
+
+        UI::checkbox( "Sort Dropped Files",
+                                                std::bind( &Viewer::getSortDroppedFiles, viewer ),
+                                                std::bind( &Viewer::setSortDroppedFiles, viewer, std::placeholders::_1 ) );
+        UI::setTooltipIfHovered( "Whether to sort the filenames received from Drag&Drop in lexicographical order before adding them in scene", menuScaling );
 
         UI::checkbox( "Show Experimental Features", &viewer->experimentalFeatures );
         UI::setTooltipIfHovered( "Show experimental or diagnostic tools and controls", menuScaling );
@@ -1284,6 +1297,7 @@ void ViewerSettingsPlugin::updateDialog_()
     orderedTab_ = TabType::Count;
     updateThemes();
 
+    tempUserScaling_ = viewer->getMenuPlugin()->getUserScaling();
     spaceMouseParams_ = viewer->getSpaceMouseParameters();
     touchpadParameters_ = viewer->getTouchpadParameters();
 #if defined(_WIN32) || defined(__APPLE__)

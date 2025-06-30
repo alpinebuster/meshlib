@@ -67,7 +67,7 @@ struct [[nodiscard]] Mesh
     [[nodiscard]] Vector3f edgeVector( EdgeId e ) const { return MR::edgeVector( topology, points, e ); }
 
     /// returns line segment of given edge
-    [[nodiscard]] LineSegm3f edgeSegment( EdgeId e ) const { return MR::edgeSegment( topology, points, e ); }
+    [[nodiscard]] MRMESH_API LineSegm3f edgeSegment( EdgeId e ) const;
 
     /// returns a point on the edge: origin point for f=0 and destination point for f=1
     [[nodiscard]] Vector3f edgePoint( EdgeId e, float f ) const { return MR::edgePoint( topology, points, e, f ); }
@@ -196,6 +196,10 @@ struct [[nodiscard]] Mesh
 
     /// computes triangular face normal from its vertices
     [[nodiscard]] Vector3f normal( FaceId f ) const { return MR::normal( topology, points, f ); }
+
+    /// returns the plane containing given triangular face with normal looking outwards
+    [[nodiscard]] MRMESH_API Plane3f getPlane3f( FaceId f ) const;
+    [[nodiscard]] MRMESH_API Plane3d getPlane3d( FaceId f ) const;
 
     /// computes sum of directed double areas of all triangles around given vertex
     [[nodiscard]] Vector3f dirDblArea( VertId v ) const { return MR::dirDblArea( topology, points, v ); }
@@ -397,24 +401,10 @@ struct [[nodiscard]] Mesh
         const std::vector<EdgePath> & thisContours = {}, // contours on this mesh that have to be stitched with
         const std::vector<EdgePath> & fromContours = {}, // contours on from mesh during addition
         // optionally returns mappings: from.id -> this.id
-        const PartMapping & map = {} );
+        PartMapping map = {} );
     [[deprecated]] void addPartByMask( const Mesh & from, const FaceBitSet & fromFaces, bool flipOrientation = false,
         const std::vector<EdgePath> & thisContours = {}, const std::vector<EdgePath> & fromContours = {}, const PartMapping & map = {} )
         { addMeshPart( { from, &fromFaces }, flipOrientation, thisContours, fromContours, map ); }
-
-    /// fromFaces contains mapping from this-mesh (considering it is empty) to from-mesh
-    MRMESH_API void addPartByFaceMap( const Mesh & from, const FaceMap & fromFaces, bool flipOrientation = false,
-        const std::vector<EdgePath> & thisContours = {}, // contours on this mesh that have to be stitched with
-        const std::vector<EdgePath> & fromContours = {}, // contours on from mesh during addition
-        // optionally returns mappings: from.id -> this.id
-        const PartMapping & map = {} );
-
-    /// both addPartByMask and addPartByFaceMap call this general implementation
-    template<typename I>
-    MRMESH_API void addPartBy( const Mesh & from, I fbegin, I fend, size_t fcount, bool flipOrientation = false,
-        const std::vector<EdgePath> & thisContours = {},
-        const std::vector<EdgePath> & fromContours = {},
-        PartMapping map = {} );
 
     /// creates new mesh from given triangles of this mesh
     MRMESH_API Mesh cloneRegion( const FaceBitSet & region, bool flipOrientation = false, const PartMapping & map = {} ) const;

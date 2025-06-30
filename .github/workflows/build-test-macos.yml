@@ -46,26 +46,33 @@ jobs:
             os: x64
             # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners
             runner: macos-13 # github hosted
-            brewpath: /usr/local
           - arch: arm64
             config: Debug
             os: github-arm
             runner: macos-latest  # github hosted
-            brewpath: /opt/homebrew
           - arch: arm64
             config: Release
             os: arm
-            runner: macos-arm-build # self-hosted
-            brewpath: /opt/homebrew
+            runner: [ self-hosted, macos, arm64, build ] #  any macos version
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: read  # This is required for actions/checkout
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: true
+
+      - name: Checkout third-party submodules
+        run: |
+          # Download sub-submodules for certain submodules. We don't recurse above in Checkout to improve build performance. See: https://github.com/actions/checkout/issues/1779
+          git submodule update --init --recursive --depth 1 thirdparty/mrbind
+
+      - name: Setup Homebrew prefix
+        id: brew
+        run: |
+          PREFIX=$(brew --prefix)
+          echo "BREW_PREFIX=$PREFIX" >> $GITHUB_ENV
 
       - name: Collect runner's system stats
         if: ${{ inputs.internal_build }}
@@ -110,7 +117,7 @@ jobs:
       - name: Generate and build MRBind bindings
         if: ${{ inputs.mrbind }}
         env:
-          PATH: ${{matrix.brewpath}}/opt/make/libexec/gnubin:${{matrix.brewpath}}/opt/grep/libexec/gnubin:${{env.PATH}}
+          PATH: ${{ env.BREW_PREFIX }}/opt/make/libexec/gnubin:${{ env.BREW_PREFIX }}/opt/grep/libexec/gnubin:${{env.PATH}}
         run: |
           make --version
           make -f scripts/mrbind/generate.mk \
@@ -129,6 +136,7 @@ jobs:
         run: ./build/${{ matrix.config }}/bin/MRTestC
 
       - name: Python Sanity Tests
+        timeout-minutes: 8
         working-directory: ./build/${{ matrix.config }}/bin
         run: python3 ./../../../scripts/run_python_test_script.py -d '../test_python'
 
@@ -151,6 +159,8 @@ jobs:
       - name: Upload Macos Distribution
         if: ${{ inputs.upload_artifacts && matrix.config == 'Release' }}
         uses: actions/upload-artifact@v4
+        env:
+          ACTIONS_ARTIFACT_UPLOAD_TIMEOUT_MS: 1800000
         with:
           name: Distributives_macos-${{matrix.os}}
           path: meshlib_${{matrix.os}}.pkg

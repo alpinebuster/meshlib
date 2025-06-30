@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+import os
 from http import server
+
 
 class MRHTTPRequestHandler(server.SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -13,4 +15,10 @@ class MRHTTPRequestHandler(server.SimpleHTTPRequestHandler):
         self.send_header("Cross-Origin-Opener-Policy", "same-origin")
 
 if __name__ == '__main__':
-    server.test(HandlerClass=MRHTTPRequestHandler)
+    port = 9310
+
+    print(f"Starting server on port {port}...")
+    print("Current directory:", os.getcwd())
+    print("Directory contents:", os.listdir('.'))
+
+    server.test(HandlerClass=MRHTTPRequestHandler, port=port)

@@ -13,8 +13,7 @@ class WebReqCtx {
 var web_req_ctxs = {};
 
 var create_web_ctx_if_needed = function (ctxId) {
-    if (ctxId in web_req_ctxs)
-        return;
+    if (ctxId in web_req_ctxs) return;
     web_req_ctxs[ctxId] = new WebReqCtx();
 }
 

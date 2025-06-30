@@ -11,7 +11,7 @@ struct MakeDegenerateBandAroundRegionParams
     FaceBitSet* outNewFaces = nullptr;
     // (optional) output edges orthogonal to the boundary
     UndirectedEdgeBitSet* outExtrudedEdges = nullptr;
-    // (optional) return legth of the longest edges from the boundary of the region
+    // (optional) return length of the longest edges from the boundary of the region
     float* maxEdgeLength = nullptr;
     // (optional) map of new vertices to old ones
     VertHashMap* new2OldMap = nullptr;

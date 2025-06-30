@@ -288,7 +288,7 @@ void SurfaceManipulationWidget::removeLastStableObjMesh_()
 
 bool SurfaceManipulationWidget::onMouseDown_( MouseButton button, int modifiers )
 {
-    if ( button != MouseButton::Left || modifiers != 0 )
+    if ( button != MouseButton::Left || !checkModifiers_( modifiers ) )
         return false;
 
     ObjAndPick objAndPick;
@@ -378,17 +378,16 @@ bool SurfaceManipulationWidget::onMouseUp_( Viewer::MouseButton button, int /*mo
             expand( oldMesh.topology, visualizationRegion_, 2 );
             updateUVmap_( false );
         }
-        auto faces = getIncidentFaces( oldMesh.topology, generalEditingRegion_ );
-        if ( faces.any() )
+        const auto delFaces = getIncidentFaces( oldMesh.topology, generalEditingRegion_ );
+        if ( delFaces.any() )
         {
             SCOPED_HISTORY( "Brush: Patch" );
             ownMeshChangedSignal_ = true;
             std::shared_ptr<Mesh> newMesh = std::make_shared<Mesh>( oldMesh );
-            auto bds = delRegionKeepBd( *newMesh, faces );
-            VertBitSet stableVerts = newMesh->topology.getValidVerts();
-            stableVerts -= generalEditingRegion_;
-            FaceBitSet unchangeableFaces = getIncidentFaces( oldMesh.topology, unchangeableVerts_ );
-            FaceBitSet newFaceSelection;
+            FaceBitSet newFaceSelection = obj_->getSelectedFaces() - delFaces;
+            UndirectedEdgeBitSet newEdgeSelection = obj_->getSelectedEdges() - getInnerEdges( oldMesh.topology, delFaces ); // must be done before actual deletion
+            auto bds = delRegionKeepBd( *newMesh, delFaces );
+            const FaceBitSet oldFaces = newMesh->topology.getValidFaces();
             for ( const auto & bd : bds )
             {
                 if ( bd.empty() )
@@ -407,51 +406,33 @@ bool SurfaceManipulationWidget::onMouseUp_( Viewer::MouseButton button, int /*mo
                     .maxEdgeLen = 2 * (float)avgLen,
                     .edgeWeights = settings_.edgeWeights
                 };
-                if ( unchangeableVerts_.any() )
+                settings.onEdgeSplit = [&] ( EdgeId e1, EdgeId e )
                 {
-                    settings.onEdgeSplit = [&] ( EdgeId e1, EdgeId e )
-                    {
-                        if ( unchangeableFaces.test( newMesh->topology.left( e ) ) )
-                        {
-                            newFaceSelection.autoResizeSet( newMesh->topology.left( e1 ) );
-                            unchangeableFaces.autoResizeSet( newMesh->topology.left( e1 ) );
-                        }
-                        if ( unchangeableFaces.test( newMesh->topology.right( e ) ) )
-                        {
-                            newFaceSelection.autoResizeSet( newMesh->topology.right( e1 ) );
-                            unchangeableFaces.autoResizeSet( newMesh->topology.right( e1 ) );
-                        }
+                    if ( newFaceSelection.test( newMesh->topology.left( e ) ) )
+                        newFaceSelection.autoResizeSet( newMesh->topology.left( e1 ) );
+                    if ( newFaceSelection.test( newMesh->topology.right( e ) ) )
+                        newFaceSelection.autoResizeSet( newMesh->topology.right( e1 ) );
+                    // if we split an edge with both unchangeable end vertices, then mark new vertex as unchangeable as well
+                    if ( unchangeableVerts_.test( newMesh->topology.org( e1 ) ) &&
+                         unchangeableVerts_.test( newMesh->topology.dest( e ) ) )
                         unchangeableVerts_.autoResizeSet( newMesh->topology.org( e ) );
-                    };
-                }
+                };
                 for ( auto e : bd )
                     if ( !newMesh->topology.left( e ) )
                         fillHoleNicely( *newMesh, e, settings );
             }
 
-            FaceBitSet faceSelection = obj_->getSelectedFaces();
-            faceSelection -= faces;
-            if ( faceSelection.count() != obj_->getSelectedFaces().count() || newFaceSelection.any() )
-            {
-                faceSelection |= newFaceSelection;
-                AppendHistory<ChangeMeshFaceSelectionAction>( "Change Face Selection", obj_ );
-                obj_->selectFaces( faceSelection );
-            }
-            UndirectedEdgeBitSet edgeSelection = obj_->getSelectedEdges();
-            edgeSelection -= getInnerEdges( oldMesh.topology, faces );
-            if ( edgeSelection.count() != obj_->getSelectedEdges().count() )
-            {
-                AppendHistory<ChangeMeshEdgeSelectionAction>( "Change Edge Selection", obj_ );
-                obj_->selectEdges( edgeSelection );
-            }
+            if ( newFaceSelection != obj_->getSelectedFaces() )
+                AppendHistory<ChangeMeshFaceSelectionAction>( "Change Face Selection", obj_, std::move( newFaceSelection ) );
+            if ( newEdgeSelection != obj_->getSelectedEdges() )
+                AppendHistory<ChangeMeshEdgeSelectionAction>( "Change Edge Selection", obj_, std::move( newEdgeSelection ) );
 
-            VertBitSet newVerts = newMesh->topology.getValidVerts();
-            newVerts -= stableVerts;
-
-            FaceBitSet newFaces = getInnerFaces( newMesh->topology, newVerts );
+            // newFaces include both faces inside the patch and subdivided faces around
+            const FaceBitSet newFaces = newMesh->topology.getValidFaces() - oldFaces;
             auto meshAttribs = projectMeshAttributes( *obj_, MeshPart( *newMesh, &newFaces ) );
 
-            AppendHistory( std::make_shared<PartialChangeMeshAction>( "mesh", obj_, setNew, std::move( newMesh ) ) );
+            appendMeshChangeHistory_( std::move( newMesh ), newFaces );
+
             if ( meshAttribs )
                 emplaceMeshAttributes( obj_, std::move( *meshAttribs ) );
 
@@ -520,6 +501,11 @@ void SurfaceManipulationWidget::postDraw_()
     auto drawList = ImGui::GetBackgroundDrawList();
     const auto& mousePos = Vector2f( getViewerInstance().mouseController().getMousePos() );
     drawList->AddCircleFilled( ImVec2( mousePos.x, mousePos.y ), 10.f, Color::gray().getUInt32() );
+}
+
+void SurfaceManipulationWidget::appendMeshChangeHistory_( std::shared_ptr<Mesh> newMesh, const FaceBitSet& )
+{
+    AppendHistory( std::make_shared<PartialChangeMeshAction>( "mesh", obj_, setNew, std::move( newMesh ) ) );
 }
 
 void SurfaceManipulationWidget::reallocData_( size_t size )
@@ -753,9 +739,7 @@ void SurfaceManipulationWidget::updateRegion_( const Vector2f& mousePos )
     }
     for ( auto v : singleEditingRegion_ )
         singleEditingRegion_.set( v, editingDistanceMap_[v] <= settings_.radius );
-    if ( singleEditingRegion_.any() && unchangeableVerts_.any() )
-        singleEditingRegion_ -= unchangeableVerts_;
-
+    singleEditingRegion_ -= unchangeableVerts_;
 }
 
 void SurfaceManipulationWidget::abortEdit_()

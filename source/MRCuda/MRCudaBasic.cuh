@@ -2,6 +2,8 @@
 
 #include "MRCuda.cuh"
 
+#include "MRMesh/MRVector.h"
+
 #include <cstdint>
 #include <vector>
 
@@ -24,14 +26,22 @@ public:
     // free this array from GPU (if needed)
     ~DynamicArray();
 
+    DynamicArray( DynamicArray&& other );
+    DynamicArray& operator=( DynamicArray&& other );
+
     DynamicArray( const DynamicArray& ) = delete;
-    DynamicArray( DynamicArray&& ) = delete;
-    DynamicArray& operator=( DynamicArray&& ) = delete;
     DynamicArray& operator=( const DynamicArray& other ) = delete;
 
     // copy given vector to GPU (if this array was allocated with inconsistent size, free it and then malloc again)
     template <typename U>
     cudaError_t fromVector( const std::vector<U>& vec );
+
+    // copy given vector to GPU (if this array was allocated with inconsistent size, free it and then malloc again)
+    template <typename U, typename I>
+    cudaError_t fromVector( const MR::Vector<U, I>& vec )
+    {
+        return fromVector( vec.vec_ );
+    }
 
     // copy given data to GPU (if this array was allocated with inconsistent size, free it and then malloc again)
     cudaError_t fromBytes( const uint8_t* data, size_t numBytes );

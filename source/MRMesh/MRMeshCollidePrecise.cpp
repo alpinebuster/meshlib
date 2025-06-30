@@ -4,7 +4,7 @@
 #include "MRPrecisePredicates3.h"
 #include "MRFaceFace.h"
 #include "MRTimer.h"
-#include "MRPch/MRTBB.h"
+#include "MRParallelFor.h"
 #include "MRProcessSelfTreeSubtasks.h"
 #include <array>
 
@@ -22,27 +22,50 @@ PreciseCollisionResult findCollidingEdgeTrisPrecise( const MeshPart & a, const M
     if ( aTree.nodes().empty() || bTree.nodes().empty() )
         return res;
 
+    // parallel prepare of int boxes that will be used for consistency with precise intersections
+    Timer t( "1 precise boxes" );
+    Vector<Box3i, NodeId> aPreciseBoxes;
+    aPreciseBoxes.resizeNoInit( aTree.nodes().size() );
+    ParallelFor( aPreciseBoxes, [&]( NodeId i )
+    {
+        const auto & node = aTree.nodes()[i];
+        aPreciseBoxes[i] = Box3i{ conv( node.box.min ), conv( node.box.max ) };
+    } );
+
+    Vector<Box3i, NodeId> bPreciseBoxes;
+    bPreciseBoxes.resizeNoInit( bTree.nodes().size() );
+    ParallelFor( bPreciseBoxes, [&]( NodeId i )
+    {
+        const auto & node = bTree.nodes()[i];
+        auto transformedBoxb = transformed( node.box, rigidB2A );
+        bPreciseBoxes[i] = Box3i{ conv( transformedBoxb.min ), conv( transformedBoxb.max ) };
+    } );
+
     // sequentially subdivide full task on smaller subtasks;
     // they shall be not too many for this subdivision not to take too long;
     // and they shall be not too few for enough parallelism later
+    t.restart( "2 top subtasks" );
+
     std::vector<NodeNode> subtasks{ { NodeId{ 0 }, NodeId{ 0 } } }, nextSubtasks, leafTasks;
-    for( int i = 0; i < 16; ++i ) // 16 -> will produce at most 2^16 subtasks
+    // tested on two Spheres each with 3366 vertices (these numbers are outdated after preparation of precise boxes):
+    // 16 -> init=0.886 (13%), main=5.948, total=6.834
+    // 14 -> init=0.429 ( 7%), main=5.990, total=6.419
+    // 12 -> init=0.226 ( 3%), main=6.445, total=6.671
+    for( int i = 0; i < 14; ++i ) // 14 -> will produce at most 2^14 subtasks
     {
         int numSplits = 0;
         while( !subtasks.empty() )
         {
             const auto s = subtasks.back();
             subtasks.pop_back();
-            const auto & aNode = aTree[s.aNode];
-            const auto & bNode = bTree[s.bNode];
 
-            // check intersection in int boxes for consistency with precise intersections
-            auto transformedBoxb = transformed( bNode.box, rigidB2A );
-            Box3i aBox{ conv( aNode.box.min ),conv( aNode.box.max ) };
-            Box3i bBox{ conv( transformedBoxb.min ),conv( transformedBoxb.max ) };
+            const Box3i& aBox = aPreciseBoxes[s.aNode];
+            const Box3i& bBox = bPreciseBoxes[s.bNode];
             if ( !aBox.intersects( bBox ) )
                 continue;
 
+            const auto & aNode = aTree[s.aNode];
+            const auto & bNode = bTree[s.bNode];
             if ( aNode.leaf() && bNode.leaf() )
             {
                 leafTasks.push_back( s );
@@ -69,8 +92,6 @@ PreciseCollisionResult findCollidingEdgeTrisPrecise( const MeshPart & a, const M
             break;
     }
     subtasks.insert( subtasks.end(), leafTasks.begin(), leafTasks.end() );
-
-    std::vector<PreciseCollisionResult> subtaskRes( subtasks.size() );
 
     // we do not check an edge if its right triangle has smaller index and also in the mesh part
     auto checkEdge = [&]( EdgeId e, const MeshPart & mp )
@@ -115,18 +136,18 @@ PreciseCollisionResult findCollidingEdgeTrisPrecise( const MeshPart & a, const M
         };
         if ( auto e = aEdgeCheck( 0, 1 ) )
         {
-            res.edgesAtrisB.emplace_back( e, bTri );
+            res.emplace_back( true, e, bTri );
         }
         aEdge = a.mesh.topology.prev( aEdge.sym() );
         if ( auto e = aEdgeCheck( 1, 2 ) )
         {
-            res.edgesAtrisB.emplace_back( e, bTri );
+            res.emplace_back( true, e, bTri );
         }
         aEdge = a.mesh.topology.prev( aEdge.sym() );
         if ( numA < 2 )
         {
             if ( auto e = aEdgeCheck( 2, 0 ) )
-                res.edgesAtrisB.emplace_back( e, bTri );
+                res.emplace_back( true, e, bTri );
         }
 
         // check edges from B
@@ -143,96 +164,107 @@ PreciseCollisionResult findCollidingEdgeTrisPrecise( const MeshPart & a, const M
         };
         if ( auto e = bEdgeCheck( 0, 1 ) )
         {
-            res.edgesBtrisA.emplace_back( e, aTri );
+            res.emplace_back( false, e, aTri );
         }
         bEdge = b.mesh.topology.prev( bEdge.sym() );
         if ( auto e = bEdgeCheck( 1, 2 ) )
         {
-            res.edgesBtrisA.emplace_back( e, aTri );
+            res.emplace_back( false, e, aTri );
         }
         bEdge = b.mesh.topology.prev( bEdge.sym() );
         if ( numB < 2 )
         {
             if ( auto e = bEdgeCheck( 2, 0 ) )
-                res.edgesBtrisA.emplace_back( e, aTri );
+                res.emplace_back( false, e, aTri );
         }
     };
 
-    std::atomic<bool> anyIntersectionAtm{ false };
     // checks subtasks in parallel
-    tbb::parallel_for( tbb::blocked_range<size_t>( 0, subtasks.size() ),
-        [&]( const tbb::blocked_range<size_t>& range )
+    t.restart( "3 process" );
+
+    struct ThreadData
     {
-        std::vector<NodeNode> mySubtasks;
-        for ( auto is = range.begin(); is < range.end(); ++is )
+        PreciseCollisionResult res;
+        std::vector<NodeNode> subtasks;
+    };
+
+    tbb::enumerable_thread_specific<ThreadData> threadData;
+
+    struct SubtaskRes
+    {
+        PreciseCollisionResult * vec = nullptr;
+        int first = 0;
+        int last = 0;
+    };
+
+    std::vector<SubtaskRes> subtaskRes( subtasks.size() );
+
+    std::atomic<bool> anyIntersectionAtm{ false };
+    ParallelFor( subtasks, threadData, [&]( size_t is, ThreadData & tls )
+    {
+        std::vector<NodeNode>& mySubtasks = tls.subtasks;
+        assert( mySubtasks.empty() );
+        mySubtasks.push_back( subtasks[is] );
+        SubtaskRes myRes{ .vec = &tls.res };
+        myRes.first = (int)myRes.vec->size();
+        while ( !mySubtasks.empty() )
         {
-            mySubtasks.push_back( subtasks[is] );
-            PreciseCollisionResult myRes;
-            while ( !mySubtasks.empty() )
+            if ( anyIntersection && anyIntersectionAtm.load( std::memory_order_relaxed ) )
+                break;
+            const auto s = mySubtasks.back();
+            mySubtasks.pop_back();
+
+            const Box3i& aBox = aPreciseBoxes[s.aNode];
+            const Box3i& bBox = bPreciseBoxes[s.bNode];
+            if ( !aBox.intersects( bBox ) )
+                continue;
+
+            const auto & aNode = aTree[s.aNode];
+            const auto & bNode = bTree[s.bNode];
+            if ( aNode.leaf() && bNode.leaf() )
             {
-                if ( anyIntersection && anyIntersectionAtm.load( std::memory_order_relaxed ) )
+                const auto aFace = aNode.leafId();
+                if ( a.region && !a.region->test( aFace ) )
+                    continue;
+                const auto bFace = bNode.leafId();
+                if ( b.region && !b.region->test( bFace ) )
+                    continue;
+                checkTwoTris( aFace, bFace, *myRes.vec );
+                if ( anyIntersection && !myRes.vec->empty() )
+                {
+                    anyIntersectionAtm.store( true, std::memory_order_relaxed );
                     break;
-                const auto s = mySubtasks.back();
-                mySubtasks.pop_back();
-                const auto & aNode = aTree[s.aNode];
-                const auto & bNode = bTree[s.bNode];
-
-                // check intersection in int boxes for consistency with precise intersections
-                auto transformedBoxb = transformed( bNode.box, rigidB2A );
-                Box3i aBox{ conv( aNode.box.min ),conv( aNode.box.max ) };
-                Box3i bBox{ conv( transformedBoxb.min ),conv( transformedBoxb.max ) };
-                if ( !aBox.intersects( bBox ) )
-                    continue;
-
-                if ( aNode.leaf() && bNode.leaf() )
-                {
-                    const auto aFace = aNode.leafId();
-                    if ( a.region && !a.region->test( aFace ) )
-                        continue;
-                    const auto bFace = bNode.leafId();
-                    if ( b.region && !b.region->test( bFace ) )
-                        continue;
-                    checkTwoTris( aFace, bFace, myRes );
-                    if ( anyIntersection && ( !myRes.edgesAtrisB.empty() || !myRes.edgesBtrisA.empty() ) )
-                    {
-                        anyIntersectionAtm.store( true, std::memory_order_relaxed );
-                        break;
-                    }
-                    continue;
                 }
-        
-                if ( !aNode.leaf() && ( bNode.leaf() || aNode.box.volume() >= bNode.box.volume() ) )
-                {
-                    // split aNode
-                    mySubtasks.push_back( { aNode.l, s.bNode } );
-                    mySubtasks.push_back( { aNode.r, s.bNode } );
-                }
-                else
-                {
-                    assert( !bNode.leaf() );
-                    // split bNode
-                    mySubtasks.push_back( { s.aNode, bNode.l } );
-                    mySubtasks.push_back( { s.aNode, bNode.r } );
-                }
+                continue;
             }
-            subtaskRes[is] = std::move( myRes );
+        
+            if ( !aNode.leaf() && ( bNode.leaf() || aNode.box.volume() >= bNode.box.volume() ) )
+            {
+                // split aNode
+                mySubtasks.push_back( { aNode.l, s.bNode } );
+                mySubtasks.push_back( { aNode.r, s.bNode } );
+            }
+            else
+            {
+                assert( !bNode.leaf() );
+                // split bNode
+                mySubtasks.push_back( { s.aNode, bNode.l } );
+                mySubtasks.push_back( { s.aNode, bNode.r } );
+            }
         }
+        mySubtasks.clear();
+        myRes.last = (int)myRes.vec->size();
+        subtaskRes[is] = std::move( myRes );
     } );
 
-    // unite results from sub-trees into final vectors
-    size_t colsAB = 0, colsBA = 0;
+    // unite results from sub-trees into final vector
+    t.restart( "4 unite" );
+    size_t cols = 0;
     for ( const auto & s : subtaskRes )
-    {
-        colsAB += s.edgesAtrisB.size();
-        colsBA += s.edgesBtrisA.size();
-    }
-    res.edgesAtrisB.reserve( colsAB );
-    res.edgesBtrisA.reserve( colsBA );
+        cols += s.last - s.first;
+    res.reserve( cols );
     for ( const auto & s : subtaskRes )
-    {
-        res.edgesAtrisB.insert( res.edgesAtrisB.end(), s.edgesAtrisB.begin(), s.edgesAtrisB.end() );
-        res.edgesBtrisA.insert( res.edgesBtrisA.end(), s.edgesBtrisA.begin(), s.edgesBtrisA.end() );
-    }
+        res.insert( res.end(), s.vec->begin() + s.first, s.vec->begin() + s.last );
 
     return res;
 }
@@ -542,10 +574,19 @@ std::vector<EdgeTri> findSelfCollidingEdgeTrisPrecise( const MeshPart& mp, Conve
 
 CoordinateConverters getVectorConverters( const MeshPart& a, const MeshPart& b, const AffineXf3f* rigidB2A )
 {
-    Box3d bb;
-    bb.include( Box3d( a.mesh.computeBoundingBox() ) );
-    Box3f bMeshBox = b.mesh.computeBoundingBox( rigidB2A );
-    bb.include( Box3d( bMeshBox ) );
+    MR_TIMER;
+    Box3d bb( a.mesh.computeBoundingBox( a.region ) );
+    bb.include( Box3d( b.mesh.computeBoundingBox( b.region, rigidB2A ) ) );
+    CoordinateConverters res;
+    res.toInt = getToIntConverter( bb );
+    res.toFloat = getToFloatConverter( bb );
+    return res;
+}
+
+CoordinateConverters getVectorConverters( const MeshPart& a )
+{
+    MR_TIMER;
+    Box3d bb( a.mesh.computeBoundingBox( a.region ) );
     CoordinateConverters res;
     res.toInt = getToIntConverter( bb );
     res.toFloat = getToFloatConverter( bb );

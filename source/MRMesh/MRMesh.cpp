@@ -10,9 +10,9 @@
 #include "MRConstants.h"
 #include "MRCube.h"
 #include "MREdgeIterator.h"
-#include "MRGTest.h"
 #include "MRLine3.h"
 #include "MRLineSegm.h"
+#include "MRPlane3.h"
 #include "MRMeshBuilder.h"
 #include "MRMeshIntersect.h"
 #include "MRMeshTriPoint.h"
@@ -27,7 +27,6 @@
 #include "MRMeshFillHole.h"
 #include "MRTriMesh.h"
 #include "MRDipole.h"
-#include "MRPch/MRTBB.h"
 
 namespace MR
 {
@@ -100,26 +99,20 @@ Mesh Mesh::fromFaceSoup(
     res.points = std::move( vertexCoordinates );
     res.topology = MeshBuilder::fromFaceSoup( verts, faces, settings, subprogress( cb, 0.0f, 0.8f ) );
 
-    struct FaceFill
-    {
-        HoleFillPlan plan;
-        EdgeId e; // fill left of it
-    };
-    std::vector<FaceFill> faceFills;
+    std::vector<EdgeId> holeRepresentativeEdges;
     for ( auto f : res.topology.getValidFaces() )
     {
         auto e = res.topology.edgeWithLeft( f );
         if ( !res.topology.isLeftTri( e ) )
-            faceFills.push_back( { {}, e } );
+            holeRepresentativeEdges.push_back( e );
     }
 
-    ParallelFor( faceFills, [&]( size_t i )
-    {
-        faceFills[i].plan = getPlanarHoleFillPlan( res, faceFills[i].e );
-    }, subprogress( cb, 0.8f, 0.9f ) );
+    reportProgress( cb, 0.8f );
+    auto fillPlans = getPlanarHoleFillPlans( res, holeRepresentativeEdges );
+    reportProgress( cb, 0.9f );
 
-    for ( auto & x : faceFills )
-        executeHoleFillPlan( res, x.e, x.plan );
+    for ( size_t i = 0; i < holeRepresentativeEdges.size(); ++i )
+        executeHoleFillPlan( res, holeRepresentativeEdges[i], fillPlans[i] );
 
     reportProgress( cb, 1.0f );
 
@@ -151,6 +144,11 @@ bool Mesh::operator ==( const Mesh & b ) const
     return true;
 }
 
+LineSegm3f Mesh::edgeSegment( EdgeId e ) const
+{
+    return { MR::orgPnt( topology, points, e ), MR::destPnt( topology, points, e ) };
+}
+
 MeshTriPoint Mesh::toTriPoint( VertId v ) const
 {
     return MeshTriPoint( topology, v );
@@ -164,6 +162,16 @@ MeshEdgePoint Mesh::toEdgePoint( VertId v ) const
 bool Mesh::isOutsideByProjNorm( const Vector3f & pt, const MeshProjectionResult & proj, const FaceBitSet * region ) const
 {
     return dot( proj.proj.point - pt, pseudonormal( proj.mtp, region ) ) <= 0;
+}
+
+Plane3f Mesh::getPlane3f( FaceId f ) const
+{
+    return MR::getPlane3f( topology, points, f );
+}
+
+Plane3d Mesh::getPlane3d( FaceId f ) const
+{
+    return MR::getPlane3d( topology, points, f );
 }
 
 float Mesh::signedDistance( const Vector3f & pt, const MeshProjectionResult & proj, const FaceBitSet * region ) const
@@ -376,52 +384,20 @@ void Mesh::addMeshPart( const MeshPart & from, const PartMapping & map )
 void Mesh::addMeshPart( const MeshPart & from, bool flipOrientation,
     const std::vector<EdgePath> & thisContours,
     const std::vector<EdgePath> & fromContours,
-    const PartMapping & map )
-{
-    MR_TIMER;
-    const auto & fromFaces = from.mesh.topology.getFaceIds( from.region );
-    addPartBy( from.mesh, begin( fromFaces ), end( fromFaces ), fromFaces.count(), flipOrientation, thisContours, fromContours, map );
-}
-
-void Mesh::addPartByFaceMap( const Mesh & from, const FaceMap & fromFaces, bool flipOrientation,
-    const std::vector<EdgePath> & thisContours,
-    const std::vector<EdgePath> & fromContours,
-    const PartMapping & map )
-{
-    MR_TIMER;
-    addPartBy( from, begin( fromFaces ), end( fromFaces ), fromFaces.size(), flipOrientation, thisContours, fromContours, map );
-}
-
-template<typename I>
-void Mesh::addPartBy( const Mesh & from, I fbegin, I fend, size_t fcount, bool flipOrientation,
-    const std::vector<EdgePath> & thisContours,
-    const std::vector<EdgePath> & fromContours,
     PartMapping map )
 {
     MR_TIMER;
-
     invalidateCaches();
 
     auto localVmap = VertMapOrHashMap::createHashMap();
     if ( !map.src2tgtVerts )
         map.src2tgtVerts = &localVmap;
-    topology.addPartBy( from.topology, fbegin, fend, fcount, flipOrientation, thisContours, fromContours, map );
+    topology.addPartByMask( from.mesh.topology, from.region, flipOrientation, thisContours, fromContours, map );
     VertId lastPointId = topology.lastValidVert();
     if ( points.size() < lastPointId + 1 )
         points.resize( lastPointId + 1 );
-    map.src2tgtVerts->forEach( [&]( VertId fromVert, VertId thisVert ) { points[thisVert] = from.points[fromVert]; } );
+    map.src2tgtVerts->forEach( [&]( VertId fromVert, VertId thisVert ) { points[thisVert] = from.mesh.points[fromVert]; } );
 }
-
-template MRMESH_API void Mesh::addPartBy( const Mesh & from,
-    SetBitIteratorT<FaceBitSet> fbegin, SetBitIteratorT<FaceBitSet> fend, size_t fcount, bool flipOrientation,
-    const std::vector<EdgePath> & thisContours,
-    const std::vector<EdgePath> & fromContours,
-    PartMapping map );
-template MRMESH_API void Mesh::addPartBy( const Mesh & from,
-    FaceMap::iterator fbegin, FaceMap::iterator fend, size_t fcount, bool flipOrientation,
-    const std::vector<EdgePath> & thisContours,
-    const std::vector<EdgePath> & fromContours,
-    PartMapping map );
 
 Mesh Mesh::cloneRegion( const FaceBitSet & region, bool flipOrientation, const PartMapping & map ) const
 {
@@ -641,117 +617,6 @@ void Mesh::mirror( const Plane3f& plane )
 
     topology.flipOrientation();
     invalidateCaches();
-}
-
-TEST( MRMesh, BasicExport )
-{
-    Mesh mesh = makeCube();
-
-    const std::vector<ThreeVertIds> triangles = mesh.topology.getAllTriVerts();
-
-    const std::vector<Vector3f> & points =  mesh.points.vec_;
-    const int * vertexTripples = reinterpret_cast<const int*>( triangles.data() );
-
-    (void)points;
-    (void)vertexTripples;
-}
-
-TEST(MRMesh, SplitEdge)
-{
-    Triangulation t{
-        { VertId{0}, VertId{1}, VertId{2} },
-        { VertId{0}, VertId{2}, VertId{3} }
-    };
-    Mesh mesh;
-    mesh.topology = MeshBuilder::fromTriangles( t );
-    mesh.points.emplace_back( 0.f, 0.f, 0.f );
-    mesh.points.emplace_back( 1.f, 0.f, 0.f );
-    mesh.points.emplace_back( 1.f, 1.f, 0.f );
-    mesh.points.emplace_back( 0.f, 1.f, 0.f );
-
-    EXPECT_EQ( mesh.topology.numValidVerts(), 4 );
-    EXPECT_EQ( mesh.points.size(), 4 );
-    EXPECT_EQ( mesh.topology.numValidFaces(), 2 );
-    EXPECT_EQ( mesh.topology.lastNotLoneEdge(), EdgeId(9) ); // 5*2 = 10 half-edges in total
-
-    FaceBitSet region( 2 );
-    region.set( 0_f );
-
-    auto e02 = mesh.topology.findEdge( VertId{0}, VertId{2} );
-    EXPECT_TRUE( e02.valid() );
-    auto ex = mesh.splitEdge( e02, &region );
-    VertId v02 = mesh.topology.org( e02 );
-    EXPECT_EQ( mesh.topology.dest( ex ), v02 );
-    EXPECT_EQ( mesh.topology.numValidVerts(), 5 );
-    EXPECT_EQ( mesh.points.size(), 5 );
-    EXPECT_EQ( mesh.topology.numValidFaces(), 4 );
-    EXPECT_EQ( mesh.topology.lastNotLoneEdge(), EdgeId(15) ); // 8*2 = 16 half-edges in total
-    EXPECT_EQ( mesh.points[v02], ( Vector3f(.5f, .5f, 0.f) ) );
-    EXPECT_EQ( region.count(), 2 );
-
-    auto e01 = mesh.topology.findEdge( VertId{0}, VertId{1} );
-    EXPECT_TRUE( e01.valid() );
-    auto ey = mesh.splitEdge( e01, &region );
-    VertId v01 =  mesh.topology.org( e01 );
-    EXPECT_EQ( mesh.topology.dest( ey ), v01 );
-    EXPECT_EQ( mesh.topology.numValidVerts(), 6 );
-    EXPECT_EQ( mesh.points.size(), 6 );
-    EXPECT_EQ( mesh.topology.numValidFaces(), 5 );
-    EXPECT_EQ( mesh.topology.lastNotLoneEdge(), EdgeId(19) ); // 10*2 = 20 half-edges in total
-    EXPECT_EQ( mesh.points[v01], ( Vector3f(.5f, 0.f, 0.f) ) );
-    EXPECT_EQ( region.count(), 3 );
-}
-
-TEST(MRMesh, SplitEdge1)
-{
-    Mesh mesh;
-    const auto e01 = mesh.topology.makeEdge();
-    mesh.topology.setOrg( e01, mesh.topology.addVertId() );
-    mesh.topology.setOrg( e01.sym(), mesh.topology.addVertId() );
-    mesh.points.emplace_back( 0.f, 0.f, 0.f );
-    mesh.points.emplace_back( 1.f, 0.f, 0.f );
-
-    EXPECT_EQ( mesh.topology.numValidVerts(), 2 );
-    EXPECT_EQ( mesh.points.size(), 2 );
-    EXPECT_EQ( mesh.topology.lastNotLoneEdge(), EdgeId(1) ); // 1*2 = 2 half-edges in total
-
-    auto ey = mesh.splitEdge( e01 );
-    VertId v01 =  mesh.topology.org( e01 );
-    EXPECT_EQ( mesh.topology.dest( ey ), v01 );
-    EXPECT_EQ( mesh.topology.numValidVerts(), 3 );
-    EXPECT_EQ( mesh.points.size(), 3 );
-    EXPECT_EQ( mesh.topology.lastNotLoneEdge(), EdgeId(3) ); // 2*2 = 4 half-edges in total
-    EXPECT_EQ( mesh.points[v01], ( Vector3f( .5f, 0.f, 0.f ) ) );
-}
-
-TEST(MRMesh, SplitFace)
-{
-    Triangulation t{
-        { VertId{0}, VertId{1}, VertId{2} }
-    };
-    Mesh mesh;
-    mesh.topology = MeshBuilder::fromTriangles( t );
-    mesh.points.emplace_back( 0.f, 0.f, 0.f );
-    mesh.points.emplace_back( 0.f, 0.f, 1.f );
-    mesh.points.emplace_back( 0.f, 1.f, 0.f );
-
-    EXPECT_EQ( mesh.topology.numValidVerts(), 3 );
-    EXPECT_EQ( mesh.points.size(), 3 );
-    EXPECT_EQ( mesh.topology.numValidFaces(), 1 );
-    EXPECT_EQ( mesh.topology.lastNotLoneEdge(), EdgeId(5) ); // 3*2 = 6 half-edges in total
-
-    mesh.splitFace( 0_f );
-    EXPECT_EQ( mesh.topology.numValidVerts(), 4 );
-    EXPECT_EQ( mesh.points.size(), 4 );
-    EXPECT_EQ( mesh.topology.numValidFaces(), 3 );
-    EXPECT_EQ( mesh.topology.lastNotLoneEdge(), EdgeId(11) ); // 6*2 = 12 half-edges in total
-}
-
-TEST( MRMesh, isOutside )
-{
-    Mesh mesh = makeCube();
-    EXPECT_TRUE( mesh.isOutside( Vector3f( 2, 0, 0 ) ) );
-    EXPECT_FALSE( mesh.isOutside( Vector3f( 0, 0, 0 ) ) );
 }
 
 } //namespace MR

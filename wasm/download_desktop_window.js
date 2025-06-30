@@ -1,7 +1,7 @@
 var showDownloadWindow = function() {
     var { overlay, popup } = createOverlayPopup('show_download_window', "", 500, 300, true, true);
     var logo = document.createElement('img');
-    logo.setAttribute('src', 'tool_not_supp.svg');
+    logo.setAttribute('src', 'assets/tool_not_supp.svg');
     logo.setAttribute('style', 'position: absolute;top: 0%;left: 50%;width:72px;height:72px;transform:translate(-50%,28px);');
     popup.appendChild( logo );
 

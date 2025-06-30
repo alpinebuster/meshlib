@@ -12,7 +12,9 @@ file(GLOB PNGS "*.png")
 file(COPY ${PNGS} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 IF(MR_EMSCRIPTEN)
-  file(GLOB LOCAL_WASM_FILES "../../wasm/*.*")
+  file(GLOB_RECURSE LOCAL_WASM_FILES "../../wasm/*.*")
+  # Handle both forward slashes (Unix) and backslashes (Windows)
+  list(FILTER LOCAL_WASM_FILES EXCLUDE REGEX ".*[/\\]meshlib[/\\].*")
   file(COPY ${LOCAL_WASM_FILES} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
   target_link_libraries(${PROJECT_NAME} PRIVATE
     zip
