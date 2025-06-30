@@ -173,7 +173,6 @@ function SidebarObject( editor ) {
 				subMeshes.forEach( ( subMesh, i ) => {
 					editor.execute( new RemoveObjectCommand( editor, subMesh ) );
 				});
-				wasmOpSelector.removeClass( 'selected' );
 			}
 		} else {
 			wasmOpSelector.removeClass( 'selected' );
@@ -240,9 +239,12 @@ function SidebarObject( editor ) {
 						
 					const positionAttribute = pointGeo.getAttribute( 'position' );
 					const positions = positionAttribute.array; // Float32Array
-					const vertexCount = positions.length;
+					const positionsArr = [...positions];
+					// Convert to std::vector<float>
+					const floatVec = new editor.mrmesh.StdVectorf();
+					positionsArr.forEach(v => floatVec.push_back(v));
 					
-					const result = editor.mrmesh.cutMeshWithPolyline(curMeshWrapper.mesh, positions, vertexCount);
+					const result = editor.mrmesh.cutMeshWithPolyline(curMeshWrapper.mesh, floatVec );
 					console.log("result: ", result);
 				}
 			}
