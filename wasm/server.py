@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import os
 from http import server
 
@@ -15,6 +16,7 @@ class MRHTTPRequestHandler(server.SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     port = 9310
+
     print(f"Starting server on port {port}...")
     print("Current directory:", os.getcwd())
     print("Directory contents:", os.listdir('.'))

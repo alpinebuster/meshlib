@@ -1,7 +1,7 @@
 {
   "name": "three-meshlib-editor",
-  "version": "0.1.2",
-  "description": "ThreeJS editor for `meshlib`.",
+  "version": "0.2.0",
+  "description": "MeshMaster - ThreeJS editor for `meshlib`.",
   "keywords": [
     "threejs",
     "meshlib",
@@ -16,25 +16,40 @@
     "url": "git+https://github.com/alpinebuster/meshlib.git"
   },
   "license": "Apache-2.0",
+  "files": [
+    "editor",
+    "files",
+    "Editor-Manual.md",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "author": "alpinebuster",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:serve": "tsc -p tsconfig.json",
+    "serve": "node ./serve.js",
+    "serve:built": "npm run build && npm run build:serve && npm run serve",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@types/node": "^24.0.3",
+    "express": "^5.1.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "@alpinebuster/meshlib": "file:../../../wasm/meshlib/",
+    "@alpinebuster/meshlib": "^0.2.0",
     "@ffmpeg/ffmpeg": "^0.12.15",
     "@ffmpeg/util": "^0.12.2",
+    "@types/express": "^5.0.3",
     "three": "^0.177.0",
     "three-gpu-pathtracer": "^0.0.23",
-    "three-mesh-bvh": "^0.9.0"
+    "three-mesh-bvh": "^0.9.0",
+    "ts-node": "^10.9.2",
+    "vite-plugin-top-level-await": "^1.5.0"
   }
 }

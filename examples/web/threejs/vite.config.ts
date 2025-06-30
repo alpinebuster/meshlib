@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import type { ServerOptions, BuildOptions } from 'vite'
+import topLevelAwait from 'vite-plugin-top-level-await';
 
 // Utilizing TypeScript's type inference, defineConfig will automatically infer the correct type
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
@@ -8,6 +9,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 		root: 'editor',
 
 		build: {
+			target: 'esnext',
 			rollupOptions: {
 				input: {
 					main: resolve(__dirname, 'editor/index.html'),
@@ -16,21 +18,28 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 				},
 				// NOTE: Mainly affects **production** construction, suitable for controlling which dependencies are not packaged
 				// Tell Vite that these modules are external and not to try to package them
-				// external: [
-				// 	'three',
-				// 	/^three\/addons\//,     // Match all imports starting with `three/addons/`
-				// 	/^three\/examples\//,   // The same as above
-				// 	'three-gpu-pathtracer',
-				// 	'three-mesh-bvh',
-				// ],
+				external: [
+					'@alpinebuster/meshlib',
+				],
 				output: {
+					format: 'esm',
 					// Code partitioning strategy: separating large libraries into separate chunks
-					manualChunks: {
-						'three': ['three'],
-						'three-addons': ['three/examples/jsm/'],
-						'three-examples': ['three/examples/'],
-						'three-gpu-pathtracer': ['three-gpu-pathtracer'],
-						'three-mesh-bvh': ['three-mesh-bvh']
+					manualChunks(id) {
+						if (id.includes('node_modules/three/examples/jsm/')) {
+							return 'three-addons'
+						}
+						if (id.includes('node_modules/three/examples/')) {
+							return 'three-examples'
+						}
+						if (id.includes('node_modules/three/')) {
+							return 'three'
+						}
+						if (id.includes('node_modules/three-gpu-pathtrace/')) {
+							return 'three-gpu-pathtrace'
+						}
+						if (id.includes('node_modules/three-mesh-bvh/')) {
+							return 'three-mesh-bvh'
+						}
 					}
 				}
 			},
@@ -51,12 +60,10 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 			// NOTE: Primarily affects dependency pre-builds in **development** environments and applies to performance optimization during development
 			// Explicitly excluding these dependencies prevents Vite from trying to pre-build them
 			exclude: [
-				// 'three',
-				// 'three-gpu-pathtracer',
-				// 'three-mesh-bvh',
 				// FIXME: Why windows needs this but unix systems not?
 				'@alpinebuster/meshlib',
-				"@ffmpeg/ffmpeg", "@ffmpeg/util",
+				'@ffmpeg/ffmpeg',
+				'@ffmpeg/util',
 			],
 
 			esbuildOptions: {
@@ -72,6 +79,15 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 				format: 'esm',
 			}
 		},
+
+		// plugins: [
+		// 	topLevelAwait({
+		// 	// The export name of top-level await promise for each chunk module
+		// 	promiseExportName: '__tla',
+		// 	// The function to generate import names of top-level await promise in each chunk module
+		// 	promiseImportName: i => `__tla_${i}`
+		// 	})
+		// ],
 
 		server: {
 			port: 3320,
@@ -116,17 +132,30 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 			preprocessorOptions: {
 				scss: {
 					// SCSS Global Variable Import Example
-					additionalData: `@import "@/styles/variables.scss";`
+					additionalData: `@import '@/styles/variables.scss';`
 				}
 			}
 		},
 
 		// Path Alias Configuration - Make Import Paths Simpler
 		resolve: {
-			alias: {
-				'three/addons/': resolve(__dirname, 'node_modules/three/examples/jsm/'),
-				'three/examples/': resolve(__dirname, 'node_modules/three/examples/')
-			}
+			alias: [
+				// three/examples/jsm/xxx  → node_modules/three/examples/jsm/xxx
+				{
+					find: /^three\/examples\/jsm\/(.*)$/,
+					replacement: resolve(__dirname, 'node_modules/three/examples/jsm/$1')
+				},
+				// three/addons/xxx       → node_modules/three/examples/jsm/xxx
+				{
+					find: /^three\/addons\/(.*)$/,
+					replacement: resolve(__dirname, 'node_modules/three/examples/jsm/$1')
+				},
+				// three/examples/xxx      → node_modules/three/examples/xxx
+				{
+					find: /^three\/examples\/(?!jsm\/)(.*)$/,
+					replacement: resolve(__dirname, 'node_modules/three/examples/$1')
+				},
+			]
 		},
 
 		// Environment Variable Configuration
