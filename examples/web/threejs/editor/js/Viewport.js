@@ -216,6 +216,7 @@ function Viewport( editor ) {
 
 		const array = getMousePosition( container.dom, touch.clientX, touch.clientY );
 		onDownPosition.fromArray( array );
+		signals.mouseDown.dispatch( onDownPosition, event );
 
 		container.dom.addEventListener( 'touchend', onTouchEnd );
 	}
@@ -225,6 +226,7 @@ function Viewport( editor ) {
 
 		const array = getMousePosition( container.dom, touch.clientX, touch.clientY );
 		onUpPosition.fromArray( array );
+		signals.mouseUp.dispatch( onUpPosition, event );
 
 		handleClick( event );
 

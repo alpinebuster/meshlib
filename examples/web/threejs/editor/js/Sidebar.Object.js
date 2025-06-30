@@ -173,6 +173,7 @@ function SidebarObject( editor ) {
 				subMeshes.forEach( ( subMesh, i ) => {
 					editor.execute( new RemoveObjectCommand( editor, subMesh ) );
 				});
+				wasmOpSelector.removeClass( 'selected' );
 			}
 		} else {
 			wasmOpSelector.removeClass( 'selected' );
@@ -231,8 +232,20 @@ function SidebarObject( editor ) {
 		draggingIndex = -1;
 	});
 	signals.keyDown.add( ( event ) => {
-		if ( event.code == 'Enter' ) {
-			console.log("keydown: ", event)
+		if ( event.code == 'Enter' && editor.selected ) {
+			const currentUUID = editor.selected.uuid;
+			if ( currentUUID ) {
+				if (editor.wasmObject.hasOwnProperty( currentUUID )) {
+					const curMeshWrapper = editor.wasmObject[currentUUID];
+						
+					const positionAttribute = pointGeo.getAttribute( 'position' );
+					const positions = positionAttribute.array; // Float32Array
+					const vertexCount = positions.length;
+					
+					const result = editor.mrmesh.cutMeshWithPolyline(curMeshWrapper.mesh, positions, vertexCount);
+					console.log("result: ", result);
+				}
+			}
 		}
 	});
 	function refreshPoints() {
@@ -275,8 +288,8 @@ function SidebarObject( editor ) {
 
 	const wasmOpFillholes = new UIButton( strings.getKey( 'sidebar/object/wasmFillholes') ).setMarginLeft( '7px' ).onClick(function () {
 		const currentUUID = editor.selected.uuid;
-		if (currentUUID) {
-			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const newMeshData = editor.wasmObject[currentUUID].fillHoles();
 				const vertices = newMeshData.vertices;
 				const indices = newMeshData.indices;
@@ -287,11 +300,11 @@ function SidebarObject( editor ) {
 				newGeometry.setAttribute('position', new THREE.BufferAttribute(newVertices, 3));
 			
 				// 🔧 Automatically calculate the normal to ensure normal lighting effects
-				// newGeometry.computeVertexNormals();
+				newGeometry.computeVertexNormals();
 			
-				newGeometry.setIndex(new THREE.BufferAttribute(newIndices, 1));
+				newGeometry.setIndex( new THREE.BufferAttribute(newIndices, 1) );
 				const newMaterial = new THREE.MeshNormalMaterial();
-				const holesFilledMesh = new THREE.Mesh(newGeometry, newMaterial);
+				const holesFilledMesh = new THREE.Mesh( newGeometry, newMaterial );
 				holesFilledMesh.name = `wasm-${editor.select.name}`;
 				holesFilledMesh.castShadow = true;
 				holesFilledMesh.receiveShadow = true;
