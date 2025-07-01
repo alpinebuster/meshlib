@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname, join, normalize } from 'path';
 import { existsSync, rmSync, mkdirSync, copyFileSync } from 'fs';
 import { execSync } from 'child_process';
 
@@ -94,7 +94,7 @@ async function bundle(environment: string): Promise<void> {
 }
 
 // Run the build if this script is executed directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (normalize(import.meta.url) === normalize(`file://${process.argv[1]}`)) {
 	build().catch((error) => {
 		console.error('Unhandled error:', error);
 		process.exit(1);
