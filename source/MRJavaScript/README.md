@@ -4,6 +4,8 @@
 
 Use `val(typed_memory_view(...))` & `HEAPU8.set(uint8Array, ptr)` to improve performance by avoiding copy ops.
 
+### Export to JS/TS
+
 ```cpp
 class MeshWrapper {
 // ...
@@ -21,10 +23,35 @@ public:
 // ...
 };
 
-val getVertexPositions(MeshWrapper& mw) const {
-    return val(typed_memory_view(mw.vertexCount() * 3, mw.vertexDataPtr())); // Float32Array
+val getVertexPositions( MeshWrapper& mw ) const {
+    return val( typed_memory_view( mw.vertexCount() * 3, mw.vertexDataPtr() ) ); // Float32Array
+}
+
+EMSCRIPTEN_BINDINGS( SomeModule ) {
+   function( "getVertexPositions", &getVertexPositions )
 }
 ```
+
+```js
+// Getting the Mesh from WebAssembly
+const mesh = Module.returnParts(...).first;
+
+// Getting the Memory View
+const positions = mesh.getVertexPositions(); // Float32Array，zero-copy
+
+// Create threejs `BufferGeometry()`
+const geometry = new THREE.BufferGeometry();
+
+// Use `Float32Array` directly in threejs attribute.
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+const material = new THREE.MeshStandardMaterial({ color: 0x00f00, side: THREE.DoubleSide });
+const meshObject = new THREE.Mesh(geometry, material);
+
+scene.add(meshObject);
+```
+
+### Load STL
 
 ```js
 // ...
@@ -36,6 +63,10 @@ const result = await Module.MeshLoadWrapper.fromBinaryData(ptr, uint8Array.byteL
 
 // ...
 ```
+
+### Performance Compare
+
+TODO
 
 ## TODOs
 
