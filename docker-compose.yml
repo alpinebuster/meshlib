@@ -34,7 +34,7 @@ services:
       - meshlib-build-cache:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
-      - MESHLIB_KEEP_BUILD=ON
+      - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=OFF  # Default to multithreaded
@@ -85,7 +85,7 @@ services:
       - meshlib-build-cache-single:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
-      - MESHLIB_KEEP_BUILD=ON
+      - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=ON   # Single-threaded build
@@ -131,7 +131,7 @@ services:
       - meshlib-build-cache-wasm64:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
-      - MESHLIB_KEEP_BUILD=ON
+      - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=OFF
