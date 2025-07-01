@@ -15,6 +15,8 @@
 #include <MRMesh/MRFillContour.h>
 #include <MRMesh/MREdgePaths.h>
 
+#include "MRUtils.h"
+
 using namespace emscripten;
 using namespace MR;
 
@@ -109,11 +111,13 @@ val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
 
 		auto [ innerMesh, outerMesh ] = returnParts( mesh, cutResults.resultCut );
+		val innerMeshData = MRJS::exportMeshData( innerMesh );
+		val outerMeshData = MRJS::exportMeshData( outerMesh );
 
 		val obj = val::object();
 		obj.set( "success", true );
-		obj.set( "innerMesh", innerMesh );
-		obj.set( "outerMesh", outerMesh );
+		obj.set( "innerMesh", innerMeshData );
+		obj.set( "outerMesh", outerMeshData );
 
 		return obj;
 	} else {

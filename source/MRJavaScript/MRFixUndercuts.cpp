@@ -6,6 +6,8 @@
 #include <MRMesh/MRBox.h>
 #include <MRVoxels/MRFixUndercuts.h>
 
+#include "MRUtils.h"
+
 using namespace emscripten;
 using namespace MR;
 using namespace FixUndercuts;
@@ -37,9 +39,12 @@ val fixUndercutsWrapper( Mesh& mesh, const Vector3f& upDirection, float voxelSiz
 	val returnObj = val::object();
 	if ( result.has_value() )
 	{
+		val meshData = MRJS::exportMeshData( mesh );
+
 		// Success case: the operation completed without errors
 		// The mesh has been modified in place, so we just report success
 		returnObj.set( "success", true );
+		returnObj.set( "mesh", meshData );
 		returnObj.set( "message", "Undercuts fixed successfully, the input mesh changed!" );
 	}
 	else

@@ -13,6 +13,7 @@
 #include <MRMesh/MRMeshFillHole.h>
 
 #include "MRMesh.h"
+#include "MRUtils.h"
 
 using namespace emscripten;
 using namespace MR;
@@ -227,40 +228,7 @@ val MeshWrapper::fillHoles() const
 		fillHole( meshCopy, e, params );
 	}
 
-    // === Export point data ===
-	auto _points = meshCopy.points;
-	size_t pointCount = _points.size();
-	size_t totalPointElements = pointCount * 3;
-    const float* pointData = reinterpret_cast<const float*>(_points.data());
-
-    // Create a JavaScript array directly and populate it - avoiding intermediate conversion steps
-    val pointsArray = val::array();
-    // Pre-allocate the array length to improve performance
-    pointsArray.set("length", totalPointElements);
-    // Batch setting values - faster than pushing them one by one
-    for (size_t i = 0; i < totalPointElements; ++i) {
-        pointsArray.set(i, val(pointData[i]));
-    }
-
-    // === Export triangle data ===
-	Triangulation _tri = meshCopy.topology.getTriangulation();
-	size_t triangleCount = _tri.size();
-	size_t totalTriElements = triangleCount * 3; // Each triangle has three indexes
-	const int* triData = reinterpret_cast<const int*>(_tri.data());
-
-	val triangleArray = val::array();
-    triangleArray.set("length", totalTriElements);
-	for (size_t i = 0; i < totalTriElements; ++i) {
-		triangleArray.set(i, val(triData[i]));
-	}
-	
-    val meshData = val::object();
-    meshData.set("vertices", pointsArray);
-    meshData.set("vertexCount", pointCount);
-    meshData.set("indices", triangleArray);
-    meshData.set("triangleCount", triangleCount);
-
-    return meshData;
+    return MRJS::exportMeshData( meshCopy );
 }
 
 // Point projection
