@@ -16,7 +16,7 @@ using namespace MR;
  *
  * Step 1: Create closed loops that pass through specified points (either edges or vertices) while minimizing a cost metric by using `surroundingContour()`.
  *
- * Step 2:  Once you have contours, the `fillContourLeftByGraphCut()` function use graph cut algorithms to find optimal regions
+ * Step 2: The `fillContourLeftByGraphCut()` function use graph cut algorithms with contours to find optimal regions
  *
  * @param mesh
  * @param keyVertices
@@ -32,19 +32,14 @@ public:
 	 */
 	MeshSegmentation( const Mesh& mesh ) : mesh_( mesh )
 	{
-		// Initialize with a default edge metric (you may want to customize this)
+		// Initialize with a default edge metric
 		// e.g. `discreteAbsMeanCurvatureMetric()` & `edgeCurvMetric()`
 		edgeMetric_ = discreteAbsMeanCurvatureMetric( mesh_ );
 	}
-
 	void setMesh( const Mesh& m )
 	{
 		mesh_ = m;
 	}
-	/**
-	 * @brief Set a custom edge metric function
-	 * This allows you to customize how edge costs are calculated
-	 */
 	void setEdgeMetric( const EdgeMetric& metric )
 	{
 		edgeMetric_ = metric;
@@ -136,7 +131,7 @@ public:
 			}
 			contourDirection /= dirLength;
 
-			// Step 3: Create surrounding contour using your existing algorithm
+			// Step 3: Create surrounding contour
 			auto contourResult = surroundingContour( mesh_, keyVertices, edgeMetric_, contourDirection );
 
 			if ( !contourResult )

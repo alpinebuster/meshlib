@@ -108,7 +108,7 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         // .smart_ptr<std::shared_ptr<T>>()
         // ```
         // 
-        // ✅ When there is a base class, you must provide the name of the smart pointer as a string:
+        // ✅ When there is a base class, must provide the name of the smart pointer as a string:
         // 
         // ```cpp
         // .smart_ptr<std::shared_ptr<T>>("shared_ptr<T>")

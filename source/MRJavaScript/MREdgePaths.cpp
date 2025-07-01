@@ -13,7 +13,7 @@ using namespace MR;
 void smoothExtractedRegionBoundary( Mesh& mesh, int numIters = 6 )
 {
     // 1) Construct a `FaceBitSet` that marks all faces in the mesh as "selected"
-    //    This way, the outer boundary of `regionFaces` is exactly your irregular closed circle
+    //    This way, the outer boundary of `regionFaces` is exactly irregular closed circle
     FaceBitSet regionFaces( mesh.topology.faceSize() );
     regionFaces.set(); // Set all bits to 1
 

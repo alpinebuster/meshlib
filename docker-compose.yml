@@ -164,22 +164,15 @@ services:
 volumes:
   meshlib-build-cache:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./.cache/docker-build-cache/default/build
+    # driver_opts:
+    #   type: none
+    #   o: bind
+    #   device: ./.cache/docker-build-cache/default/build
   meshlib-build-cache-single:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./.cache/docker-build-cache/singlethreaded/build
   meshlib-build-cache-wasm64:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./.cache/docker-build-cache/wasm64/build
+
   # CMake cache for faster configuration
   meshlib-cmake-cache:
     driver: local

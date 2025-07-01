@@ -63,7 +63,7 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 /**
  *@brief Cut mesh with polyline
  *
- * 1. Project points of your polyline to mesh
+ * 1. Project points of polyline to mesh
  * 2. Convert result vector to `cutMesh()` input type
  * 3. Do `cutMesh()` (it works only with contours without self-intersections)
  *
@@ -130,7 +130,7 @@ val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 /**
  *@brief Cut and extrude mesh with polyline
  *
- * 1. Project points of your polyline to mesh
+ * 1. Project points of polyline to mesh
  * 2. Convert result vector to `cutMesh()` input type
  * 3. Do `cutMesh()` (it works only with contours without self-intersections)
  * 4. Pull resultCut vertices to corresponding original polyline positions
