@@ -36,14 +36,14 @@ EMSCRIPTEN_BINDINGS( PointsToMeshProjectorModule )
 {
     class_<IPointsToMeshProjector>( "IPointsToMeshProjector" )
         .smart_ptr<std::shared_ptr<IPointsToMeshProjector>>( "IPointsToMeshProjector" )
-        .function( "updateMeshData", &IPointsToMeshProjector::updateMeshData, pure_virtual() )
-        .function( "findProjections", &IPointsToMeshProjector::findProjections, pure_virtual() )
+        .function( "updateMeshData", &IPointsToMeshProjector::updateMeshData, pure_virtual(), allow_raw_pointers() )
+        .function( "findProjections", &IPointsToMeshProjector::findProjections, pure_virtual(), allow_raw_pointers() )
         .function( "projectionsHeapBytes", &IPointsToMeshProjector::projectionsHeapBytes, pure_virtual() );
 
     class_<PointsToMeshProjector, base<IPointsToMeshProjector>>( "PointsToMeshProjector" )
         .constructor<>()
-        .function( "updateMeshData", &PointsToMeshProjector::updateMeshData )
-        .function( "findProjections", &PointsToMeshProjector::findProjections )
+        .function( "updateMeshData", &PointsToMeshProjector::updateMeshData, allow_raw_pointers() )
+        .function( "findProjections", &PointsToMeshProjector::findProjections, allow_raw_pointers() )
         .function( "projectionsHeapBytes", &IPointsToMeshProjector::projectionsHeapBytes );
 
     class_<MeshProjectionParameters>( "MeshProjectionParameters" )
