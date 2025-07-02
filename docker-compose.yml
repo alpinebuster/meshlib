@@ -36,6 +36,7 @@ services:
       - meshlib-build-cache:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
+      - MR_EMSCRIPTEN_SDK=ON
       - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
@@ -87,6 +88,7 @@ services:
       - meshlib-build-cache-single:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
+      - MR_EMSCRIPTEN_SDK=ON
       - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
@@ -133,6 +135,7 @@ services:
       - meshlib-build-cache-wasm64:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
+      - MR_EMSCRIPTEN_SDK=ON
       - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
