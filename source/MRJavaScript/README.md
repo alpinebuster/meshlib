@@ -1,5 +1,50 @@
 # JS/TS Bindings
 
+Rules that should obey.
+
+## TODOs
+
+- V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
+- V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
+
+## Reference & Pointer
+
+When binding a class with Embind, every C++ instance of that class gets a JS “wrapper object” (an `Module.Mesh`). Whether the C++ signature is
+
+```cpp
+void foo(const Mesh* mesh);
+```
+
+or
+
+```cpp
+void foo(const Mesh& mesh);
+```
+
+in JS, we should always just pass the same wrapper:
+
+```js
+// create or receive a Mesh instance
+let mesh = new Module.Mesh();        // or obtained from a C++ call
+
+// call a bound method that takes `Mesh*` or `Mesh&`:
+someBinder.foo(mesh);
+```
+
+Embind will automatically unwrap that `Module.Mesh` into either a `Mesh*` or a `Mesh&` as needed.
+
+If the binding uses raw pointers, be sure `allow_raw_pointers` is added:
+
+```cpp
+.function("foo", &MyClass::foo, allow_raw_pointers())
+```
+
+so that JS can also do:
+
+```js
+someBinder.foo(null);    // passes a nullptr for `Mesh*`
+```
+
 ## Design Guide
 
 Use `val(typed_memory_view(...))` & `HEAPU8.set(uint8Array, ptr)` to improve performance by avoiding copy ops.
@@ -64,16 +109,65 @@ const result = await Module.MeshLoadWrapper.fromBinaryData(ptr, uint8Array.byteL
 // ...
 ```
 
-### Performance Compare
+## Differences between `static_cast` and `reinterpret_cast`
+
+### **static_cast**
+
+**Purpose: Safe type conversion**  
+- Performs compile-time checks for conversion validity  
+- Executes any necessary value conversions  
+- Preserves the semantic meaning of the data  
+
+**Example:**
+```cpp
+EdgeId edgeId(42);
+int value = static_cast<int>(edgeId);  // Calls EdgeId’s operator int()
+// Actually invokes EdgeId::operator ValueType() const { return id_; }
+```
+
+**Characteristics:**  
+- May invoke user-defined conversion operators or constructors  
+- Can change the representation of the data  
+- Compiler ensures the conversion is legal  
+- Relatively safe  
+
+### **reinterpret_cast**
+
+**Purpose: Reinterpret the bit pattern in memory**  
+- Does no actual conversion, only changes how the compiler interprets the bits  
+- Performs no safety checks  
+- Operates directly on raw memory  
+
+**Example:**
+```cpp
+std::vector<EdgeId> edges = {EdgeId(1), EdgeId(2), EdgeId(3)};
+const int* intPtr = reinterpret_cast<const int*>(edges.data());
+// Reinterprets EdgeId* as int* with no actual conversion
+```
+
+**Characteristics:**  
+- Zero overhead; calls no functions  
+- Only changes the pointer/reference type  
+- Not guaranteed to be safe  
+- Requires that source and target types share the same memory layout  
+
+### **Usage**
+
+**EdgeId conversions:**
+```cpp
+// static_cast – invokes user-defined conversion
+int value = static_cast<int>(edgeId);  // Calls operator ValueType()
+
+// reinterpret_cast – directly reinterprets memory (for arrays)
+const int* data = reinterpret_cast<const int*>(edges.data());
+```
+
+## Performance Compare
 
 TODO
 
-## TODOs
+## Differences between pointers
 
-- V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
-- V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
-
-## NOTEs
 In the C++ standard library there are several “pointer” types, each with different ownership and lifetime semantics:
 
 | Pointer Type                        | Header     | Ownership Model                    | Copy / Move                      | Reference Counting                   | Thread Safety                       | Typical Use Cases                                        |

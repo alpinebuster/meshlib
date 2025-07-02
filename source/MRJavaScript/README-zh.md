@@ -1,5 +1,133 @@
 # JS/TS 绑定
 
+应该遵守的代码规范。
+
+## TODOs
+
+- V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
+- V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
+
+## 指针 & 引用参数
+
+在 Embind 里，不需要在 JS 端区分 “这是一个指针” 和 “这是一个引用”——对 C++ 侧暴露给 JS 的类而言，Embind 会封装好一个 JS “wrapper object”，这个对象本身就 **携带** 了它到底是一个 `Mesh*` 还是 `Mesh&`（底层都是指针） 的信息。
+
+### 绑定层面
+
+假设有以下代码：
+
+```cpp
+// 允许裸指针
+EMSCRIPTEN_BINDINGS(my_module) {
+  class_<Mesh>("Mesh")
+    .constructor<>()       // JS 侧可以 new Module.Mesh()
+    // … 更多绑定 …
+    ;
+
+  class_<IPointsToMeshProjector>("IPointsToMeshProjector")
+    .allow_subclass<IPointsToMeshProjector>("IPointsToMeshProjector")
+    .function(
+      "updateMeshData",
+      &IPointsToMeshProjector::updateMeshData,
+      pure_virtual(),
+      allow_raw_pointers()   // 允许在 JS 侧传入 Mesh* 或 Mesh 的实例
+    )
+    // …
+    ;
+}
+```
+
+* 当在 `.function(...)` 里写上了 `allow_raw_pointers()`，Embind 就允许这个方法接收任何 JS 侧的 `Module.Mesh` 实例（或者 `null`/`undefined`），并自动把它“解”成底层的 C++ `Mesh*`。
+* 如果是 `const Mesh& mesh`（引用参数），Embind 内部同样会把 JS 传入的那个 `Module.Mesh` wrapper 当成它的地址来用——因为引用背后本质就是指针，只不过语义不同。
+
+### JS 端如何调用
+
+```js
+// 假设已经从 C++ 那边获得了一个 mesh：
+let mesh = new Module.Mesh(); // 也可以是从 C++ 侧传过来的现成 Mesh 对象
+
+// 假设 proj 是 JS 侧继承 IPointsToMeshProjector 得到的实例：
+let proj = new MyProjector();
+
+// 调用时直接把 mesh 当作参数传入即可——Embind 会
+// - 如果是 C++ 侧签名是 (const Mesh& mesh), 就把这个 wrapper 解成 &mesh
+// - 如果是 C++ 侧签名是 (const Mesh* mesh), 就把这个 wrapper 解成 mesh*
+// 这两个情况在 JS 端完全“透明”，不需要写额外的转换
+proj.updateMeshData(mesh);
+
+// 如果想传 nullptr 给 C++ 的指针参数（Mesh*），也可以传 JS 端的 null/undefined：
+proj.updateMeshData(null);  // C++ 这边就收到 mesh == nullptr
+```
+## 设计指南
+
+使用 `val(typed_memory_view(...))` 和 `HEAPU8.set(uint8Array, ptr)` 来避免拷贝操作、提升性能。
+
+### 导出到 JS/TS
+
+```cpp
+class MeshWrapper {
+// …
+
+public:
+    std::vector<Vector3f> points;
+    std::vector<Vector3i> faces;
+
+    const float* vertexDataPtr() const { return reinterpret_cast<const float*>(points.data()); }
+    size_t vertexCount() const { return points.size(); }
+
+    const int* faceDataPtr() const { return reinterpret_cast<const int*>(faces.data()); }
+    size_t faceIndexCount() const { return faces.size() * 3; }
+
+// …
+};
+
+val getVertexPositions( MeshWrapper& mw ) const {
+    return val( typed_memory_view( mw.vertexCount() * 3, mw.vertexDataPtr() ) ); // Float32Array
+}
+
+EMSCRIPTEN_BINDINGS( SomeModule ) {
+   function( "getVertexPositions", &getVertexPositions );
+}
+```
+
+```js
+// 从 WebAssembly 获取 Mesh 实例
+const mesh = Module.returnParts(...).first;
+
+// 获取零拷贝的内存视图
+const positions = mesh.getVertexPositions(); // Float32Array
+
+// 创建 three.js 的 BufferGeometry
+const geometry = new THREE.BufferGeometry();
+
+// 直接用 Float32Array 作为 three.js 的 attribute
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+const material = new THREE.MeshStandardMaterial({
+  color: 0x00ff00,
+  side: THREE.DoubleSide
+});
+const meshObject = new THREE.Mesh(geometry, material);
+
+scene.add(meshObject);
+```
+
+### 加载 STL
+
+```js
+// …
+
+const uint8Array = new Uint8Array(contents);
+const ptr = Module._malloc(uint8Array.byteLength);
+Module.HEAPU8.set(uint8Array, ptr);
+const result = await Module.MeshLoadWrapper.fromBinaryData(
+  ptr,
+  uint8Array.byteLength,
+  'stl'
+);
+
+// …
+```
+
 ## `static_cast` 和 `reinterpret_cast`
 
 ### **static_cast**
@@ -53,7 +181,11 @@ int value = static_cast<int>(edgeId);  // 调用 operator ValueType()
 const int* data = reinterpret_cast<const int*>(edges.data());
 ```
 
-## NOTEs
+## 性能对比
+
+TODO
+
+## 指针之间的区别
 
 C++ 标准库里，跟 “指针” 相关的主要有以下几种类型：
 

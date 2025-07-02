@@ -5,80 +5,100 @@
 using namespace emscripten;
 using namespace MR;
 
-EMSCRIPTEN_BINDINGS( Vector2fModule )
+EMSCRIPTEN_BINDINGS( Vector2Module )
 {
-    class_<Vector2<float>>( "Vector2f" )
-        .constructor<>()                      // Default constructor (0,0)
-        .constructor<float, float>()          // From two floats
-        .constructor<const Vector2<float>&>() // Copy constructor
-
-        // Properties - direct access to x,y components
-        .property( "x", &Vector2<float>::x )
-        .property( "y", &Vector2<float>::y )
-
-        // Vector operations
-        .function( "length", &Vector2<float>::length )
-        .function( "lengthSq", &Vector2<float>::lengthSq )
-        .function( "normalized", &Vector2<float>::normalized )
-        .function( "perpendicular", &Vector2<float>::perpendicular )
-        .function( "isFinite", &Vector2<float>::isFinite )
-        .function( "furthestBasisVector", &Vector2<float>::furthestBasisVector )
-        .function( "get", select_overload<const float& ( int ) const>( &Vector2<float>::operator[] ) )
-        .function( "set", select_overload<float& ( int )>( &Vector2<float>::operator[] ) )
-
-        .class_function( "diagonal", &Vector2<float>::diagonal )
-        .class_function( "plusX", &Vector2<float>::plusX )
-        .class_function( "plusY", &Vector2<float>::plusY )
-        .class_function( "minusX", &Vector2<float>::minusX )
-        .class_function( "minusY", &Vector2<float>::minusY );
-}
-
-EMSCRIPTEN_BINDINGS( Vector2iModule )
-{
-    class_<Vector2<int>>( "Vector2i" )
-        .constructor<>()
-        .constructor<int, int>()
-        .constructor<const Vector2<int>&>()
-
-        // Properties
-        .property( "x", &Vector2<int>::x )
-        .property( "y", &Vector2<int>::y )
-
-        // Vector operations
-        .function( "length", &Vector2<int>::length )
-        .function( "lengthSq", &Vector2<int>::lengthSq )
-        .function( "perpendicular", &Vector2<int>::perpendicular )
-        .function( "furthestBasisVector", &Vector2<int>::furthestBasisVector )
-        .function( "get", select_overload<const int& ( int ) const>( &Vector2<int>::operator[] ) )
-        .function( "set", select_overload<int& ( int )>( &Vector2<int>::operator[] ) )
-
-        .class_function( "diagonal", &Vector2<int>::diagonal )
-        .class_function( "plusX", &Vector2<int>::plusX )
-        .class_function( "plusY", &Vector2<int>::plusY )
-        .class_function( "minusX", &Vector2<int>::minusX )
-        .class_function( "minusY", &Vector2<int>::minusY );
-}
-
-EMSCRIPTEN_BINDINGS( Vector2bModule )
-{
-    class_<Vector2<bool>>( "Vector2b" )
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vector2b`
+    // ------------------------------------------------------------------------
+    register_vector<Vector2b>( "VectorVector2b" );
+    class_<Vector2b>( "Vector2b" )
         .constructor<>()
         .constructor<bool, bool>()
-        .constructor<const Vector2<bool>&>()
+        .constructor<const Vector2b&>()
 
         // Properties
-        .property( "x", &Vector2<bool>::x )
-        .property( "y", &Vector2<bool>::y )
+        .property( "x", &Vector2b::x )
+        .property( "y", &Vector2b::y )
 
         // Vector operations
-        .function( "length", &Vector2<bool>::length )
-        .function( "lengthSq", &Vector2<bool>::lengthSq )
-        .function( "get", select_overload<const bool& ( int ) const>( &Vector2<bool>::operator[] ) )
-        .function( "set", select_overload<bool& ( int )>( &Vector2<bool>::operator[] ) )
+        .function( "length", &Vector2b::length )
+        .function( "lengthSq", &Vector2b::lengthSq )
+        .function( "get", select_overload<const bool& ( int ) const>( &Vector2b::operator[] ) )
+        .function( "set", select_overload<bool& ( int )>( &Vector2b::operator[] ) )
 
-        .class_function( "diagonal", &Vector2<bool>::diagonal )
-        .class_function( "plusX", &Vector2<bool>::plusX )
-        .class_function( "plusY", &Vector2<bool>::plusY )
-        .class_function( "minusX", &Vector2<bool>::minusX )
-        .class_function( "minusY", &Vector2<bool>::minusY );
+        .class_function( "diagonal", &Vector2b::diagonal )
+        .class_function( "plusX", &Vector2b::plusX )
+        .class_function( "plusY", &Vector2b::plusY )
+        .class_function( "minusX", &Vector2b::minusX )
+        .class_function( "minusY", &Vector2b::minusY );
+
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vector2i`
+    // ------------------------------------------------------------------------
+    register_vector<Vector2i>( "VectorVector2i" );
+    class_<Vector2i>( "Vector2i" )
+        .constructor<>()
+        .constructor<int, int>()
+        .constructor<const Vector2i&>()
+
+        // Properties
+        .property( "x", &Vector2i::x )
+        .property( "y", &Vector2i::y )
+
+        // Vector operations
+        .function( "length", &Vector2i::length )
+        .function( "lengthSq", &Vector2i::lengthSq )
+        .function( "perpendicular", &Vector2i::perpendicular )
+        .function( "furthestBasisVector", &Vector2i::furthestBasisVector )
+        .function( "get", select_overload<const int& ( int ) const>( &Vector2i::operator[] ) )
+        .function( "set", select_overload<int& ( int )>( &Vector2i::operator[] ) )
+
+        .class_function( "diagonal", &Vector2i::diagonal )
+        .class_function( "plusX", &Vector2i::plusX )
+        .class_function( "plusY", &Vector2i::plusY )
+        .class_function( "minusX", &Vector2i::minusX )
+        .class_function( "minusY", &Vector2i::minusY );
+
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vector2ll`
+    // ------------------------------------------------------------------------
+    register_vector<Vector2ll>( "VectorVector2ll" );
+    class_<Vector2ll>( "Vector2ll" )
+        .constructor<>();
+        
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vector2f`
+    // ------------------------------------------------------------------------
+    register_vector<Vector2f>( "VectorVector2f" );
+    class_<Vector2f>( "Vector2f" )
+        .constructor<>()                      // Default constructor (0,0)
+        .constructor<float, float>()          // From two floats
+        .constructor<const Vector2f&>() // Copy constructor
+
+        // Properties - direct access to x,y components
+        .property( "x", &Vector2f::x )
+        .property( "y", &Vector2f::y )
+
+        // Vector operations
+        .function( "length", &Vector2f::length )
+        .function( "lengthSq", &Vector2f::lengthSq )
+        .function( "normalized", &Vector2f::normalized )
+        .function( "perpendicular", &Vector2f::perpendicular )
+        .function( "isFinite", &Vector2f::isFinite )
+        .function( "furthestBasisVector", &Vector2f::furthestBasisVector )
+        .function( "get", select_overload<const float& ( int ) const>( &Vector2f::operator[] ) )
+        .function( "set", select_overload<float& ( int )>( &Vector2f::operator[] ) )
+
+        .class_function( "diagonal", &Vector2f::diagonal )
+        .class_function( "plusX", &Vector2f::plusX )
+        .class_function( "plusY", &Vector2f::plusY )
+        .class_function( "minusX", &Vector2f::minusX )
+        .class_function( "minusY", &Vector2f::minusY );
+
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vector2d`
+    // ------------------------------------------------------------------------
+    register_vector<Vector2d>( "VectorVector2d" );
+    class_<Vector2d>( "Vector2d" )
+        .constructor<>();
 }

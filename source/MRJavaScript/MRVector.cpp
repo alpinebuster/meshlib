@@ -11,12 +11,7 @@ using DoubleVector = Vector<double, size_t>;
 
 EMSCRIPTEN_BINDINGS( VectorModule )
 {
-    register_vector<int>( "StdVectori" );
-    register_vector<float>( "StdVectorf" );
-    register_vector<double>( "StdVectord" );
-    register_vector<long long>( "StdVectorll" );
-    register_vector<uint64_t>( "StdVectorUint64" );
-
+    register_vector<IntVector>( "VectorVectori" );
     class_<IntVector>( "Vectori" )
         .constructor<>()                           // Default constructor
         .constructor<size_t>()                     // Size constructor  
@@ -77,7 +72,7 @@ EMSCRIPTEN_BINDINGS( VectorModule )
             return val( typed_memory_view( self.size(), self.data() ) );
         }));
 
-    // Repeat similar bindings for other types
+    register_vector<FloatVector>( "VectorVectorf" );
     class_<FloatVector>( "Vectorf" )
         .constructor<>()
         .constructor<size_t>()
