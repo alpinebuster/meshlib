@@ -1,5 +1,13 @@
 # Docker
 
+## Release
+
+```sh
+docker tag zzz/meshlib-emscripten-build-server:latest imzqqq/meshlib-emscripten-bui
+ld-server:latest
+docker push imzqqq/meshlib-emscripten-build-server:latest
+```
+
 ## Some useful commands
 
 At project root directory, building image with
