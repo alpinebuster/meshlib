@@ -5,6 +5,8 @@
 #include <MRMesh/MREnums.h>
 #include <MRVoxels/MROffset.h>
 
+#include "MRUtils.h"
+
 using namespace emscripten;
 using namespace MR;
 
@@ -16,10 +18,12 @@ val thickenMeshWrapper( const Mesh& mesh, float offset, const GeneralOffsetParam
 
 	if ( result.has_value() )
 	{
+    	val meshData = MRJS::exportMeshData( result.value() );
+
 		// Return the mesh wrapped in an object that indicates success
 		val returnObj = val::object();
 		returnObj.set( "success", true );
-		returnObj.set( "mesh", result.value() );
+		returnObj.set( "mesh", meshData );
 
 		return returnObj;
 	}

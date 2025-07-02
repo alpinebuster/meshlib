@@ -4,6 +4,8 @@
 
 Use `val(typed_memory_view(...))` & `HEAPU8.set(uint8Array, ptr)` to improve performance by avoiding copy ops.
 
+### Export to JS/TS
+
 ```cpp
 class MeshWrapper {
 // ...
@@ -21,10 +23,35 @@ public:
 // ...
 };
 
-val getVertexPositions(MeshWrapper& mw) const {
-    return val(typed_memory_view(mw.vertexCount() * 3, mw.vertexDataPtr())); // Float32Array
+val getVertexPositions( MeshWrapper& mw ) const {
+    return val( typed_memory_view( mw.vertexCount() * 3, mw.vertexDataPtr() ) ); // Float32Array
+}
+
+EMSCRIPTEN_BINDINGS( SomeModule ) {
+   function( "getVertexPositions", &getVertexPositions )
 }
 ```
+
+```js
+// Getting the Mesh from WebAssembly
+const mesh = Module.returnParts(...).first;
+
+// Getting the Memory View
+const positions = mesh.getVertexPositions(); // Float32Array，zero-copy
+
+// Create threejs `BufferGeometry()`
+const geometry = new THREE.BufferGeometry();
+
+// Use `Float32Array` directly in threejs attribute.
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+const material = new THREE.MeshStandardMaterial({ color: 0x00f00, side: THREE.DoubleSide });
+const meshObject = new THREE.Mesh(geometry, material);
+
+scene.add(meshObject);
+```
+
+### Load STL
 
 ```js
 // ...
@@ -37,13 +64,17 @@ const result = await Module.MeshLoadWrapper.fromBinaryData(ptr, uint8Array.byteL
 // ...
 ```
 
+### Performance Compare
+
+TODO
+
 ## TODOs
 
 - V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
 - V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
 
 ## NOTEs
-In the C++ standard library you’ll encounter several “pointer” types, each with different ownership and lifetime semantics:
+In the C++ standard library there are several “pointer” types, each with different ownership and lifetime semantics:
 
 | Pointer Type                        | Header     | Ownership Model                    | Copy / Move                      | Reference Counting                   | Thread Safety                       | Typical Use Cases                                        |
 | ----------------------------------- | ---------- | ---------------------------------- | -------------------------------- | ------------------------------------ | ----------------------------------- | -------------------------------------------------------- |
@@ -68,19 +99,19 @@ In the C++ standard library you’ll encounter several “pointer” types, each
    * **Ownership**: Exclusive; only one `unique_ptr` may own the object at a time.
    * **Copy/Move**: Non-copyable; move-only via `std::move`.
    * **Overhead**: Minimal—just a raw pointer under the hood.
-   * **Use when**: You need strict single ownership, e.g. RAII factory returns or container elements.
+   * **Use when**: It is needed to strict single ownership, e.g. RAII factory returns or container elements.
 
 3. **`std::shared_ptr<T>`**
 
    * **Ownership**: Shared; internal reference count tracks how many owners.
    * **Copy/Move**: Copyable—copies increment the count; moveable too.
    * **Overhead**: Control block for reference counts, atomic ops if thread-safe.
-   * **Use when**: Multiple parts of your code must share lifetime and you can’t easily determine who deletes last.
+   * **Use when**: Multiple parts of code must share lifetime and can’t easily determine who deletes last.
 
 4. **`std::weak_ptr<T>`**
 
    * **Ownership**: Doesn’t own; merely observes a `shared_ptr`’s object without incrementing the count.
-   * **Use**: Breaks cyclic `shared_ptr` references; lets you check if the object still exists via `lock()`.
+   * **Use**: Breaks cyclic `shared_ptr` references; allows check if the object still exists via `lock()`.
 
 5. **`std::auto_ptr<T>`**
 
@@ -88,6 +119,6 @@ In the C++ standard library you’ll encounter several “pointer” types, each
 
 ### Choosing Which to Use
 
-* **Prefer `unique_ptr`** whenever you can enforce a single owner—minimal overhead and clear semantics.
-* **Use `shared_ptr` + `weak_ptr`** only when you truly need shared ownership; watch out for cycles.
+* **Prefer `unique_ptr`** whenever require enforcing a single owner—minimal overhead and clear semantics.
+* **Use `shared_ptr` + `weak_ptr`** only when shared ownership required; watch out for cycles.
 * **Reserve raw pointers** for non-owning references or interop with C APIs; avoid them for ownership.

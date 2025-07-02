@@ -149,7 +149,8 @@ set -eo pipefail
 
 # build MeshLib
 if [ "${MESHLIB_KEEP_BUILD}" != "ON" ]; then
-  rm -rf ./build
+  # Use `rm -rf ./build/*` instead of `rm -rf ./build` to allow delete in docker volume
+  rm -rf ./build/*
 fi
 
 # build Release

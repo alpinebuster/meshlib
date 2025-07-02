@@ -1,3 +1,5 @@
+#include <functional>
+
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
@@ -8,15 +10,10 @@
 #include <MRMesh/MRPlane3.h>
 #include <MRMesh/MRId.h>
 
+#include "MRUtils.h"
+
 using namespace emscripten;
 using namespace MR;
-
-// emscripten bindings for hole extension functions
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
-#include <functional>
-
-using namespace emscripten;
 
 // 1. `extendHole()` with Plane3f
 // Basic version without output parameter
@@ -30,9 +27,15 @@ val extendHoleWithOutput( Mesh& mesh, EdgeId a, const Plane3f& plane )
 	FaceBitSet outNewFaces;
 	EdgeId result = extendHole( mesh, a, plane, &outNewFaces );
 
+	int resultId = static_cast<int>( result );
+
+	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
+	auto bitsView = typed_memory_view( bits.size(), bits.data() );
+	val bitsArray = val( bitsView );
+
 	val returnObj = val::object();
-	returnObj.set( "edgeId", result );
-	returnObj.set( "newFaces", outNewFaces );
+	returnObj.set( "edgeId", resultId );
+	returnObj.set( "newFaces", bitsArray );
 
 	return returnObj;
 }
@@ -49,9 +52,17 @@ val extendAllHoles_withOutput( Mesh& mesh, const Plane3f& plane )
 	FaceBitSet outNewFaces;
 	std::vector<EdgeId> result = extendAllHoles( mesh, plane, &outNewFaces );
 
+	const int* resultIds = reinterpret_cast<const int*>( result.data() );
+	size_t resultIdsSize = result.size();
+	val resultIdsArray = val( typed_memory_view( resultIdsSize, resultIds ) );
+
+	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
+	auto bitsView = typed_memory_view( bits.size(), bits.data() );
+	val bitsArray = val( bitsView );
+
 	val returnObj = val::object();
-	returnObj.set( "edgeIds", result );
-	returnObj.set( "newFaces", outNewFaces );
+	returnObj.set( "edgeIds", resultIdsArray );
+	returnObj.set( "newFaces", bitsArray );
 
 	return returnObj;
 }
@@ -81,9 +92,15 @@ val extendHoleFuncWithOutput( Mesh& mesh, EdgeId a, val jsFunc )
 	FaceBitSet outNewFaces;
 	EdgeId result = extendHole( mesh, a, cppFunc, &outNewFaces );
 
+	int resultId = static_cast<int>(result);
+
+	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
+	auto bitsView = typed_memory_view( bits.size(), bits.data() );
+	val bitsArray = val( bitsView );
+
 	val returnObj = val::object();
-	returnObj.set( "edgeId", result );
-	returnObj.set( "newFaces", outNewFaces );
+	returnObj.set( "edgeId", resultId );
+	returnObj.set( "newFaces", bitsArray );
 
 	return returnObj;
 }
@@ -100,9 +117,15 @@ val buildBottomWithOutput( Mesh& mesh, EdgeId a, Vector3f dir, float holeExtensi
 	FaceBitSet outNewFaces;
 	EdgeId result = buildBottom( mesh, a, dir, holeExtension, &outNewFaces );
 
+	int resultId = static_cast<int>(result);
+	
+	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
+	auto bitsView = typed_memory_view( bits.size(), bits.data() );
+	val bitsArray = val( bitsView );
+
 	val returnObj = val::object();
-	returnObj.set( "edgeId", result );
-	returnObj.set( "newFaces", outNewFaces );
+	returnObj.set( "edgeId", resultId );
+	returnObj.set( "newFaces", bitsArray );
 
 	return returnObj;
 }
@@ -119,9 +142,15 @@ val makeDegenerateBandAroundHoleWithOutput( Mesh& mesh, EdgeId a )
 	FaceBitSet outNewFaces;
 	EdgeId result = makeDegenerateBandAroundHole( mesh, a, &outNewFaces );
 
+	int resultId = static_cast<int>(result);
+
+	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
+	auto bitsView = typed_memory_view( bits.size(), bits.data() );
+	val bitsArray = val( bitsView );
+
 	val returnObj = val::object();
-	returnObj.set( "edgeId", result );
-	returnObj.set( "newFaces", outNewFaces );
+	returnObj.set( "edgeId", resultId );
+	returnObj.set( "newFaces", bitsArray );
 
 	return returnObj;
 }

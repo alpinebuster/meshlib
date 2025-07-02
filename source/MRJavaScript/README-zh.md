@@ -1,5 +1,58 @@
 # JS/TS 绑定
 
+## `static_cast` 和 `reinterpret_cast`
+
+### **static_cast**
+
+**用途：安全的类型转换**
+- 编译时检查转换的合法性
+- 进行必要的值转换
+- 保持数据的语义意义
+
+**示例：**
+```cpp
+EdgeId edgeId(42);
+int value = static_cast<int>(edgeId);  // 调用 EdgeId 的 operator int()
+// 这里实际调用了 EdgeId::operator ValueType() const { return id_; }
+```
+
+**特点：**
+- 会调用类型转换操作符或构造函数
+- 可能改变数据的表示形式
+- 编译器会检查转换是否合法
+- 相对安全
+
+### **reinterpret_cast**
+
+**用途：重新解释内存中的位模式**
+- 不进行任何转换，只是改变编译器对内存的解释
+- 不检查转换的安全性
+- 直接操作内存
+
+**示例：**
+```cpp
+std::vector<EdgeId> edges = {EdgeId(1), EdgeId(2), EdgeId(3)};
+const int* intPtr = reinterpret_cast<const int*>(edges.data());
+// 直接将 EdgeId* 重新解释为 int*，没有任何转换
+```
+
+**特点：**
+- 零开销，不调用任何函数
+- 只改变指针/引用的类型
+- 不保证安全性
+- 要求源类型和目标类型有相同的内存布局
+
+### **应用**
+
+**EdgeId 转换：**
+```cpp
+// static_cast - 调用转换操作符
+int value = static_cast<int>(edgeId);  // 调用 operator ValueType()
+
+// reinterpret_cast - 直接重新解释内存（用于数组）
+const int* data = reinterpret_cast<const int*>(edges.data());
+```
+
 ## NOTEs
 
 C++ 标准库里，跟 “指针” 相关的主要有以下几种类型：

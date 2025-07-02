@@ -23,7 +23,7 @@ EMSCRIPTEN_BINDINGS( VectorModule )
         .constructor<size_t, const int&>()         // Size + value constructor
 
         // Core container operations
-        // These become methods you can call from JavaScript
+        // These become methods can be called from JavaScript
         .function( "size", &IntVector::size )
         .function( "empty", &IntVector::empty )
         .function( "clear", &IntVector::clear )
@@ -36,11 +36,11 @@ EMSCRIPTEN_BINDINGS( VectorModule )
         // Resize operations - essential for dynamic containers
         .function( "resize", select_overload<void( size_t )>( &IntVector::resize ) )
         .function( "resizeWithValue", select_overload<void( size_t, const int& )>( &IntVector::resize ) )
-        // Advanced resize - this showcases your container's unique features
+        // Advanced resize - this showcases container's unique features
         .function( "resizeWithReserve", select_overload<void( size_t )>( &IntVector::resizeWithReserve ) )
         .function( "resizeWithReserveAndValue", select_overload<void( size_t, const int& )>( &IntVector::resizeWithReserve ) )
 
-        // Automatic resizing - this is a unique feature of your Vector class
+        // Automatic resizing - this is a unique feature of Vector class
         .function( "autoResizeAt", &IntVector::autoResizeAt, allow_raw_pointers() )
         .function( "autoResizeSet", select_overload<void( size_t, int )>( &IntVector::autoResizeSet ) )
 
@@ -52,7 +52,7 @@ EMSCRIPTEN_BINDINGS( VectorModule )
         .function( "front", select_overload<const int& ( ) const>( &IntVector::front ) )
         .function( "back", select_overload<const int& ( ) const>( &IntVector::back ) )
 
-        // ID-based access - this showcases your custom indexing system
+        // ID-based access
         .function( "beginId", &IntVector::beginId )
         .function( "backId", &IntVector::backId )
         .function( "endId", &IntVector::endId )
@@ -77,7 +77,7 @@ EMSCRIPTEN_BINDINGS( VectorModule )
             return val( typed_memory_view( self.size(), self.data() ) );
         }));
 
-    // Repeat similar bindings for other types you need
+    // Repeat similar bindings for other types
     class_<FloatVector>( "Vectorf" )
         .constructor<>()
         .constructor<size_t>()

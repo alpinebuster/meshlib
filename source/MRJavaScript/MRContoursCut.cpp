@@ -15,6 +15,8 @@
 #include <MRMesh/MRFillContour.h>
 #include <MRMesh/MREdgePaths.h>
 
+#include "MRUtils.h"
+
 using namespace emscripten;
 using namespace MR;
 
@@ -63,7 +65,7 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 /**
  *@brief Cut mesh with polyline
  *
- * 1. Project points of your polyline to mesh
+ * 1. Project points of polyline to mesh
  * 2. Convert result vector to `cutMesh()` input type
  * 3. Do `cutMesh()` (it works only with contours without self-intersections)
  *
@@ -109,11 +111,13 @@ val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
 
 		auto [ innerMesh, outerMesh ] = returnParts( mesh, cutResults.resultCut );
+		val innerMeshData = MRJS::exportMeshData( innerMesh );
+		val outerMeshData = MRJS::exportMeshData( outerMesh );
 
 		val obj = val::object();
 		obj.set( "success", true );
-		obj.set( "innerMesh", innerMesh );
-		obj.set( "outerMesh", outerMesh );
+		obj.set( "innerMesh", innerMeshData );
+		obj.set( "outerMesh", outerMeshData );
 
 		return obj;
 	} else {
@@ -130,7 +134,7 @@ val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 /**
  *@brief Cut and extrude mesh with polyline
  *
- * 1. Project points of your polyline to mesh
+ * 1. Project points of polyline to mesh
  * 2. Convert result vector to `cutMesh()` input type
  * 3. Do `cutMesh()` (it works only with contours without self-intersections)
  * 4. Pull resultCut vertices to corresponding original polyline positions

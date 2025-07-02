@@ -7,6 +7,8 @@
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MREdgeMetric.h>
 
+#include "MRUtils.h"
+
 using namespace emscripten;
 using namespace MR;
 
@@ -16,7 +18,7 @@ using namespace MR;
  *
  * Step 1: Create closed loops that pass through specified points (either edges or vertices) while minimizing a cost metric by using `surroundingContour()`.
  *
- * Step 2:  Once you have contours, the `fillContourLeftByGraphCut()` function use graph cut algorithms to find optimal regions
+ * Step 2: The `fillContourLeftByGraphCut()` function use graph cut algorithms with contours to find optimal regions
  *
  * @param mesh
  * @param keyVertices
@@ -32,19 +34,14 @@ public:
 	 */
 	MeshSegmentation( const Mesh& mesh ) : mesh_( mesh )
 	{
-		// Initialize with a default edge metric (you may want to customize this)
+		// Initialize with a default edge metric
 		// e.g. `discreteAbsMeanCurvatureMetric()` & `edgeCurvMetric()`
 		edgeMetric_ = discreteAbsMeanCurvatureMetric( mesh_ );
 	}
-
 	void setMesh( const Mesh& m )
 	{
 		mesh_ = m;
 	}
-	/**
-	 * @brief Set a custom edge metric function
-	 * This allows you to customize how edge costs are calculated
-	 */
 	void setEdgeMetric( const EdgeMetric& metric )
 	{
 		edgeMetric_ = metric;
@@ -91,6 +88,7 @@ public:
 		{
 			result.set( "success", false );
 			result.set( "error", std::string( "Mesh not initialized" ) );
+
 			return result;
 		}
 
@@ -103,6 +101,7 @@ public:
 			{
 				result.set( "success", false );
 				result.set( "error", std::string( "Need exactly 2 or 3 input points" ) );
+
 				return result;
 			}
 
@@ -118,6 +117,7 @@ public:
 				{
 					result.set( "success", false );
 					result.set( "error", std::string( "Could not find valid vertex for input point" ) );
+
 					return result;
 				}
 				keyVertices.push_back( mesh_.getClosestVertex( closestVert.proj ) );
@@ -132,17 +132,19 @@ public:
 			{
 				result.set( "success", false );
 				result.set( "error", std::string( "Direction vector is too small or zero" ) );
+
 				return result;
 			}
 			contourDirection /= dirLength;
 
-			// Step 3: Create surrounding contour using your existing algorithm
+			// Step 3: Create surrounding contour
 			auto contourResult = surroundingContour( mesh_, keyVertices, edgeMetric_, contourDirection );
 
 			if ( !contourResult )
 			{
 				result.set( "success", false );
 				result.set( "error", std::string( "Failed to create surrounding contour: " ) + contourResult.error() );
+
 				return result;
 			}
 
@@ -157,16 +159,18 @@ public:
 			segMesh.addMeshPart( {mesh_, &segmentedFaces} );
 
 			// Step 6: Convert results to JavaScript-friendly format using emscripten val
-			// val contourEdgesArray = val::array();
-			// for ( size_t i = 0; i < contour.size(); ++i )
-			// {
-			// 	contourEdgesArray.set( i, static_cast< int >( contour[i] ) );
-			// }
+			val meshData = MRJS::exportMeshData( segMesh );
+						
+			// Since `EdgeId` has an implicit conversion operator to int, and it is internally represented as an int
+			// We can directly reinterpret `EdgeId*` as `int*`
+			const int* contourData = reinterpret_cast<const int*>( contour.data() );
+			size_t contourSize = contour.size();
+			val contourEdgesArray = val( typed_memory_view( contourSize, contourData ) );
 
 			// Build the result object
 			result.set( "success", true );
-			// result.set( "contourEdges", contourEdgesArray );
-			result.set( "segMesh", segMesh );
+			result.set( "contourEdges", contourEdgesArray );
+			result.set( "mesh", meshData );
 		}
 		catch ( const std::exception& e )
 		{

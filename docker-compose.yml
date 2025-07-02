@@ -3,6 +3,8 @@
 #  `docker compose up --build meshlib-emscripten-build`
 #
 #  `docker compose up meshlib-emscripten-build`
+#  `docker compose up meshlib-emscripten-build -d`
+#
 #  `docker compose --profile singlethreaded up meshlib-emscripten-build-singlethreaded`
 #  `docker compose --profile wasm64 up meshlib-emscripten-build-wasm64`
 #
@@ -34,7 +36,8 @@ services:
       - meshlib-build-cache:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
-      - MESHLIB_KEEP_BUILD=ON
+      - MR_EMSCRIPTEN_SDK=ON
+      - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=OFF  # Default to multithreaded
@@ -85,7 +88,8 @@ services:
       - meshlib-build-cache-single:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
-      - MESHLIB_KEEP_BUILD=ON
+      - MR_EMSCRIPTEN_SDK=ON
+      - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=ON   # Single-threaded build
@@ -131,7 +135,8 @@ services:
       - meshlib-build-cache-wasm64:/meshlib/build
     environment:
       - MR_EMSCRIPTEN=ON
-      - MESHLIB_KEEP_BUILD=ON
+      - MR_EMSCRIPTEN_SDK=ON
+      - MESHLIB_KEEP_BUILD=OFF
       - MESHLIB_BUILD_RELEASE=ON
       - MESHLIB_BUILD_DEBUG=OFF
       - MR_EMSCRIPTEN_SINGLE=OFF
@@ -164,22 +169,15 @@ services:
 volumes:
   meshlib-build-cache:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./.cache/docker-build-cache/default/build
+    # driver_opts:
+    #   type: none
+    #   o: bind
+    #   device: ./.cache/docker-build-cache/default/build
   meshlib-build-cache-single:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./.cache/docker-build-cache/singlethreaded/build
   meshlib-build-cache-wasm64:
     driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ./.cache/docker-build-cache/wasm64/build
+
   # CMake cache for faster configuration
   meshlib-cmake-cache:
     driver: local

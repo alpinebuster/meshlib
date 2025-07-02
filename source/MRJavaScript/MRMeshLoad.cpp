@@ -100,11 +100,11 @@ public:
 			// ✅ Fastest: only 2 memory copies (JS → WASM memory, WASM memory → vector)
 			// ✅ Memory efficient: direct manipulation of raw pointers
 			// ✅ No type conversion overhead: pass pointer and length directly
-			uint8_t* data = reinterpret_cast<uint8_t*>(dataPtr);
+			uint8_t* data = reinterpret_cast<uint8_t*>( dataPtr );
 			std::vector<uint8_t> binaryData( data, data + length );
 
-			std::stringstream stream(std::ios::in | std::ios::out | std::ios::binary);
-			stream.write(reinterpret_cast<const char*>(binaryData.data()), length);
+			std::stringstream stream( std::ios::in | std::ios::out | std::ios::binary );
+			stream.write( reinterpret_cast<const char*>( binaryData.data()), length );
 
 			// Choose appropriate loader based on extension
 			Expected<Mesh> result;
@@ -132,6 +132,7 @@ public:
 				val obj = val::object();
 				obj.set( "success", false );
 				obj.set( "error", "Unsupported file format: " + extension );
+
 				return obj;
 			}
 
@@ -140,6 +141,7 @@ public:
 				val obj = val::object();
 				obj.set( "success", true );
 				obj.set( "mesh", MRJS::MeshWrapper( result.value() ) );
+
 				return obj;
 			}
 			else
@@ -147,6 +149,7 @@ public:
 				val obj = val::object();
 				obj.set( "success", false );
 				obj.set( "error", result.error() );
+
 				return obj;
 			}
 
@@ -156,6 +159,7 @@ public:
 			val obj = val::object();
 			obj.set( "success", false );
 			obj.set( "error", std::string( e.what() ) );
+
 			return obj;
 		}
 	}

@@ -7,13 +7,15 @@
 #include <MRMesh/MRMeshRelax.h>
 #include <MRMesh/MRMesh.h>
 
+#include "MRUtils.h"
+
 using namespace emscripten;
 using namespace MR;
 
-void smoothExtractedRegionBoundary( Mesh& mesh, int numIters = 6 )
+val smoothExtractedRegionBoundary( Mesh& mesh, int numIters = 6 )
 {
     // 1) Construct a `FaceBitSet` that marks all faces in the mesh as "selected"
-    //    This way, the outer boundary of `regionFaces` is exactly your irregular closed circle
+    //    This way, the outer boundary of `regionFaces` is exactly irregular closed circle
     FaceBitSet regionFaces( mesh.topology.faceSize() );
     regionFaces.set(); // Set all bits to 1
 
@@ -22,6 +24,13 @@ void smoothExtractedRegionBoundary( Mesh& mesh, int numIters = 6 )
 
     // 3) Update internal cache (normals, acceleration structures, etc.)
     mesh.invalidateCaches();
+
+    val meshData = MRJS::exportMeshData( mesh );
+    val obj = val::object();
+    obj.set( "success", true );
+    obj.set( "mesh", meshData );
+
+    return obj;
 }
 
 EMSCRIPTEN_BINDINGS( MeshEdgePathsModule )
