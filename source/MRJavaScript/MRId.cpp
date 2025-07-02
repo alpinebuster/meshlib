@@ -49,6 +49,13 @@ EMSCRIPTEN_BINDINGS( IdModule )
     register_vector<GraphVertId>( "VectorGraphVertId" );
     register_vector<GraphEdgeId>( "VectorGraphEdgeId" );
 
+    // `EdgeLoop` equals `EdgePath` 
+    // register_vector<EdgeLoop>("VectorEdgeLoop");
+    register_vector<EdgePath>("VectorEdgePath");
+    // `EdgeLoops` equals `std::vector<EdgePath>`
+    // register_vector<EdgeLoops>("VectorEdgeLoops");
+    register_vector<std::vector<EdgePath>>("VectorVectorEdgePath");
+
     // Alternative functions for user-defined literals (JavaScript does not support user-defined literals)
     // function("makeEdgeId", +[](int i) { return EdgeId{i}; });
     function( "makeEdgeId", static_cast< EdgeId( * )( int ) >( [] ( int i )
