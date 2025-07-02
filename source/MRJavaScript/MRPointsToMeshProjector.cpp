@@ -44,7 +44,7 @@ EMSCRIPTEN_BINDINGS( PointsToMeshProjectorModule )
         .constructor<>()
         .function( "updateMeshData", &PointsToMeshProjector::updateMeshData, allow_raw_pointers() )
         .function( "findProjections", &PointsToMeshProjector::findProjections, allow_raw_pointers() )
-        .function( "projectionsHeapBytes", &IPointsToMeshProjector::projectionsHeapBytes );
+        .function( "projectionsHeapBytes", &PointsToMeshProjector::projectionsHeapBytes );
 
     class_<MeshProjectionParameters>( "MeshProjectionParameters" )
         .constructor<>()
