@@ -213,6 +213,112 @@ export interface ClassHandle {
   [Symbol.dispose](): void;
   clone(): this;
 }
+export interface AABBTreeObjects extends ClassHandle {
+}
+
+export interface VectorAABBTreePointsPoint extends ClassHandle {
+  size(): number;
+  get(_0: number): AABBTreePointsPoint | undefined;
+  push_back(_0: AABBTreePointsPoint): void;
+  resize(_0: number, _1: AABBTreePointsPoint): void;
+  set(_0: number, _1: AABBTreePointsPoint): boolean;
+}
+
+export interface VectorAABBTreePointsNode extends ClassHandle {
+  size(): number;
+  get(_0: number): AABBTreePointsNode | undefined;
+  push_back(_0: AABBTreePointsNode): void;
+  resize(_0: number, _1: AABBTreePointsNode): void;
+  set(_0: number, _1: AABBTreePointsNode): boolean;
+}
+
+export interface AABBTreePointsNode extends ClassHandle {
+  box: Box3f;
+  l: NodeId;
+  r: NodeId;
+}
+
+export interface AABBTreePoints extends ClassHandle {
+  orderedPoints(): VectorAABBTreePointsPoint;
+  getBoundingBox(): Box3f;
+  refit(_0: VertCoords, _1: VertBitSet): void;
+}
+
+export interface AffineXf2f extends ClassHandle {
+  A: Matrix2f;
+  b: Vector2f;
+  equals(_0: AffineXf2f): boolean;
+  notEquals(_0: AffineXf2f): boolean;
+  inverse(): AffineXf2f;
+  operatorCall(_0: Vector2f): Vector2f;
+  linearOnly(_0: Vector2f): Vector2f;
+}
+
+export interface AffineXf2d extends ClassHandle {
+  A: Matrix2d;
+  b: Vector2d;
+  equals(_0: AffineXf2d): boolean;
+  notEquals(_0: AffineXf2d): boolean;
+  inverse(): AffineXf2d;
+  operatorCall(_0: Vector2d): Vector2d;
+  linearOnly(_0: Vector2d): Vector2d;
+}
+
+export interface AffineXf3f extends ClassHandle {
+  A: Matrix3f;
+  b: Vector3f;
+  equals(_0: AffineXf3f): boolean;
+  notEquals(_0: AffineXf3f): boolean;
+  inverse(): AffineXf3f;
+  operatorCall(_0: Vector3f): Vector3f;
+  linearOnly(_0: Vector3f): Vector3f;
+}
+
+export interface AffineXf3d extends ClassHandle {
+  A: Matrix3d;
+  b: Vector3d;
+  equals(_0: AffineXf3d): boolean;
+  notEquals(_0: AffineXf3d): boolean;
+  inverse(): AffineXf3d;
+  operatorCall(_0: Vector3d): Vector3d;
+  linearOnly(_0: Vector3d): Vector3d;
+}
+
+export interface AxisValue<T extends number> {
+  value: T;
+}
+export type Axis = AxisValue<0>|AxisValue<1>|AxisValue<2>|AxisValue<3>;
+
+export interface CubicBezierCurve2f extends ClassHandle {
+  getPoint(_0: number): Vector2f;
+  setPoint(_0: number, _1: Vector2f): void;
+}
+
+export interface CubicBezierCurve2d extends ClassHandle {
+  getPoint(_0: number): Vector2d;
+  setPoint(_0: number, _1: Vector2d): void;
+}
+
+export interface CubicBezierCurve3f extends ClassHandle {
+  getPoint(_0: number): Vector3f;
+  setPoint(_0: number, _1: Vector3f): void;
+}
+
+export interface CubicBezierCurve3d extends ClassHandle {
+  getPoint(_0: number): Vector3d;
+  setPoint(_0: number, _1: Vector3d): void;
+}
+
+export interface CubicBezierCurve4f extends ClassHandle {
+  getPoint(_0: number): Vector4f;
+  setPoint(_0: number, _1: Vector4f): void;
+}
+
+export interface CubicBezierCurve4d extends ClassHandle {
+  getPoint(_0: number): Vector4d;
+  setPoint(_0: number, _1: Vector4d): void;
+}
+
 export interface __InternalDynamicBitset extends ClassHandle {
   size(): number;
   count(): number;
@@ -330,13 +436,13 @@ export interface Box2f extends ClassHandle {
   getDistanceSqToBox(_0: Box2f): number;
   insignificantlyExpanded(): Box2f;
   center(): Vector2f;
+  corner(_0: Vector2b): Vector2f;
   size(): Vector2f;
   include(_0: Vector2f): void;
   contains(_0: Vector2f): boolean;
   getBoxClosestPointTo(_0: Vector2f): Vector2f;
   getDistanceSqToPoint(_0: Vector2f): number;
   expanded(_0: Vector2f): Box2f;
-  corner(_0: Vector2b): Vector2f;
 }
 
 export interface Box3f extends ClassHandle {
@@ -353,13 +459,45 @@ export interface Box3f extends ClassHandle {
   getDistanceSqToBox(_0: Box3f): number;
   insignificantlyExpanded(): Box3f;
   center(): Vector3f;
+  corner(_0: Vector3b): Vector3f;
   size(): Vector3f;
   include(_0: Vector3f): void;
   contains(_0: Vector3f): boolean;
   getBoxClosestPointTo(_0: Vector3f): Vector3f;
   getDistanceSqToPoint(_0: Vector3f): number;
   expanded(_0: Vector3f): Box3f;
-  corner(_0: Vector3b): Vector3f;
+}
+
+export interface FaceBMapBuffer extends ClassHandle {
+  capacity(): number;
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  resize(_0: number): void;
+  heapBytes(): number;
+  get(_0: FaceId): FaceId;
+  set(_0: FaceId, _1: FaceId): void;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  dataPtr(): NoDefInitFaceId | null;
+}
+
+export interface VertBMapBuffer extends ClassHandle {
+}
+
+export interface EdgeBMapBuffer extends ClassHandle {
+}
+
+export interface UndirectedEdgeBMapBuffer extends ClassHandle {
+}
+
+export interface WholeEdgeBMapBuffer extends ClassHandle {
+}
+
+export interface CloudPartMapping extends ClassHandle {
+  src2tgtVerts: VertMap | null;
+  tgt2srcVerts: VertMap | null;
 }
 
 export interface Color extends ClassHandle {
@@ -373,6 +511,17 @@ export interface Color extends ClassHandle {
   set(_0: number): number;
 }
 
+export interface Dipole extends ClassHandle {
+  area: number;
+  rr: number;
+  pos: Vector3f;
+  dirArea: Vector3f;
+  addIfGoodApprox(_0: Vector3f, _1: number, _2: number): any;
+}
+
+export interface EdgePoint extends ClassHandle {
+}
+
 export interface MeshSegmentation extends ClassHandle {
   segmentByPoints(_0: StdVectorf, _1: StdVectorf): any;
 }
@@ -383,6 +532,45 @@ export interface FixParams extends ClassHandle {
   smooth: boolean;
   findParameters: FindParams;
 }
+
+export interface ICP extends ClassHandle {
+  setCosineLimit(_0: number): void;
+  setDistanceLimit(_0: number): void;
+  setBadIterCount(_0: number): void;
+  setFarDistFactor(_0: number): void;
+  setFltSamples(_0: VertBitSet): void;
+  sampleFltPoints(_0: number): void;
+  setRefSamples(_0: VertBitSet): void;
+  sampleRefPoints(_0: number): void;
+  samplePoints(_0: number): void;
+  setXfs(_0: AffineXf3f, _1: AffineXf3f): void;
+  setFloatXf(_0: AffineXf3f): void;
+  autoSelectFloatXf(): AffineXf3f;
+  updatePointPairs(): void;
+  getStatusInfo(): string;
+  getNumSamples(): number;
+  getNumActivePairs(): number;
+  getMeanSqDistToPoint(): number;
+  getMeanSqDistToPlane(): number;
+  calculateTransformation(): AffineXf3f;
+  setParams(_0: ICPProperties): void;
+  getParams(): ICPProperties;
+}
+
+export interface ICPMethodValue<T extends number> {
+  value: T;
+}
+export type ICPMethod = ICPMethodValue<0>|ICPMethodValue<1>|ICPMethodValue<2>;
+
+export interface ICPModeValue<T extends number> {
+  value: T;
+}
+export type ICPMode = ICPModeValue<0>|ICPModeValue<1>|ICPModeValue<2>|ICPModeValue<3>|ICPModeValue<4>;
+
+export interface ICPExitTypeValue<T extends number> {
+  value: T;
+}
+export type ICPExitType = ICPExitTypeValue<0>|ICPExitTypeValue<1>|ICPExitTypeValue<2>|ICPExitTypeValue<3>|ICPExitTypeValue<4>;
 
 export interface EdgeHashMapEntries extends ClassHandle {
   size(): number;
@@ -520,10 +708,71 @@ export interface VectorGraphEdgeId extends ClassHandle {
   set(_0: number, _1: GraphEdgeId): boolean;
 }
 
+export interface VectorEdgePath extends ClassHandle {
+  push_back(_0: VectorEdgeId): void;
+  resize(_0: number, _1: VectorEdgeId): void;
+  size(): number;
+  get(_0: number): VectorEdgeId | undefined;
+  set(_0: number, _1: VectorEdgeId): boolean;
+}
+
+export interface VectorVectorEdgePath extends ClassHandle {
+  push_back(_0: VectorEdgePath): void;
+  resize(_0: number, _1: VectorEdgePath): void;
+  size(): number;
+  get(_0: number): VectorEdgePath | undefined;
+  set(_0: number, _1: VectorEdgePath): boolean;
+}
+
 export interface MyClass extends ClassHandle {
   x: number;
   readonly x_readonly: number;
   incrementX(): void;
+}
+
+export interface Matrix2b extends ClassHandle {
+}
+
+export interface Matrix2i extends ClassHandle {
+}
+
+export interface Matrix2ll extends ClassHandle {
+}
+
+export interface Matrix2f extends ClassHandle {
+}
+
+export interface Matrix2d extends ClassHandle {
+}
+
+export interface Matrix3b extends ClassHandle {
+}
+
+export interface Matrix3i extends ClassHandle {
+}
+
+export interface Matrix3ll extends ClassHandle {
+}
+
+export interface Matrix3f extends ClassHandle {
+}
+
+export interface Matrix3d extends ClassHandle {
+}
+
+export interface Matrix4b extends ClassHandle {
+}
+
+export interface Matrix4i extends ClassHandle {
+}
+
+export interface Matrix4ll extends ClassHandle {
+}
+
+export interface Matrix4f extends ClassHandle {
+}
+
+export interface Matrix4d extends ClassHandle {
 }
 
 export interface Mesh extends ClassHandle {
@@ -546,6 +795,21 @@ export interface MeshWrapper extends ClassHandle {
   projectPoint(_0: any, _1: number): any;
   transform(_0: any): void;
   pack(): void;
+}
+
+export interface BooleanOperationValue<T extends number> {
+  value: T;
+}
+export type BooleanOperation = BooleanOperationValue<0>|BooleanOperationValue<1>|BooleanOperationValue<2>|BooleanOperationValue<3>|BooleanOperationValue<4>|BooleanOperationValue<5>|BooleanOperationValue<6>|BooleanOperationValue<7>|BooleanOperationValue<8>;
+
+export interface BooleanResult extends ClassHandle {
+  mesh: Mesh;
+  meshABadContourFaces: FaceBitSet;
+  meshBBadContourFaces: FaceBitSet;
+  get errorString(): string;
+  set errorString(value: EmbindString);
+  valid(): boolean;
+  getMesh(): Mesh;
 }
 
 export interface __phmap_internal_FlatHashMapPolicy_VertId extends ClassHandle {
@@ -798,7 +1062,940 @@ export interface GraphEdgeId extends ClassHandle {
   decrementByInt(_0: number): GraphEdgeId;
 }
 
+export interface VertBMap extends ClassHandle {
+  tsize: number;
+}
+
+export interface FaceBMap extends ClassHandle {
+  tsize: number;
+}
+
+export interface EdgeBMap extends ClassHandle {
+  tsize: number;
+}
+
+export interface UndirectedEdgeBMap extends ClassHandle {
+  tsize: number;
+}
+
+export interface WholeEdgeBMap extends ClassHandle {
+  tsize: number;
+}
+
+export interface Triangulation extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithReserve(_0: number): void;
+  popBack(): void;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  swap(_0: Triangulation): void;
+  heapBytes(): number;
+  equals(_0: Triangulation): boolean;
+  notEquals(_0: Triangulation): boolean;
+  resizeWithValue(_0: number, _1: Array3VertId): void;
+  resizeWithReserveAndValue(_0: number, _1: Array3VertId): void;
+  get(_0: FaceId): Array3VertId;
+  set(_0: FaceId, _1: Array3VertId): void;
+  getByIndex(_0: FaceId): Array3VertId;
+  getByIndexMutable(_0: FaceId): Array3VertId;
+  getAt(_0: FaceId): Array3VertId;
+  setAt(_0: FaceId, _1: Array3VertId): boolean;
+  front(): Array3VertId;
+  frontMutable(): Array3VertId;
+  back(): Array3VertId;
+  backMutable(): Array3VertId;
+  pushBack(_0: Array3VertId): void;
+  emplaceBack(_0: Array3VertId): Array3VertId;
+  autoResizeAt(_0: FaceId): Array3VertId;
+  autoResizeSet(_0: FaceId, _1: Array3VertId): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: Array3VertId): void;
+}
+
+export interface Dipoles extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: Dipole): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: Dipole): void;
+  get(_0: NodeId): Dipole;
+  set(_0: NodeId, _1: Dipole): void;
+  getByIndex(_0: NodeId): Dipole;
+  getByIndexMutable(_0: NodeId): Dipole;
+  getAt(_0: NodeId): Dipole;
+  setAt(_0: NodeId, _1: Dipole): boolean;
+  front(): Dipole;
+  frontMutable(): Dipole;
+  back(): Dipole;
+  backMutable(): Dipole;
+  pushBack(_0: Dipole): void;
+  popBack(): void;
+  emplaceBack(_0: Dipole): Dipole;
+  beginId(): NodeId;
+  backId(): NodeId;
+  endId(): NodeId;
+  autoResizeAt(_0: NodeId): Dipole;
+  autoResizeSet(_0: NodeId, _1: Dipole): void;
+  autoResizeSetRange(_0: NodeId, _1: number, _2: Dipole): void;
+  swap(_0: Dipoles): void;
+  heapBytes(): number;
+}
+
+export interface FaceMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: FaceId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: FaceId): void;
+  get(_0: FaceId): FaceId;
+  set(_0: FaceId, _1: FaceId): void;
+  getByIndex(_0: FaceId): FaceId;
+  getByIndexMutable(_0: FaceId): FaceId;
+  getAt(_0: FaceId): FaceId;
+  setAt(_0: FaceId, _1: FaceId): boolean;
+  front(): FaceId;
+  frontMutable(): FaceId;
+  back(): FaceId;
+  backMutable(): FaceId;
+  pushBack(_0: FaceId): void;
+  popBack(): void;
+  emplaceBack(_0: FaceId): FaceId;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  autoResizeAt(_0: FaceId): FaceId;
+  autoResizeSet(_0: FaceId, _1: FaceId): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: FaceId): void;
+  swap(_0: FaceMap): void;
+  heapBytes(): number;
+  equals(_0: FaceMap): boolean;
+  notEquals(_0: FaceMap): boolean;
+}
+
+export interface VertMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: VertId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: VertId): void;
+  get(_0: VertId): VertId;
+  set(_0: VertId, _1: VertId): void;
+  getByIndex(_0: VertId): VertId;
+  getByIndexMutable(_0: VertId): VertId;
+  getAt(_0: VertId): VertId;
+  setAt(_0: VertId, _1: VertId): boolean;
+  front(): VertId;
+  frontMutable(): VertId;
+  back(): VertId;
+  backMutable(): VertId;
+  pushBack(_0: VertId): void;
+  popBack(): void;
+  emplaceBack(_0: VertId): VertId;
+  beginId(): VertId;
+  backId(): VertId;
+  endId(): VertId;
+  autoResizeAt(_0: VertId): VertId;
+  autoResizeSet(_0: VertId, _1: VertId): void;
+  autoResizeSetRange(_0: VertId, _1: number, _2: VertId): void;
+  swap(_0: VertMap): void;
+  heapBytes(): number;
+  equals(_0: VertMap): boolean;
+  notEquals(_0: VertMap): boolean;
+}
+
+export interface EdgeMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: EdgeId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: EdgeId): void;
+  get(_0: EdgeId): EdgeId;
+  set(_0: EdgeId, _1: EdgeId): void;
+  getByIndex(_0: EdgeId): EdgeId;
+  getByIndexMutable(_0: EdgeId): EdgeId;
+  getAt(_0: EdgeId): EdgeId;
+  setAt(_0: EdgeId, _1: EdgeId): boolean;
+  front(): EdgeId;
+  frontMutable(): EdgeId;
+  back(): EdgeId;
+  backMutable(): EdgeId;
+  pushBack(_0: EdgeId): void;
+  popBack(): void;
+  emplaceBack(_0: EdgeId): EdgeId;
+  beginId(): EdgeId;
+  backId(): EdgeId;
+  endId(): EdgeId;
+  autoResizeAt(_0: EdgeId): EdgeId;
+  autoResizeSet(_0: EdgeId, _1: EdgeId): void;
+  autoResizeSetRange(_0: EdgeId, _1: number, _2: EdgeId): void;
+  swap(_0: EdgeMap): void;
+  heapBytes(): number;
+  equals(_0: EdgeMap): boolean;
+  notEquals(_0: EdgeMap): boolean;
+}
+
+export interface UndirectedEdgeMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: UndirectedEdgeId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: UndirectedEdgeId): void;
+  get(_0: UndirectedEdgeId): UndirectedEdgeId;
+  set(_0: UndirectedEdgeId, _1: UndirectedEdgeId): void;
+  getByIndex(_0: UndirectedEdgeId): UndirectedEdgeId;
+  getByIndexMutable(_0: UndirectedEdgeId): UndirectedEdgeId;
+  getAt(_0: UndirectedEdgeId): UndirectedEdgeId;
+  setAt(_0: UndirectedEdgeId, _1: UndirectedEdgeId): boolean;
+  front(): UndirectedEdgeId;
+  frontMutable(): UndirectedEdgeId;
+  back(): UndirectedEdgeId;
+  backMutable(): UndirectedEdgeId;
+  pushBack(_0: UndirectedEdgeId): void;
+  popBack(): void;
+  emplaceBack(_0: UndirectedEdgeId): UndirectedEdgeId;
+  beginId(): UndirectedEdgeId;
+  backId(): UndirectedEdgeId;
+  endId(): UndirectedEdgeId;
+  autoResizeAt(_0: UndirectedEdgeId): UndirectedEdgeId;
+  autoResizeSet(_0: UndirectedEdgeId, _1: UndirectedEdgeId): void;
+  autoResizeSetRange(_0: UndirectedEdgeId, _1: number, _2: UndirectedEdgeId): void;
+  swap(_0: UndirectedEdgeMap): void;
+  heapBytes(): number;
+  equals(_0: UndirectedEdgeMap): boolean;
+  notEquals(_0: UndirectedEdgeMap): boolean;
+}
+
+export interface ObjMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: ObjId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: ObjId): void;
+  get(_0: ObjId): ObjId;
+  set(_0: ObjId, _1: ObjId): void;
+  getByIndex(_0: ObjId): ObjId;
+  getByIndexMutable(_0: ObjId): ObjId;
+  getAt(_0: ObjId): ObjId;
+  setAt(_0: ObjId, _1: ObjId): boolean;
+  front(): ObjId;
+  frontMutable(): ObjId;
+  back(): ObjId;
+  backMutable(): ObjId;
+  pushBack(_0: ObjId): void;
+  popBack(): void;
+  emplaceBack(_0: ObjId): ObjId;
+  beginId(): ObjId;
+  backId(): ObjId;
+  endId(): ObjId;
+  autoResizeAt(_0: ObjId): ObjId;
+  autoResizeSet(_0: ObjId, _1: ObjId): void;
+  autoResizeSetRange(_0: ObjId, _1: number, _2: ObjId): void;
+  swap(_0: ObjMap): void;
+  heapBytes(): number;
+  equals(_0: ObjMap): boolean;
+  notEquals(_0: ObjMap): boolean;
+}
+
+export interface WholeEdgeMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: EdgeId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: EdgeId): void;
+  get(_0: UndirectedEdgeId): EdgeId;
+  set(_0: UndirectedEdgeId, _1: EdgeId): void;
+  getByIndex(_0: UndirectedEdgeId): EdgeId;
+  getByIndexMutable(_0: UndirectedEdgeId): EdgeId;
+  getAt(_0: UndirectedEdgeId): EdgeId;
+  setAt(_0: UndirectedEdgeId, _1: EdgeId): boolean;
+  front(): EdgeId;
+  frontMutable(): EdgeId;
+  back(): EdgeId;
+  backMutable(): EdgeId;
+  pushBack(_0: EdgeId): void;
+  popBack(): void;
+  emplaceBack(_0: EdgeId): EdgeId;
+  beginId(): UndirectedEdgeId;
+  backId(): UndirectedEdgeId;
+  endId(): UndirectedEdgeId;
+  autoResizeAt(_0: UndirectedEdgeId): EdgeId;
+  autoResizeSet(_0: UndirectedEdgeId, _1: EdgeId): void;
+  autoResizeSetRange(_0: UndirectedEdgeId, _1: number, _2: EdgeId): void;
+  swap(_0: WholeEdgeMap): void;
+  heapBytes(): number;
+  equals(_0: WholeEdgeMap): boolean;
+  notEquals(_0: WholeEdgeMap): boolean;
+}
+
+export interface UndirectedEdge2RegionMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: RegionId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: RegionId): void;
+  get(_0: UndirectedEdgeId): RegionId;
+  set(_0: UndirectedEdgeId, _1: RegionId): void;
+  getByIndex(_0: UndirectedEdgeId): RegionId;
+  getByIndexMutable(_0: UndirectedEdgeId): RegionId;
+  getAt(_0: UndirectedEdgeId): RegionId;
+  setAt(_0: UndirectedEdgeId, _1: RegionId): boolean;
+  front(): RegionId;
+  frontMutable(): RegionId;
+  back(): RegionId;
+  backMutable(): RegionId;
+  pushBack(_0: RegionId): void;
+  popBack(): void;
+  emplaceBack(_0: RegionId): RegionId;
+  beginId(): UndirectedEdgeId;
+  backId(): UndirectedEdgeId;
+  endId(): UndirectedEdgeId;
+  autoResizeAt(_0: UndirectedEdgeId): RegionId;
+  autoResizeSet(_0: UndirectedEdgeId, _1: RegionId): void;
+  autoResizeSetRange(_0: UndirectedEdgeId, _1: number, _2: RegionId): void;
+  swap(_0: UndirectedEdge2RegionMap): void;
+  heapBytes(): number;
+  equals(_0: UndirectedEdge2RegionMap): boolean;
+  notEquals(_0: UndirectedEdge2RegionMap): boolean;
+}
+
+export interface Face2RegionMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: RegionId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: RegionId): void;
+  get(_0: FaceId): RegionId;
+  set(_0: FaceId, _1: RegionId): void;
+  getByIndex(_0: FaceId): RegionId;
+  getByIndexMutable(_0: FaceId): RegionId;
+  getAt(_0: FaceId): RegionId;
+  setAt(_0: FaceId, _1: RegionId): boolean;
+  front(): RegionId;
+  frontMutable(): RegionId;
+  back(): RegionId;
+  backMutable(): RegionId;
+  pushBack(_0: RegionId): void;
+  popBack(): void;
+  emplaceBack(_0: RegionId): RegionId;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  autoResizeAt(_0: FaceId): RegionId;
+  autoResizeSet(_0: FaceId, _1: RegionId): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: RegionId): void;
+  swap(_0: Face2RegionMap): void;
+  heapBytes(): number;
+  equals(_0: Face2RegionMap): boolean;
+  notEquals(_0: Face2RegionMap): boolean;
+}
+
+export interface Vert2RegionMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: RegionId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: RegionId): void;
+  get(_0: VertId): RegionId;
+  set(_0: VertId, _1: RegionId): void;
+  getByIndex(_0: VertId): RegionId;
+  getByIndexMutable(_0: VertId): RegionId;
+  getAt(_0: VertId): RegionId;
+  setAt(_0: VertId, _1: RegionId): boolean;
+  front(): RegionId;
+  frontMutable(): RegionId;
+  back(): RegionId;
+  backMutable(): RegionId;
+  pushBack(_0: RegionId): void;
+  popBack(): void;
+  emplaceBack(_0: RegionId): RegionId;
+  beginId(): VertId;
+  backId(): VertId;
+  endId(): VertId;
+  autoResizeAt(_0: VertId): RegionId;
+  autoResizeSet(_0: VertId, _1: RegionId): void;
+  autoResizeSetRange(_0: VertId, _1: number, _2: RegionId): void;
+  swap(_0: Vert2RegionMap): void;
+  heapBytes(): number;
+  equals(_0: Vert2RegionMap): boolean;
+  notEquals(_0: Vert2RegionMap): boolean;
+}
+
+export interface VertCoords extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithReserve(_0: number): void;
+  popBack(): void;
+  beginId(): VertId;
+  backId(): VertId;
+  endId(): VertId;
+  swap(_0: VertCoords): void;
+  heapBytes(): number;
+  equals(_0: VertCoords): boolean;
+  notEquals(_0: VertCoords): boolean;
+  resizeWithValue(_0: number, _1: Vector3f): void;
+  resizeWithReserveAndValue(_0: number, _1: Vector3f): void;
+  get(_0: VertId): Vector3f;
+  set(_0: VertId, _1: Vector3f): void;
+  getByIndex(_0: VertId): Vector3f;
+  getByIndexMutable(_0: VertId): Vector3f;
+  getAt(_0: VertId): Vector3f;
+  setAt(_0: VertId, _1: Vector3f): boolean;
+  front(): Vector3f;
+  frontMutable(): Vector3f;
+  back(): Vector3f;
+  backMutable(): Vector3f;
+  pushBack(_0: Vector3f): void;
+  emplaceBack(_0: Vector3f): Vector3f;
+  autoResizeAt(_0: VertId): Vector3f;
+  autoResizeSet(_0: VertId, _1: Vector3f): void;
+  autoResizeSetRange(_0: VertId, _1: number, _2: Vector3f): void;
+}
+
+export interface VertCoords2 extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithReserve(_0: number): void;
+  popBack(): void;
+  beginId(): VertId;
+  backId(): VertId;
+  endId(): VertId;
+  swap(_0: VertCoords2): void;
+  heapBytes(): number;
+  equals(_0: VertCoords2): boolean;
+  notEquals(_0: VertCoords2): boolean;
+  resizeWithValue(_0: number, _1: Vector2f): void;
+  resizeWithReserveAndValue(_0: number, _1: Vector2f): void;
+  get(_0: VertId): Vector2f;
+  set(_0: VertId, _1: Vector2f): void;
+  getByIndex(_0: VertId): Vector2f;
+  getByIndexMutable(_0: VertId): Vector2f;
+  getAt(_0: VertId): Vector2f;
+  setAt(_0: VertId, _1: Vector2f): boolean;
+  front(): Vector2f;
+  frontMutable(): Vector2f;
+  back(): Vector2f;
+  backMutable(): Vector2f;
+  pushBack(_0: Vector2f): void;
+  emplaceBack(_0: Vector2f): Vector2f;
+  autoResizeAt(_0: VertId): Vector2f;
+  autoResizeSet(_0: VertId, _1: Vector2f): void;
+  autoResizeSetRange(_0: VertId, _1: number, _2: Vector2f): void;
+}
+
+export interface FaceNormals extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithReserve(_0: number): void;
+  popBack(): void;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  swap(_0: FaceNormals): void;
+  heapBytes(): number;
+  equals(_0: FaceNormals): boolean;
+  notEquals(_0: FaceNormals): boolean;
+  resizeWithValue(_0: number, _1: Vector3f): void;
+  resizeWithReserveAndValue(_0: number, _1: Vector3f): void;
+  get(_0: FaceId): Vector3f;
+  set(_0: FaceId, _1: Vector3f): void;
+  getByIndex(_0: FaceId): Vector3f;
+  getByIndexMutable(_0: FaceId): Vector3f;
+  getAt(_0: FaceId): Vector3f;
+  setAt(_0: FaceId, _1: Vector3f): boolean;
+  front(): Vector3f;
+  frontMutable(): Vector3f;
+  back(): Vector3f;
+  backMutable(): Vector3f;
+  pushBack(_0: Vector3f): void;
+  emplaceBack(_0: Vector3f): Vector3f;
+  autoResizeAt(_0: FaceId): Vector3f;
+  autoResizeSet(_0: FaceId, _1: Vector3f): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: Vector3f): void;
+}
+
+export interface TexturePerFace extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: TextureId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: TextureId): void;
+  get(_0: FaceId): TextureId;
+  set(_0: FaceId, _1: TextureId): void;
+  getByIndex(_0: FaceId): TextureId;
+  getByIndexMutable(_0: FaceId): TextureId;
+  getAt(_0: FaceId): TextureId;
+  setAt(_0: FaceId, _1: TextureId): boolean;
+  front(): TextureId;
+  frontMutable(): TextureId;
+  back(): TextureId;
+  backMutable(): TextureId;
+  pushBack(_0: TextureId): void;
+  popBack(): void;
+  emplaceBack(_0: TextureId): TextureId;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  autoResizeAt(_0: FaceId): TextureId;
+  autoResizeSet(_0: FaceId, _1: TextureId): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: TextureId): void;
+  swap(_0: TexturePerFace): void;
+  heapBytes(): number;
+  equals(_0: TexturePerFace): boolean;
+  notEquals(_0: TexturePerFace): boolean;
+}
+
+export interface VertColors extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: Color): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: Color): void;
+  get(_0: VertId): Color;
+  set(_0: VertId, _1: Color): void;
+  getByIndex(_0: VertId): Color;
+  getByIndexMutable(_0: VertId): Color;
+  getAt(_0: VertId): Color;
+  setAt(_0: VertId, _1: Color): boolean;
+  front(): Color;
+  frontMutable(): Color;
+  back(): Color;
+  backMutable(): Color;
+  pushBack(_0: Color): void;
+  popBack(): void;
+  emplaceBack(_0: Color): Color;
+  beginId(): VertId;
+  backId(): VertId;
+  endId(): VertId;
+  autoResizeAt(_0: VertId): Color;
+  autoResizeSet(_0: VertId, _1: Color): void;
+  autoResizeSetRange(_0: VertId, _1: number, _2: Color): void;
+  swap(_0: VertColors): void;
+  heapBytes(): number;
+  equals(_0: VertColors): boolean;
+  notEquals(_0: VertColors): boolean;
+}
+
+export interface FaceColors extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: Color): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: Color): void;
+  get(_0: FaceId): Color;
+  set(_0: FaceId, _1: Color): void;
+  getByIndex(_0: FaceId): Color;
+  getByIndexMutable(_0: FaceId): Color;
+  getAt(_0: FaceId): Color;
+  setAt(_0: FaceId, _1: Color): boolean;
+  front(): Color;
+  frontMutable(): Color;
+  back(): Color;
+  backMutable(): Color;
+  pushBack(_0: Color): void;
+  popBack(): void;
+  emplaceBack(_0: Color): Color;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  autoResizeAt(_0: FaceId): Color;
+  autoResizeSet(_0: FaceId, _1: Color): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: Color): void;
+  swap(_0: FaceColors): void;
+  heapBytes(): number;
+  equals(_0: FaceColors): boolean;
+  notEquals(_0: FaceColors): boolean;
+}
+
+export interface EdgeColors extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: Color): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: Color): void;
+  get(_0: EdgeId): Color;
+  set(_0: EdgeId, _1: Color): void;
+  getByIndex(_0: EdgeId): Color;
+  getByIndexMutable(_0: EdgeId): Color;
+  getAt(_0: EdgeId): Color;
+  setAt(_0: EdgeId, _1: Color): boolean;
+  front(): Color;
+  frontMutable(): Color;
+  back(): Color;
+  backMutable(): Color;
+  pushBack(_0: Color): void;
+  popBack(): void;
+  emplaceBack(_0: Color): Color;
+  beginId(): EdgeId;
+  backId(): EdgeId;
+  endId(): EdgeId;
+  autoResizeAt(_0: EdgeId): Color;
+  autoResizeSet(_0: EdgeId, _1: Color): void;
+  autoResizeSetRange(_0: EdgeId, _1: number, _2: Color): void;
+  swap(_0: EdgeColors): void;
+  heapBytes(): number;
+  equals(_0: EdgeColors): boolean;
+  notEquals(_0: EdgeColors): boolean;
+}
+
+export interface UndirectedEdgeColors extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: Color): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: Color): void;
+  get(_0: UndirectedEdgeId): Color;
+  set(_0: UndirectedEdgeId, _1: Color): void;
+  getByIndex(_0: UndirectedEdgeId): Color;
+  getByIndexMutable(_0: UndirectedEdgeId): Color;
+  getAt(_0: UndirectedEdgeId): Color;
+  setAt(_0: UndirectedEdgeId, _1: Color): boolean;
+  front(): Color;
+  frontMutable(): Color;
+  back(): Color;
+  backMutable(): Color;
+  pushBack(_0: Color): void;
+  popBack(): void;
+  emplaceBack(_0: Color): Color;
+  beginId(): UndirectedEdgeId;
+  backId(): UndirectedEdgeId;
+  endId(): UndirectedEdgeId;
+  autoResizeAt(_0: UndirectedEdgeId): Color;
+  autoResizeSet(_0: UndirectedEdgeId, _1: Color): void;
+  autoResizeSetRange(_0: UndirectedEdgeId, _1: number, _2: Color): void;
+  swap(_0: UndirectedEdgeColors): void;
+  heapBytes(): number;
+  equals(_0: UndirectedEdgeColors): boolean;
+  notEquals(_0: UndirectedEdgeColors): boolean;
+}
+
+export interface VertScalars extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: number): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: number): void;
+  get(_0: VertId): number;
+  set(_0: VertId, _1: number): void;
+  getByIndex(_0: VertId): number;
+  getByIndexMutable(_0: VertId): number;
+  getAt(_0: VertId): number;
+  setAt(_0: VertId, _1: number): boolean;
+  front(): number;
+  frontMutable(): number;
+  back(): number;
+  backMutable(): number;
+  pushBack(_0: number): void;
+  popBack(): void;
+  emplaceBack(_0: number): number;
+  beginId(): VertId;
+  backId(): VertId;
+  endId(): VertId;
+  autoResizeAt(_0: VertId): number;
+  autoResizeSet(_0: VertId, _1: number): void;
+  autoResizeSetRange(_0: VertId, _1: number, _2: number): void;
+  swap(_0: VertScalars): void;
+  heapBytes(): number;
+  equals(_0: VertScalars): boolean;
+  notEquals(_0: VertScalars): boolean;
+}
+
+export interface FaceScalars extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: number): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: number): void;
+  get(_0: FaceId): number;
+  set(_0: FaceId, _1: number): void;
+  getByIndex(_0: FaceId): number;
+  getByIndexMutable(_0: FaceId): number;
+  getAt(_0: FaceId): number;
+  setAt(_0: FaceId, _1: number): boolean;
+  front(): number;
+  frontMutable(): number;
+  back(): number;
+  backMutable(): number;
+  pushBack(_0: number): void;
+  popBack(): void;
+  emplaceBack(_0: number): number;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  autoResizeAt(_0: FaceId): number;
+  autoResizeSet(_0: FaceId, _1: number): void;
+  autoResizeSetRange(_0: FaceId, _1: number, _2: number): void;
+  swap(_0: FaceScalars): void;
+  heapBytes(): number;
+  equals(_0: FaceScalars): boolean;
+  notEquals(_0: FaceScalars): boolean;
+}
+
+export interface EdgeScalars extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: number): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: number): void;
+  get(_0: EdgeId): number;
+  set(_0: EdgeId, _1: number): void;
+  getByIndex(_0: EdgeId): number;
+  getByIndexMutable(_0: EdgeId): number;
+  getAt(_0: EdgeId): number;
+  setAt(_0: EdgeId, _1: number): boolean;
+  front(): number;
+  frontMutable(): number;
+  back(): number;
+  backMutable(): number;
+  pushBack(_0: number): void;
+  popBack(): void;
+  emplaceBack(_0: number): number;
+  beginId(): EdgeId;
+  backId(): EdgeId;
+  endId(): EdgeId;
+  autoResizeAt(_0: EdgeId): number;
+  autoResizeSet(_0: EdgeId, _1: number): void;
+  autoResizeSetRange(_0: EdgeId, _1: number, _2: number): void;
+  swap(_0: EdgeScalars): void;
+  heapBytes(): number;
+  equals(_0: EdgeScalars): boolean;
+  notEquals(_0: EdgeScalars): boolean;
+}
+
+export interface UndirectedEdgeScalars extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: number): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: number): void;
+  get(_0: UndirectedEdgeId): number;
+  set(_0: UndirectedEdgeId, _1: number): void;
+  getByIndex(_0: UndirectedEdgeId): number;
+  getByIndexMutable(_0: UndirectedEdgeId): number;
+  getAt(_0: UndirectedEdgeId): number;
+  setAt(_0: UndirectedEdgeId, _1: number): boolean;
+  front(): number;
+  frontMutable(): number;
+  back(): number;
+  backMutable(): number;
+  pushBack(_0: number): void;
+  popBack(): void;
+  emplaceBack(_0: number): number;
+  beginId(): UndirectedEdgeId;
+  backId(): UndirectedEdgeId;
+  endId(): UndirectedEdgeId;
+  autoResizeAt(_0: UndirectedEdgeId): number;
+  autoResizeSet(_0: UndirectedEdgeId, _1: number): void;
+  autoResizeSetRange(_0: UndirectedEdgeId, _1: number, _2: number): void;
+  swap(_0: UndirectedEdgeScalars): void;
+  heapBytes(): number;
+  equals(_0: UndirectedEdgeScalars): boolean;
+  notEquals(_0: UndirectedEdgeScalars): boolean;
+}
+
+export interface NodeVec extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: AABBTreePointsNode): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: AABBTreePointsNode): void;
+  get(_0: NodeId): AABBTreePointsNode;
+  set(_0: NodeId, _1: AABBTreePointsNode): void;
+  getByIndex(_0: NodeId): AABBTreePointsNode;
+  getByIndexMutable(_0: NodeId): AABBTreePointsNode;
+  getAt(_0: NodeId): AABBTreePointsNode;
+  setAt(_0: NodeId, _1: AABBTreePointsNode): boolean;
+  front(): AABBTreePointsNode;
+  frontMutable(): AABBTreePointsNode;
+  back(): AABBTreePointsNode;
+  backMutable(): AABBTreePointsNode;
+  pushBack(_0: AABBTreePointsNode): void;
+  popBack(): void;
+  emplaceBack(_0: AABBTreePointsNode): AABBTreePointsNode;
+  beginId(): NodeId;
+  backId(): NodeId;
+  endId(): NodeId;
+  autoResizeAt(_0: NodeId): AABBTreePointsNode;
+  autoResizeSet(_0: NodeId, _1: AABBTreePointsNode): void;
+  autoResizeSetRange(_0: NodeId, _1: number, _2: AABBTreePointsNode): void;
+  swap(_0: NodeVec): void;
+  heapBytes(): number;
+}
+
 export interface MeshLoadWrapper extends ClassHandle {
+}
+
+export interface MeshOrPoints extends ClassHandle {
+  getObjBoundingBox(): Box3f;
+  cacheAABBTree(): void;
+  computeBoundingBox(_0: AffineXf3f | null): Box3f;
+  points(): VertCoords;
+  validPoints(): VertBitSet;
+  asMeshPart(): MeshPart | null;
+  asPointCloud(): PointCloud | null;
+}
+
+export interface MeshOrPointsXf extends ClassHandle {
+  obj: MeshOrPoints;
+  xf: AffineXf3f;
+}
+
+export interface MeshPart extends ClassHandle {
+  region: FaceBitSet | null;
+  getMesh(): Mesh;
+}
+
+export interface MeshVertPart extends ClassHandle {
+  region: VertBitSet | null;
+  getMesh(): Mesh;
+}
+
+export interface MeshProjectionResult extends ClassHandle {
+  distSq: number;
+  mtp: MeshTriPoint;
+  proj: PointOnFace;
+  valid(): boolean;
+  asBool(): boolean;
+}
+
+export interface VectorMeshProjectionResult extends ClassHandle {
+  push_back(_0: MeshProjectionResult): void;
+  resize(_0: number, _1: MeshProjectionResult): void;
+  size(): number;
+  get(_0: number): MeshProjectionResult | undefined;
+  set(_0: number, _1: MeshProjectionResult): boolean;
+}
+
+export interface MeshTopology extends ClassHandle {
+}
+
+export type WeightedVertex = {
+  v: VertId,
+  weight: number
+};
+
+export type WeightedVertexArray3 = [ WeightedVertex, WeightedVertex, WeightedVertex ];
+
+export interface MeshTriPoint extends ClassHandle {
+  e: EdgeId;
+  bary: TriPointf;
+  valid(): boolean;
+  asBool(): boolean;
+  inVertex(): boolean;
+  onEdge(_0: MeshTopology): EdgePoint;
+  isBd(_0: MeshTopology, _1: FaceBitSet | null): boolean;
+  fromTriangle(_0: MeshTopology, _1: FaceId): boolean;
+  lnext(_0: MeshTopology): MeshTriPoint;
+  canonical(_0: MeshTopology): MeshTriPoint;
+  getWeightedVerts(_0: MeshTopology): WeightedVertexArray3;
+}
+
+export interface NoDefInitFaceId extends ClassHandle {
+}
+
+export interface NoDefInitVertId extends ClassHandle {
+}
+
+export interface NoDefInitEdgeId extends ClassHandle {
+}
+
+export interface NoDefInitUndirectedEdgeId extends ClassHandle {
 }
 
 export interface OffsetParameters extends ClassHandle {
@@ -850,6 +2047,130 @@ export interface Plane3d extends ClassHandle {
   project(_0: Vector3d): Vector3d;
 }
 
+export interface ReorderValue<T extends number> {
+  value: T;
+}
+export type Reorder = ReorderValue<0>|ReorderValue<1>|ReorderValue<2>;
+
+export interface PointCloud extends ClassHandle {
+  points: VertCoords;
+  normals: VertCoords;
+  validPoints: VertBitSet;
+  calcNumValidPoints(): number;
+  hasNormals(): boolean;
+  getVertIds(_0: VertBitSet | null): VertBitSet;
+  getAABBTreeNotCreate(): AABBTreePoints | null;
+  getBoundingBox(): Box3f;
+  computeBoundingBox(_0: AffineXf3f | null): Box3f;
+  getLexicographicalOrder(): VectorVertId;
+  addPartByMask(_0: PointCloud, _1: VertBitSet, _2: CloudPartMapping, _3: VertCoords | null): void;
+  mirror(_0: Plane3f): void;
+  flipOrientation(_0: VertBitSet | null): void;
+  pack(_0: VertMap | null): boolean;
+  packReorder(_0: Reorder): VertBMap;
+  invalidateCaches(): void;
+  heapBytes(): number;
+  findCenterFromPoints(): Vector3f;
+  findCenterFromBBox(): Vector3f;
+  addPoint(_0: Vector3f): VertId;
+  addPointNormal(_0: Vector3f, _1: Vector3f): VertId;
+}
+
+export interface PointOnFace extends ClassHandle {
+  face: FaceId;
+  point: Vector3f;
+  valid(): boolean;
+  asBool(): boolean;
+}
+
+export type MeshMeshDistanceResult = {
+  a: PointOnFace,
+  b: PointOnFace,
+  distSq: number
+};
+
+export type MeshMeshSignedDistanceResult = {
+  a: PointOnFace,
+  b: PointOnFace,
+  signedDist: number
+};
+
+export interface IPointsToMeshProjector extends ClassHandle {
+  updateMeshData(_0: Mesh | null): void;
+  projectionsHeapBytes(_0: number): number;
+  findProjections(_0: VectorMeshProjectionResult, _1: VectorVector3f, _2: AffineXf3f | null, _3: AffineXf3f | null, _4: number, _5: number): void;
+}
+
+export interface PointsToMeshProjector extends IPointsToMeshProjector {
+  updateMeshData(_0: Mesh | null): void;
+  projectionsHeapBytes(_0: number): number;
+  findProjections(_0: VectorMeshProjectionResult, _1: VectorVector3f, _2: AffineXf3f | null, _3: AffineXf3f | null, _4: number, _5: number): void;
+}
+
+export interface MeshProjectionParameters extends ClassHandle {
+  loDistLimitSq: number;
+  upDistLimitSq: number;
+  refXf: AffineXf3f | null;
+  xf: AffineXf3f | null;
+}
+
+export interface SegmPointf extends ClassHandle {
+}
+
+export interface SegmPointd extends ClassHandle {
+}
+
+export interface SymMatrix2b extends ClassHandle {
+}
+
+export interface SymMatrix2i extends ClassHandle {
+}
+
+export interface SymMatrix2ll extends ClassHandle {
+}
+
+export interface SymMatrix2f extends ClassHandle {
+}
+
+export interface SymMatrix2d extends ClassHandle {
+}
+
+export interface SymMatrix3b extends ClassHandle {
+}
+
+export interface SymMatrix3i extends ClassHandle {
+}
+
+export interface SymMatrix3ll extends ClassHandle {
+}
+
+export interface SymMatrix3f extends ClassHandle {
+}
+
+export interface SymMatrix3d extends ClassHandle {
+}
+
+export interface SymMatrix4b extends ClassHandle {
+}
+
+export interface SymMatrix4i extends ClassHandle {
+}
+
+export interface SymMatrix4ll extends ClassHandle {
+}
+
+export interface SymMatrix4f extends ClassHandle {
+}
+
+export interface SymMatrix4d extends ClassHandle {
+}
+
+export interface TriPointf extends ClassHandle {
+}
+
+export interface TriPointd extends ClassHandle {
+}
+
 export interface StdVectori extends ClassHandle {
   push_back(_0: number): void;
   resize(_0: number, _1: number): void;
@@ -882,12 +2203,104 @@ export interface StdVectorll extends ClassHandle {
   set(_0: number, _1: bigint): boolean;
 }
 
-export interface StdVectorUint64 extends ClassHandle {
+export interface StdVectorUi64 extends ClassHandle {
   push_back(_0: bigint): void;
   resize(_0: number, _1: bigint): void;
   size(): number;
   get(_0: number): bigint | undefined;
   set(_0: number, _1: bigint): boolean;
+}
+
+export type Array2f = [ number, number ];
+
+export type Array2d = [ number, number ];
+
+export type Array3f = [ number, number, number ];
+
+export type Array3d = [ number, number, number ];
+
+export type Array4f = [ number, number, number, number ];
+
+export type Array4d = [ number, number, number, number ];
+
+export type Array2EdgeId = [ EdgeId, EdgeId ];
+
+export type Array3EdgeId = [ EdgeId, EdgeId, EdgeId ];
+
+export type Array4EdgeId = [ EdgeId, EdgeId, EdgeId, EdgeId ];
+
+export type Array2UndirectedEdgeId = [ UndirectedEdgeId, UndirectedEdgeId ];
+
+export type Array3UndirectedEdgeId = [ UndirectedEdgeId, UndirectedEdgeId, UndirectedEdgeId ];
+
+export type Array4UndirectedEdgeId = [ UndirectedEdgeId, UndirectedEdgeId, UndirectedEdgeId, UndirectedEdgeId ];
+
+export type Array2FaceId = [ FaceId, FaceId ];
+
+export type Array3FaceId = [ FaceId, FaceId, FaceId ];
+
+export type Array4FaceId = [ FaceId, FaceId, FaceId, FaceId ];
+
+export type Array2VertId = [ VertId, VertId ];
+
+export type Array3VertId = [ VertId, VertId, VertId ];
+
+export type Array4VertId = [ VertId, VertId, VertId, VertId ];
+
+export type Array2PixelId = [ PixelId, PixelId ];
+
+export type Array3PixelId = [ PixelId, PixelId, PixelId ];
+
+export type Array4PixelId = [ PixelId, PixelId, PixelId, PixelId ];
+
+export type Array2VoxelId = [ VoxelId, VoxelId ];
+
+export type Array3VoxelId = [ VoxelId, VoxelId, VoxelId ];
+
+export type Array4VoxelId = [ VoxelId, VoxelId, VoxelId, VoxelId ];
+
+export type Array2RegionId = [ RegionId, RegionId ];
+
+export type Array3RegionId = [ RegionId, RegionId, RegionId ];
+
+export type Array4RegionId = [ RegionId, RegionId, RegionId, RegionId ];
+
+export type Array2NodeId = [ NodeId, NodeId ];
+
+export type Array3NodeId = [ NodeId, NodeId, NodeId ];
+
+export type Array4NodeId = [ NodeId, NodeId, NodeId, NodeId ];
+
+export type Array2ObjId = [ ObjId, ObjId ];
+
+export type Array3ObjId = [ ObjId, ObjId, ObjId ];
+
+export type Array4ObjId = [ ObjId, ObjId, ObjId, ObjId ];
+
+export type Array2TextureId = [ TextureId, TextureId ];
+
+export type Array3TextureId = [ TextureId, TextureId, TextureId ];
+
+export type Array4TextureId = [ TextureId, TextureId, TextureId, TextureId ];
+
+export type Array2GraphVertId = [ GraphVertId, GraphVertId ];
+
+export type Array3GraphVertId = [ GraphVertId, GraphVertId, GraphVertId ];
+
+export type Array4GraphVertId = [ GraphVertId, GraphVertId, GraphVertId, GraphVertId ];
+
+export type Array2GraphEdgeId = [ GraphEdgeId, GraphEdgeId ];
+
+export type Array3GraphEdgeId = [ GraphEdgeId, GraphEdgeId, GraphEdgeId ];
+
+export type Array4GraphEdgeId = [ GraphEdgeId, GraphEdgeId, GraphEdgeId, GraphEdgeId ];
+
+export interface VectorVectori extends ClassHandle {
+  size(): number;
+  get(_0: number): Vectori | undefined;
+  push_back(_0: Vectori): void;
+  resize(_0: number, _1: Vectori): void;
+  set(_0: number, _1: Vectori): boolean;
 }
 
 export interface Vectori extends ClassHandle {
@@ -918,6 +2331,14 @@ export interface Vectori extends ClassHandle {
   getDataConst(): any;
 }
 
+export interface VectorVectorf extends ClassHandle {
+  size(): number;
+  get(_0: number): Vectorf | undefined;
+  push_back(_0: Vectorf): void;
+  resize(_0: number, _1: Vectorf): void;
+  set(_0: number, _1: Vectorf): boolean;
+}
+
 export interface Vectorf extends ClassHandle {
   size(): number;
   empty(): boolean;
@@ -946,17 +2367,40 @@ export interface Vectorf extends ClassHandle {
   getDataConst(): any;
 }
 
-export interface Vector2f extends ClassHandle {
-  x: number;
-  y: number;
+export interface VectorVectord extends ClassHandle {
+  size(): number;
+  get(_0: number): Vectord | undefined;
+  push_back(_0: Vectord): void;
+  resize(_0: number, _1: Vectord): void;
+  set(_0: number, _1: Vectord): boolean;
+}
+
+export interface Vectord extends ClassHandle {
+}
+
+export interface VectorVector2b extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector2b | undefined;
+  push_back(_0: Vector2b): void;
+  resize(_0: number, _1: Vector2b): void;
+  set(_0: number, _1: Vector2b): boolean;
+}
+
+export interface Vector2b extends ClassHandle {
+  x: boolean;
+  y: boolean;
   length(): number;
-  lengthSq(): number;
-  normalized(): Vector2f;
-  perpendicular(): Vector2f;
-  isFinite(): boolean;
-  furthestBasisVector(): Vector2f;
-  get(_0: number): number;
-  set(_0: number): number;
+  lengthSq(): boolean;
+  get(_0: number): boolean;
+  set(_0: number): boolean;
+}
+
+export interface VectorVector2i extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector2i | undefined;
+  push_back(_0: Vector2i): void;
+  resize(_0: number, _1: Vector2i): void;
+  set(_0: number, _1: Vector2i): boolean;
 }
 
 export interface Vector2i extends ClassHandle {
@@ -970,87 +2414,56 @@ export interface Vector2i extends ClassHandle {
   set(_0: number): number;
 }
 
-export interface Vector2b extends ClassHandle {
-  x: boolean;
-  y: boolean;
-  length(): number;
-  lengthSq(): boolean;
-  get(_0: number): boolean;
-  set(_0: number): boolean;
+export interface VectorVector2ll extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector2ll | undefined;
+  push_back(_0: Vector2ll): void;
+  resize(_0: number, _1: Vector2ll): void;
+  set(_0: number, _1: Vector2ll): boolean;
 }
 
-export interface Vector3f extends ClassHandle {
-  x: number;
-  y: number;
-  z: number;
-  lengthSq(): number;
-  length(): number;
-  normalized(): Vector3f;
-  furthestBasisVector(): Vector3f;
-  unsignZeroValues(): void;
-  isFinite(): boolean;
-  get(_0: number): number;
-  set(_0: number): number;
-  perpendicular(): Vector3fPair;
+export interface Vector2ll extends ClassHandle {
 }
 
-export type FindParams = {
-  upDirection: Vector3f,
-  wallAngle: number
-};
+export interface VectorVector2f extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector2f | undefined;
+  push_back(_0: Vector2f): void;
+  resize(_0: number, _1: Vector2f): void;
+  set(_0: number, _1: Vector2f): boolean;
+}
 
-export type Vector3fPair = [ Vector3f, Vector3f ];
-
-export interface Vector3i extends ClassHandle {
+export interface Vector2f extends ClassHandle {
   x: number;
   y: number;
-  z: number;
-  lengthSq(): number;
   length(): number;
-  normalized(): Vector3f;
-  furthestBasisVector(): Vector3i;
-  perpendicular(): Vector3fPair;
-  unsignZeroValues(): Vector3f;
+  lengthSq(): number;
+  normalized(): Vector2f;
+  perpendicular(): Vector2f;
   isFinite(): boolean;
+  furthestBasisVector(): Vector2f;
   get(_0: number): number;
   set(_0: number): number;
 }
 
-export type Vector3iPair = [ Vector3i, Vector3i ];
-
-export interface Vector3d extends ClassHandle {
-  x: number;
-  y: number;
-  z: number;
-  lengthSq(): number;
-  length(): number;
-  normalized(): Vector3d;
-  furthestBasisVector(): Vector3d;
-  unsignZeroValues(): void;
-  isFinite(): boolean;
-  get(_0: number): number;
-  set(_0: number): number;
-  perpendicular(): Vector3DPair;
+export interface VectorVector2d extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector2d | undefined;
+  push_back(_0: Vector2d): void;
+  resize(_0: number, _1: Vector2d): void;
+  set(_0: number, _1: Vector2d): boolean;
 }
 
-export type Vector3DPair = [ Vector3d, Vector3d ];
-
-export interface Vector3ll extends ClassHandle {
-  x: bigint;
-  y: bigint;
-  z: bigint;
-  lengthSq(): bigint;
-  length(): number;
-  normalized(): Vector3f;
-  furthestBasisVector(): Vector3ll;
-  perpendicular(): Vector3fPair;
-  unsignZeroValues(): Vector3f;
-  isFinite(): boolean;
-  get(_0: number): bigint;
-  set(_0: number): bigint;
+export interface Vector2d extends ClassHandle {
 }
 
-export type Vector3llPair = [ Vector3ll, Vector3ll ];
+export interface VectorVector3b extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector3b | undefined;
+  push_back(_0: Vector3b): void;
+  resize(_0: number, _1: Vector3b): void;
+  set(_0: number, _1: Vector3b): boolean;
+}
 
 export interface Vector3b extends ClassHandle {
   x: boolean;
@@ -1063,6 +2476,186 @@ export interface Vector3b extends ClassHandle {
 }
 
 export type Vector3bPair = [ Vector3b, Vector3b ];
+
+export interface VectorVector3i extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector3i | undefined;
+  push_back(_0: Vector3i): void;
+  resize(_0: number, _1: Vector3i): void;
+  set(_0: number, _1: Vector3i): boolean;
+}
+
+export interface Vector3i extends ClassHandle {
+  x: number;
+  y: number;
+  z: number;
+  lengthSq(): number;
+  length(): number;
+  furthestBasisVector(): Vector3i;
+  isFinite(): boolean;
+  get(_0: number): number;
+  set(_0: number): number;
+  normalized(): Vector3f;
+  unsignZeroValues(): Vector3f;
+  perpendicular(): Vector3fPair;
+}
+
+export type Vector3iPair = [ Vector3i, Vector3i ];
+
+export interface VectorVector3ll extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector3ll | undefined;
+  push_back(_0: Vector3ll): void;
+  resize(_0: number, _1: Vector3ll): void;
+  set(_0: number, _1: Vector3ll): boolean;
+}
+
+export interface Vector3ll extends ClassHandle {
+  x: bigint;
+  y: bigint;
+  z: bigint;
+  lengthSq(): bigint;
+  length(): number;
+  furthestBasisVector(): Vector3ll;
+  isFinite(): boolean;
+  get(_0: number): bigint;
+  set(_0: number): bigint;
+  normalized(): Vector3f;
+  unsignZeroValues(): Vector3f;
+  perpendicular(): Vector3fPair;
+}
+
+export type Vector3llPair = [ Vector3ll, Vector3ll ];
+
+export interface VectorVector3f extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector3f | undefined;
+  push_back(_0: Vector3f): void;
+  resize(_0: number, _1: Vector3f): void;
+  set(_0: number, _1: Vector3f): boolean;
+}
+
+export interface Vector3f extends ClassHandle {
+  x: number;
+  y: number;
+  z: number;
+  lengthSq(): number;
+  length(): number;
+  normalized(): Vector3f;
+  furthestBasisVector(): Vector3f;
+  perpendicular(): Vector3fPair;
+  unsignZeroValues(): void;
+  isFinite(): boolean;
+  get(_0: number): number;
+  set(_0: number): number;
+}
+
+export type AABBTreePointsPoint = {
+  coord: Vector3f,
+  id: VertId
+};
+
+export type FindParams = {
+  upDirection: Vector3f,
+  wallAngle: number
+};
+
+export type ICPProperties = {
+  method: ICPMethod,
+  p2plAngleLimit: number,
+  p2plScaleLimit: number,
+  cosThreshold: number,
+  distThresholdSq: number,
+  farDistFactor: number,
+  icpMode: ICPMode,
+  fixedRotationAxis: Vector3f,
+  iterLimit: number,
+  badIterStopCount: number,
+  exitVal: number,
+  mutualClosest: boolean
+};
+
+export type ProjectionResult = {
+  point: Vector3f,
+  isBd: boolean,
+  distSq: number,
+  closestVert: VertId
+};
+
+export type Vector3fPair = [ Vector3f, Vector3f ];
+
+export interface VectorVector3d extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector3d | undefined;
+  push_back(_0: Vector3d): void;
+  resize(_0: number, _1: Vector3d): void;
+  set(_0: number, _1: Vector3d): boolean;
+}
+
+export interface Vector3d extends ClassHandle {
+  x: number;
+  y: number;
+  z: number;
+  lengthSq(): number;
+  length(): number;
+  normalized(): Vector3d;
+  furthestBasisVector(): Vector3d;
+  perpendicular(): Vector3DPair;
+  unsignZeroValues(): void;
+  isFinite(): boolean;
+  get(_0: number): number;
+  set(_0: number): number;
+}
+
+export type Vector3DPair = [ Vector3d, Vector3d ];
+
+export interface VectorVector4b extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector4b | undefined;
+  push_back(_0: Vector4b): void;
+  resize(_0: number, _1: Vector4b): void;
+  set(_0: number, _1: Vector4b): boolean;
+}
+
+export interface Vector4b extends ClassHandle {
+}
+
+export interface VectorVector4i extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector4i | undefined;
+  push_back(_0: Vector4i): void;
+  resize(_0: number, _1: Vector4i): void;
+  set(_0: number, _1: Vector4i): boolean;
+}
+
+export interface Vector4i extends ClassHandle {
+  x: number;
+  y: number;
+  z: number;
+  w: number;
+  lengthSq(): number;
+  get(_0: number): number;
+  set(_0: number): number;
+}
+
+export interface VectorVector4ll extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector4ll | undefined;
+  push_back(_0: Vector4ll): void;
+  resize(_0: number, _1: Vector4ll): void;
+  set(_0: number, _1: Vector4ll): boolean;
+}
+
+export interface Vector4ll extends ClassHandle {
+}
+
+export interface VectorVector4f extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector4f | undefined;
+  push_back(_0: Vector4f): void;
+  resize(_0: number, _1: Vector4f): void;
+  set(_0: number, _1: Vector4f): boolean;
+}
 
 export interface Vector4f extends ClassHandle {
   x: number;
@@ -1078,17 +2671,96 @@ export interface Vector4f extends ClassHandle {
   set(_0: number): number;
 }
 
-export interface Vector4i extends ClassHandle {
-  x: number;
-  y: number;
-  z: number;
-  w: number;
-  lengthSq(): number;
-  get(_0: number): number;
-  set(_0: number): number;
+export interface VectorVector4d extends ClassHandle {
+  size(): number;
+  get(_0: number): Vector4d | undefined;
+  push_back(_0: Vector4d): void;
+  resize(_0: number, _1: Vector4d): void;
+  set(_0: number, _1: Vector4d): boolean;
+}
+
+export interface Vector4d extends ClassHandle {
+}
+
+export interface VisualObject extends ClassHandle {
 }
 
 interface EmbindModule {
+  AABBTreeObjects: {
+    new(): AABBTreeObjects;
+  };
+  VectorAABBTreePointsPoint: {
+    new(): VectorAABBTreePointsPoint;
+  };
+  VectorAABBTreePointsNode: {
+    new(): VectorAABBTreePointsNode;
+  };
+  AABBTreePointsNode: {
+    new(): AABBTreePointsNode;
+  };
+  AABBTreePoints: {
+    new(_0: Mesh): AABBTreePoints;
+    new(_0: VertCoords, _1: VertBitSet | null): AABBTreePoints;
+    new(_0: PointCloud): AABBTreePoints;
+    MaxNumPointsInLeaf: number;
+  };
+  AffineXf2f: {
+    new(): AffineXf2f;
+    new(_0: Matrix2f, _1: Vector2f): AffineXf2f;
+    linear(_0: Matrix2f): AffineXf2f;
+    translation(_0: Vector2f): AffineXf2f;
+    xfAround(_0: Matrix2f, _1: Vector2f): AffineXf2f;
+  };
+  AffineXf2d: {
+    new(): AffineXf2d;
+    new(_0: Matrix2d, _1: Vector2d): AffineXf2d;
+    linear(_0: Matrix2d): AffineXf2d;
+    translation(_0: Vector2d): AffineXf2d;
+    xfAround(_0: Matrix2d, _1: Vector2d): AffineXf2d;
+  };
+  AffineXf3f: {
+    new(): AffineXf3f;
+    new(_0: Matrix3f, _1: Vector3f): AffineXf3f;
+    linear(_0: Matrix3f): AffineXf3f;
+    translation(_0: Vector3f): AffineXf3f;
+    xfAround(_0: Matrix3f, _1: Vector3f): AffineXf3f;
+  };
+  to3dimXff(_0: AffineXf2f): AffineXf3f;
+  to2dimXff(_0: AffineXf3f): AffineXf2f;
+  AffineXf3d: {
+    new(): AffineXf3d;
+    new(_0: Matrix3d, _1: Vector3d): AffineXf3d;
+    linear(_0: Matrix3d): AffineXf3d;
+    translation(_0: Vector3d): AffineXf3d;
+    xfAround(_0: Matrix3d, _1: Vector3d): AffineXf3d;
+  };
+  to3dimXfd(_0: AffineXf2d): AffineXf3d;
+  to2dimXfd(_0: AffineXf3d): AffineXf2d;
+  Axis: {X: AxisValue<0>, Y: AxisValue<1>, Z: AxisValue<2>, Count: AxisValue<3>};
+  CubicBezierCurve2f: {
+    new(): CubicBezierCurve2f;
+    getWeights(_0: number): Array4f;
+  };
+  CubicBezierCurve2d: {
+    new(): CubicBezierCurve2d;
+    getWeights(_0: number): Array4d;
+  };
+  CubicBezierCurve3f: {
+    new(): CubicBezierCurve3f;
+    getWeights(_0: number): Array4f;
+  };
+  CubicBezierCurve3d: {
+    new(): CubicBezierCurve3d;
+    getWeights(_0: number): Array4d;
+  };
+  CubicBezierCurve4f: {
+    new(): CubicBezierCurve4f;
+    getWeights(_0: number): Array4f;
+  };
+  CubicBezierCurve4d: {
+    new(): CubicBezierCurve4d;
+    getWeights(_0: number): Array4d;
+  };
   __InternalDynamicBitset: {
     new(): __InternalDynamicBitset;
     new(_0: number): __InternalDynamicBitset;
@@ -1161,6 +2833,29 @@ interface EmbindModule {
     getMinBoxCorner(_0: Vector3f): Vector3b;
     getMaxBoxCorner(_0: Vector3f): Vector3b;
   };
+  FaceBMapBuffer: {
+    new(): FaceBMapBuffer;
+    new(_0: number): FaceBMapBuffer;
+  };
+  VertBMapBuffer: {
+    new(): VertBMapBuffer;
+    new(_0: number): VertBMapBuffer;
+  };
+  EdgeBMapBuffer: {
+    new(): EdgeBMapBuffer;
+    new(_0: number): EdgeBMapBuffer;
+  };
+  UndirectedEdgeBMapBuffer: {
+    new(): UndirectedEdgeBMapBuffer;
+    new(_0: number): UndirectedEdgeBMapBuffer;
+  };
+  WholeEdgeBMapBuffer: {
+    new(): WholeEdgeBMapBuffer;
+    new(_0: number): WholeEdgeBMapBuffer;
+  };
+  CloudPartMapping: {
+    new(): CloudPartMapping;
+  };
   Color: {
     new(): Color;
     new(_0: number, _1: number, _2: number): Color;
@@ -1185,12 +2880,31 @@ interface EmbindModule {
   ColorMulRev(_0: Color, _1: number): Color;
   ColorDiv(_0: Color, _1: number): Color;
   ColorBlend(_0: Color, _1: Color): Color;
+  PI: number;
+  PI2: number;
+  PI_F: number;
+  PI2_F: number;
+  Dipole: {
+    new(): Dipole;
+  };
+  EdgePoint: {
+    new(): EdgePoint;
+  };
   MeshSegmentation: {
     new(_0: Mesh): MeshSegmentation;
   };
   FixParams: {
     new(): FixParams;
   };
+  ICP: {
+    new(_0: MeshOrPoints, _1: MeshOrPoints, _2: AffineXf3f, _3: AffineXf3f, _4: VertBitSet, _5: VertBitSet): ICP;
+    new(_0: MeshOrPoints, _1: MeshOrPoints, _2: AffineXf3f, _3: AffineXf3f, _4: number): ICP;
+    new(_0: MeshOrPointsXf, _1: MeshOrPointsXf, _2: VertBitSet, _3: VertBitSet): ICP;
+    new(_0: MeshOrPointsXf, _1: MeshOrPointsXf, _2: number): ICP;
+  };
+  ICPMethod: {Combined: ICPMethodValue<0>, PointToPoint: ICPMethodValue<1>, PointToPlane: ICPMethodValue<2>};
+  ICPMode: {RigidScale: ICPModeValue<0>, AnyRigidXf: ICPModeValue<1>, OrthogonalAxis: ICPModeValue<2>, FixedAxis: ICPModeValue<3>, TranslationOnly: ICPModeValue<4>};
+  ICPExitType: {NotStarted: ICPExitTypeValue<0>, NotFoundSolution: ICPExitTypeValue<1>, MaxIterations: ICPExitTypeValue<2>, MaxBadIterations: ICPExitTypeValue<3>, StopMsdReached: ICPExitTypeValue<4>};
   EdgeHashMapEntries: {
     new(): EdgeHashMapEntries;
   };
@@ -1242,15 +2956,71 @@ interface EmbindModule {
   VectorGraphEdgeId: {
     new(): VectorGraphEdgeId;
   };
+  VectorEdgePath: {
+    new(): VectorEdgePath;
+  };
+  VectorVectorEdgePath: {
+    new(): VectorVectorEdgePath;
+  };
   lerp(_0: number, _1: number, _2: number): number;
   MyClass: {
     new(_0: number, _1: EmbindString): MyClass;
     getStringFromInstance(_0: MyClass): string;
   };
+  Matrix2b: {
+    new(): Matrix2b;
+  };
+  Matrix2i: {
+    new(): Matrix2i;
+  };
+  Matrix2ll: {
+    new(): Matrix2ll;
+  };
+  Matrix2f: {
+    new(): Matrix2f;
+  };
+  Matrix2d: {
+    new(): Matrix2d;
+  };
+  Matrix3b: {
+    new(): Matrix3b;
+  };
+  Matrix3i: {
+    new(): Matrix3i;
+  };
+  Matrix3ll: {
+    new(): Matrix3ll;
+  };
+  Matrix3f: {
+    new(): Matrix3f;
+  };
+  to3dimMatf(_0: Matrix2f): Matrix3f;
+  to2dimMatf(_0: Matrix3f): Matrix2f;
+  Matrix3d: {
+    new(): Matrix3d;
+  };
+  to3dimMatd(_0: Matrix2d): Matrix3d;
+  to2dimMatd(_0: Matrix3d): Matrix2d;
+  Matrix4b: {
+    new(): Matrix4b;
+  };
+  Matrix4i: {
+    new(): Matrix4i;
+  };
+  Matrix4ll: {
+    new(): Matrix4ll;
+  };
+  Matrix4f: {
+    new(): Matrix4f;
+  };
+  Matrix4d: {
+    new(): Matrix4d;
+  };
   Mesh: {
     new(): Mesh;
   };
-  smoothExtractedRegionBoundary(_0: Mesh, _1: number): void;
+  makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
+  smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
   calculateRecommendedVoxelSize(_0: Mesh, _1: number): number;
   computeVertexNormals(_0: Mesh): any;
   MeshWrapper: {
@@ -1258,6 +3028,11 @@ interface EmbindModule {
     new(_0: Mesh): MeshWrapper;
     fromTriangles(_0: any, _1: any): any;
   };
+  BooleanOperation: {InsideA: BooleanOperationValue<0>, InsideB: BooleanOperationValue<1>, OutsideA: BooleanOperationValue<2>, OutsideB: BooleanOperationValue<3>, Union: BooleanOperationValue<4>, Intersection: BooleanOperationValue<5>, DifferenceBA: BooleanOperationValue<6>, DifferenceAB: BooleanOperationValue<7>, Count: BooleanOperationValue<8>};
+  BooleanResult: {
+    new(): BooleanResult;
+  };
+  performBoolean(_0: Mesh, _1: Mesh, _2: BooleanOperation): BooleanResult;
   __phmap_internal_FlatHashMapPolicy_VertId: {};
   __phmap_internal_raw_hash_set_VertId: {};
   __phmap_internal_raw_hash_map_VertId: {};
@@ -1422,9 +3197,189 @@ interface EmbindModule {
   subGraphEdgeId(_0: GraphEdgeId, _1: number): GraphEdgeId;
   subGraphEdgeIdUInt(_0: GraphEdgeId, _1: number): GraphEdgeId;
   subGraphEdgeIdSize(_0: GraphEdgeId, _1: number): GraphEdgeId;
+  VertBMap: {
+    new(): VertBMap;
+  };
+  FaceBMap: {
+    new(): FaceBMap;
+  };
+  EdgeBMap: {
+    new(): EdgeBMap;
+  };
+  UndirectedEdgeBMap: {
+    new(): UndirectedEdgeBMap;
+  };
+  WholeEdgeBMap: {
+    new(): WholeEdgeBMap;
+  };
+  Triangulation: {
+    new(): Triangulation;
+    new(_0: number): Triangulation;
+    new(_0: number, _1: Array3VertId): Triangulation;
+  };
+  Dipoles: {
+    new(): Dipoles;
+    new(_0: number): Dipoles;
+    new(_0: number, _1: Dipole): Dipoles;
+  };
+  FaceMap: {
+    new(): FaceMap;
+    new(_0: number): FaceMap;
+    new(_0: number, _1: FaceId): FaceMap;
+  };
+  VertMap: {
+    new(): VertMap;
+    new(_0: number): VertMap;
+    new(_0: number, _1: VertId): VertMap;
+  };
+  EdgeMap: {
+    new(): EdgeMap;
+    new(_0: number): EdgeMap;
+    new(_0: number, _1: EdgeId): EdgeMap;
+  };
+  UndirectedEdgeMap: {
+    new(): UndirectedEdgeMap;
+    new(_0: number): UndirectedEdgeMap;
+    new(_0: number, _1: UndirectedEdgeId): UndirectedEdgeMap;
+  };
+  ObjMap: {
+    new(): ObjMap;
+    new(_0: number): ObjMap;
+    new(_0: number, _1: ObjId): ObjMap;
+  };
+  WholeEdgeMap: {
+    new(): WholeEdgeMap;
+    new(_0: number): WholeEdgeMap;
+    new(_0: number, _1: EdgeId): WholeEdgeMap;
+  };
+  UndirectedEdge2RegionMap: {
+    new(): UndirectedEdge2RegionMap;
+    new(_0: number): UndirectedEdge2RegionMap;
+    new(_0: number, _1: RegionId): UndirectedEdge2RegionMap;
+  };
+  Face2RegionMap: {
+    new(): Face2RegionMap;
+    new(_0: number): Face2RegionMap;
+    new(_0: number, _1: RegionId): Face2RegionMap;
+  };
+  Vert2RegionMap: {
+    new(): Vert2RegionMap;
+    new(_0: number): Vert2RegionMap;
+    new(_0: number, _1: RegionId): Vert2RegionMap;
+  };
+  VertCoords: {
+    new(): VertCoords;
+    new(_0: number): VertCoords;
+    new(_0: number, _1: Vector3f): VertCoords;
+  };
+  VertCoords2: {
+    new(): VertCoords2;
+    new(_0: number): VertCoords2;
+    new(_0: number, _1: Vector2f): VertCoords2;
+  };
+  FaceNormals: {
+    new(): FaceNormals;
+    new(_0: number): FaceNormals;
+    new(_0: number, _1: Vector3f): FaceNormals;
+  };
+  TexturePerFace: {
+    new(): TexturePerFace;
+    new(_0: number): TexturePerFace;
+    new(_0: number, _1: TextureId): TexturePerFace;
+  };
+  VertColors: {
+    new(): VertColors;
+    new(_0: number): VertColors;
+    new(_0: number, _1: Color): VertColors;
+  };
+  FaceColors: {
+    new(): FaceColors;
+    new(_0: number): FaceColors;
+    new(_0: number, _1: Color): FaceColors;
+  };
+  EdgeColors: {
+    new(): EdgeColors;
+    new(_0: number): EdgeColors;
+    new(_0: number, _1: Color): EdgeColors;
+  };
+  UndirectedEdgeColors: {
+    new(): UndirectedEdgeColors;
+    new(_0: number): UndirectedEdgeColors;
+    new(_0: number, _1: Color): UndirectedEdgeColors;
+  };
+  VertScalars: {
+    new(): VertScalars;
+    new(_0: number): VertScalars;
+    new(_0: number, _1: number): VertScalars;
+  };
+  FaceScalars: {
+    new(): FaceScalars;
+    new(_0: number): FaceScalars;
+    new(_0: number, _1: number): FaceScalars;
+  };
+  EdgeScalars: {
+    new(): EdgeScalars;
+    new(_0: number): EdgeScalars;
+    new(_0: number, _1: number): EdgeScalars;
+  };
+  UndirectedEdgeScalars: {
+    new(): UndirectedEdgeScalars;
+    new(_0: number): UndirectedEdgeScalars;
+    new(_0: number, _1: number): UndirectedEdgeScalars;
+  };
+  NodeVec: {
+    new(): NodeVec;
+    new(_0: number): NodeVec;
+    new(_0: number, _1: AABBTreePointsNode): NodeVec;
+  };
   MeshLoadWrapper: {
     fromFile(_0: EmbindString): any;
     fromBinaryData(_0: number, _1: number, _2: EmbindString): any;
+  };
+  MeshOrPoints: {
+    new(_0: Mesh): MeshOrPoints;
+    new(_0: MeshPart): MeshOrPoints;
+    new(_0: PointCloud): MeshOrPoints;
+  };
+  MeshOrPointsXf: {
+    new(_0: MeshOrPoints, _1: AffineXf3f): MeshOrPointsXf;
+  };
+  MeshPart: {
+    new(_0: Mesh): MeshPart;
+    new(_0: Mesh, _1: FaceBitSet | null): MeshPart;
+  };
+  findMaxDistanceSqOneWay(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null, _3: number): number;
+  findMaxDistanceSq(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null, _3: number): number;
+  MeshVertPart: {
+    new(_0: Mesh): MeshVertPart;
+    new(_0: Mesh, _1: VertBitSet | null): MeshVertPart;
+  };
+  MeshProjectionResult: {
+    new(): MeshProjectionResult;
+  };
+  VectorMeshProjectionResult: {
+    new(): VectorMeshProjectionResult;
+  };
+  MeshTopology: {
+    new(): MeshTopology;
+  };
+  fillContourLeft(_0: MeshTopology, _1: VectorEdgeId): FaceBitSet;
+  fillContourLeftMultiple(_0: MeshTopology, _1: VectorEdgePath): FaceBitSet;
+  MeshTriPoint: {
+    new(): MeshTriPoint;
+    new(_0: EdgeId, _1: TriPointf): MeshTriPoint;
+  };
+  NoDefInitFaceId: {
+    new(): NoDefInitFaceId;
+  };
+  NoDefInitVertId: {
+    new(): NoDefInitVertId;
+  };
+  NoDefInitEdgeId: {
+    new(): NoDefInitEdgeId;
+  };
+  NoDefInitUndirectedEdgeId: {
+    new(): NoDefInitUndirectedEdgeId;
   };
   OffsetParameters: {
     new(): OffsetParameters;
@@ -1454,6 +3409,82 @@ interface EmbindModule {
     new(_0: Vector3d, _1: number): Plane3d;
     fromDirAndPt(_0: Vector3d, _1: Vector3d): Plane3d;
   };
+  Reorder: {None: ReorderValue<0>, Lexicographically: ReorderValue<1>, AABBTree: ReorderValue<2>};
+  PointCloud: {
+    new(): PointCloud;
+  };
+  PointOnFace: {};
+  findDistance(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null, _3: number): MeshMeshDistanceResult;
+  findSignedDistance(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null, _3: number): MeshMeshSignedDistanceResult;
+  findSignedDistanceAB(_0: MeshPart, _1: MeshPart): MeshMeshSignedDistanceResult;
+  findSignedDistanceWithTransform(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null): MeshMeshSignedDistanceResult;
+  findSignedDistanceWithLimit(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null, _3: number): MeshMeshSignedDistanceResult;
+  IPointsToMeshProjector: {};
+  PointsToMeshProjector: {
+    new(): PointsToMeshProjector;
+  };
+  MeshProjectionParameters: {
+    new(): MeshProjectionParameters;
+  };
+  findSignedDistancesByPoints(_0: Mesh, _1: VertCoords, _2: VertBitSet | null, _3: MeshProjectionParameters, _4: IPointsToMeshProjector | null): VertScalars;
+  findSignedDistancesByMesh(_0: Mesh, _1: Mesh, _2: MeshProjectionParameters, _3: IPointsToMeshProjector | null): VertScalars;
+  SegmPointf: {
+    new(): SegmPointf;
+  };
+  SegmPointd: {
+    new(): SegmPointd;
+  };
+  SymMatrix2b: {
+    new(): SymMatrix2b;
+  };
+  SymMatrix2i: {
+    new(): SymMatrix2i;
+  };
+  SymMatrix2ll: {
+    new(): SymMatrix2ll;
+  };
+  SymMatrix2f: {
+    new(): SymMatrix2f;
+  };
+  SymMatrix2d: {
+    new(): SymMatrix2d;
+  };
+  SymMatrix3b: {
+    new(): SymMatrix3b;
+  };
+  SymMatrix3i: {
+    new(): SymMatrix3i;
+  };
+  SymMatrix3ll: {
+    new(): SymMatrix3ll;
+  };
+  SymMatrix3f: {
+    new(): SymMatrix3f;
+  };
+  SymMatrix3d: {
+    new(): SymMatrix3d;
+  };
+  SymMatrix4b: {
+    new(): SymMatrix4b;
+  };
+  SymMatrix4i: {
+    new(): SymMatrix4i;
+  };
+  SymMatrix4ll: {
+    new(): SymMatrix4ll;
+  };
+  SymMatrix4f: {
+    new(): SymMatrix4f;
+  };
+  SymMatrix4d: {
+    new(): SymMatrix4d;
+  };
+  TriPointf: {
+    new(): TriPointf;
+  };
+  TriPointd: {
+    new(): TriPointd;
+  };
   StdVectori: {
     new(): StdVectori;
   };
@@ -1467,13 +3498,19 @@ interface EmbindModule {
   StdVectorll: {
     new(): StdVectorll;
   };
-  StdVectorUint64: {
-    new(): StdVectorUint64;
+  StdVectorUi64: {
+    new(): StdVectorUi64;
+  };
+  VectorVectori: {
+    new(): VectorVectori;
   };
   Vectori: {
     new(): Vectori;
     new(_0: number): Vectori;
     new(_0: number, _1: number): Vectori;
+  };
+  VectorVectorf: {
+    new(): VectorVectorf;
   };
   Vectorf: {
     new(): Vectorf;
@@ -1482,25 +3519,14 @@ interface EmbindModule {
   };
   getAti(_0: Vectori, _1: number, _2: number): number;
   getAtf(_0: Vectorf, _1: number, _2: number): number;
-  Vector2f: {
-    new(): Vector2f;
-    new(_0: number, _1: number): Vector2f;
-    new(_0: Vector2f): Vector2f;
-    diagonal(_0: number): Vector2f;
-    plusX(): Vector2f;
-    plusY(): Vector2f;
-    minusX(): Vector2f;
-    minusY(): Vector2f;
+  VectorVectord: {
+    new(): VectorVectord;
   };
-  Vector2i: {
-    new(): Vector2i;
-    new(_0: number, _1: number): Vector2i;
-    new(_0: Vector2i): Vector2i;
-    diagonal(_0: number): Vector2i;
-    plusX(): Vector2i;
-    plusY(): Vector2i;
-    minusX(): Vector2i;
-    minusY(): Vector2i;
+  Vectord: {
+    new(): Vectord;
+  };
+  VectorVector2b: {
+    new(): VectorVector2b;
   };
   Vector2b: {
     new(): Vector2b;
@@ -1512,33 +3538,63 @@ interface EmbindModule {
     minusX(): Vector2b;
     minusY(): Vector2b;
   };
-  Vector3f: {
-    new(): Vector3f;
-    new(_0: number, _1: number, _2: number): Vector3f;
-    diagonal(_0: number): Vector3f;
-    plusX(): Vector3f;
-    plusY(): Vector3f;
-    plusZ(): Vector3f;
-    minusX(): Vector3f;
-    minusY(): Vector3f;
-    minusZ(): Vector3f;
+  VectorVector2i: {
+    new(): VectorVector2i;
   };
-  createFindParams(_0: number, _1: number, _2: number, _3: number): FindParams;
-  createFixParams(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
-  fixUndercuts(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
-  fixUndercutsThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
-  buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
-  buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
-  distanceSqf(_0: Vector3f, _1: Vector3f): number;
-  distancef(_0: Vector3f, _1: Vector3f): number;
-  crossf(_0: Vector3f, _1: Vector3f): Vector3f;
-  dotf(_0: Vector3f, _1: Vector3f): number;
-  sqrf(_0: Vector3f): number;
-  mixedf(_0: Vector3f, _1: Vector3f, _2: Vector3f): number;
-  multf(_0: Vector3f, _1: Vector3f): Vector3f;
-  divf(_0: Vector3f, _1: Vector3f): Vector3f;
-  anglef(_0: Vector3f, _1: Vector3f): number;
-  unitVector3f(_0: number, _1: number): Vector3f;
+  Vector2i: {
+    new(): Vector2i;
+    new(_0: number, _1: number): Vector2i;
+    new(_0: Vector2i): Vector2i;
+    diagonal(_0: number): Vector2i;
+    plusX(): Vector2i;
+    plusY(): Vector2i;
+    minusX(): Vector2i;
+    minusY(): Vector2i;
+  };
+  VectorVector2ll: {
+    new(): VectorVector2ll;
+  };
+  Vector2ll: {
+    new(): Vector2ll;
+  };
+  VectorVector2f: {
+    new(): VectorVector2f;
+  };
+  Vector2f: {
+    new(): Vector2f;
+    new(_0: number, _1: number): Vector2f;
+    new(_0: Vector2f): Vector2f;
+    diagonal(_0: number): Vector2f;
+    plusX(): Vector2f;
+    plusY(): Vector2f;
+    minusX(): Vector2f;
+    minusY(): Vector2f;
+  };
+  VectorVector2d: {
+    new(): VectorVector2d;
+  };
+  Vector2d: {
+    new(): Vector2d;
+  };
+  VectorVector3b: {
+    new(): VectorVector3b;
+  };
+  Vector3b: {
+    new(): Vector3b;
+    new(_0: boolean, _1: boolean, _2: boolean): Vector3b;
+    diagonal(_0: boolean): Vector3b;
+    plusX(): Vector3b;
+    plusY(): Vector3b;
+    plusZ(): Vector3b;
+    minusX(): Vector3b;
+    minusY(): Vector3b;
+    minusZ(): Vector3b;
+  };
+  distanceSqb(_0: Vector3b, _1: Vector3b): boolean;
+  sqrb(_0: Vector3b): boolean;
+  VectorVector3i: {
+    new(): VectorVector3i;
+  };
   Vector3i: {
     new(): Vector3i;
     new(_0: number, _1: number, _2: number): Vector3i;
@@ -1559,27 +3615,9 @@ interface EmbindModule {
   divi(_0: Vector3i, _1: Vector3i): Vector3i;
   anglei(_0: Vector3i, _1: Vector3i): number;
   unitVector3i(_0: number, _1: number): Vector3i;
-  Vector3d: {
-    new(): Vector3d;
-    new(_0: number, _1: number, _2: number): Vector3d;
-    diagonal(_0: number): Vector3d;
-    plusX(): Vector3d;
-    plusY(): Vector3d;
-    plusZ(): Vector3d;
-    minusX(): Vector3d;
-    minusY(): Vector3d;
-    minusZ(): Vector3d;
+  VectorVector3ll: {
+    new(): VectorVector3ll;
   };
-  distanceSqd(_0: Vector3d, _1: Vector3d): number;
-  distanced(_0: Vector3d, _1: Vector3d): number;
-  crossd(_0: Vector3d, _1: Vector3d): Vector3d;
-  dotd(_0: Vector3d, _1: Vector3d): number;
-  sqrd(_0: Vector3d): number;
-  mixedd(_0: Vector3d, _1: Vector3d, _2: Vector3d): number;
-  multd(_0: Vector3d, _1: Vector3d): Vector3d;
-  divd(_0: Vector3d, _1: Vector3d): Vector3d;
-  angled(_0: Vector3d, _1: Vector3d): number;
-  unitVector3d(_0: number, _1: number): Vector3d;
   Vector3ll: {
     new(): Vector3ll;
     new(_0: bigint, _1: bigint, _2: bigint): Vector3ll;
@@ -1600,31 +3638,76 @@ interface EmbindModule {
   multll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
   divll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
   anglell(_0: Vector3ll, _1: Vector3ll): bigint;
+  VectorVector3f: {
+    new(): VectorVector3f;
+  };
+  Vector3f: {
+    new(): Vector3f;
+    new(_0: number, _1: number, _2: number): Vector3f;
+    diagonal(_0: number): Vector3f;
+    plusX(): Vector3f;
+    plusY(): Vector3f;
+    plusZ(): Vector3f;
+    minusX(): Vector3f;
+    minusY(): Vector3f;
+    minusZ(): Vector3f;
+  };
+  to3dimVecf(_0: Vector2f): Vector3f;
+  to2dimVecf(_0: Vector3f): Vector2f;
+  makeArrow(_0: Vector3f, _1: Vector3f, _2: number, _3: number, _4: number, _5: number): Mesh;
+  createFindParams(_0: number, _1: number, _2: number, _3: number): FindParams;
+  createFixParams(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
+  fixUndercuts(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
+  fixUndercutsThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
+  buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
+  buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
+  projectOnAllWithProgress(_0: Vector3f, _1: AABBTreeObjects, _2: number, _3: any, _4: ObjId): void;
+  distanceSqf(_0: Vector3f, _1: Vector3f): number;
+  distancef(_0: Vector3f, _1: Vector3f): number;
+  crossf(_0: Vector3f, _1: Vector3f): Vector3f;
+  dotf(_0: Vector3f, _1: Vector3f): number;
+  sqrf(_0: Vector3f): number;
+  mixedf(_0: Vector3f, _1: Vector3f, _2: Vector3f): number;
+  multf(_0: Vector3f, _1: Vector3f): Vector3f;
+  divf(_0: Vector3f, _1: Vector3f): Vector3f;
+  anglef(_0: Vector3f, _1: Vector3f): number;
+  unitVector3f(_0: number, _1: number): Vector3f;
+  VectorVector3d: {
+    new(): VectorVector3d;
+  };
+  Vector3d: {
+    new(): Vector3d;
+    new(_0: number, _1: number, _2: number): Vector3d;
+    diagonal(_0: number): Vector3d;
+    plusX(): Vector3d;
+    plusY(): Vector3d;
+    plusZ(): Vector3d;
+    minusX(): Vector3d;
+    minusY(): Vector3d;
+    minusZ(): Vector3d;
+  };
+  to3dimVecd(_0: Vector2d): Vector3d;
+  to2dimVecd(_0: Vector3d): Vector2d;
   unitVector3ll(_0: bigint, _1: bigint): Vector3d;
-  Vector3b: {
-    new(): Vector3b;
-    new(_0: boolean, _1: boolean, _2: boolean): Vector3b;
-    diagonal(_0: boolean): Vector3b;
-    plusX(): Vector3b;
-    plusY(): Vector3b;
-    plusZ(): Vector3b;
-    minusX(): Vector3b;
-    minusY(): Vector3b;
-    minusZ(): Vector3b;
+  distanceSqd(_0: Vector3d, _1: Vector3d): number;
+  distanced(_0: Vector3d, _1: Vector3d): number;
+  crossd(_0: Vector3d, _1: Vector3d): Vector3d;
+  dotd(_0: Vector3d, _1: Vector3d): number;
+  sqrd(_0: Vector3d): number;
+  mixedd(_0: Vector3d, _1: Vector3d, _2: Vector3d): number;
+  multd(_0: Vector3d, _1: Vector3d): Vector3d;
+  divd(_0: Vector3d, _1: Vector3d): Vector3d;
+  angled(_0: Vector3d, _1: Vector3d): number;
+  unitVector3d(_0: number, _1: number): Vector3d;
+  VectorVector4b: {
+    new(): VectorVector4b;
   };
-  distanceSqb(_0: Vector3b, _1: Vector3b): boolean;
-  sqrb(_0: Vector3b): boolean;
-  Vector4f: {
-    new(): Vector4f;
-    new(_0: number, _1: number, _2: number, _3: number): Vector4f;
-    diagonal(_0: number): Vector4f;
+  Vector4b: {
+    new(): Vector4b;
   };
-  distanceSq4f(_0: Vector4f, _1: Vector4f): number;
-  distance4f(_0: Vector4f, _1: Vector4f): number;
-  dot4f(_0: Vector4f, _1: Vector4f): number;
-  sqr4f(_0: Vector4f): number;
-  mult4f(_0: Vector4f, _1: Vector4f): Vector4f;
-  div4f(_0: Vector4f, _1: Vector4f): Vector4f;
+  VectorVector4i: {
+    new(): VectorVector4i;
+  };
   Vector4i: {
     new(): Vector4i;
     new(_0: number, _1: number, _2: number, _3: number): Vector4i;
@@ -1636,6 +3719,35 @@ interface EmbindModule {
   sqr4i(_0: Vector4i): number;
   mult4i(_0: Vector4i, _1: Vector4i): Vector4i;
   div4i(_0: Vector4i, _1: Vector4i): Vector4i;
+  VectorVector4ll: {
+    new(): VectorVector4ll;
+  };
+  Vector4ll: {
+    new(): Vector4ll;
+  };
+  VectorVector4f: {
+    new(): VectorVector4f;
+  };
+  Vector4f: {
+    new(): Vector4f;
+    new(_0: number, _1: number, _2: number, _3: number): Vector4f;
+    diagonal(_0: number): Vector4f;
+  };
+  distanceSq4f(_0: Vector4f, _1: Vector4f): number;
+  distance4f(_0: Vector4f, _1: Vector4f): number;
+  dot4f(_0: Vector4f, _1: Vector4f): number;
+  sqr4f(_0: Vector4f): number;
+  mult4f(_0: Vector4f, _1: Vector4f): Vector4f;
+  div4f(_0: Vector4f, _1: Vector4f): Vector4f;
+  VectorVector4d: {
+    new(): VectorVector4d;
+  };
+  Vector4d: {
+    new(): Vector4d;
+  };
+  VisualObject: {
+    new(): VisualObject;
+  };
 }
 
 export type MainModule = WasmModule & typeof RuntimeExports & EmbindModule;
