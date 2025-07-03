@@ -25,7 +25,8 @@ EMSCRIPTEN_BINDINGS( AABBTreePointsModule )
         .property( "r", &AABBTreePoints::Node::r );
 
     class_<AABBTreePoints>( "AABBTreePoints" )
-        .constructor<const PointCloud&>()
+        // FIXME: BindingError: Cannot register multiple constructors with identical number of parameters (1)
+        // .constructor<const PointCloud&>()
         .constructor<const Mesh&>()
         .constructor<const VertCoords&, const VertBitSet*>( allow_raw_pointers() )
 

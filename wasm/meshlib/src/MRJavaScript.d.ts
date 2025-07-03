@@ -2701,7 +2701,6 @@ interface EmbindModule {
   AABBTreePoints: {
     new(_0: Mesh): AABBTreePoints;
     new(_0: VertCoords, _1: VertBitSet | null): AABBTreePoints;
-    new(_0: PointCloud): AABBTreePoints;
     MaxNumPointsInLeaf: number;
   };
   AffineXf2f: {
