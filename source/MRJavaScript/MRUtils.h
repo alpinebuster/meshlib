@@ -37,14 +37,14 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
     Triangulation _tri = meshToExport.topology.getTriangulation();
     size_t triangleCount = _tri.size();
     size_t totalTriElements = triangleCount * 3; // Each triangle has three indexes
-    const int* triData = reinterpret_cast<const int*>( _tri.data() );
+    const size_t* triData = reinterpret_cast<const size_t*>( _tri.data() );
 
     // Use typed_memory_view for triangles
     val triangleArray = val( typed_memory_view(
         totalTriElements, 
         triData
     ) );
-    
+
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );
     meshData.set( "vertexCount", pointCount );
