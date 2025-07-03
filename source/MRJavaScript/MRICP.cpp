@@ -13,13 +13,27 @@ using namespace emscripten;
 using namespace MR;
 
 EMSCRIPTEN_BINDINGS( ICPModule ) {
+    value_object<ICPProperties>( "ICPProperties" )
+        .field( "method", &ICPProperties::method )
+        .field( "p2plAngleLimit", &ICPProperties::p2plAngleLimit )
+        .field( "p2plScaleLimit", &ICPProperties::p2plScaleLimit )
+        .field( "cosThreshold", &ICPProperties::cosThreshold )
+        .field( "distThresholdSq", &ICPProperties::distThresholdSq )
+        .field( "farDistFactor", &ICPProperties::farDistFactor )
+        .field( "icpMode", &ICPProperties::icpMode )
+        .field( "fixedRotationAxis", &ICPProperties::fixedRotationAxis )
+        .field( "iterLimit", &ICPProperties::iterLimit )
+        .field( "badIterStopCount", &ICPProperties::badIterStopCount )
+        .field( "exitVal", &ICPProperties::exitVal )
+        .field( "mutualClosest", &ICPProperties::mutualClosest );
+
     class_<ICP>( "ICP" )
         .constructor<const MeshOrPoints&, const MeshOrPoints&, const AffineXf3f&, const AffineXf3f&, const VertBitSet&, const VertBitSet&>()
         .constructor<const MeshOrPointsXf&, const MeshOrPointsXf&, const VertBitSet&, const VertBitSet&>()
         .constructor<const MeshOrPoints&, const MeshOrPoints&, const AffineXf3f&, const AffineXf3f&, float>()
         .constructor<const MeshOrPointsXf&, const MeshOrPointsXf&, float>()
 
-        // .function("setParams", &ICP::setParams)
+        .function("setParams", &ICP::setParams)
         .function("setCosineLimit", &ICP::setCosineLimit)
         .function("setDistanceLimit", &ICP::setDistanceLimit)
         .function("setBadIterCount", &ICP::setBadIterCount)
@@ -34,7 +48,7 @@ EMSCRIPTEN_BINDINGS( ICPModule ) {
         .function("setFloatXf", &ICP::setFloatXf)
         .function("autoSelectFloatXf", &ICP::autoSelectFloatXf)
         .function("updatePointPairs", &ICP::updatePointPairs)
-        // .function("getParams", &ICP::getParams, allow_raw_pointers())
+        .function("getParams", &ICP::getParams)
         .function("getStatusInfo", &ICP::getStatusInfo)
         .function("getNumSamples", &ICP::getNumSamples)
         .function("getNumActivePairs", &ICP::getNumActivePairs)
