@@ -39,17 +39,23 @@ using namespace emscripten;
  *
  * @tparam EM_NAME
  * @tparam TYPE 
- * @param name 
+ * @param jsName 
  */
 template<typename EM_NAME, typename TYPE>
-void bindAffineXf( const char* name )
+void bindAffineXf( const char* jsName )
 {
-    auto cls = class_<EM_NAME>( name )
+    auto cls = class_<EM_NAME>( jsName )
         .template constructor<>()
         .template constructor<const typename TYPE::MatrixType&, const TYPE&>()
         .property( "A", &EM_NAME::A )
         .property( "b", &EM_NAME::b )
         .class_function( "translation", select_overload<EM_NAME( const TYPE& )>( &EM_NAME::translation ) )
+        // NOTE: When do I have to use `typename` and not `class`?
+        // 
+        // The only scenario where it is needed to differentiate is dependent names - **inside a template**,
+        // when tell the compiler that "this is a type that depends on template parameters",
+        // it is needed to prepend the type with the `typename`
+        // 
         .class_function( "linear", select_overload<EM_NAME( const typename TYPE::MatrixType& )>( &EM_NAME::linear ) )
         .class_function( "xfAround", select_overload<EM_NAME( const typename TYPE::MatrixType&, const TYPE& )>( &EM_NAME::xfAround ) )
         // `operator()`, `linearOnly()` needs to add `const`

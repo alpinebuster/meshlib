@@ -6,6 +6,8 @@
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
+#include <MRMesh/MRColor.h>
+#include <MRMesh/MRDipole.h>
 
 #include "MRMeshFwd.h"
 
@@ -241,12 +243,22 @@ EMSCRIPTEN_BINDINGS( IdModule )
         .function( "decrementByInt", select_overload<GraphEdgeId( int )>( &GraphEdgeId::operator++ ) );
 }
 
-EMSCRIPTEN_BINDINGS( ScalarsModule )
+EMSCRIPTEN_BINDINGS( MapModule )
 {
-    BIND_TYPED_VECTOR(VertScalars, float, VertId);
-    BIND_TYPED_VECTOR(FaceScalars, float, FaceId);
-    BIND_TYPED_VECTOR(EdgeScalars, float, EdgeId);
-    BIND_TYPED_VECTOR(UndirectedEdgeScalars, float, UndirectedEdgeId);
+    BIND_TYPED_VECTOR( Triangulation, ThreeVertIds, FaceId );
+
+    bindTypedVector<Dipoles, Dipole, NodeId>( "Dipoles" );
+
+    BIND_TYPED_VECTOR( FaceMap, FaceId, FaceId );
+    BIND_TYPED_VECTOR( VertMap, VertId, VertId );
+    BIND_TYPED_VECTOR( EdgeMap, EdgeId, EdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdgeMap, UndirectedEdgeId, UndirectedEdgeId );
+    BIND_TYPED_VECTOR( ObjMap, ObjId, ObjId );
+
+    BIND_TYPED_VECTOR( WholeEdgeMap, EdgeId, UndirectedEdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdge2RegionMap, RegionId, UndirectedEdgeId );
+    BIND_TYPED_VECTOR( Face2RegionMap, RegionId, FaceId );
+    BIND_TYPED_VECTOR( Vert2RegionMap, RegionId, VertId );
 }
 
 EMSCRIPTEN_BINDINGS( CoordsModule )
@@ -261,4 +273,21 @@ EMSCRIPTEN_BINDINGS( CoordsModule )
     // BIND_TYPED_VECTOR( VertUVCoords, UVCoord, VertId );
     BIND_TYPED_VECTOR( VertCoords2, Vector2f, VertId );
     BIND_TYPED_VECTOR( FaceNormals, Vector3f, FaceId );
+}
+
+EMSCRIPTEN_BINDINGS( ColorsModule )
+{
+    BIND_TYPED_VECTOR( TexturePerFace, TextureId, FaceId );
+    BIND_TYPED_VECTOR( VertColors, Color, VertId );
+    BIND_TYPED_VECTOR( FaceColors, Color, FaceId );
+    BIND_TYPED_VECTOR( EdgeColors, Color, EdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdgeColors, Color, UndirectedEdgeId );
+}
+
+EMSCRIPTEN_BINDINGS( ScalarsModule )
+{
+    BIND_TYPED_VECTOR( VertScalars, float, VertId );
+    BIND_TYPED_VECTOR( FaceScalars, float, FaceId );
+    BIND_TYPED_VECTOR( EdgeScalars, float, EdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdgeScalars, float, UndirectedEdgeId );
 }

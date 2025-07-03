@@ -46,4 +46,40 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
     return meshData;
 };
 
+// Impl：Automatically registering elements `0, 1, …, N − 1` at compile time
+template<typename T, std::size_t... Is>
+void bindStdArrayImpl( const char* jsName, std::index_sequence<Is...> ) {
+    // 1) `sizeof...(Is)` is the number of integers in the pack—that is, `N`.
+    // 
+    // Therefore:
+    //   `value_array<std::array<T, sizeof...(Is)>>( jsName )`
+    // is equivalent to
+    //   `value_array<std::array<T, N>>( jsName )`
+    // 
+    auto arr = value_array<std::array<T, sizeof...( Is )>>( jsName );
+    // 2) This is a common trick combining pack-expansion, the comma operator, and an initializer list. The effect is to invoke:
+    // 
+    //   arr.element( emscripten::index<0>() );
+    //   arr.element( emscripten::index<1>() );
+    //   …
+    //   arr.element( emscripten::index<N-1>() );
+    // 
+    // all at compile time
+    // 
+    ( void )std::initializer_list<int>{ ( arr.element( emscripten::index<Is>() ), 0 )... };
+}
+
+/**
+ *@brief Just specify `T`, `N`, and the `jsName`.
+ * The compiler generates the index sequence `0…N-1` and calls `bindStdArrayImpl`, which in turn registers every element.
+ *
+ * @tparam T 
+ * @tparam N 
+ * @param jsName 
+ */
+template<typename T, std::size_t N>
+void bindStdArray( const char* jsName ) {
+    bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
+}
+
 } // namespace MRUtil

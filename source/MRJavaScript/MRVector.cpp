@@ -11,6 +11,9 @@ using DoubleVector = Vector<double, size_t>;
 
 EMSCRIPTEN_BINDINGS( VectorModule )
 {
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vectori`
+    // ------------------------------------------------------------------------
     register_vector<IntVector>( "VectorVectori" );
     class_<IntVector>( "Vectori" )
         .constructor<>()                           // Default constructor
@@ -72,6 +75,10 @@ EMSCRIPTEN_BINDINGS( VectorModule )
             return val( typed_memory_view( self.size(), self.data() ) );
         }));
 
+
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vectorf`
+    // ------------------------------------------------------------------------
     register_vector<FloatVector>( "VectorVectorf" );
     class_<FloatVector>( "Vectorf" )
         .constructor<>()
@@ -120,5 +127,13 @@ EMSCRIPTEN_BINDINGS( VectorModule )
         }));
 
     function( "getAti", select_overload<int   (const IntVector&,   size_t, int)>( &getAt ));
-    function( "getAtf", select_overload<float (const FloatVector&, size_t, float)>( &getAt ));
+    function( "getAtf", select_overload<float( const FloatVector&, size_t, float )>( &getAt ) );
+
+
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Vectord`
+    // ------------------------------------------------------------------------
+    register_vector<DoubleVector>( "VectorVectord" );
+    class_<DoubleVector>( "Vectord" )
+        .constructor<>();
 }
