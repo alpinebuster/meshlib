@@ -242,10 +242,38 @@ function SidebarObject( editor ) {
 					const positionsArr = [...positions];
 					// Convert to std::vector<float>
 					const floatVec = new editor.mrmesh.StdVectorf();
-					positionsArr.forEach(v => floatVec.push_back(v));
+					positionsArr.forEach( v => floatVec.push_back(v) );
 					
-					const result = editor.mrmesh.cutMeshWithPolyline(curMeshWrapper.mesh, floatVec );
-					console.log("result: ", result);
+					const result = editor.mrmesh.cutMeshWithPolyline( curMeshWrapper.mesh, floatVec );
+
+					const newGeometry = new THREE.BufferGeometry();
+					newGeometry.setAttribute( 'position', new THREE.BufferAttribute( result.outerMesh.vertices, 3 ) );
+
+					newGeometry.computeVertexNormals();
+				
+					newGeometry.setIndex( new THREE.BufferAttribute( result.outerMesh.indices, 1 ) );
+					const newMaterial = new THREE.MeshNormalMaterial();
+					const newMesh = new THREE.Mesh( newGeometry, newMaterial );
+					newMesh.name = `wasm-${editor.select.name}-outer`;
+					newMesh.castShadow = true;
+					newMesh.receiveShadow = true;
+
+					editor.execute( new AddObjectCommand( editor, newMesh ) );
+
+					
+					const newGeometry2 = new THREE.BufferGeometry();
+					newGeometry2.setAttribute( 'position', new THREE.BufferAttribute( result.innerMesh.vertices, 3 ) );
+
+					newGeometry2.computeVertexNormals();
+				
+					newGeometry2.setIndex( new THREE.BufferAttribute( result.innerMesh.indices, 1 ) );
+					const newMaterial2 = new THREE.MeshNormalMaterial();
+					const newMesh2 = new THREE.Mesh( newGeometry2, newMaterial2 );
+					newMesh2.name = `wasm-${editor.select.name}-inner`;
+					newMesh2.castShadow = true;
+					newMesh2.receiveShadow = true;
+
+					editor.execute( new AddObjectCommand( editor, newMesh2 ) );
 				}
 			}
 		}
@@ -303,7 +331,7 @@ function SidebarObject( editor ) {
 			
 				// 🔧 Automatically calculate the normal to ensure normal lighting effects
 				newGeometry.computeVertexNormals();
-			
+
 				newGeometry.setIndex( new THREE.BufferAttribute(newIndices, 1) );
 				const newMaterial = new THREE.MeshNormalMaterial();
 				const holesFilledMesh = new THREE.Mesh( newGeometry, newMaterial );
