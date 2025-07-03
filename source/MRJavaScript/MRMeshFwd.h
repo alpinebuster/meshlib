@@ -155,6 +155,6 @@ void bindTypedBMap(const char* jsName)
     class_<MapType>( jsName )
         .constructor<>()
 
-        .property( "b", &MapType::b )
+        // .property( "b", &MapType::b )
         .property( "tsize", &MapType::tsize );
 }

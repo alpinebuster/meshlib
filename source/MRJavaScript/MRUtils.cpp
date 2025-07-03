@@ -3,6 +3,8 @@
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector2.h>
+#include <MRMesh/MRVector3.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
 
@@ -112,8 +114,9 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 
 	// ------------------------------------------------------------------------
     // Bind the Embind interface for `Optional*`
-    // ------------------------------------------------------------------------
-	register_optional<MeshOrPoints>( "OptionalMeshOrPoints" );
-	register_optional<Vector3f>( "OptionalVector3f" );
-	register_optional<VertBitSet>( "OptionalVertBitSet" );
+	// ------------------------------------------------------------------------
+	// FIXME: `std:optional`
+	// MRJS::register_optional<MeshOrPoints>( "OptionalMeshOrPoints" );
+	// MRJS::register_optional<Vector3f>( "OptionalVector3f" );
+	// MRJS::register_optional<VertBitSet>( "OptionalVertBitSet" );
 }

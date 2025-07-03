@@ -7,6 +7,12 @@
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshTopology.h>
+#include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector2.h>
+#include <MRMesh/MRVector3.h>
+#include <MRMesh/MRMeshOrPoints.h>
+#include <MRMesh/MRBitSet.h>
 
 using namespace emscripten;
 using namespace MR;
@@ -103,7 +109,7 @@ class_<std::optional<V>> register_optional( const char* name )
     return class_<OptionalV>( name )
         .constructor<>()
         .function( "value", &OptionalAccess<OptionalV>::value )
-        .function( "hasValue", &OptionalAccess<OptionalV>::has_value );
+        .function( "hasValue", &OptionalAccess<OptionalV>::hasValue );
 }
 
 } // namespace MRUtil

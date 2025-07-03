@@ -10,6 +10,7 @@
 #include <MRMesh/MRObjectMesh.h>
 #include <MRMesh/MRBestFit.h>
 #include <MRMesh/MRAABBTreeObjects.h>
+#include <MRMesh/MRPointCloud.h>
 
 using namespace emscripten;
 using namespace MR;
@@ -38,27 +39,29 @@ EMSCRIPTEN_BINDINGS( MeshOrPointsModule )
 		.function( "getObjBoundingBox", &MeshOrPoints::getObjBoundingBox )
 		.function( "cacheAABBTree", &MeshOrPoints::cacheAABBTree )
 		.function( "computeBoundingBox", &MeshOrPoints::computeBoundingBox, allow_raw_pointers() )
-		.function( "accumulate", &MeshOrPoints::accumulate, allow_raw_pointers() )
-		.function( "pointsGridSampling", &MeshOrPoints::pointsGridSampling )
+		// .function( "accumulate", &MeshOrPoints::accumulate, allow_raw_pointers() )
+		// .function( "pointsGridSampling", &MeshOrPoints::pointsGridSampling )
 		.function( "points", &MeshOrPoints::points, allow_raw_pointers() )
 		.function( "validPoints", &MeshOrPoints::validPoints, allow_raw_pointers() )
-		.function( "normals", &MeshOrPoints::normals )
-		.function( "weights", &MeshOrPoints::weights )
-		.function( "projector", &MeshOrPoints::projector )
-		// .function( "limitedProjector", &MeshOrPoints::limitedProjector );
+		// .function( "normals", &MeshOrPoints::normals )
+		// .function( "weights", &MeshOrPoints::weights )
+		// .function( "projector", &MeshOrPoints::projector )
+		// .function( "limitedProjector", &MeshOrPoints::limitedProjector )
+		;
 
 	value_object<MeshOrPoints::ProjectionResult>( "ProjectionResult" )
 		.field( "point", &MeshOrPoints::ProjectionResult::point )
-		.field( "normal", &MeshOrPoints::ProjectionResult::normal )
+		// .field( "normal", &MeshOrPoints::ProjectionResult::normal )
 		.field( "isBd", &MeshOrPoints::ProjectionResult::isBd )
 		.field( "distSq", &MeshOrPoints::ProjectionResult::distSq )
 		.field( "closestVert", &MeshOrPoints::ProjectionResult::closestVert );
 
-	value_object<MeshOrPointsXf>( "MeshOrPointsXf" )
-		.field( "obj", &MeshOrPointsXf::obj )
-		.field( "xf", &MeshOrPointsXf::xf );
+	class_<MeshOrPointsXf>( "MeshOrPointsXf" )
+		.constructor<const MeshOrPoints&, const AffineXf3f&>()
+		.property( "obj", &MeshOrPointsXf::obj )
+		.property( "xf", &MeshOrPointsXf::xf );
 
-	function( "getMeshOrPoints", &getMeshOrPoints );
-	function( "projectOnAll", &projectOnAll );
+	// function( "getMeshOrPoints", &getMeshOrPoints, allow_raw_pointers() );
+	// function( "projectOnAll", &projectOnAll );
 	function( "projectOnAllWithProgress", &callProjectOnAllWithProgress );
 }
