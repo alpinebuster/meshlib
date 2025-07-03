@@ -12,6 +12,7 @@
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRColor.h>
 #include <MRMesh/MRDipole.h>
+#include <MRMesh/MRBuffer.h>
 
 using namespace emscripten;
 using namespace MR;
@@ -146,4 +147,14 @@ auto bindTypedVector( const char* jsName )
     }
 
     return cls;
+}
+
+template<typename MapType, typename ElementType, typename IdType>
+void bindTypedBMap(const char* jsName)
+{
+    class_<MapType>( jsName )
+        .constructor<>()
+
+        .property( "b", &MapType::b )
+        .property( "tsize", &MapType::tsize );
 }

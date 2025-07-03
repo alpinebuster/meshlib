@@ -1,7 +1,10 @@
 
 #include <emscripten/bind.h>
 
+#include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector.h>
+#include <MRMesh/MRMeshOrPoints.h>
+#include <MRMesh/MRBitSet.h>
 
 #include "MRUtils.h"
 
@@ -105,4 +108,12 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	MRJS::bindStdArray<GraphEdgeId, 2>( "Array2GraphEdgeId" );
 	MRJS::bindStdArray<GraphEdgeId, 3>( "Array3GraphEdgeId" );
 	MRJS::bindStdArray<GraphEdgeId, 4>( "Array4GraphEdgeId" );
+
+
+	// ------------------------------------------------------------------------
+    // Bind the Embind interface for `Optional*`
+    // ------------------------------------------------------------------------
+	register_optional<MeshOrPoints>( "OptionalMeshOrPoints" );
+	register_optional<Vector3f>( "OptionalVector3f" );
+	register_optional<VertBitSet>( "OptionalVertBitSet" );
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <optional>
+
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
@@ -46,6 +48,7 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
     return meshData;
 };
 
+
 // Impl：Automatically registering elements `0, 1, …, N − 1` at compile time
 template<typename T, std::size_t... Is>
 void bindStdArrayImpl( const char* jsName, std::index_sequence<Is...> ) {
@@ -68,7 +71,6 @@ void bindStdArrayImpl( const char* jsName, std::index_sequence<Is...> ) {
     // 
     ( void )std::initializer_list<int>{ ( arr.element( emscripten::index<Is>() ), 0 )... };
 }
-
 /**
  *@brief Just specify `T`, `N`, and the `jsName`.
  * The compiler generates the index sequence `0…N-1` and calls `bindStdArrayImpl`, which in turn registers every element.
@@ -80,6 +82,28 @@ void bindStdArrayImpl( const char* jsName, std::index_sequence<Is...> ) {
 template<typename T, std::size_t N>
 void bindStdArray( const char* jsName ) {
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
+}
+
+
+template<typename OptionalType>
+struct OptionalAccess {
+    static val value( const OptionalType& v )
+    {
+        return val( v.value() );
+    }
+    static bool hasValue( const OptionalType& v )
+    {
+        return v.has_value();
+    }
+};
+template<typename V>
+class_<std::optional<V>> register_optional( const char* name )
+{
+    using OptionalV = std::optional<V>;
+    return class_<OptionalV>( name )
+        .constructor<>()
+        .function( "value", &OptionalAccess<OptionalV>::value )
+        .function( "hasValue", &OptionalAccess<OptionalV>::has_value );
 }
 
 } // namespace MRUtil

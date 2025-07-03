@@ -13,8 +13,7 @@ EMSCRIPTEN_BINDINGS( MeshPartModule )
 {
     class_<MeshPart>( "MeshPart" )
         .constructor<const Mesh&>()
-        // TODO
-        // .constructor<const Mesh&, const TypedBitSet<Id<FaceTag>>*>()
+        .constructor<const Mesh&, const TypedBitSet<Id<FaceTag>>*>( allow_raw_pointers() )
         .function("getMesh", optional_override([](const MeshPart& mp) -> const Mesh& { 
             return mp.mesh; 
         }), allow_raw_pointers())
@@ -22,7 +21,7 @@ EMSCRIPTEN_BINDINGS( MeshPartModule )
 
     class_<MeshVertPart>( "MeshVertPart" )
         .constructor<const Mesh&>()
-        // .constructor<const Mesh&, const TypedBitSet<Id<VertTag>>*>()
+        .constructor<const Mesh&, const TypedBitSet<Id<VertTag>>*>( allow_raw_pointers() )
         .function("getMesh", optional_override([](const MeshVertPart& mvp) -> const Mesh& { 
             return mvp.mesh; 
         }), allow_raw_pointers())

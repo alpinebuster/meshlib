@@ -8,6 +8,8 @@
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRColor.h>
 #include <MRMesh/MRDipole.h>
+#include <MRMesh/MRAABBTreePoints.h>
+#include <MRMesh/MRBuffer.h>
 
 #include "MRMeshFwd.h"
 
@@ -243,6 +245,15 @@ EMSCRIPTEN_BINDINGS( IdModule )
         .function( "decrementByInt", select_overload<GraphEdgeId( int )>( &GraphEdgeId::operator++ ) );
 }
 
+EMSCRIPTEN_BINDINGS( BMapModule )
+{
+    bindTypedBMap<VertBMap, VertId, VertId>( "VertBMap" );
+    bindTypedBMap<FaceBMap, FaceId, FaceId>( "FaceBMap" );
+    bindTypedBMap<EdgeBMap, EdgeId, EdgeId>( "EdgeBMap" );
+    bindTypedBMap<UndirectedEdgeBMap, UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMap" );
+    bindTypedBMap<WholeEdgeBMap, EdgeId, UndirectedEdgeId>( "WholeEdgeBMap" );
+}
+
 EMSCRIPTEN_BINDINGS( MapModule )
 {
     BIND_TYPED_VECTOR( Triangulation, ThreeVertIds, FaceId );
@@ -290,4 +301,9 @@ EMSCRIPTEN_BINDINGS( ScalarsModule )
     BIND_TYPED_VECTOR( FaceScalars, float, FaceId );
     BIND_TYPED_VECTOR( EdgeScalars, float, EdgeId );
     BIND_TYPED_VECTOR( UndirectedEdgeScalars, float, UndirectedEdgeId );
+}
+
+EMSCRIPTEN_BINDINGS( NodeVecModule )
+{
+    bindTypedVector<AABBTreePoints::NodeVec, AABBTreePoints::Node, NodeId>( "NodeVec" );
 }
