@@ -3337,8 +3337,6 @@ interface EmbindModule {
   };
   MeshOrPoints: {
     new(_0: Mesh): MeshOrPoints;
-    new(_0: MeshPart): MeshOrPoints;
-    new(_0: PointCloud): MeshOrPoints;
   };
   MeshOrPointsXf: {
     new(_0: MeshOrPoints, _1: AffineXf3f): MeshOrPointsXf;
