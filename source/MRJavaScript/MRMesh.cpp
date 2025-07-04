@@ -21,9 +21,6 @@ using namespace MR;
 namespace MRJS
 {
 
-// ------------------------------------------------------------------------
-// `Mesh`
-// ------------------------------------------------------------------------
 // Convert C++ vector to JavaScript Float32Array
 val vector3fToFloat32Array( const std::vector<Vector3f>& vec )
 {
@@ -33,6 +30,9 @@ val vector3fToFloat32Array( const std::vector<Vector3f>& vec )
 
 EMSCRIPTEN_BINDINGS( MeshModule )
 {
+	// ------------------------------------------------------------------------
+	// Bindings for `Mesh`
+	// ------------------------------------------------------------------------
 	class_<Mesh>( "Mesh" )
 		.constructor<>()
 		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
@@ -52,10 +52,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 	} );
 }
 
-
-// ------------------------------------------------------------------------
-// Wrappers for `Mesh`
-// ------------------------------------------------------------------------
 // Helper function to create Vector3f from JavaScript array
 Vector3f arrayToVector3f( const val& arr )
 {
@@ -81,7 +77,10 @@ val box3fToObject( const Box<Vector3<float>>& box )
 	return obj;
 }
 
-// Wrapper class for Mesh to provide JavaScript-friendly interface
+
+// ------------------------------------------------------------------------
+// Wrappers for `Mesh`
+// ------------------------------------------------------------------------
 MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m )
 {
 }
@@ -132,6 +131,13 @@ val MeshWrapper::fromTriangles( const val& vertexCoords, const val& triangles )
 		return result;
 	}
 }
+// val MeshWrapper::fromTrianglesMemoryView( const float* vertexPtr,
+// 										  size_t        numVerts,
+// 										  const uint32_t* triPtr,
+// 										  size_t         numTris )
+// {
+
+// }
 
 // Geometric queries
 val MeshWrapper::getBoundingBox() const
@@ -228,7 +234,7 @@ val MeshWrapper::fillHoles() const
 		fillHole( meshCopy, e, params );
 	}
 
-    return MRJS::exportMeshData( meshCopy );
+    return MRJS::exportMeshMemoryView( meshCopy );
 }
 
 // Point projection
@@ -291,6 +297,9 @@ void MeshWrapper::pack()
 
 EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 {
+	// ------------------------------------------------------------------------
+	// Bindings for `MeshWrapper`
+	// ------------------------------------------------------------------------
 	class_<MeshWrapper>( "MeshWrapper" )
 		.constructor<>()
 		.constructor<const Mesh&>()

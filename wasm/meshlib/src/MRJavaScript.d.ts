@@ -8,6 +8,9 @@ declare namespace RuntimeExports {
      */
     function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: any[] | undefined, opts?: any | undefined): any;
     let HEAPU8: any;
+    let HEAP32: any;
+    let HEAPF32: any;
+    let HEAPU32: any;
     namespace FS {
         export let root: any;
         export let mounts: any[];
@@ -511,6 +514,22 @@ export interface Color extends ClassHandle {
   set(_0: number): number;
 }
 
+export interface NewEdgesMap extends ClassHandle {
+  splitEdges: UndirectedEdgeBitSet;
+  map: UndirectedEdgeIdIntHashMap;
+}
+
+export interface ForceFillValue<T extends number> {
+  value: T;
+}
+export type ForceFill = ForceFillValue<0>|ForceFillValue<1>|ForceFillValue<2>;
+
+export interface CutMeshParameters extends ClassHandle {
+  forceFillMode: ForceFill;
+  new2oldEdgesMap: NewEdgesMap | null;
+  new2OldMap: FaceMap | null;
+}
+
 export interface Dipole extends ClassHandle {
   area: number;
   rr: number;
@@ -716,12 +735,33 @@ export interface VectorEdgePath extends ClassHandle {
   set(_0: number, _1: VectorEdgeId): boolean;
 }
 
+export type CutMeshResult = {
+  resultCut: VectorEdgePath,
+  fbsWithContourIntersections: FaceBitSet
+};
+
 export interface VectorVectorEdgePath extends ClassHandle {
   push_back(_0: VectorEdgePath): void;
   resize(_0: number, _1: VectorEdgePath): void;
   size(): number;
   get(_0: number): VectorEdgePath | undefined;
   set(_0: number, _1: VectorEdgePath): boolean;
+}
+
+export interface ContinuousContour extends ClassHandle {
+  size(): number;
+  get(_0: number): VarEdgeTri | undefined;
+  push_back(_0: VarEdgeTri): void;
+  resize(_0: number, _1: VarEdgeTri): void;
+  set(_0: number, _1: VarEdgeTri): boolean;
+}
+
+export interface ContinuousContours extends ClassHandle {
+  push_back(_0: ContinuousContour): void;
+  resize(_0: number, _1: ContinuousContour): void;
+  size(): number;
+  get(_0: number): ContinuousContour | undefined;
+  set(_0: number, _1: ContinuousContour): boolean;
 }
 
 export interface MyClass extends ClassHandle {
@@ -812,6 +852,19 @@ export interface BooleanResult extends ClassHandle {
   getMesh(): Mesh;
 }
 
+export interface EdgeTri extends ClassHandle {
+  edge: EdgeId;
+  tri: FaceId;
+}
+
+export interface VarEdgeTri extends ClassHandle {
+  readonly isEdgeATriB: boolean;
+  readonly valid: boolean;
+  edge: EdgeId;
+  readonly tri: FaceId;
+  edgeTri(): EdgeTri;
+}
+
 export interface __phmap_internal_FlatHashMapPolicy_VertId extends ClassHandle {
 }
 
@@ -848,6 +901,9 @@ export interface UndirectedEdgeHashMap extends ClassHandle {
 }
 
 export interface WholeEdgeHashMap extends ClassHandle {
+}
+
+export interface UndirectedEdgeIdIntHashMap extends ClassHandle {
 }
 
 export interface MakeDegenerateBandAroundRegionParamsWrapper extends ClassHandle {
@@ -2883,6 +2939,13 @@ interface EmbindModule {
   PI2: number;
   PI_F: number;
   PI2_F: number;
+  NewEdgesMap: {
+    new(): NewEdgesMap;
+  };
+  ForceFill: {None: ForceFillValue<0>, Good: ForceFillValue<1>, All: ForceFillValue<2>};
+  CutMeshParameters: {
+    new(): CutMeshParameters;
+  };
   Dipole: {
     new(): Dipole;
   };
@@ -2961,6 +3024,12 @@ interface EmbindModule {
   VectorVectorEdgePath: {
     new(): VectorVectorEdgePath;
   };
+  ContinuousContour: {
+    new(): ContinuousContour;
+  };
+  ContinuousContours: {
+    new(): ContinuousContours;
+  };
   lerp(_0: number, _1: number, _2: number): number;
   MyClass: {
     new(_0: number, _1: EmbindString): MyClass;
@@ -3032,6 +3101,15 @@ interface EmbindModule {
     new(): BooleanResult;
   };
   performBoolean(_0: Mesh, _1: Mesh, _2: BooleanOperation): BooleanResult;
+  EdgeTri: {
+    new(): EdgeTri;
+    new(_0: EdgeId, _1: FaceId): EdgeTri;
+  };
+  VarEdgeTri: {
+    new(): VarEdgeTri;
+    new(_0: boolean, _1: EdgeTri): VarEdgeTri;
+    new(_0: boolean, _1: EdgeId, _2: FaceId): VarEdgeTri;
+  };
   __phmap_internal_FlatHashMapPolicy_VertId: {};
   __phmap_internal_raw_hash_set_VertId: {};
   __phmap_internal_raw_hash_map_VertId: {};
@@ -3052,6 +3130,9 @@ interface EmbindModule {
   };
   WholeEdgeHashMap: {
     new(): WholeEdgeHashMap;
+  };
+  UndirectedEdgeIdIntHashMap: {
+    new(): UndirectedEdgeIdIntHashMap;
   };
   MakeDegenerateBandAroundRegionParamsWrapper: {
     new(): MakeDegenerateBandAroundRegionParamsWrapper;

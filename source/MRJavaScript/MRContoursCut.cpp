@@ -134,17 +134,38 @@ val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 
 		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
 
-		auto [ innerMesh, outerMesh ] = returnParts_( mesh, cutResults.resultCut );
-		val innerMeshData = MRJS::exportMeshData( innerMesh );
-		val outerMeshData = MRJS::exportMeshData( outerMesh );
+
+		val jsTestCutPoints = val::array();
+		for (const auto& loop : cutResults.resultCut) {
+			for (const auto& edge : loop) {
+				Vector3f p = mesh.orgPnt(edge);
+				val point = val::object();
+				point.set("x", p.x);
+				point.set("y", p.y);
+				point.set("z", p.z);
+				jsTestCutPoints.call<void>("push", point);
+			}
+		}
+		
+		// FIXME:
+		// auto [innerMesh, outerMesh] = returnParts_( mesh, cutResults.resultCut );
+
+		auto innerBitSet = fillContourLeft( mesh.topology, cutResults.resultCut );
+		Mesh innerMesh = mesh.cloneRegion( innerBitSet );
+
+		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
+		// val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
+
+
+
 
 		val obj = val::object();
 		obj.set( "success", true );
 		obj.set( "innerMesh", innerMeshData );
-		obj.set( "outerMesh", outerMeshData );
+		// obj.set( "outerMesh", outerMeshData );
 		obj.set( "jsTestProjectedPoint", jsTestProjectedPoint );
 		obj.set( "jsTestProjectedContour", jsTestProjectedContour );
-		obj.set( "cutResults", cutResults );
+		obj.set( "jsTestCutPoints", jsTestCutPoints );
 
 		return obj;
 	} else {

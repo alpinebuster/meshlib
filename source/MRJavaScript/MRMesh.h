@@ -105,6 +105,10 @@ public:
      * Triangle format: [[v1,v2,v3], [v4,v5,v6], ...]
      */
     static val fromTriangles( const val& vertexCoords, const val& triangles );
+    static val fromTrianglesMemoryView( const float* vertexPtr,
+                                        size_t        numVerts,
+                                        const uint32_t* triPtr,
+                                        size_t         numTris );
 
     // Geometric query method
     /**

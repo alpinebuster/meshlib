@@ -246,12 +246,13 @@ function SidebarObject( editor ) {
 					
 					const result = editor.mrmesh.cutMeshWithPolyline( curMeshWrapper.mesh, floatVec );
 
-					const newGeometry = new THREE.BufferGeometry();
-					newGeometry.setAttribute( 'position', new THREE.BufferAttribute( result.outerMesh.vertices, 3 ) );
 
+					const newVertices = result.innerMesh.vertices;
+					const newIndices = new Uint32Array(result.innerMesh.indices);
+					const newGeometry = new THREE.BufferGeometry();
+					newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
 					newGeometry.computeVertexNormals();
-				
-					newGeometry.setIndex( new THREE.BufferAttribute( result.outerMesh.indices, 1 ) );
+					newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
 					const newMaterial = new THREE.MeshNormalMaterial();
 					const newMesh = new THREE.Mesh( newGeometry, newMaterial );
 					newMesh.name = `wasm-${editor.select.name}-outer`;
@@ -261,19 +262,19 @@ function SidebarObject( editor ) {
 					editor.execute( new AddObjectCommand( editor, newMesh ) );
 
 					
-					const newGeometry2 = new THREE.BufferGeometry();
-					newGeometry2.setAttribute( 'position', new THREE.BufferAttribute( result.innerMesh.vertices, 3 ) );
+					// const newVertices2 = result.outerMesh.vertices;
+					// const newIndices2 = new Uint32Array(result.outerMesh.indices);
+					// const newGeometry2 = new THREE.BufferGeometry();
+					// newGeometry2.setAttribute( 'position', new THREE.BufferAttribute( newVertices2, 3 ) );
+					// newGeometry2.computeVertexNormals();
+					// newGeometry2.setIndex( new THREE.BufferAttribute( newIndices2, 1 ) );
+					// const newMaterial2 = new THREE.MeshNormalMaterial();
+					// const newMesh2 = new THREE.Mesh( newGeometry2, newMaterial2 );
+					// newMesh2.name = `wasm-${editor.select.name}-inner`;
+					// newMesh2.castShadow = true;
+					// newMesh2.receiveShadow = true;
 
-					newGeometry2.computeVertexNormals();
-				
-					newGeometry2.setIndex( new THREE.BufferAttribute( result.innerMesh.indices, 1 ) );
-					const newMaterial2 = new THREE.MeshNormalMaterial();
-					const newMesh2 = new THREE.Mesh( newGeometry2, newMaterial2 );
-					newMesh2.name = `wasm-${editor.select.name}-inner`;
-					newMesh2.castShadow = true;
-					newMesh2.receiveShadow = true;
-
-					editor.execute( new AddObjectCommand( editor, newMesh2 ) );
+					// editor.execute( new AddObjectCommand( editor, newMesh2 ) );
 				}
 			}
 		}
@@ -355,7 +356,7 @@ function SidebarObject( editor ) {
 	wasmOperationRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
 
 	const wasmOpsRowHole = new UIRow();
-	wasmOpsRowHole.add(wasmOpFillholes);
+	wasmOpsRowHole.add( wasmOpFillholes );
 	
 	const wasmOpsRowSelector = new UIRow();
 	wasmOpsRowSelector.add( wasmOpSelector );

@@ -19,37 +19,96 @@ using namespace MR;
 
 namespace MRJS {
 
-// Helper function to export mesh data using typed_memory_view
-inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
+// NOTE: Export mesh data using `typed_memory_view()`
+// 
+//  unsigned char*  -> Uint8Array
+//  char*	        -> Int8Array
+//  unsigned short*	-> Uint16Array
+//  short*	        -> Int16Array
+//  unsigned int*	-> Uint32Array
+//  int*	        -> Int32Array
+//  float*	        -> Float32Array
+//  double*	        -> Float64Array
+// 
+inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
+{
     // === Export point data ===
-    auto points_ = meshToExport.points;
+    const auto& points_ = meshToExport.points;
     size_t pointCount = points_.size();
-    size_t totalPointElements = pointCount * 3;
-    const float* pointData = reinterpret_cast<const float*>( points_.data() );
+    size_t vertexElementCount = pointCount * 3;
+    const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
 
-    // Use `typed_memory_view` for vertices
+    // Use `typed_memory_view()` for vertices
     val pointsArray = val( typed_memory_view(
-        totalPointElements, 
-        pointData
+        vertexElementCount, 
+        pointDataPtr
     ) );
 
     // === Export triangle data ===
-    Triangulation tri_ = meshToExport.topology.getTriangulation();
-    size_t triangleCount = tri_.size();
-    size_t totalTriElements = triangleCount * 3; // Each triangle has three indexes
-    const int* triData = reinterpret_cast<const int*>( tri_.data() );
+    const auto& tris_ = meshToExport.topology.getTriangulation();
+    size_t triangleCount = tris_.size();
+    size_t indexElementCount = triangleCount * 3;
+    //  unsigned int*	-> Uint32Array, we need `Uint32Array` for threejs
+    //  int*	        -> Int32Array
+    const int* triDataPtr = reinterpret_cast< const int* >( tris_.data() );
 
-    // Use `typed_memory_view` for triangles
-    val triangleArray = val( typed_memory_view(
-        totalTriElements, 
-        triData
-    ) );
+    // FIXME: Why this wont work for indices?
+    // Use `typed_memory_view()` for triangles
+    // val triangleArray = val( typed_memory_view(
+    //     indexElementCount, 
+    //     // triDataPtr
+    //     flatIndices.data()
+    // ) );
+	val triangleArray = val::array();
+    triangleArray.set("length", indexElementCount);
+	for (size_t i = 0; i < indexElementCount; ++i) {
+		triangleArray.set(i, val(triDataPtr[i]));
+    }
+    
+    val meshData = val::object();
+    meshData.set( "vertices", pointsArray );
+    meshData.set( "vertexElementCount", val(vertexElementCount) );
+    meshData.set( "vertexCount", val( pointCount ) );
+    meshData.set( "indices", triangleArray );
+    meshData.set( "indexElementCount", val(indexElementCount) );
+    meshData.set( "indexCount", triangleCount );
+
+    return meshData;
+};
+inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
+    // === Export point data ===
+    const auto& points_ = meshToExport.points;
+    size_t pointCount = points_.size();
+    size_t vertexElementCount = pointCount * 3;
+    const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
+
+    val pointsArray = val::array();
+    // Pre-allocate the array length to improve performance
+    pointsArray.set("length", vertexElementCount);
+    // Batch setting values - faster than pushing them one by one
+    for (size_t i = 0; i < vertexElementCount; ++i) {
+        pointsArray.set(i, val(pointDataPtr[i]));
+    }
+
+    // === Export triangle data ===
+    const auto& tris_ = meshToExport.topology.getTriangulation();
+    size_t triangleCount = tris_.size();
+    size_t indexElementCount = triangleCount * 3; // Each triangle has 3 indexes
+    const int* triDataPtr = reinterpret_cast<const int*>( tris_.data() );
+
+	val triangleArray = val::array();
+    triangleArray.set("length", indexElementCount);
+	for (size_t i = 0; i < indexElementCount; ++i) {
+		triangleArray.set(i, val(triDataPtr[i]));
+	}
 
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );
-    meshData.set( "vertexCount", pointCount );
+    meshData.set( "vertexElementCount", val(vertexElementCount) );
+    meshData.set( "vertexCount", val( pointCount ) );
     meshData.set( "indices", triangleArray );
-    meshData.set( "triangleCount", triangleCount );
+    meshData.set( "indexElementCount", val(indexElementCount) );
+    meshData.set( "indexCount", triangleCount );
 
     return meshData;
 };
