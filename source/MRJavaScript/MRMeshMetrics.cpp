@@ -5,3 +5,7 @@
 
 using namespace emscripten;
 using namespace MR;
+
+EMSCRIPTEN_BINDINGS( MeshMetricsModule )
+{
+}

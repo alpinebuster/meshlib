@@ -12,10 +12,12 @@ EMSCRIPTEN_BINDINGS( MeshProjectModule )
 {
     class_<MeshProjectionResult>( "MeshProjectionResult" )
         .constructor<>()
+
         .property( "proj", &MeshProjectionResult::proj )   // PointOnFace
         .property( "mtp", &MeshProjectionResult::mtp )     // MeshTriPoint
         .property( "distSq", &MeshProjectionResult::distSq )
         .function( "valid", &MeshProjectionResult::valid )
         .function( "asBool", select_overload<bool() const>( &MeshProjectionResult::operator bool ) );
+
     register_vector<MeshProjectionResult>( "VectorMeshProjectionResult" );
 }

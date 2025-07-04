@@ -20,6 +20,7 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	register_vector<double>( "StdVectord" );
 	register_vector<long long>( "StdVectorll" );
 	register_vector<uint64_t>( "StdVectorUi64" );
+    // register_vector<bool>( "StdVectorb" );
 
 	
 	// ------------------------------------------------------------------------

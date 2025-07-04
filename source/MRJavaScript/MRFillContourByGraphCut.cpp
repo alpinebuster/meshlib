@@ -106,7 +106,9 @@ public:
 			}
 
 			// Step 1: Find closest vertices on the mesh for each input point using `findProjection()`
-			std::vector<VertId> keyVertices( inputPoints.size() );
+			std::vector<VertId> keyVertices;
+			keyVertices.reserve( inputPoints.size() );
+
 			MeshPart m = MeshPart( mesh_ );
 
 			mesh_.getAABBTree();

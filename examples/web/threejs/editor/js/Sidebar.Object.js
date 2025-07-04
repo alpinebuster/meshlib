@@ -237,7 +237,7 @@ function SidebarObject( editor ) {
 				if (editor.wasmObject.hasOwnProperty( currentUUID )) {
 					const curMeshWrapper = editor.wasmObject[currentUUID];
 						
-					const positionAttribute = pointGeo.getAttribute( 'position' );
+					const positionAttribute = curveLine.geometry.getAttribute( 'position' );
 					const positions = positionAttribute.array; // Float32Array
 					const positionsArr = [...positions];
 					// Convert to std::vector<float>

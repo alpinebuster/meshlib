@@ -22,10 +22,10 @@ namespace MRJS {
 // Helper function to export mesh data using typed_memory_view
 inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
     // === Export point data ===
-    auto _points = meshToExport.points;
-    size_t pointCount = _points.size();
+    auto points_ = meshToExport.points;
+    size_t pointCount = points_.size();
     size_t totalPointElements = pointCount * 3;
-    const float* pointData = reinterpret_cast<const float*>( _points.data() );
+    const float* pointData = reinterpret_cast<const float*>( points_.data() );
 
     // Use `typed_memory_view` for vertices
     val pointsArray = val( typed_memory_view(
@@ -34,10 +34,10 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
     ) );
 
     // === Export triangle data ===
-    Triangulation _tri = meshToExport.topology.getTriangulation();
-    size_t triangleCount = _tri.size();
+    Triangulation tri_ = meshToExport.topology.getTriangulation();
+    size_t triangleCount = tri_.size();
     size_t totalTriElements = triangleCount * 3; // Each triangle has three indexes
-    const int* triData = reinterpret_cast<const int*>( _tri.data() );
+    const int* triData = reinterpret_cast<const int*>( tri_.data() );
 
     // Use `typed_memory_view` for triangles
     val triangleArray = val( typed_memory_view(

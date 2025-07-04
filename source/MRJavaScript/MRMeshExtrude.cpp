@@ -151,7 +151,11 @@ EMSCRIPTEN_BINDINGS( HashMapBindings )
 
 	class_<WholeEdgeHashMap>( "WholeEdgeHashMap" )
 		.constructor<>()
-        .smart_ptr<std::shared_ptr<WholeEdgeHashMap>>( "shared_ptr<WholeEdgeHashMap>" ) ;
+		.smart_ptr<std::shared_ptr<WholeEdgeHashMap>>( "shared_ptr<WholeEdgeHashMap>" );
+	
+	class_<HashMap<UndirectedEdgeId, int>>( "UndirectedEdgeIdIntHashMap" )
+		.constructor<>()
+		.smart_ptr<std::shared_ptr<HashMap<UndirectedEdgeId, int>>>( "shared_ptr<HashMap<UndirectedEdgeId, int>>" );
 }
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )

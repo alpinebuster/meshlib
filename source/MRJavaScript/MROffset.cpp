@@ -18,7 +18,7 @@ val thickenMeshWrapper( const Mesh& mesh, float offset, const GeneralOffsetParam
 
 	if ( result.has_value() )
 	{
-    	val meshData = MRJS::exportMeshData( result.value() );
+		val meshData = MRJS::exportMeshData( result.value() );
 
 		// Return the mesh wrapped in an object that indicates success
 		val returnObj = val::object();
