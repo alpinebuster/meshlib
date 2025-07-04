@@ -79,7 +79,7 @@ val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 	std::vector<Vector3f> polyline;
 
     int coordinatesLength = coordinates.size();
-    if (coordinatesLength % 3 != 0) {	
+    if (coordinatesLength % 3 != 0) {
 		val obj = val::object();
 		obj.set( "success", false );
 		obj.set( "error", "Coordinates length must be a multiple of 3!" );

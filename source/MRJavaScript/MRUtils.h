@@ -27,7 +27,7 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
     size_t totalPointElements = pointCount * 3;
     const float* pointData = reinterpret_cast<const float*>( _points.data() );
 
-    // Use typed_memory_view for vertices
+    // Use `typed_memory_view` for vertices
     val pointsArray = val( typed_memory_view(
         totalPointElements, 
         pointData
@@ -37,9 +37,9 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
     Triangulation _tri = meshToExport.topology.getTriangulation();
     size_t triangleCount = _tri.size();
     size_t totalTriElements = triangleCount * 3; // Each triangle has three indexes
-    const size_t* triData = reinterpret_cast<const size_t*>( _tri.data() );
+    const int* triData = reinterpret_cast<const int*>( _tri.data() );
 
-    // Use typed_memory_view for triangles
+    // Use `typed_memory_view` for triangles
     val triangleArray = val( typed_memory_view(
         totalTriElements, 
         triData
@@ -57,7 +57,8 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
 
 // Impl：Automatically registering elements `0, 1, …, N − 1` at compile time
 template<typename T, std::size_t... Is>
-void bindStdArrayImpl( const char* jsName, std::index_sequence<Is...> ) {
+void bindStdArrayImpl( const char* jsName, std::index_sequence<Is...> )
+{
     // 1) `sizeof...(Is)` is the number of integers in the pack—that is, `N`.
     // 
     // Therefore:
@@ -86,13 +87,15 @@ void bindStdArrayImpl( const char* jsName, std::index_sequence<Is...> ) {
  * @param jsName 
  */
 template<typename T, std::size_t N>
-void bindStdArray( const char* jsName ) {
+void bindStdArray( const char* jsName )
+{
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
 }
 
 
 template<typename OptionalType>
-struct OptionalAccess {
+struct OptionalAccess
+{
     static val value( const OptionalType& v )
     {
         return val( v.value() );
