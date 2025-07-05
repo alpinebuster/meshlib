@@ -6,14 +6,20 @@
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMesh.h>
+#include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRExpected.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
 #include <MRMesh/MRMeshFillHole.h>
+#include <MRVoxels/MRFixUndercuts.h>
+#include <MRMesh/MRSurroundingContour.h>
+#include <MRMesh/MRFillContourByGraphCut.h>
+#include <MRMesh/MREdgeMetric.h>
 
 #include "MRMesh.h"
 #include "MRUtils.h"
+#include "MREdgeMetric.h"
 
 using namespace emscripten;
 using namespace MR;
@@ -223,11 +229,151 @@ val MeshWrapper::getFaceNormal( int faceId ) const
 	return val::null();
 }
 
+val MeshWrapper::segmentByPoints(
+	const std::vector<float>& coordinates, const std::vector<float>& dir,
+	const EdgeMetricWrapper& edgeMetricWrapper )
+{
+	val result = val::object();
+
+	// TODO: More performance gains? 
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
+	// Input validation
+	if ( meshCopy.points.empty() )
+	{
+		result.set( "success", false );
+		result.set( "error", std::string( "Mesh not initialized!" ) );
+
+		return result;
+	}
+
+	try
+	{
+		auto edgeMetric_ = edgeMetricWrapper.getMetric();
+		// Parse coordinates into Vector3f points
+		std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
+
+		if ( inputPoints.size() < 2 )
+		{
+			result.set( "success", false );
+			result.set( "error", std::string( "Segmenting mesh needs exactly 2 or 3 input points!" ) );
+
+			return result;
+		}
+
+		// Step 1: Find closest vertices on the mesh for each input point using `findProjection()`
+		std::vector<VertId> keyVertices;
+		keyVertices.reserve( inputPoints.size() );
+
+		MeshPart m = MeshPart( meshCopy );
+
+		meshCopy.getAABBTree();
+		for ( const Vector3f& point : inputPoints )
+		{
+			MeshProjectionResult closestVert = findProjection( point, m );
+			if ( !closestVert.valid() )
+			{
+				result.set( "success", false );
+				result.set( "error", std::string( "Could not find valid vertex for input point" ) );
+
+				return result;
+			}
+			keyVertices.push_back( meshCopy.getClosestVertex( closestVert.proj ) );
+		}
+
+		// Step 2: Use the direction provided by JavaScript
+		Vector3f contourDirection( dir[0], dir[1], dir[2] );
+
+		// Normalize the direction vector to ensure it's a unit vector
+		float dirLength = contourDirection.length();
+		if ( dirLength < 1e-6f )
+		{
+			result.set( "success", false );
+			result.set( "error", std::string( "Direction vector is too small or zero" ) );
+
+			return result;
+		}
+		contourDirection /= dirLength;
+
+		// Step 3: Create surrounding contour
+		auto contourResult = surroundingContour( meshCopy, keyVertices, edgeMetric_, contourDirection );
+
+		if ( !contourResult )
+		{
+			result.set( "success", false );
+			result.set( "error", std::string( "Failed to create surrounding contour: " ) + contourResult.error() );
+
+			return result;
+		}
+
+		// Step 4: Convert EdgeLoop to EdgePath for `fillContourLeftByGraphCut()`
+		EdgeLoop contour = contourResult.value();
+		EdgePath contourPath( contour.begin(), contour.end() );
+
+		// Step 5: Fill the contour to get the segmented region
+		Mesh segMesh;
+		FaceBitSet segmentedFaces = fillContourLeftByGraphCut( meshCopy.topology, contourPath, edgeMetric_ );
+		segMesh.addMeshPart( {meshCopy, &segmentedFaces} );
+
+		// Step 6: Convert results to JavaScript-friendly format using emscripten val
+		val meshData = MRJS::exportMeshMemoryView( segMesh );
+
+		// FIXME: `Uint32Array` error for threejs
+		// Since `EdgeId` has an implicit conversion operator to int, and it is internally represented as an int
+		// We can directly reinterpret `EdgeId*` as `int*`
+		const int* contourData = reinterpret_cast<const int*>( contour.data() );
+		size_t contourSize = contour.size();
+		val contourEdgesArray = val( typed_memory_view( contourSize, contourData ) );
+
+		// Build the result object
+		result.set( "success", true );
+		result.set( "contourEdges", contourEdgesArray );
+		result.set( "mesh", meshData );
+	}
+	catch ( const std::exception& e )
+	{
+		result.set( "success", false );
+		result.set( "error", std::string( "Exception during segmentation: " ) + e.what() );
+	}
+
+	return result;
+}
+
+val MeshWrapper::fixUndercuts(const Vector3f& upDirection) const
+{
+	val returnObj = val::object();
+
+	FixUndercuts::FixParams fixParams;
+	fixParams.findParameters.upDirection = upDirection.normalized();
+
+	// TODO: More performance gains? 
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+	
+	auto result = FixUndercuts::fix(
+		meshCopy,
+		{.findParameters = {.upDirection = upDirection}}
+	);
+
+	val meshData = MRJS::exportMeshMemoryView( meshCopy );
+	returnObj.set( "success", true );
+	returnObj.set( "mesh", meshData );
+	returnObj.set( "message", "Undercuts fixed successfully!" );
+
+    return returnObj;
+}
+
 val MeshWrapper::fillHoles() const
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
 	// TODO: More performance gains? 
-	Mesh meshCopy = mesh;
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
 	for ( EdgeId e : holeEdges )
 	{
 		FillHoleParams params;
@@ -323,6 +469,8 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.function( "getFaceVertices", &MeshWrapper::getFaceVertices )
 		.function( "getFaceNormal", &MeshWrapper::getFaceNormal )
 
+		.function( "segmentByPoints", &MeshWrapper::segmentByPoints )
+		.function( "fixUndercuts", &MeshWrapper::fixUndercuts )
 		.function( "fillHoles", &MeshWrapper::fillHoles )
 
 		// Spatial queries

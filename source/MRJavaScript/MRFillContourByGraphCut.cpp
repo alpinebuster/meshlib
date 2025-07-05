@@ -48,31 +48,6 @@ public:
 	}
 
 	/**
-	 * @brief Helper function to convert flat coordinate array to Vector3f points
-	 * This design is more JavaScript-friendly than individual Point3D objects
-	 * coordinates should contain [x1,y1,z1, x2,y2,z2, x3,y3,z3, ...] for each point
-	 */
-	std::vector<Vector3f> parseCoordinates( const std::vector<float>& coordinates )
-	{
-		std::vector<Vector3f> points;
-
-		// Validate that we have complete sets of 3D coordinates
-		if ( coordinates.size() % 3 != 0 )
-		{
-			throw std::invalid_argument( "Coordinate array length must be divisible by 3" );
-		}
-
-		// Convert flat array to Vector3f objects
-		points.reserve( coordinates.size() / 3 );
-		for ( size_t i = 0; i < coordinates.size(); i += 3 )
-		{
-			points.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
-		}
-
-		return points;
-	}
-
-	/**
 	 * @brief Main segmentation function called from JavaScript
 	 * Takes coordinates as flat array and direction vector, returns emscripten val object
 	 *
@@ -95,7 +70,7 @@ public:
 		try
 		{
 			// Parse coordinates into Vector3f points
-			std::vector<Vector3f> inputPoints = parseCoordinates( coordinates );
+			std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
 
 			if ( inputPoints.size() < 2 || inputPoints.size() > 3 )
 			{
