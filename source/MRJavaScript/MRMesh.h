@@ -197,6 +197,7 @@ public:
      */
     val projectPoint( const val& point, float maxDistance = std::numeric_limits<float>::max() ) const;
 
+    val fixUndercuts(const Vector3f& upDirection) const;
     val fillHoles() const;
 
     // Transformation method

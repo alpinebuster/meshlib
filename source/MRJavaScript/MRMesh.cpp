@@ -11,6 +11,7 @@
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
 #include <MRMesh/MRMeshFillHole.h>
+#include <MRVoxels/MRFixUndercuts.h>
 
 #include "MRMesh.h"
 #include "MRUtils.h"
@@ -223,11 +224,34 @@ val MeshWrapper::getFaceNormal( int faceId ) const
 	return val::null();
 }
 
+val MeshWrapper::fixUndercuts(const Vector3f& upDirection) const
+{
+	val returnObj = val::object();
+
+	
+	FixUndercuts::FixParams fixParams;
+	fixParams.findParameters.upDirection = upDirection.normalized();
+	Mesh meshCopy = mesh;
+	
+	auto result = FixUndercuts::fix(
+		meshCopy,
+		{.findParameters = {.upDirection = upDirection}}
+	);
+
+	val meshData = MRJS::exportMeshMemoryView( meshCopy );
+	returnObj.set( "success", true );
+	returnObj.set( "mesh", meshData );
+	returnObj.set( "message", "Undercuts fixed successfully!" );
+
+    return returnObj;
+}
+
 val MeshWrapper::fillHoles() const
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
 	// TODO: More performance gains? 
 	Mesh meshCopy = mesh;
+
 	for ( EdgeId e : holeEdges )
 	{
 		FillHoleParams params;
@@ -323,6 +347,7 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.function( "getFaceVertices", &MeshWrapper::getFaceVertices )
 		.function( "getFaceNormal", &MeshWrapper::getFaceNormal )
 
+		.function( "fixUndercuts", &MeshWrapper::fixUndercuts )
 		.function( "fillHoles", &MeshWrapper::fillHoles )
 
 		// Spatial queries
