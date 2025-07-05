@@ -538,6 +538,10 @@ export interface Dipole extends ClassHandle {
   addIfGoodApprox(_0: Vector3f, _1: number, _2: number): any;
 }
 
+export interface EdgeMetricWrapper extends ClassHandle {
+  evaluate(_0: EdgeId): number;
+}
+
 export interface EdgePoint extends ClassHandle {
 }
 
@@ -835,6 +839,8 @@ export interface MeshWrapper extends ClassHandle {
   projectPoint(_0: any, _1: number): any;
   transform(_0: any): void;
   pack(): void;
+  segmentByPoints(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
+  fixUndercuts(_0: Vector3f): any;
 }
 
 export interface BooleanOperationValue<T extends number> {
@@ -2949,6 +2955,11 @@ interface EmbindModule {
   Dipole: {
     new(): Dipole;
   };
+  EdgeMetricWrapper: {
+    new(_0: EdgeMetricWrapper): EdgeMetricWrapper;
+    createEdgeMetricWrapper(_0: EdgeMetricWrapper): EdgeMetricWrapper;
+  };
+  identityMetric(): EdgeMetricWrapper;
   EdgePoint: {
     new(): EdgePoint;
   };
@@ -3088,6 +3099,10 @@ interface EmbindModule {
     new(): Mesh;
   };
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
+  edgeLengthMetric(_0: Mesh): EdgeMetricWrapper;
+  discreteAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
+  discreteMinusAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
+  edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetricWrapper;
   smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
   calculateRecommendedVoxelSize(_0: Mesh, _1: number): number;
   computeVertexNormals(_0: Mesh): any;
@@ -3441,6 +3456,11 @@ interface EmbindModule {
   MeshTopology: {
     new(): MeshTopology;
   };
+  edgeLengthMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
+  discreteAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
+  discreteMinusAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
+  edgeCurvMetricFromTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number): EdgeMetricWrapper;
+  edgeTableSymMetric(_0: MeshTopology, _1: EdgeMetricWrapper): EdgeMetricWrapper;
   fillContourLeft(_0: MeshTopology, _1: VectorEdgeId): FaceBitSet;
   fillContourLeftMultiple(_0: MeshTopology, _1: VectorEdgePath): FaceBitSet;
   MeshTriPoint: {
@@ -3736,6 +3756,8 @@ interface EmbindModule {
   createFindParams(_0: number, _1: number, _2: number, _3: number): FindParams;
   createFixParams(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
   fixUndercuts(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
+  fixUndercutsTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
+  fixUndercutsTestAABB(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
   buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
