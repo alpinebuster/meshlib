@@ -14,8 +14,8 @@
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
 
-
 #include "MRMesh.h"
+#include "MREdgeMetric.h"
 
 using namespace MR;
 using emscripten::val;
@@ -197,6 +197,8 @@ public:
      */
     val projectPoint( const val& point, float maxDistance = std::numeric_limits<float>::max() ) const;
 
+    val segmentByPoints( const std::vector<float>& coordinates, const std::vector<float>& dir,
+	const EdgeMetricWrapper& edgeMetricWrapper );
     val fixUndercuts(const Vector3f& upDirection) const;
     val fillHoles() const;
 

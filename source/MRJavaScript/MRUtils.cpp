@@ -13,6 +13,32 @@
 using namespace emscripten;
 using namespace MR;
 
+namespace MRJS 
+{
+	
+std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates )
+{
+    std::vector<Vector3f> points;
+
+    // Validate that we have complete sets of 3D coordinates
+    if ( coordinates.size() % 3 != 0 )
+    {
+        throw std::invalid_argument( "Coordinate array length must be divisible by 3" );
+    }
+
+    // Convert flat array to Vector3f objects
+    points.reserve( coordinates.size() / 3 );
+    for ( size_t i = 0; i < coordinates.size(); i += 3 )
+    {
+        points.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
+    }
+
+    return points;
+}
+
+}
+
+
 EMSCRIPTEN_BINDINGS( UtilsModule )
 {
 	register_vector<int>( "StdVectori" );
