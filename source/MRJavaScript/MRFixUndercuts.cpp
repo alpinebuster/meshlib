@@ -117,9 +117,6 @@ val fixUndercutsWrapper( Mesh& mesh, const Vector3f& upDirection, float voxelSiz
 	meshCopy.points = mesh.points;
 
 	// NOTE: We're passing the mesh by reference - it gets modified in place
-	// 
-	// fix( mesh, { .findParameters = {.upDirection = upDirectionMeshSpace},.voxelSize = voxelSize,.bottomExtension = bottomExtension } );
-	// 
 	auto result = fix( meshCopy, { .findParameters = {.upDirection = upDirection},.voxelSize = voxelSize,.bottomExtension = bottomExtension } );
 
 	val returnObj = val::object();

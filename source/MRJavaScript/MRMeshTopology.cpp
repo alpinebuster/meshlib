@@ -10,5 +10,8 @@ using namespace MR;
 EMSCRIPTEN_BINDINGS( MeshTopologyModule )
 {
     class_<MeshTopology>( "MeshTopology" )
-        .constructor<>();
+        .constructor<>()
+        
+        .function( "isClosed", &MeshTopology::isClosed, allow_raw_pointers() )
+        .function( "findHoleRepresentiveEdges", &MeshTopology::findHoleRepresentiveEdges, allow_raw_pointers() );
 }

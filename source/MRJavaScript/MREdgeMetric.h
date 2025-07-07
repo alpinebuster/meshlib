@@ -18,13 +18,9 @@ private:
 
 public:
     EdgeMetricWrapper() : metric() {}
-	EdgeMetricWrapper( EdgeMetric m ) : metric( std::move( m ) )
-	{
-	}
+	EdgeMetricWrapper( EdgeMetric m ) : metric( std::move( m ) ) {}
 	// Allow copying for JavaScript use
-	EdgeMetricWrapper( const EdgeMetricWrapper& other ) : metric( other.metric )
-	{
-	}
+	EdgeMetricWrapper( const EdgeMetricWrapper& other ) : metric( other.metric ) {}
 	
 	// Method to evaluate the metric for a given edge
 	float evaluate( EdgeId edgeId ) const;

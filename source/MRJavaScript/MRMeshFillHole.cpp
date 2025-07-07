@@ -157,13 +157,30 @@ val makeDegenerateBandAroundHoleWithOutput( Mesh& mesh, EdgeId a )
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 {
+	class_<StitchHolesParams>( "StitchHolesParams" )
+		.constructor<>()
+
+		.property( "metric", &StitchHolesParams::metric )
+		.property( "outNewFaces", &StitchHolesParams::outNewFaces, return_value_policy::reference() );
+	
 	class_<FillHoleParams>( "FillHoleParams" )
 		.constructor<>()
 
-		// TODO
-		// .property( "metric", &FillHoleParams::metric )
+		.property( "metric", &FillHoleParams::metric )
+		.property( "outNewFaces", &FillHoleParams::outNewFaces, return_value_policy::reference() )
 		.property( "makeDegenerateBand", &FillHoleParams::makeDegenerateBand )
-		.property( "maxPolygonSubdivisions", &FillHoleParams::maxPolygonSubdivisions );
+		.property( "maxPolygonSubdivisions", &FillHoleParams::maxPolygonSubdivisions )
+
+		.function( "getStopBeforeBadTriangulation", optional_override( [] ( FillHoleParams& self )
+		{
+			if ( !self.stopBeforeBadTriangulation ) throw std::runtime_error( "stopBeforeBadTriangulation is null" );
+			return *self.stopBeforeBadTriangulation;
+		}))
+		.function( "setStopBeforeBadTriangulation", optional_override( [] ( FillHoleParams& self, bool v )
+		{
+			if ( !self.stopBeforeBadTriangulation ) self.stopBeforeBadTriangulation = new bool;
+			*self.stopBeforeBadTriangulation = v;
+		}));
 
 	function( "fillHole", &fillHole );
 	function( "fillHoles", &fillHoles );
@@ -181,4 +198,8 @@ EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 	function( "extendHoleWithFuncAndOutput", &extendHoleFuncWithOutput );
 	function( "buildBottomWithOutput", &buildBottomWithOutput );
 	function( "makeDegenerateBandAroundHoleWithOutput", &makeDegenerateBandAroundHoleWithOutput );
+
+	
+	function( "buildCylinderBetweenTwoHolesWithEdges", select_overload<void( Mesh&, EdgeId, EdgeId, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
+	function( "buildCylinderBetweenTwoHoles", select_overload<bool( Mesh&, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
 }

@@ -37,32 +37,6 @@ public:
 };
 
 /**
- *@brief CutMesh with contour and extracting cutted parts
- * 
- *  using EdgePath = std::vector<EdgeId>;
- *  using EdgeLoop = std::vector<EdgeId>;
- *  using EdgeLoops = std::vector<EdgeLoop>;
- *
- * @param mesh 
- * @param cut 
- * @return std::pair<Mesh, Mesh> 
- */
-std::pair<Mesh, Mesh> returnParts_( const Mesh& mesh, const std::vector<EdgePath>& cut )
-{
-    Mesh innerMesh;
-    auto innerBitSet = fillContourLeft( mesh.topology, cut );
-    innerMesh.addMeshPart( {mesh, &innerBitSet} );
-
-    Mesh outerMesh;
-    auto cutReverse = cut;
-    MR::reverse( cutReverse );
-    auto outerBitSet = fillContourLeft( mesh.topology, cutReverse  );
-	outerMesh.addMeshPart( {mesh, &outerBitSet} );
-	
-	return { innerMesh, outerMesh };
-}
-
-/**
  *@brief Cut mesh with polyline
  *
  * 1. Project points of polyline to mesh

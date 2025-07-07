@@ -12,10 +12,33 @@
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
 #include <MRMesh/MRMeshFillHole.h>
-#include <MRVoxels/MRFixUndercuts.h>
 #include <MRMesh/MRSurroundingContour.h>
 #include <MRMesh/MRFillContourByGraphCut.h>
 #include <MRMesh/MREdgeMetric.h>
+#include <MRMesh/MRPolyline.h>
+#include <MRMesh/MRLine3.h>
+#include <MRMesh/MRMeshProject.h>
+#include <MRMesh/MRContoursCut.h>
+#include <MRMesh/MRPolylineProject.h>
+#include <MRMesh/MRMeshBoolean.h>
+#include <MRMesh/MROneMeshContours.h>
+#include <MRMesh/MRMeshIntersect.h>
+#include <MRMesh/MRParallelFor.h>
+#include <MRMesh/MRFillContour.h>
+#include <MRMesh/MREdgePaths.h>
+#include <MRMesh/MREnums.h>
+#include <MRMesh/MRSignDetectionMode.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRMeshFillHole.h>
+#include <MRMesh/MRMeshSubdivide.h>
+#include <MRMesh/MRPositionVertsSmoothly.h>
+#include <MRMesh/MRRegionBoundary.h>
+#include <MRMesh/MRPolyline.h>
+#include <MRMesh/MRTimer.h>
+#include <MRMesh/MRBitSet.h>
+
+#include <MRVoxels/MRFixUndercuts.h>
+#include <MRVoxels/MROffset.h>
 
 #include "MRMesh.h"
 #include "MRUtils.h"
@@ -230,7 +253,7 @@ val MeshWrapper::getFaceNormal( int faceId ) const
 	return val::null();
 }
 
-val MeshWrapper::segmentByPoints(
+val MeshWrapper::segmentByPointsImpl(
 	const std::vector<float>& coordinates, const std::vector<float>& dir,
 	const EdgeMetricWrapper& edgeMetricWrapper )
 {
@@ -342,7 +365,260 @@ val MeshWrapper::segmentByPoints(
 	return result;
 }
 
-val MeshWrapper::fixUndercuts(const Vector3f& upDirection) const
+val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params )
+{
+	// Return the mesh wrapped in an object that indicates success
+	val returnObj = val::object();
+	
+	// TODO: More performance gains? 
+	Mesh meshCopy;
+	meshCopy.addMeshPart( mesh );
+
+	MeshBuilder::uniteCloseVertices( meshCopy, meshCopy.computeBoundingBox().diagonal() * 1e-6 );
+	auto result = thickenMesh( mesh, offset, params );
+	if ( result )
+	{
+		Mesh& shell = result.value();
+
+		///
+
+		// // Stitch boundaries 
+		// auto holes = shell.topology.findHoleRepresentiveEdges();
+		// if ( holes.size() != 2 )
+		// {
+		// 	returnObj.set( "success", false );
+
+		// 	std::string errorMessage = "Expected 2 holes, found " + std::to_string( holes.size() ) + "\n";
+		// 	returnObj.set( "error: ", errorMessage );
+		// 	return returnObj;
+		// }
+
+		///
+
+		// Find boundary holes
+		auto holes = findRightBoundary( shell.topology );
+		std::vector<float> holesLength( holes.size() );
+		std::vector<Vector3f> holeCenters( holes.size() );
+
+		for ( size_t i = 0; i < holes.size(); ++i )
+		{
+			float length = 0.0f;
+			Vector3f center;
+			for ( EdgeId e : holes[i] )
+			{
+				auto org = shell.topology.org( e );
+				auto dest = shell.topology.dest( e );
+				length += ( shell.points[dest] - shell.points[org] ).length();
+				center += shell.points[org];
+			}
+			holesLength[i] = length;
+			holeCenters[i] = center / float( holes[i].size() );
+		}
+
+		// Find largest two holes
+		int maxLengthI = 0, maxLengthI2 = -1;
+		float maxLength = -1.0f;
+		for ( int i = 0; i < holesLength.size(); ++i )
+		{
+			if ( holesLength[i] > maxLength )
+			{
+				maxLength = holesLength[i];
+				maxLengthI = i;
+			}
+		}
+
+		maxLength = -1.0f;
+		for ( int i = 0; i < holesLength.size(); ++i )
+		{
+			if ( i != maxLengthI && holesLength[i] > maxLength )
+			{
+				maxLength = holesLength[i];
+				maxLengthI2 = i;
+			}
+		}
+
+		// Build hole pairs
+		std::vector<std::array<int, 2>> holePairs;
+		if ( maxLengthI2 != -1 )
+			holePairs.push_back( { maxLengthI, maxLengthI2 } );
+
+		// Find nearest pairs for remaining holes
+		std::vector<int> minDistancesI( holes.size(), -1 );
+		for ( int i = 0; i < holes.size(); ++i )
+		{
+			if ( i == maxLengthI || i == maxLengthI2 )
+				continue;
+
+			float minDist = std::numeric_limits<float>::max();
+			int minJ = -1;
+
+			for ( int j = 0; j < holes.size(); ++j )
+			{
+				if ( j == i || j == maxLengthI || j == maxLengthI2 )
+					continue;
+
+				float dist = ( holeCenters[i] - holeCenters[j] ).length();
+				if ( dist < minDist )
+				{
+					minDist = dist;
+					minJ = j;
+				}
+			}
+			minDistancesI[i] = minJ;
+		}
+
+		for ( int i = 0; i < holes.size() / 2; ++i )
+		{
+			if ( minDistancesI[i] != -1 )
+				holePairs.push_back( { i, minDistancesI[i] } );
+		}
+
+		// Stitch holes with cylinders
+		FaceBitSet newFaces;
+		StitchHolesParams stitchParams;
+		stitchParams.metric = getMinAreaMetric( shell );
+		stitchParams.outNewFaces = &newFaces;
+
+		for ( const auto& pair : holePairs )
+		{
+			if ( pair[0] < holes.size() && pair[1] < holes.size() )
+			{
+				if ( !holes[pair[0]].empty() && !holes[pair[1]].empty() )
+					buildCylinderBetweenTwoHoles( shell, holes[pair[0]][0], holes[pair[1]][0], stitchParams );
+			}
+		}
+
+		// Subdivide new faces
+		SubdivideSettings subdivSettings;
+		subdivSettings.region = &newFaces;
+		subdivSettings.maxEdgeSplits = INT_MAX;
+		subdivSettings.maxEdgeLen = 1.0f;
+
+		subdivideMesh( shell, subdivSettings );
+
+		// Smooth vertices
+		auto smoothVerts = getInnerVerts( shell.topology, newFaces );
+		positionVertsSmoothly( shell, smoothVerts );
+
+
+		val meshData = MRJS::exportMeshMemoryView( shell );
+
+		returnObj.set( "success", true );
+		returnObj.set( "mesh", meshData );
+
+		return returnObj;
+	}
+	else
+	{
+		// Return an error object with the error message
+		val returnObj = val::object();
+		returnObj.set( "success", false );
+		returnObj.set( "error", result.error() );
+
+		return returnObj;
+	}
+}
+
+val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates )
+{
+	std::vector<Vector3f> polyline;
+
+    int coordinatesLength = coordinates.size();
+    if (coordinatesLength % 3 != 0) {
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "Coordinates length must be a multiple of 3!" );
+
+		return obj;
+    }
+
+	polyline.reserve( coordinatesLength / 3 );
+
+	for ( size_t i = 0; i < coordinatesLength; i += 3 )
+	{
+		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
+	}
+	Polyline3 initialPolyline;
+	initialPolyline.addFromPoints( polyline.data(), polyline.size() );
+
+	std::vector<MeshTriPoint> projectedPolyline;
+	projectedPolyline.reserve( initialPolyline.points.size() );
+	MeshPart m = MeshPart( mesh, nullptr );
+
+
+	val jsTestProjectedPoint = val::array();
+
+	mesh.getAABBTree(); // Create tree in parallel before loop
+	for ( Vector3f pt : initialPolyline.points )
+	{
+		MeshProjectionResult mpr = findProjection( pt, m );
+		projectedPolyline.push_back( mpr.mtp );
+
+
+		val projPoint = val::object();
+		projPoint.set("x", mpr.proj.point.x);
+		projPoint.set("y", mpr.proj.point.y);
+		projPoint.set("z", mpr.proj.point.z);
+		jsTestProjectedPoint.call<void>("push", projPoint);
+	}
+
+	auto meshContour = convertMeshTriPointsToMeshContour( mesh, projectedPolyline );
+	if ( meshContour )
+	{
+    	const MR::OneMeshContour& testContour = *meshContour;
+		val jsTestProjectedContour = val::array();
+		for (const auto& intersection : testContour.intersections)
+		{
+			val point = val::object();
+			point.set("x", intersection.coordinate.x);
+			point.set("y", intersection.coordinate.y);
+			point.set("z", intersection.coordinate.z);
+			jsTestProjectedContour.call<void>("push", point);
+		}
+
+
+		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
+
+
+		val jsTestCutPoints = val::array();
+		for (const auto& loop : cutResults.resultCut) {
+			for (const auto& edge : loop) {
+				Vector3f p = mesh.orgPnt(edge);
+				val point = val::object();
+				point.set("x", p.x);
+				point.set("y", p.y);
+				point.set("z", p.z);
+				jsTestCutPoints.call<void>("push", point);
+			}
+		}
+		
+		// FIXME:
+		auto [innerMesh, outerMesh] = MRJS::returnParts( mesh, cutResults.resultCut );
+		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
+		val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
+
+
+		val obj = val::object();
+		obj.set( "success", true );
+		obj.set( "innerMesh", innerMeshData );
+		obj.set( "outerMesh", outerMeshData );
+		obj.set( "jsTestProjectedPoint", jsTestProjectedPoint );
+		obj.set( "jsTestProjectedContour", jsTestProjectedContour );
+		obj.set( "jsTestCutPoints", jsTestCutPoints );
+
+		return obj;
+	} else {
+		std::string error = meshContour.error();
+
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "convertMeshTriPointsToMeshContour: " + error );
+	
+		return obj;
+	}
+}
+
+val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
 {
 	val returnObj = val::object();
 
@@ -369,7 +645,7 @@ val MeshWrapper::fixUndercuts(const Vector3f& upDirection) const
     return returnObj;
 }
 
-val MeshWrapper::fillHoles() const
+val MeshWrapper::fillHolesImpl() const
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
 	// TODO: More performance gains? 
@@ -474,9 +750,11 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.function( "getFaceVertices", &MeshWrapper::getFaceVertices )
 		.function( "getFaceNormal", &MeshWrapper::getFaceNormal )
 
-		.function( "segmentByPoints", &MeshWrapper::segmentByPoints )
-		.function( "fixUndercuts", &MeshWrapper::fixUndercuts )
-		.function( "fillHoles", &MeshWrapper::fillHoles )
+		.function( "thickenMeshImpl", &MeshWrapper::thickenMeshImpl)
+		.function( "cutMeshWithPolylineImpl", &MeshWrapper::cutMeshWithPolylineImpl )
+		.function( "segmentByPointsImpl", &MeshWrapper::segmentByPointsImpl )
+		.function( "fixUndercutsImpl", &MeshWrapper::fixUndercutsImpl )
+		.function( "fillHolesImpl", &MeshWrapper::fillHolesImpl )
 
 		// Spatial queries
 		.function( "projectPoint", &MeshWrapper::projectPoint )

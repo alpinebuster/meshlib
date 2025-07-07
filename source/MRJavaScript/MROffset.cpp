@@ -3,6 +3,7 @@
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MREnums.h>
+
 #include <MRVoxels/MROffset.h>
 
 #include "MRUtils.h"
@@ -10,15 +11,14 @@
 using namespace emscripten;
 using namespace MR;
 
-// Helper function to handle the Expected<Mesh> return type
 // Emscripten works better with simple return types, so we'll unwrap the Expected
 val thickenMeshWrapper( const Mesh& mesh, float offset, const GeneralOffsetParameters& params )
 {
 	auto result = thickenMesh( mesh, offset, params );
 
-	if ( result.has_value() )
+	if ( result )
 	{
-		val meshData = MRJS::exportMeshData( result.value() );
+		val meshData = MRJS::exportMeshMemoryView( result.value() );
 
 		// Return the mesh wrapped in an object that indicates success
 		val returnObj = val::object();
@@ -40,7 +40,12 @@ val thickenMeshWrapper( const Mesh& mesh, float offset, const GeneralOffsetParam
 
 EMSCRIPTEN_BINDINGS( ThickenMeshModule )
 {
-	class_<OffsetParameters>( "OffsetParameters" )
+	class_<BaseShellParameters>( "BaseShellParameters" )
+		.constructor<>()
+
+		.property( "voxelSize", &OffsetParameters::voxelSize );
+	
+	class_<OffsetParameters, base<BaseShellParameters>>( "OffsetParameters" )
 		.constructor<>()
 
 		.property( "signDetectionMode", &OffsetParameters::signDetectionMode )
@@ -77,4 +82,5 @@ EMSCRIPTEN_BINDINGS( ThickenMeshModule )
 	// Expose the wrapper function instead of the original
 	// This gives us better error handling in JavaScript
 	function( "thickenMesh", &thickenMeshWrapper );
+	function( "suggestVoxelSize", &suggestVoxelSize );
 }
