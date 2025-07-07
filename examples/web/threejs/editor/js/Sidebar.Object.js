@@ -250,7 +250,8 @@ function SidebarObject( editor ) {
 							const floatVec = new editor.mrmesh.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
 							
-							const result = editor.mrmesh.cutMeshWithPolyline( curMeshWrapper.mesh, floatVec );
+							// const result = editor.mrmesh.cutMeshWithPolyline( curMeshWrapper.mesh, floatVec );
+							const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
 							const newVertices = result.innerMesh.vertices;
 							const newIndices = new Uint32Array( result.innerMesh.indices );
@@ -282,7 +283,7 @@ function SidebarObject( editor ) {
 							// const metricWrapper = editor.mrmesh.edgeLengthMetric( curMeshWrapper.mesh );
 							// const metricWrapper = editor.mrmesh.identityMetric( );
 							const metricWrapper = editor.mrmesh.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
-							const result_ = curMeshWrapper.segmentByPoints( _pArr, _dArr, metricWrapper );
+							const result_ = curMeshWrapper.segmentByPointsImpl( _pArr, _dArr, metricWrapper );
 							_pArr.delete();
 							const newVertices_ = result_.mesh.vertices;
 							const newIndices_ = new Uint32Array( result_.mesh.indices );
@@ -387,11 +388,11 @@ function SidebarObject( editor ) {
 					-threeWorldDir.z,
 				)
 
-				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.mesh, upDir );
-				const result = curMeshWrapper.fixUndercuts( upDir );
+				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.getMesh(), upDir );
+				const result = curMeshWrapper.fixUndercutsImpl( upDir );
 				
 				const newVertices = result.mesh.vertices;
-				const newIndices = new Uint32Array( result.mesh.indices );
+				const newIndices = result.mesh.indices;
 				const newGeometry = new THREE.BufferGeometry();
 				newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
 				newGeometry.computeVertexNormals();
@@ -421,6 +422,40 @@ function SidebarObject( editor ) {
 		}
 	});
 
+	const wasmOpThickenMesh = new UIButton( strings.getKey( 'sidebar/object/wasmOpThickenMesh') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if (currentUUID) {
+			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const curMeshWrapper = editor.wasmObject[currentUUID];
+
+				const params = new editor.mrmesh.GeneralOffsetParameters();
+				params.signDetectionMode = editor.mrmesh.SignDetectionMode.Unsigned;
+				const meshPart = new editor.mrmesh.MeshPart( curMeshWrapper.getMesh() );
+				params.voxelSize = editor.mrmesh.suggestVoxelSize( meshPart, 5e6 );
+
+				// const result = editor.mrmesh.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
+				const result = curMeshWrapper.thickenMeshImpl( 1.2, params );
+				
+				const newVertices = result.mesh.vertices;
+				const newIndices = result.mesh.indices;
+				const newGeometry = new THREE.BufferGeometry();
+				newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
+				newGeometry.computeVertexNormals();
+				newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
+				const newMaterial = new THREE.MeshNormalMaterial();
+				const newMesh = new THREE.Mesh( newGeometry, newMaterial );
+				newMesh.name = `wasm-${editor.select.name}-thickened`;
+				newMesh.castShadow = true;
+				newMesh.receiveShadow = true;
+
+				editor.execute( new AddObjectCommand( editor, newMesh ) );
+			}
+		}
+	});
+
+
 	wasmOpsRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
 
 	const wasmOpsRowHole = new UIRow();
@@ -433,12 +468,16 @@ function SidebarObject( editor ) {
 
 	const wasmOpsRowFixUndercuts = new UIRow();
 	wasmOpsRowFixUndercuts.add( wasmOpFixUndercuts );
-	wasmOpsRowFixUndercuts.add( wasmOpSegmentByPoints );
+	wasmOpsRowFixUndercuts.add(wasmOpSegmentByPoints);
+	
+	const wasmOpsRowThicken = new UIRow();
+	wasmOpsRowThicken.add( wasmOpThickenMesh );
 	
 	container.add( wasmOpsRow );
 	container.add( wasmOpsRowHole );
 	container.add( wasmOpsRowSelector );
 	container.add( wasmOpsRowFixUndercuts );
+	container.add( wasmOpsRowThicken );
 
 	// fov
 

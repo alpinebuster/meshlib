@@ -825,6 +825,7 @@ export interface Mesh extends ClassHandle {
 
 export interface MeshWrapper extends ClassHandle {
   mesh: Mesh;
+  getMesh(): Mesh | null;
   getBoundingBox(): any;
   getVertexCount(): number;
   getFaceCount(): number;
@@ -835,12 +836,14 @@ export interface MeshWrapper extends ClassHandle {
   setVertexPosition(_0: number, _1: any): void;
   getFaceVertices(_0: number): any;
   getFaceNormal(_0: number): any;
-  fillHoles(): any;
+  fillHolesImpl(): any;
   projectPoint(_0: any, _1: number): any;
   transform(_0: any): void;
   pack(): void;
-  segmentByPoints(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
-  fixUndercuts(_0: Vector3f): any;
+  thickenMeshImpl(_0: number, _1: GeneralOffsetParameters): any;
+  cutMeshWithPolylineImpl(_0: StdVectorf): any;
+  segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
+  fixUndercutsImpl(_0: Vector3f): any;
 }
 
 export interface BooleanOperationValue<T extends number> {
@@ -856,6 +859,28 @@ export interface BooleanResult extends ClassHandle {
   set errorString(value: EmbindString);
   valid(): boolean;
   getMesh(): Mesh;
+}
+
+export interface VectorVertDuplication extends ClassHandle {
+  size(): number;
+  get(_0: number): VertDuplication | undefined;
+  push_back(_0: VertDuplication): void;
+  resize(_0: number, _1: VertDuplication): void;
+  set(_0: number, _1: VertDuplication): boolean;
+}
+
+export interface UniteCloseParams extends ClassHandle {
+  closeDist: number;
+  uniteOnlyBd: boolean;
+  region: VertBitSet | null;
+  duplicateNonManifold: boolean;
+  optionalDuplications: VectorVertDuplication | null;
+  optionalVertOldToNew: VertMap | null;
+}
+
+export interface VertDuplication extends ClassHandle {
+  srcVert: VertId;
+  dupVert: VertId;
 }
 
 export interface EdgeTri extends ClassHandle {
@@ -932,9 +957,18 @@ export interface MakeDegenerateBandAroundRegionParams extends ClassHandle {
   setMaxEdgeLength(_0: number): void;
 }
 
+export interface StitchHolesParams extends ClassHandle {
+  outNewFaces: FaceBitSet | null;
+  metric: FillHoleMetric;
+}
+
 export interface FillHoleParams extends ClassHandle {
+  outNewFaces: FaceBitSet | null;
   makeDegenerateBand: boolean;
   maxPolygonSubdivisions: number;
+  metric: FillHoleMetric;
+  getStopBeforeBadTriangulation(): boolean;
+  setStopBeforeBadTriangulation(_0: boolean): void;
 }
 
 export type NoInit = {
@@ -1983,6 +2017,21 @@ export interface NodeVec extends ClassHandle {
 export interface MeshLoadWrapper extends ClassHandle {
 }
 
+export interface FillHoleMetric extends ClassHandle {
+}
+
+export interface FillTriangleMetric extends ClassHandle {
+}
+
+export interface FillEdgeMetric extends ClassHandle {
+}
+
+export interface FillCombineMetric extends ClassHandle {
+}
+
+export interface FillHoleMetricWrapper extends ClassHandle {
+}
+
 export interface MeshOrPoints extends ClassHandle {
   getObjBoundingBox(): Box3f;
   cacheAABBTree(): void;
@@ -2024,7 +2073,26 @@ export interface VectorMeshProjectionResult extends ClassHandle {
   set(_0: number, _1: MeshProjectionResult): boolean;
 }
 
+export interface SubdivideSettings extends ClassHandle {
+  maxEdgeLen: number;
+  maxEdgeSplits: number;
+  maxDeviationAfterFlip: number;
+  maxAngleChangeAfterFlip: number;
+  criticalAspectRatioFlip: number;
+  region: FaceBitSet | null;
+  notFlippable: UndirectedEdgeBitSet | null;
+  newVerts: VertBitSet | null;
+  subdivideBorder: boolean;
+  maxTriAspectRatio: number;
+  maxSplittableTriAspectRatio: number;
+  smoothMode: boolean;
+  minSharpDihedralAngle: number;
+  projectOnOriginalMesh: boolean;
+}
+
 export interface MeshTopology extends ClassHandle {
+  isClosed(_0: FaceBitSet | null): boolean;
+  findHoleRepresentiveEdges(_0: FaceBitSet | null): VectorEdgeId;
 }
 
 export type WeightedVertex = {
@@ -2060,7 +2128,11 @@ export interface NoDefInitEdgeId extends ClassHandle {
 export interface NoDefInitUndirectedEdgeId extends ClassHandle {
 }
 
-export interface OffsetParameters extends ClassHandle {
+export interface BaseShellParameters extends ClassHandle {
+  voxelSize: number;
+}
+
+export interface OffsetParameters extends BaseShellParameters {
   closeHolesInHoleWindingNumber: boolean;
   windingNumberThreshold: number;
   windingNumberBeta: number;
@@ -3116,6 +3188,16 @@ interface EmbindModule {
     new(): BooleanResult;
   };
   performBoolean(_0: Mesh, _1: Mesh, _2: BooleanOperation): BooleanResult;
+  VectorVertDuplication: {
+    new(): VectorVertDuplication;
+  };
+  UniteCloseParams: {
+    new(): UniteCloseParams;
+  };
+  VertDuplication: {
+    new(): VertDuplication;
+  };
+  uniteCloseVertices(_0: Mesh, _1: UniteCloseParams): number;
   EdgeTri: {
     new(): EdgeTri;
     new(_0: EdgeId, _1: FaceId): EdgeTri;
@@ -3156,10 +3238,14 @@ interface EmbindModule {
     new(): MakeDegenerateBandAroundRegionParams;
   };
   makeDegenerateBandAroundRegion(_0: Mesh, _1: FaceBitSet, _2: MakeDegenerateBandAroundRegionParams): void;
+  StitchHolesParams: {
+    new(): StitchHolesParams;
+  };
   FillHoleParams: {
     new(): FillHoleParams;
   };
   fillHoles(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): void;
+  buildCylinderBetweenTwoHoles(_0: Mesh, _1: StitchHolesParams): boolean;
   noInit: NoInit;
   UndirectedEdgeId: {
     new(): UndirectedEdgeId;
@@ -3189,6 +3275,7 @@ interface EmbindModule {
   makeDegenerateBandAroundHole(_0: Mesh, _1: EdgeId): EdgeId;
   extendHoleWithFuncAndOutput(_0: Mesh, _1: EdgeId, _2: any): any;
   makeDegenerateBandAroundHoleWithOutput(_0: Mesh, _1: EdgeId): any;
+  buildCylinderBetweenTwoHolesWithEdges(_0: Mesh, _1: EdgeId, _2: EdgeId, _3: StitchHolesParams): void;
   FaceId: {
     new(): FaceId;
     new(_0: number): FaceId;
@@ -3431,6 +3518,33 @@ interface EmbindModule {
     fromFile(_0: EmbindString): any;
     fromBinaryData(_0: number, _1: number, _2: EmbindString): any;
   };
+  FillHoleMetric: {
+    new(): FillHoleMetric;
+  };
+  FillTriangleMetric: {
+    new(): FillTriangleMetric;
+  };
+  FillEdgeMetric: {
+    new(): FillEdgeMetric;
+  };
+  FillCombineMetric: {
+    new(): FillCombineMetric;
+  };
+  FillHoleMetricWrapper: {
+    new(_0: FillHoleMetricWrapper): FillHoleMetricWrapper;
+    createFillHoleMetricWrapperFromOther(_0: FillHoleMetricWrapper): FillHoleMetricWrapper;
+  };
+  createCircumscribedMetric(_0: Mesh): FillHoleMetricWrapper;
+  createPlaneFillMetric(_0: Mesh, _1: EdgeId): FillHoleMetricWrapper;
+  createPlaneNormalizedFillMetric(_0: Mesh, _1: EdgeId): FillHoleMetricWrapper;
+  createComplexStitchMetric(_0: Mesh): FillHoleMetricWrapper;
+  createEdgeLengthFillMetric(_0: Mesh): FillHoleMetricWrapper;
+  createEdgeLengthStitchMetric(_0: Mesh): FillHoleMetricWrapper;
+  createComplexFillMetricWithEdgeId(_0: Mesh, _1: EdgeId): FillHoleMetricWrapper;
+  createComplexFillMetric(_0: Mesh): FillHoleMetricWrapper;
+  createUniversalMetric(_0: Mesh): FillHoleMetricWrapper;
+  createMinTriAngleMetric(_0: Mesh): FillHoleMetricWrapper;
+  createMinAreaMetric(_0: Mesh): FillHoleMetricWrapper;
   MeshOrPoints: {
     new(_0: Mesh): MeshOrPoints;
   };
@@ -3452,6 +3566,9 @@ interface EmbindModule {
   };
   VectorMeshProjectionResult: {
     new(): VectorMeshProjectionResult;
+  };
+  SubdivideSettings: {
+    new(): SubdivideSettings;
   };
   MeshTopology: {
     new(): MeshTopology;
@@ -3479,6 +3596,9 @@ interface EmbindModule {
   NoDefInitUndirectedEdgeId: {
     new(): NoDefInitUndirectedEdgeId;
   };
+  BaseShellParameters: {
+    new(): BaseShellParameters;
+  };
   OffsetParameters: {
     new(): OffsetParameters;
   };
@@ -3491,6 +3611,7 @@ interface EmbindModule {
   OffsetMode: {Smooth: OffsetModeValue<0>, Standard: OffsetModeValue<1>, Sharpening: OffsetModeValue<2>};
   SignDetectionMode: {Unsigned: SignDetectionModeValue<0>, OpenVDB: SignDetectionModeValue<1>, ProjectionNormal: SignDetectionModeValue<2>, WindingRule: SignDetectionModeValue<3>, HoleWindingRule: SignDetectionModeValue<4>};
   thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
+  suggestVoxelSize(_0: MeshPart, _1: number): number;
   Plane3f: {
     new(): Plane3f;
     new(_0: Plane3d): Plane3f;
@@ -3501,6 +3622,7 @@ interface EmbindModule {
   extendAllHoles(_0: Mesh, _1: Plane3f): VectorEdgeId;
   extendHoleWithOutput(_0: Mesh, _1: EdgeId, _2: Plane3f): any;
   extendAllHolesWithOutput(_0: Mesh, _1: Plane3f): any;
+  createComplexFillMetricWithPlane3f(_0: Mesh, _1: EdgeId, _2: Plane3f | null): FillHoleMetricWrapper;
   Plane3d: {
     new(): Plane3d;
     new(_0: Plane3f): Plane3d;
@@ -3757,10 +3879,10 @@ interface EmbindModule {
   createFixParams(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
   fixUndercuts(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
-  fixUndercutsTestAABB(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
   buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
+  createVerticalStitchMetric(_0: Mesh, _1: Vector3f): FillHoleMetricWrapper;
   projectOnAllWithProgress(_0: Vector3f, _1: AABBTreeObjects, _2: number, _3: any, _4: ObjId): void;
   distanceSqf(_0: Vector3f, _1: Vector3f): number;
   distancef(_0: Vector3f, _1: Vector3f): number;
