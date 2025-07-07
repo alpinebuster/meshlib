@@ -54,30 +54,26 @@ inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
     // === Export triangle data ===
     const auto& tris_ = meshToExport.topology.getTriangulation();
     size_t triangleCount = tris_.size();
-    size_t indexElementCount = triangleCount * 3;
-    //  unsigned int*	-> Uint32Array, we need `Uint32Array` for threejs
+    size_t triElementCount = triangleCount * 3;
+    // NOTE:
+    // 
+    //  uint32_t*   	-> Uint32Array, we need `Uint32Array` for threejs
     //  int*	        -> Int32Array
-    const int* triDataPtr = reinterpret_cast< const int* >( tris_.data() );
+    // 
+    const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
 
-    // FIXME: Why this wont work for indices?
     // Use `typed_memory_view()` for triangles
-    // val triangleArray = val( typed_memory_view(
-    //     indexElementCount, 
-    //     // triDataPtr
-    //     flatIndices.data()
-    // ) );
-	val triangleArray = val::array();
-    triangleArray.set("length", indexElementCount);
-	for (size_t i = 0; i < indexElementCount; ++i) {
-		triangleArray.set(i, val(triDataPtr[i]));
-    }
+    val triangleArray = val( typed_memory_view(
+        triElementCount, 
+        triDataPtr
+    ) );
     
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );
-    meshData.set( "vertexElementCount", val(vertexElementCount) );
-    meshData.set( "vertexCount", val( pointCount ) );
+    meshData.set( "vertexElementCount", vertexElementCount );
+    meshData.set( "vertexCount", pointCount );
     meshData.set( "indices", triangleArray );
-    meshData.set( "indexElementCount", val(indexElementCount) );
+    meshData.set( "indexElementCount", triElementCount );
     meshData.set( "indexCount", triangleCount );
 
     return meshData;

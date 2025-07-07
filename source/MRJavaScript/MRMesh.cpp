@@ -58,6 +58,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 	} );
 }
 
+
 // Helper function to create Vector3f from JavaScript array
 Vector3f arrayToVector3f( const val& arr )
 {
@@ -87,9 +88,9 @@ val box3fToObject( const Box<Vector3<float>>& box )
 // ------------------------------------------------------------------------
 // Wrappers for `Mesh`
 // ------------------------------------------------------------------------
-MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m )
-{
-}
+MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
+
+Mesh* MeshWrapper::getMeshPtr() { return &mesh; }
 
 // Static factory methods for creating meshes from various sources
 val MeshWrapper::fromTriangles( const val& vertexCoords, const val& triangles )
@@ -350,12 +351,14 @@ val MeshWrapper::fixUndercuts(const Vector3f& upDirection) const
 
 	// TODO: More performance gains? 
 	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
+	// meshCopy.topology = mesh.topology;
+	// meshCopy.points = mesh.points;
+	meshCopy.addMeshPart( mesh );
 	
 	auto result = FixUndercuts::fix(
 		meshCopy,
-		{.findParameters = {.upDirection = upDirection}}
+		// {.findParameters = {.upDirection = upDirection}} // NOTE: This also works!!!
+		fixParams
 	);
 
 	val meshData = MRJS::exportMeshMemoryView( meshCopy );
@@ -447,11 +450,13 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 	// Bindings for `MeshWrapper`
 	// ------------------------------------------------------------------------
 	class_<MeshWrapper>( "MeshWrapper" )
+		.smart_ptr<std::shared_ptr<MeshWrapper>>( "shared_ptr<MeshWrapper>" ) 
 		.constructor<>()
 		.constructor<const Mesh&>()
 		.class_function( "fromTriangles", &MeshWrapper::fromTriangles )
 
 		.property( "mesh", &MeshWrapper::mesh )
+		.function( "getMesh", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
 
 		// Geometric properties
 		.function( "getBoundingBox", &MeshWrapper::getBoundingBox )

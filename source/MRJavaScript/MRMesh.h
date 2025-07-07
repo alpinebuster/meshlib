@@ -91,6 +91,8 @@ public:
      */
     MeshWrapper( const Mesh& m );
 
+    Mesh* getMeshPtr();
+
     // Static factory method
     /**
      * @brief Creates a mesh from triangle data
