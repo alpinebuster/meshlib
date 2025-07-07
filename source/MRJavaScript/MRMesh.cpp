@@ -379,33 +379,124 @@ val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params 
 	if ( result )
 	{
 		Mesh& shell = result.value();
-		// Stitch boundaries 
-		auto holes = shell.topology.findHoleRepresentiveEdges();
 
-		if ( holes.size() != 2 )
+		///
+
+		// // Stitch boundaries 
+		// auto holes = shell.topology.findHoleRepresentiveEdges();
+		// if ( holes.size() != 2 )
+		// {
+		// 	returnObj.set( "success", false );
+
+		// 	std::string errorMessage = "Expected 2 holes, found " + std::to_string( holes.size() ) + "\n";
+		// 	returnObj.set( "error: ", errorMessage );
+		// 	return returnObj;
+		// }
+
+		///
+
+		// Find boundary holes
+		auto holes = findRightBoundary( shell.topology );
+		std::vector<float> holesLength( holes.size() );
+		std::vector<Vector3f> holeCenters( holes.size() );
+
+		for ( size_t i = 0; i < holes.size(); ++i )
 		{
-			returnObj.set( "success", false );
-
-			std::string errorMessage = "Expected 2 holes, found " + std::to_string( holes.size() ) + "\n";
-			returnObj.set( "error: ", errorMessage );
-			return returnObj;
+			float length = 0.0f;
+			Vector3f center;
+			for ( EdgeId e : holes[i] )
+			{
+				auto org = shell.topology.org( e );
+				auto dest = shell.topology.dest( e );
+				length += ( shell.points[dest] - shell.points[org] ).length();
+				center += shell.points[org];
+			}
+			holesLength[i] = length;
+			holeCenters[i] = center / float( holes[i].size() );
 		}
 
+		// Find largest two holes
+		int maxLengthI = 0, maxLengthI2 = -1;
+		float maxLength = -1.0f;
+		for ( int i = 0; i < holesLength.size(); ++i )
+		{
+			if ( holesLength[i] > maxLength )
+			{
+				maxLength = holesLength[i];
+				maxLengthI = i;
+			}
+		}
+
+		maxLength = -1.0f;
+		for ( int i = 0; i < holesLength.size(); ++i )
+		{
+			if ( i != maxLengthI && holesLength[i] > maxLength )
+			{
+				maxLength = holesLength[i];
+				maxLengthI2 = i;
+			}
+		}
+
+		// Build hole pairs
+		std::vector<std::array<int, 2>> holePairs;
+		if ( maxLengthI2 != -1 )
+			holePairs.push_back( { maxLengthI, maxLengthI2 } );
+
+		// Find nearest pairs for remaining holes
+		std::vector<int> minDistancesI( holes.size(), -1 );
+		for ( int i = 0; i < holes.size(); ++i )
+		{
+			if ( i == maxLengthI || i == maxLengthI2 )
+				continue;
+
+			float minDist = std::numeric_limits<float>::max();
+			int minJ = -1;
+
+			for ( int j = 0; j < holes.size(); ++j )
+			{
+				if ( j == i || j == maxLengthI || j == maxLengthI2 )
+					continue;
+
+				float dist = ( holeCenters[i] - holeCenters[j] ).length();
+				if ( dist < minDist )
+				{
+					minDist = dist;
+					minJ = j;
+				}
+			}
+			minDistancesI[i] = minJ;
+		}
+
+		for ( int i = 0; i < holes.size() / 2; ++i )
+		{
+			if ( minDistancesI[i] != -1 )
+				holePairs.push_back( { i, minDistancesI[i] } );
+		}
+
+		// Stitch holes with cylinders
 		FaceBitSet newFaces;
 		StitchHolesParams stitchParams;
 		stitchParams.metric = getMinAreaMetric( shell );
 		stitchParams.outNewFaces = &newFaces;
-		buildCylinderBetweenTwoHoles( shell, holes[0], holes[1], stitchParams );
+
+		for ( const auto& pair : holePairs )
+		{
+			if ( pair[0] < holes.size() && pair[1] < holes.size() )
+			{
+				if ( !holes[pair[0]].empty() && !holes[pair[1]].empty() )
+					buildCylinderBetweenTwoHoles( shell, holes[pair[0]][0], holes[pair[1]][0], stitchParams );
+			}
+		}
 
 		// Subdivide new faces
 		SubdivideSettings subdivSettings;
 		subdivSettings.region = &newFaces;
-		subdivSettings.maxEdgeSplits = INT_MAX; // or 10000000
+		subdivSettings.maxEdgeSplits = INT_MAX;
 		subdivSettings.maxEdgeLen = 1.0f;
 
 		subdivideMesh( shell, subdivSettings );
 
-		// Smooth new vertices
+		// Smooth vertices
 		auto smoothVerts = getInnerVerts( shell.topology, newFaces );
 		positionVertsSmoothly( shell, smoothVerts );
 
