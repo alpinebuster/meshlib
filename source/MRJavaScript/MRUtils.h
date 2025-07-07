@@ -13,6 +13,7 @@
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
+#include <MRMesh/MREdgePaths.h>
 
 using namespace emscripten;
 using namespace MR;
@@ -25,6 +26,8 @@ namespace MRJS {
  * coordinates should contain [x1,y1,z1, x2,y2,z2, x3,y3,z3, ...] for each point
  */
 [[nodiscard]] std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates );
+
+std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut );
 
 // NOTE: Export mesh data using `typed_memory_view()`
 // 

@@ -7,6 +7,8 @@
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
+#include <MRMesh/MREdgePaths.h>
+#include <MRMesh/MRFillContour.h>
 
 #include "MRUtils.h"
 
@@ -34,6 +36,32 @@ std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates 
     }
 
     return points;
+}
+
+/**
+ *@brief CutMesh with contour and extracting cutted parts
+ * 
+ *  using EdgePath = std::vector<EdgeId>;
+ *  using EdgeLoop = std::vector<EdgeId>;
+ *  using EdgeLoops = std::vector<EdgeLoop>;
+ *
+ * @param mesh 
+ * @param cut 
+ * @return std::pair<Mesh, Mesh> 
+ */
+std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut )
+{
+    Mesh innerMesh;
+    auto innerBitSet = fillContourLeft( mesh.topology, cut );
+    innerMesh.addMeshPart( {mesh, &innerBitSet} );
+
+    Mesh outerMesh;
+    auto cutReverse = cut;
+    MR::reverse( cutReverse );
+    auto outerBitSet = fillContourLeft( mesh.topology, cutReverse  );
+	outerMesh.addMeshPart( {mesh, &outerBitSet} );
+	
+	return { innerMesh, outerMesh };
 }
 
 }

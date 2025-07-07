@@ -14,6 +14,8 @@
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
 
+#include <MRVoxels/MROffset.h>
+
 #include "MRMesh.h"
 #include "MREdgeMetric.h"
 
@@ -198,7 +200,9 @@ public:
      * commonly used for surface sampling, collision detection, and mesh alignment.
      */
     val projectPoint( const val& point, float maxDistance = std::numeric_limits<float>::max() ) const;
-
+    
+    val thickenMeshWrapper( float offset, GeneralOffsetParameters &params );
+    val cutMeshWithPolyline( const std::vector<float>& coordinates );
     val segmentByPoints( const std::vector<float>& coordinates, const std::vector<float>& dir,
 	const EdgeMetricWrapper& edgeMetricWrapper );
     val fixUndercuts(const Vector3f& upDirection) const;
