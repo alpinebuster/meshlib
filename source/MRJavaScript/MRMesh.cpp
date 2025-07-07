@@ -28,6 +28,14 @@
 #include <MRMesh/MREdgePaths.h>
 #include <MRMesh/MREnums.h>
 #include <MRMesh/MRSignDetectionMode.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRMeshFillHole.h>
+#include <MRMesh/MRMeshSubdivide.h>
+#include <MRMesh/MRPositionVertsSmoothly.h>
+#include <MRMesh/MRRegionBoundary.h>
+#include <MRMesh/MRPolyline.h>
+#include <MRMesh/MRTimer.h>
+#include <MRMesh/MRBitSet.h>
 
 #include <MRVoxels/MRFixUndercuts.h>
 #include <MRVoxels/MROffset.h>
@@ -245,7 +253,7 @@ val MeshWrapper::getFaceNormal( int faceId ) const
 	return val::null();
 }
 
-val MeshWrapper::segmentByPoints(
+val MeshWrapper::segmentByPointsImpl(
 	const std::vector<float>& coordinates, const std::vector<float>& dir,
 	const EdgeMetricWrapper& edgeMetricWrapper )
 {
@@ -357,19 +365,53 @@ val MeshWrapper::segmentByPoints(
 	return result;
 }
 
-val MeshWrapper::thickenMeshWrapper( float offset, GeneralOffsetParameters &params )
+val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params )
 {
+	// Return the mesh wrapped in an object that indicates success
+	val returnObj = val::object();
+	
 	// TODO: More performance gains? 
 	Mesh meshCopy;
 	meshCopy.addMeshPart( mesh );
 
+	MeshBuilder::uniteCloseVertices( meshCopy, meshCopy.computeBoundingBox().diagonal() * 1e-6 );
 	auto result = thickenMesh( mesh, offset, params );
 	if ( result )
 	{
-		val meshData = MRJS::exportMeshMemoryView( result.value() );
+		Mesh& shell = result.value();
+		// Stitch boundaries 
+		auto holes = shell.topology.findHoleRepresentiveEdges();
 
-		// Return the mesh wrapped in an object that indicates success
-		val returnObj = val::object();
+		if ( holes.size() != 2 )
+		{
+			returnObj.set( "success", false );
+
+			std::string errorMessage = "Expected 2 holes, found " + std::to_string( holes.size() ) + "\n";
+			returnObj.set( "error: ", errorMessage );
+			return returnObj;
+		}
+
+		FaceBitSet newFaces;
+		StitchHolesParams stitchParams;
+		stitchParams.metric = getMinAreaMetric( shell );
+		stitchParams.outNewFaces = &newFaces;
+		buildCylinderBetweenTwoHoles( shell, holes[0], holes[1], stitchParams );
+
+		// Subdivide new faces
+		SubdivideSettings subdivSettings;
+		subdivSettings.region = &newFaces;
+		subdivSettings.maxEdgeSplits = INT_MAX; // or 10000000
+		subdivSettings.maxEdgeLen = 1.0f;
+
+		subdivideMesh( shell, subdivSettings );
+
+		// Smooth new vertices
+		auto smoothVerts = getInnerVerts( shell.topology, newFaces );
+		positionVertsSmoothly( shell, smoothVerts );
+
+
+		val meshData = MRJS::exportMeshMemoryView( shell );
+
 		returnObj.set( "success", true );
 		returnObj.set( "mesh", meshData );
 
@@ -386,7 +428,7 @@ val MeshWrapper::thickenMeshWrapper( float offset, GeneralOffsetParameters &para
 	}
 }
 
-val MeshWrapper::cutMeshWithPolyline( const std::vector<float>& coordinates )
+val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates )
 {
 	std::vector<Vector3f> polyline;
 
@@ -485,7 +527,7 @@ val MeshWrapper::cutMeshWithPolyline( const std::vector<float>& coordinates )
 	}
 }
 
-val MeshWrapper::fixUndercuts( const Vector3f& upDirection ) const
+val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
 {
 	val returnObj = val::object();
 
@@ -512,7 +554,7 @@ val MeshWrapper::fixUndercuts( const Vector3f& upDirection ) const
     return returnObj;
 }
 
-val MeshWrapper::fillHoles() const
+val MeshWrapper::fillHolesImpl() const
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
 	// TODO: More performance gains? 
@@ -617,11 +659,11 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.function( "getFaceVertices", &MeshWrapper::getFaceVertices )
 		.function( "getFaceNormal", &MeshWrapper::getFaceNormal )
 
-		.function( "thickenMesh", &MeshWrapper::thickenMeshWrapper)
-		.function( "cutMeshWithPolyline", &MeshWrapper::cutMeshWithPolyline )
-		.function( "segmentByPoints", &MeshWrapper::segmentByPoints )
-		.function( "fixUndercuts", &MeshWrapper::fixUndercuts )
-		.function( "fillHoles", &MeshWrapper::fillHoles )
+		.function( "thickenMeshImpl", &MeshWrapper::thickenMeshImpl)
+		.function( "cutMeshWithPolylineImpl", &MeshWrapper::cutMeshWithPolylineImpl )
+		.function( "segmentByPointsImpl", &MeshWrapper::segmentByPointsImpl )
+		.function( "fixUndercutsImpl", &MeshWrapper::fixUndercutsImpl )
+		.function( "fillHolesImpl", &MeshWrapper::fillHolesImpl )
 
 		// Spatial queries
 		.function( "projectPoint", &MeshWrapper::projectPoint )
