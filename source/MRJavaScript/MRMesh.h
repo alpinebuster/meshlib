@@ -8,6 +8,7 @@
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMesh.h>
+#include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRAffineXf3.h>
 #include <MRMesh/MRMeshProject.h>

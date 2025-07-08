@@ -2134,6 +2134,7 @@ export interface SubdivideSettings extends ClassHandle {
 
 export interface MeshTopology extends ClassHandle {
   isClosed(_0: FaceBitSet | null): boolean;
+  getTriangulation(): Triangulation;
   findHoleRepresentiveEdges(_0: FaceBitSet | null): VectorEdgeId;
 }
 

@@ -676,15 +676,11 @@ val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
 
 	// TODO: More performance gains? 
 	Mesh meshCopy;
-	// meshCopy.topology = mesh.topology;
-	// meshCopy.points = mesh.points;
-	meshCopy.addMeshPart( mesh );
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+	// meshCopy.addMeshPart( mesh );
 	
-	auto result = FixUndercuts::fix(
-		meshCopy,
-		// {.findParameters = {.upDirection = upDirection}} // NOTE: This also works!!!
-		fixParams
-	);
+	auto result = FixUndercuts::fix( meshCopy, fixParams );
 
 	val meshData = MRJS::exportMeshMemoryView( meshCopy );
 	returnObj.set( "success", true );

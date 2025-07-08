@@ -389,9 +389,11 @@ function SidebarObject( editor ) {
 				)
 
 				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.getMesh(), upDir );
+				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.mesh, upDir );
 				const result = curMeshWrapper.fixUndercutsImpl( upDir );
 				
 				const newVertices = result.mesh.vertices;
+				// const newIndices = new Uint32Array( result.mesh.indices );
 				const newIndices = result.mesh.indices;
 				const newGeometry = new THREE.BufferGeometry();
 				newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );

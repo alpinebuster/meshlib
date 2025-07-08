@@ -69,12 +69,28 @@ inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
     // 
     const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
 
-    // Use `typed_memory_view()` for triangles
-    val triangleArray = val( typed_memory_view(
-        triElementCount, 
-        triDataPtr
-    ) );
-    
+    /// NOTE: V3 - Working & Faster than V1
+    val triangleArray = val::global( "Uint32Array" ).new_( triElementCount );
+    val mView_ = val( typed_memory_view( triElementCount, triDataPtr ) );
+    triangleArray.call<void>( "set", mView_ );
+    ///
+
+    /// FIXME: V2 - This will return corrupted indices
+    // // Use `typed_memory_view()` for triangles
+    // val triangleArray = val( typed_memory_view(
+    //     triElementCount,
+    //     triDataPtr
+    // ) );
+    ///
+
+    /// NOTE: V1 - Working
+    // val triangleArray = val::array();
+    // triangleArray.set("length", triElementCount);
+	// for (size_t i = 0; i < triElementCount; ++i) {
+	// 	triangleArray.set(i, val(triDataPtr[i]));
+	// }
+    ///
+
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );
     meshData.set( "vertexElementCount", vertexElementCount );
@@ -82,6 +98,8 @@ inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
     meshData.set( "indices", triangleArray );
     meshData.set( "indexElementCount", triElementCount );
     meshData.set( "indexCount", triangleCount );
+    meshData.set( "sizeofThreeVertIds", sizeof( ThreeVertIds ) );
+    meshData.set( "sizeofUInt32", sizeof( uint32_t ) * 3 );
 
     return meshData;
 };

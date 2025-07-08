@@ -22,13 +22,13 @@ IF(MR_EMSCRIPTEN)
   #   "${CMAKE_CURRENT_SOURCE_DIR}/../../wasm/*.html"
   # )
 
-  # NOTE: The parent dirs also have one that contains name `meshlib`
+  # NOTE: The parent dirs also have one that contains name `meshsdk`
   # Handle both forward slashes (Unix) and backslashes (Windows)
-  list(FILTER LOCAL_WASM_FILES EXCLUDE REGEX ".*[/\\]wasm[/\\]meshlib[/\\].*")
+  list(FILTER LOCAL_WASM_FILES EXCLUDE REGEX ".*[/\\]wasm[/\\]meshsdk[/\\].*")
 
   # set(FILTERED_WASM_FILES "")
   # foreach(file ${LOCAL_WASM_FILES})
-  #   if(file MATCHES ".*/wasm/meshlib/.*")
+  #   if(file MATCHES ".*/wasm/meshsdk/.*")
   #     message(STATUS "Excluding ${file}")
   #   else()
   #     list(APPEND FILTERED_WASM_FILES "${file}")

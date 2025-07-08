@@ -13,5 +13,6 @@ EMSCRIPTEN_BINDINGS( MeshTopologyModule )
         .constructor<>()
         
         .function( "isClosed", &MeshTopology::isClosed, allow_raw_pointers() )
+        .function( "getTriangulation", &MeshTopology::getTriangulation, return_value_policy::reference() )
         .function( "findHoleRepresentiveEdges", &MeshTopology::findHoleRepresentiveEdges, allow_raw_pointers() );
 }
