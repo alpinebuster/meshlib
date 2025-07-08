@@ -71,12 +71,14 @@ inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
 
     /// NOTE: V3 - Working & Faster than V1
     val triangleArray = val::global( "Uint32Array" ).new_( triElementCount );
-    val mView_ = val( typed_memory_view( triElementCount, triDataPtr ) );
-    triangleArray.call<void>( "set", mView_ );
+    val triangleView_ = val( typed_memory_view( triElementCount, triDataPtr ) ); // Use `typed_memory_view()` for triangles
+    triangleArray.call<void>( "set", triangleView_ );
     ///
 
-    /// FIXME: V2 - This will return corrupted indices
-    // // Use `typed_memory_view()` for triangles
+    /// NOTE: V2 - NOT WORKING:
+    // This will return corrupted indices because the `tris_` returned by `getTriangulation()` must be copied
+    // While the vertices returned by `meshToExport.points` will live long enough to be called by JS side.
+    // 
     // val triangleArray = val( typed_memory_view(
     //     triElementCount,
     //     triDataPtr
