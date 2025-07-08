@@ -2,6 +2,17 @@
 
 Rules that should obey.
 
+- Standard library `std::array`: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
+- Standard library `std::vector`: `register_vector<Vector3f>( "VectorVector3f" );`
+- Standard library `std::pair`: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`
+- Wrapper functions for structs consistently use `create#ORIGINAL_NAME` (e.g., for `SortIntersectionsData`, the name is `createSortIntersectionsData`)
+
+- Prioritize using `val(typed_memory_view(...))` and `HEAPU8.set(uint8Array, ptr)`
+
+- Use **smart pointers** instead of raw pointers whenever possible
+- Provide **wrapper** functions or classes to handle complex pointer logic
+
+
 ## TODOs
 
 - Distinguish between "JavaScript interfaces exported according to the original API" and "JavaScript interfaces exported with encapsulated specialized functionalities".
@@ -11,6 +22,7 @@ Rules that should obey.
 ## Reference & Pointer
 
 When binding a class with Embind, every C++ instance of that class gets a JS “wrapper object” (an `Module.Mesh`). Whether the C++ signature is
+
 
 ```cpp
 void foo(const Mesh* mesh);

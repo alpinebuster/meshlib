@@ -2,6 +2,16 @@
 
 应该遵守的代码规范。
 
+- 标准库std::array: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
+- 标准库std::vector: `register_vector<Vector3f>( "VectorVector3f" );`
+- 标准库std::pair: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`
+- 封装的struct辅助创建函数统一用`create#ORIGINAL_NAME`（比如：`SortIntersectionsData`对应的名称是`createSortIntersectionsData`）
+
+- 优先使用 `val(typed_memory_view(...))` 和 `HEAPU8.set(uint8Array, ptr)`
+
+- 尽量使用智能指针替代原始指针
+- 提供包装函数处理复杂的指针逻辑
+
 ## TODOs
 
 - 按原接口导出的js接口与封装了特殊功能导出的js接口区分开
@@ -58,6 +68,7 @@ proj.updateMeshData(mesh);
 // 如果想传 nullptr 给 C++ 的指针参数（Mesh*），也可以传 JS 端的 null/undefined：
 proj.updateMeshData(null);  // C++ 这边就收到 mesh == nullptr
 ```
+
 ## 设计指南
 
 使用 `val(typed_memory_view(...))` 和 `HEAPU8.set(uint8Array, ptr)` 来避免拷贝操作、提升性能。

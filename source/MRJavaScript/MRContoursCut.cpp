@@ -48,7 +48,7 @@ public:
  * @param coordinatesLength 
  * @return val 
  */
-val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
+val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 {
 	std::vector<Vector3f> polyline;
 
@@ -273,16 +273,16 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 		.value( "All", CutMeshParameters::ForceFill::All );
 	
 	class_<CutMeshParameters>( "CutMeshParameters" )
-		.constructor<>()  // for JS‐side `new`
-		// .property("sortData",         &CutMeshParameters::sortData) // SortIntersectionsData*
-		.property( "new2OldMap", &CutMeshParameters::new2OldMap, allow_raw_pointers() ) // FaceMap*
+		.constructor<>()
+		.property("sortData", &CutMeshParameters::sortData, return_value_policy::reference() ) // SortIntersectionsData*
+		.property( "new2OldMap", &CutMeshParameters::new2OldMap, return_value_policy::reference() ) // FaceMap*
 		.property( "forceFillMode", &CutMeshParameters::forceFillMode )
-		.property( "new2oldEdgesMap", &CutMeshParameters::new2oldEdgesMap, allow_raw_pointers() ) // NewEdgesMap*
+		.property( "new2oldEdgesMap", &CutMeshParameters::new2oldEdgesMap, return_value_policy::reference() ) // NewEdgesMap*
 		;
 
 	value_object<CutMeshResult>( "CutMeshResult" )
 		.field( "resultCut", &CutMeshResult::resultCut )
 		.field( "fbsWithContourIntersections", &CutMeshResult::fbsWithContourIntersections );
 
-	function( "cutMeshWithPolyline", &cutMeshWithPolyline );
+	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
 }
