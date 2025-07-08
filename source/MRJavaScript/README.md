@@ -9,7 +9,7 @@ Rules that should obey.
 
 - Prioritize using `val(typed_memory_view(...))` and `HEAPU8.set(uint8Array, ptr)`
 
-- Use **smart pointers** instead of raw pointers whenever possible
+- Automatically delete short-lived C++ objects at the end of the scope when they’re declared with a using keyword: `using x = new Module.MyClass; x.method();`. Using `smart_ptr_constructor()` ensures that when creating an object in JavaScript, a **smart pointer** is returned, making it easier to manage the object's lifecycle. Using `smart_ptr()` allows for more flexible parameter and return types, but still returns a **raw pointer** when creating an object.
 - Provide **wrapper** functions or classes to handle complex pointer logic
 
 

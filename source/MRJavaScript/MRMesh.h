@@ -108,7 +108,7 @@ public:
      * Vertex coordinate format: [[x1,y1,z1], [x2,y2,z2], ...]
      * Triangle format: [[v1,v2,v3], [v4,v5,v6], ...]
      */
-    static val fromTriangles( const val& vertexCoords, const val& triangles );
+    static val fromTrianglesImpl( const val& vertexCoords, const val& triangles );
     static val fromTrianglesMemoryView( const float* vertexPtr,
                                         size_t        numVerts,
                                         const uint32_t* triPtr,

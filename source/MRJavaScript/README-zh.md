@@ -2,6 +2,7 @@
 
 应该遵守的代码规范。
 
+- 标准库std::optional: ``
 - 标准库std::array: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
 - 标准库std::vector: `register_vector<Vector3f>( "VectorVector3f" );`
 - 标准库std::pair: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`
@@ -9,7 +10,7 @@
 
 - 优先使用 `val(typed_memory_view(...))` 和 `HEAPU8.set(uint8Array, ptr)`
 
-- 尽量使用智能指针替代原始指针
+- 使用原始指针记得在js端掉用`instanceName.delete()`释放（使用智能指针会有开销）。也可以使用[Automatic memory management](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#automatic-memory-management)，即`using x = new Module.MyClass;`就不用掉用`x.delete()`释放了。使用 `smart_ptr_constructor()` 可以确保在 JavaScript 中创建对象时返回智能指针，方便管理对象的生命周期。使用 `smart_ptr()` 则允许更灵活的参数和返回类型，但在创建对象时仍然返回原始指针
 - 提供包装函数处理复杂的指针逻辑
 
 ## TODOs

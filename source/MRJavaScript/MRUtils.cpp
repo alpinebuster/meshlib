@@ -17,7 +17,12 @@ using namespace MR;
 
 namespace MRJS 
 {
-	
+
+val vector3fToFloat32Array( const std::vector<Vector3f>& vec )
+{
+	return val( typed_memory_view( vec.size() * 3, reinterpret_cast< const float* >( vec.data() ) ) );
+}
+
 std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates )
 {
     std::vector<Vector3f> points;
@@ -114,6 +119,7 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 		.element( emscripten::index<1>() )
 		.element( emscripten::index<2>() )
 		.element( emscripten::index<3>() );
+
 
 	// ------------------------------------------------------------------------
     // Bind the Embind interface for `Array*Id`

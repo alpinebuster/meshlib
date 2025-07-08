@@ -88,7 +88,7 @@ EMSCRIPTEN_BINDINGS( HashMapBindings )
 	
 	class_<VertHashMap>( "VertHashMap" )
 		.constructor<>()
-        .smart_ptr<std::shared_ptr<VertHashMap>>( "shared_ptr<VertHashMap>" ) 
+        .smart_ptr<std::shared_ptr<VertHashMap>>( "VertHashMap" ) 
 
 		.function( "size", &VertHashMap::size )
 		.function( "insert", optional_override( [] ( VertHashMap& self, const VertId& key, const VertId& value )
@@ -139,23 +139,23 @@ EMSCRIPTEN_BINDINGS( HashMapBindings )
 
 	class_<FaceHashMap>( "FaceHashMap" )
 		.constructor<>()
-        .smart_ptr<std::shared_ptr<FaceHashMap>>( "shared_ptr<FaceHashMap>" ) ;
+        .smart_ptr<std::shared_ptr<FaceHashMap>>( "FaceHashMap" ) ;
 
 	class_<EdgeHashMap>( "EdgeHashMap" )
 		.constructor<>()
-        .smart_ptr<std::shared_ptr<EdgeHashMap>>( "shared_ptr<EdgeHashMap>" ) ;
+        .smart_ptr<std::shared_ptr<EdgeHashMap>>( "EdgeHashMap" ) ;
 
 	class_<UndirectedEdgeHashMap>( "UndirectedEdgeHashMap" )
 		.constructor<>()
-        .smart_ptr<std::shared_ptr<UndirectedEdgeHashMap>>( "shared_ptr<UndirectedEdgeHashMap>" ) ;
+        .smart_ptr<std::shared_ptr<UndirectedEdgeHashMap>>( "UndirectedEdgeHashMap" ) ;
 
 	class_<WholeEdgeHashMap>( "WholeEdgeHashMap" )
 		.constructor<>()
-		.smart_ptr<std::shared_ptr<WholeEdgeHashMap>>( "shared_ptr<WholeEdgeHashMap>" );
+		.smart_ptr<std::shared_ptr<WholeEdgeHashMap>>( "WholeEdgeHashMap" );
 	
 	class_<HashMap<UndirectedEdgeId, int>>( "UndirectedEdgeIdIntHashMap" )
 		.constructor<>()
-		.smart_ptr<std::shared_ptr<HashMap<UndirectedEdgeId, int>>>( "shared_ptr<HashMap<UndirectedEdgeId, int>>" );
+		.smart_ptr<std::shared_ptr<HashMap<UndirectedEdgeId, int>>>( "UndirectedEdgeIdIntHashMap" );
 }
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )

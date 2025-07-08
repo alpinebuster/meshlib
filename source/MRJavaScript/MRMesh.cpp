@@ -36,6 +36,10 @@
 #include <MRMesh/MRPolyline.h>
 #include <MRMesh/MRTimer.h>
 #include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRAABBTree.h>
+#include <MRMesh/MRAABBTreePoints.h>
+#include <MRMesh/MRBuffer.h>
+#include <MRMesh/MRPartMapping.h>
 
 #include <MRVoxels/MRFixUndercuts.h>
 #include <MRVoxels/MROffset.h>
@@ -50,20 +54,65 @@ using namespace MR;
 namespace MRJS
 {
 
-// Convert C++ vector to JavaScript Float32Array
-val vector3fToFloat32Array( const std::vector<Vector3f>& vec )
-{
-	// REF: [Memory Views](`https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#memory-views`)
-	return val( typed_memory_view( vec.size() * 3, reinterpret_cast< const float* >( vec.data() ) ) );
-}
-
 EMSCRIPTEN_BINDINGS( MeshModule )
 {
 	// ------------------------------------------------------------------------
 	// Bindings for `Mesh`
 	// ------------------------------------------------------------------------
 	class_<Mesh>( "Mesh" )
+		.smart_ptr<std::shared_ptr<Mesh>>( "Mesh" )
+
 		.constructor<>()
+
+		.property( "topology", &Mesh::topology )
+		.property( "points", &Mesh::points )
+
+		.function( "volume", &Mesh::volume, allow_raw_pointers() )
+		.function( "normalWithFaceId", select_overload<Vector3f ( const FaceId ) const>( &Mesh::normal ))
+		.function( "normalWithMeshTriPoint", select_overload<Vector3f ( VertId ) const>( &Mesh::normal ))
+		.function( "normal", select_overload<Vector3f ( const MeshTriPoint & ) const>( &Mesh::normal ))
+
+		.function( "getBoundingBox", &Mesh::getBoundingBox )
+		.function( "computeBoundingBoxWithFaceBitSet", select_overload<Box3f ( const AffineXf3f * ) const>( &Mesh::computeBoundingBox ), allow_raw_pointers() )
+		.function( "computeBoundingBox", select_overload<Box3f ( const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::computeBoundingBox ), allow_raw_pointers() )
+		.function( "transform", &Mesh::transform, allow_raw_pointers() )
+		.function( "addPoint", &Mesh::addPoint )
+		.function( "addSeparateEdgeLoop", &Mesh::addSeparateEdgeLoop )
+		.function( "addSeparateContours", &Mesh::addSeparateContours, allow_raw_pointers() )
+		.function( "attachEdgeLoopPart", &Mesh::attachEdgeLoopPart )
+	
+		.function( "addMeshWithPartMapping", select_overload<void( const Mesh&, PartMapping, bool )>( &Mesh::addMesh ) )
+		.function( "addMesh", select_overload<void (const Mesh &, FaceMap *, VertMap *, WholeEdgeMap *, bool)>( &Mesh::addMesh ), allow_raw_pointers())
+		.function( "addMeshPartWithPartMapping", select_overload<void ( const MeshPart &, const PartMapping& )>( &Mesh::addMeshPart ))
+		.function( "addMeshPart", select_overload<void ( const MeshPart &, bool,
+        const std::vector<EdgePath> &, const std::vector<EdgePath> &, PartMapping )>( &Mesh::addMeshPart ))
+		.function( "cloneRegion", &Mesh::cloneRegion )
+		
+		.function( "packWithPartMapping", select_overload<void( const PartMapping&, bool )>( &Mesh::pack ) )
+		.function( "packWithMap", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &Mesh::pack ), allow_raw_pointers() )
+		// .function( "pack", &Mesh::pack )
+
+		// FIXME: `copy constructor of 'PackMapping' is implicitly deleted because field 'e' has a deleted copy constructor`
+		// .function( "packOptimally", select_overload<PackMapping( bool )>( &Mesh::packOptimally ) )
+		.function( "deleteFaces", &Mesh::deleteFaces, allow_raw_pointers() )
+		
+		.function( "projectPointWithPointOnFace", select_overload<bool( const Vector3f&, PointOnFace&, float, const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
+		.function( "projectPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
+		.function( "projectPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
+		.function( "findClosestPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
+		.function( "findClosestPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
+
+		// FIXME
+		// .function( "getAABBTree", &Mesh::getAABBTree, allow_raw_pointers() ) // <- Causes error
+		.function( "getAABBTreeNotCreate", &Mesh::getAABBTreeNotCreate, allow_raw_pointers() )
+		// .function( "getAABBTreePoints", &Mesh::getAABBTreePoints, allow_raw_pointers() ) // <- Causes error
+		.function( "getAABBTreePointsNotCreate", &Mesh::getAABBTreePointsNotCreate, allow_raw_pointers() )
+		.function( "getDipolesNotCreate", &Mesh::getDipolesNotCreate, allow_raw_pointers() )
+		.function( "invalidateCaches", &Mesh::invalidateCaches )
+		.function( "updateCaches", &Mesh::updateCaches )
+		.function( "heapBytes", &Mesh::heapBytes )
+		.function( "shrinkToFit", &Mesh::shrinkToFit )
+		.function( "mirror", &Mesh::mirror )
 		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
 
 	function( "computeVertexNormals", +[] ( const Mesh& mesh )
@@ -77,7 +126,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 			}
 		}
 		
-		return vector3fToFloat32Array( normals );
+		return MRJS::vector3fToFloat32Array( normals );
 	} );
 }
 
@@ -109,14 +158,14 @@ val box3fToObject( const Box<Vector3<float>>& box )
 
 
 // ------------------------------------------------------------------------
-// Wrappers for `Mesh`
+// Wrapper for `Mesh`
 // ------------------------------------------------------------------------
 MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
 
 Mesh* MeshWrapper::getMeshPtr() { return &mesh; }
 
 // Static factory methods for creating meshes from various sources
-val MeshWrapper::fromTriangles( const val& vertexCoords, const val& triangles )
+val MeshWrapper::fromTrianglesImpl( const val& vertexCoords, const val& triangles )
 {
 	try
 	{
@@ -726,12 +775,13 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 	// Bindings for `MeshWrapper`
 	// ------------------------------------------------------------------------
 	class_<MeshWrapper>( "MeshWrapper" )
-		.smart_ptr<std::shared_ptr<MeshWrapper>>( "shared_ptr<MeshWrapper>" ) 
+		.smart_ptr<std::shared_ptr<MeshWrapper>>( "MeshWrapper" )
+
 		.constructor<>()
 		.constructor<const Mesh&>()
-		.class_function( "fromTriangles", &MeshWrapper::fromTriangles )
+		.class_function( "fromTrianglesImpl", &MeshWrapper::fromTrianglesImpl )
 
-		.property( "mesh", &MeshWrapper::mesh )
+		.property( "mesh", &MeshWrapper::mesh, return_value_policy::reference() )
 		.function( "getMesh", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
 
 		// Geometric properties

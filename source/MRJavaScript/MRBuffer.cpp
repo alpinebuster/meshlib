@@ -69,4 +69,9 @@ EMSCRIPTEN_BINDINGS( BufferModule )
     class_<WholeEdgeBMapBuffer>( "WholeEdgeBMapBuffer" )
         .constructor<>()
         .constructor<size_t>();
+
+
+    // FIXME
+    class_<PackMapping>( "PackMapping" )
+        .constructor<>();
 }

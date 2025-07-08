@@ -31,6 +31,7 @@ EMSCRIPTEN_BINDINGS( Vector3Module )
         .element( &std::pair<Vector3b, Vector3b>::first )
         .element( &std::pair<Vector3b, Vector3b>::second );
     register_vector<Vector3b>( "VectorVector3b" );
+    register_vector<std::vector<Vector3b>>("VectorVectorVector3b");
     class_<Vector3b>( "Vector3b" )
         .constructor<>()
         .constructor<bool, bool, bool>()
@@ -64,6 +65,7 @@ EMSCRIPTEN_BINDINGS( Vector3Module )
         .element( &std::pair<Vector3i, Vector3i>::first )
         .element( &std::pair<Vector3i, Vector3i>::second );
     register_vector<Vector3i>( "VectorVector3i" );
+    register_vector<std::vector<Vector3i>>("VectorVectorVector3i");
     class_<Vector3i>( "Vector3i" )
         .constructor<>()
         .constructor<int, int, int>()
@@ -149,6 +151,7 @@ EMSCRIPTEN_BINDINGS( Vector3Module )
         .element( &std::pair<Vector3ll, Vector3ll>::first )
         .element( &std::pair<Vector3ll, Vector3ll>::second );
     register_vector<Vector3ll>( "VectorVector3ll" );
+    register_vector<std::vector<Vector3ll>>("VectorVectorVector3ll");
     class_<Vector3ll>( "Vector3ll" )
         .constructor<>()
         .constructor<long long, long long, long long>()
@@ -226,6 +229,7 @@ EMSCRIPTEN_BINDINGS( Vector3Module )
         .element( &std::pair<Vector3f, Vector3f>::first )
         .element( &std::pair<Vector3f, Vector3f>::second );
     register_vector<Vector3f>( "VectorVector3f" );
+    register_vector<std::vector<Vector3f>>("VectorVectorVector3f");
     class_<Vector3f>( "Vector3f" )
         // Constructor: Parameterless construction and construction of three floating-point parameters (x,y,z)
         .constructor<>()
@@ -278,6 +282,7 @@ EMSCRIPTEN_BINDINGS( Vector3Module )
         .element( &std::pair<Vector3d, Vector3d>::first )
         .element( &std::pair<Vector3d, Vector3d>::second );
     register_vector<Vector3d>( "VectorVector3d" );
+    register_vector<std::vector<Vector3d>>("VectorVectorVector3d");
     class_<Vector3d>( "Vector3d" )
         .constructor<>()
         .constructor<double, double, double>()
