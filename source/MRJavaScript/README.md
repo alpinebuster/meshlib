@@ -2,6 +2,8 @@
 
 Rules that should obey.
 
+- Standard library `std::function`: ``
+- Standard library `std::optional`: ``
 - Standard library `std::array`: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
 - Standard library `std::vector`: `register_vector<Vector3f>( "VectorVector3f" );`
 - Standard library `std::pair`: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`

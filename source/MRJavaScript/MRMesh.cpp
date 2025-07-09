@@ -103,7 +103,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "findClosestPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
 
 		// FIXME
-		// .function( "getAABBTree", &Mesh::getAABBTree, allow_raw_pointers() ) // <- Causes error
+		// .function( "getAABBTree", &Mesh::getAABBTree, return_value_policy::reference() ) // <- Causes error
 		.function( "getAABBTreeNotCreate", &Mesh::getAABBTreeNotCreate, allow_raw_pointers() )
 		// .function( "getAABBTreePoints", &Mesh::getAABBTreePoints, allow_raw_pointers() ) // <- Causes error
 		.function( "getAABBTreePointsNotCreate", &Mesh::getAABBTreePointsNotCreate, allow_raw_pointers() )

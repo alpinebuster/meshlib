@@ -89,7 +89,10 @@ EdgeMetricWrapper createEdgeTableSymMetric( const MeshTopology& topology, const 
 // Emscripten binding code
 EMSCRIPTEN_BINDINGS( EdgeMetricModule )
 {
-	// Register the EdgeMetricWrapper class
+	class_<EdgeMetric>( "EdgeMetric" )
+		.constructor<>();
+
+	// Register the `EdgeMetricWrapper` class
 	class_<EdgeMetricWrapper>( "EdgeMetricWrapper" )
 		.constructor<const EdgeMetricWrapper&>()
 		.class_function( "createEdgeMetricWrapper",

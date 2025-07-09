@@ -20,7 +20,11 @@ using namespace MR;
 
 namespace MRJS {
 
-// Convert C++ vector to JavaScript Float32Array
+// Helper function to convert Expected<T> to JavaScript-friendly result
+template<typename T>
+val expectedToJs( const Expected<T>& expected );
+
+// Convert C++ vector to JavaScript `Float32Array`
 // REF: [Memory Views](`https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#memory-views`)
 [[nodiscard]] val vector3fToFloat32Array( const std::vector<Vector3f>& vec );
 

@@ -170,6 +170,7 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 
 	class_<FixParams>( "FixParams" )
 		.constructor<>()
+
 		.property( "findParameters", &FixParams::findParameters )
 		.property( "voxelSize", &FixParams::voxelSize )
 		.property( "bottomExtension", &FixParams::bottomExtension )
