@@ -39,16 +39,19 @@ EMSCRIPTEN_BINDINGS( EnumsModule )
 		.value( "LinesColorMap", ColoringType::LinesColorMap )
 		.value( "VertsColorMap", ColoringType::VertsColorMap );
 
-	function( "asString", &asString, allow_raw_pointers() );
+	// Convert to `std::string` for automatic binding to JS strings.
+	function( "asString", optional_override( [] ( ColoringType ct )
+	{
+		return std::string( asString( ct ) );
+	} ) );
 
-	// FIXME: no `PKs`
-	// enum_<UseAABBTree>( "UseAABBTree" )
-	// 	.value( "No", UseAABBTree::No )
-	// 	.value( "Yes", UseAABBTree::Yes )
-	// 	.value( "YesIfAlreadyConstructed", UseAABBTree::YesIfAlreadyConstructed );
+	enum_<UseAABBTree>( "UseAABBTree" )
+		.value( "No", UseAABBTree::No )
+		.value( "Yes", UseAABBTree::Yes )
+		.value( "YesIfAlreadyConstructed", UseAABBTree::YesIfAlreadyConstructed );
 
-	// enum_<GeodesicPathApprox>( "GeodesicPathApprox" )
-	// 	.value( "DijkstraBiDir", GeodesicPathApprox::DijkstraBiDir )
-	// 	.value( "DijkstraAStar", GeodesicPathApprox::DijkstraAStar )
-	// 	.value( "FastMarching", GeodesicPathApprox::FastMarching );
+	enum_<GeodesicPathApprox>( "GeodesicPathApprox" )
+		.value( "DijkstraBiDir", GeodesicPathApprox::DijkstraBiDir )
+		.value( "DijkstraAStar", GeodesicPathApprox::DijkstraAStar )
+		.value( "FastMarching", GeodesicPathApprox::FastMarching );
 }
