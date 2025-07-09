@@ -18,7 +18,9 @@
 using namespace emscripten;
 using namespace MR;
 
-namespace MRJS {
+
+namespace MRJS
+{
 
 // Helper function to convert Expected<T> to JavaScript-friendly result
 template<typename T>
@@ -183,29 +185,6 @@ template<typename T, std::size_t N>
 void bindStdArray( const char* jsName )
 {
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
-}
-
-
-template<typename OptionalType>
-struct OptionalAccess
-{
-    static val value( const OptionalType& v )
-    {
-        return val( v.value() );
-    }
-    static bool hasValue( const OptionalType& v )
-    {
-        return v.has_value();
-    }
-};
-template<typename V>
-class_<std::optional<V>> register_optional( const char* name )
-{
-    using OptionalV = std::optional<V>;
-    return class_<OptionalV>( name )
-        .constructor<>()
-        .function( "value", &OptionalAccess<OptionalV>::value )
-        .function( "hasValue", &OptionalAccess<OptionalV>::hasValue );
 }
 
 } // namespace MRUtil

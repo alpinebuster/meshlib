@@ -79,6 +79,5 @@ EMSCRIPTEN_BINDINGS( ThickenMeshModule )
 	function( "thickenMesh", &thickenMeshWrapper );
 	function( "suggestVoxelSize", &suggestVoxelSize );
 
-	// FIXME: export `Expected`
-	// function( "offsetMesh", &offsetMesh );
+	function( "offsetMesh", &offsetMesh );
 }

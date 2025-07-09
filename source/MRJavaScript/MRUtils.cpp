@@ -1,5 +1,7 @@
+#include <optional>
 
 #include <emscripten/bind.h>
+#include <emscripten/val.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector.h>
@@ -195,8 +197,16 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	// ------------------------------------------------------------------------
     // Bind the Embind interface for `Optional*`
 	// ------------------------------------------------------------------------
-	// FIXME: `std:optional`
-	// MRJS::register_optional<MeshOrPoints>( "OptionalMeshOrPoints" );
-	// MRJS::register_optional<Vector3f>( "OptionalVector3f" );
-	// MRJS::register_optional<VertBitSet>( "OptionalVertBitSet" );
+	register_optional<MeshOrPoints>();
+	register_optional<Vector3f>();
+	register_optional<VertBitSet>();
+
+	
+	// ------------------------------------------------------------------------
+    // Bind the Embind interface for `*Functor*`
+	// ------------------------------------------------------------------------
+	class_<std::function<std::string( std::string )>>( "StringFunctorString" )
+		.constructor<>()
+		.function( "opcall", &std::function<std::string( std::string )>::operator() )
+		;
 }

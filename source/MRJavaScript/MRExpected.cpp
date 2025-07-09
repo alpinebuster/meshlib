@@ -11,6 +11,9 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( ExpectedModule )
 {
+    // TODO
+    class_<Expected<EdgeLoop>>( "ExpectedEdgeLoop" )
+        .function( "hasValue", &Expected<EdgeLoop>::has_value );
     // class_<tl::expected<EdgeLoop, std::string>>( "ExpectedEdgeLoop" )
     //     .function( "has_value", &tl::expected<EdgeLoop, std::string>::has_value )
     //     // .function("value", &tl::expected<EdgeLoop, std::string>::value, return_value_policy::reference())
@@ -20,9 +23,7 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
     //         return exp.has_value();
     //     } );
 
-    
-    // class_<Expected<Mesh>>( "ExpectedMesh" )
-    //     .function( "has_value", &Expected<Mesh>::has_value )
-    //     // .function( "value", &Expected<Mesh>::value, return_value_policy::reference() )
-    //     ;
+
+    class_<Expected<Mesh>>( "ExpectedMesh" )
+        .function( "hasValue", &Expected<Mesh>::has_value );
 }
