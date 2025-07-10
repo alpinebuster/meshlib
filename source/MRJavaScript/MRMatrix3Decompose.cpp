@@ -9,4 +9,9 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( Matrix3DecomposeModule )
 {
+	function( "isRigidf", &isRigid<float> );
+	function( "isRigidd", &isRigid<double> );
+
+	function( "decomposeMatrix3f", &decomposeMatrix3<float> );
+	function( "decomposeMatrix3d", &decomposeMatrix3<double> );
 }

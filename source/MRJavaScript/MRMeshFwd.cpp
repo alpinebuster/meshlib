@@ -18,7 +18,7 @@ using namespace MR;
 
 // TODO: V2
 
-EMSCRIPTEN_BINDINGS( IdModule )
+EMSCRIPTEN_BINDINGS( MeshFwdModule )
 {
     // 1) Expose `NoInit` as an empty value type
     value_object<MR::NoInit>( "NoInit" );

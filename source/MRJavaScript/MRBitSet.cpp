@@ -8,8 +8,6 @@
 using namespace emscripten;
 using namespace MR;
 
-// TODO: V2
-
 
 EMSCRIPTEN_BINDINGS( __internalBoostDynamicBitsetModule )
 {
@@ -186,50 +184,53 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .function( "endId", &FaceBitSet::endId )
         .class_function( "beginId", &FaceBitSet::beginId );
 
+
+    // TODO: V2
     class_<VertBitSet>( "VertBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<VertBitSet>>( "VertBitSet" );
+        .smart_ptr<std::shared_ptr<VertBitSet>>( "VertBitSet" )
+        .constructor<>();
 
     class_<EdgeBitSet>( "EdgeBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<EdgeBitSet>>( "EdgeBitSet" );
+        .smart_ptr<std::shared_ptr<EdgeBitSet>>( "EdgeBitSet" )
+        .constructor<>();
 
     class_<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "UndirectedEdgeBitSet" );
+        .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "UndirectedEdgeBitSet" )
+        .constructor<>();
 
     class_<PixelBitSet>( "PixelBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<PixelBitSet>>( "PixelBitSet" );
+        .smart_ptr<std::shared_ptr<PixelBitSet>>( "PixelBitSet" )
+        .constructor<>();
 
     class_<VoxelBitSet>( "VoxelBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<VoxelBitSet>>( "VoxelBitSet" );
+        .smart_ptr<std::shared_ptr<VoxelBitSet>>( "VoxelBitSet" )
+        .constructor<>();
 
     class_<RegionBitSet>( "RegionBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<RegionBitSet>>( "RegionBitSet" );
+        .smart_ptr<std::shared_ptr<RegionBitSet>>( "RegionBitSet" )
+        .constructor<>();
 
     class_<NodeBitSet>( "NodeBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<NodeBitSet>>( "NodeBitSet" );
+        .smart_ptr<std::shared_ptr<NodeBitSet>>( "NodeBitSet" )
+        .constructor<>();
 
     class_<ObjBitSet>( "ObjBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<ObjBitSet>>( "ObjBitSet" );
+        .smart_ptr<std::shared_ptr<ObjBitSet>>( "ObjBitSet" )
+        .constructor<>();
 
     class_<TextureBitSet>( "TextureBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<TextureBitSet>>( "TextureBitSet" );
+        .smart_ptr<std::shared_ptr<TextureBitSet>>( "TextureBitSet" )
+        .constructor<>();
 
     class_<GraphVertBitSet>( "GraphVertBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "GraphVertBitSet" );
+        .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "GraphVertBitSet" )
+        .constructor<>();
 
     class_<GraphEdgeBitSet>( "GraphEdgeBitSet" )
-        .constructor<>()
-        .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "GraphEdgeBitSet" );
+        .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "GraphEdgeBitSet" )
+        .constructor<>();
 }
+
 
 // To support operator overloading in JavaScript, add global functions
 EMSCRIPTEN_BINDINGS( BitSetOperatorsModule )

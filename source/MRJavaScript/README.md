@@ -2,10 +2,14 @@
 
 Rules that should obey.
 
+- Standard library `tl::expected<T, E>`: ``
+- Standard library `std::function`: `class_<std::function<std::string( std::string )>>( "StringFunctorString" ).constructor<>().function( "opcall", &std::function<std::string( std::string )>::operator() );`
+- Standard library `std::optional`: `register_optional<SmallClass>();`
 - Standard library `std::array`: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
 - Standard library `std::vector`: `register_vector<Vector3f>( "VectorVector3f" );`
 - Standard library `std::pair`: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`
 - Wrapper functions for structs consistently use `create#ORIGINAL_NAME` (e.g., for `SortIntersectionsData`, the name is `createSortIntersectionsData`)
+- Encapsulate common functional processes that are composed of different modules by adding the `Impl` suffix to the corresponding key function name (e.g., `fixUndercuts` corresponds to `fixUndercutsImpl`).
 
 - Prioritize using `val(typed_memory_view(...))` and `HEAPU8.set(uint8Array, ptr)`
 
@@ -18,6 +22,31 @@ Rules that should obey.
 - Distinguish between "JavaScript interfaces exported according to the original API" and "JavaScript interfaces exported with encapsulated specialized functionalities".
 - V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
 - V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
+
+### FIXME: WASM DEBUGGING
+
+Data from JS/TS will be corrupted in DEBUG mode.
+
+### FIXME: Cannot convert a BigInt value to a number
+
+There were some change to the `memory64` spec relatively recently. You'll need set `NODE_JS` in your emscripten config use `node 24`, see [issue #24620](https://github.com/emscripten-core/emscripten/issues/24620).
+
+Run `vi "${EMSDK}/.emscripten"`, then change the `NODE_JS` to `node 24`:
+
+```txt
+import os
+emsdk_path = os.path.dirname(os.getenv('EM_CONFIG')).replace('\\', '/')
+#NODE_JS = emsdk_path + '/node/22.16.0_64bit/bin/node'
+NODE_JS = '/home/zzz/.nvm/versions/node/v24.3.0/bin/node'
+LLVM_ROOT = emsdk_path + '/upstream/bin'
+BINARYEN_ROOT = emsdk_path + '/upstream'
+EMSCRIPTEN_ROOT = emsdk_path + '/upstream/emscripten'
+```
+
+### FIXME: The `--emit-tsd` option generated TypeScript type for the args parameter of the `ccall` function should use `IArguments` instead of `Arguments`
+
+[REF](https://github.com/emscripten-core/emscripten/issues/24579)
+
 
 ## Reference & Pointer
 

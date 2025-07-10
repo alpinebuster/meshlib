@@ -3,10 +3,10 @@
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
-#include <MRMesh/MRMeshBoolean.h>
 #include <MRMesh/MRBooleanOperation.h>
 #include <MRMesh/MREdgePaths.h>
 #include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRMeshBoolean.h>
 
 using namespace emscripten;
 using namespace MR;
@@ -21,17 +21,6 @@ BooleanResult performBoolean(
 
 EMSCRIPTEN_BINDINGS( MeshBooleanModule )
 {
-    enum_<BooleanOperation>( "BooleanOperation" )
-        .value( "InsideA", BooleanOperation::InsideA )
-        .value( "InsideB", BooleanOperation::InsideB )
-        .value( "OutsideA", BooleanOperation::OutsideA )
-        .value( "OutsideB", BooleanOperation::OutsideB )
-        .value( "Union", BooleanOperation::Union )
-        .value( "Intersection", BooleanOperation::Intersection )
-        .value( "DifferenceBA", BooleanOperation::DifferenceBA )
-        .value( "DifferenceAB", BooleanOperation::DifferenceAB )
-        .value( "Count", BooleanOperation::Count );
-
     class_<BooleanResult>( "BooleanResult" )
         .constructor<>()
         .property( "mesh", &BooleanResult::mesh )

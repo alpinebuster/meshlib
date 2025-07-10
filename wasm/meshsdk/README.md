@@ -1,25 +1,25 @@
-# Javascript/Typescript Binding for the meshlib
+# MeshSDK - Javascript/Typescript Binding for the meshlib
 
 `meshlib` JS/TS implementation. It supports compilation
 to WASM via [Emscripten](https://emscripten.org/) so that `meshlib` features can be used in a browser.
 
-## Using `meshlib` in JavaScript/TypeScript
+## Using `meshsdk` in JavaScript/TypeScript
 
 ### Install
 
-`meshlib` is available as a UMD module compatible with both NodeJS and browsers,
+`meshsdk` is available as a UMD module compatible with both NodeJS and browsers,
 and includes TypeScript definitions.
 
 ```sh
-npm install meshlib
+npm install @alpinebuster/meshsdk
 ```
 
 ### Usage
 
-To use the meshlib, do the following:
+To use the meshsdk, do the following:
 
 ```js
-import { createMeshSDK } from 'meshlib';
+import { createMeshSDK } from '@alpinebuster/meshsdk';
 
 const mrmesh = await createMeshSDK();
 ```

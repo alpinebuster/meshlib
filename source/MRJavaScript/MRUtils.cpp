@@ -1,7 +1,10 @@
+#include <optional>
 
 #include <emscripten/bind.h>
+#include <emscripten/val.h>
 
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
@@ -9,14 +12,38 @@
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>
 #include <MRMesh/MRFillContour.h>
+#include <MRMesh/MREdgeMetric.h>
+#include <MRMesh/MRPointCloud.h>
+#include <MRMesh/MRAABBTreePoints.h>
+#include <MRMesh/MRDipole.h>
 
 #include "MRUtils.h"
 
 using namespace emscripten;
 using namespace MR;
 
-namespace MRJS 
+
+namespace MRJS
 {
+
+template<typename T>
+val expectedToJs( const Expected<T>& expected )
+{
+	if ( expected.has_value() )
+	{
+		val obj = val::object();
+		obj.set( "success", true );
+		obj.set( "value", expected.value() );
+		return obj;
+	}
+	else
+	{
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", expected.error() );
+		return obj;
+	}
+}
 
 val vector3fToFloat32Array( const std::vector<Vector3f>& vec )
 {
@@ -176,8 +203,222 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	// ------------------------------------------------------------------------
     // Bind the Embind interface for `Optional*`
 	// ------------------------------------------------------------------------
-	// FIXME: `std:optional`
-	// MRJS::register_optional<MeshOrPoints>( "OptionalMeshOrPoints" );
-	// MRJS::register_optional<Vector3f>( "OptionalVector3f" );
-	// MRJS::register_optional<VertBitSet>( "OptionalVertBitSet" );
+	///
+	register_optional<MeshOrPoints>();
+	///
+
+
+	///
+	register_optional<Triangulation>();
+	register_optional<Dipoles>();
+	register_optional<FaceMap>();
+	register_optional<VertMap>();
+	register_optional<EdgeMap>();
+	register_optional<UndirectedEdgeMap>();
+	register_optional<ObjMap>();
+	///
+
+
+	///
+	register_optional<Vector3b>();
+	register_optional<Vector3i>();
+	register_optional<Vector3ll>();
+	register_optional<Vector3f>();
+	register_optional<Vector3d>();
+	///
+
+
+	///
+	register_optional<FaceBitSet>();
+	register_optional<VertBitSet>();
+	register_optional<EdgeBitSet>();
+	register_optional<UndirectedEdgeBitSet>();
+	register_optional<PixelBitSet>();
+	register_optional<VoxelBitSet>();
+	register_optional<RegionBitSet>();
+	register_optional<NodeBitSet>();
+	register_optional<ObjBitSet>();
+	register_optional<TextureBitSet>();
+	register_optional<GraphVertBitSet>();
+	register_optional<GraphEdgeBitSet>();
+	///
+
+
+	///
+	register_optional<VertPair>();
+	register_optional<FacePair>();
+	register_optional<EdgePair>();
+	register_optional<UndirectedEdgePair>();
+	///
+
+
+	///
+	register_optional<std::vector<VertPair>>();
+	register_optional<std::vector<FacePair>>();
+	register_optional<std::vector<EdgePair>>();
+	register_optional<std::vector<UndirectedEdgePair>>();
+	///
+
+
+	///
+	register_optional<EdgeId>();
+	register_optional<UndirectedEdgeId>();
+	register_optional<FaceId>();
+	register_optional<VertId>();
+	register_optional<PixelId>();
+	register_optional<VoxelId>();
+	register_optional<RegionId>();
+	register_optional<NodeId>();
+	register_optional<ObjId>();
+	register_optional<TextureId>();
+	register_optional<GraphVertId>();
+	register_optional<GraphEdgeId>();
+	///
+
+
+	///
+	register_optional<std::vector<EdgeId>>();
+	register_optional<std::vector<UndirectedEdgeId>>();
+	register_optional<std::vector<FaceId>>();
+	register_optional<std::vector<VertId>>();
+	register_optional<std::vector<PixelId>>();
+	register_optional<std::vector<VoxelId>>();
+	register_optional<std::vector<RegionId>>();
+	register_optional<std::vector<NodeId>>();
+	register_optional<std::vector<ObjId>>();
+	register_optional<std::vector<TextureId>>();
+	register_optional<std::vector<GraphVertId>>();
+	register_optional<std::vector<GraphEdgeId>>();
+	///
+
+	
+	// ------------------------------------------------------------------------
+    // Bind the Embind interface for `*Functor*`
+	// ------------------------------------------------------------------------
+	class_<std::function<std::string( std::string )>>( "StringFunctorString" )
+		.constructor<>()
+		.function( "opcall", &std::function<std::string( std::string )>::operator() );
+
+	class_<std::function<bool( float )>>( "ProgressCallback" )
+		.constructor<>()
+		.function( "opcall", &std::function<bool( float )>::operator() );
+
+
+	///
+	class_<std::function<bool( VertId )>>( "VertPredicate" )
+		.constructor<>()
+		.function( "opcall", &std::function<bool( VertId )>::operator() );
+
+	class_<std::function<bool( FaceId )>>( "FacePredicate" )
+		.constructor<>()
+		.function( "opcall", &std::function<bool( FaceId )>::operator() );
+
+	class_<std::function<bool( EdgeId )>>( "EdgePredicate" )
+		.constructor<>()
+		.function( "opcall", &std::function<bool( EdgeId )>::operator() );
+
+	class_<std::function<bool( UndirectedEdgeId )>>( "UndirectedEdgePredicate" )
+		.constructor<>()
+		.function( "opcall", &std::function<bool( UndirectedEdgeId )>::operator() );
+	///
+
+
+	///
+	class_<std::function<float( VertId )>>( "VertMetric" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( VertId )>::operator() );
+
+	class_<std::function<float( FaceId )>>( "FaceMetric" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( FaceId )>::operator() );
+
+	class_<std::function<float( EdgeId )>>( "EdgeMetric" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( EdgeId )>::operator() );
+
+	class_<std::function<float( UndirectedEdgeId )>>( "UndirectedEdgeMetric" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( UndirectedEdgeId )>::operator() );
+	///
+
+
+	///
+	class_<std::function<float( Triangulation )>>( "FloatFunctorTriangulation" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( Triangulation )>::operator() );
+	
+	class_<std::function<float( Dipoles )>>( "FloatFunctorDipoles" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( Dipoles )>::operator() );
+	class_<std::function<float( FaceMap )>>( "FloatFunctorFaceMap" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( FaceMap )>::operator() );
+	
+	class_<std::function<float( VertMap )>>( "FloatFunctorVertMap" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( VertMap )>::operator() );
+	
+	class_<std::function<float( EdgeMap )>>( "FloatFunctorEdgeMap" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( EdgeMap )>::operator() );
+	
+	class_<std::function<float( UndirectedEdgeMap )>>( "FloatFunctorUndirectedEdgeMap" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( UndirectedEdgeMap )>::operator() );
+	
+	class_<std::function<float( ObjMap )>>( "FloatFunctorObjMap" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( ObjMap )>::operator() );
+	///
+
+
+	///
+	class_<std::function<float( FaceBitSet )>>( "FloatFunctorFaceBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( FaceBitSet )>::operator() );
+	
+	class_<std::function<float( VertBitSet )>>( "FloatFunctorVertBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( VertBitSet )>::operator() );
+	
+	class_<std::function<float( EdgeBitSet )>>( "FloatFunctorEdgeBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( EdgeBitSet )>::operator() );
+	
+	class_<std::function<float( UndirectedEdgeBitSet )>>( "FloatFunctorUndirectedEdgeBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( UndirectedEdgeBitSet )>::operator() );
+	
+	class_<std::function<float( PixelBitSet )>>( "FloatFunctorPixelBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( PixelBitSet )>::operator() );
+	
+	class_<std::function<float( VoxelBitSet )>>( "FloatFunctorVoxelBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( VoxelBitSet )>::operator() );
+	
+	class_<std::function<float( RegionBitSet )>>( "FloatFunctorRegionBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( RegionBitSet )>::operator() );
+	
+	class_<std::function<float( NodeBitSet )>>( "FloatFunctorNodeBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( NodeBitSet )>::operator() );
+	
+	class_<std::function<float( ObjBitSet )>>( "FloatFunctorObjBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( ObjBitSet )>::operator() );
+	
+	class_<std::function<float( TextureBitSet )>>( "FloatFunctorTextureBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( TextureBitSet )>::operator() );
+	
+	class_<std::function<float( GraphVertBitSet )>>( "FloatFunctorGraphVertBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( GraphVertBitSet )>::operator() );
+	
+	class_<std::function<float( GraphEdgeBitSet )>>( "FloatFunctorGraphEdgeBitSet" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( GraphEdgeBitSet )>::operator() );
+	///
 }

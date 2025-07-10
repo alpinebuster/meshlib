@@ -102,10 +102,21 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "findClosestPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
 		.function( "findClosestPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
 
-		// FIXME
-		// .function( "getAABBTree", &Mesh::getAABBTree, allow_raw_pointers() ) // <- Causes error
+		// HACK
+		// 
+		// The copy constructor of the `AABBTree` class is private, 
+		// while Emscripten needs to create a copy of the object when generating the binding
+		// 
+		.function( "getAABBTree", optional_override( [] ( const Mesh& mesh ) -> const AABBTree*
+		{
+			return &mesh.getAABBTree();
+		} ), allow_raw_pointers() )
 		.function( "getAABBTreeNotCreate", &Mesh::getAABBTreeNotCreate, allow_raw_pointers() )
-		// .function( "getAABBTreePoints", &Mesh::getAABBTreePoints, allow_raw_pointers() ) // <- Causes error
+		// HACK
+		.function( "getAABBTreePoints", optional_override( [] ( const Mesh& mesh ) -> const AABBTreePoints*
+		{
+			return &mesh.getAABBTreePoints();
+		} ), allow_raw_pointers() )
 		.function( "getAABBTreePointsNotCreate", &Mesh::getAABBTreePointsNotCreate, allow_raw_pointers() )
 		.function( "getDipolesNotCreate", &Mesh::getDipolesNotCreate, allow_raw_pointers() )
 		.function( "invalidateCaches", &Mesh::invalidateCaches )

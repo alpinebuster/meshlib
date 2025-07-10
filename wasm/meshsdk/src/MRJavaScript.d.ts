@@ -3,10 +3,10 @@ declare namespace RuntimeExports {
     /**
      * @param {string|null=} returnType
      * @param {Array=} argTypes
-     * @param {Array=} args
+     * @param {IArguments|Array=} args
      * @param {Object=} opts
      */
-    function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: any[] | undefined, opts?: any | undefined): any;
+    function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: (IArguments | any[]) | undefined, opts?: any | undefined): any;
     let HEAPU8: any;
     let HEAP32: any;
     let HEAPF32: any;
@@ -202,8 +202,9 @@ declare class FSNode {
 }
 interface WasmModule {
   _malloc(_0: number): number;
-  _printtt(): void;
   _free(_0: number): void;
+  _printtt(): void;
+  _main(_0: number, _1: number): number;
 }
 
 type EmbindString = ArrayBuffer|Uint8Array|Uint8ClampedArray|Int8Array|string;
@@ -428,6 +429,52 @@ export interface GraphVertBitSet extends ClassHandle {
 export interface GraphEdgeBitSet extends ClassHandle {
 }
 
+export interface BooleanOperationValue<T extends number> {
+  value: T;
+}
+export type BooleanOperation = BooleanOperationValue<0>|BooleanOperationValue<1>|BooleanOperationValue<2>|BooleanOperationValue<3>|BooleanOperationValue<4>|BooleanOperationValue<5>|BooleanOperationValue<6>|BooleanOperationValue<7>|BooleanOperationValue<8>;
+
+export interface BooleanResultMapObjectValue<T extends number> {
+  value: T;
+}
+export type BooleanResultMapObject = BooleanResultMapObjectValue<0>|BooleanResultMapObjectValue<1>|BooleanResultMapObjectValue<2>;
+
+export interface BooleanResultMaps extends ClassHandle {
+  identity: boolean;
+  cut2origin: FaceMap;
+  cut2newFaces: FaceMap;
+  old2newVerts: VertMap;
+  old2newEdges: WholeEdgeMap;
+}
+
+export interface BooleanInternalParameters extends ClassHandle {
+  optionalOutCut: VectorEdgePath | null;
+  originalMeshA: Mesh | null;
+  originalMeshB: Mesh | null;
+}
+
+export interface BooleanResultMapper extends ClassHandle {
+  map(_0: FaceBitSet, _1: BooleanResultMapObject): FaceBitSet;
+  mapFaces(_0: FaceBitSet, _1: BooleanResultMapObject): FaceBitSet;
+  mapVerts(_0: VertBitSet, _1: BooleanResultMapObject): VertBitSet;
+  mapEdges(_0: EdgeBitSet, _1: BooleanResultMapObject): EdgeBitSet;
+  newFaces(): FaceBitSet;
+  filteredOldFaceBitSet(_0: FaceBitSet, _1: BooleanResultMapObject): FaceBitSet;
+  getMaps(_0: BooleanResultMapObject): BooleanResultMaps;
+}
+
+export interface Box1f extends ClassHandle {
+}
+
+export interface Box1i extends ClassHandle {
+}
+
+export interface Box1ll extends ClassHandle {
+}
+
+export interface Box1d extends ClassHandle {
+}
+
 export interface Box2f extends ClassHandle {
   min: Vector2f;
   max: Vector2f;
@@ -451,6 +498,15 @@ export interface Box2f extends ClassHandle {
   expanded(_0: Vector2f): Box2f;
 }
 
+export interface Box2i extends ClassHandle {
+}
+
+export interface Box2ll extends ClassHandle {
+}
+
+export interface Box2d extends ClassHandle {
+}
+
 export interface Box3f extends ClassHandle {
   min: Vector3f;
   max: Vector3f;
@@ -472,6 +528,15 @@ export interface Box3f extends ClassHandle {
   getBoxClosestPointTo(_0: Vector3f): Vector3f;
   getDistanceSqToPoint(_0: Vector3f): number;
   expanded(_0: Vector3f): Box3f;
+}
+
+export interface Box3i extends ClassHandle {
+}
+
+export interface Box3ll extends ClassHandle {
+}
+
+export interface Box3d extends ClassHandle {
 }
 
 export interface FaceBMapBuffer extends ClassHandle {
@@ -552,8 +617,71 @@ export interface EdgeMetricWrapper extends ClassHandle {
 export interface EdgePoint extends ClassHandle {
 }
 
+export interface VertexMassValue<T extends number> {
+  value: T;
+}
+export type VertexMass = VertexMassValue<0>|VertexMassValue<1>;
+
+export interface EdgeWeightsValue<T extends number> {
+  value: T;
+}
+export type EdgeWeights = EdgeWeightsValue<0>|EdgeWeightsValue<1>;
+
+export interface ProcessingValue<T extends number> {
+  value: T;
+}
+export type Processing = ProcessingValue<0>|ProcessingValue<1>;
+
+export interface OrientNormalsValue<T extends number> {
+  value: T;
+}
+export type OrientNormals = OrientNormalsValue<0>|OrientNormalsValue<1>|OrientNormalsValue<2>;
+
+export interface OffsetModeValue<T extends number> {
+  value: T;
+}
+export type OffsetMode = OffsetModeValue<0>|OffsetModeValue<1>|OffsetModeValue<2>;
+
+export interface ColoringTypeValue<T extends number> {
+  value: T;
+}
+export type ColoringType = ColoringTypeValue<0>|ColoringTypeValue<1>|ColoringTypeValue<1>|ColoringTypeValue<1>|ColoringTypeValue<2>;
+
+export interface UseAABBTreeValue<T extends number> {
+  value: T;
+}
+export type UseAABBTree = UseAABBTreeValue<0>|UseAABBTreeValue<1>|UseAABBTreeValue<2>;
+
+export interface GeodesicPathApproxValue<T extends number> {
+  value: T;
+}
+export type GeodesicPathApprox = GeodesicPathApproxValue<0>|GeodesicPathApproxValue<1>|GeodesicPathApproxValue<2>;
+
+export interface ExpectedEdgeLoop extends ClassHandle {
+  hasValue(): boolean;
+}
+
+export interface ExpectedMesh extends ClassHandle {
+  hasValue(): boolean;
+}
+
 export interface MeshSegmentation extends ClassHandle {
   segmentByPoints(_0: StdVectorf, _1: StdVectorf): any;
+}
+
+export interface FillHoleNicelySettings extends ClassHandle {
+  triangulateOnly: boolean;
+  maxEdgeLen: number;
+  maxEdgeSplits: number;
+  maxAngleChangeAfterFlip: number;
+  smoothCurvature: boolean;
+  naturalSmooth: boolean;
+  edgeWeights: EdgeWeights;
+  vmass: VertexMass;
+  triangulateParams: FillHoleParams;
+  uvCoords: VertCoords2 | null;
+  colorMap: VertColors | null;
+  faceColors: FaceColors | null;
 }
 
 export interface FixParams extends ClassHandle {
@@ -561,6 +689,28 @@ export interface FixParams extends ClassHandle {
   bottomExtension: number;
   smooth: boolean;
   findParameters: FindParams;
+}
+
+export interface FreeFormDeformer extends ClassHandle {
+  apply(): void;
+  init(_0: Vector3i, _1: Box3f): void;
+  getIndex(_0: Vector3i): number;
+  getCoord(_0: number): Vector3i;
+  getResolution(): Vector3i;
+  getAllRefGridPositions(): VectorVector3f;
+  setAllRefGridPositions(_0: VectorVector3f): void;
+  setRefGridPointPosition(_0: Vector3i, _1: Vector3f): void;
+  getRefGridPointPosition(_0: Vector3i): Vector3f;
+  applySinglePoint(_0: Vector3f): Vector3f;
+}
+
+export interface FreeFormBestFit extends ClassHandle {
+  addOther(_0: FreeFormBestFit): void;
+  setStabilizer(_0: number): void;
+  getStabilizer(): number;
+  findBestDeformationReferenceGrid(): VectorVector3f;
+  addPairf(_0: Vector3f, _1: Vector3f, _2: number): void;
+  addPaird(_0: Vector3d, _1: Vector3d, _2: number): void;
 }
 
 export interface ICP extends ClassHandle {
@@ -781,6 +931,59 @@ export interface MyClass extends ClassHandle {
   incrementX(): void;
 }
 
+export interface RememberShapeValue<T extends number> {
+  value: T;
+}
+export type RememberShape = RememberShapeValue<0>|RememberShapeValue<1>;
+
+export interface Laplacian extends ClassHandle {
+  init(_0: VertBitSet, _1: EdgeWeights, _2: VertexMass, _3: RememberShape): void;
+  updateSolver(): void;
+  apply(): void;
+  region(): VertBitSet;
+  freeVerts(): VertBitSet;
+  firstLayerFixedVerts(): VertBitSet;
+  fixVertex(_0: VertId, _1: boolean): void;
+  applyToScalar(_0: VertScalars): void;
+  fixVertexWithPos(_0: VertId, _1: Vector3f, _2: boolean): void;
+}
+
+export interface Line2f extends ClassHandle {
+  p: Vector2f;
+  d: Vector2f;
+  normalized(): Line2f;
+  project(_0: Vector2f): Vector2f;
+  distanceSq(_0: Vector2f): number;
+  opcall(_0: number): Vector2f;
+}
+
+export interface Line2d extends ClassHandle {
+  p: Vector2d;
+  d: Vector2d;
+  normalized(): Line2d;
+  project(_0: Vector2d): Vector2d;
+  distanceSq(_0: Vector2d): number;
+  opcall(_0: number): Vector2d;
+}
+
+export interface Line3f extends ClassHandle {
+  p: Vector3f;
+  d: Vector3f;
+  normalized(): Line3f;
+  project(_0: Vector3f): Vector3f;
+  distanceSq(_0: Vector3f): number;
+  opcall(_0: number): Vector3f;
+}
+
+export interface Line3d extends ClassHandle {
+  p: Vector3d;
+  d: Vector3d;
+  normalized(): Line3d;
+  project(_0: Vector3d): Vector3d;
+  distanceSq(_0: Vector3d): number;
+  opcall(_0: number): Vector3d;
+}
+
 export interface Matrix2b extends ClassHandle {
 }
 
@@ -835,7 +1038,9 @@ export interface Mesh extends ClassHandle {
   computeBoundingBox(_0: FaceBitSet | null, _1: AffineXf3f | null): Box3f;
   transform(_0: AffineXf3f, _1: VertBitSet | null): void;
   deleteFaces(_0: FaceBitSet, _1: UndirectedEdgeBitSet | null): void;
+  getAABBTree(): AABBTree | null;
   getAABBTreeNotCreate(): AABBTree | null;
+  getAABBTreePoints(): AABBTreePoints | null;
   getAABBTreePointsNotCreate(): AABBTreePoints | null;
   invalidateCaches(_0: boolean): void;
   updateCaches(_0: VertBitSet): void;
@@ -887,11 +1092,6 @@ export interface MeshWrapper extends ClassHandle {
   segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
   fixUndercutsImpl(_0: Vector3f): any;
 }
-
-export interface BooleanOperationValue<T extends number> {
-  value: T;
-}
-export type BooleanOperation = BooleanOperationValue<0>|BooleanOperationValue<1>|BooleanOperationValue<2>|BooleanOperationValue<3>|BooleanOperationValue<4>|BooleanOperationValue<5>|BooleanOperationValue<6>|BooleanOperationValue<7>|BooleanOperationValue<8>;
 
 export interface BooleanResult extends ClassHandle {
   mesh: Mesh;
@@ -2159,6 +2359,13 @@ export interface MeshTriPoint extends ClassHandle {
   getWeightedVerts(_0: MeshTopology): WeightedVertexArray3;
 }
 
+export interface MovementBuildBodyParams extends ClassHandle {
+  allowRotation: boolean;
+  b2tXf: AffineXf3f | null;
+  center: Vector3f | undefined;
+  bodyNormal: Vector3f | undefined;
+}
+
 export interface NoDefInitFaceId extends ClassHandle {
 }
 
@@ -2193,11 +2400,6 @@ export interface SharpOffsetParameters extends OffsetParameters {
 export interface GeneralOffsetParameters extends SharpOffsetParameters {
   mode: OffsetMode;
 }
-
-export interface OffsetModeValue<T extends number> {
-  value: T;
-}
-export type OffsetMode = OffsetModeValue<0>|OffsetModeValue<1>|OffsetModeValue<2>;
 
 export interface SignDetectionModeValue<T extends number> {
   value: T;
@@ -2304,6 +2506,22 @@ export interface MeshProjectionParameters extends ClassHandle {
   xf: AffineXf3f | null;
 }
 
+export interface SpacingSettings extends ClassHandle {
+  region: VertBitSet | null;
+  numIters: number;
+  stabilizer: number;
+  maxSumNegW: number;
+  isInverted: FacePredicate;
+  dist: UndirectedEdgeMetric;
+}
+
+export type InflateSettings = {
+  pressure: number,
+  iterations: number,
+  preSmooth: boolean,
+  gradualPressureGrowth: boolean
+};
+
 export interface ConvertToFloatVector extends ClassHandle {
 }
 
@@ -2315,6 +2533,33 @@ export interface CoordinateConverters extends ClassHandle {
   setToFloat(_0: any): void;
   callToInt(_0: Vector3f): Vector3i;
   callToFloat(_0: Vector3i): Vector3f;
+}
+
+export interface RelaxApproxTypeValue<T extends number> {
+  value: T;
+}
+export type RelaxApproxType = RelaxApproxTypeValue<0>|RelaxApproxTypeValue<1>;
+
+export interface RelaxParams extends ClassHandle {
+  iterations: number;
+  region: VertBitSet | null;
+  force: number;
+  limitNearInitial: boolean;
+  maxInitialDist: number;
+}
+
+export interface MeshRelaxParams extends RelaxParams {
+  hardSmoothTetrahedrons: boolean;
+  weights: VertScalars | null;
+}
+
+export interface MeshEqualizeTriAreasParams extends MeshRelaxParams {
+  noShrinkage: boolean;
+}
+
+export interface MeshApproxRelaxParams extends MeshRelaxParams {
+  surfaceDilateRadius: number;
+  type: RelaxApproxType;
 }
 
 export interface SegmPointf extends ClassHandle {
@@ -2497,6 +2742,122 @@ export type Array2GraphEdgeId = [ GraphEdgeId, GraphEdgeId ];
 export type Array3GraphEdgeId = [ GraphEdgeId, GraphEdgeId, GraphEdgeId ];
 
 export type Array4GraphEdgeId = [ GraphEdgeId, GraphEdgeId, GraphEdgeId, GraphEdgeId ];
+
+export interface StringFunctorString extends ClassHandle {
+  opcall(_0: EmbindString): string;
+}
+
+export interface ProgressCallback extends ClassHandle {
+  opcall(_0: number): boolean;
+}
+
+export interface VertPredicate extends ClassHandle {
+  opcall(_0: VertId): boolean;
+}
+
+export interface FacePredicate extends ClassHandle {
+  opcall(_0: FaceId): boolean;
+}
+
+export interface EdgePredicate extends ClassHandle {
+  opcall(_0: EdgeId): boolean;
+}
+
+export interface UndirectedEdgePredicate extends ClassHandle {
+  opcall(_0: UndirectedEdgeId): boolean;
+}
+
+export interface VertMetric extends ClassHandle {
+  opcall(_0: VertId): number;
+}
+
+export interface FaceMetric extends ClassHandle {
+  opcall(_0: FaceId): number;
+}
+
+export interface EdgeMetric extends ClassHandle {
+  opcall(_0: EdgeId): number;
+}
+
+export interface UndirectedEdgeMetric extends ClassHandle {
+  opcall(_0: UndirectedEdgeId): number;
+}
+
+export interface FloatFunctorTriangulation extends ClassHandle {
+  opcall(_0: Triangulation): number;
+}
+
+export interface FloatFunctorDipoles extends ClassHandle {
+  opcall(_0: Dipoles): number;
+}
+
+export interface FloatFunctorFaceMap extends ClassHandle {
+  opcall(_0: FaceMap): number;
+}
+
+export interface FloatFunctorVertMap extends ClassHandle {
+  opcall(_0: VertMap): number;
+}
+
+export interface FloatFunctorEdgeMap extends ClassHandle {
+  opcall(_0: EdgeMap): number;
+}
+
+export interface FloatFunctorUndirectedEdgeMap extends ClassHandle {
+  opcall(_0: UndirectedEdgeMap): number;
+}
+
+export interface FloatFunctorObjMap extends ClassHandle {
+  opcall(_0: ObjMap): number;
+}
+
+export interface FloatFunctorFaceBitSet extends ClassHandle {
+  opcall(_0: FaceBitSet): number;
+}
+
+export interface FloatFunctorVertBitSet extends ClassHandle {
+  opcall(_0: VertBitSet): number;
+}
+
+export interface FloatFunctorEdgeBitSet extends ClassHandle {
+  opcall(_0: EdgeBitSet): number;
+}
+
+export interface FloatFunctorUndirectedEdgeBitSet extends ClassHandle {
+  opcall(_0: UndirectedEdgeBitSet): number;
+}
+
+export interface FloatFunctorPixelBitSet extends ClassHandle {
+  opcall(_0: PixelBitSet): number;
+}
+
+export interface FloatFunctorVoxelBitSet extends ClassHandle {
+  opcall(_0: VoxelBitSet): number;
+}
+
+export interface FloatFunctorRegionBitSet extends ClassHandle {
+  opcall(_0: RegionBitSet): number;
+}
+
+export interface FloatFunctorNodeBitSet extends ClassHandle {
+  opcall(_0: NodeBitSet): number;
+}
+
+export interface FloatFunctorObjBitSet extends ClassHandle {
+  opcall(_0: ObjBitSet): number;
+}
+
+export interface FloatFunctorTextureBitSet extends ClassHandle {
+  opcall(_0: TextureBitSet): number;
+}
+
+export interface FloatFunctorGraphVertBitSet extends ClassHandle {
+  opcall(_0: GraphVertBitSet): number;
+}
+
+export interface FloatFunctorGraphEdgeBitSet extends ClassHandle {
+  opcall(_0: GraphEdgeBitSet): number;
+}
 
 export interface VectorVectori extends ClassHandle {
   size(): number;
@@ -3064,6 +3425,33 @@ interface EmbindModule {
   faceBitSetOr(_0: FaceBitSet, _1: FaceBitSet): FaceBitSet;
   faceBitSetXor(_0: FaceBitSet, _1: FaceBitSet): FaceBitSet;
   faceBitSetSub(_0: FaceBitSet, _1: FaceBitSet): FaceBitSet;
+  BooleanOperation: {InsideA: BooleanOperationValue<0>, InsideB: BooleanOperationValue<1>, OutsideA: BooleanOperationValue<2>, OutsideB: BooleanOperationValue<3>, Union: BooleanOperationValue<4>, Intersection: BooleanOperationValue<5>, DifferenceBA: BooleanOperationValue<6>, DifferenceAB: BooleanOperationValue<7>, Count: BooleanOperationValue<8>};
+  BooleanResultMapObject: {A: BooleanResultMapObjectValue<0>, B: BooleanResultMapObjectValue<1>, Count: BooleanResultMapObjectValue<2>};
+  BooleanResultMaps: {
+    new(): BooleanResultMaps;
+  };
+  BooleanInternalParameters: {
+    new(): BooleanInternalParameters;
+  };
+  BooleanResultMapper: {
+    new(): BooleanResultMapper;
+  };
+  Box1f: {
+    new(): Box1f;
+    new(_0: number, _1: number): Box1f;
+  };
+  Box1i: {
+    new(): Box1i;
+    new(_0: number, _1: number): Box1i;
+  };
+  Box1ll: {
+    new(): Box1ll;
+    new(_0: bigint, _1: bigint): Box1ll;
+  };
+  Box1d: {
+    new(): Box1d;
+    new(_0: number, _1: number): Box1d;
+  };
   Box2f: {
     new(): Box2f;
     new(_0: Vector2f, _1: Vector2f): Box2f;
@@ -3071,12 +3459,36 @@ interface EmbindModule {
     getMinBoxCorner(_0: Vector2f): Vector2b;
     getMaxBoxCorner(_0: Vector2f): Vector2b;
   };
+  Box2i: {
+    new(): Box2i;
+    new(_0: Vector2i, _1: Vector2i): Box2i;
+  };
+  Box2ll: {
+    new(): Box2ll;
+    new(_0: Vector2ll, _1: Vector2ll): Box2ll;
+  };
+  Box2d: {
+    new(): Box2d;
+    new(_0: Vector2d, _1: Vector2d): Box2d;
+  };
   Box3f: {
     new(): Box3f;
     new(_0: Vector3f, _1: Vector3f): Box3f;
     fromMinAndSize(_0: Vector3f, _1: Vector3f): Box3f;
     getMinBoxCorner(_0: Vector3f): Vector3b;
     getMaxBoxCorner(_0: Vector3f): Vector3b;
+  };
+  Box3i: {
+    new(): Box3i;
+    new(_0: Vector3i, _1: Vector3i): Box3i;
+  };
+  Box3ll: {
+    new(): Box3ll;
+    new(_0: Vector3ll, _1: Vector3ll): Box3ll;
+  };
+  Box3d: {
+    new(): Box3d;
+    new(_0: Vector3d, _1: Vector3d): Box3d;
   };
   FaceBMapBuffer: {
     new(): FaceBMapBuffer;
@@ -3150,11 +3562,33 @@ interface EmbindModule {
   EdgePoint: {
     new(): EdgePoint;
   };
+  VertexMass: {Unit: VertexMassValue<0>, NeiArea: VertexMassValue<1>};
+  EdgeWeights: {Unit: EdgeWeightsValue<0>, Cotan: EdgeWeightsValue<1>};
+  Processing: {Continue: ProcessingValue<0>, Stop: ProcessingValue<1>};
+  OrientNormals: {TowardOrigin: OrientNormalsValue<0>, AwayFromOrigin: OrientNormalsValue<1>, Smart: OrientNormalsValue<2>};
+  OffsetMode: {Smooth: OffsetModeValue<0>, Standard: OffsetModeValue<1>, Sharpening: OffsetModeValue<2>};
+  ColoringType: {SolidColor: ColoringTypeValue<0>, PrimitivesColorMap: ColoringTypeValue<1>, FacesColorMap: ColoringTypeValue<1>, LinesColorMap: ColoringTypeValue<1>, VertsColorMap: ColoringTypeValue<2>};
+  asString(_0: ColoringType): string;
+  UseAABBTree: {No: UseAABBTreeValue<0>, Yes: UseAABBTreeValue<1>, YesIfAlreadyConstructed: UseAABBTreeValue<2>};
+  GeodesicPathApprox: {DijkstraBiDir: GeodesicPathApproxValue<0>, DijkstraAStar: GeodesicPathApproxValue<1>, FastMarching: GeodesicPathApproxValue<2>};
+  ExpectedEdgeLoop: {};
+  ExpectedMesh: {};
   MeshSegmentation: {
     new(_0: Mesh): MeshSegmentation;
   };
+  FillHoleNicelySettings: {
+    new(): FillHoleNicelySettings;
+  };
   FixParams: {
     new(): FixParams;
+  };
+  FreeFormDeformer: {
+    new(_0: VertCoords, _1: VertBitSet): FreeFormDeformer;
+    createFreeFormDeformerFromMesh(_0: Mesh, _1: VertBitSet | null): FreeFormDeformer | null;
+    createFreeFormDeformerFromCoords(_0: VertCoords, _1: VertBitSet): FreeFormDeformer | null;
+  };
+  FreeFormBestFit: {
+    new(_0: Box3d, _1: Vector3i): FreeFormBestFit;
   };
   ICP: {
     new(_0: MeshOrPoints, _1: MeshOrPoints, _2: AffineXf3f, _3: AffineXf3f, _4: VertBitSet, _5: VertBitSet): ICP;
@@ -3168,6 +3602,8 @@ interface EmbindModule {
   EdgeHashMapEntries: {
     new(): EdgeHashMapEntries;
   };
+  findTwinEdgesFromEdgePairs(_0: EdgeHashMapEntries): EdgeBitSet;
+  findTwinUndirectedEdgesFromEdgePairs(_0: EdgeHashMapEntries): UndirectedEdgeBitSet;
   UndirectedEdgeHashMapEntries: {
     new(): UndirectedEdgeHashMapEntries;
   };
@@ -3233,6 +3669,27 @@ interface EmbindModule {
     new(_0: number, _1: EmbindString): MyClass;
     getStringFromInstance(_0: MyClass): string;
   };
+  RememberShape: {Yes: RememberShapeValue<0>, No: RememberShapeValue<1>};
+  Laplacian: {
+    new(_0: Mesh): Laplacian;
+    new(_0: MeshTopology, _1: VertCoords): Laplacian;
+  };
+  Line2f: {
+    new(): Line2f;
+    new(_0: Vector2f, _1: Vector2f): Line2f;
+  };
+  Line2d: {
+    new(): Line2d;
+    new(_0: Vector2d, _1: Vector2d): Line2d;
+  };
+  Line3f: {
+    new(): Line3f;
+    new(_0: Vector3f, _1: Vector3f): Line3f;
+  };
+  Line3d: {
+    new(): Line3d;
+    new(_0: Vector3d, _1: Vector3d): Line3d;
+  };
   Matrix2b: {
     new(): Matrix2b;
   };
@@ -3267,6 +3724,10 @@ interface EmbindModule {
   };
   to3dimMatd(_0: Matrix2d): Matrix3d;
   to2dimMatd(_0: Matrix3d): Matrix2d;
+  isRigidf(_0: Matrix3f): boolean;
+  isRigidd(_0: Matrix3d): boolean;
+  decomposeMatrix3f(_0: Matrix3f, _1: Matrix3f, _2: Matrix3f): void;
+  decomposeMatrix3d(_0: Matrix3d, _1: Matrix3d, _2: Matrix3d): void;
   Matrix4b: {
     new(): Matrix4b;
   };
@@ -3286,6 +3747,10 @@ interface EmbindModule {
     new(): Mesh;
   };
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
+  doBooleanOperation(_0: Mesh, _1: Mesh, _2: VectorEdgePath, _3: VectorEdgePath, _4: BooleanOperation, _5: AffineXf3f | null, _6: BooleanResultMapper | null, _7: boolean, _8: BooleanInternalParameters): ExpectedMesh;
+  findTwinEdgePairs(_0: Mesh, _1: number): EdgeHashMapEntries;
+  findTwinEdges(_0: Mesh, _1: number): EdgeBitSet;
+  findTwinUndirectedEdges(_0: Mesh, _1: number): UndirectedEdgeBitSet;
   edgeLengthMetric(_0: Mesh): EdgeMetricWrapper;
   discreteAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
   discreteMinusAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
@@ -3298,7 +3763,6 @@ interface EmbindModule {
     new(_0: Mesh): MeshWrapper;
     fromTrianglesImpl(_0: any, _1: any): any;
   };
-  BooleanOperation: {InsideA: BooleanOperationValue<0>, InsideB: BooleanOperationValue<1>, OutsideA: BooleanOperationValue<2>, OutsideB: BooleanOperationValue<3>, Union: BooleanOperationValue<4>, Intersection: BooleanOperationValue<5>, DifferenceBA: BooleanOperationValue<6>, DifferenceAB: BooleanOperationValue<7>, Count: BooleanOperationValue<8>};
   BooleanResult: {
     new(): BooleanResult;
   };
@@ -3340,6 +3804,8 @@ interface EmbindModule {
   UndirectedEdgeHashMap: {
     new(): UndirectedEdgeHashMap;
   };
+  findTwinUndirectedEdgeHashMap(_0: Mesh, _1: number): UndirectedEdgeHashMap;
+  findTwinUndirectedEdgeHashMapFromEdgePairs(_0: EdgeHashMapEntries): UndirectedEdgeHashMap;
   WholeEdgeHashMap: {
     new(): WholeEdgeHashMap;
   };
@@ -3378,6 +3844,7 @@ interface EmbindModule {
     new(_0: number): EdgeId;
     fromUndirected(_0: UndirectedEdgeId): EdgeId;
   };
+  fillHoleNicely(_0: Mesh, _1: EdgeId, _2: FillHoleNicelySettings): FaceBitSet;
   makeEdgeId(_0: number): EdgeId;
   addEdgeId(_0: EdgeId, _1: number): EdgeId;
   addEdgeIdUInt(_0: EdgeId, _1: number): EdgeId;
@@ -3529,6 +3996,7 @@ interface EmbindModule {
     new(_0: number): VertMap;
     new(_0: number, _1: VertId): VertMap;
   };
+  findCloseVerticesFromMap(_0: VertMap): VertBitSet;
   EdgeMap: {
     new(): EdgeMap;
     new(_0: number): EdgeMap;
@@ -3682,6 +4150,9 @@ interface EmbindModule {
   VectorMeshProjectionResult: {
     new(): VectorMeshProjectionResult;
   };
+  removeSpikes(_0: Mesh, _1: number, _2: number, _3: VertBitSet | null): void;
+  smoothRegionBoundary(_0: Mesh, _1: FaceBitSet, _2: number): void;
+  hardSmoothTetrahedrons(_0: Mesh, _1: VertBitSet | null): void;
   SubdivideSettings: {
     new(): SubdivideSettings;
   };
@@ -3695,9 +4166,14 @@ interface EmbindModule {
   edgeTableSymMetric(_0: MeshTopology, _1: EdgeMetricWrapper): EdgeMetricWrapper;
   fillContourLeft(_0: MeshTopology, _1: VectorEdgeId): FaceBitSet;
   fillContourLeftMultiple(_0: MeshTopology, _1: VectorEdgePath): FaceBitSet;
+  removeSpikesWithTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number, _4: VertBitSet | null): void;
+  hardSmoothTetrahedrons_topology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet | null): void;
   MeshTriPoint: {
     new(): MeshTriPoint;
     new(_0: EdgeId, _1: TriPointf): MeshTriPoint;
+  };
+  MovementBuildBodyParams: {
+    new(): MovementBuildBodyParams;
   };
   NoDefInitFaceId: {
     new(): NoDefInitFaceId;
@@ -3723,10 +4199,10 @@ interface EmbindModule {
   GeneralOffsetParameters: {
     new(): GeneralOffsetParameters;
   };
-  OffsetMode: {Smooth: OffsetModeValue<0>, Standard: OffsetModeValue<1>, Sharpening: OffsetModeValue<2>};
   SignDetectionMode: {Unsigned: SignDetectionModeValue<0>, OpenVDB: SignDetectionModeValue<1>, ProjectionNormal: SignDetectionModeValue<2>, WindingRule: SignDetectionModeValue<3>, HoleWindingRule: SignDetectionModeValue<4>};
   thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
   suggestVoxelSize(_0: MeshPart, _1: number): number;
+  offsetMesh(_0: MeshPart, _1: number, _2: OffsetParameters): ExpectedMesh;
   SortIntersectionsData: {};
   PartMapping: {
     new(): PartMapping;
@@ -3767,6 +4243,16 @@ interface EmbindModule {
   };
   findSignedDistancesByPoints(_0: Mesh, _1: VertCoords, _2: VertBitSet | null, _3: MeshProjectionParameters, _4: IPointsToMeshProjector | null): VertScalars;
   findSignedDistancesByMesh(_0: Mesh, _1: Mesh, _2: MeshProjectionParameters, _3: IPointsToMeshProjector | null): VertScalars;
+  SpacingSettings: {};
+  positionVertsSmoothly(_0: Mesh, _1: VertBitSet, _2: EdgeWeights, _3: VertexMass, _4: VertBitSet | null): void;
+  positionVertsSmoothlyWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: EdgeWeights, _4: VertexMass, _5: VertBitSet | null): void;
+  positionVertsSmoothlySharpBd(_0: Mesh, _1: VertBitSet, _2: VertCoords | null, _3: VertScalars | null): void;
+  positionVertsSmoothlySharpBdWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: VertCoords | null, _4: VertScalars | null): void;
+  positionVertsWithSpacing(_0: Mesh, _1: SpacingSettings): void;
+  positionVertsWithSpacingWithTopology(_0: MeshTopology, _1: VertCoords, _2: SpacingSettings): void;
+  inflate(_0: Mesh, _1: VertBitSet, _2: InflateSettings): void;
+  inflateWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: InflateSettings): void;
+  inflate1WithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: number): void;
   ConvertToFloatVector: {};
   ConvertToIntVector: {};
   createConvertToIntVector(_0: any): ConvertToIntVector;
@@ -3775,6 +4261,45 @@ interface EmbindModule {
     new(): CoordinateConverters;
   };
   createSortIntersectionsData(_0: Mesh, _1: ContinuousContours, _2: CoordinateConverters, _3: AffineXf3f | null, _4: number, _5: boolean): SortIntersectionsData;
+  trackLeftBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
+  trackRightBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
+  findLeftBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
+  findRightBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
+  delRegionKeepBd(_0: Mesh, _1: FaceBitSet | null, _2: boolean): VectorEdgePath;
+  findLeftBoundaryInsideMesh(_0: MeshTopology, _1: FaceBitSet): VectorEdgePath;
+  findRegionBoundaryUndirectedEdgesInsideMesh(_0: MeshTopology, _1: FaceBitSet): UndirectedEdgeBitSet;
+  findRegionOuterFaces(_0: MeshTopology, _1: FaceBitSet): FaceBitSet;
+  getIncidentVerts(_0: MeshTopology, _1: FaceBitSet): VertBitSet;
+  getIncidentVertsWithVertBitSet(_0: MeshTopology, _1: FaceBitSet | null, _2: VertBitSet): VertBitSet;
+  getIncidentVertsWithUndirectedEdgeBitSet(_0: MeshTopology, _1: UndirectedEdgeBitSet): VertBitSet;
+  getIncidentVertsWithUndirectedEdgeBitSetAndVertBitSet(_0: MeshTopology, _1: UndirectedEdgeBitSet | null, _2: VertBitSet): VertBitSet;
+  getInnerVerts(_0: MeshTopology, _1: FaceBitSet): VertBitSet;
+  getInnerVertsWithFaceBitSetPtr(_0: MeshTopology, _1: FaceBitSet | null): VertBitSet;
+  getInnerVertsWithUndirectedEdgeBitSet(_0: MeshTopology, _1: UndirectedEdgeBitSet): VertBitSet;
+  getBoundaryVerts(_0: MeshTopology, _1: FaceBitSet | null): VertBitSet;
+  getRegionBoundaryVerts(_0: MeshTopology, _1: FaceBitSet): VertBitSet;
+  getIncidentFaces(_0: MeshTopology, _1: VertBitSet): FaceBitSet;
+  getIncidentFacesFromUndirectedEdgeBitSet(_0: MeshTopology, _1: UndirectedEdgeBitSet): FaceBitSet;
+  getInnerFaces(_0: MeshTopology, _1: VertBitSet): FaceBitSet;
+  getRegionEdges(_0: MeshTopology, _1: FaceBitSet): EdgeBitSet;
+  getIncidentEdges(_0: MeshTopology, _1: FaceBitSet): UndirectedEdgeBitSet;
+  getIncidentEdgesFromUndirectedEdgeBitSet(_0: MeshTopology, _1: UndirectedEdgeBitSet): UndirectedEdgeBitSet;
+  getNeighborFaces(_0: MeshTopology, _1: UndirectedEdgeBitSet): FaceBitSet;
+  getInnerEdges(_0: MeshTopology, _1: VertBitSet): UndirectedEdgeBitSet;
+  getInnerEdgesFromFaceBitSet(_0: MeshTopology, _1: FaceBitSet): UndirectedEdgeBitSet;
+  RelaxApproxType: {Planar: RelaxApproxTypeValue<0>, Quadric: RelaxApproxTypeValue<1>};
+  RelaxParams: {
+    new(): RelaxParams;
+  };
+  MeshRelaxParams: {
+    new(): MeshRelaxParams;
+  };
+  MeshEqualizeTriAreasParams: {
+    new(): MeshEqualizeTriAreasParams;
+  };
+  MeshApproxRelaxParams: {
+    new(): MeshApproxRelaxParams;
+  };
   SegmPointf: {
     new(): SegmPointf;
   };
@@ -3847,6 +4372,108 @@ interface EmbindModule {
   };
   StdVectorUi64: {
     new(): StdVectorUi64;
+  };
+  StringFunctorString: {
+    new(): StringFunctorString;
+  };
+  ProgressCallback: {
+    new(): ProgressCallback;
+  };
+  findSmallestCloseVertices(_0: Mesh, _1: number, _2: ProgressCallback): VertMap | undefined;
+  findSmallestCloseVerticesFromCloud(_0: PointCloud, _1: number, _2: ProgressCallback): VertMap | undefined;
+  findSmallestCloseVerticesFromCoords(_0: VertCoords, _1: number, _2: VertBitSet | null, _3: ProgressCallback): VertMap | undefined;
+  findSmallestCloseVerticesUsingTree(_0: VertCoords, _1: number, _2: AABBTreePoints, _3: VertBitSet | null, _4: ProgressCallback): VertMap | undefined;
+  findCloseVertices(_0: Mesh, _1: number, _2: ProgressCallback): VertBitSet | undefined;
+  findCloseVerticesFromCloud(_0: PointCloud, _1: number, _2: ProgressCallback): VertBitSet | undefined;
+  findCloseVerticesFromCoords(_0: VertCoords, _1: number, _2: VertBitSet | null, _3: ProgressCallback): VertBitSet | undefined;
+  relax(_0: Mesh, _1: MeshRelaxParams, _2: ProgressCallback): boolean;
+  relaxWithTopology(_0: MeshTopology, _1: VertCoords, _2: MeshRelaxParams, _3: ProgressCallback): boolean;
+  equalizeTriAreas(_0: Mesh, _1: MeshEqualizeTriAreasParams, _2: ProgressCallback): boolean;
+  equalizeTriAreasWithTopology(_0: MeshTopology, _1: VertCoords, _2: MeshEqualizeTriAreasParams, _3: ProgressCallback): boolean;
+  relaxKeepVolume(_0: Mesh, _1: MeshRelaxParams, _2: ProgressCallback): boolean;
+  relaxKeepVolumeWithTopology(_0: MeshTopology, _1: VertCoords, _2: MeshRelaxParams, _3: ProgressCallback): boolean;
+  relaxApprox(_0: Mesh, _1: MeshApproxRelaxParams, _2: ProgressCallback): boolean;
+  relaxApproxWithTopology(_0: MeshTopology, _1: VertCoords, _2: MeshApproxRelaxParams, _3: ProgressCallback): boolean;
+  VertPredicate: {
+    new(): VertPredicate;
+  };
+  FacePredicate: {
+    new(): FacePredicate;
+  };
+  EdgePredicate: {
+    new(): EdgePredicate;
+  };
+  UndirectedEdgePredicate: {
+    new(): UndirectedEdgePredicate;
+  };
+  VertMetric: {
+    new(): VertMetric;
+  };
+  FaceMetric: {
+    new(): FaceMetric;
+  };
+  EdgeMetric: {
+    new(): EdgeMetric;
+  };
+  UndirectedEdgeMetric: {
+    new(): UndirectedEdgeMetric;
+  };
+  FloatFunctorTriangulation: {
+    new(): FloatFunctorTriangulation;
+  };
+  FloatFunctorDipoles: {
+    new(): FloatFunctorDipoles;
+  };
+  FloatFunctorFaceMap: {
+    new(): FloatFunctorFaceMap;
+  };
+  FloatFunctorVertMap: {
+    new(): FloatFunctorVertMap;
+  };
+  FloatFunctorEdgeMap: {
+    new(): FloatFunctorEdgeMap;
+  };
+  FloatFunctorUndirectedEdgeMap: {
+    new(): FloatFunctorUndirectedEdgeMap;
+  };
+  FloatFunctorObjMap: {
+    new(): FloatFunctorObjMap;
+  };
+  FloatFunctorFaceBitSet: {
+    new(): FloatFunctorFaceBitSet;
+  };
+  FloatFunctorVertBitSet: {
+    new(): FloatFunctorVertBitSet;
+  };
+  FloatFunctorEdgeBitSet: {
+    new(): FloatFunctorEdgeBitSet;
+  };
+  FloatFunctorUndirectedEdgeBitSet: {
+    new(): FloatFunctorUndirectedEdgeBitSet;
+  };
+  FloatFunctorPixelBitSet: {
+    new(): FloatFunctorPixelBitSet;
+  };
+  FloatFunctorVoxelBitSet: {
+    new(): FloatFunctorVoxelBitSet;
+  };
+  FloatFunctorRegionBitSet: {
+    new(): FloatFunctorRegionBitSet;
+  };
+  FloatFunctorNodeBitSet: {
+    new(): FloatFunctorNodeBitSet;
+  };
+  FloatFunctorObjBitSet: {
+    new(): FloatFunctorObjBitSet;
+  };
+  FloatFunctorTextureBitSet: {
+    new(): FloatFunctorTextureBitSet;
+  };
+  FloatFunctorGraphVertBitSet: {
+    new(): FloatFunctorGraphVertBitSet;
+  };
+  FloatFunctorGraphEdgeBitSet: {
+    new(): FloatFunctorGraphEdgeBitSet;
   };
   VectorVectori: {
     new(): VectorVectori;
@@ -3997,9 +4624,12 @@ interface EmbindModule {
   VectorVector3f: {
     new(): VectorVector3f;
   };
+  makeFreeFormOriginGrid(_0: Box3f, _1: Vector3i): VectorVector3f;
+  findBestFreeformDeformation(_0: Box3f, _1: VectorVector3f, _2: VectorVector3f, _3: Vector3i, _4: AffineXf3f | null): VectorVector3f;
   VectorVectorVector3f: {
     new(): VectorVectorVector3f;
   };
+  makeMovementBuildBody(_0: VectorVectorVector3f, _1: VectorVectorVector3f, _2: MovementBuildBodyParams): Mesh;
   Vector3f: {
     new(): Vector3f;
     new(_0: number, _1: number, _2: number): Vector3f;
@@ -4023,6 +4653,10 @@ interface EmbindModule {
   buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
   createVerticalStitchMetric(_0: Mesh, _1: Vector3f): FillHoleMetricWrapper;
   projectOnAllWithProgress(_0: Vector3f, _1: AABBTreeObjects, _2: number, _3: any, _4: ObjId): void;
+  vertexPosEqualNeiAreas(_0: Mesh, _1: VertId, _2: boolean): Vector3f;
+  vertexPosEqualNeiAreasWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertId, _3: boolean): Vector3f;
+  surroundingContourEdges(_0: Mesh, _1: VectorEdgeId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgeLoop;
+  surroundingContourVertices(_0: Mesh, _1: VectorVertId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgeLoop;
   distanceSqf(_0: Vector3f, _1: Vector3f): number;
   distancef(_0: Vector3f, _1: Vector3f): number;
   crossf(_0: Vector3f, _1: Vector3f): Vector3f;

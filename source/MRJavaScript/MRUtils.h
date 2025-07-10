@@ -18,9 +18,15 @@
 using namespace emscripten;
 using namespace MR;
 
-namespace MRJS {
 
-// Convert C++ vector to JavaScript Float32Array
+namespace MRJS
+{
+
+// Helper function to convert Expected<T> to JavaScript-friendly result
+template<typename T>
+val expectedToJs( const Expected<T>& expected );
+
+// Convert C++ vector to JavaScript `Float32Array`
 // REF: [Memory Views](`https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#memory-views`)
 [[nodiscard]] val vector3fToFloat32Array( const std::vector<Vector3f>& vec );
 
@@ -179,29 +185,6 @@ template<typename T, std::size_t N>
 void bindStdArray( const char* jsName )
 {
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
-}
-
-
-template<typename OptionalType>
-struct OptionalAccess
-{
-    static val value( const OptionalType& v )
-    {
-        return val( v.value() );
-    }
-    static bool hasValue( const OptionalType& v )
-    {
-        return v.has_value();
-    }
-};
-template<typename V>
-class_<std::optional<V>> register_optional( const char* name )
-{
-    using OptionalV = std::optional<V>;
-    return class_<OptionalV>( name )
-        .constructor<>()
-        .function( "value", &OptionalAccess<OptionalV>::value )
-        .function( "hasValue", &OptionalAccess<OptionalV>::hasValue );
 }
 
 } // namespace MRUtil

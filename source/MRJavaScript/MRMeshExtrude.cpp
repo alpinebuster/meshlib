@@ -78,7 +78,7 @@ EMSCRIPTEN_BINDINGS( __phmapInternalModule ) {
     class_<RawHashMap>("__phmap_internal_raw_hash_map_VertId");
 }
 
-EMSCRIPTEN_BINDINGS( HashMapBindings )
+EMSCRIPTEN_BINDINGS( HashMapModule )
 {
 	class_<FaceHashMapWrapper>( "FaceHashMapWrapper" )
 		.constructor<>()
@@ -158,7 +158,7 @@ EMSCRIPTEN_BINDINGS( HashMapBindings )
 		.smart_ptr<std::shared_ptr<HashMap<UndirectedEdgeId, int>>>( "UndirectedEdgeIdIntHashMap" );
 }
 
-EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
+EMSCRIPTEN_BINDINGS( MeshExtrudeModule )
 {
     class_<MakeDegenerateBandAroundRegionParamsWrapper>( "MakeDegenerateBandAroundRegionParamsWrapper" )
         .constructor<>()

@@ -6,6 +6,7 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
+#include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRBox.h>
@@ -20,12 +21,32 @@ T sqr( const T& x )
 	return x * x;
 }
 
-// Type aliases for convenience
-using Box2f = Box<Vector2f>;
-using Box3f = Box<Vector3f>;
 
 EMSCRIPTEN_BINDINGS( BoxModule )
 {
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Box1*`
+    // ------------------------------------------------------------------------
+	class_<Box1f>( "Box1f" )
+		.constructor<>()
+		.constructor<const float&, const float&>();
+	
+	class_<Box1i>( "Box1i" )
+		.constructor<>()
+		.constructor<const int&, const int&>();
+	
+	class_<Box1ll>( "Box1ll" )
+		.constructor<>()
+		.constructor<const long long&, const long long&>();
+	
+	class_<Box1d>( "Box1d" )
+		.constructor<>()
+		.constructor<const double&, const double&>();
+
+	
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Box2*`
+    // ------------------------------------------------------------------------
 	class_<Box2f>( "Box2f" )
 		// Constructors
 		.constructor<>()
@@ -59,7 +80,23 @@ EMSCRIPTEN_BINDINGS( BoxModule )
 		.function( "getDistanceSqToPoint", select_overload<float( const Vector2f& ) const>( &Box2f::getDistanceSq ) )
 		.function( "expanded", &Box2f::expanded )
 		.function( "insignificantlyExpanded", &Box2f::insignificantlyExpanded );
+	
+	class_<Box2i>( "Box2i" )
+		.constructor<>()
+		.constructor<const Vector2i&, const Vector2i&>();
+	
+	class_<Box2ll>( "Box2ll" )
+		.constructor<>()
+		.constructor<const Vector2ll&, const Vector2ll&>();
+	
+	class_<Box2d>( "Box2d" )
+		.constructor<>()
+		.constructor<const Vector2d&, const Vector2d&>();
 
+	
+    // ------------------------------------------------------------------------
+    // Bind the Embind interface for `Box3*`
+    // ------------------------------------------------------------------------
 	class_<Box3f>( "Box3f" )
 		// Constructors
 		.constructor<>()
@@ -93,4 +130,16 @@ EMSCRIPTEN_BINDINGS( BoxModule )
 		.function( "getDistanceSqToPoint", select_overload<float( const Vector3f& ) const>( &Box3f::getDistanceSq ) )
 		.function( "expanded", &Box3f::expanded )
 		.function( "insignificantlyExpanded", &Box3f::insignificantlyExpanded );
+	
+	class_<Box3i>( "Box3i" )
+		.constructor<>()
+		.constructor<const Vector3i&, const Vector3i&>();
+	
+	class_<Box3ll>( "Box3ll" )
+		.constructor<>()
+		.constructor<const Vector3ll&, const Vector3ll&>();
+	
+	class_<Box3d>( "Box3d" )
+		.constructor<>()
+		.constructor<const Vector3d&, const Vector3d&>();
 }

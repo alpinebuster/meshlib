@@ -67,11 +67,6 @@ EMSCRIPTEN_BINDINGS( ThickenMeshModule )
 
 		.property( "mode", &GeneralOffsetParameters::mode );
 
-	enum_<OffsetMode>( "OffsetMode" )
-		.value( "Smooth", OffsetMode::Smooth )     // OpenVDB dual marching cubes
-		.value( "Standard", OffsetMode::Standard )   // Standard marching cubes
-		.value( "Sharpening", OffsetMode::Sharpening ) // Marching cubes with sharpening
-		;
 	enum_<SignDetectionMode>( "SignDetectionMode" )
 		.value( "Unsigned", SignDetectionMode::Unsigned )
 		.value( "OpenVDB", SignDetectionMode::OpenVDB )
@@ -83,4 +78,6 @@ EMSCRIPTEN_BINDINGS( ThickenMeshModule )
 	// This gives us better error handling in JavaScript
 	function( "thickenMesh", &thickenMeshWrapper );
 	function( "suggestVoxelSize", &suggestVoxelSize );
+
+	function( "offsetMesh", &offsetMesh );
 }

@@ -119,6 +119,10 @@ if [ "${MR_EMSCRIPTEN}" == "ON" ]; then
   if [ "${MR_EMSCRIPTEN_SDK}" == "ON" ]; then
     MR_CMAKE_OPTIONS="${MR_CMAKE_OPTIONS} -D MR_EMSCRIPTEN_SDK=1"
   fi
+  
+  if [ "${MESHLIB_BUILD_DEBUG}" == "ON" ]; then
+    MR_CMAKE_OPTIONS="${MR_CMAKE_OPTIONS} -D MR_EMSCRIPTEN_BUILD_DEBUG=1"
+  fi
 fi
 
 if [[ $OSTYPE == 'darwin'* ]]; then

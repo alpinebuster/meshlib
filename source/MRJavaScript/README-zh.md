@@ -2,11 +2,14 @@
 
 应该遵守的代码规范。
 
-- 标准库std::optional: ``
-- 标准库std::array: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
+- 标准库`tl::expected<T, E>`: ``
+- 标准库`std::function`: `class_<std::function<std::string( std::string )>>( "StringFunctorString" ).constructor<>().function( "opcall", &std::function<std::string( std::string )>::operator() );`
+- 标准库`std::optional`: `register_optional<SmallClass>();`
+- 标准库`std::array`: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
 - 标准库std::vector: `register_vector<Vector3f>( "VectorVector3f" );`
 - 标准库std::pair: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`
 - 封装的struct辅助创建函数统一用`create#ORIGINAL_NAME`（比如：`SortIntersectionsData`对应的名称是`createSortIntersectionsData`）
+- 封装掉用了各个不同模块组成的常见功能流程，在对应关键函数名后加`Impl`后缀（比如：`fixUndercuts` 对应的是`fixUndercutsImpl`）
 
 - 优先使用 `val(typed_memory_view(...))` 和 `HEAPU8.set(uint8Array, ptr)`
 
