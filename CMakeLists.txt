@@ -16,6 +16,9 @@ set(MESHLIB_PROJECT_NAME "MeshLib" CACHE STRING "Project name")
 add_compile_definitions(MR_PROJECT_NAME=\"${MESHLIB_PROJECT_NAME}\")
 
 include(CompilerOptions)
+IF(EMSCRIPTEN)
+  include(ConfigureEmscripten)
+ENDIF()
 
 # all binaries will be located in ./build/Release/bin
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -60,6 +63,11 @@ IF(MR_EMSCRIPTEN)
   set(MESHLIB_BUILD_PYTHON_MODULES OFF)
   set(MESHLIB_BUILD_MESHCONV OFF)
   set(MESHLIB_EXPERIMENTAL_BUILD_C_BINDING OFF)
+
+  IF(MR_EMSCRIPTEN_SDK)
+    set(MESHLIB_BUILD_MRVIEWER OFF)
+    set(MESHLIB_BUILD_MESHVIEWER OFF)
+  ENDIF()
 ENDIF()
 
 set(MESHLIB_THIRDPARTY_DIR "${PROJECT_SOURCE_DIR}/thirdparty")
@@ -164,9 +172,6 @@ IF(NOT MR_EMSCRIPTEN)
   find_package(fmt)
   find_package(spdlog REQUIRED)
   find_package(TBB REQUIRED)
-  IF(spdlog_VERSION VERSION_GREATER_EQUAL "1.7" AND fmt_VERSION VERSION_GREATER_EQUAL "7.0")
-    add_compile_definitions(SPDLOG_FMT_EXTERNAL)
-  ENDIF()
   add_compile_definitions(SPDLOG_COMPILED_LIB SPDLOG_SHARED_LIB)
 ENDIF() # NOT MR_EMSCRIPTEN
 
@@ -247,7 +252,7 @@ IF(MESHLIB_BUILD_MRVIEWER)
     find_package(glfw3 CONFIG REQUIRED)
   ENDIF()
 
-  IF(MR_EMSCRIPTEN AND NOT MR_EMSCRIPTEN_SDK)
+  IF(MR_EMSCRIPTEN)
     include(EmscriptenHelpers)
     mr_emscripten_pack_directory("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/assets" "/")
     IF(NOT MR_DISABLE_EMSCRIPTEN_ASYNCIFY)
@@ -255,17 +260,17 @@ IF(MESHLIB_BUILD_MRVIEWER)
     ENDIF()
   ENDIF()
 
-  IF(NOT MR_EMSCRIPTEN_SDK)
-    add_subdirectory(${PROJECT_SOURCE_DIR}/imgui ./imgui)
-    add_subdirectory(${PROJECT_SOURCE_DIR}/MRViewer ./MRViewer)
-    add_subdirectory(${PROJECT_SOURCE_DIR}/MRCommonPlugins ./MRCommonPlugins)
-  ELSE()
-    add_subdirectory(${PROJECT_SOURCE_DIR}/MRJavaScript ./MRJavaScript)
-  ENDIF()
+  add_subdirectory(${PROJECT_SOURCE_DIR}/imgui ./imgui)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/MRViewer ./MRViewer)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/MRCommonPlugins ./MRCommonPlugins)
 
-  IF(MESHLIB_BUILD_MESHVIEWER AND NOT MR_EMSCRIPTEN_SDK)
+  IF(MESHLIB_BUILD_MESHVIEWER)
     add_subdirectory(${PROJECT_SOURCE_DIR}/MRViewerApp ./MRViewerApp)
   ENDIF()
+ENDIF()
+
+IF(MR_EMSCRIPTEN OR MR_EMSCRIPTEN_SDK)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/MRJavaScript ./MRJavaScript)
 ENDIF()
 
 IF(NOT MR_EMSCRIPTEN)
@@ -348,6 +353,10 @@ install(
     ${CMAKE_CURRENT_BINARY_DIR}/meshlib-config-version.cmake
   DESTINATION ${MR_CONFIG_DIR}
 )
+
+IF(EMSCRIPTEN)
+  install(FILES cmake/Modules/EmscriptenHelpers.cmake DESTINATION ${MR_CONFIG_DIR})
+ENDIF()
 
 IF(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   set(CPACK_GENERATOR "DRAGNDROP")

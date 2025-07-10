@@ -1,0 +1,26 @@
+#include <emscripten/bind.h>
+#include <emscripten/val.h>
+
+#include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMatrix2.h>
+
+using namespace emscripten;
+using namespace MR;
+
+EMSCRIPTEN_BINDINGS( Matrix2Module )
+{
+    class_<Matrix2b>( "Matrix2b" )
+        .constructor<>();
+
+    class_<Matrix2i>( "Matrix2i" )
+        .constructor<>();
+
+    class_<Matrix2ll>( "Matrix2ll" )
+        .constructor<>();
+    
+    class_<Matrix2f>( "Matrix2f" )
+        .constructor<>();
+    
+    class_<Matrix2d>( "Matrix2d" )
+        .constructor<>();
+}

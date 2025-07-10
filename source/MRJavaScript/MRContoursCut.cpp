@@ -37,32 +37,6 @@ public:
 };
 
 /**
- *@brief CutMesh with contour and extracting cutted parts
- * 
- *  using EdgePath = std::vector<EdgeId>;
- *  using EdgeLoop = std::vector<EdgeId>;
- *  using EdgeLoops = std::vector<EdgeLoop>;
- *
- * @param mesh 
- * @param cut 
- * @return std::pair<Mesh, Mesh> 
- */
-std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut )
-{
-    Mesh innerMesh;
-    auto innerBitSet = fillContourLeft( mesh.topology, cut );
-    innerMesh.addMeshPart( {mesh, &innerBitSet} );
-
-    Mesh outerMesh;
-    auto cutReverse = cut;
-    MR::reverse( cutReverse );
-    auto outerBitSet = fillContourLeft( mesh.topology, cutReverse  );
-	outerMesh.addMeshPart( {mesh, &outerBitSet} );
-	
-	return { innerMesh, outerMesh };
-}
-
-/**
  *@brief Cut mesh with polyline
  *
  * 1. Project points of polyline to mesh
@@ -74,12 +48,12 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
  * @param coordinatesLength 
  * @return val 
  */
-val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
+val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 {
 	std::vector<Vector3f> polyline;
 
     int coordinatesLength = coordinates.size();
-    if (coordinatesLength % 3 != 0) {	
+    if (coordinatesLength % 3 != 0) {
 		val obj = val::object();
 		obj.set( "success", false );
 		obj.set( "error", "Coordinates length must be a multiple of 3!" );
@@ -96,28 +70,76 @@ val cutMeshWithPolyline( Mesh& mesh, const std::vector<float>& coordinates )
 	Polyline3 initialPolyline;
 	initialPolyline.addFromPoints( polyline.data(), polyline.size() );
 
-	std::vector<MeshTriPoint> projectedPolyline( initialPolyline.points.size() );
+	std::vector<MeshTriPoint> projectedPolyline;
+	projectedPolyline.reserve( initialPolyline.points.size() );
 	MeshPart m = MeshPart( mesh, nullptr );
+
+
+	val jsTestProjectedPoint = val::array();
 
 	mesh.getAABBTree(); // Create tree in parallel before loop
 	for ( Vector3f pt : initialPolyline.points )
 	{
 		MeshProjectionResult mpr = findProjection( pt, m );
 		projectedPolyline.push_back( mpr.mtp );
+
+
+		val projPoint = val::object();
+		projPoint.set("x", mpr.proj.point.x);
+		projPoint.set("y", mpr.proj.point.y);
+		projPoint.set("z", mpr.proj.point.z);
+		jsTestProjectedPoint.call<void>("push", projPoint);
 	}
 
 	auto meshContour = convertMeshTriPointsToMeshContour( mesh, projectedPolyline );
-	if ( meshContour ) {
+	if ( meshContour )
+	{
+    	const MR::OneMeshContour& testContour = *meshContour;
+		val jsTestProjectedContour = val::array();
+		for (const auto& intersection : testContour.intersections)
+		{
+			val point = val::object();
+			point.set("x", intersection.coordinate.x);
+			point.set("y", intersection.coordinate.y);
+			point.set("z", intersection.coordinate.z);
+			jsTestProjectedContour.call<void>("push", point);
+		}
+
+
 		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
 
-		auto [ innerMesh, outerMesh ] = returnParts( mesh, cutResults.resultCut );
-		val innerMeshData = MRJS::exportMeshData( innerMesh );
-		val outerMeshData = MRJS::exportMeshData( outerMesh );
+
+		val jsTestCutPoints = val::array();
+		for (const auto& loop : cutResults.resultCut) {
+			for (const auto& edge : loop) {
+				Vector3f p = mesh.orgPnt(edge);
+				val point = val::object();
+				point.set("x", p.x);
+				point.set("y", p.y);
+				point.set("z", p.z);
+				jsTestCutPoints.call<void>("push", point);
+			}
+		}
+		
+		// FIXME:
+		// auto [innerMesh, outerMesh] = returnParts_( mesh, cutResults.resultCut );
+
+		auto innerBitSet = fillContourLeft( mesh.topology, cutResults.resultCut );
+		Mesh innerMesh = mesh.cloneRegion( innerBitSet );
+
+		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
+		// val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
+
+
+
 
 		val obj = val::object();
 		obj.set( "success", true );
 		obj.set( "innerMesh", innerMeshData );
-		obj.set( "outerMesh", outerMeshData );
+		// obj.set( "outerMesh", outerMeshData );
+		obj.set( "jsTestProjectedPoint", jsTestProjectedPoint );
+		obj.set( "jsTestProjectedContour", jsTestProjectedContour );
+		obj.set( "jsTestCutPoints", jsTestCutPoints );
 
 		return obj;
 	} else {
@@ -240,5 +262,27 @@ BoolResults cutAndExtrudeMeshWithPolyline( Mesh * mesh, float coordinates[], int
 
 EMSCRIPTEN_BINDINGS( ContoursCutModule )
 {
-    function( "cutMeshWithPolyline", &cutMeshWithPolyline );
+	class_<NewEdgesMap>( "NewEdgesMap" )
+        .constructor<>()
+        .property( "splitEdges", &NewEdgesMap::splitEdges )
+		.property( "map", &NewEdgesMap::map );
+	
+	enum_<CutMeshParameters::ForceFill>( "ForceFill" )
+		.value( "None", CutMeshParameters::ForceFill::None )
+		.value( "Good", CutMeshParameters::ForceFill::Good )
+		.value( "All", CutMeshParameters::ForceFill::All );
+	
+	class_<CutMeshParameters>( "CutMeshParameters" )
+		.constructor<>()
+		.property("sortData", &CutMeshParameters::sortData, return_value_policy::reference() ) // SortIntersectionsData*
+		.property( "new2OldMap", &CutMeshParameters::new2OldMap, return_value_policy::reference() ) // FaceMap*
+		.property( "forceFillMode", &CutMeshParameters::forceFillMode )
+		.property( "new2oldEdgesMap", &CutMeshParameters::new2oldEdgesMap, return_value_policy::reference() ) // NewEdgesMap*
+		;
+
+	value_object<CutMeshResult>( "CutMeshResult" )
+		.field( "resultCut", &CutMeshResult::resultCut )
+		.field( "fbsWithContourIntersections", &CutMeshResult::fbsWithContourIntersections );
+
+	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
 }

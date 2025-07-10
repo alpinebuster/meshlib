@@ -1,4 +1,4 @@
-import createMeshLib from './MRJavaScript.js';
+import createMeshSDK from './MRJavaScript.js';
 import postWasmLoad from './post_load_mrjs.js';
 
 // Define the various stages of embind loading and their weights.
@@ -325,7 +325,7 @@ export async function initializeWasmModule(options = {}) {
         moduleConfig.setStatus("Downloading...");
 
         // NOTE: Call the factory function of the Emscripten module and pass in the configuration
-        const Module = await createMeshLib(moduleConfig);
+        const Module = await createMeshSDK(moduleConfig);
         const fileLoader = postWasmLoad(Module);
         progressTracker.log('WASM module successfully initialized', 'success');
 

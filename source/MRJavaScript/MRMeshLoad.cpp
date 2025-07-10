@@ -17,25 +17,6 @@
 using namespace emscripten;
 using namespace MR;
 
-// Helper function to convert Expected<T> to JavaScript-friendly result
-template<typename T>
-val expectedToJs( const Expected<T>& expected )
-{
-	if ( expected.has_value() )
-	{
-		val obj = val::object();
-		obj.set( "success", true );
-		obj.set( "value", expected.value() );
-		return obj;
-	}
-	else
-	{
-		val obj = val::object();
-		obj.set( "success", false );
-		obj.set( "error", expected.error() );
-		return obj;
-	}
-}
 
 // Wrapper for MeshLoad functions
 class MeshLoadWrapper {

@@ -215,10 +215,10 @@ const postWasmLoad = function (_m) {
 
 
     // Vector
-    var testV3f = new _m.Vector3F(1.3, 43.2, 43.2);
-    var testV3f_2 = new _m.Vector3F(2.3, 41.2, 3.2);
+    var testV3f = new _m.Vector3f(1.3, 43.2, 43.2);
+    var testV3f_2 = new _m.Vector3f(2.3, 41.2, 3.2);
     console.log('testV3f length: ', testV3f.length());
-    console.log('test_anglef: ', _m.angleF(testV3f, testV3f_2));
+    console.log('test_anglef: ', _m.anglef(testV3f, testV3f_2));
 
 
     // Color
@@ -230,7 +230,7 @@ const postWasmLoad = function (_m) {
     console.log("Color 1 Red Component:", color1.get(0));    // Obtain the red component
     console.log("Color 1 Green Component:", color1.get(1));  // Obtain the green component
     // Set the color component
-    color1.set(1, 128);
+    color1.set(128);
     console.log("Updated Color 1 - G:", color1.g);  // 128 should be output
     // Create colors using the static factory function
     const whiteColor = _m.Color.white();
@@ -238,7 +238,7 @@ const postWasmLoad = function (_m) {
     // Call other methods
     const colorUInt32 = color1.getUInt32();
     console.log("Color 1 as UInt32:", colorUInt32);
-    const scaledAlpha = color1.scaledAlpha();
+    const scaledAlpha = color1.scaledAlpha(2.1);
     console.log("Color 1 Scaled Alpha:", scaledAlpha);
 
 

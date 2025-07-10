@@ -1,14 +1,24 @@
 #include <emscripten/bind.h>
+#include <emscripten/val.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRId.h>
+#include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector2.h>
+#include <MRMesh/MRVector3.h>
+#include <MRMesh/MRColor.h>
+#include <MRMesh/MRDipole.h>
+#include <MRMesh/MRAABBTreePoints.h>
+#include <MRMesh/MRBuffer.h>
+
+#include "MRMeshFwd.h"
 
 using namespace emscripten;
 using namespace MR;
 
 // TODO: V2
 
-EMSCRIPTEN_BINDINGS( MRIdModule )
+EMSCRIPTEN_BINDINGS( MeshFwdModule )
 {
     // 1) Expose `NoInit` as an empty value type
     value_object<MR::NoInit>( "NoInit" );
@@ -16,92 +26,92 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     constant( "noInit", MR::noInit );
 
     // Bind `UndirectedEdgeId` first (needed for `EdgeId` constructor)
-    class_<Id<UndirectedEdgeTag>>( "UndirectedEdgeId" )
+    class_<UndirectedEdgeId>( "UndirectedEdgeId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<Id<UndirectedEdgeTag>>>( "shared_ptr<Id<UndirectedEdgeTag>>" ) 
+        .smart_ptr<std::shared_ptr<UndirectedEdgeId>>( "UndirectedEdgeId" ) 
 
-        .function( "valid", &Id<UndirectedEdgeTag>::valid )
-        .function( "toInt", select_overload<int() const>( static_cast<int( Id<UndirectedEdgeTag>::* )() const >( &Id<UndirectedEdgeTag>::operator int ) ) )
-        .function( "toBool", optional_override( []( const Id<UndirectedEdgeTag>& self ) { return bool( self ); }))
-        .function( "get", &Id<UndirectedEdgeTag>::get )
-        .function( "equals", optional_override([](const Id<UndirectedEdgeTag>& self, const Id<UndirectedEdgeTag>& other){ return self == other; }) )
-        .function( "notEquals", optional_override([](const Id<UndirectedEdgeTag>& self, const Id<UndirectedEdgeTag>& other){ return self != other; }) )
-        .function( "lessThan", optional_override([](const Id<UndirectedEdgeTag>& self, const Id<UndirectedEdgeTag>& other){ return self < other; }) )
-        .function( "increment", select_overload<Id<UndirectedEdgeTag>&()>( &Id<UndirectedEdgeTag>::operator-- ) )
-        .function( "decrement", select_overload<Id<UndirectedEdgeTag>&()>( &Id<UndirectedEdgeTag>::operator++ ) )
-        .function( "incrementByInt", select_overload<Id<UndirectedEdgeTag>( int )>( &Id<UndirectedEdgeTag>::operator-- ) )
-        .function( "decrementByInt", select_overload<Id<UndirectedEdgeTag>( int )>( &Id<UndirectedEdgeTag>::operator++ ) );
+        .function( "valid", &UndirectedEdgeId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast<int( UndirectedEdgeId::* )() const >( &UndirectedEdgeId::operator int ) ) )
+        .function( "toBool", optional_override( []( const UndirectedEdgeId& self ) { return bool( self ); }))
+        .function( "get", &UndirectedEdgeId::get )
+        .function( "equals", optional_override([](const UndirectedEdgeId& self, const UndirectedEdgeId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const UndirectedEdgeId& self, const UndirectedEdgeId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const UndirectedEdgeId& self, const UndirectedEdgeId& other){ return self < other; }) )
+        .function( "increment", select_overload<UndirectedEdgeId&()>( &UndirectedEdgeId::operator-- ) )
+        .function( "decrement", select_overload<UndirectedEdgeId&()>( &UndirectedEdgeId::operator++ ) )
+        .function( "incrementByInt", select_overload<UndirectedEdgeId( int )>( &UndirectedEdgeId::operator-- ) )
+        .function( "decrementByInt", select_overload<UndirectedEdgeId( int )>( &UndirectedEdgeId::operator++ ) );
 
-    class_<Id<EdgeTag>>( "EdgeId" )
+    class_<EdgeId>( "EdgeId" )
         // Constructors
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<Id<EdgeTag>>>( "shared_ptr<Id<EdgeTag>>" ) 
-        .class_function( "fromUndirected", optional_override( []( const UndirectedEdgeId& u ) {return Id<EdgeTag>( u );}))
+        .smart_ptr<std::shared_ptr<EdgeId>>( "EdgeId" ) 
+        .class_function( "fromUndirected", optional_override( []( const UndirectedEdgeId& u ) {return EdgeId( u );}))
 
         // Validity check
-        .function( "valid", &Id<EdgeTag>::valid )
+        .function( "valid", &EdgeId::valid )
         // Conversion
-        .function( "toInt", optional_override([](const Id<EdgeTag>& self){ return int(self); }))
-        .function( "toBool", optional_override([](const Id<EdgeTag>& self){ return bool(self); }))
+        .function( "toInt", optional_override([](const EdgeId& self){ return int(self); }))
+        .function( "toBool", optional_override([](const EdgeId& self){ return bool(self); }))
         // Access underlying value
-        .function( "get", optional_override([](Id<EdgeTag>& self){ return self.get(); }))
+        .function( "get", optional_override([](EdgeId& self){ return self.get(); }))
         // Symmetry operations
-        .function( "sym", &Id<EdgeTag>::sym )
-        .function( "even", &Id<EdgeTag>::even )
-        .function( "odd", &Id<EdgeTag>::odd )
+        .function( "sym", &EdgeId::sym )
+        .function( "even", &EdgeId::even )
+        .function( "odd", &EdgeId::odd )
         // Undirected conversion
-        .function( "undirected", &Id<EdgeTag>::undirected )
-        .function( "toUndirected", optional_override([](const Id<EdgeTag>& self) { return self.undirected(); }) )
+        .function( "undirected", &EdgeId::undirected )
+        .function( "toUndirected", optional_override([](const EdgeId& self) { return self.undirected(); }) )
         // Comparison
-        .function( "equals", optional_override( [](const Id<EdgeTag>& self, const Id<EdgeTag>& other) { return self == other; } ) )
-        .function( "notEquals", optional_override([](const Id<EdgeTag>& self, const Id<EdgeTag>& other){ return self != other; }) )
-        .function( "lessThan", optional_override( [](const Id<EdgeTag>& self, const Id<EdgeTag>& other){ return self < other; } ) )
+        .function( "equals", optional_override( [](const EdgeId& self, const EdgeId& other) { return self == other; } ) )
+        .function( "notEquals", optional_override([](const EdgeId& self, const EdgeId& other){ return self != other; }) )
+        .function( "lessThan", optional_override( [](const EdgeId& self, const EdgeId& other){ return self < other; } ) )
         // Increment / Decrement
-        .function( "increment", select_overload<Id<EdgeTag>&()>( &Id<EdgeTag>::operator-- ) )
-        .function( "decrement", select_overload<Id<EdgeTag>&()>( &Id<EdgeTag>::operator++ ) )
-        .function( "incrementByInt", select_overload<Id<EdgeTag>( int )>( &Id<EdgeTag>::operator-- ) )
-        .function( "decrementByInt", select_overload<Id<EdgeTag>( int )>( &Id<EdgeTag>::operator++ ) );
+        .function( "increment", select_overload<EdgeId&()>( &EdgeId::operator-- ) )
+        .function( "decrement", select_overload<EdgeId&()>( &EdgeId::operator++ ) )
+        .function( "incrementByInt", select_overload<EdgeId( int )>( &EdgeId::operator-- ) )
+        .function( "decrementByInt", select_overload<EdgeId( int )>( &EdgeId::operator++ ) );
     
-    class_<Id<FaceTag>>( "FaceId" )
+    class_<FaceId>( "FaceId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<Id<FaceTag>>>( "shared_ptr<Id<FaceTag>>" ) 
+        .smart_ptr<std::shared_ptr<FaceId>>( "FaceId" ) 
 
-        .function( "valid", &Id<FaceTag>::valid )
-        .function( "toInt", select_overload<int () const>( static_cast<int( Id<FaceTag>::* ) () const>( &Id<FaceTag>::operator int )))
-        .function( "toBool", optional_override( []( const Id<FaceTag>& self ) { return bool( self ); }))
-        .function( "get", &Id<FaceTag>::get )
-        .function( "equals", optional_override([](const Id<FaceTag>& self, const Id<FaceTag>& other){ return self == other; }) )
-        .function( "notEquals", optional_override([](const Id<FaceTag>& self, const Id<FaceTag>& other){ return self != other; }) )
-        .function( "lessThan", optional_override([](const Id<FaceTag>& self, const Id<FaceTag>& other){ return self < other; }) )
-        .function( "increment", select_overload<Id<FaceTag>&()>( &Id<FaceTag>::operator-- ) )
-        .function( "decrement", select_overload<Id<FaceTag>&()>( &Id<FaceTag>::operator++ ) )
-        .function( "incrementByInt", select_overload<Id<FaceTag>( int )>( &Id<FaceTag>::operator-- ) )
-        .function( "decrementByInt", select_overload<Id<FaceTag>( int )>( &Id<FaceTag>::operator++ ) );
+        .function( "valid", &FaceId::valid )
+        .function( "toInt", select_overload<int () const>( static_cast<int( FaceId::* ) () const>( &FaceId::operator int )))
+        .function( "toBool", optional_override( []( const FaceId& self ) { return bool( self ); }))
+        .function( "get", &FaceId::get )
+        .function( "equals", optional_override([](const FaceId& self, const FaceId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const FaceId& self, const FaceId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const FaceId& self, const FaceId& other){ return self < other; }) )
+        .function( "increment", select_overload<FaceId&()>( &FaceId::operator-- ) )
+        .function( "decrement", select_overload<FaceId&()>( &FaceId::operator++ ) )
+        .function( "incrementByInt", select_overload<FaceId( int )>( &FaceId::operator-- ) )
+        .function( "decrementByInt", select_overload<FaceId( int )>( &FaceId::operator++ ) );
 
-    class_<Id<VertTag>>( "VertId" )
+    class_<VertId>( "VertId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<Id<VertTag>>>( "shared_ptr<Id<VertTag>>" ) 
+        .smart_ptr<std::shared_ptr<VertId>>( "VertId" ) 
 
-        .function( "valid", &Id<VertTag>::valid )
-        .function( "toInt", select_overload<int() const>( static_cast<int ( Id<VertTag>::* ) () const>( &Id<VertTag>::operator int ) ) )
-        .function( "toBool", optional_override( [] ( const Id<VertTag>& self ) { return bool( self ); }))
-        .function( "get", &Id<VertTag>::get )
-        .function( "equals", optional_override([](const Id<VertTag>& self, const Id<VertTag>& other){ return self == other; }) )
-        .function( "notEquals", optional_override([](const Id<VertTag>& self, const Id<VertTag>& other){ return self != other; }) )
-        .function( "lessThan", optional_override([](const Id<VertTag>& self, const Id<VertTag>& other){ return self < other; }) )
-        .function( "increment", select_overload<Id<VertTag>&()>( &Id<VertTag>::operator-- ) )
-        .function( "decrement", select_overload<Id<VertTag>&()>( &Id<VertTag>::operator++ ) )
-        .function( "incrementByInt", select_overload<Id<VertTag>( int )>( &Id<VertTag>::operator-- ) )
-        .function( "decrementByInt", select_overload<Id<VertTag>( int )>( &Id<VertTag>::operator++ ) );
+        .function( "valid", &VertId::valid )
+        .function( "toInt", select_overload<int() const>( static_cast<int ( VertId::* ) () const>( &VertId::operator int ) ) )
+        .function( "toBool", optional_override( [] ( const VertId& self ) { return bool( self ); }))
+        .function( "get", &VertId::get )
+        .function( "equals", optional_override([](const VertId& self, const VertId& other){ return self == other; }) )
+        .function( "notEquals", optional_override([](const VertId& self, const VertId& other){ return self != other; }) )
+        .function( "lessThan", optional_override([](const VertId& self, const VertId& other){ return self < other; }) )
+        .function( "increment", select_overload<VertId&()>( &VertId::operator-- ) )
+        .function( "decrement", select_overload<VertId&()>( &VertId::operator++ ) )
+        .function( "incrementByInt", select_overload<VertId( int )>( &VertId::operator-- ) )
+        .function( "decrementByInt", select_overload<VertId( int )>( &VertId::operator++ ) );
 
     class_<PixelId>( "PixelId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<PixelId>>( "shared_ptr<PixelId>" ) 
+        .smart_ptr<std::shared_ptr<PixelId>>( "PixelId" ) 
 
         .function( "valid", &PixelId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( PixelId::* ) ( ) const >( &PixelId::operator int ) ) )
@@ -118,7 +128,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<VoxelId>( "VoxelId" )
         .constructor<>()
         .constructor<size_t>()
-        .smart_ptr<std::shared_ptr<VoxelId>>( "shared_ptr<VoxelId>" ) 
+        .smart_ptr<std::shared_ptr<VoxelId>>( "VoxelId" ) 
 
         .function( "valid", &VoxelId::valid )
         .function( "toInt", select_overload<size_t() const>( static_cast< size_t ( VoxelId::* ) ( ) const >( &VoxelId::operator size_t ) ) )
@@ -135,7 +145,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<RegionId>( "RegionId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<RegionId>>( "shared_ptr<RegionId>" ) 
+        .smart_ptr<std::shared_ptr<RegionId>>( "RegionId" ) 
 
         .function( "valid", &RegionId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( RegionId::* ) ( ) const >( &RegionId::operator int ) ) )
@@ -152,7 +162,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<NodeId>( "NodeId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<NodeId>>( "shared_ptr<NodeId>" ) 
+        .smart_ptr<std::shared_ptr<NodeId>>( "NodeId" ) 
 
         .function( "valid", &NodeId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( NodeId::* ) ( ) const >( &NodeId::operator int ) ) )
@@ -169,7 +179,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<ObjId>( "ObjId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<ObjId>>( "shared_ptr<ObjId>" ) 
+        .smart_ptr<std::shared_ptr<ObjId>>( "ObjId" ) 
 
         .function( "valid", &ObjId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( ObjId::* ) ( ) const >( &ObjId::operator int ) ) )
@@ -186,7 +196,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<TextureId>( "TextureId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<TextureId>>( "shared_ptr<TextureId>" ) 
+        .smart_ptr<std::shared_ptr<TextureId>>( "TextureId" ) 
 
         .function( "valid", &TextureId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( TextureId::* ) ( ) const >( &TextureId::operator int ) ) )
@@ -203,7 +213,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<GraphVertId>( "GraphVertId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<GraphVertId>>( "shared_ptr<GraphVertId>" ) 
+        .smart_ptr<std::shared_ptr<GraphVertId>>( "GraphVertId" ) 
 
         .function( "valid", &GraphVertId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( GraphVertId::* ) ( ) const >( &GraphVertId::operator int ) ) )
@@ -220,7 +230,7 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
     class_<GraphEdgeId>( "GraphEdgeId" )
         .constructor<>()
         .constructor<int>()
-        .smart_ptr<std::shared_ptr<GraphEdgeId>>( "shared_ptr<GraphEdgeId>" ) 
+        .smart_ptr<std::shared_ptr<GraphEdgeId>>( "GraphEdgeId" ) 
 
         .function( "valid", &GraphEdgeId::valid )
         .function( "toInt", select_overload<int() const>( static_cast< int ( GraphEdgeId::* ) ( ) const >( &GraphEdgeId::operator int ) ) )
@@ -233,4 +243,67 @@ EMSCRIPTEN_BINDINGS( MRIdModule )
         .function( "decrement", select_overload<GraphEdgeId&()>( &GraphEdgeId::operator++ ) )
         .function( "incrementByInt", select_overload<GraphEdgeId( int )>( &GraphEdgeId::operator-- ) )
         .function( "decrementByInt", select_overload<GraphEdgeId( int )>( &GraphEdgeId::operator++ ) );
+}
+
+EMSCRIPTEN_BINDINGS( BMapModule )
+{
+    bindTypedBMap<VertBMap, VertId, VertId>( "VertBMap" );
+    bindTypedBMap<FaceBMap, FaceId, FaceId>( "FaceBMap" );
+    bindTypedBMap<EdgeBMap, EdgeId, EdgeId>( "EdgeBMap" );
+    bindTypedBMap<UndirectedEdgeBMap, UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMap" );
+    bindTypedBMap<WholeEdgeBMap, EdgeId, UndirectedEdgeId>( "WholeEdgeBMap" );
+}
+
+EMSCRIPTEN_BINDINGS( MapModule )
+{
+    BIND_TYPED_VECTOR( Triangulation, ThreeVertIds, FaceId );
+
+    bindTypedVector<Dipoles, Dipole, NodeId>( "Dipoles" );
+
+    BIND_TYPED_VECTOR( FaceMap, FaceId, FaceId );
+    BIND_TYPED_VECTOR( VertMap, VertId, VertId );
+    BIND_TYPED_VECTOR( EdgeMap, EdgeId, EdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdgeMap, UndirectedEdgeId, UndirectedEdgeId );
+    BIND_TYPED_VECTOR( ObjMap, ObjId, ObjId );
+
+    BIND_TYPED_VECTOR( WholeEdgeMap, EdgeId, UndirectedEdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdge2RegionMap, RegionId, UndirectedEdgeId );
+    BIND_TYPED_VECTOR( Face2RegionMap, RegionId, FaceId );
+    BIND_TYPED_VECTOR( Vert2RegionMap, RegionId, VertId );
+}
+
+EMSCRIPTEN_BINDINGS( CoordsModule )
+{
+    // NOTE: `VertNormals` is the same as `VertCoords`
+    // 
+    // It will throw `BindingError: Cannot register type 'VertUVCoords' twice`
+    // BIND_TYPED_VECTOR( VertNormals, Vector3f, VertId );
+    // 
+    BIND_TYPED_VECTOR( VertCoords, Vector3f, VertId );
+    // NOTE: `VertUVCoords` is the same as `VertCoords2`
+    // BIND_TYPED_VECTOR( VertUVCoords, UVCoord, VertId );
+    BIND_TYPED_VECTOR( VertCoords2, Vector2f, VertId );
+    BIND_TYPED_VECTOR( FaceNormals, Vector3f, FaceId );
+}
+
+EMSCRIPTEN_BINDINGS( ColorsModule )
+{
+    BIND_TYPED_VECTOR( TexturePerFace, TextureId, FaceId );
+    BIND_TYPED_VECTOR( VertColors, Color, VertId );
+    BIND_TYPED_VECTOR( FaceColors, Color, FaceId );
+    BIND_TYPED_VECTOR( EdgeColors, Color, EdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdgeColors, Color, UndirectedEdgeId );
+}
+
+EMSCRIPTEN_BINDINGS( ScalarsModule )
+{
+    BIND_TYPED_VECTOR( VertScalars, float, VertId );
+    BIND_TYPED_VECTOR( FaceScalars, float, FaceId );
+    BIND_TYPED_VECTOR( EdgeScalars, float, EdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdgeScalars, float, UndirectedEdgeId );
+}
+
+EMSCRIPTEN_BINDINGS( NodeVecModule )
+{
+    bindTypedVector<AABBTreePoints::NodeVec, AABBTreePoints::Node, NodeId>( "NodeVec" );
 }

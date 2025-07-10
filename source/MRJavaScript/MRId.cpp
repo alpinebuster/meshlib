@@ -7,9 +7,11 @@
 using namespace emscripten;
 using namespace MR;
 
+
 EMSCRIPTEN_BINDINGS( IdModule )
 {
     // Bind `std::pair` for use in maps
+    // NOTE: This is identical to `EdgePair`
     value_array<std::pair<EdgeId, EdgeId>>( "EdgeIdPair" )
         .element( &std::pair<EdgeId, EdgeId>::first )
         .element( &std::pair<EdgeId, EdgeId>::second );
@@ -48,6 +50,13 @@ EMSCRIPTEN_BINDINGS( IdModule )
     register_vector<TextureId>( "VectorTextureId" );
     register_vector<GraphVertId>( "VectorGraphVertId" );
     register_vector<GraphEdgeId>( "VectorGraphEdgeId" );
+
+    // NOTE: `EdgeLoop` equals `EdgePath` 
+    // register_vector<EdgeLoop>( "VectorEdgeLoop" );
+    register_vector<EdgePath>( "VectorEdgePath" );
+    // NOTE: `EdgeLoops` equals `std::vector<EdgePath>`
+    // register_vector<EdgeLoops>( "VectorEdgeLoops" );
+    register_vector<std::vector<EdgePath>>( "VectorVectorEdgePath" );
 
     // Alternative functions for user-defined literals (JavaScript does not support user-defined literals)
     // function("makeEdgeId", +[](int i) { return EdgeId{i}; });

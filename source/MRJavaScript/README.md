@@ -1,5 +1,92 @@
 # JS/TS Bindings
 
+Rules that should obey.
+
+- Standard library `tl::expected<T, E>`: ``
+- Standard library `std::function`: `class_<std::function<std::string( std::string )>>( "StringFunctorString" ).constructor<>().function( "opcall", &std::function<std::string( std::string )>::operator() );`
+- Standard library `std::optional`: `register_optional<SmallClass>();`
+- Standard library `std::array`: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
+- Standard library `std::vector`: `register_vector<Vector3f>( "VectorVector3f" );`
+- Standard library `std::pair`: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`
+- Wrapper functions for structs consistently use `create#ORIGINAL_NAME` (e.g., for `SortIntersectionsData`, the name is `createSortIntersectionsData`)
+- Encapsulate common functional processes that are composed of different modules by adding the `Impl` suffix to the corresponding key function name (e.g., `fixUndercuts` corresponds to `fixUndercutsImpl`).
+
+- Prioritize using `val(typed_memory_view(...))` and `HEAPU8.set(uint8Array, ptr)`
+
+- Automatically delete short-lived C++ objects at the end of the scope when they’re declared with a using keyword: `using x = new Module.MyClass; x.method();`. Using `smart_ptr_constructor()` ensures that when creating an object in JavaScript, a **smart pointer** is returned, making it easier to manage the object's lifecycle. Using `smart_ptr()` allows for more flexible parameter and return types, but still returns a **raw pointer** when creating an object.
+- Provide **wrapper** functions or classes to handle complex pointer logic
+
+
+## TODOs
+
+- Distinguish between "JavaScript interfaces exported according to the original API" and "JavaScript interfaces exported with encapsulated specialized functionalities".
+- V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
+- V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
+
+### FIXME: WASM DEBUGGING
+
+Data from JS/TS will be corrupted in DEBUG mode.
+
+### FIXME: Cannot convert a BigInt value to a number
+
+There were some change to the `memory64` spec relatively recently. You'll need set `NODE_JS` in your emscripten config use `node 24`, see [issue #24620](https://github.com/emscripten-core/emscripten/issues/24620).
+
+Run `vi "${EMSDK}/.emscripten"`, then change the `NODE_JS` to `node 24`:
+
+```txt
+import os
+emsdk_path = os.path.dirname(os.getenv('EM_CONFIG')).replace('\\', '/')
+#NODE_JS = emsdk_path + '/node/22.16.0_64bit/bin/node'
+NODE_JS = '/home/zzz/.nvm/versions/node/v24.3.0/bin/node'
+LLVM_ROOT = emsdk_path + '/upstream/bin'
+BINARYEN_ROOT = emsdk_path + '/upstream'
+EMSCRIPTEN_ROOT = emsdk_path + '/upstream/emscripten'
+```
+
+### FIXME: The `--emit-tsd` option generated TypeScript type for the args parameter of the `ccall` function should use `IArguments` instead of `Arguments`
+
+[REF](https://github.com/emscripten-core/emscripten/issues/24579)
+
+
+## Reference & Pointer
+
+When binding a class with Embind, every C++ instance of that class gets a JS “wrapper object” (an `Module.Mesh`). Whether the C++ signature is
+
+
+```cpp
+void foo(const Mesh* mesh);
+```
+
+or
+
+```cpp
+void foo(const Mesh& mesh);
+```
+
+in JS, we should always just pass the same wrapper:
+
+```js
+// create or receive a Mesh instance
+let mesh = new Module.Mesh();        // or obtained from a C++ call
+
+// call a bound method that takes `Mesh*` or `Mesh&`:
+someBinder.foo(mesh);
+```
+
+Embind will automatically unwrap that `Module.Mesh` into either a `Mesh*` or a `Mesh&` as needed.
+
+If the binding uses raw pointers, be sure `allow_raw_pointers` is added:
+
+```cpp
+.function("foo", &MyClass::foo, allow_raw_pointers())
+```
+
+so that JS can also do:
+
+```js
+someBinder.foo(null);    // passes a nullptr for `Mesh*`
+```
+
 ## Design Guide
 
 Use `val(typed_memory_view(...))` & `HEAPU8.set(uint8Array, ptr)` to improve performance by avoiding copy ops.
@@ -64,16 +151,65 @@ const result = await Module.MeshLoadWrapper.fromBinaryData(ptr, uint8Array.byteL
 // ...
 ```
 
-### Performance Compare
+## Differences between `static_cast` and `reinterpret_cast`
+
+### **static_cast**
+
+**Purpose: Safe type conversion**  
+- Performs compile-time checks for conversion validity  
+- Executes any necessary value conversions  
+- Preserves the semantic meaning of the data  
+
+**Example:**
+```cpp
+EdgeId edgeId(42);
+int value = static_cast<int>(edgeId);  // Calls EdgeId’s operator int()
+// Actually invokes EdgeId::operator ValueType() const { return id_; }
+```
+
+**Characteristics:**  
+- May invoke user-defined conversion operators or constructors  
+- Can change the representation of the data  
+- Compiler ensures the conversion is legal  
+- Relatively safe  
+
+### **reinterpret_cast**
+
+**Purpose: Reinterpret the bit pattern in memory**  
+- Does no actual conversion, only changes how the compiler interprets the bits  
+- Performs no safety checks  
+- Operates directly on raw memory  
+
+**Example:**
+```cpp
+std::vector<EdgeId> edges = {EdgeId(1), EdgeId(2), EdgeId(3)};
+const int* intPtr = reinterpret_cast<const int*>(edges.data());
+// Reinterprets EdgeId* as int* with no actual conversion
+```
+
+**Characteristics:**  
+- Zero overhead; calls no functions  
+- Only changes the pointer/reference type  
+- Not guaranteed to be safe  
+- Requires that source and target types share the same memory layout  
+
+### **Usage**
+
+**EdgeId conversions:**
+```cpp
+// static_cast – invokes user-defined conversion
+int value = static_cast<int>(edgeId);  // Calls operator ValueType()
+
+// reinterpret_cast – directly reinterprets memory (for arrays)
+const int* data = reinterpret_cast<const int*>(edges.data());
+```
+
+## Performance Compare
 
 TODO
 
-## TODOs
+## Differences between pointers
 
-- V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
-- V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
-
-## NOTEs
 In the C++ standard library there are several “pointer” types, each with different ownership and lifetime semantics:
 
 | Pointer Type                        | Header     | Ownership Model                    | Copy / Move                      | Reference Counting                   | Thread Safety                       | Typical Use Cases                                        |

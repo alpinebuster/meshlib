@@ -29,22 +29,109 @@ FixParams createFixParams( const FindParams& findParams, float voxelSize, float 
 	return params;
 }
 
+val fixUndercutsWrapperTest( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
+{
+	size_t originalVertCount = mesh.topology.numValidVerts();
+	size_t originalFaceCount = mesh.topology.numValidFaces();
+
+	val returnObj = val::object();
+
+	Mesh meshCopy;
+	meshCopy.addMeshPart( mesh );
+	// meshCopy.topology = mesh.topology;
+	// meshCopy.points = mesh.points;
+
+	size_t copyVertCount = meshCopy.topology.numValidVerts();
+	size_t copyFaceCount = meshCopy.topology.numValidFaces();
+
+	if ( copyVertCount != originalVertCount || copyFaceCount != originalFaceCount )
+	{
+		returnObj.set( "success", false );
+		returnObj.set( "error", "Mesh copy failed!" );
+		return returnObj;
+	}
+
+	FixParams fixParams;
+	fixParams.findParameters.upDirection = upDirection.normalized();
+	fixParams.voxelSize = voxelSize;
+	fixParams.bottomExtension = bottomExtension;
+
+	int progressSteps = 0;
+	fixParams.cb = [&progressSteps, &returnObj] ( float progress ) -> bool
+	{
+		progressSteps++;
+		if ( progress > 0.7 )
+		{
+			returnObj.set( ( "debug_progress_" + std::to_string( progressSteps ) ).c_str(), progress );
+		}
+		return true;
+	};
+	auto result = fix( meshCopy, fixParams );
+	meshCopy.invalidateCaches();
+
+	if ( result )
+	{
+		size_t processedVertCount = meshCopy.topology.numValidVerts();
+		size_t processedFaceCount = meshCopy.topology.numValidFaces();
+
+		returnObj.set( "debug_originalVertCount", ( int )originalVertCount );
+		returnObj.set( "debug_originalFaceCount", ( int )originalFaceCount );
+		returnObj.set( "debug_copiedVertCount", ( int )copyVertCount );
+		returnObj.set( "debug_copiedFaceCount", ( int )copyFaceCount );
+		returnObj.set( "debug_processedVertCount", ( int )processedVertCount );
+		returnObj.set( "debug_processedFaceCount", ( int )processedFaceCount );
+
+		try
+		{
+			val meshData = MRJS::exportMeshMemoryView( meshCopy );
+			val originalMeshData = MRJS::exportMeshMemoryView( mesh );
+
+			returnObj.set( "success", true );
+			returnObj.set( "mesh", meshData );
+			returnObj.set( "originalMesh", originalMeshData );
+			returnObj.set( "message", "Undercuts fixed successfully!" );
+		}
+		catch ( const std::exception& e )
+		{
+			returnObj.set( "success", false );
+			returnObj.set( "error", std::string( "Export failed: " ) + e.what() );
+		}
+	}
+	else
+	{
+		returnObj.set( "success", false );
+		returnObj.set( "error", std::string( result.error() ) );
+	}
+
+	return returnObj;
+}
+// FIXME: Why pass mesh from JS will cause the result has no vertices & indices?
+// 
 // `Expected<void>` is tricky because it represents
 // either success (with no return value) or failure (with an error message)
 val fixUndercutsWrapper( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
 {
+	// TODO: More performance gains? 
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
 	// NOTE: We're passing the mesh by reference - it gets modified in place
-	auto result = fix( mesh, { {upDirection}, voxelSize, bottomExtension } );
+	auto result = fix( meshCopy, { .findParameters = {.upDirection = upDirection},.voxelSize = voxelSize,.bottomExtension = bottomExtension } );
 
 	val returnObj = val::object();
-	if ( result.has_value() )
+	if ( result )
 	{
-		val meshData = MRJS::exportMeshData( mesh );
+		val meshData = MRJS::exportMeshMemoryView( meshCopy );
+		val originMeshData = MRJS::exportMeshMemoryView( mesh );
 
 		// Success case: the operation completed without errors
 		// The mesh has been modified in place, so we just report success
 		returnObj.set( "success", true );
 		returnObj.set( "mesh", meshData );
+		returnObj.set( "originMesh", originMeshData );
+		returnObj.set( "upDirection", upDirection );
+		returnObj.set( "upDirectionNormalized", upDirection.normalized() );
 		returnObj.set( "message", "Undercuts fixed successfully, the input mesh changed!" );
 	}
 	else
@@ -64,7 +151,7 @@ void fixUndercutsThrows( Mesh& mesh, const Vector3f& upDirection, float voxelSiz
 {
 	auto result = fix( mesh, { {upDirection}, voxelSize, bottomExtension } );
 
-	if ( !result.has_value() )
+	if ( !result )
 	{
 		// Convert the C++ error into a JavaScript exception
 		// This follows JavaScript conventions where errors are typically thrown
@@ -83,6 +170,7 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 
 	class_<FixParams>( "FixParams" )
 		.constructor<>()
+
 		.property( "findParameters", &FixParams::findParameters )
 		.property( "voxelSize", &FixParams::voxelSize )
 		.property( "bottomExtension", &FixParams::bottomExtension )
@@ -91,6 +179,8 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 	// Expose the wrapper that returns a result object
 	// This approach gives JavaScript maximum control over error handling
 	function( "fixUndercuts", &fixUndercutsWrapper );
+	function( "fixUndercutsTest", &fixUndercutsWrapperTest );
+
 	// Also expose the exception-throwing version for developers who prefer try/catch
 	function( "fixUndercutsThrows", &fixUndercutsThrows );
 

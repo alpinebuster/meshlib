@@ -26,6 +26,8 @@ function SidebarObject( editor ) {
 	container.setPaddingTop( '20px' );
 	container.setDisplay( 'none' );
 
+	let TOOL_MODE = 'none';
+
 	// type
 
 	const objectTypeRow = new UIRow();
@@ -141,9 +143,9 @@ function SidebarObject( editor ) {
 
 	// wasm
 
-	const wasmOperationRow = new UIRow();
+	const wasmOpsRow = new UIRow();
 
-	let selectorMode = false;
+	let selectorEnabled = false;
 	let _cur_intersect = null;
 	let draggingIndex = -1;
 	const clicked = [];
@@ -156,11 +158,12 @@ function SidebarObject( editor ) {
 	let curveLine = new THREE.Line(new THREE.BufferGeometry(), curveMaterial);
 	curveLine.name = 'wasm-selector-curve';
 
-	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmSelector') ).setMarginLeft( '7px' ).onClick(function () {
+	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelector') ).setMarginLeft( '7px' ).onClick(function () {
 		if ( !editor.selected ) return;
 
-		selectorMode = !selectorMode;
-		if ( selectorMode ) {
+		selectorEnabled = !selectorEnabled;
+		if ( selectorEnabled ) {
+			TOOL_MODE = 'wasmOpSelector';
 			wasmOpSelector.addClass( 'selected' );
 
 			pointGeo.dispose();
@@ -175,13 +178,14 @@ function SidebarObject( editor ) {
 				});
 			}
 		} else {
+			TOOL_MODE = 'none';
 			wasmOpSelector.removeClass( 'selected' );
 			editor.execute( new RemoveObjectCommand( editor, pointCloud ) );
 			editor.execute( new RemoveObjectCommand( editor, curveLine ) );
 		}
 	});
 	signals.intersectionsDetected.add( ( intersects, source, event ) => {
-		if ( selectorMode && intersects.length > 0 ) {
+		if ( (TOOL_MODE == 'wasmOpSelector' || TOOL_MODE == 'wasmOpSegmentByPoints') && intersects.length > 0 ) {
 			// 1. Check if you clicked on a point
 			const intersectedPoints = selector.getPointerIntersect( source.position, camera, pointCloud );
 			if ( intersectedPoints.length > 0 ) {
@@ -234,18 +238,62 @@ function SidebarObject( editor ) {
 		if ( event.code == 'Enter' && editor.selected ) {
 			const currentUUID = editor.selected.uuid;
 			if ( currentUUID ) {
-				if (editor.wasmObject.hasOwnProperty( currentUUID )) {
+				if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {	
 					const curMeshWrapper = editor.wasmObject[currentUUID];
-						
-					const positionAttribute = pointGeo.getAttribute( 'position' );
-					const positions = positionAttribute.array; // Float32Array
-					const positionsArr = [...positions];
-					// Convert to std::vector<float>
-					const floatVec = new editor.mrmesh.StdVectorf();
-					positionsArr.forEach(v => floatVec.push_back(v));
-					
-					const result = editor.mrmesh.cutMeshWithPolyline(curMeshWrapper.mesh, floatVec );
-					console.log("result: ", result);
+
+					switch ( TOOL_MODE ) {
+						case 'wasmOpSelector':
+							const positionAttribute = curveLine.geometry.getAttribute( 'position' );
+							const positions = positionAttribute.array; // Float32Array
+							const positionsArr = [...positions];
+							// Convert to std::vector<float>
+							const floatVec = new editor.mrmesh.StdVectorf();
+							positionsArr.forEach( v => floatVec.push_back(v) );
+							
+							// const result = editor.mrmesh.cutMeshWithPolyline( curMeshWrapper.mesh, floatVec );
+							const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
+
+							const newVertices = result.innerMesh.vertices;
+							const newIndices = new Uint32Array( result.innerMesh.indices );
+							showMesh( newVertices, newIndices );
+							break;
+
+						case 'wasmOpSegmentByPoints':
+							const threeWorldDir = new THREE.Vector3();
+							editor.camera.getWorldDirection( threeWorldDir );
+							const upDirArr = [
+								threeWorldDir.x,
+								threeWorldDir.y,
+								threeWorldDir.z,
+							]
+
+							const positionAttr = pointGeo.getAttribute( 'position' );
+							const posi = positionAttr.array;
+							const posiArr = [...posi];
+							const _pArr = new editor.mrmesh.StdVectorf();
+							const _dArr = new editor.mrmesh.StdVectorf();
+														
+							for (let val of posiArr) {
+								_pArr.push_back(val);
+							}			
+							for (let val_ of upDirArr) {
+								_dArr.push_back(val_);
+							}
+
+							// const metricWrapper = editor.mrmesh.edgeLengthMetric( curMeshWrapper.mesh );
+							// const metricWrapper = editor.mrmesh.identityMetric( );
+							const metricWrapper = editor.mrmesh.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
+							const result_ = curMeshWrapper.segmentByPointsImpl( _pArr, _dArr, metricWrapper );
+							_pArr.delete();
+							const newVertices_ = result_.mesh.vertices;
+							const newIndices_ = new Uint32Array( result_.mesh.indices );
+							showMesh( newVertices_, newIndices_ );
+							
+							break;
+
+						default:
+							break;
+					}
 				}
 			}
 		}
@@ -296,14 +344,14 @@ function SidebarObject( editor ) {
 				const vertices = newMeshData.vertices;
 				const indices = newMeshData.indices;
 			
-				const newVertices = new Float32Array(vertices);
+				const newVertices = vertices;
 				const newIndices = new Uint32Array(indices);
 				const newGeometry = new THREE.BufferGeometry();
 				newGeometry.setAttribute('position', new THREE.BufferAttribute(newVertices, 3));
 			
 				// 🔧 Automatically calculate the normal to ensure normal lighting effects
 				newGeometry.computeVertexNormals();
-			
+
 				newGeometry.setIndex( new THREE.BufferAttribute(newIndices, 1) );
 				const newMaterial = new THREE.MeshNormalMaterial();
 				const holesFilledMesh = new THREE.Mesh( newGeometry, newMaterial );
@@ -324,19 +372,114 @@ function SidebarObject( editor ) {
 		if (!editor.selected) return;
 	});
 
-	wasmOperationRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
+	const wasmOpFixUndercuts = new UIButton( strings.getKey( 'sidebar/object/wasmOpFixUndercuts') ).setMarginLeft( '7px' ).onClick(function () {
+		if (!editor.selected) return;
+
+		const currentUUID = editor.selected.uuid;
+		if (currentUUID) {
+			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const curMeshWrapper = editor.wasmObject[currentUUID];
+
+				const threeWorldDir = new THREE.Vector3();
+				editor.camera.getWorldDirection( threeWorldDir );
+				const upDir = new editor.mrmesh.Vector3f(
+					-threeWorldDir.x,
+					-threeWorldDir.y,
+					-threeWorldDir.z,
+				)
+
+				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.getMesh(), upDir );
+				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.mesh, upDir );
+				const result = curMeshWrapper.fixUndercutsImpl( upDir );
+				
+				const newVertices = result.mesh.vertices;
+				// const newIndices = new Uint32Array( result.mesh.indices );
+				const newIndices = result.mesh.indices;
+				const newGeometry = new THREE.BufferGeometry();
+				newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
+				newGeometry.computeVertexNormals();
+				newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
+				const newMaterial = new THREE.MeshNormalMaterial();
+				const newMesh = new THREE.Mesh( newGeometry, newMaterial );
+				newMesh.name = `wasm-${editor.select.name}-undercutsFixed`;
+				newMesh.castShadow = true;
+				newMesh.receiveShadow = true;
+
+				editor.execute( new AddObjectCommand( editor, newMesh ) );
+			}
+		}
+	});
+
+	let segmentByPointsEnabled = false;
+	const wasmOpSegmentByPoints = new UIButton( strings.getKey( 'sidebar/object/wasmOpSegmentByPoints') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		segmentByPointsEnabled = !segmentByPointsEnabled;
+		if ( segmentByPointsEnabled ) {
+			TOOL_MODE = 'wasmOpSegmentByPoints';
+			wasmOpSegmentByPoints.addClass( 'selected' );
+		} else {
+			TOOL_MODE = 'none';
+			wasmOpSegmentByPoints.removeClass( 'selected' );
+		}
+	});
+
+	const wasmOpThickenMesh = new UIButton( strings.getKey( 'sidebar/object/wasmOpThickenMesh') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if (currentUUID) {
+			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const curMeshWrapper = editor.wasmObject[currentUUID];
+
+				const params = new editor.mrmesh.GeneralOffsetParameters();
+				params.signDetectionMode = editor.mrmesh.SignDetectionMode.Unsigned;
+				const meshPart = new editor.mrmesh.MeshPart( curMeshWrapper.getMesh() );
+				params.voxelSize = editor.mrmesh.suggestVoxelSize( meshPart, 5e6 );
+
+				// const result = editor.mrmesh.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
+				const result = curMeshWrapper.thickenMeshImpl( 1.2, params );
+				
+				const newVertices = result.mesh.vertices;
+				const newIndices = result.mesh.indices;
+				const newGeometry = new THREE.BufferGeometry();
+				newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
+				newGeometry.computeVertexNormals();
+				newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
+				const newMaterial = new THREE.MeshNormalMaterial();
+				const newMesh = new THREE.Mesh( newGeometry, newMaterial );
+				newMesh.name = `wasm-${editor.select.name}-thickened`;
+				newMesh.castShadow = true;
+				newMesh.receiveShadow = true;
+
+				editor.execute( new AddObjectCommand( editor, newMesh ) );
+			}
+		}
+	});
+
+
+	wasmOpsRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
 
 	const wasmOpsRowHole = new UIRow();
-	wasmOpsRowHole.add(wasmOpFillholes);
+	wasmOpsRowHole.add( wasmOpFillholes );
 	
 	const wasmOpsRowSelector = new UIRow();
 	wasmOpsRowSelector.add( wasmOpSelector );
 	wasmOpsRowSelector.add( wasmOpSelectedInverter );
 	wasmOpsRowSelector.add( wasmOpSelectedDeleter );
 
-	container.add( wasmOperationRow );
+	const wasmOpsRowFixUndercuts = new UIRow();
+	wasmOpsRowFixUndercuts.add( wasmOpFixUndercuts );
+	wasmOpsRowFixUndercuts.add(wasmOpSegmentByPoints);
+	
+	const wasmOpsRowThicken = new UIRow();
+	wasmOpsRowThicken.add( wasmOpThickenMesh );
+	
+	container.add( wasmOpsRow );
 	container.add( wasmOpsRowHole );
 	container.add( wasmOpsRowSelector );
+	container.add( wasmOpsRowFixUndercuts );
+	container.add( wasmOpsRowThicken );
 
 	// fov
 
@@ -935,6 +1078,20 @@ function SidebarObject( editor ) {
 	}
 
 	return container;
+}
+
+function showMesh( newVertices, newIndices ) {
+	const newGeometry = new THREE.BufferGeometry();
+	newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
+	newGeometry.computeVertexNormals();
+	newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
+	const newMaterial = new THREE.MeshNormalMaterial();
+	const newMesh = new THREE.Mesh( newGeometry, newMaterial );
+	newMesh.name = `wasm-${editor.select.name}-outer`;
+	newMesh.castShadow = true;
+	newMesh.receiveShadow = true;
+
+	editor.execute( new AddObjectCommand( editor, newMesh ) );
 }
 
 export { SidebarObject };

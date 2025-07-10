@@ -1,0 +1,52 @@
+{
+  "name": "@alpinebuster/meshsdk",
+  "version": "0.6.2",
+  "description": "MeshSDK: JS/TS binding for the meshlib.",
+  "type": "module",
+  "main": "lib/node/index.js",
+  "browser": "lib/web/index.js",
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "build:src": "tsc -p tsconfig.json",
+    "build:bundle": "tsc -p tsconfig.bundle.json",
+    "bundle": "node ./bundle.js",
+    "build": "npm run build:src && npm run build:bundle && npm run bundle",
+    "bundle:sh": "./bundle.sh",
+    "prepare": "npm run build",
+    "test": "jest"
+  },
+  "keywords": [
+    "meshsdk-binding",
+    "3d",
+    "point-cloud"
+  ],
+  "author": "alpinebuster",
+  "homepage": "https://github.com/alpinebuster/meshsdk#readme",
+  "bugs": {
+    "url": "https://github.com/alpinebuster/meshsdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alpinebuster/meshsdk.git"
+  },
+  "license": "Apache-2.0",
+  "files": [
+    "lib",
+    "src",
+    "CONTRIBUTING",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "devDependencies": {
+    "@types/emscripten": "^1.40.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.7",
+    "jest": "^30.0.0",
+    "prettier": "^3.5.3",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  }
+}

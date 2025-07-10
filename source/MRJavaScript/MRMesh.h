@@ -8,14 +8,17 @@
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMesh.h>
+#include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRAffineXf3.h>
 #include <MRMesh/MRMeshProject.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
 
+#include <MRVoxels/MROffset.h>
 
 #include "MRMesh.h"
+#include "MREdgeMetric.h"
 
 using namespace MR;
 using emscripten::val;
@@ -91,6 +94,8 @@ public:
      */
     MeshWrapper( const Mesh& m );
 
+    Mesh* getMeshPtr();
+
     // Static factory method
     /**
      * @brief Creates a mesh from triangle data
@@ -104,7 +109,11 @@ public:
      * Vertex coordinate format: [[x1,y1,z1], [x2,y2,z2], ...]
      * Triangle format: [[v1,v2,v3], [v4,v5,v6], ...]
      */
-    static val fromTriangles( const val& vertexCoords, const val& triangles );
+    static val fromTrianglesImpl( const val& vertexCoords, const val& triangles );
+    static val fromTrianglesMemoryView( const float* vertexPtr,
+                                        size_t        numVerts,
+                                        const uint32_t* triPtr,
+                                        size_t         numTris );
 
     // Geometric query method
     /**
@@ -192,8 +201,13 @@ public:
      * commonly used for surface sampling, collision detection, and mesh alignment.
      */
     val projectPoint( const val& point, float maxDistance = std::numeric_limits<float>::max() ) const;
-
-    val fillHoles() const;
+    
+    val thickenMeshImpl( float offset, GeneralOffsetParameters &params );
+    val cutMeshWithPolylineImpl( const std::vector<float>& coordinates );
+    val segmentByPointsImpl( const std::vector<float>& coordinates, const std::vector<float>& dir,
+	const EdgeMetricWrapper& edgeMetricWrapper );
+    val fixUndercutsImpl(const Vector3f& upDirection) const;
+    val fillHolesImpl() const;
 
     // Transformation method
     /**

@@ -25,7 +25,7 @@ val smoothExtractedRegionBoundary( Mesh& mesh, int numIters = 6 )
     // 3) Update internal cache (normals, acceleration structures, etc.)
     mesh.invalidateCaches();
 
-    val meshData = MRJS::exportMeshData( mesh );
+    val meshData = MRJS::exportMeshMemoryView( mesh );
     val obj = val::object();
     obj.set( "success", true );
     obj.set( "mesh", meshData );

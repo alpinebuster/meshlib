@@ -4,7 +4,7 @@
 
 namespace MR
 {
- 
+
 /// 2- or 3-dimensional line: cross( x - p, d ) = 0
 /// \ingroup MathGroup
 template <typename V>

@@ -3,7 +3,7 @@ import {
 	computeBoundsTree, disposeBoundsTree,
 	computeBatchedBoundsTree, disposeBatchedBoundsTree, acceleratedRaycast,
 } from 'three-mesh-bvh';
-import { createMeshLib } from '@alpinebuster/meshlib';
+import { createMeshSDK } from '@alpinebuster/meshsdk';
 
 import { Config } from './Config.js';
 import { Loader } from './Loader.js';
@@ -607,7 +607,7 @@ Editor.prototype = {
 	},
 
 	async initMRMesh() {
-		this.mrmesh = await createMeshLib();
+		this.mrmesh = await createMeshSDK();
 	},
 };
 
