@@ -41,7 +41,7 @@ public:
 		binding_.function( "heapBytes", &Buffer<T, I>::heapBytes );
 
 		///
-		// FIXME: Why this does not work??
+		// FIXME: Why `select_override` does not work??
 		binding_.function( "get", optional_override( []( const Buffer<T, I>& self, I id ) -> T {
 			return self[id];
 		}));
