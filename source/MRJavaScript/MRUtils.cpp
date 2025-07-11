@@ -303,6 +303,13 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 		.constructor<>()
 		.function( "opcall", &std::function<bool( float )>::operator() );
 
+	
+	///
+	class_<std::function<void( EdgeId, EdgeId )>>( "VoidFunctorEdgeIdEdgeId" )
+		.constructor<>()
+		.function( "opcall", &std::function<void( EdgeId, EdgeId )>::operator() );
+	///
+
 
 	///
 	class_<std::function<bool( VertId )>>( "VertPredicate" )
