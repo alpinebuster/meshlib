@@ -22,6 +22,7 @@
 #include <MRMesh/MRCloudPartMapping.h>
 #include <MRMesh/MRPartMapping.h>
 #include <MRMesh/MRExpected.h>
+#include <MRMesh/MRBuffer.h>
 
 #include "MRExpected.h"
 
@@ -67,6 +68,11 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
     // MRJS::bindExpected<MeshTexture>( "ExpectedMeshTexture" );
     // MRJS::bindExpected<GridSettings>( "ExpectedGridSettings" );
     // MRJS::bindExpected<TriMesh>( "ExpectedTriMesh" );
+    ///
+
+
+    ///
+    MRJS::bindExpected<PackMapping>( "ExpectedPackMapping" );
     ///
 
 

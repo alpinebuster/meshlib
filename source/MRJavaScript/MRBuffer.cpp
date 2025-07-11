@@ -36,10 +36,39 @@ EMSCRIPTEN_BINDINGS( BufferModule )
     ///
     class_<PackMapping>( "PackMapping" )
         .constructor<>()
-        // .property( "e", &PackMapping::e, allow_raw_pointers() )
-        // .property( "f", &PackMapping::f, allow_raw_pointers() )
-        // .property( "v", &PackMapping::v, allow_raw_pointers() )
-        ;
+
+        .function( "getE", optional_override( [] ( PackMapping& self ) -> UndirectedEdgeBMap*
+        {
+            return &self.e;
+        } ), allow_raw_pointers() )
+        .function( "setE", optional_override( []( PackMapping& self, UndirectedEdgeBMap& newE ) {
+            self.e = std::move( newE );
+        } ), allow_raw_pointers() )
+        .function( "setEWithPtr", optional_override( []( PackMapping& self, UndirectedEdgeBMap* newE ) {
+            if ( newE ) self.e = std::move( *newE );
+        } ), allow_raw_pointers() )
+        
+        .function( "getF", optional_override( [] ( PackMapping& self ) -> FaceBMap*
+        {
+            return &self.f;
+        } ), allow_raw_pointers() )
+        .function( "setF", optional_override( []( PackMapping& self, FaceBMap& newB ) {
+            self.f = std::move( newB );
+        } ), allow_raw_pointers() )
+        .function( "setFWithPtr", optional_override( []( PackMapping& self, FaceBMap* newB ) {
+            if ( newB ) self.f = std::move( *newB );
+        } ), allow_raw_pointers() )
+        
+        .function( "getV", optional_override( [] ( PackMapping& self ) -> VertBMap*
+        {
+            return &self.v;
+        } ), allow_raw_pointers() )
+        .function( "setV", optional_override( []( PackMapping& self, VertBMap& newV ) {
+            self.v = std::move( newV );
+        } ), allow_raw_pointers() )
+        .function( "setVWithPtr", optional_override( []( PackMapping& self, VertBMap* newV ) {
+            if ( newV ) self.v = std::move( *newV );
+        } ), allow_raw_pointers() );
     ///
 }
 

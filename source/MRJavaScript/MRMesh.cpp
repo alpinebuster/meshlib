@@ -54,11 +54,11 @@ using namespace MR;
 namespace MRJS
 {
 
+// ------------------------------------------------------------------------
+// Bindings for `Mesh`
+// ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( MeshModule )
 {
-	// ------------------------------------------------------------------------
-	// Bindings for `Mesh`
-	// ------------------------------------------------------------------------
 	class_<Mesh>( "Mesh" )
 		.smart_ptr<std::shared_ptr<Mesh>>( "Mesh" )
 
@@ -90,12 +90,13 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		
 		.function( "packWithPartMapping", select_overload<void( const PartMapping&, bool )>( &Mesh::pack ) )
 		.function( "packWithMap", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &Mesh::pack ), allow_raw_pointers() )
-		// .function( "pack", &Mesh::pack )
+		.function( "pack", select_overload<Expected<void>( const PackMapping&, ProgressCallback )>( &Mesh::pack ), allow_raw_pointers() )
 
 		// FIXME: `copy constructor of 'PackMapping' is implicitly deleted because field 'e' has a deleted copy constructor`
 		// .function( "packOptimally", select_overload<PackMapping( bool )>( &Mesh::packOptimally ) )
+		// .function( "packOptimallyWithProgressCallback", select_overload<Expected<PackMapping>( bool, ProgressCallback )>( &Mesh::packOptimally ) )
 		.function( "deleteFaces", &Mesh::deleteFaces, allow_raw_pointers() )
-		
+
 		.function( "projectPointWithPointOnFace", select_overload<bool( const Vector3f&, PointOnFace&, float, const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
 		.function( "projectPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
 		.function( "projectPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
@@ -773,11 +774,11 @@ void MeshWrapper::pack()
 }
 
 
+// ------------------------------------------------------------------------
+// Bindings for `MeshWrapper`
+// ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 {
-	// ------------------------------------------------------------------------
-	// Bindings for `MeshWrapper`
-	// ------------------------------------------------------------------------
 	class_<MeshWrapper>( "MeshWrapper" )
 		.smart_ptr<std::shared_ptr<MeshWrapper>>( "MeshWrapper" )
 
