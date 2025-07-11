@@ -35,6 +35,24 @@ using namespace MR;
 EMSCRIPTEN_BINDINGS( ExpectedModule )
 {
     ///
+    class_<Expected<void>>( "ExpectedVoid" )
+        .function( "hasValue", &Expected<void>::has_value )
+        .function( "opbool", optional_override( [] ( const Expected<void>& self ) -> bool
+        {
+            return static_cast<bool>( self );
+        } ) )
+        .function( "hasError", optional_override( [] ( const Expected<void>& self )
+        {
+            return !self.has_value();
+        } ) )
+        .function( "error", optional_override( [] ( const Expected<void>& self ) -> const std::string&
+        {
+            return self.error();
+        } ) );
+    ///
+
+
+    ///
     MRJS::bindExpected<MeshTopology>( "ExpectedMeshTopology" );
     MRJS::bindExpected<Mesh>( "ExpectedMesh" );
     MRJS::bindExpected<EdgeLengthMesh>( "ExpectedEdgeLengthMesh" );
