@@ -204,6 +204,15 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
     // Bind the Embind interface for `Optional*`
 	// ------------------------------------------------------------------------
 	///
+	register_optional<float>();
+	register_optional<int>();
+	register_optional<bool>();
+	register_optional<double>();
+	register_optional<long long>();
+	///
+
+
+	///
 	register_optional<MeshOrPoints>();
 	///
 

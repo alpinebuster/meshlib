@@ -319,7 +319,6 @@ val MeshWrapper::segmentByPointsImpl(
 {
 	val result = val::object();
 
-	// TODO: More performance gains? 
 	Mesh meshCopy;
 	meshCopy.topology = mesh.topology;
 	meshCopy.points = mesh.points;
@@ -429,10 +428,10 @@ val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params 
 {
 	// Return the mesh wrapped in an object that indicates success
 	val returnObj = val::object();
-	
-	// TODO: More performance gains? 
+
 	Mesh meshCopy;
-	meshCopy.addMeshPart( mesh );
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
 
 	MeshBuilder::uniteCloseVertices( meshCopy, meshCopy.computeBoundingBox().diagonal() * 1e-6 );
 	auto result = thickenMesh( mesh, offset, params );
@@ -685,11 +684,9 @@ val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
 	FixUndercuts::FixParams fixParams;
 	fixParams.findParameters.upDirection = upDirection.normalized();
 
-	// TODO: More performance gains? 
 	Mesh meshCopy;
 	meshCopy.topology = mesh.topology;
 	meshCopy.points = mesh.points;
-	// meshCopy.addMeshPart( mesh );
 	
 	auto result = FixUndercuts::fix( meshCopy, fixParams );
 
@@ -704,7 +701,7 @@ val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
 val MeshWrapper::fillHolesImpl() const
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
-	// TODO: More performance gains? 
+
 	Mesh meshCopy;
 	meshCopy.topology = mesh.topology;
 	meshCopy.points = mesh.points;

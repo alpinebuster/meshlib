@@ -37,9 +37,8 @@ val fixUndercutsWrapperTest( Mesh& mesh, const Vector3f& upDirection, float voxe
 	val returnObj = val::object();
 
 	Mesh meshCopy;
-	meshCopy.addMeshPart( mesh );
-	// meshCopy.topology = mesh.topology;
-	// meshCopy.points = mesh.points;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
 
 	size_t copyVertCount = meshCopy.topology.numValidVerts();
 	size_t copyFaceCount = meshCopy.topology.numValidFaces();
@@ -111,7 +110,6 @@ val fixUndercutsWrapperTest( Mesh& mesh, const Vector3f& upDirection, float voxe
 // either success (with no return value) or failure (with an error message)
 val fixUndercutsWrapper( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
 {
-	// TODO: More performance gains? 
 	Mesh meshCopy;
 	meshCopy.topology = mesh.topology;
 	meshCopy.points = mesh.points;

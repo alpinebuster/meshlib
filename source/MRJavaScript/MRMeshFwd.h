@@ -150,11 +150,13 @@ auto bindTypedVector( const char* jsName )
 }
 
 template<typename MapType, typename ElementType, typename IdType>
-void bindTypedBMap(const char* jsName)
+auto bindTypedBMap(const char* jsName)
 {
-    class_<MapType>( jsName )
+    auto cls = class_<MapType>( jsName )
         .constructor<>()
-
+        // FIXME
         // .property( "b", &MapType::b )
         .property( "tsize", &MapType::tsize );
+
+    return cls;
 }

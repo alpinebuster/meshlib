@@ -1,29 +1,62 @@
+#include <optional>
+#include <string>
+
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
-#include <MRMesh/MRExpected.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRId.h>
+#include <MRPch/MRExpected.h>
+#include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector2.h>
+#include <MRMesh/MRVector3.h>
+#include <MRMesh/MRPointCloud.h>
+#include <MRMesh/MRMeshOrPoints.h>
+#include <MRMesh/MREdgeLengthMesh.h>
+#include <MRMesh/MRAABBTree.h>
+#include <MRMesh/MRAABBTreePoints.h>
+#include <MRMesh/MRAABBTreeObjects.h>
+#include <MRMesh/MRCloudPartMapping.h>
+#include <MRMesh/MRPartMapping.h>
+#include <MRMesh/MRExpected.h>
+
+#include "MRExpected.h"
 
 using namespace emscripten;
 using namespace MR;
 
+
+// ------------------------------------------------------------------------
+// Bind the Embind interface for `Expected*`
+// ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( ExpectedModule )
 {
-    // TODO
-    class_<Expected<EdgeLoop>>( "ExpectedEdgeLoop" )
-        .function( "hasValue", &Expected<EdgeLoop>::has_value );
-    // class_<tl::expected<EdgeLoop, std::string>>( "ExpectedEdgeLoop" )
-    //     .function( "has_value", &tl::expected<EdgeLoop, std::string>::has_value )
-    //     // .function("value", &tl::expected<EdgeLoop, std::string>::value, return_value_policy::reference())
-    //     // .function("error", &tl::expected<EdgeLoop, std::string>::error, return_value_policy::reference())
-    //     .function( "operatorBool", [] ( const tl::expected<EdgeLoop, std::string>& exp )
-    //     {
-    //         return exp.has_value();
-    //     } );
+    ///
+    MRJS::bindExpected<MeshTopology>( "ExpectedMeshTopology" );
+    MRJS::bindExpected<Mesh>( "ExpectedMesh" );
+    MRJS::bindExpected<EdgeLengthMesh>( "ExpectedEdgeLengthMesh" );
+    MRJS::bindExpected<MeshOrPoints>( "ExpectedMeshOrPoints" );
+    MRJS::bindExpected<PointCloud>( "ExpectedPointCloud" );
+    MRJS::bindExpected<AABBTree>( "ExpectedAABBTree" );
+    MRJS::bindExpected<AABBTreePoints>( "ExpectedAABBTreePoints" );
+    MRJS::bindExpected<AABBTreeObjects>( "ExpectedAABBTreeObjects" );
+    MRJS::bindExpected<CloudPartMapping>( "ExpectedCloudPartMapping" );
+    MRJS::bindExpected<PartMapping>( "ExpectedPartMapping" );
+    MRJS::bindExpected<MeshOrPointsXf>( "ExpectedMeshOrPointsXf" );
+    // MRJS::bindExpected<MeshTexture>( "ExpectedMeshTexture" );
+    // MRJS::bindExpected<GridSettings>( "ExpectedGridSettings" );
+    // MRJS::bindExpected<TriMesh>( "ExpectedTriMesh" );
+    ///
 
 
-    class_<Expected<Mesh>>( "ExpectedMesh" )
-        .function( "hasValue", &Expected<Mesh>::has_value );
+    ///
+    // NOTE: `EdgeLoop` is the same as `EdgePath`
+    // MRJS::bindExpected<EdgeLoop>( "ExpectedEdgeLoop" );
+    // 
+    MRJS::bindExpected<EdgePath>( "ExpectedEdgePath" );
+    MRJS::bindExpected<EdgeLoops>( "ExpectedEdgeLoops" );
+    ///
 }
