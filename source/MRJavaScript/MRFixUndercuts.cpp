@@ -109,7 +109,10 @@ val fixUndercutsWrapperTest( Mesh& mesh, const Vector3f& upDirection, float voxe
 val fixUndercutsWrapper( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
 {
 	Mesh meshCopy;
-	meshCopy = mesh;
+	// NOTE: Both methods will work
+	// meshCopy = mesh;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
 
 	// NOTE: We're passing the mesh by reference - it gets modified in place
 	auto result = fix( meshCopy, { .findParameters = {.upDirection = upDirection},.voxelSize = voxelSize,.bottomExtension = bottomExtension } );
