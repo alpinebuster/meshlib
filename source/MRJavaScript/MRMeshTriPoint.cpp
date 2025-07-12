@@ -13,6 +13,7 @@ EMSCRIPTEN_BINDINGS( MeshTriPointModule )
     value_object<WeightedVertex>( "WeightedVertex" )
         .field( "v", &WeightedVertex::v )
         .field( "weight", &WeightedVertex::weight );
+
     using WVArr3 = std::array<WeightedVertex, 3>;
     value_array<WVArr3>( "WeightedVertexArray3" )
         .element( emscripten::index<0>() )

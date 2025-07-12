@@ -30,6 +30,11 @@ EMSCRIPTEN_BINDINGS( BufferModule )
     BufferBinding<EdgeId, EdgeId>( "EdgeBMapBuffer" ).init();
     BufferBinding<UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMapBuffer" ).init();
     BufferBinding<EdgeId, UndirectedEdgeId>( "WholeEdgeBMapBuffer" ).init();
+
+    BufferBinding<FaceId, size_t>( "FaceIdEdgeIdSizeTBMapBuffer" ).init();
+    BufferBinding<VertId, size_t>( "VertIdSizeTBMapBuffer" ).init();
+    BufferBinding<EdgeId, size_t>( "EdgeIdSizeTBMapBuffer" ).init();
+    BufferBinding<UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMapBuffer" ).init();
     ///
 
 

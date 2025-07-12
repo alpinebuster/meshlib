@@ -310,15 +310,20 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	// ------------------------------------------------------------------------
     // Bind the Embind interface for `*Functor*`
 	// ------------------------------------------------------------------------
+	///
 	class_<std::function<std::string( std::string )>>( "StringFunctorString" )
 		.constructor<>()
 		.function( "opcall", &std::function<std::string( std::string )>::operator() );
+	///
 
+
+	///
 	class_<std::function<bool( float )>>( "ProgressCallback" )
 		.constructor<>()
 		.function( "opcall", &std::function<bool( float )>::operator() );
+	///
 
-	
+
 	///
 	class_<std::function<void( EdgeId, EdgeId )>>( "VoidFunctorEdgeIdEdgeId" )
 		.constructor<>()

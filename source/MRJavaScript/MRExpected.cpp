@@ -8,7 +8,6 @@
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRId.h>
-#include <MRPch/MRExpected.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
@@ -21,8 +20,13 @@
 #include <MRMesh/MRAABBTreeObjects.h>
 #include <MRMesh/MRCloudPartMapping.h>
 #include <MRMesh/MRPartMapping.h>
-#include <MRMesh/MRExpected.h>
 #include <MRMesh/MRBuffer.h>
+#include <MRMesh/MRGridSampling.h>
+#include <MRMesh/MRGridSettings.h>
+#include <MRMesh/MRMeshTexture.h>
+#include <MRMesh/MRTriMesh.h>
+#include <MRPch/MRExpected.h>
+#include <MRMesh/MRExpected.h>
 
 #include "MRExpected.h"
 
@@ -65,9 +69,9 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
     MRJS::bindExpected<CloudPartMapping>( "ExpectedCloudPartMapping" );
     MRJS::bindExpected<PartMapping>( "ExpectedPartMapping" );
     MRJS::bindExpected<MeshOrPointsXf>( "ExpectedMeshOrPointsXf" );
-    // MRJS::bindExpected<MeshTexture>( "ExpectedMeshTexture" );
-    // MRJS::bindExpected<GridSettings>( "ExpectedGridSettings" );
-    // MRJS::bindExpected<TriMesh>( "ExpectedTriMesh" );
+    MRJS::bindExpected<MeshTexture>( "ExpectedMeshTexture" );
+    MRJS::bindExpected<GridSettings>( "ExpectedGridSettings" );
+    MRJS::bindExpected<TriMesh>( "ExpectedTriMesh" );
     ///
 
 

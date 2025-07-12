@@ -1,7 +1,6 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
-#include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
@@ -10,6 +9,14 @@
 #include <MRMesh/MRDipole.h>
 #include <MRMesh/MRAABBTreePoints.h>
 #include <MRMesh/MRBuffer.h>
+#include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRGridSampling.h>
+#include <MRMesh/MRMesh.h>
+#include <MRMesh/MRMeshPart.h>
+#include <MRMesh/MRAffineXf3.h>
+#include <MRMesh/MRPointCloud.h>
+#include <MRMesh/MRProgressCallback.h>
+#include <MRMesh/MRMeshFwd.h>
 
 #include "MRMeshFwd.h"
 
@@ -252,6 +259,10 @@ EMSCRIPTEN_BINDINGS( BMapModule )
     bindTypedBMap<EdgeBMap, EdgeId, EdgeId>( "EdgeBMap" );
     bindTypedBMap<UndirectedEdgeBMap, UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMap" );
     bindTypedBMap<WholeEdgeBMap, EdgeId, UndirectedEdgeId>( "WholeEdgeBMap" );
+
+    bindTypedBMap<BMap<VertId, size_t>, VertId, size_t>( "VertIdSizeTBMap" );
+    bindTypedBMap<BMap<UndirectedEdgeId, size_t>, UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMap" );
+    bindTypedBMap<BMap<FaceId, size_t>, FaceId, size_t>( "FaceIdSizeTBMap" );
 }
 
 EMSCRIPTEN_BINDINGS( MapModule )
@@ -262,7 +273,16 @@ EMSCRIPTEN_BINDINGS( MapModule )
 
     BIND_TYPED_VECTOR( FaceMap, FaceId, FaceId );
     BIND_TYPED_VECTOR( VertMap, VertId, VertId );
+
+    ///
+    // NOTE: `EdgeMap` -> `Vector<EdgeId, EdgeId>`
     BIND_TYPED_VECTOR( EdgeMap, EdgeId, EdgeId );
+    bindTypedVector<Vector<EdgeId, VertId>, EdgeId, VertId>( "EdgeIdVertIdMap" );
+    bindTypedVector<Vector<EdgeId, FaceId>, EdgeId, FaceId>( "EdgeIdFaceIdMap" );
+
+    bindTypedVector<Vector<ModelPointsData, ObjId>, ModelPointsData, ObjId>( "ModelPointsDataObjIdMap" );
+    ///
+
     BIND_TYPED_VECTOR( UndirectedEdgeMap, UndirectedEdgeId, UndirectedEdgeId );
     BIND_TYPED_VECTOR( ObjMap, ObjId, ObjId );
 
@@ -306,4 +326,17 @@ EMSCRIPTEN_BINDINGS( ScalarsModule )
 EMSCRIPTEN_BINDINGS( NodeVecModule )
 {
     bindTypedVector<AABBTreePoints::NodeVec, AABBTreePoints::Node, NodeId>( "NodeVec" );
+}
+
+
+EMSCRIPTEN_BINDINGS( MeshFwdTypeModule )
+{
+    enum_<FilterType>( "FilterType" )
+        .value( "Linear", FilterType::Linear )
+        .value( "Discrete", FilterType::Discrete );
+
+    enum_<WrapType>( "WrapType" )
+        .value( "Repeat", WrapType::Repeat )
+        .value( "Mirror", WrapType::Mirror )
+        .value( "Clamp", WrapType::Clamp );
 }
