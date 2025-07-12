@@ -10,6 +10,7 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( IdModule )
 {
+    ///
     // Bind `std::pair` for use in maps
     // NOTE: This is identical to `EdgePair`
     value_array<std::pair<EdgeId, EdgeId>>( "EdgeIdPair" )
@@ -36,6 +37,11 @@ EMSCRIPTEN_BINDINGS( IdModule )
         .element( &std::pair<VertId, VertId>::first )
         .element( &std::pair<VertId, VertId>::second );
     register_vector<std::pair<VertId, VertId>>( "VertHashMapEntries" );
+    ///
+
+
+    ///
+    register_vector<ThreeVertIds>( "VectorThreeVertIds" );
 
     // Register vector structures of `Id()`
     register_vector<EdgeId>( "VectorEdgeId" );
@@ -57,6 +63,8 @@ EMSCRIPTEN_BINDINGS( IdModule )
     // NOTE: `EdgeLoops` equals `std::vector<EdgePath>`
     // register_vector<EdgeLoops>( "VectorEdgeLoops" );
     register_vector<std::vector<EdgePath>>( "VectorVectorEdgePath" );
+    ///
+
 
     // Alternative functions for user-defined literals (JavaScript does not support user-defined literals)
     // function("makeEdgeId", +[](int i) { return EdgeId{i}; });

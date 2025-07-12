@@ -101,12 +101,14 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 
 EMSCRIPTEN_BINDINGS( UtilsModule )
 {
+	// ------------------------------------------------------------------------
+    // Bind the Embind interface for `std::vector<*>`
+    // ------------------------------------------------------------------------
 	register_vector<int>( "StdVectori" );
 	register_vector<float>( "StdVectorf" );
 	register_vector<double>( "StdVectord" );
 	register_vector<long long>( "StdVectorll" );
 	register_vector<uint64_t>( "StdVectorUi64" );
-    // register_vector<bool>( "StdVectorb" );
 
 	
 	// ------------------------------------------------------------------------
@@ -166,6 +168,10 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	MRJS::bindStdArray<VertId, 2>( "Array2VertId" );
 	MRJS::bindStdArray<VertId, 3>( "Array3VertId" );
 	MRJS::bindStdArray<VertId, 4>( "Array4VertId" );
+	
+	MRJS::bindStdArray<ThreeVertIds, 2>( "Array2ThreeVertIds" );
+	MRJS::bindStdArray<ThreeVertIds, 3>( "Array3ThreeVertIds" );
+	MRJS::bindStdArray<ThreeVertIds, 4>( "Array4ThreeVertIds" );
 
 	MRJS::bindStdArray<PixelId, 2>( "Array2PixelId" );
 	MRJS::bindStdArray<PixelId, 3>( "Array3PixelId" );

@@ -1,7 +1,15 @@
+#include <fstream>
+
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRVector.h>
+#include <MRMesh/MRId.h>
+#include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRMeshTriPoint.h>
+#include <MRMesh/MRProgressCallback.h>
+#include <MRMesh/MRExpected.h>
 #include <MRMesh/MRMeshTopology.h>
 
 using namespace emscripten;
