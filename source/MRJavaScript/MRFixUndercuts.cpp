@@ -13,12 +13,12 @@ using namespace MR;
 using namespace FixUndercuts;
 
 
-FindParams createFindParams( float upX, float upY, float upZ, float wallAngle )
+FindParams createFindParamsImpl( float upX, float upY, float upZ, float wallAngle )
 {
 	return FindParams( Vector3f( upX, upY, upZ ), wallAngle );
 }
 
-FixParams createFixParams( const FindParams& findParams, float voxelSize, float bottomExtension, bool smooth )
+FixParams createFixParamsImpl( const FindParams& findParams, float voxelSize, float bottomExtension, bool smooth )
 {
 	FixParams params;
 	params.findParameters = findParams;
@@ -37,8 +37,7 @@ val fixUndercutsWrapperTest( Mesh& mesh, const Vector3f& upDirection, float voxe
 	val returnObj = val::object();
 
 	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
+	meshCopy = mesh;
 
 	size_t copyVertCount = meshCopy.topology.numValidVerts();
 	size_t copyFaceCount = meshCopy.topology.numValidFaces();
@@ -104,15 +103,13 @@ val fixUndercutsWrapperTest( Mesh& mesh, const Vector3f& upDirection, float voxe
 
 	return returnObj;
 }
-// FIXME: Why pass mesh from JS will cause the result has no vertices & indices?
-// 
+
 // `Expected<void>` is tricky because it represents
 // either success (with no return value) or failure (with an error message)
 val fixUndercutsWrapper( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
 {
 	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
+	meshCopy = mesh;
 
 	// NOTE: We're passing the mesh by reference - it gets modified in place
 	auto result = fix( meshCopy, { .findParameters = {.upDirection = upDirection},.voxelSize = voxelSize,.bottomExtension = bottomExtension } );
@@ -145,7 +142,7 @@ val fixUndercutsWrapper( Mesh& mesh, const Vector3f& upDirection, float voxelSiz
 
 // Alternative wrapper that throws exceptions instead of returning error objects
 // This gives JavaScript developers a choice in how they want to handle errors
-void fixUndercutsThrows( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
+void fixUndercutsWrapperThrows( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
 {
 	auto result = fix( mesh, { {upDirection}, voxelSize, bottomExtension } );
 
@@ -176,11 +173,10 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 
 	// Expose the wrapper that returns a result object
 	// This approach gives JavaScript maximum control over error handling
-	function( "fixUndercuts", &fixUndercutsWrapper );
-	function( "fixUndercutsTest", &fixUndercutsWrapperTest );
-
+	function( "fixUndercutsImpl", &fixUndercutsWrapper );
+	function( "fixUndercutsImplTest", &fixUndercutsWrapperTest );
 	// Also expose the exception-throwing version for developers who prefer try/catch
-	function( "fixUndercutsThrows", &fixUndercutsThrows );
+	function( "fixUndercutsImplThrows", &fixUndercutsWrapperThrows );
 
 	// Utility function to help JavaScript developers understand voxel size implications
 	// This addresses the "if voxelSize == 0.0f it will be counted automatically" comment
@@ -192,6 +188,6 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 		return meshSize / ( 100.0f * qualityFactor );
 	} ) );
 	
-    function("createFindParams", &createFindParams);
-    function("createFixParams", &createFixParams);
+    function("createFindParamsImpl", &createFindParamsImpl);
+    function("createFixParamsImpl", &createFixParamsImpl);
 }

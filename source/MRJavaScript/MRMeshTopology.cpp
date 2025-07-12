@@ -180,15 +180,15 @@ EMSCRIPTEN_BINDINGS( MeshTopologyModule )
         .function( "addPart", select_overload<void( const MeshTopology&, FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &MeshTopology::addPart ), allow_raw_pointers() )
         .function( "addPartWithPartMapping", select_overload<void( const MeshTopology&, const PartMapping&, bool )>( &MeshTopology::addPart ), allow_raw_pointers() )
         ///
-        .function( "addPartByMaskWithPartMapping", select_overload<void( const MeshTopology&, const FaceBitSet*, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
-        .function( "addPartByMaskWithPartMappingPtr", select_overload<void( const MeshTopology&, const FaceBitSet*, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
+        .function( "addPartByMaskWithPtr", select_overload<void( const MeshTopology&, const FaceBitSet*, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
+        .function( "addPartByMask", select_overload<void( const MeshTopology&, const FaceBitSet&, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
 
-        .function( "addPartByMask", select_overload<void( const MeshTopology&, const FaceBitSet&, bool, const std::vector<EdgePath>&, const std::vector<EdgePath>&, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
-        .function( "addPartByMaskWithPtr", select_overload<void( const MeshTopology&, const FaceBitSet*, bool, const std::vector<EdgePath>&, const std::vector<EdgePath>&, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
+        .function( "addPartByMaskWithEdgePathPtr", select_overload<void( const MeshTopology&, const FaceBitSet*, bool, const std::vector<EdgePath>&, const std::vector<EdgePath>&, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
+        .function( "addPartByMaskWithEdgePath",        select_overload<void( const MeshTopology&, const FaceBitSet&, bool, const std::vector<EdgePath>&, const std::vector<EdgePath>&, const PartMapping& )>( &MeshTopology::addPartByMask ) )
         ///END
         .function( "rotateTriangles", &MeshTopology::rotateTriangles )
         .function( "pack", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &MeshTopology::pack ), allow_raw_pointers() )
-        .function( "packWithPackMapping", select_overload<void( const PackMapping& )>( &MeshTopology::pack ), allow_raw_pointers() )
+        .function( "packWithPackMapping", select_overload<void( const PackMapping& )>( &MeshTopology::pack ) )
         .function( "packMinMem", &MeshTopology::packMinMem )
 
         // IO

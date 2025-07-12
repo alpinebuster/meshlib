@@ -50,11 +50,13 @@ async function build(): Promise<void> {
 			}
 		}
 
+		///
 		// Bundle for different environments
-		const environments = ['node', 'web'];
-		for (const env of environments) {
-			await bundle(env);
-		}
+		// const environments = ['node', 'web'];
+		// for (const env of environments) {
+		// 	await bundle(env);
+		// }
+		///
 
 		console.log('Build completed successfully!');
 	} catch (error) {

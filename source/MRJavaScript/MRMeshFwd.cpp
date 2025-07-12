@@ -341,4 +341,9 @@ EMSCRIPTEN_BINDINGS( MeshFwdTypeModule )
         .value( "Repeat", WrapType::Repeat )
         .value( "Mirror", WrapType::Mirror )
         .value( "Clamp", WrapType::Clamp );
+
+    enum_<Reorder>( "Reorder" )
+        .value( "None", Reorder::None )
+        .value( "Lexicographically", Reorder::Lexicographically )
+        .value( "AABBTree", Reorder::AABBTree );
 }

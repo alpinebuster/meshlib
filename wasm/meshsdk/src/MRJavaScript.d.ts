@@ -2686,6 +2686,11 @@ export interface WrapTypeValue<T extends number> {
 }
 export type WrapType = WrapTypeValue<0>|WrapTypeValue<1>|WrapTypeValue<2>;
 
+export interface ReorderValue<T extends number> {
+  value: T;
+}
+export type Reorder = ReorderValue<0>|ReorderValue<1>|ReorderValue<2>;
+
 export interface MeshLoadWrapper extends ClassHandle {
 }
 
@@ -2869,8 +2874,8 @@ export interface MeshTopology extends ClassHandle {
   updatingValids(): boolean;
   preferEdges(_0: UndirectedEdgeBitSet): void;
   addPartWithPartMapping(_0: MeshTopology, _1: PartMapping, _2: boolean): void;
-  addPartByMaskWithPartMapping(_0: MeshTopology, _1: FaceBitSet | null, _2: PartMapping): void;
-  addPartByMaskWithPartMappingPtr(_0: MeshTopology, _1: FaceBitSet | null, _2: PartMapping): void;
+  addPartByMaskWithPtr(_0: MeshTopology, _1: FaceBitSet | null, _2: PartMapping): void;
+  addPartByMask(_0: MeshTopology, _1: FaceBitSet, _2: PartMapping): void;
   getAllTriVerts(): VectorThreeVertIds;
   findHoleRepresentiveEdges(_0: FaceBitSet | null): VectorEdgeId;
   getLeftRing(_0: EdgeId): VectorEdgeId;
@@ -2878,8 +2883,8 @@ export interface MeshTopology extends ClassHandle {
   getPathLeftFaces(_0: VectorEdgeId): FaceBitSet;
   getPathRightFaces(_0: VectorEdgeId): FaceBitSet;
   getLeftRings(_0: VectorEdgeId): VectorEdgePath;
-  addPartByMask(_0: MeshTopology, _1: FaceBitSet, _2: boolean, _3: VectorEdgePath, _4: VectorEdgePath, _5: PartMapping): void;
-  addPartByMaskWithPtr(_0: MeshTopology, _1: FaceBitSet | null, _2: boolean, _3: VectorEdgePath, _4: VectorEdgePath, _5: PartMapping): void;
+  addPartByMaskWithEdgePathPtr(_0: MeshTopology, _1: FaceBitSet | null, _2: boolean, _3: VectorEdgePath, _4: VectorEdgePath, _5: PartMapping): void;
+  addPartByMaskWithEdgePath(_0: MeshTopology, _1: FaceBitSet, _2: boolean, _3: VectorEdgePath, _4: VectorEdgePath, _5: PartMapping): void;
   getTriVertsWithArray3VertId(_0: FaceId, _1: Array3VertId): void;
   getTriVertsWithThreeVertIds(_0: FaceId, _1: Array3VertId): void;
   getTriVertsWithFaceId(_0: FaceId): Array3VertId;
@@ -2999,11 +3004,6 @@ export interface Plane3d extends ClassHandle {
   distance(_0: Vector3d): number;
   project(_0: Vector3d): Vector3d;
 }
-
-export interface ReorderValue<T extends number> {
-  value: T;
-}
-export type Reorder = ReorderValue<0>|ReorderValue<1>|ReorderValue<2>;
 
 export interface PointCloud extends ClassHandle {
   points: VertCoords;
@@ -4723,7 +4723,6 @@ interface EmbindModule {
     new(): UniteCloseParams;
   };
   uniteCloseVertices(_0: Mesh, _1: UniteCloseParams): number;
-  uniteCloseVertices(_0: Mesh, _1: UniteCloseParams): number;
   Triangle: {
     new(): Triangle;
     new(_0: VertId, _1: VertId, _2: VertId, _3: FaceId): Triangle;
@@ -5081,6 +5080,7 @@ interface EmbindModule {
   };
   FilterType: {Linear: FilterTypeValue<0>, Discrete: FilterTypeValue<1>};
   WrapType: {Repeat: WrapTypeValue<0>, Mirror: WrapTypeValue<1>, Clamp: WrapTypeValue<2>};
+  Reorder: {None: ReorderValue<0>, Lexicographically: ReorderValue<1>, AABBTree: ReorderValue<2>};
   MeshLoadWrapper: {
     fromFile(_0: EmbindString): any;
     fromBinaryData(_0: number, _1: number, _2: EmbindString): any;
@@ -5207,7 +5207,6 @@ interface EmbindModule {
     new(_0: Vector3d, _1: number): Plane3d;
     fromDirAndPt(_0: Vector3d, _1: Vector3d): Plane3d;
   };
-  Reorder: {None: ReorderValue<0>, Lexicographically: ReorderValue<1>, AABBTree: ReorderValue<2>};
   PointCloud: {
     new(): PointCloud;
   };
@@ -5747,11 +5746,11 @@ interface EmbindModule {
   to3dimVecf(_0: Vector2f): Vector3f;
   to2dimVecf(_0: Vector3f): Vector2f;
   makeArrow(_0: Vector3f, _1: Vector3f, _2: number, _3: number, _4: number, _5: number): Mesh;
-  createFindParams(_0: number, _1: number, _2: number, _3: number): FindParams;
-  createFixParams(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
-  fixUndercuts(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
-  fixUndercutsTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
-  fixUndercutsThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
+  createFindParamsImpl(_0: number, _1: number, _2: number, _3: number): FindParams;
+  createFixParamsImpl(_0: FindParams, _1: number, _2: number, _3: boolean): FixParams;
+  fixUndercutsImpl(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
+  fixUndercutsImplTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
+  fixUndercutsImplThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   closestPointOnLineSegm3f(_0: Vector3f, _1: LineSegm3f): Vector3f;
   buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
   buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;

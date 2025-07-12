@@ -79,7 +79,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 		///
 		.function( "fromTriangles", &Mesh::fromTriangles )
-		// FIXME: < points of triMesh will be moves in the result
+		// FIXME: < points of `triMesh` will be moves in the result
 		// .function( "fromTriMesh", &Mesh::fromTriMesh )
 		.function( "fromTrianglesDuplicatingNonManifoldVertices", &Mesh::fromTrianglesDuplicatingNonManifoldVertices, allow_raw_pointers() )
 		.function( "fromFaceSoup", &Mesh::fromFaceSoup )
@@ -441,7 +441,6 @@ val MeshWrapper::segmentByPointsImpl(
 		// Step 6: Convert results to JavaScript-friendly format using emscripten val
 		val meshData = MRJS::exportMeshMemoryView( segMesh );
 
-		// FIXME: `Uint32Array` error for threejs
 		// Since `EdgeId` has an implicit conversion operator to int, and it is internally represented as an int
 		// We can directly reinterpret `EdgeId*` as `int*`
 		const int* contourData = reinterpret_cast<const int*>( contour.data() );
@@ -823,7 +822,7 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.constructor<const Mesh&>()
 		.class_function( "fromTrianglesImpl", &MeshWrapper::fromTrianglesImpl )
 
-		.property( "mesh", &MeshWrapper::mesh, return_value_policy::reference() )
+		.property( "mesh", &MeshWrapper::mesh )
 		.function( "getMesh", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
 
 		// Geometric properties

@@ -3,22 +3,17 @@
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
-#include <MRMesh/MRPointCloud.h>
 #include <MRMesh/MRAABBTreePoints.h>
 #include <MRMesh/MRPlane3.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRBuffer.h>
+#include <MRMesh/MRPointCloud.h>
 
 using namespace emscripten;
 using namespace MR;
 
 EMSCRIPTEN_BINDINGS( PointCloudModule )
 {
-    enum_<Reorder>( "Reorder" )
-        .value( "None", Reorder::None )
-        .value( "Lexicographically", Reorder::Lexicographically )
-        .value( "AABBTree", Reorder::AABBTree );
-
     class_<PointCloud>( "PointCloud" )
         .constructor<>()
 

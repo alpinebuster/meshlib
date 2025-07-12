@@ -36,7 +36,6 @@ EMSCRIPTEN_BINDINGS( MeshBuilderModule )
 
 	function( "fromTriangles", fromTriangles );
 	function( "duplicateNonManifoldVertices", duplicateNonManifoldVertices, allow_raw_pointers() );
-	function( "uniteCloseVertices", select_overload<int( Mesh&, const UniteCloseParams& )>( &uniteCloseVertices ) );
 	function( "fromTrianglesDuplicatingNonManifoldVertices", fromTrianglesDuplicatingNonManifoldVertices, allow_raw_pointers() );
 	function( "fromPointTriples", fromPointTriples );
 	function( "fromDisjointMeshPieces", fromDisjointMeshPieces );
