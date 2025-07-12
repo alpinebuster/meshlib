@@ -250,8 +250,8 @@ function SidebarObject( editor ) {
 							const floatVec = new editor.mrmesh.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
 							
-							// const result = editor.mrmesh.cutMeshWithPolyline( curMeshWrapper.mesh, floatVec );
-							const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
+							const result = editor.mrmesh.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
 							const newVertices = result.innerMesh.vertices;
 							const newIndices = new Uint32Array( result.innerMesh.indices );

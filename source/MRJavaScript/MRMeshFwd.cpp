@@ -278,8 +278,10 @@ EMSCRIPTEN_BINDINGS( MapModule )
     ///
     // NOTE: `EdgeMap` -> `Vector<EdgeId, EdgeId>`
     BIND_TYPED_VECTOR( EdgeMap, EdgeId, EdgeId );
+    bindTypedVector<Vector<VertId, EdgeId>, VertId, EdgeId>( "VertIdEdgeIdMap" );
     bindTypedVector<Vector<EdgeId, VertId>, EdgeId, VertId>( "EdgeIdVertIdMap" );
     bindTypedVector<Vector<EdgeId, FaceId>, EdgeId, FaceId>( "EdgeIdFaceIdMap" );
+    bindTypedVector<Vector<FaceId, EdgeId>, FaceId, EdgeId>( "FaceIdEdgeIdMap" );
 
     bindTypedVector<Vector<ModelPointsData, ObjId>, ModelPointsData, ObjId>( "ModelPointsDataObjIdMap" );
     bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, MeshBuilder::VertSpan, FaceId>( "VertSpanFaceIdMap" );

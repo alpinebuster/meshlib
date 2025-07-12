@@ -193,11 +193,33 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<std::array<Vector3d, 3>>( "VectorArray3Triangle3d" );
 	///
 
+	///
+	// Register vector structures of `std::vector<*Id()>`
+	// 
+	// NOTE:
+	//   `EdgePath` -> `std::vector<EdgeId>`
+	//   `EdgeLoop` -> `std::vector<EdgeId>`
+	// 
+	// register_vector<std::vector<EdgeId>>( "VectorVectorEdgeId" );
+	// 
+    register_vector<std::vector<UndirectedEdgeId>>( "VectorVectorUndirectedEdgeId" );
+    register_vector<std::vector<FaceId>>( "VectorVectorFaceId" );
+    register_vector<std::vector<VertId>>( "VectorVectorVertId" );
+    register_vector<std::vector<PixelId>>( "VectorVectorPixelId" );
+    register_vector<std::vector<VoxelId>>( "VectorVectorVoxelId" );
+    register_vector<std::vector<RegionId>>( "VectorVectorRegionId" );
+    register_vector<std::vector<NodeId>>( "VectorVectorNodeId" );
+    register_vector<std::vector<ObjId>>( "VectorVectorObjId" );
+    register_vector<std::vector<TextureId>>( "VectorVectorTextureId" );
+    register_vector<std::vector<GraphVertId>>( "VectorVectorGraphVertId" );
+    register_vector<std::vector<GraphEdgeId>>( "VectorVectorGraphEdgeId" );
+	///
+
 
     ///
     register_vector<ThreeVertIds>( "VectorThreeVertIds" );
 
-    // Register vector structures of `Id()`
+    // Register vector structures of `*Id()`
     register_vector<EdgeId>( "VectorEdgeId" );
     register_vector<UndirectedEdgeId>( "VectorUndirectedEdgeId" );
     register_vector<FaceId>( "VectorFaceId" );
@@ -238,15 +260,28 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<Vector<int, size_t>>( "VectorVectori" );
     register_vector<Vector<float, size_t>>( "VectorVectord" );
 	register_vector<Vector<double, size_t>>( "VectorVectorf" );
+	///
 
 
+	///
 	register_vector<Vector2f>( "VectorVector2f" );
-    register_vector<Vector2ll>( "VectorVector2ll" );
-    register_vector<Vector2b>( "VectorVector2b" );
-    register_vector<Vector2i>( "VectorVector2i" );
-    register_vector<Vector2d>( "VectorVector2d" );
-
+	register_vector<std::vector<Vector2f>>( "VectorVectorVector2f" );
 	
+	register_vector<Vector2ll>( "VectorVector2ll" );
+	register_vector<std::vector<Vector2ll>>( "VectorVectorVector2ll" );
+	
+	register_vector<Vector2b>( "VectorVector2b" );
+	register_vector<std::vector<Vector2b>>( "VectorVectorVector2b" );
+	
+	register_vector<Vector2i>( "VectorVector2i" );
+	register_vector<std::vector<Vector2i>>( "VectorVectorVector2i" );
+
+	register_vector<Vector2d>( "VectorVector2d" );
+	register_vector<std::vector<Vector2d>>( "VectorVectorVector2d" );
+	///
+
+
+	///
 	register_vector<Vector3f>( "VectorVector3f" );
 	register_vector<std::vector<Vector3f>>( "VectorVectorVector3f" );
 
@@ -260,14 +295,25 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<std::vector<Vector3ll>>( "VectorVectorVector3ll" );
 
 	register_vector<Vector3d>( "VectorVector3d" );
-    register_vector<std::vector<Vector3d>>( "VectorVectorVector3d" );
+	register_vector<std::vector<Vector3d>>( "VectorVectorVector3d" );
+	///
 
+
+	///
+    register_vector<Vector4f>( "VectorVector4f" );
+	register_vector<std::vector<Vector4f>>( "VectorVectorVector4f" );
 
 	register_vector<Vector4b>( "VectorVector4b" );
-    register_vector<Vector4i>( "VectorVector4i" );
-    register_vector<Vector4ll>( "VectorVector4ll" );
-    register_vector<Vector4f>( "VectorVector4f" );
-    register_vector<Vector4d>( "VectorVector4d" );
+	register_vector<std::vector<Vector4b>>( "VectorVectorVector4b" );
+	
+	register_vector<Vector4i>( "VectorVector4i" );
+	register_vector<std::vector<Vector4i>>( "VectorVectorVector4i" );
+	
+	register_vector<Vector4ll>( "VectorVector4ll" );
+	register_vector<std::vector<Vector4ll>>( "VectorVectorVector4ll" );
+	
+	register_vector<Vector4d>( "VectorVector4d" );
+	register_vector<std::vector<Vector4d>>( "VectorVectorVector4d" );
 	///
 }
 

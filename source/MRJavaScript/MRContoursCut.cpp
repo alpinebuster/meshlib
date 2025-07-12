@@ -68,7 +68,7 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
 	}
 	Polyline3 initialPolyline;
-	initialPolyline.addFromPoints( polyline.data(), polyline.size() );
+	initialPolyline.addFromPoints( polyline.data(), polyline.size(), true );
 
 	std::vector<MeshTriPoint> projectedPolyline;
 	projectedPolyline.reserve( initialPolyline.points.size() );
@@ -120,7 +120,7 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 				jsTestCutPoints.call<void>("push", point);
 			}
 		}
-		
+
 		// FIXME:
 		// auto [innerMesh, outerMesh] = returnParts_( mesh, cutResults.resultCut );
 
