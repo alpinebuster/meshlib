@@ -16,53 +16,22 @@ EMSCRIPTEN_BINDINGS( IdModule )
     value_array<std::pair<EdgeId, EdgeId>>( "EdgeIdPair" )
         .element( &std::pair<EdgeId, EdgeId>::first )
         .element( &std::pair<EdgeId, EdgeId>::second );
-    register_vector<std::pair<EdgeId, EdgeId>>( "EdgeHashMapEntries" );
 
     value_array<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "UndirectedEdgeIdPair" )
         .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::first )
         .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::second );
-    register_vector<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "UndirectedEdgeHashMapEntries" );
 
     value_array<std::pair<UndirectedEdgeId, EdgeId>>( "UndirectedE2EIdPair" )
         .element( &std::pair<UndirectedEdgeId, EdgeId>::first )
         .element( &std::pair<UndirectedEdgeId, EdgeId>::second );
-    register_vector<std::pair<UndirectedEdgeId, EdgeId>>( "WholeEdgeHashMapEntries" );
 
     value_array<std::pair<FaceId, FaceId>>( "FaceIdPair" )
         .element( &std::pair<FaceId, FaceId>::first )
         .element( &std::pair<FaceId, FaceId>::second );
-    register_vector<std::pair<FaceId, FaceId>>( "FaceHashMapEntries" );
 
     value_array<std::pair<VertId, VertId>>( "VertIdPair" )
         .element( &std::pair<VertId, VertId>::first )
         .element( &std::pair<VertId, VertId>::second );
-    register_vector<std::pair<VertId, VertId>>( "VertHashMapEntries" );
-    ///
-
-
-    ///
-    register_vector<ThreeVertIds>( "VectorThreeVertIds" );
-
-    // Register vector structures of `Id()`
-    register_vector<EdgeId>( "VectorEdgeId" );
-    register_vector<UndirectedEdgeId>( "VectorUndirectedEdgeId" );
-    register_vector<FaceId>( "VectorFaceId" );
-    register_vector<VertId>( "VectorVertId" );
-    register_vector<PixelId>( "VectorPixelId" );
-    register_vector<VoxelId>( "VectorVoxelId" );
-    register_vector<RegionId>( "VectorRegionId" );
-    register_vector<NodeId>( "VectorNodeId" );
-    register_vector<ObjId>( "VectorObjId" );
-    register_vector<TextureId>( "VectorTextureId" );
-    register_vector<GraphVertId>( "VectorGraphVertId" );
-    register_vector<GraphEdgeId>( "VectorGraphEdgeId" );
-
-    // NOTE: `EdgeLoop` equals `EdgePath` 
-    // register_vector<EdgeLoop>( "VectorEdgeLoop" );
-    register_vector<EdgePath>( "VectorEdgePath" );
-    // NOTE: `EdgeLoops` equals `std::vector<EdgePath>`
-    // register_vector<EdgeLoops>( "VectorEdgeLoops" );
-    register_vector<std::vector<EdgePath>>( "VectorVectorEdgePath" );
     ///
 
 

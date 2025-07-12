@@ -4,7 +4,7 @@
 
 namespace MR
 {
- 
+
 // a segment of straight dimensional line
 template <typename V> 
 struct LineSegm

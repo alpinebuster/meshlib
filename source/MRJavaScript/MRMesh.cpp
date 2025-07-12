@@ -5,8 +5,9 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
-#include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRExpected.h>
 #include <MRMesh/MRBox.h>
@@ -29,6 +30,9 @@
 #include <MRMesh/MREnums.h>
 #include <MRMesh/MRSignDetectionMode.h>
 #include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRMeshBuilderTypes.h>
+#include <MRMesh/MRProgressCallback.h>
+#include <MRMesh/MRTriMesh.h>
 #include <MRMesh/MRMeshFillHole.h>
 #include <MRMesh/MRMeshSubdivide.h>
 #include <MRMesh/MRPositionVertsSmoothly.h>
@@ -40,6 +44,11 @@
 #include <MRMesh/MRAABBTreePoints.h>
 #include <MRMesh/MRBuffer.h>
 #include <MRMesh/MRPartMapping.h>
+#include <MRMesh/MRLineSegm.h>
+#include <MRMesh/MRLineSegm3.h>
+#include <MRMesh/MRMeshMath.h>
+#include <MRMesh/MRPointOnFace.h>
+#include <MRMesh/MRMesh.h>
 
 #include <MRVoxels/MRFixUndercuts.h>
 #include <MRVoxels/MROffset.h>
@@ -50,6 +59,7 @@
 
 using namespace emscripten;
 using namespace MR;
+using namespace MeshBuilder;
 
 namespace MRJS
 {
@@ -66,6 +76,58 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 		.property( "topology", &Mesh::topology )
 		.property( "points", &Mesh::points )
+
+		///
+		.function( "fromTriangles", &Mesh::fromTriangles )
+		// FIXME: < points of triMesh will be moves in the result
+		// .function( "fromTriMesh", &Mesh::fromTriMesh )
+		.function( "fromTrianglesDuplicatingNonManifoldVertices", &Mesh::fromTrianglesDuplicatingNonManifoldVertices, allow_raw_pointers() )
+		.function( "fromFaceSoup", &Mesh::fromFaceSoup )
+		.function( "fromPointTriples", &Mesh::fromPointTriples )
+		///
+
+		.function( "equals", optional_override( [] ( const Mesh& self, const Mesh& other )
+		{
+			return self == other;
+		} ) )
+
+		.function( "orgPnt", &Mesh::orgPnt )
+		.function( "destPnt", &Mesh::destPnt )
+		.function( "edgeVector", &Mesh::edgeVector )
+		.function( "edgeSegment", &Mesh::edgeSegment )
+
+		.function( "edgePoint", select_overload<Vector3f ( EdgeId, float ) const>( &Mesh::edgePoint ))
+		// .function( "edgePointWithMeshEdgePoint", select_overload<Vector3f ( const MeshEdgePoint& ) const>( &Mesh::edgePoint ))
+
+		.function( "edgeCenter", &Mesh::edgeCenter )
+
+		.function( "getLeftTriPoints", select_overload<void( EdgeId, Vector3f&, Vector3f&, Vector3f& ) const>( &Mesh::getLeftTriPoints ) )
+		// FIXME
+		// .function( "getLeftTriPointsWithArray3Vector3f", select_overload<void ( EdgeId, std::array<Vector3f, 3>& ) const>( &Mesh::getLeftTriPoints ))
+		.function( "getLeftTriPointsWithTriangle3f", select_overload<Triangle3f ( EdgeId ) const>( &Mesh::getLeftTriPoints ))
+
+		.function( "getTriPoints", select_overload<void( FaceId, Vector3f &, Vector3f &, Vector3f & ) const>( &Mesh::getTriPoints ) )
+		// .function( "getTriPointsWithArray3Vector3f", select_overload<void( FaceId, std::array<Vector3f, 3>& ) const>( &Mesh::getTriPoints ) )
+		.function( "getTriPointsWithTriangle3f", select_overload<Triangle3f( FaceId ) const>( &Mesh::getTriPoints ) )
+	
+		.function( "triPoint", &Mesh::triPoint )
+		.function( "triCenter", &Mesh::triCenter )
+		.function( "triangleAspectRatio", &Mesh::triangleAspectRatio )
+		.function( "circumcircleDiameterSq", &Mesh::circumcircleDiameterSq )
+		.function( "circumcircleDiameter", &Mesh::circumcircleDiameter )
+
+		.function( "toTriPoint", select_overload<MeshTriPoint( VertId ) const>( &Mesh::toTriPoint ) )
+		.function( "toTriPointWithFaceId", select_overload<MeshTriPoint( FaceId, const Vector3f & ) const>( &Mesh::toTriPoint ) )
+		.function( "toTriPointWithPointOnFace", select_overload<MeshTriPoint( const PointOnFace& ) const>( &Mesh::toTriPoint ) )
+	
+		// .function( "toEdgePoint", select_overload<MeshEdgePoint( VertId ) const>( &Mesh::toEdgePoint ) )
+		// .function( "toEdgePointWithEdgeId", select_overload<MeshEdgePoint( EdgeId, const Vector3f & ) const>( &Mesh::toEdgePoint ) )
+
+		.function( "getClosestVertex", select_overload<VertId( const PointOnFace & ) const>( &Mesh::getClosestVertex ) )
+		.function( "getClosestVertexWithMeshTriPoint", select_overload<VertId( const MeshTriPoint & p ) const>( &Mesh::getClosestVertex ) )
+	
+		.function( "getClosestEdge", select_overload<UndirectedEdgeId( const PointOnFace& ) const>( &Mesh::getClosestEdge ) )
+		.function( "getClosestEdgeWithMeshTriPoint", select_overload<UndirectedEdgeId( const MeshTriPoint& ) const>( &Mesh::getClosestEdge ) )
 
 		.function( "volume", &Mesh::volume, allow_raw_pointers() )
 		.function( "normalWithFaceId", select_overload<Vector3f ( const FaceId ) const>( &Mesh::normal ))
@@ -90,11 +152,12 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		
 		.function( "packWithPartMapping", select_overload<void( const PartMapping&, bool )>( &Mesh::pack ) )
 		.function( "packWithMap", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &Mesh::pack ), allow_raw_pointers() )
-		.function( "pack", select_overload<Expected<void>( const PackMapping&, ProgressCallback )>( &Mesh::pack ), allow_raw_pointers() )
+		.function( "pack", select_overload<Expected<void>( const PackMapping&, ProgressCallback )>( &Mesh::pack ) )
 
 		// FIXME: `copy constructor of 'PackMapping' is implicitly deleted because field 'e' has a deleted copy constructor`
 		// .function( "packOptimally", select_overload<PackMapping( bool )>( &Mesh::packOptimally ) )
 		// .function( "packOptimallyWithProgressCallback", select_overload<Expected<PackMapping>( bool, ProgressCallback )>( &Mesh::packOptimally ) )
+
 		.function( "deleteFaces", &Mesh::deleteFaces, allow_raw_pointers() )
 
 		.function( "projectPointWithPointOnFace", select_overload<bool( const Vector3f&, PointOnFace&, float, const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
@@ -143,32 +206,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 }
 
 
-// Helper function to create Vector3f from JavaScript array
-Vector3f arrayToVector3f( const val& arr )
-{
-	return Vector3f( arr[0].as<float>(), arr[1].as<float>(), arr[2].as<float>() );
-}
-
-// Helper function to convert Vector3f to JavaScript array
-val vector3fToArray( const Vector3f& v )
-{
-	val arr = val::array();
-	arr.set( 0, v.x );
-	arr.set( 1, v.y );
-	arr.set( 2, v.z );
-	return arr;
-}
-
-// Helper function to convert Box3F to JavaScript object
-val box3fToObject( const Box<Vector3<float>>& box )
-{
-	val obj = val::object();
-	obj.set( "min", vector3fToArray( box.min ) );
-	obj.set( "max", vector3fToArray( box.max ) );
-	return obj;
-}
-
-
 // ------------------------------------------------------------------------
 // Wrapper for `Mesh`
 // ------------------------------------------------------------------------
@@ -189,7 +226,7 @@ val MeshWrapper::fromTrianglesImpl( const val& vertexCoords, const val& triangle
 		for ( int i = 0; i < numVerts; ++i )
 		{
 			val vertex = vertexCoords[i];
-			coords[VertId( i )] = arrayToVector3f( vertex );
+			coords[VertId( i )] = MRJS::arrayToVector3f( vertex );
 		}
 
 		// Convert triangles array
@@ -233,14 +270,14 @@ val MeshWrapper::fromTrianglesImpl( const val& vertexCoords, const val& triangle
 // Geometric queries
 val MeshWrapper::getBoundingBox() const
 {
-	return box3fToObject( mesh.getBoundingBox() );
+	return MRJS::box3fToObject( mesh.getBoundingBox() );
 }
 
 val MeshWrapper::getVertexPosition( int vertId ) const
 {
 	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
 	{
-		return vector3fToArray( mesh.points[VertId( vertId )] );
+		return MRJS::vector3fToArray( mesh.points[VertId( vertId )] );
 	}
 	return val::null();
 }
@@ -249,7 +286,7 @@ void MeshWrapper::setVertexPosition( int vertId, const val& position )
 {
 	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
 	{
-		mesh.points[VertId( vertId )] = arrayToVector3f( position );
+		mesh.points[VertId( vertId )] = MRJS::arrayToVector3f( position );
 		mesh.invalidateCaches(); // Important: invalidate caches after modification
 	}
 }
@@ -276,7 +313,7 @@ double MeshWrapper::getArea() const
 
 val MeshWrapper::findCenter() const
 {
-	return vector3fToArray( mesh.findCenterFromBBox() );
+	return MRJS::vector3fToArray( mesh.findCenterFromBBox() );
 }
 
 // Face operations
@@ -308,7 +345,7 @@ val MeshWrapper::getFaceNormal( int faceId ) const
 		FaceId f( faceId );
 		if ( mesh.topology.hasFace( f ) )
 		{
-			return vector3fToArray( mesh.normal( f ) );
+			return MRJS::vector3fToArray( mesh.normal( f ) );
 		}
 	}
 	return val::null();
@@ -719,14 +756,14 @@ val MeshWrapper::fillHolesImpl() const
 // Point projection
 val MeshWrapper::projectPoint( const val& point, float maxDistance ) const
 {
-	Vector3f p = arrayToVector3f( point );
+	Vector3f p = MRJS::arrayToVector3f( point );
 	MeshProjectionResult result = mesh.projectPoint( p, maxDistance * maxDistance ); // Note: function expects squared distance
 
 	if ( result.valid() )
 	{
 		val obj = val::object();
 		obj.set( "success", true );
-		// obj.set( "point", vector3fToArray( result.proj ) );
+		// obj.set( "point", MRJS::vector3fToArray( result.proj ) );
 		// obj.set( "faceId", ( int )result->face );
 		// obj.set( "distance", std::sqrt( result->distSq ) );
 		return obj;

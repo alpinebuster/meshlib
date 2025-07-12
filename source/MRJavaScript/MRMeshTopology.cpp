@@ -3,6 +3,8 @@
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector2.h>
+#include <MRMesh/MRVector3.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MRMeshTriPoint.h>
@@ -87,6 +89,7 @@ EMSCRIPTEN_BINDINGS( MeshTopologyModule )
         .function( "getLeftTriEdges", &MeshTopology::getLeftTriEdges )
         ///
         .function( "getTriEdges", select_overload<void( FaceId, EdgeId&, EdgeId&, EdgeId& ) const>( &MeshTopology::getTriEdges ) )
+        // FIXME
         // .function( "getTriEdgesWithArray3EdgeId", select_overload<void( FaceId, std::array<EdgeId, 3>& ) const>( &MeshTopology::getTriEdges ) )
         /// END
         .function( "isLeftQuad", &MeshTopology::isLeftQuad )

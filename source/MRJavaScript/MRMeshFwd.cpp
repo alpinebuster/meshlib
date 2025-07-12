@@ -16,6 +16,7 @@
 #include <MRMesh/MRAffineXf3.h>
 #include <MRMesh/MRPointCloud.h>
 #include <MRMesh/MRProgressCallback.h>
+#include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRMeshFwd.h>
 
 #include "MRMeshFwd.h"
@@ -281,6 +282,7 @@ EMSCRIPTEN_BINDINGS( MapModule )
     bindTypedVector<Vector<EdgeId, FaceId>, EdgeId, FaceId>( "EdgeIdFaceIdMap" );
 
     bindTypedVector<Vector<ModelPointsData, ObjId>, ModelPointsData, ObjId>( "ModelPointsDataObjIdMap" );
+    bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, MeshBuilder::VertSpan, FaceId>( "VertSpanFaceIdMap" );
     ///
 
     BIND_TYPED_VECTOR( UndirectedEdgeMap, UndirectedEdgeId, UndirectedEdgeId );

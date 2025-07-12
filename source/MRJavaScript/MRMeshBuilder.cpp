@@ -3,6 +3,9 @@
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRId.h>
+#include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRMeshBuilder.h>
 
 using namespace emscripten;
@@ -11,8 +14,6 @@ using namespace MeshBuilder;
 
 EMSCRIPTEN_BINDINGS( MeshBuilderModule )
 {
-    register_vector<VertDuplication>( "VectorVertDuplication" );
-
 	class_<UniteCloseParams>( "UniteCloseParams" )
 		.constructor<>()
 
@@ -23,11 +24,28 @@ EMSCRIPTEN_BINDINGS( MeshBuilderModule )
 		.property( "optionalVertOldToNew", &UniteCloseParams::optionalVertOldToNew, return_value_policy::reference() )
         .property( "optionalDuplications", &UniteCloseParams::optionalDuplications, return_value_policy::reference() );
 
-    class_<VertDuplication>( "VertDuplication" )
-		.constructor<>()
+    value_object<VertDuplication>( "VertDuplication" )
+		.field( "srcVert", &VertDuplication::srcVert )
+		.field( "dupVert", &VertDuplication::dupVert );
 
-		.property( "srcVert", &VertDuplication::srcVert )
-		.property( "dupVert", &VertDuplication::dupVert );
+	value_object<MeshBuilder::MeshPiece>( "MeshPiece" )
+		.field( "fmap", &MeshBuilder::MeshPiece::fmap )
+		.field( "vmap", &MeshBuilder::MeshPiece::vmap )
+		.field( "topology", &MeshBuilder::MeshPiece::topology )
+		.field( "rem", &MeshBuilder::MeshPiece::rem );
 
-    function( "uniteCloseVertices", select_overload<int( Mesh&, const UniteCloseParams& )>( &uniteCloseVertices ) );
+	function( "fromTriangles", fromTriangles );
+	function( "duplicateNonManifoldVertices", duplicateNonManifoldVertices, allow_raw_pointers() );
+	function( "uniteCloseVertices", select_overload<int( Mesh&, const UniteCloseParams& )>( &uniteCloseVertices ) );
+	function( "fromTrianglesDuplicatingNonManifoldVertices", fromTrianglesDuplicatingNonManifoldVertices, allow_raw_pointers() );
+	function( "fromPointTriples", fromPointTriples );
+	function( "fromDisjointMeshPieces", fromDisjointMeshPieces );
+
+	function( "addTriangles", select_overload<void( MeshTopology&, const Triangulation&, const BuildSettings& )>( addTriangles ), allow_raw_pointers() );
+	function( "addTrianglesWithVertTriples", select_overload<void( MeshTopology&, std::vector<VertId>&, FaceBitSet* )>( addTriangles ), allow_raw_pointers() );
+
+	function( "fromFaceSoup", fromFaceSoup );
+
+	function( "uniteCloseVertices", select_overload<int( Mesh&, const MeshBuilder::UniteCloseParams& )>( uniteCloseVertices ) );
+	function( "uniteCloseVerticesWithVertMap", select_overload<int( Mesh &, float, bool, VertMap* )>( uniteCloseVertices ), allow_raw_pointers() );
 }

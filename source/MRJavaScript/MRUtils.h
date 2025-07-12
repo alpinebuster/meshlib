@@ -8,6 +8,7 @@
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRBox.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
@@ -21,6 +22,16 @@ using namespace MR;
 
 namespace MRJS
 {
+
+
+// Helper function to create Vector3f from JavaScript array
+Vector3f arrayToVector3f( const val& arr );
+
+// Helper function to convert Vector3f to JavaScript array
+val vector3fToArray( const Vector3f& v );
+
+// Helper function to convert Box3F to JavaScript object
+val box3fToObject( const Box<Vector3<float>>& box );
 
 // Helper function to convert Expected<T> to JavaScript-friendly result
 template<typename T>
@@ -92,6 +103,8 @@ inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
     ///
 
     /// NOTE: V1 - Working
+    // TODO: Use `ParallelFor` to optimize this?
+    // 
     // val triangleArray = val::array();
     // triangleArray.set("length", triElementCount);
 	// for (size_t i = 0; i < triElementCount; ++i) {
