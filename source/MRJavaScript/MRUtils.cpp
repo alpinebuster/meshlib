@@ -117,7 +117,11 @@ std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates 
  */
 std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut )
 {
-    Mesh innerMesh;
+	// NOTE: This works!
+	// auto innerBitSet = fillContourLeft( mesh.topology, cut );
+	// Mesh innerMesh = mesh.cloneRegion( innerBitSet );
+
+	Mesh innerMesh;
     auto innerBitSet = fillContourLeft( mesh.topology, cut );
     innerMesh.addMeshPart( {mesh, &innerBitSet} );
 

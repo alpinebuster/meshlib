@@ -253,9 +253,14 @@ function SidebarObject( editor ) {
 							const result = editor.mrmesh.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
-							const newVertices = result.innerMesh.vertices;
-							const newIndices = new Uint32Array( result.innerMesh.indices );
-							showMesh( newVertices, newIndices );
+							const innerVertices = result.innerMesh.vertices;
+							const innerIndices = new Uint32Array(result.innerMesh.indices);
+						
+							const outerVertices = result.outerMesh.vertices;
+							const outerIndices = new Uint32Array(result.outerMesh.indices);
+							
+							showMesh( innerVertices, innerIndices );
+							showMesh( outerVertices, outerIndices );
 							break;
 
 						case 'wasmOpSegmentByPoints':
