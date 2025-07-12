@@ -14,7 +14,6 @@ EMSCRIPTEN_BINDINGS( VectorModule )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vectori`
     // ------------------------------------------------------------------------
-    register_vector<IntVector>( "VectorVectori" );
     class_<IntVector>( "Vectori" )
         .constructor<>()                           // Default constructor
         .constructor<size_t>()                     // Size constructor  
@@ -79,7 +78,6 @@ EMSCRIPTEN_BINDINGS( VectorModule )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vectorf`
     // ------------------------------------------------------------------------
-    register_vector<FloatVector>( "VectorVectorf" );
     class_<FloatVector>( "Vectorf" )
         .constructor<>()
         .constructor<size_t>()
@@ -133,7 +131,6 @@ EMSCRIPTEN_BINDINGS( VectorModule )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vectord`
     // ------------------------------------------------------------------------
-    register_vector<DoubleVector>( "VectorVectord" );
     class_<DoubleVector>( "Vectord" )
         .constructor<>();
 }

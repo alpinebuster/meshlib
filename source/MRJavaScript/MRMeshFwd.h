@@ -150,11 +150,28 @@ auto bindTypedVector( const char* jsName )
 }
 
 template<typename MapType, typename ElementType, typename IdType>
-void bindTypedBMap(const char* jsName)
+auto bindTypedBMap(const char* jsName)
 {
-    class_<MapType>( jsName )
+    auto cls = class_<MapType>( jsName )
         .constructor<>()
-
-        // .property( "b", &MapType::b )
+        // Using pointer cause `Buffer` does NOT support the **copy** assignment operator
+        .function( "getB", optional_override( [] ( MapType& self ) -> Buffer<ElementType, IdType>*
+            {
+                return &self.b;
+            } ), allow_raw_pointers() )
+        // NOTE:
+        // 
+        // 1) If `setB` accepts optional arguments or allows "clearing", use **pointer**
+        // 2) If `setB` always requires a valid `Buffer` object, change it with a **reference**
+        // 
+        .function( "setB", optional_override( []( MapType& self, Buffer<ElementType, IdType>& newB ) {
+            self.b = std::move( newB );
+        } ), allow_raw_pointers() )
+        .function( "setBWithPtr", optional_override( []( MapType& self, Buffer<ElementType, IdType>* newB ) {
+            // Move assignment, because `Buffer` does not support the copy assignment operator
+            if ( newB ) self.b = std::move( *newB );
+        } ), allow_raw_pointers() )
         .property( "tsize", &MapType::tsize );
+
+    return cls;
 }

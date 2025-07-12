@@ -8,6 +8,8 @@
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
+#include <MRMesh/MRVector4.h>
+#include <MRMesh/MRBox.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>
@@ -16,6 +18,16 @@
 #include <MRMesh/MRPointCloud.h>
 #include <MRMesh/MRAABBTreePoints.h>
 #include <MRMesh/MRDipole.h>
+#include <MRMesh/MRGridSampling.h>
+#include <MRMesh/MRMeshProject.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRProgressCallback.h>
+#include <MRMesh/MRMeshBuilderTypes.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRIntersectionContour.h>
+#include <MRMesh/MRMeshExtrude.h>
+#include <MRMesh/MRRegionBoundary.h>
+#include <MRMesh/MRMeshCollidePrecise.h>
 
 #include "MRUtils.h"
 
@@ -25,6 +37,28 @@ using namespace MR;
 
 namespace MRJS
 {
+
+Vector3f arrayToVector3f( const val& arr )
+{
+	return Vector3f( arr[0].as<float>(), arr[1].as<float>(), arr[2].as<float>() );
+}
+
+val vector3fToArray( const Vector3f& v )
+{
+	val arr = val::array();
+	arr.set( 0, v.x );
+	arr.set( 1, v.y );
+	arr.set( 2, v.z );
+	return arr;
+}
+
+val box3fToObject( const Box<Vector3<float>>& box )
+{
+	val obj = val::object();
+	obj.set( "min", vector3fToArray( box.min ) );
+	obj.set( "max", vector3fToArray( box.max ) );
+	return obj;
+}
 
 template<typename T>
 val expectedToJs( const Expected<T>& expected )
@@ -83,7 +117,11 @@ std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates 
  */
 std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut )
 {
-    Mesh innerMesh;
+	// NOTE: This works!
+	// auto innerBitSet = fillContourLeft( mesh.topology, cut );
+	// Mesh innerMesh = mesh.cloneRegion( innerBitSet );
+
+	Mesh innerMesh;
     auto innerBitSet = fillContourLeft( mesh.topology, cut );
     innerMesh.addMeshPart( {mesh, &innerBitSet} );
 
@@ -98,59 +136,244 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 
 }
 
-
+// ------------------------------------------------------------------------
+// Bindings for utilities
+// ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( UtilsModule )
 {
+}
+
+
+// ------------------------------------------------------------------------
+// Bind the Embind interface for `std::vector<*>`
+// ------------------------------------------------------------------------
+EMSCRIPTEN_BINDINGS( VectorTypedModule )
+{
+	///
 	register_vector<int>( "StdVectori" );
 	register_vector<float>( "StdVectorf" );
 	register_vector<double>( "StdVectord" );
 	register_vector<long long>( "StdVectorll" );
 	register_vector<uint64_t>( "StdVectorUi64" );
-    // register_vector<bool>( "StdVectorb" );
+	///
+
+
+	///
+    register_vector<AABBTreePoints::Point>( "VectorAABBTreePointsPoint" );
+    register_vector<AABBTreePoints::Node>( "VectorAABBTreePointsNode" );
+
+    register_vector<ModelPointsData>( "VectorModelPointsData" );
+    register_vector<ObjVertId>( "VectorObjVertId" );
+
+    register_vector<MeshProjectionResult>( "VectorMeshProjectionResult" );
+	register_vector<MeshBuilder::VertDuplication>( "VectorVertDuplication" );
+
+	// ContinuousContour is `std::vector<VarEdgeTri>`
+    register_vector<VarEdgeTri>( "ContinuousContour" );
+    // `ContinuousContours` is `std::vector<ContinuousContour>`
+	register_vector<ContinuousContour>( "ContinuousContours" );
 
 	
-	// ------------------------------------------------------------------------
-    // Bind the Embind interface for `Array2*`
-    // ------------------------------------------------------------------------
-	value_array<std::array<float, 2>>( "Array2f" )
-		.element( emscripten::index<0>() )
-		.element( emscripten::index<1>() );
-	value_array<std::array<double, 2>>( "Array2d" )
-		.element( emscripten::index<0>() )
-		.element( emscripten::index<1>() );
+	register_vector<MeshBuilder::MeshPiece>( "VectorMeshPiece" );
+	///
 
 
-	// ------------------------------------------------------------------------
-    // Bind the Embind interface for `Array3*`
-    // ------------------------------------------------------------------------
-	value_array<std::array<float, 3>>( "Array3f" )
-		.element( emscripten::index<0>() )
-		.element( emscripten::index<1>() )
-		.element( emscripten::index<2>() );
-	value_array<std::array<double, 3>>( "Array3d" )
-		.element( emscripten::index<0>() )
-		.element( emscripten::index<1>() )
-		.element( emscripten::index<2>() );
+	///
+    register_vector<std::array<Vector2i, 2>>( "VectorArray2Vector2i" );
+    register_vector<std::array<Vector2f, 2>>( "VectorArray2Vector2f" );
+	register_vector<std::array<Vector2d, 2>>( "VectorArray2Vector2d" );
+
+	register_vector<std::array<Vector2i, 3>>( "VectorArray3Vector2i" );
+    register_vector<std::array<Vector2f, 3>>( "VectorArray3Vector2f" );
+	register_vector<std::array<Vector2d, 3>>( "VectorArray3Vector2d" );
+
+	
+	register_vector<std::array<Vector3i, 2>>( "VectorArray2Triangle3i" );
+    register_vector<std::array<Vector3f, 2>>( "VectorArray2Triangle3f" );
+	register_vector<std::array<Vector3d, 2>>( "VectorArray2Triangle3d" );
+
+	register_vector<std::array<Vector3i, 3>>( "VectorArray3Triangle3i" );
+    register_vector<std::array<Vector3f, 3>>( "VectorArray3Triangle3f" );
+    register_vector<std::array<Vector3d, 3>>( "VectorArray3Triangle3d" );
+	///
+
+	///
+	// Register vector structures of `std::vector<*Id()>`
+	// 
+	// NOTE:
+	//   `EdgePath` -> `std::vector<EdgeId>`
+	//   `EdgeLoop` -> `std::vector<EdgeId>`
+	// 
+	// register_vector<std::vector<EdgeId>>( "VectorVectorEdgeId" );
+	// 
+    register_vector<std::vector<UndirectedEdgeId>>( "VectorVectorUndirectedEdgeId" );
+    register_vector<std::vector<FaceId>>( "VectorVectorFaceId" );
+    register_vector<std::vector<VertId>>( "VectorVectorVertId" );
+    register_vector<std::vector<PixelId>>( "VectorVectorPixelId" );
+    register_vector<std::vector<VoxelId>>( "VectorVectorVoxelId" );
+    register_vector<std::vector<RegionId>>( "VectorVectorRegionId" );
+    register_vector<std::vector<NodeId>>( "VectorVectorNodeId" );
+    register_vector<std::vector<ObjId>>( "VectorVectorObjId" );
+    register_vector<std::vector<TextureId>>( "VectorVectorTextureId" );
+    register_vector<std::vector<GraphVertId>>( "VectorVectorGraphVertId" );
+    register_vector<std::vector<GraphEdgeId>>( "VectorVectorGraphEdgeId" );
+	///
 
 
-	// ------------------------------------------------------------------------
-    // Bind the Embind interface for `Array4*`
-    // ------------------------------------------------------------------------
-	value_array<std::array<float, 4>>( "Array4f" )
-		.element( emscripten::index<0>() )
-		.element( emscripten::index<1>() )
-		.element( emscripten::index<2>() )
-		.element( emscripten::index<3>() );
-	value_array<std::array<double, 4>>( "Array4d" )
-		.element( emscripten::index<0>() )
-		.element( emscripten::index<1>() )
-		.element( emscripten::index<2>() )
-		.element( emscripten::index<3>() );
+    ///
+    register_vector<ThreeVertIds>( "VectorThreeVertIds" );
+
+    // Register vector structures of `*Id()`
+    register_vector<EdgeId>( "VectorEdgeId" );
+    register_vector<UndirectedEdgeId>( "VectorUndirectedEdgeId" );
+    register_vector<FaceId>( "VectorFaceId" );
+    register_vector<VertId>( "VectorVertId" );
+    register_vector<PixelId>( "VectorPixelId" );
+    register_vector<VoxelId>( "VectorVoxelId" );
+    register_vector<RegionId>( "VectorRegionId" );
+    register_vector<NodeId>( "VectorNodeId" );
+    register_vector<ObjId>( "VectorObjId" );
+    register_vector<TextureId>( "VectorTextureId" );
+    register_vector<GraphVertId>( "VectorGraphVertId" );
+    register_vector<GraphEdgeId>( "VectorGraphEdgeId" );
+
+    // NOTE: `EdgeLoop` equals `EdgePath` 
+    // register_vector<EdgeLoop>( "VectorEdgeLoop" );
+    register_vector<EdgePath>( "VectorEdgePath" );
+    // NOTE: `EdgeLoops` equals `std::vector<EdgePath>`
+    // register_vector<EdgeLoops>( "VectorEdgeLoops" );
+    register_vector<std::vector<EdgePath>>( "VectorVectorEdgePath" );
+	///
+
+	
+	///
+    register_vector<std::pair<EdgeId, EdgeId>>( "EdgeHashMapEntries" );
+    register_vector<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "UndirectedEdgeHashMapEntries" );
+    register_vector<std::pair<UndirectedEdgeId, EdgeId>>( "WholeEdgeHashMapEntries" );
+    register_vector<std::pair<FaceId, FaceId>>( "FaceHashMapEntries" );
+    register_vector<std::pair<VertId, VertId>>( "VertHashMapEntries" );
+	///
 
 
-	// ------------------------------------------------------------------------
-    // Bind the Embind interface for `Array*Id`
-    // ------------------------------------------------------------------------
+	///
+	register_vector<Vector<MeshBuilder::VertSpan, FaceId>>( "VectorVertSpanFaceId" );
+	///
+
+
+	///
+    register_vector<Vector<int, size_t>>( "VectorVectori" );
+    register_vector<Vector<float, size_t>>( "VectorVectord" );
+	register_vector<Vector<double, size_t>>( "VectorVectorf" );
+	///
+
+
+	///
+	register_vector<Vector2f>( "VectorVector2f" );
+	register_vector<std::vector<Vector2f>>( "VectorVectorVector2f" );
+	
+	register_vector<Vector2ll>( "VectorVector2ll" );
+	register_vector<std::vector<Vector2ll>>( "VectorVectorVector2ll" );
+	
+	register_vector<Vector2b>( "VectorVector2b" );
+	register_vector<std::vector<Vector2b>>( "VectorVectorVector2b" );
+	
+	register_vector<Vector2i>( "VectorVector2i" );
+	register_vector<std::vector<Vector2i>>( "VectorVectorVector2i" );
+
+	register_vector<Vector2d>( "VectorVector2d" );
+	register_vector<std::vector<Vector2d>>( "VectorVectorVector2d" );
+	///
+
+
+	///
+	register_vector<Vector3f>( "VectorVector3f" );
+	register_vector<std::vector<Vector3f>>( "VectorVectorVector3f" );
+
+	register_vector<Vector3b>( "VectorVector3b" );
+	register_vector<std::vector<Vector3b>>( "VectorVectorVector3b" );
+
+	register_vector<Vector3i>( "VectorVector3i" );
+	register_vector<std::vector<Vector3i>>( "VectorVectorVector3i" );
+
+	register_vector<Vector3ll>( "VectorVector3ll" );
+	register_vector<std::vector<Vector3ll>>( "VectorVectorVector3ll" );
+
+	register_vector<Vector3d>( "VectorVector3d" );
+	register_vector<std::vector<Vector3d>>( "VectorVectorVector3d" );
+	///
+
+
+	///
+    register_vector<Vector4f>( "VectorVector4f" );
+	register_vector<std::vector<Vector4f>>( "VectorVectorVector4f" );
+
+	register_vector<Vector4b>( "VectorVector4b" );
+	register_vector<std::vector<Vector4b>>( "VectorVectorVector4b" );
+	
+	register_vector<Vector4i>( "VectorVector4i" );
+	register_vector<std::vector<Vector4i>>( "VectorVectorVector4i" );
+	
+	register_vector<Vector4ll>( "VectorVector4ll" );
+	register_vector<std::vector<Vector4ll>>( "VectorVectorVector4ll" );
+	
+	register_vector<Vector4d>( "VectorVector4d" );
+	register_vector<std::vector<Vector4d>>( "VectorVectorVector4d" );
+	///
+}
+
+
+// ------------------------------------------------------------------------
+// Bind the Embind interface for `Array*`
+// ------------------------------------------------------------------------
+EMSCRIPTEN_BINDINGS( ArrayTypedModule )
+{
+	///
+	MRJS::bindStdArray<Vector2b, 2>( "Array2Vector2b" );
+	MRJS::bindStdArray<Vector2i, 2>( "Array2Vector2i" );
+	MRJS::bindStdArray<Vector2ll, 2>( "Array2Vector2ll" );
+	MRJS::bindStdArray<Vector2f, 2>( "Array2Vector2f" );
+	MRJS::bindStdArray<Vector2d, 2>( "Array2Vector2d" );
+
+	MRJS::bindStdArray<Vector2b, 3>( "Array3Vector2b" );
+	MRJS::bindStdArray<Vector2i, 3>( "Array3Vector2i" );
+	MRJS::bindStdArray<Vector2ll, 3>( "Array3Vector2ll" );
+	MRJS::bindStdArray<Vector2f, 3>( "Array3Vector2f" );
+	MRJS::bindStdArray<Vector2d, 3>( "Array3Vector2d" );
+
+
+	MRJS::bindStdArray<Vector3b, 2>( "Array2Triangle3b" );
+	MRJS::bindStdArray<Vector3i, 2>( "Array2Triangle3i" );
+	MRJS::bindStdArray<Vector3ll, 2>( "Array2Triangle3ll" );
+	MRJS::bindStdArray<Vector3f, 2>( "Array2Triangle3f" );
+	MRJS::bindStdArray<Vector3d, 2>( "Array2Triangle3d" );
+
+	MRJS::bindStdArray<Vector3b, 3>( "Array3Triangle3b" );
+	MRJS::bindStdArray<Vector3i, 3>( "Array3Triangle3i" );
+	MRJS::bindStdArray<Vector3ll, 3>( "Array3Triangle3ll" );
+	MRJS::bindStdArray<Vector3f, 3>( "Array3Triangle3f" );
+	MRJS::bindStdArray<Vector3d, 3>( "Array3Triangle3d" );
+	///
+
+	
+	/// Bind the Embind interface for `Array2*`
+	MRJS::bindStdArray<float, 2>( "Array2f" );
+	MRJS::bindStdArray<double, 2>( "Array2d" );
+	///
+
+
+	/// Bind the Embind interface for `Array3*`
+	MRJS::bindStdArray<float, 3>( "Array3f" );
+	MRJS::bindStdArray<double, 3>( "Array3d" );
+	///
+
+
+	/// Bind the Embind interface for `Array4*`
+	MRJS::bindStdArray<float, 4>( "Array4f" );
+	MRJS::bindStdArray<double, 4>( "Array4d" );
+	///
+
+
+	/// Bind the Embind interface for `Array*Id`
 	MRJS::bindStdArray<EdgeId, 2>( "Array2EdgeId" );
 	MRJS::bindStdArray<EdgeId, 3>( "Array3EdgeId" );
 	MRJS::bindStdArray<EdgeId, 4>( "Array4EdgeId" );
@@ -166,6 +389,10 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	MRJS::bindStdArray<VertId, 2>( "Array2VertId" );
 	MRJS::bindStdArray<VertId, 3>( "Array3VertId" );
 	MRJS::bindStdArray<VertId, 4>( "Array4VertId" );
+	
+	MRJS::bindStdArray<ThreeVertIds, 2>( "Array2ThreeVertIds" );
+	MRJS::bindStdArray<ThreeVertIds, 3>( "Array3ThreeVertIds" );
+	MRJS::bindStdArray<ThreeVertIds, 4>( "Array4ThreeVertIds" );
 
 	MRJS::bindStdArray<PixelId, 2>( "Array2PixelId" );
 	MRJS::bindStdArray<PixelId, 3>( "Array3PixelId" );
@@ -198,11 +425,24 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	MRJS::bindStdArray<GraphEdgeId, 2>( "Array2GraphEdgeId" );
 	MRJS::bindStdArray<GraphEdgeId, 3>( "Array3GraphEdgeId" );
 	MRJS::bindStdArray<GraphEdgeId, 4>( "Array4GraphEdgeId" );
+	///
+}
 
 
-	// ------------------------------------------------------------------------
-    // Bind the Embind interface for `Optional*`
-	// ------------------------------------------------------------------------
+// ------------------------------------------------------------------------
+// Bind the Embind interface for `Optional*`
+// ------------------------------------------------------------------------
+EMSCRIPTEN_BINDINGS( OptionalTypedModule )
+{
+	///
+	register_optional<float>();
+	register_optional<int>();
+	register_optional<bool>();
+	register_optional<double>();
+	register_optional<long long>();
+	///
+
+
 	///
 	register_optional<MeshOrPoints>();
 	///
@@ -225,6 +465,34 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	register_optional<Vector3ll>();
 	register_optional<Vector3f>();
 	register_optional<Vector3d>();
+	///
+
+
+	///
+	register_optional<std::array<Vector3b, 2>>();
+	register_optional<std::array<Vector3i, 2>>();
+	register_optional<std::array<Vector3ll, 2>>();
+	register_optional<std::array<Vector3f, 2>>();
+	register_optional<std::array<Vector3d, 2>>();
+
+	register_optional<std::array<Vector3b, 3>>();
+	register_optional<std::array<Vector3i, 3>>();
+	register_optional<std::array<Vector3ll, 3>>();
+	register_optional<std::array<Vector3f, 3>>();
+	register_optional<std::array<Vector3d, 3>>();
+
+
+	register_optional<std::array<Vector2b, 2>>();
+	register_optional<std::array<Vector2i, 2>>();
+	register_optional<std::array<Vector2ll, 2>>();
+	register_optional<std::array<Vector2f, 2>>();
+	register_optional<std::array<Vector2d, 2>>();
+
+	register_optional<std::array<Vector2b, 3>>();
+	register_optional<std::array<Vector2i, 3>>();
+	register_optional<std::array<Vector2ll, 3>>();
+	register_optional<std::array<Vector2f, 3>>();
+	register_optional<std::array<Vector2d, 3>>();
 	///
 
 
@@ -290,18 +558,33 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	register_optional<std::vector<GraphVertId>>();
 	register_optional<std::vector<GraphEdgeId>>();
 	///
+}
 
-	
-	// ------------------------------------------------------------------------
-    // Bind the Embind interface for `*Functor*`
-	// ------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------
+// Bind the Embind interface for `*Functor*`
+// ------------------------------------------------------------------------
+EMSCRIPTEN_BINDINGS( FunctorTypedModule )
+{
+	///
 	class_<std::function<std::string( std::string )>>( "StringFunctorString" )
 		.constructor<>()
 		.function( "opcall", &std::function<std::string( std::string )>::operator() );
+	///
 
+
+	///
 	class_<std::function<bool( float )>>( "ProgressCallback" )
 		.constructor<>()
 		.function( "opcall", &std::function<bool( float )>::operator() );
+	///
+
+
+	///
+	class_<std::function<void( EdgeId, EdgeId )>>( "VoidFunctorEdgeIdEdgeId" )
+		.constructor<>()
+		.function( "opcall", &std::function<void( EdgeId, EdgeId )>::operator() );
+	///
 
 
 	///

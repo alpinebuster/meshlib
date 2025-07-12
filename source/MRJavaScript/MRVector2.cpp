@@ -10,7 +10,6 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector2b`
     // ------------------------------------------------------------------------
-    register_vector<Vector2b>( "VectorVector2b" );
     class_<Vector2b>( "Vector2b" )
         .smart_ptr<std::shared_ptr<Vector2b>>( "Vector2b" )
 
@@ -38,7 +37,6 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector2i`
     // ------------------------------------------------------------------------
-    register_vector<Vector2i>( "VectorVector2i" );
     class_<Vector2i>( "Vector2i" )
         .smart_ptr<std::shared_ptr<Vector2i>>( "Vector2i" )
     
@@ -68,7 +66,6 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector2ll`
     // ------------------------------------------------------------------------
-    register_vector<Vector2ll>( "VectorVector2ll" );
     class_<Vector2ll>( "Vector2ll" )
         .smart_ptr<std::shared_ptr<Vector2ll>>( "Vector2ll" )
     
@@ -78,7 +75,6 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector2f`
     // ------------------------------------------------------------------------
-    register_vector<Vector2f>( "VectorVector2f" );
     class_<Vector2f>( "Vector2f" )
         .smart_ptr<std::shared_ptr<Vector2f>>( "Vector2f" )
 
@@ -110,7 +106,6 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector2d`
     // ------------------------------------------------------------------------
-    register_vector<Vector2d>( "VectorVector2d" );
     class_<Vector2d>( "Vector2d" )
         .smart_ptr<std::shared_ptr<Vector2d>>( "Vector2d" )
 

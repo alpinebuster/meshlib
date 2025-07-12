@@ -250,12 +250,17 @@ function SidebarObject( editor ) {
 							const floatVec = new editor.mrmesh.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
 							
-							// const result = editor.mrmesh.cutMeshWithPolyline( curMeshWrapper.mesh, floatVec );
-							const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
+							const result = editor.mrmesh.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
-							const newVertices = result.innerMesh.vertices;
-							const newIndices = new Uint32Array( result.innerMesh.indices );
-							showMesh( newVertices, newIndices );
+							const innerVertices = result.innerMesh.vertices;
+							const innerIndices = new Uint32Array(result.innerMesh.indices);
+						
+							const outerVertices = result.outerMesh.vertices;
+							const outerIndices = new Uint32Array(result.outerMesh.indices);
+							
+							showMesh( innerVertices, innerIndices );
+							showMesh( outerVertices, outerIndices );
 							break;
 
 						case 'wasmOpSegmentByPoints':
@@ -340,7 +345,7 @@ function SidebarObject( editor ) {
 		const currentUUID = editor.selected.uuid;
 		if ( currentUUID ) {
 			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
-				const newMeshData = editor.wasmObject[currentUUID].fillHoles();
+				const newMeshData = editor.wasmObject[currentUUID].fillHolesImpl();
 				const vertices = newMeshData.vertices;
 				const indices = newMeshData.indices;
 			
@@ -388,9 +393,9 @@ function SidebarObject( editor ) {
 					-threeWorldDir.z,
 				)
 
-				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.getMesh(), upDir );
+				const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
 				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.mesh, upDir );
-				const result = curMeshWrapper.fixUndercutsImpl( upDir );
+				// const result = curMeshWrapper.fixUndercutsImpl( upDir );
 				
 				const newVertices = result.mesh.vertices;
 				// const newIndices = new Uint32Array( result.mesh.indices );

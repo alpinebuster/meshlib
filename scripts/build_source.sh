@@ -9,6 +9,7 @@ echo "Project build script started."
 echo "You could find output in ${logfile}"
 
 MR_EMSCRIPTEN_SINGLETHREAD=0
+MR_EMSCRIPTEN_WASM64=0
 if [[ $OSTYPE == "linux"* ]]; then
   if [ ! -n "$MR_EMSCRIPTEN" ]; then
     read -t 5 -p "Build with emscripten? Press (y) in 5 seconds to build (y/s/l/N) (s - singlethreaded, l - 64-bit)" -rsn 1
@@ -42,13 +43,12 @@ else
     MR_EMSCRIPTEN="OFF"
   fi
 fi
-echo "Emscripten ${MR_EMSCRIPTEN}, singlethread ${MR_EMSCRIPTEN_SINGLETHREAD}, 64-bit ${MR_EMSCRIPTEN_WASM64:-0}, SDK only ${MR_EMSCRIPTEN_SDK:-0}"
 
 if [ $MR_EMSCRIPTEN == "ON" ]; then
   if [[ $MR_EMSCRIPTEN_SINGLE == "ON" ]]; then
     MR_EMSCRIPTEN_SINGLETHREAD=1
   fi
-  if [[ $MR_EMSCRIPTEN_WASM64 == "ON" ]]; then
+  if [[ $MR_EMSCRIPTEN_W64 == "ON" ]]; then
     MR_EMSCRIPTEN_WASM64=1
   fi
 fi
@@ -74,6 +74,8 @@ if [ ! -n "$MESHLIB_BUILD_DEBUG" ]; then
   fi
   echo "Debug ${MESHLIB_BUILD_DEBUG}"
 fi
+
+echo "Emscripten ${MR_EMSCRIPTEN:-OFF}, singlethread ${MR_EMSCRIPTEN_SINGLE:-OFF}, 64-bit ${MR_EMSCRIPTEN_W64:-OFF}, SDK only ${MR_EMSCRIPTEN_SDK:-OFF}, Release ${MESHLIB_BUILD_RELEASE:-OFF}, Debug ${MESHLIB_BUILD_DEBUG:-OFF}"
 
 # add env options to cmake
 MR_CMAKE_OPTIONS="${MR_CMAKE_OPTIONS:-}"

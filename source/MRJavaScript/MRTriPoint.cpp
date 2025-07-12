@@ -7,6 +7,7 @@
 using namespace emscripten;
 using namespace MR;
 
+
 EMSCRIPTEN_BINDINGS( TriPointModule )
 {
 	class_<TriPointf>( "TriPointf" )

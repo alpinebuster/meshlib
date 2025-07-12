@@ -11,6 +11,7 @@
 #include <MRMesh/MRRelaxParams.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MRMeshTopology.h>
+#include <MRMesh/MRProgressCallback.h>
 #include <MRMesh/MRRegionBoundary.h>
 
 using namespace emscripten;

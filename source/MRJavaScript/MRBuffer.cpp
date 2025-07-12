@@ -6,8 +6,11 @@
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRBuffer.h>
 
+#include "MRBuffer.h"
+
 using namespace emscripten;
 using namespace MR;
+
 
 using FaceBMapBuffer = Buffer<FaceId, FaceId>;
 using VertBMapBuffer = Buffer<VertId, VertId>;
@@ -15,63 +18,63 @@ using EdgeBMapBuffer = Buffer<EdgeId, EdgeId>;
 using UndirectedEdgeBMapBuffer = Buffer<UndirectedEdgeId, UndirectedEdgeId>;
 using WholeEdgeBMapBuffer = Buffer<EdgeId, UndirectedEdgeId>;
 
+
+namespace MRJS
+{
+
 EMSCRIPTEN_BINDINGS( BufferModule )
 {
-    class_<FaceBMapBuffer>( "FaceBMapBuffer" )
-        .constructor<>()
-        .constructor<size_t>()
+    ///
+    BufferBinding<FaceId, FaceId>( "FaceBMapBuffer" ).init();
+    BufferBinding<VertId, VertId>( "VertBMapBuffer" ).init();
+    BufferBinding<EdgeId, EdgeId>( "EdgeBMapBuffer" ).init();
+    BufferBinding<UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMapBuffer" ).init();
+    BufferBinding<EdgeId, UndirectedEdgeId>( "WholeEdgeBMapBuffer" ).init();
 
-        .function( "capacity", &FaceBMapBuffer::capacity )
-        .function( "size", &FaceBMapBuffer::size )
-        .function( "empty", &FaceBMapBuffer::empty )
-        .function( "clear", &FaceBMapBuffer::clear )
-        .function( "resize", &FaceBMapBuffer::resize )
-
-        // FIXME
-        // .function( "get", select_overload<const FaceId& ( FaceId ) const>( &FaceBMapBuffer::operator[] ) )
-        // .function( "set", select_overload<FaceId& ( FaceId )>( &FaceBMapBuffer::operator[] ) )
-        .function("get", optional_override([](const FaceBMapBuffer& buf, FaceId id) -> FaceId {
-            return buf[id];  // Return copy (avoid references)
-        }))
-        .function("set", optional_override([](FaceBMapBuffer& buf, FaceId id, const FaceId& value) {
-            buf[id] = value;
-        } ) )
-
-        // FIXME
-        // .function( "data", select_overload<FaceId* ()>( &FaceBMapBuffer::data ), allow_raw_pointers() )
-        // .function( "dataConst", select_overload<FaceId* () const>( &FaceBMapBuffer::data ), allow_raw_pointers() )
-        .function( "dataPtr", optional_override( [] ( FaceBMapBuffer& self )
-        {
-            return self.data(); // T*
-        }), allow_raw_pointers())
-
-        .function( "beginId", &FaceBMapBuffer::beginId )
-        .function( "backId", &FaceBMapBuffer::backId )
-        .function( "endId", &FaceBMapBuffer::endId )
-        .function( "heapBytes", &FaceBMapBuffer::heapBytes );
-
-    
-    class_<VertBMapBuffer>( "VertBMapBuffer" )
-        .constructor<>()
-        .constructor<size_t>();
-
-    
-    class_<EdgeBMapBuffer>( "EdgeBMapBuffer" )
-        .constructor<>()
-        .constructor<size_t>();
-
-    
-    class_<UndirectedEdgeBMapBuffer>( "UndirectedEdgeBMapBuffer" )
-        .constructor<>()
-        .constructor<size_t>();
-
-    
-    class_<WholeEdgeBMapBuffer>( "WholeEdgeBMapBuffer" )
-        .constructor<>()
-        .constructor<size_t>();
+    BufferBinding<FaceId, size_t>( "FaceIdEdgeIdSizeTBMapBuffer" ).init();
+    BufferBinding<VertId, size_t>( "VertIdSizeTBMapBuffer" ).init();
+    BufferBinding<EdgeId, size_t>( "EdgeIdSizeTBMapBuffer" ).init();
+    BufferBinding<UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMapBuffer" ).init();
+    ///
 
 
-    // FIXME
+    ///
     class_<PackMapping>( "PackMapping" )
-        .constructor<>();
+        .constructor<>()
+
+        .function( "getE", optional_override( [] ( PackMapping& self ) -> UndirectedEdgeBMap*
+        {
+            return &self.e;
+        } ), allow_raw_pointers() )
+        .function( "setE", optional_override( []( PackMapping& self, UndirectedEdgeBMap& newE ) {
+            self.e = std::move( newE );
+        } ), allow_raw_pointers() )
+        .function( "setEWithPtr", optional_override( []( PackMapping& self, UndirectedEdgeBMap* newE ) {
+            if ( newE ) self.e = std::move( *newE );
+        } ), allow_raw_pointers() )
+        
+        .function( "getF", optional_override( [] ( PackMapping& self ) -> FaceBMap*
+        {
+            return &self.f;
+        } ), allow_raw_pointers() )
+        .function( "setF", optional_override( []( PackMapping& self, FaceBMap& newB ) {
+            self.f = std::move( newB );
+        } ), allow_raw_pointers() )
+        .function( "setFWithPtr", optional_override( []( PackMapping& self, FaceBMap* newB ) {
+            if ( newB ) self.f = std::move( *newB );
+        } ), allow_raw_pointers() )
+        
+        .function( "getV", optional_override( [] ( PackMapping& self ) -> VertBMap*
+        {
+            return &self.v;
+        } ), allow_raw_pointers() )
+        .function( "setV", optional_override( []( PackMapping& self, VertBMap& newV ) {
+            self.v = std::move( newV );
+        } ), allow_raw_pointers() )
+        .function( "setVWithPtr", optional_override( []( PackMapping& self, VertBMap* newV ) {
+            if ( newV ) self.v = std::move( *newV );
+        } ), allow_raw_pointers() );
+    ///
+}
+
 }

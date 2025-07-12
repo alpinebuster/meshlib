@@ -76,7 +76,7 @@ MRMESH_API MeshTopology fromDisjointMeshPieces(
     const std::vector<MeshPiece> & pieces,
     const BuildSettings & settings = {} );
 
-// adds triangles in the existing topology, given face indecies must be free;
+// adds triangles in the existing topology, given face indicies must be free;
 // settings.region on output contain the remaining triangles that could not be added into the topology right now, but may be added later when other triangles appear in the mesh
 MRMESH_API void addTriangles( MeshTopology & res, const Triangulation & t, const BuildSettings & settings = {} );
 

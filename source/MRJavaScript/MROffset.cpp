@@ -11,7 +11,7 @@
 using namespace emscripten;
 using namespace MR;
 
-// Emscripten works better with simple return types, so we'll unwrap the Expected
+// Emscripten works better with simple return types, so we'll unwrap the Expected`
 val thickenMeshWrapper( const Mesh& mesh, float offset, const GeneralOffsetParameters& params )
 {
 	auto result = thickenMesh( mesh, offset, params );

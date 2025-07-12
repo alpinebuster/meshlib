@@ -114,8 +114,25 @@ public:
 			}
 			contourDirection /= dirLength;
 
+			///
+			// Use Gram-Schmidt-like orthogonalization to infer direction:
+			// 1. cross(pointsDir, meshDir) to obtain a vector perpendicular to both directions.
+			// 2. Then cross it with pointsDir to get a vector that lies in the plane of meshDir and is orthogonal to pointsDir.
+			// 3. Then determine if it is in the same direction or the opposite direction as meshDir.
+			Vector3f meshDir = Vector3f{ mesh_.dirArea() };
+			Vector3f pointsDir = mesh_.points[keyVertices[0]] - mesh_.points[keyVertices[1]];
+
+			Vector3f guessDir = cross(cross(pointsDir, meshDir), pointsDir);
+
+			// Direction Correction
+			if (dot(guessDir, meshDir) < 0)
+				guessDir = -guessDir;
+
+			Vector3f direction = guessDir.normalized();
+			///
+
 			// Step 3: Create surrounding contour
-			auto contourResult = surroundingContour( mesh_, keyVertices, edgeMetric_, contourDirection );
+			auto contourResult = surroundingContour( mesh_, keyVertices, edgeMetric_, direction /*contourDirection*/ );
 
 			if ( !contourResult )
 			{

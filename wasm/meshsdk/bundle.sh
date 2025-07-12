@@ -33,5 +33,5 @@ function bundle () {
 	cp lib/MRJavaScript.d.ts lib/${ENVIRONMENT}/
 }
 
-bundle node
-bundle web
+# bundle node
+# bundle web

@@ -1,12 +1,13 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
-#include <MRMesh/MRMeshProject.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRPointsToMeshProjector.h>
+#include <MRMesh/MRMeshProject.h>
 
 using namespace emscripten;
 using namespace MR;
+
 
 EMSCRIPTEN_BINDINGS( MeshProjectModule )
 {
@@ -18,6 +19,4 @@ EMSCRIPTEN_BINDINGS( MeshProjectModule )
         .property( "distSq", &MeshProjectionResult::distSq )
         .function( "valid", &MeshProjectionResult::valid )
         .function( "asBool", select_overload<bool() const>( &MeshProjectionResult::operator bool ) );
-
-    register_vector<MeshProjectionResult>( "VectorMeshProjectionResult" );
 }

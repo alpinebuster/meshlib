@@ -11,15 +11,13 @@ EMSCRIPTEN_BINDINGS( Vector4fModule )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector4b`
     // ------------------------------------------------------------------------
-    register_vector<Vector4b>( "VectorVector4b" );
     class_<Vector4b>( "Vector4b" )
         .constructor<>();
 
-    
+
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector4i`
     // ------------------------------------------------------------------------
-    register_vector<Vector4i>( "VectorVector4i" );
     class_<Vector4i>( "Vector4i" )
         .constructor<>()
         .constructor<int, int, int, int>()
@@ -47,7 +45,6 @@ EMSCRIPTEN_BINDINGS( Vector4fModule )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector4ll`
     // ------------------------------------------------------------------------
-    register_vector<Vector4ll>( "VectorVector4ll" );
     class_<Vector4ll>( "Vector4ll" )
         .constructor<>();
 
@@ -55,7 +52,6 @@ EMSCRIPTEN_BINDINGS( Vector4fModule )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector4f`
     // ------------------------------------------------------------------------
-    register_vector<Vector4f>( "VectorVector4f" );
     class_<Vector4f>( "Vector4f" )
         .constructor<>()
         .constructor<float, float, float, float>()
@@ -86,7 +82,6 @@ EMSCRIPTEN_BINDINGS( Vector4fModule )
     // ------------------------------------------------------------------------
     // Bind the Embind interface for `Vector4d`
     // ------------------------------------------------------------------------
-    register_vector<Vector4d>( "VectorVector4d" );
     class_<Vector4d>( "Vector4d" )
         .constructor<>();
 }

@@ -36,19 +36,7 @@ public:
     }
 };
 
-/**
- *@brief Cut mesh with polyline
- *
- * 1. Project points of polyline to mesh
- * 2. Convert result vector to `cutMesh()` input type
- * 3. Do `cutMesh()` (it works only with contours without self-intersections)
- *
- * @param mesh
- * @param coordinates Must be closed
- * @param coordinatesLength 
- * @return val 
- */
-val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
+val cutMeshWithPolylineImplTest( Mesh& mesh, const std::vector<float>& coordinates )
 {
 	std::vector<Vector3f> polyline;
 
@@ -68,7 +56,7 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
 	}
 	Polyline3 initialPolyline;
-	initialPolyline.addFromPoints( polyline.data(), polyline.size() );
+	initialPolyline.addFromPoints( polyline.data(), polyline.size(), true );
 
 	std::vector<MeshTriPoint> projectedPolyline;
 	projectedPolyline.reserve( initialPolyline.points.size() );
@@ -120,26 +108,91 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 				jsTestCutPoints.call<void>("push", point);
 			}
 		}
-		
-		// FIXME:
-		// auto [innerMesh, outerMesh] = returnParts_( mesh, cutResults.resultCut );
 
-		auto innerBitSet = fillContourLeft( mesh.topology, cutResults.resultCut );
-		Mesh innerMesh = mesh.cloneRegion( innerBitSet );
-
+		auto [innerMesh, outerMesh] = MRJS::returnParts( mesh, cutResults.resultCut );
 		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
-		// val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
-
-
+		val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
 
 
 		val obj = val::object();
 		obj.set( "success", true );
 		obj.set( "innerMesh", innerMeshData );
-		// obj.set( "outerMesh", outerMeshData );
+		obj.set( "outerMesh", outerMeshData );
 		obj.set( "jsTestProjectedPoint", jsTestProjectedPoint );
 		obj.set( "jsTestProjectedContour", jsTestProjectedContour );
 		obj.set( "jsTestCutPoints", jsTestCutPoints );
+
+		return obj;
+	} else {
+		std::string error = meshContour.error();
+
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "convertMeshTriPointsToMeshContour: " + error );
+	
+		return obj;
+	}
+}
+
+/**
+ *@brief Cut mesh with polyline
+ *
+ * 1. Project points of polyline to mesh
+ * 2. Convert result vector to `cutMesh()` input type
+ * 3. Do `cutMesh()` (it works only with contours without self-intersections)
+ *
+ * @param mesh
+ * @param coordinates Must be closed
+ * @param coordinatesLength 
+ * @return val 
+ */
+val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
+{
+	std::vector<Vector3f> polyline;
+
+    int coordinatesLength = coordinates.size();
+    if (coordinatesLength % 3 != 0) {
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "Coordinates length must be a multiple of 3!" );
+
+		return obj;
+    }
+
+	polyline.reserve( coordinatesLength / 3 );
+
+	for ( size_t i = 0; i < coordinatesLength; i += 3 )
+	{
+		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
+	}
+	Polyline3 initialPolyline;
+	initialPolyline.addFromPoints( polyline.data(), polyline.size(), true );
+
+	std::vector<MeshTriPoint> projectedPolyline;
+	projectedPolyline.reserve( initialPolyline.points.size() );
+	MeshPart m = MeshPart( mesh, nullptr );
+
+	mesh.getAABBTree(); // Create tree in parallel before loop
+	for ( Vector3f pt : initialPolyline.points )
+	{
+		MeshProjectionResult mpr = findProjection( pt, m );
+		projectedPolyline.push_back( mpr.mtp );
+	}
+
+	auto meshContour = convertMeshTriPointsToMeshContour( mesh, projectedPolyline );
+	if ( meshContour )
+	{
+		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
+
+		auto [innerMesh, outerMesh] = MRJS::returnParts( mesh, cutResults.resultCut );
+		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
+		val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
+
+
+		val obj = val::object();
+		obj.set( "success", true );
+		obj.set( "innerMesh", innerMeshData );
+		obj.set( "outerMesh", outerMeshData );
 
 		return obj;
 	} else {
@@ -285,4 +338,5 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 		.field( "fbsWithContourIntersections", &CutMeshResult::fbsWithContourIntersections );
 
 	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
+	function( "cutMeshWithPolylineImplTest", &cutMeshWithPolylineImplTest );
 }
