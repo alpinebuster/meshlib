@@ -6,6 +6,7 @@
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRPointCloud.h>
+#include <MRMesh/MRBuffer.h>
 #include <MRMesh/MRAABBTreePoints.h>
 
 using namespace emscripten;
@@ -24,16 +25,33 @@ EMSCRIPTEN_BINDINGS( AABBTreePointsModule )
         .property( "r", &AABBTreePoints::Node::r );
 
     class_<AABBTreePoints>( "AABBTreePoints" )
-        // FIXME: BindingError: Cannot register multiple constructors with identical number of parameters (1)
-        // .constructor<const PointCloud&>()
+        // .smart_ptr<std::unique_ptr<AABBTreePoints>>( "AABBTreePointsUniquePtr" )
+        .smart_ptr<std::shared_ptr<AABBTreePoints>>( "AABBTreePointsSharedPtr" )
+
         .constructor<const Mesh&>()
         .constructor<const VertCoords&, const VertBitSet*>( allow_raw_pointers() )
+        // .class_function( "createFromPointCloudUniquePtr", optional_override( [] ( const PointCloud& pointCloud )
+        // {
+        //     return std::make_unique<AABBTreePoints>( pointCloud );
+        // } ), allow_raw_pointers() )
+        .class_function( "createFromPointCloudSharedPtr", optional_override( [] ( const PointCloud& pointCloud )
+        {
+            return std::make_shared<AABBTreePoints>( pointCloud );
+        } ), allow_raw_pointers() )
+        // .class_function("createFromPointsUniquePtr", optional_override([](const VertCoords & points, const VertBitSet & validPoints) {
+        //     return std::make_unique<AABBTreePoints>(points, validPoints);
+        // }), allow_raw_pointers())
+        .class_function("createFromPointsSharedPtr", optional_override([](const VertCoords & points, const VertBitSet & validPoints) {
+            return std::make_shared<AABBTreePoints>(points, validPoints);
+        }), allow_raw_pointers())
 
         .class_property( "MaxNumPointsInLeaf", &AABBTreePoints::MaxNumPointsInLeaf )
     
+        .function( "nodes", select_overload<const AABBTreePoints::NodeVec& () const>( &AABBTreePoints::nodes ) )
         .function( "getBoundingBox", &AABBTreePoints::getBoundingBox )
-        // .function( "nodes", select_overload<const AABBTreePoints::NodeVec& () const>( &AABBTreePoints::nodes ) )
         .function( "orderedPoints", &AABBTreePoints::orderedPoints )
-        // .function( "getLeafOrder", &AABBTreePoints::getLeafOrder )
+        .function( "getLeafOrder", &AABBTreePoints::getLeafOrder )
+        .function( "getLeafOrderAndReset", &AABBTreePoints::getLeafOrderAndReset )
+        .function( "heapBytes", &AABBTreePoints::heapBytes )
         .function( "refit", &AABBTreePoints::refit );
 }

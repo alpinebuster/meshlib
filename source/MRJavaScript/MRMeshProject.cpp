@@ -18,5 +18,5 @@ EMSCRIPTEN_BINDINGS( MeshProjectModule )
         .property( "mtp", &MeshProjectionResult::mtp )     // MeshTriPoint
         .property( "distSq", &MeshProjectionResult::distSq )
         .function( "valid", &MeshProjectionResult::valid )
-        .function( "asBool", select_overload<bool() const>( &MeshProjectionResult::operator bool ) );
+        .function( "opbool", select_overload<bool() const>( &MeshProjectionResult::operator bool ) );
 }

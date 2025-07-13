@@ -23,9 +23,9 @@ EMSCRIPTEN_BINDINGS( MeshCollidePreciseModule )
 
 
     class_<VarEdgeTri>( "VarEdgeTri" )
-        .constructor<>()  // Default constructor
-        .constructor<bool, EdgeId, FaceId>()  // Main constructor
-        .constructor<bool, const EdgeTri&>()  // EdgeTri constructor
+        .constructor<>()
+        .constructor<bool, EdgeId, FaceId>()
+        .constructor<bool, const EdgeTri&>()
 
         .property( "edge", &VarEdgeTri::edge )
         .property( "tri", &VarEdgeTri::tri )

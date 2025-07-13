@@ -28,7 +28,7 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
         .constructor<>()
         .constructor<size_t>()
         .constructor<size_t, bool>()
-        .class_function( "createWithBool", optional_override( [] ( size_t numBits, bool fillValue )
+        .class_function( "createFromBool", optional_override( [] ( size_t numBits, bool fillValue )
         {
             return BitSet( numBits, fillValue );
         } ) )
@@ -116,11 +116,11 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         .constructor<>()
         .constructor<const BitSet&>()
         // The factory function replaces the overloaded constructor
-        .class_function( "createWithSize", optional_override( [] ( size_t numBits )
+        .class_function( "createFromSize", optional_override( [] ( size_t numBits )
         {
             return FaceBitSet( numBits );
         } ) )
-        .class_function( "createWithValue", optional_override( [] ( size_t numBits, bool fillValue )
+        .class_function( "createFromValue", optional_override( [] ( size_t numBits, bool fillValue )
         {
             return FaceBitSet( numBits, fillValue );
         } ) )

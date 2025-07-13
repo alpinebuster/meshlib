@@ -17,6 +17,7 @@
 #include <MRMesh/MREdgeMetric.h>
 #include <MRMesh/MRPointCloud.h>
 #include <MRMesh/MRAABBTreePoints.h>
+#include <MRMesh/MREdgePoint.h>
 #include <MRMesh/MRDipole.h>
 #include <MRMesh/MRGridSampling.h>
 #include <MRMesh/MRMeshProject.h>
@@ -159,7 +160,10 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 
 
 	///
-    register_vector<AABBTreePoints::Point>( "VectorAABBTreePointsPoint" );
+	register_vector<MeshBuilder::MeshPiece>( "VectorMeshPiece" );
+	register_vector<EdgePoint>( "VectorEdgePoint" );
+
+	register_vector<AABBTreePoints::Point>( "VectorAABBTreePointsPoint" );
     register_vector<AABBTreePoints::Node>( "VectorAABBTreePointsNode" );
 
     register_vector<ModelPointsData>( "VectorModelPointsData" );
@@ -172,9 +176,24 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<VarEdgeTri>( "ContinuousContour" );
     // `ContinuousContours` is `std::vector<ContinuousContour>`
 	register_vector<ContinuousContour>( "ContinuousContours" );
+	///
 
-	
-	register_vector<MeshBuilder::MeshPiece>( "VectorMeshPiece" );
+
+	///
+	register_vector<std::vector<MeshBuilder::MeshPiece>>( "VectorVectorMeshPiece" );
+	register_vector<std::vector<EdgePoint>>( "VectorVectorEdgePoint" );
+
+	register_vector<std::vector<AABBTreePoints::Point>>( "VectorVectorAABBTreePointsPoint" );
+    register_vector<std::vector<AABBTreePoints::Node>>( "VectorVectorAABBTreePointsNode" );
+
+    register_vector<std::vector<ModelPointsData>>( "VectorVectorModelPointsData" );
+    register_vector<std::vector<ObjVertId>>( "VectorVectorObjVertId" );
+
+    register_vector<std::vector<MeshProjectionResult>>( "VectorVectorMeshProjectionResult" );
+	register_vector<std::vector<MeshBuilder::VertDuplication>>( "VectorVectorVertDuplication" );
+
+    // NOTE: `std::vector<std::vector<VarEdgeTri>>` is `std::vector<ContinuousContour>`;
+	register_vector<std::vector<ContinuousContour>>( "VectorContinuousContours" );
 	///
 
 
