@@ -174,6 +174,7 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<MeshProjectionResult>( "VectorMeshProjectionResult" );
 	register_vector<MeshBuilder::VertDuplication>( "VectorVertDuplication" );
 
+    register_vector<EdgeTri>( "VectorEdgeTri" );
 	// ContinuousContour is `std::vector<VarEdgeTri>`
     register_vector<VarEdgeTri>( "ContinuousContour" );
     // `ContinuousContours` is `std::vector<ContinuousContour>`
@@ -197,6 +198,7 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<std::vector<MeshProjectionResult>>( "VectorVectorMeshProjectionResult" );
 	register_vector<std::vector<MeshBuilder::VertDuplication>>( "VectorVectorVertDuplication" );
 
+    register_vector<std::vector<EdgeTri>>( "VectorVectorEdgeTri" );
     // NOTE: `std::vector<std::vector<VarEdgeTri>>` is `std::vector<ContinuousContour>`;
 	register_vector<std::vector<ContinuousContour>>( "VectorContinuousContours" );
     register_vector<std::vector<OneMeshContour>>( "VectorOneMeshContours" );
