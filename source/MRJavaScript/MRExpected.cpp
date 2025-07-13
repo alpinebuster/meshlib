@@ -24,6 +24,7 @@
 #include <MRMesh/MRGridSampling.h>
 #include <MRMesh/MRGridSettings.h>
 #include <MRMesh/MRMeshTexture.h>
+#include <MRMesh/MROneMeshContours.h>
 #include <MRMesh/MRTriMesh.h>
 #include <MRPch/MRExpected.h>
 #include <MRMesh/MRExpected.h>
@@ -86,5 +87,7 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
     // 
     MRJS::bindExpected<EdgePath>( "ExpectedEdgePath" );
     MRJS::bindExpected<EdgeLoops>( "ExpectedEdgeLoops" );
+    MRJS::bindExpected<OneMeshContour>( "ExpectedOneMeshContour" );
+    MRJS::bindExpected<SurfacePath>( "ExpectedSurfacePath" );
     ///
 }

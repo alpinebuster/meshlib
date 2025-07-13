@@ -47,7 +47,7 @@ EMSCRIPTEN_BINDINGS( PrecisePredicates3Module )
 		};
 	} ) );
 
-	// struct
+
 	class_<CoordinateConverters>( "CoordinateConverters" )
 		.constructor<>()
 
