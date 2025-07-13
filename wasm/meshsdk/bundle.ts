@@ -2,7 +2,7 @@
 
 import { fileURLToPath } from 'url';
 import { dirname, join, normalize } from 'path';
-import { existsSync, rmSync, mkdirSync, copyFileSync } from 'fs';
+import { existsSync, rmSync, mkdirSync, copyFileSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { execSync } from 'child_process';
 
 // Get current directory (equivalent to cd "$(dirname "$0")")
@@ -15,7 +15,46 @@ const OUT_DIRECTORY = 'lib';
 // Main build function
 async function build(): Promise<void> {
 	try {
-		console.log('Starting build process...');
+		// Find WASM bin directory
+		const debugBin = join(__dirname, '../../build/Debug/bin');
+		const releaseBin = join(__dirname, '../../build/Release/bin');
+		const binDir = existsSync(debugBin) ? debugBin : releaseBin;
+		console.log(`\n************ Using WASM bin directory: ${binDir} ************`);
+
+		// Copy `MRJavaScript.*` files from `binDir` to `src/`
+		const binFiles = readdirSync(binDir).filter(f => f.startsWith('MRJavaScript.'));
+		if (binFiles.length === 0) {
+			console.warn(`No \`MRJavaScript.*\` files found in ${binDir}!`);
+		} else {
+			console.log('\n');
+			for (const file of binFiles) {
+				const srcPath = join(binDir, file);
+				const destPath = join(__dirname, 'src', file);
+				copyFileSync(srcPath, destPath);
+				console.log('----------------------------------------------------------------------');
+				console.log(`Copied WASM bin ${file} to \`src/\` directory！！！`);
+			}
+			console.log('----------------------------------------------------------------------');
+		}
+
+
+		/// NOTE: Patching for issue #24579: `https://github.com/emscripten-core/emscripten/issues/24579`
+		const wasmDTSPath = join(__dirname, 'src', 'MRJavaScript.d.ts');
+		if (existsSync(wasmDTSPath)) {
+			let wasmDTSContent = readFileSync(wasmDTSPath, 'utf-8');
+			wasmDTSContent = wasmDTSContent.replace(/Arguments/g, 'IArguments');
+			writeFileSync(wasmDTSPath, wasmDTSContent);
+			console.log('\n');
+			console.log('----------------------------------------------------------------------');
+			console.log('Replaced type `Arguments` with `IArguments` in `MRJavaScript.d.ts`！！！');
+			console.log('----------------------------------------------------------------------\n');
+		} else {
+			console.warn('`MRJavaScript.d.ts` not found, cannot replace type `Arguments`!');
+		}
+		///
+
+
+		console.log('\n************ Starting build process ************');
 
 		// Clean or create lib directory
 		if (existsSync(OUT_DIRECTORY)) {
@@ -25,14 +64,14 @@ async function build(): Promise<void> {
 		mkdirSync(OUT_DIRECTORY, { recursive: true });
 
 		// Compile TypeScript
-		console.log('Compiling TypeScript...');
+		console.log('\n************ Compiling TypeScript ************');
 		execSync('npx tsc --project tsconfig.production.json', {
 			stdio: 'inherit',
 			cwd: process.cwd()
 		});
 
 		// Copy required files to lib directory
-		console.log('Copying required files...');
+		console.log('\n************ Copying required files ************');
 		const filesToCopy = [
 			'src/MRJavaScript.wasm',
 			// 'src/MRJavaScript.data',
@@ -58,7 +97,7 @@ async function build(): Promise<void> {
 		// }
 		///
 
-		console.log('Build completed successfully!');
+		console.log('\n************ Build completed successfully! ************');
 	} catch (error) {
 		console.error('Build failed:', error);
 		process.exit(1);

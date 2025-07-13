@@ -230,8 +230,12 @@ export interface AABBTreePointsNode extends ClassHandle {
 }
 
 export interface AABBTreePoints extends ClassHandle {
+  heapBytes(): number;
   getBoundingBox(): Box3f;
+  getLeafOrder(_0: VertBMap): void;
+  getLeafOrderAndReset(_0: VertBMap): void;
   refit(_0: VertCoords, _1: VertBitSet): void;
+  nodes(): NodeVec;
   orderedPoints(): VectorAABBTreePointsPoint;
 }
 
@@ -735,12 +739,36 @@ export interface EdgeMetricWrapper extends ClassHandle {
 }
 
 export interface EdgePoint extends ClassHandle {
+  e: EdgeId;
+  a: SegmPointf;
+  inVertex(): boolean;
+  moveToClosestVertex(): void;
+  valid(): boolean;
+  opbool(): boolean;
+  sym(): EdgePoint;
+  equals(_0: EdgePoint): boolean;
+  inVertexFromMeshTopology(_0: MeshTopology): VertId;
+  getClosestVertex(_0: MeshTopology): VertId;
+  isBd(_0: MeshTopology, _1: FaceBitSet | null): boolean;
+  inVertexFromPolylineTopology(_0: PolylineTopology): VertId;
+  getClosestVertexFromPolylineTopology(_0: PolylineTopology): VertId;
 }
 
 export interface EdgePointPair extends ClassHandle {
+  a: EdgePoint;
+  b: EdgePoint;
+  equals(_0: EdgePointPair): boolean;
 }
 
 export interface EdgeSegment extends ClassHandle {
+  e: EdgeId;
+  a: SegmPointf;
+  b: SegmPointf;
+  edgePointA(): EdgePoint;
+  edgePointB(): EdgePoint;
+  valid(): boolean;
+  equals(_0: EdgeSegment): boolean;
+  sym(): EdgeSegment;
 }
 
 export interface VertexMassValue<T extends number> {
@@ -971,6 +999,28 @@ export interface ExpectedEdgeLoops extends ClassHandle {
   get(): VectorEdgePath;
   valueOr(_0: VectorEdgePath): VectorEdgePath;
   getValuePtr(): VectorEdgePath | null;
+}
+
+export interface ExpectedOneMeshContour extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): OneMeshContour;
+  get(): OneMeshContour;
+  valueOr(_0: OneMeshContour): OneMeshContour;
+  getValuePtr(): OneMeshContour | null;
+}
+
+export interface ExpectedSurfacePath extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): SurfacePath;
+  get(): SurfacePath;
+  valueOr(_0: SurfacePath): SurfacePath;
+  getValuePtr(): SurfacePath | null;
 }
 
 export interface MeshSegmentation extends ClassHandle {
@@ -1376,12 +1426,23 @@ export interface EdgeTri extends ClassHandle {
   tri: FaceId;
 }
 
+export interface FlaggedTri extends ClassHandle {
+  getIsEdgeATriB(): boolean;
+  setIsEdgeATriB(_0: boolean): void;
+  getFace(): number;
+  setFace(_0: number): void;
+  equals(_0: FlaggedTri): boolean;
+}
+
 export interface VarEdgeTri extends ClassHandle {
-  readonly isEdgeATriB: boolean;
-  readonly valid: boolean;
+  flaggedTri: FlaggedTri;
   edge: EdgeId;
-  readonly tri: FaceId;
+  isEdgeATriB(): boolean;
   edgeTri(): EdgeTri;
+  valid(): boolean;
+  opbool(): boolean;
+  equals(_0: VarEdgeTri): boolean;
+  tri(): FaceId;
 }
 
 export interface __phmap_internal_FlatHashMapPolicy_VertId extends ClassHandle {
@@ -2815,7 +2876,7 @@ export interface MeshProjectionResult extends ClassHandle {
   mtp: MeshTriPoint;
   proj: PointOnFace;
   valid(): boolean;
-  asBool(): boolean;
+  opbool(): boolean;
 }
 
 export interface SubdivideSettings extends ClassHandle {
@@ -2991,7 +3052,7 @@ export interface MeshTriPoint extends ClassHandle {
   e: EdgeId;
   bary: TriPointf;
   valid(): boolean;
-  asBool(): boolean;
+  opbool(): boolean;
   inVertex(): boolean;
   onEdge(_0: MeshTopology): EdgePoint;
   isBd(_0: MeshTopology, _1: FaceBitSet | null): boolean;
@@ -3057,6 +3118,27 @@ export interface SortIntersectionsData extends ClassHandle {
   getContours(): ContinuousContours;
 }
 
+export interface OneMeshContour extends ClassHandle {
+  closed: boolean;
+  intersections: VectorOneMeshIntersection;
+}
+
+export interface OneMeshIntersection extends ClassHandle {
+  coordinate: Vector3f;
+  primitiveIndex(): number;
+  getFaceId(): FaceId;
+  getEdgeId(): EdgeId;
+  getVertId(): VertId;
+  setFaceId(_0: FaceId): void;
+  setEdgeId(_0: EdgeId): void;
+  setVertId(_0: VertId): void;
+}
+
+export type SearchPathSettings = {
+  geodesicPathApprox: GeodesicPathApprox,
+  maxReduceIters: number
+};
+
 export interface PartMapping extends ClassHandle {
   clear(): void;
 }
@@ -3109,7 +3191,7 @@ export interface PointOnFace extends ClassHandle {
   face: FaceId;
   point: Vector3f;
   valid(): boolean;
-  asBool(): boolean;
+  opbool(): boolean;
 }
 
 export type MeshMeshDistanceResult = {
@@ -3424,6 +3506,22 @@ export interface StdVectorUi64 extends ClassHandle {
   set(_0: number, _1: bigint): boolean;
 }
 
+export interface VectorMeshPiece extends ClassHandle {
+  push_back(_0: MeshPiece): void;
+  resize(_0: number, _1: MeshPiece): void;
+  size(): number;
+  get(_0: number): MeshPiece | undefined;
+  set(_0: number, _1: MeshPiece): boolean;
+}
+
+export interface SurfacePath extends ClassHandle {
+  push_back(_0: EdgePoint): void;
+  resize(_0: number, _1: EdgePoint): void;
+  size(): number;
+  get(_0: number): EdgePoint | undefined;
+  set(_0: number, _1: EdgePoint): boolean;
+}
+
 export interface VectorAABBTreePointsPoint extends ClassHandle {
   size(): number;
   get(_0: number): AABBTreePointsPoint | undefined;
@@ -3472,6 +3570,14 @@ export interface VectorVertDuplication extends ClassHandle {
   set(_0: number, _1: VertDuplication): boolean;
 }
 
+export interface VectorEdgeTri extends ClassHandle {
+  push_back(_0: EdgeTri): void;
+  resize(_0: number, _1: EdgeTri): void;
+  size(): number;
+  get(_0: number): EdgeTri | undefined;
+  set(_0: number, _1: EdgeTri): boolean;
+}
+
 export interface ContinuousContour extends ClassHandle {
   push_back(_0: VarEdgeTri): void;
   resize(_0: number, _1: VarEdgeTri): void;
@@ -3488,12 +3594,140 @@ export interface ContinuousContours extends ClassHandle {
   set(_0: number, _1: ContinuousContour): boolean;
 }
 
-export interface VectorMeshPiece extends ClassHandle {
-  push_back(_0: MeshPiece): void;
-  resize(_0: number, _1: MeshPiece): void;
+export interface OneMeshContours extends ClassHandle {
+  push_back(_0: OneMeshContour): void;
+  resize(_0: number, _1: OneMeshContour): void;
   size(): number;
-  get(_0: number): MeshPiece | undefined;
-  set(_0: number, _1: MeshPiece): boolean;
+  get(_0: number): OneMeshContour | undefined;
+  set(_0: number, _1: OneMeshContour): boolean;
+}
+
+export interface VectorOneMeshIntersection extends ClassHandle {
+  push_back(_0: OneMeshIntersection): void;
+  resize(_0: number, _1: OneMeshIntersection): void;
+  size(): number;
+  get(_0: number): OneMeshIntersection | undefined;
+  set(_0: number, _1: OneMeshIntersection): boolean;
+}
+
+export interface VectorMeshTriPoint extends ClassHandle {
+  push_back(_0: MeshTriPoint): void;
+  resize(_0: number, _1: MeshTriPoint): void;
+  size(): number;
+  get(_0: number): MeshTriPoint | undefined;
+  set(_0: number, _1: MeshTriPoint): boolean;
+}
+
+export interface VectorVectorMeshPiece extends ClassHandle {
+  push_back(_0: VectorMeshPiece): void;
+  resize(_0: number, _1: VectorMeshPiece): void;
+  size(): number;
+  get(_0: number): VectorMeshPiece | undefined;
+  set(_0: number, _1: VectorMeshPiece): boolean;
+}
+
+export interface SurfacePaths extends ClassHandle {
+  push_back(_0: SurfacePath): void;
+  resize(_0: number, _1: SurfacePath): void;
+  size(): number;
+  get(_0: number): SurfacePath | undefined;
+  set(_0: number, _1: SurfacePath): boolean;
+}
+
+export interface VectorVectorAABBTreePointsPoint extends ClassHandle {
+  push_back(_0: VectorAABBTreePointsPoint): void;
+  resize(_0: number, _1: VectorAABBTreePointsPoint): void;
+  size(): number;
+  get(_0: number): VectorAABBTreePointsPoint | undefined;
+  set(_0: number, _1: VectorAABBTreePointsPoint): boolean;
+}
+
+export interface VectorVectorAABBTreePointsNode extends ClassHandle {
+  push_back(_0: VectorAABBTreePointsNode): void;
+  resize(_0: number, _1: VectorAABBTreePointsNode): void;
+  size(): number;
+  get(_0: number): VectorAABBTreePointsNode | undefined;
+  set(_0: number, _1: VectorAABBTreePointsNode): boolean;
+}
+
+export interface VectorVectorModelPointsData extends ClassHandle {
+  push_back(_0: VectorModelPointsData): void;
+  resize(_0: number, _1: VectorModelPointsData): void;
+  size(): number;
+  get(_0: number): VectorModelPointsData | undefined;
+  set(_0: number, _1: VectorModelPointsData): boolean;
+}
+
+export interface VectorVectorObjVertId extends ClassHandle {
+  push_back(_0: VectorObjVertId): void;
+  resize(_0: number, _1: VectorObjVertId): void;
+  size(): number;
+  get(_0: number): VectorObjVertId | undefined;
+  set(_0: number, _1: VectorObjVertId): boolean;
+}
+
+export interface VectorVectorMeshProjectionResult extends ClassHandle {
+  push_back(_0: VectorMeshProjectionResult): void;
+  resize(_0: number, _1: VectorMeshProjectionResult): void;
+  size(): number;
+  get(_0: number): VectorMeshProjectionResult | undefined;
+  set(_0: number, _1: VectorMeshProjectionResult): boolean;
+}
+
+export interface VectorVectorVertDuplication extends ClassHandle {
+  push_back(_0: VectorVertDuplication): void;
+  resize(_0: number, _1: VectorVertDuplication): void;
+  size(): number;
+  get(_0: number): VectorVertDuplication | undefined;
+  set(_0: number, _1: VectorVertDuplication): boolean;
+}
+
+export interface VectorVectorEdgeTri extends ClassHandle {
+  push_back(_0: VectorEdgeTri): void;
+  resize(_0: number, _1: VectorEdgeTri): void;
+  size(): number;
+  get(_0: number): VectorEdgeTri | undefined;
+  set(_0: number, _1: VectorEdgeTri): boolean;
+}
+
+export interface VectorContinuousContours extends ClassHandle {
+  push_back(_0: ContinuousContours): void;
+  resize(_0: number, _1: ContinuousContours): void;
+  size(): number;
+  get(_0: number): ContinuousContours | undefined;
+  set(_0: number, _1: ContinuousContours): boolean;
+}
+
+export interface VectorOneMeshContours extends ClassHandle {
+  push_back(_0: OneMeshContours): void;
+  resize(_0: number, _1: OneMeshContours): void;
+  size(): number;
+  get(_0: number): OneMeshContours | undefined;
+  set(_0: number, _1: OneMeshContours): boolean;
+}
+
+export interface VectorVectorOneMeshIntersection extends ClassHandle {
+  push_back(_0: VectorOneMeshIntersection): void;
+  resize(_0: number, _1: VectorOneMeshIntersection): void;
+  size(): number;
+  get(_0: number): VectorOneMeshIntersection | undefined;
+  set(_0: number, _1: VectorOneMeshIntersection): boolean;
+}
+
+export interface VectorVectorMeshTriPoint extends ClassHandle {
+  push_back(_0: VectorMeshTriPoint): void;
+  resize(_0: number, _1: VectorMeshTriPoint): void;
+  size(): number;
+  get(_0: number): VectorMeshTriPoint | undefined;
+  set(_0: number, _1: VectorMeshTriPoint): boolean;
+}
+
+export interface VectorSurfacePaths extends ClassHandle {
+  push_back(_0: SurfacePaths): void;
+  resize(_0: number, _1: SurfacePaths): void;
+  size(): number;
+  get(_0: number): SurfacePaths | undefined;
+  set(_0: number, _1: SurfacePaths): boolean;
 }
 
 export interface VectorArray2Vector2i extends ClassHandle {
@@ -4328,6 +4562,10 @@ export interface FloatFunctorGraphEdgeBitSet extends ClassHandle {
   opcall(_0: GraphEdgeBitSet): number;
 }
 
+export interface ExpectedSurfacePathFunctorMeshTriPoint extends ClassHandle {
+  opcall(_0: MeshTriPoint, _1: MeshTriPoint, _2: number, _3: number): ExpectedSurfacePath;
+}
+
 export interface Vectori extends ClassHandle {
   size(): number;
   empty(): boolean;
@@ -4627,6 +4865,8 @@ interface EmbindModule {
   AABBTreePoints: {
     new(_0: Mesh): AABBTreePoints;
     new(_0: VertCoords, _1: VertBitSet | null): AABBTreePoints;
+    createFromPointsSharedPtr(_0: VertCoords, _1: VertBitSet): AABBTreePoints | null;
+    createFromPointCloudSharedPtr(_0: PointCloud): AABBTreePoints | null;
     MaxNumPointsInLeaf: number;
   };
   AffineXf2f: {
@@ -4695,14 +4935,14 @@ interface EmbindModule {
     new(): BitSet;
     new(_0: number): BitSet;
     new(_0: number, _1: boolean): BitSet;
-    createWithBool(_0: number, _1: boolean): BitSet;
+    createFromBool(_0: number, _1: boolean): BitSet;
     beginId(): number;
   };
   FaceBitSet: {
     new(): FaceBitSet;
     new(_0: BitSet): FaceBitSet;
-    createWithSize(_0: number): FaceBitSet;
-    createWithValue(_0: number, _1: boolean): FaceBitSet;
+    createFromSize(_0: number): FaceBitSet;
+    createFromValue(_0: number, _1: boolean): FaceBitSet;
     createFromBitSet(_0: BitSet): FaceBitSet;
     createFromBitSetMove(_0: BitSet): FaceBitSet;
     beginId(): FaceId;
@@ -4900,12 +5140,17 @@ interface EmbindModule {
   identityMetric(): EdgeMetricWrapper;
   EdgePoint: {
     new(): EdgePoint;
+    new(_0: EdgeId, _1: number): EdgePoint;
+    createFromMeshTopology(_0: MeshTopology, _1: VertId): EdgePoint;
+    createFromPolylineTopology(_0: PolylineTopology, _1: VertId): EdgePoint;
   };
   EdgePointPair: {
     new(): EdgePointPair;
+    new(_0: EdgePoint, _1: EdgePoint): EdgePointPair;
   };
   EdgeSegment: {
     new(): EdgeSegment;
+    new(_0: EdgeId, _1: number, _2: number): EdgeSegment;
   };
   VertexMass: {Unit: VertexMassValue<0>, NeiArea: VertexMassValue<1>};
   EdgeWeights: {Unit: EdgeWeightsValue<0>, Cotan: EdgeWeightsValue<1>};
@@ -4934,6 +5179,8 @@ interface EmbindModule {
   ExpectedPackMapping: {};
   ExpectedEdgePath: {};
   ExpectedEdgeLoops: {};
+  ExpectedOneMeshContour: {};
+  ExpectedSurfacePath: {};
   MeshSegmentation: {
     new(_0: Mesh): MeshSegmentation;
   };
@@ -5106,6 +5353,9 @@ interface EmbindModule {
   EdgeTri: {
     new(): EdgeTri;
     new(_0: EdgeId, _1: FaceId): EdgeTri;
+  };
+  FlaggedTri: {
+    new(): FlaggedTri;
   };
   VarEdgeTri: {
     new(): VarEdgeTri;
@@ -5572,6 +5822,12 @@ interface EmbindModule {
   suggestVoxelSize(_0: MeshPart, _1: number): number;
   offsetMesh(_0: MeshPart, _1: number, _2: OffsetParameters): ExpectedMesh;
   SortIntersectionsData: {};
+  OneMeshContour: {
+    new(): OneMeshContour;
+  };
+  OneMeshIntersection: {
+    new(): OneMeshIntersection;
+  };
   PartMapping: {
     new(): PartMapping;
   };
@@ -5642,6 +5898,8 @@ interface EmbindModule {
   CoordinateConverters: {
     new(): CoordinateConverters;
   };
+  getVectorConverters_Part(_0: MeshPart): CoordinateConverters;
+  getVectorConverters_Parts(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null): CoordinateConverters;
   findRegionBoundaryUndirectedEdgesInsideMesh(_0: MeshTopology, _1: FaceBitSet): UndirectedEdgeBitSet;
   findRegionOuterFaces(_0: MeshTopology, _1: FaceBitSet): FaceBitSet;
   getIncidentVerts(_0: MeshTopology, _1: FaceBitSet): VertBitSet;
@@ -5753,6 +6011,14 @@ interface EmbindModule {
   StdVectorUi64: {
     new(): StdVectorUi64;
   };
+  VectorMeshPiece: {
+    new(): VectorMeshPiece;
+  };
+  fromDisjointMeshPieces(_0: Triangulation, _1: VertId, _2: VectorMeshPiece, _3: BuildSettings): MeshTopology;
+  SurfacePath: {
+    new(): SurfacePath;
+  };
+  convertSurfacePathWithEndsToMeshContour(_0: Mesh, _1: MeshTriPoint, _2: SurfacePath, _3: MeshTriPoint): OneMeshContour;
   VectorAABBTreePointsPoint: {
     new(): VectorAABBTreePointsPoint;
   };
@@ -5773,17 +6039,80 @@ interface EmbindModule {
   };
   duplicateNonManifoldVertices(_0: Triangulation, _1: FaceBitSet | null, _2: VectorVertDuplication | null, _3: VertId): number;
   fromTrianglesDuplicatingNonManifoldVertices(_0: Triangulation, _1: VectorVertDuplication | null, _2: BuildSettings): MeshTopology;
+  VectorEdgeTri: {
+    new(): VectorEdgeTri;
+  };
+  findSelfCollidingEdgeTrisPrecise(_0: MeshPart, _1: ConvertToIntVector, _2: boolean, _3: AffineXf3f | null, _4: number): VectorEdgeTri;
   ContinuousContour: {
     new(): ContinuousContour;
   };
+  isClosed(_0: ContinuousContour): boolean;
+  findCollidingEdgeTrisPrecise_PartPart(_0: MeshPart, _1: MeshPart, _2: ConvertToIntVector, _3: AffineXf3f | null, _4: boolean): ContinuousContour;
   ContinuousContours: {
     new(): ContinuousContours;
   };
-  createSortIntersectionsData(_0: Mesh, _1: ContinuousContours, _2: CoordinateConverters, _3: AffineXf3f | null, _4: number, _5: boolean): SortIntersectionsData;
-  VectorMeshPiece: {
-    new(): VectorMeshPiece;
+  orderIntersectionContours(_0: MeshTopology, _1: MeshTopology, _2: ContinuousContour): ContinuousContours;
+  orderSelfIntersectionContours(_0: MeshTopology, _1: VectorEdgeTri): ContinuousContours;
+  detectLoneContours(_0: ContinuousContours, _1: boolean): StdVectori;
+  removeLoneContours(_0: ContinuousContours, _1: boolean): void;
+  createSortIntersectionsDataImpl(_0: Mesh, _1: ContinuousContours, _2: CoordinateConverters, _3: AffineXf3f | null, _4: number, _5: boolean): SortIntersectionsData;
+  OneMeshContours: {
+    new(): OneMeshContours;
   };
-  fromDisjointMeshPieces(_0: Triangulation, _1: VertId, _2: VectorMeshPiece, _3: BuildSettings): MeshTopology;
+  removeLoneDegeneratedContours(_0: MeshTopology, _1: OneMeshContours, _2: OneMeshContours): void;
+  subdivideLoneContours(_0: Mesh, _1: OneMeshContours, _2: FaceHashMap | null): void;
+  getOneMeshSelfIntersectionContours(_0: Mesh, _1: ContinuousContours, _2: CoordinateConverters, _3: AffineXf3f | null): OneMeshContours;
+  VectorOneMeshIntersection: {
+    new(): VectorOneMeshIntersection;
+  };
+  VectorMeshTriPoint: {
+    new(): VectorMeshTriPoint;
+  };
+  convertMeshTriPointsToMeshContour(_0: Mesh, _1: VectorMeshTriPoint, _2: SearchPathSettings, _3: StdVectori | null): ExpectedOneMeshContour;
+  convertMeshTriPointsToClosedContour(_0: Mesh, _1: VectorMeshTriPoint, _2: SearchPathSettings, _3: StdVectori | null): ExpectedOneMeshContour;
+  VectorVectorMeshPiece: {
+    new(): VectorVectorMeshPiece;
+  };
+  SurfacePaths: {
+    new(): SurfacePaths;
+  };
+  convertSurfacePathsToMeshContours(_0: Mesh, _1: SurfacePaths): OneMeshContours;
+  VectorVectorAABBTreePointsPoint: {
+    new(): VectorVectorAABBTreePointsPoint;
+  };
+  VectorVectorAABBTreePointsNode: {
+    new(): VectorVectorAABBTreePointsNode;
+  };
+  VectorVectorModelPointsData: {
+    new(): VectorVectorModelPointsData;
+  };
+  VectorVectorObjVertId: {
+    new(): VectorVectorObjVertId;
+  };
+  VectorVectorMeshProjectionResult: {
+    new(): VectorVectorMeshProjectionResult;
+  };
+  VectorVectorVertDuplication: {
+    new(): VectorVectorVertDuplication;
+  };
+  VectorVectorEdgeTri: {
+    new(): VectorVectorEdgeTri;
+  };
+  VectorContinuousContours: {
+    new(): VectorContinuousContours;
+  };
+  VectorOneMeshContours: {
+    new(): VectorOneMeshContours;
+  };
+  VectorVectorOneMeshIntersection: {
+    new(): VectorVectorOneMeshIntersection;
+  };
+  VectorVectorMeshTriPoint: {
+    new(): VectorVectorMeshTriPoint;
+  };
+  VectorSurfacePaths: {
+    new(): VectorSurfacePaths;
+  };
   VectorArray2Vector2i: {
     new(): VectorArray2Vector2i;
   };
@@ -5871,6 +6200,8 @@ interface EmbindModule {
   VectorFaceId: {
     new(): VectorFaceId;
   };
+  findCollidingEdgeTrisPrecise_MeshEdges(_0: Mesh, _1: VectorEdgeId, _2: Mesh, _3: VectorFaceId, _4: ConvertToIntVector, _5: AffineXf3f | null): VectorEdgeTri;
+  findCollidingEdgeTrisPrecise_MeshFaces(_0: Mesh, _1: VectorFaceId, _2: Mesh, _3: VectorEdgeId, _4: ConvertToIntVector, _5: AffineXf3f | null): VectorEdgeTri;
   VectorVertId: {
     new(): VectorVertId;
   };
@@ -5979,6 +6310,8 @@ interface EmbindModule {
     new(): VectorVectorVector3f;
   };
   makeMovementBuildBody(_0: VectorVectorVector3f, _1: VectorVectorVector3f, _2: MovementBuildBodyParams): Mesh;
+  extractMeshContours(_0: OneMeshContours): VectorVectorVector3f;
+  getOneMeshIntersectionContours(_0: Mesh, _1: Mesh, _2: ContinuousContours, _3: OneMeshContours | null, _4: OneMeshContours | null, _5: CoordinateConverters, _6: AffineXf3f | null, _7: VectorVectorVector3f | null, _8: boolean): void;
   VectorVector3b: {
     new(): VectorVector3b;
   };
@@ -6143,6 +6476,10 @@ interface EmbindModule {
   FloatFunctorGraphEdgeBitSet: {
     new(): FloatFunctorGraphEdgeBitSet;
   };
+  ExpectedSurfacePathFunctorMeshTriPoint: {
+    new(): ExpectedSurfacePathFunctorMeshTriPoint;
+  };
+  convertMeshTriPointsToMeshContourWithConnector(_0: Mesh, _1: VectorMeshTriPoint, _2: ExpectedSurfacePathFunctorMeshTriPoint, _3: StdVectori | null): ExpectedOneMeshContour;
   Vectori: {
     new(): Vectori;
     new(_0: number): Vectori;
