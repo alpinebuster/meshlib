@@ -16,6 +16,7 @@
 #include <MRMesh/MRSurroundingContour.h>
 #include <MRMesh/MRFillContourByGraphCut.h>
 #include <MRMesh/MREdgeMetric.h>
+#include <MRMesh/MREdgePoint.h>
 #include <MRMesh/MRPolyline.h>
 #include <MRMesh/MRLine3.h>
 #include <MRMesh/MRMeshProject.h>
@@ -70,7 +71,7 @@ namespace MRJS
 EMSCRIPTEN_BINDINGS( MeshModule )
 {
 	class_<Mesh>( "Mesh" )
-		.smart_ptr<std::shared_ptr<Mesh>>( "Mesh" )
+		.smart_ptr<std::shared_ptr<Mesh>>( "MeshSharedPtr" )
 
 		.constructor<>()
 
@@ -97,7 +98,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "edgeSegment", &Mesh::edgeSegment )
 
 		.function( "edgePoint", select_overload<Vector3f ( EdgeId, float ) const>( &Mesh::edgePoint ))
-		// .function( "edgePointWithMeshEdgePoint", select_overload<Vector3f ( const MeshEdgePoint& ) const>( &Mesh::edgePoint ))
+		.function( "edgePointWithMeshEdgePoint", select_overload<Vector3f ( const MeshEdgePoint& ) const>( &Mesh::edgePoint ))
 
 		.function( "edgeCenter", &Mesh::edgeCenter )
 
@@ -107,6 +108,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "getLeftTriPointsWithTriangle3f", select_overload<Triangle3f ( EdgeId ) const>( &Mesh::getLeftTriPoints ))
 
 		.function( "getTriPoints", select_overload<void( FaceId, Vector3f &, Vector3f &, Vector3f & ) const>( &Mesh::getTriPoints ) )
+		// FIXME
 		// .function( "getTriPointsWithArray3Vector3f", select_overload<void( FaceId, std::array<Vector3f, 3>& ) const>( &Mesh::getTriPoints ) )
 		.function( "getTriPointsWithTriangle3f", select_overload<Triangle3f( FaceId ) const>( &Mesh::getTriPoints ) )
 	
@@ -120,8 +122,8 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "toTriPointWithFaceId", select_overload<MeshTriPoint( FaceId, const Vector3f & ) const>( &Mesh::toTriPoint ) )
 		.function( "toTriPointWithPointOnFace", select_overload<MeshTriPoint( const PointOnFace& ) const>( &Mesh::toTriPoint ) )
 	
-		// .function( "toEdgePoint", select_overload<MeshEdgePoint( VertId ) const>( &Mesh::toEdgePoint ) )
-		// .function( "toEdgePointWithEdgeId", select_overload<MeshEdgePoint( EdgeId, const Vector3f & ) const>( &Mesh::toEdgePoint ) )
+		.function( "toEdgePoint", select_overload<MeshEdgePoint( VertId ) const>( &Mesh::toEdgePoint ) )
+		.function( "toEdgePointWithEdgeId", select_overload<MeshEdgePoint( EdgeId, const Vector3f & ) const>( &Mesh::toEdgePoint ) )
 
 		.function( "getClosestVertex", select_overload<VertId( const PointOnFace & ) const>( &Mesh::getClosestVertex ) )
 		.function( "getClosestVertexWithMeshTriPoint", select_overload<VertId( const MeshTriPoint & p ) const>( &Mesh::getClosestVertex ) )
@@ -154,9 +156,28 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "packWithMap", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &Mesh::pack ), allow_raw_pointers() )
 		.function( "pack", select_overload<Expected<void>( const PackMapping&, ProgressCallback )>( &Mesh::pack ) )
 
-		// FIXME: `copy constructor of 'PackMapping' is implicitly deleted because field 'e' has a deleted copy constructor`
-		// .function( "packOptimally", select_overload<PackMapping( bool )>( &Mesh::packOptimally ) )
-		// .function( "packOptimallyWithProgressCallback", select_overload<Expected<PackMapping>( bool, ProgressCallback )>( &Mesh::packOptimally ) )
+		///
+		// NOTE: `copy constructor of 'PackMapping' is implicitly deleted because field 'e' has a deleted copy constructor`
+		.function( "packOptimally", 
+			optional_override( []( Mesh& self, bool param ) -> std::unique_ptr<PackMapping> {
+				// `packOptimally` returns the value by using `std::move()`
+				return std::make_unique<PackMapping>( self.packOptimally( param ) );
+			}),
+			allow_raw_pointers()
+		)
+		.function( "packOptimallyWithProgressCallback", 
+			optional_override( []( Mesh& self, bool param, ProgressCallback callback ) -> std::unique_ptr<PackMapping> {
+				auto result = self.packOptimally( param, callback );
+				
+				if ( result.has_value() ) {
+					return std::make_unique<PackMapping>( std::move( result.value() ) );
+				} else {
+					throw std::runtime_error( result.error() );
+				}
+			}),
+			allow_raw_pointers()
+		)
+		///
 
 		.function( "deleteFaces", &Mesh::deleteFaces, allow_raw_pointers() )
 
@@ -190,7 +211,8 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "mirror", &Mesh::mirror )
 		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
 
-	function( "computeVertexNormals", +[] ( const Mesh& mesh )
+
+	function( "computeVertexNormalsImpl", +[] ( const Mesh& mesh )
 	{
 		std::vector<Vector3f> normals;
 		for ( VertId v{ 0 }; v < mesh.topology.vertSize(); ++v )
@@ -688,7 +710,7 @@ val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates 
 			}
 		}
 		
-		// FIXME:
+
 		auto [innerMesh, outerMesh] = MRJS::returnParts( mesh, cutResults.resultCut );
 		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
 		val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
@@ -816,7 +838,7 @@ void MeshWrapper::pack()
 EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 {
 	class_<MeshWrapper>( "MeshWrapper" )
-		.smart_ptr<std::shared_ptr<MeshWrapper>>( "MeshWrapper" )
+		.smart_ptr<std::shared_ptr<MeshWrapper>>( "MeshWrapperSharedPtr" )
 
 		.constructor<>()
 		.constructor<const Mesh&>()

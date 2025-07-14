@@ -40,6 +40,9 @@ EMSCRIPTEN_BINDINGS( BufferModule )
 
     ///
     class_<PackMapping>( "PackMapping" )
+        // FIXME: `BindingError: Cannot register type 'undefined' twice`
+        // See `https://github.com/alpinebuster/meshsdk/blob/92481e5345cbd41a05dfe5d07b6a9db352e35293/source/MRJavaScript/MRMesh.cpp#L161`
+        // .smart_ptr<std::unique_ptr<PackMapping>>( "PackMappingUniquePtr" )
         .constructor<>()
 
         .function( "getE", optional_override( [] ( PackMapping& self ) -> UndirectedEdgeBMap*

@@ -18,7 +18,7 @@
 
 ## TODOs
 
-- 按原接口导出的js接口与封装了特殊功能导出的js接口区分开
+- 按原接口导出的js接口与封装了特殊功能导出的js接口区分开（使用 Impl 后缀）
 - V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
 - V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
 

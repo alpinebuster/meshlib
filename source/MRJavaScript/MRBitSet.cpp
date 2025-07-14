@@ -23,7 +23,7 @@ EMSCRIPTEN_BINDINGS( __internalBoostDynamicBitsetModule )
 EMSCRIPTEN_BINDINGS( BitSetModule )
 {
     class_<BitSet>( "BitSet" )
-        .smart_ptr<std::shared_ptr<BitSet>>( "BitSet" )
+        .smart_ptr<std::shared_ptr<BitSet>>( "BitSetSharedPtr" )
         
         .constructor<>()
         .constructor<size_t>()
@@ -108,10 +108,10 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
         // ✅ When there is a base class, must provide the name of the smart pointer as a string:
         // 
         // ```cpp
-        // .smart_ptr<std::shared_ptr<T>>( "T" )
+        // .smart_ptr<std::shared_ptr<T>>( "TSharedPtr" )
         // ```
         // 
-        .smart_ptr<std::shared_ptr<FaceBitSet>>( "FaceBitSet" )
+        .smart_ptr<std::shared_ptr<FaceBitSet>>( "FaceBitSetSharedPtr" )
         
         .constructor<>()
         .constructor<const BitSet&>()
@@ -187,47 +187,47 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
 
     // TODO: V2
     class_<VertBitSet>( "VertBitSet" )
-        .smart_ptr<std::shared_ptr<VertBitSet>>( "VertBitSet" )
+        .smart_ptr<std::shared_ptr<VertBitSet>>( "VertBitSetSharedPtr" )
         .constructor<>();
 
     class_<EdgeBitSet>( "EdgeBitSet" )
-        .smart_ptr<std::shared_ptr<EdgeBitSet>>( "EdgeBitSet" )
+        .smart_ptr<std::shared_ptr<EdgeBitSet>>( "EdgeBitSetSharedPtr" )
         .constructor<>();
 
     class_<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" )
-        .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "UndirectedEdgeBitSet" )
+        .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "UndirectedEdgeBitSetSharedPtr" )
         .constructor<>();
 
     class_<PixelBitSet>( "PixelBitSet" )
-        .smart_ptr<std::shared_ptr<PixelBitSet>>( "PixelBitSet" )
+        .smart_ptr<std::shared_ptr<PixelBitSet>>( "PixelBitSetSharedPtr" )
         .constructor<>();
 
     class_<VoxelBitSet>( "VoxelBitSet" )
-        .smart_ptr<std::shared_ptr<VoxelBitSet>>( "VoxelBitSet" )
+        .smart_ptr<std::shared_ptr<VoxelBitSet>>( "VoxelBitSetSharedPtr" )
         .constructor<>();
 
     class_<RegionBitSet>( "RegionBitSet" )
-        .smart_ptr<std::shared_ptr<RegionBitSet>>( "RegionBitSet" )
+        .smart_ptr<std::shared_ptr<RegionBitSet>>( "RegionBitSetSharedPtr" )
         .constructor<>();
 
     class_<NodeBitSet>( "NodeBitSet" )
-        .smart_ptr<std::shared_ptr<NodeBitSet>>( "NodeBitSet" )
+        .smart_ptr<std::shared_ptr<NodeBitSet>>( "NodeBitSetSharedPtr" )
         .constructor<>();
 
     class_<ObjBitSet>( "ObjBitSet" )
-        .smart_ptr<std::shared_ptr<ObjBitSet>>( "ObjBitSet" )
+        .smart_ptr<std::shared_ptr<ObjBitSet>>( "ObjBitSetSharedPtr" )
         .constructor<>();
 
     class_<TextureBitSet>( "TextureBitSet" )
-        .smart_ptr<std::shared_ptr<TextureBitSet>>( "TextureBitSet" )
+        .smart_ptr<std::shared_ptr<TextureBitSet>>( "TextureBitSetSharedPtr" )
         .constructor<>();
 
     class_<GraphVertBitSet>( "GraphVertBitSet" )
-        .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "GraphVertBitSet" )
+        .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "GraphVertBitSetSharedPtr" )
         .constructor<>();
 
     class_<GraphEdgeBitSet>( "GraphEdgeBitSet" )
-        .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "GraphEdgeBitSet" )
+        .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "GraphEdgeBitSetSharedPtr" )
         .constructor<>();
 }
 

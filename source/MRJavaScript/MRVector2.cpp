@@ -11,7 +11,7 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // Bind the Embind interface for `Vector2b`
     // ------------------------------------------------------------------------
     class_<Vector2b>( "Vector2b" )
-        .smart_ptr<std::shared_ptr<Vector2b>>( "Vector2b" )
+        .smart_ptr<std::shared_ptr<Vector2b>>( "Vector2bSharedPtr" )
 
         .constructor<>()
         .constructor<bool, bool>()
@@ -38,7 +38,7 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // Bind the Embind interface for `Vector2i`
     // ------------------------------------------------------------------------
     class_<Vector2i>( "Vector2i" )
-        .smart_ptr<std::shared_ptr<Vector2i>>( "Vector2i" )
+        .smart_ptr<std::shared_ptr<Vector2i>>( "Vector2iSharedPtr" )
     
         .constructor<>()
         .constructor<int, int>()
@@ -67,7 +67,7 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // Bind the Embind interface for `Vector2ll`
     // ------------------------------------------------------------------------
     class_<Vector2ll>( "Vector2ll" )
-        .smart_ptr<std::shared_ptr<Vector2ll>>( "Vector2ll" )
+        .smart_ptr<std::shared_ptr<Vector2ll>>( "Vector2llSharedPtr" )
     
         .constructor<>();
 
@@ -76,7 +76,7 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // Bind the Embind interface for `Vector2f`
     // ------------------------------------------------------------------------
     class_<Vector2f>( "Vector2f" )
-        .smart_ptr<std::shared_ptr<Vector2f>>( "Vector2f" )
+        .smart_ptr<std::shared_ptr<Vector2f>>( "Vector2fSharedPtr" )
 
         .constructor<>()                      // Default constructor (0,0)
         .constructor<float, float>()          // From two floats
@@ -107,7 +107,7 @@ EMSCRIPTEN_BINDINGS( Vector2Module )
     // Bind the Embind interface for `Vector2d`
     // ------------------------------------------------------------------------
     class_<Vector2d>( "Vector2d" )
-        .smart_ptr<std::shared_ptr<Vector2d>>( "Vector2d" )
+        .smart_ptr<std::shared_ptr<Vector2d>>( "Vector2dSharedPtr" )
 
         .constructor<>();
 }

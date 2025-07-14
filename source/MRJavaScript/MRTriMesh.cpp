@@ -17,7 +17,7 @@ EMSCRIPTEN_BINDINGS( TriMeshModule )
     //     .field( "tris", &TriMesh::tris )
     //     .field( "points", &TriMesh::points );
     class_<TriMesh>( "TriMesh" )
-        .smart_ptr<std::shared_ptr<TriMesh>>( "TriMesh" )
+        .smart_ptr<std::shared_ptr<TriMesh>>( "TriMeshSharedPtr" )
         .constructor<>()
 
         .class_function( "copy", optional_override( [] ( const TriMesh& other )
