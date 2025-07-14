@@ -346,27 +346,10 @@ function SidebarObject( editor ) {
 		if ( currentUUID ) {
 			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const newMeshData = editor.wasmObject[currentUUID].fillHolesImpl();
-				const vertices = newMeshData.vertices;
-				const indices = newMeshData.indices;
-			
-				const newVertices = vertices;
-				const newIndices = new Uint32Array(indices);
-				const newGeometry = new THREE.BufferGeometry();
-				newGeometry.setAttribute('position', new THREE.BufferAttribute(newVertices, 3));
-			
-				// 🔧 Automatically calculate the normal to ensure normal lighting effects
-				newGeometry.computeVertexNormals();
 
-				newGeometry.setIndex( new THREE.BufferAttribute(newIndices, 1) );
-				const newMaterial = new THREE.MeshNormalMaterial();
-				const holesFilledMesh = new THREE.Mesh( newGeometry, newMaterial );
-				holesFilledMesh.name = `wasm-${editor.select.name}`;
-				holesFilledMesh.castShadow = true;
-				holesFilledMesh.receiveShadow = true;
-				// holesFilledMesh.scale.set(2, 2, 2);
-
-				editor.addObject( holesFilledMesh, editor.selected )
-				editor.select( holesFilledMesh );
+				const newVertices = newMeshData.vertices;
+				const newIndices = newMeshData.indices;
+				showMesh( newVertices, newIndices );
 			}
 		}
 	} );
@@ -398,19 +381,10 @@ function SidebarObject( editor ) {
 				// const result = curMeshWrapper.fixUndercutsImpl( upDir );
 				
 				const newVertices = result.mesh.vertices;
+				// NOTE: No need to wrap `Uint32Array` again!
 				// const newIndices = new Uint32Array( result.mesh.indices );
 				const newIndices = result.mesh.indices;
-				const newGeometry = new THREE.BufferGeometry();
-				newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
-				newGeometry.computeVertexNormals();
-				newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
-				const newMaterial = new THREE.MeshNormalMaterial();
-				const newMesh = new THREE.Mesh( newGeometry, newMaterial );
-				newMesh.name = `wasm-${editor.select.name}-undercutsFixed`;
-				newMesh.castShadow = true;
-				newMesh.receiveShadow = true;
-
-				editor.execute( new AddObjectCommand( editor, newMesh ) );
+				showMesh( newVertices, newIndices );
 			}
 		}
 	});
@@ -447,17 +421,7 @@ function SidebarObject( editor ) {
 				
 				const newVertices = result.mesh.vertices;
 				const newIndices = result.mesh.indices;
-				const newGeometry = new THREE.BufferGeometry();
-				newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
-				newGeometry.computeVertexNormals();
-				newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
-				const newMaterial = new THREE.MeshNormalMaterial();
-				const newMesh = new THREE.Mesh( newGeometry, newMaterial );
-				newMesh.name = `wasm-${editor.select.name}-thickened`;
-				newMesh.castShadow = true;
-				newMesh.receiveShadow = true;
-
-				editor.execute( new AddObjectCommand( editor, newMesh ) );
+				showMesh( newVertices, newIndices );
 			}
 		}
 	});
@@ -1092,11 +1056,13 @@ function showMesh( newVertices, newIndices ) {
 	newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
 	const newMaterial = new THREE.MeshNormalMaterial();
 	const newMesh = new THREE.Mesh( newGeometry, newMaterial );
-	newMesh.name = `wasm-${editor.select.name}-outer`;
+	newMesh.name = `wasm-${editor.selected.name}-${editor.selected.uuid.substring(0, 3)}`;
 	newMesh.castShadow = true;
 	newMesh.receiveShadow = true;
 
 	editor.execute( new AddObjectCommand( editor, newMesh ) );
+	editor.signals.geometryChanged.dispatch( newMesh );
+	editor.select( newMesh );
 }
 
 export { SidebarObject };

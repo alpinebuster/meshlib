@@ -233,7 +233,7 @@ val cutAndExtrudeMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coo
 	Polyline3 initialPolyline;
 	initialPolyline.addFromPoints( polyline.data(), polyline.size(), true );
 
-	// We are initializing the vector with a certain length
+	// Initializing the vector with a certain length
 	std::vector<MeshTriPoint> projectedPolyline( initialPolyline.points.size() );
 	const MeshPart m = MeshPart( meshCopy, nullptr );
 	const Vector3f vectorUp = Vector3f( 0, 0, 1 );
@@ -248,7 +248,7 @@ val cutAndExtrudeMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coo
 		if ( rmi ) projectedPolyline[v.get()] = rmi.mtp;
 	} );
 
-	// Make sure we weed out points which never hit the target mesh
+	// Make sure to weed out points which never hit the target mesh
 	std::vector<MeshTriPoint> validPoints;
 	std::copy_if( projectedPolyline.begin(), projectedPolyline.end(), std::back_inserter( validPoints ), [] ( const MeshTriPoint& point )
 	{
@@ -323,7 +323,8 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 		.field( "fbsWithContourIntersections", &CutMeshResult::fbsWithContourIntersections );
 
 
-	function( "cutMesh", &cutMesh);
+	///
+	function( "cutMesh", &cutMesh );
 	function( "cutMeshByContour", &cutMeshByContour);
 
 	function( "convertMeshTriPointsSurfaceOffsetToMeshContours",
@@ -338,6 +339,7 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 		),
 		allow_raw_pointers()
 	);
+	///
 
 
 	///

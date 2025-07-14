@@ -969,6 +969,138 @@ export interface ExpectedTriMesh extends ClassHandle {
   getValuePtr(): TriMesh | null;
 }
 
+export interface ExpectedFaceBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): FaceBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): FaceBitSet | null;
+  get(): FaceBitSet;
+  valueOr(_0: FaceBitSet): FaceBitSet;
+}
+
+export interface ExpectedVertBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): VertBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): VertBitSet | null;
+  get(): VertBitSet;
+  valueOr(_0: VertBitSet): VertBitSet;
+}
+
+export interface ExpectedEdgeBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): EdgeBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): EdgeBitSet | null;
+  get(): EdgeBitSet;
+  valueOr(_0: EdgeBitSet): EdgeBitSet;
+}
+
+export interface ExpectedUndirectedEdgeBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): UndirectedEdgeBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): UndirectedEdgeBitSet | null;
+  get(): UndirectedEdgeBitSet;
+  valueOr(_0: UndirectedEdgeBitSet): UndirectedEdgeBitSet;
+}
+
+export interface ExpectedPixelBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): PixelBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): PixelBitSet | null;
+  get(): PixelBitSet;
+  valueOr(_0: PixelBitSet): PixelBitSet;
+}
+
+export interface ExpectedVoxelBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): VoxelBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): VoxelBitSet | null;
+  get(): VoxelBitSet;
+  valueOr(_0: VoxelBitSet): VoxelBitSet;
+}
+
+export interface ExpectedRegionBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): RegionBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): RegionBitSet | null;
+  get(): RegionBitSet;
+  valueOr(_0: RegionBitSet): RegionBitSet;
+}
+
+export interface ExpectedNodeBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): NodeBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): NodeBitSet | null;
+  get(): NodeBitSet;
+  valueOr(_0: NodeBitSet): NodeBitSet;
+}
+
+export interface ExpectedObjBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): ObjBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): ObjBitSet | null;
+  get(): ObjBitSet;
+  valueOr(_0: ObjBitSet): ObjBitSet;
+}
+
+export interface ExpectedTextureBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): TextureBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): TextureBitSet | null;
+  get(): TextureBitSet;
+  valueOr(_0: TextureBitSet): TextureBitSet;
+}
+
+export interface ExpectedGraphVertBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): GraphVertBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): GraphVertBitSet | null;
+  get(): GraphVertBitSet;
+  valueOr(_0: GraphVertBitSet): GraphVertBitSet;
+}
+
+export interface ExpectedGraphEdgeBitSet extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  value(): GraphEdgeBitSet;
+  error(): string;
+  hasError(): boolean;
+  getValuePtr(): GraphEdgeBitSet | null;
+  get(): GraphEdgeBitSet;
+  valueOr(_0: GraphEdgeBitSet): GraphEdgeBitSet;
+}
+
 export interface ExpectedPackMapping extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
@@ -1010,6 +1142,17 @@ export interface ExpectedOneMeshContour extends ClassHandle {
   get(): OneMeshContour;
   valueOr(_0: OneMeshContour): OneMeshContour;
   getValuePtr(): OneMeshContour | null;
+}
+
+export interface ExpectedOneMeshContours extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): OneMeshContours;
+  get(): OneMeshContours;
+  valueOr(_0: OneMeshContours): OneMeshContours;
+  getValuePtr(): OneMeshContours | null;
 }
 
 export interface ExpectedSurfacePath extends ClassHandle {
@@ -4446,6 +4589,10 @@ export interface StringFunctorString extends ClassHandle {
   opcall(_0: EmbindString): string;
 }
 
+export interface FloatFunctorInt extends ClassHandle {
+  opcall(_0: number): number;
+}
+
 export interface ProgressCallback extends ClassHandle {
   opcall(_0: number): boolean;
 }
@@ -5176,10 +5323,23 @@ interface EmbindModule {
   ExpectedMeshTexture: {};
   ExpectedGridSettings: {};
   ExpectedTriMesh: {};
+  ExpectedFaceBitSet: {};
+  ExpectedVertBitSet: {};
+  ExpectedEdgeBitSet: {};
+  ExpectedUndirectedEdgeBitSet: {};
+  ExpectedPixelBitSet: {};
+  ExpectedVoxelBitSet: {};
+  ExpectedRegionBitSet: {};
+  ExpectedNodeBitSet: {};
+  ExpectedObjBitSet: {};
+  ExpectedTextureBitSet: {};
+  ExpectedGraphVertBitSet: {};
+  ExpectedGraphEdgeBitSet: {};
   ExpectedPackMapping: {};
   ExpectedEdgePath: {};
   ExpectedEdgeLoops: {};
   ExpectedOneMeshContour: {};
+  ExpectedOneMeshContours: {};
   ExpectedSurfacePath: {};
   MeshSegmentation: {
     new(_0: Mesh): MeshSegmentation;
@@ -6002,6 +6162,7 @@ interface EmbindModule {
   };
   cutMeshWithPolylineImpl(_0: Mesh, _1: StdVectorf): any;
   cutMeshWithPolylineImplTest(_0: Mesh, _1: StdVectorf): any;
+  cutAndExtrudeMeshWithPolylineImpl(_0: Mesh, _1: StdVectorf): any;
   StdVectord: {
     new(): StdVectord;
   };
@@ -6068,6 +6229,7 @@ interface EmbindModule {
   VectorMeshTriPoint: {
     new(): VectorMeshTriPoint;
   };
+  convertMeshTriPointsSurfaceOffsetToMeshContours(_0: Mesh, _1: VectorMeshTriPoint, _2: number, _3: SearchPathSettings): ExpectedOneMeshContours;
   convertMeshTriPointsToMeshContour(_0: Mesh, _1: VectorMeshTriPoint, _2: SearchPathSettings, _3: StdVectori | null): ExpectedOneMeshContour;
   convertMeshTriPointsToClosedContour(_0: Mesh, _1: VectorMeshTriPoint, _2: SearchPathSettings, _3: StdVectori | null): ExpectedOneMeshContour;
   VectorVectorMeshPiece: {
@@ -6234,6 +6396,7 @@ interface EmbindModule {
     new(): VectorEdgePath;
   };
   doBooleanOperation(_0: Mesh, _1: Mesh, _2: VectorEdgePath, _3: VectorEdgePath, _4: BooleanOperation, _5: AffineXf3f | null, _6: BooleanResultMapper | null, _7: boolean, _8: BooleanInternalParameters): ExpectedMesh;
+  cutMesh(_0: Mesh, _1: OneMeshContours, _2: CutMeshParameters): CutMeshResult;
   fillContourLeftMultiple(_0: MeshTopology, _1: VectorEdgePath): FaceBitSet;
   findLeftBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
   findRightBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
@@ -6306,6 +6469,7 @@ interface EmbindModule {
   VectorVector3f: {
     new(): VectorVector3f;
   };
+  cutMeshByContour(_0: Mesh, _1: VectorVector3f, _2: AffineXf3f): ExpectedFaceBitSet;
   VectorVectorVector3f: {
     new(): VectorVectorVector3f;
   };
@@ -6369,6 +6533,10 @@ interface EmbindModule {
   StringFunctorString: {
     new(): StringFunctorString;
   };
+  FloatFunctorInt: {
+    new(): FloatFunctorInt;
+  };
+  convertMeshTriPointsSurfaceOffsetToMeshContoursWithFunctor(_0: Mesh, _1: VectorMeshTriPoint, _2: FloatFunctorInt, _3: SearchPathSettings): ExpectedOneMeshContours;
   ProgressCallback: {
     new(): ProgressCallback;
   };
