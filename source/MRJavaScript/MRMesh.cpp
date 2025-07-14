@@ -81,8 +81,34 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 		///
 		.function( "fromTriangles", &Mesh::fromTriangles )
-		// FIXME: < points of `triMesh` will be moves in the result
-		// .function( "fromTriMesh", &Mesh::fromTriMesh )
+		
+		.function( "fromTriMesh",
+			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
+			{
+				return Mesh::fromTriMesh( std::move( triMesh ), settings, cb );
+			} )
+		)
+		.function( "fromTriMeshWithUniquePtr",
+			optional_override( [] ( std::unique_ptr<TriMesh> triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
+			{
+				return Mesh::fromTriMesh( std::move( *triMesh ), settings, cb );
+			} ),
+			allow_raw_pointers()
+		)
+		.function( "fromTriMeshWithoutProgressCallback",
+			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings ) -> Mesh
+			{
+				return Mesh::fromTriMesh( std::move( triMesh ), settings );
+			} )
+		)
+		.function( "fromTriMeshWithDefaultSettings",
+			optional_override( [] ( TriMesh& triMesh ) -> Mesh
+			{
+				MeshBuilder::BuildSettings defaultSettings;
+				return Mesh::fromTriMesh( std::move( triMesh ), defaultSettings );
+			} )
+		)
+
 		.function( "fromTrianglesDuplicatingNonManifoldVertices", &Mesh::fromTrianglesDuplicatingNonManifoldVertices, allow_raw_pointers() )
 		.function( "fromFaceSoup", &Mesh::fromFaceSoup )
 		.function( "fromPointTriples", &Mesh::fromPointTriples )

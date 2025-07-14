@@ -25,25 +25,39 @@ EMSCRIPTEN_BINDINGS( AABBTreePointsModule )
         .property( "r", &AABBTreePoints::Node::r );
 
     class_<AABBTreePoints>( "AABBTreePoints" )
-        // .smart_ptr<std::unique_ptr<AABBTreePoints>>( "AABBTreePointsUniquePtr" )
         .smart_ptr<std::shared_ptr<AABBTreePoints>>( "AABBTreePointsSharedPtr" )
 
         .constructor<const Mesh&>()
         .constructor<const VertCoords&, const VertBitSet*>( allow_raw_pointers() )
-        // .class_function( "createFromPointCloudUniquePtr", optional_override( [] ( const PointCloud& pointCloud )
-        // {
-        //     return std::make_unique<AABBTreePoints>( pointCloud );
-        // } ), allow_raw_pointers() )
-        .class_function( "createFromPointCloudSharedPtr", optional_override( [] ( const PointCloud& pointCloud )
-        {
-            return std::make_shared<AABBTreePoints>( pointCloud );
-        } ), allow_raw_pointers() )
-        // .class_function("createFromPointsUniquePtr", optional_override([](const VertCoords & points, const VertBitSet & validPoints) {
-        //     return std::make_unique<AABBTreePoints>(points, validPoints);
-        // }), allow_raw_pointers())
-        .class_function("createFromPointsSharedPtr", optional_override([](const VertCoords & points, const VertBitSet & validPoints) {
-            return std::make_shared<AABBTreePoints>(points, validPoints);
-        }), allow_raw_pointers())
+
+        .class_function( "createFromPointCloudUniquePtr", 
+            optional_override( [] ( const PointCloud& pointCloud )
+            {
+                return std::make_unique<AABBTreePoints>( pointCloud );
+            } ), 
+            allow_raw_pointers()
+        )
+        .class_function( "createFromPointCloudSharedPtr", 
+            optional_override( [] ( const PointCloud& pointCloud )
+            {
+                return std::make_shared<AABBTreePoints>( pointCloud );
+            } ), 
+            allow_raw_pointers()
+        )
+
+        .class_function("createFromPointsUniquePtr", 
+            optional_override([](const VertCoords & points, const VertBitSet & validPoints) {
+                return std::make_unique<AABBTreePoints>(points, validPoints);
+            }), 
+            allow_raw_pointers()
+        )
+        .class_function( "createFromPointsSharedPtr", 
+            optional_override( [] ( const VertCoords& points, const VertBitSet& validPoints )
+            {
+                return std::make_shared<AABBTreePoints>(points, validPoints);
+            }), 
+            allow_raw_pointers()
+        )
 
         .class_property( "MaxNumPointsInLeaf", &AABBTreePoints::MaxNumPointsInLeaf )
     

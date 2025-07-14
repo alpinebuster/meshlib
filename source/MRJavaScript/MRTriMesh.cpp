@@ -13,9 +13,6 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( TriMeshModule )
 {
-    // value_object<TriMesh>( "TriMesh" )
-    //     .field( "tris", &TriMesh::tris )
-    //     .field( "points", &TriMesh::points );
     class_<TriMesh>( "TriMesh" )
         .smart_ptr<std::shared_ptr<TriMesh>>( "TriMeshSharedPtr" )
         .constructor<>()
