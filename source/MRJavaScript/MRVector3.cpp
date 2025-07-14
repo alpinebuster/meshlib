@@ -1,7 +1,8 @@
 #include <emscripten/bind.h>
 
+#include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector3.h>
-#include <MRMesh/MRConstants.h>
 
 #include "MRVector.h"
 

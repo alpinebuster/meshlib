@@ -117,6 +117,8 @@ auto bindTypedVector3( const std::string& name, const std::string& suffix )
     using T = Vec3Type::ValueType;
 
     auto cls = class_<Vec3Type>( name.c_str() )
+        .template smart_ptr<std::shared_ptr<Vec3Type>>( ( name + "SharedPtr" ).c_str() )
+
         .template constructor<>()
         .template constructor<T, T, T>()
         .class_function( "createFromVector2", optional_override( [] ( Vector2<T> v2 )
@@ -253,6 +255,7 @@ auto bindTypedVector4( const std::string& name, const std::string& suffix )
     using T = Vec4Type::ValueType;
 
     auto cls = class_<Vec4Type>( name.c_str() )
+        .template smart_ptr<std::shared_ptr<Vec4Type>>( ( name + "SharedPtr" ).c_str() )
         .constructor<>()
         .constructor<T, T, T, T>()
 
@@ -261,25 +264,36 @@ auto bindTypedVector4( const std::string& name, const std::string& suffix )
         .property( "z", &Vec4Type::z )
         .property( "w", &Vec4Type::w )
 
-        .function( "lengthSq", &Vec4Type::lengthSq )
-
-        // Bind only if T is floating point
-        .function( "length", &Vec4Type::length, allow_raw_pointers() )
-        .function( "normalized", &Vec4Type::normalized, allow_raw_pointers() )
-        .function( "proj3d", &Vec4Type::proj3d, allow_raw_pointers() )
-        .function( "isFinite", &Vec4Type::isFinite, allow_raw_pointers() )
+        .class_function( "diagonal", &Vec4Type::diagonal )
 
         .function( "get", select_overload<const T & ( int ) const>( &Vec4Type::operator[] ) )
         .function( "set", select_overload<T & ( int )>( &Vec4Type::operator[] ) )
 
-        .class_function( "diagonal", &Vec4Type::diagonal );
+        .function( "lengthSq", &Vec4Type::lengthSq )
+        .function( "length", &Vec4Type::length );
+
+
+    if constexpr ( std::is_floating_point_v<T> )
+    {
+        cls.function( "isFinite", &Vec4Type::isFinite );
+    }
+
+    if constexpr ( !std::is_integral_v<T> )
+    {
+        cls.function( "proj3d", &Vec4Type::proj3d )
+           .function( "normalized", &Vec4Type::normalized );
+    }
+
+    if constexpr ( !std::is_same_v<T, bool> )
+    {
+        function( ( "dot" + suffix ).c_str(), select_overload<T ( const Vec4Type&, const Vec4Type& )>( &dot<T> ) );
+        function( ( "mult" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &mult<T> ) );
+        function( ( "div" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &div<T> ) );
+    }
 
     function( ( "distanceSq" + suffix ).c_str(), select_overload<T( const Vec4Type&, const Vec4Type& )>( &distanceSq<T> ) );
     function( ( "distance" + suffix ).c_str(), select_overload<T( const Vec4Type&, const Vec4Type& )>( &distance<T> ) );
-    function( ( "dot" + suffix ).c_str(), select_overload<decltype( dot<T> ) * ( const Vec4Type&, const Vec4Type& )>( &dot<T> ) );
     function( ( "sqr" + suffix ).c_str(), select_overload<T( const Vec4Type& )>( &sqr<T> ) );
-    function( ( "mult" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &mult<T> ) );
-    function( ( "div" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &div<T> ) );
 
     return cls;
 }
