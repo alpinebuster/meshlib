@@ -41,7 +41,7 @@ public:
 		binding_.function( "heapBytes", &Buffer<T, I>::heapBytes );
 
 		///
-		// FIXME: Why `select_override` does not work??
+		// TODO: Why `select_override` does not work??
 		binding_.function( "get", optional_override( []( const Buffer<T, I>& self, I id ) -> T {
 			return self[id];
 		}));
@@ -52,7 +52,7 @@ public:
 
 
 		///
-		// FIXME: Why this does not work??
+		// TODO: Why using `select_overload` does not work??
 		// Error: `no matching function for call to 'select_overload<T* ( Buffer<T, I>::* )()>( &Buffer<T, I>::data )'`
 		// 
 		// binding_.function( "data", select_overload<T * ( Buffer<T, I>::* )( )>( &Buffer<T, I>::data ), allow_raw_pointers() );

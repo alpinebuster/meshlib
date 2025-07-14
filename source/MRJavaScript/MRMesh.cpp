@@ -10,6 +10,7 @@
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRExpected.h>
+#include <MRMesh/MRId.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
 #include <MRMesh/MRMeshFillHole.h>
@@ -165,7 +166,48 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 			}),
 			allow_raw_pointers()
 		)
-		.function( "packOptimallyWithProgressCallback", 
+		// 
+		// NOTE
+		// 
+		// 1️⃣ `static`: Ensures that `result` is the same object across multiple calls to the function (independent for each thread).
+		// 2️⃣ `thread_local`: In a multithreaded context, each thread has its own copy of `result`, avoiding interference and preventing data races.
+		// 3️⃣ `return &result;`: Returns a pointer to this static variable to Emscripten, allowing JS to obtain a raw pointer.
+		// 
+		// 📌 Why do this?
+		// - Because `PackMapping` cannot be copied, it can only be moved.
+		// - Emscripten defaults to copying return values (it does not support directly returning move-only values).
+		// - Using a `thread_local` static variable effectively places `PackMapping` outside the stack, and returning a pointer bypasses the copy restriction.
+		// 
+		// ⚡ This is an older technique used to expose a non-copyable large object to JS.
+		// 
+		// ✅ When is it reasonable to use?
+		// - Multiple threads will not share the same `result` instance, as `thread_local` ensures each thread has its own copy.
+		// - The pointer returned from C++ to JS must be used quickly and not stored for too long or used asynchronously, as the next C++ call will overwrite `result`.
+		// - Be cautious: if there is concurrent access in multithreading, or if JS holds the pointer for too long, there is a risk. If JS saves this pointer to a global variable or passes it to asynchronous logic, the next C++ call may have overwritten or released `result`, leading to reading invalid memory.
+		// 
+		// 🔑 Modern solution:
+		// - Use `std::unique_ptr<PackMapping>`, directly returning a smart pointer, allowing Embind to manage the lifecycle, which is safer and free from race conditions.
+		// 
+		.function( "packOptimallyWithThreadLocalPtr",
+			optional_override( [] ( Mesh& self, bool param ) -> PackMapping*
+			{
+				static thread_local PackMapping result;
+				result = self.packOptimally( param );
+				return &result;
+			} ),
+			allow_raw_pointers()
+		)
+		// The JS side must call `.delete()` to release it manually, otherwise it will leak memory!
+		.function( "packOptimallyByNew",
+			optional_override( [] ( Mesh& self, bool param ) -> PackMapping*
+				{
+					return new PackMapping( self.packOptimally( param ) );
+				} 
+			),
+			allow_raw_pointers()
+		)
+
+		.function( "packOptimallyWithProgressCallback",
 			optional_override( []( Mesh& self, bool param, ProgressCallback callback ) -> std::unique_ptr<PackMapping> {
 				auto result = self.packOptimally( param, callback );
 				

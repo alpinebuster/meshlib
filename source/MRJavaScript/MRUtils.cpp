@@ -10,6 +10,7 @@
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRVector4.h>
 #include <MRMesh/MRBox.h>
+#include <MRMesh/MRBuffer.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>
@@ -490,6 +491,8 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 	register_optional<EdgeMap>();
 	register_optional<UndirectedEdgeMap>();
 	register_optional<ObjMap>();
+
+	register_optional<PackMapping>();
 	///
 
 

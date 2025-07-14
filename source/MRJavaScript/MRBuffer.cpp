@@ -40,9 +40,15 @@ EMSCRIPTEN_BINDINGS( BufferModule )
 
     ///
     class_<PackMapping>( "PackMapping" )
-        // FIXME: `BindingError: Cannot register type 'undefined' twice`
-        // See `https://github.com/alpinebuster/meshsdk/blob/92481e5345cbd41a05dfe5d07b6a9db352e35293/source/MRJavaScript/MRMesh.cpp#L161`
+        // NOTE:
+        // See `source/MRJavaScript/MRMesh.cpp#L161` & reference `https://github.com/emscripten-core/emscripten/issues/9343`
+        // 
+        // When using `std::unique_ptr<PackMapping>` as the return type, 
+        // Emscripten automatically handles the binding of the `std::unique_ptr` smart pointer,
+        // and there is no need( nor should there be ) to explicitly call:
+        //
         // .smart_ptr<std::unique_ptr<PackMapping>>( "PackMappingUniquePtr" )
+        // 
         .constructor<>()
 
         .function( "getE", optional_override( [] ( PackMapping& self ) -> UndirectedEdgeBMap*

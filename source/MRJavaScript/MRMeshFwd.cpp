@@ -24,7 +24,6 @@
 using namespace emscripten;
 using namespace MR;
 
-// TODO: V2
 
 EMSCRIPTEN_BINDINGS( MeshFwdModule )
 {
@@ -32,6 +31,8 @@ EMSCRIPTEN_BINDINGS( MeshFwdModule )
     value_object<MR::NoInit>( "NoInit" );
     // 2) Expose the global constant `noInit` to JS
     constant( "noInit", MR::noInit );
+    
+    // TODO: V2
 
     // Bind `UndirectedEdgeId` first (needed for `EdgeId` constructor)
     class_<UndirectedEdgeId>( "UndirectedEdgeId" )
@@ -253,20 +254,23 @@ EMSCRIPTEN_BINDINGS( MeshFwdModule )
         .function( "decrementByInt", select_overload<GraphEdgeId( int )>( &GraphEdgeId::operator++ ) );
 }
 
-EMSCRIPTEN_BINDINGS( BMapModule )
+EMSCRIPTEN_BINDINGS( BMapTypedModule )
 {
-    bindTypedBMap<VertBMap, VertId, VertId>( "VertBMap" );
+    ///
     bindTypedBMap<FaceBMap, FaceId, FaceId>( "FaceBMap" );
+    bindTypedBMap<VertBMap, VertId, VertId>( "VertBMap" );
     bindTypedBMap<EdgeBMap, EdgeId, EdgeId>( "EdgeBMap" );
     bindTypedBMap<UndirectedEdgeBMap, UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMap" );
     bindTypedBMap<WholeEdgeBMap, EdgeId, UndirectedEdgeId>( "WholeEdgeBMap" );
+    ///
+
 
     bindTypedBMap<BMap<VertId, size_t>, VertId, size_t>( "VertIdSizeTBMap" );
     bindTypedBMap<BMap<UndirectedEdgeId, size_t>, UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMap" );
     bindTypedBMap<BMap<FaceId, size_t>, FaceId, size_t>( "FaceIdSizeTBMap" );
 }
 
-EMSCRIPTEN_BINDINGS( MapModule )
+EMSCRIPTEN_BINDINGS( MapTypedModule )
 {
     BIND_TYPED_VECTOR( Triangulation, ThreeVertIds, FaceId );
 
@@ -296,7 +300,7 @@ EMSCRIPTEN_BINDINGS( MapModule )
     BIND_TYPED_VECTOR( Vert2RegionMap, RegionId, VertId );
 }
 
-EMSCRIPTEN_BINDINGS( CoordsModule )
+EMSCRIPTEN_BINDINGS( CoordsTypedModule )
 {
     // NOTE: `VertNormals` is the same as `VertCoords`
     // 
@@ -310,7 +314,7 @@ EMSCRIPTEN_BINDINGS( CoordsModule )
     BIND_TYPED_VECTOR( FaceNormals, Vector3f, FaceId );
 }
 
-EMSCRIPTEN_BINDINGS( ColorsModule )
+EMSCRIPTEN_BINDINGS( ColorsTypedModule )
 {
     BIND_TYPED_VECTOR( TexturePerFace, TextureId, FaceId );
     BIND_TYPED_VECTOR( VertColors, Color, VertId );
@@ -319,7 +323,7 @@ EMSCRIPTEN_BINDINGS( ColorsModule )
     BIND_TYPED_VECTOR( UndirectedEdgeColors, Color, UndirectedEdgeId );
 }
 
-EMSCRIPTEN_BINDINGS( ScalarsModule )
+EMSCRIPTEN_BINDINGS( ScalarsTypedModule )
 {
     BIND_TYPED_VECTOR( VertScalars, float, VertId );
     BIND_TYPED_VECTOR( FaceScalars, float, FaceId );
@@ -327,7 +331,7 @@ EMSCRIPTEN_BINDINGS( ScalarsModule )
     BIND_TYPED_VECTOR( UndirectedEdgeScalars, float, UndirectedEdgeId );
 }
 
-EMSCRIPTEN_BINDINGS( NodeVecModule )
+EMSCRIPTEN_BINDINGS( NodeVecTypedModule )
 {
     bindTypedVector<AABBTreePoints::NodeVec, AABBTreePoints::Node, NodeId>( "NodeVec" );
 }
