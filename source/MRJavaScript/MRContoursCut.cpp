@@ -5,6 +5,9 @@
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRPolyline.h>
 #include <MRMesh/MRLine3.h>
+#include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector3.h>
+#include <MRMesh/MRAffineXf.h>
 #include <MRMesh/MRMeshProject.h>
 #include <MRMesh/MRPolylineProject.h>
 #include <MRMesh/MRMeshBoolean.h>
@@ -309,7 +312,7 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 	
 	class_<CutMeshParameters>( "CutMeshParameters" )
 		.constructor<>()
-		.property("sortData", &CutMeshParameters::sortData, return_value_policy::reference() ) // SortIntersectionsData*
+		.property( "sortData", &CutMeshParameters::sortData, return_value_policy::reference() ) // SortIntersectionsData*
 		.property( "new2OldMap", &CutMeshParameters::new2OldMap, return_value_policy::reference() ) // FaceMap*
 		.property( "forceFillMode", &CutMeshParameters::forceFillMode )
 		.property( "new2oldEdgesMap", &CutMeshParameters::new2oldEdgesMap, return_value_policy::reference() ) // NewEdgesMap*
@@ -319,7 +322,27 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 		.field( "resultCut", &CutMeshResult::resultCut )
 		.field( "fbsWithContourIntersections", &CutMeshResult::fbsWithContourIntersections );
 
+
+	function( "cutMesh", &cutMesh);
+	function( "cutMeshByContour", &cutMeshByContour);
+
+	function( "convertMeshTriPointsSurfaceOffsetToMeshContours",
+		select_overload<Expected<OneMeshContours>( const Mesh&, const std::vector<MeshTriPoint>&, float, SearchPathSettings )>(
+			&convertMeshTriPointsSurfaceOffsetToMeshContours
+		),
+		allow_raw_pointers()
+	);
+	function( "convertMeshTriPointsSurfaceOffsetToMeshContoursWithFunctor",
+		select_overload<Expected<OneMeshContours>( const Mesh&, const std::vector<MeshTriPoint>&, const std::function<float( int )>&, SearchPathSettings )>(
+			&convertMeshTriPointsSurfaceOffsetToMeshContours
+		),
+		allow_raw_pointers()
+	);
+
+
+	///
 	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
 	function( "cutMeshWithPolylineImplTest", &cutMeshWithPolylineImplTest );
 	function( "cutAndExtrudeMeshWithPolylineImpl", &cutAndExtrudeMeshWithPolylineImpl );
+	///
 }

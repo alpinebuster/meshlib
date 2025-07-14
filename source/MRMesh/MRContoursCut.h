@@ -37,7 +37,7 @@ struct CutMeshParameters
     /// This is optional output - map from newly generated faces to old faces (N-1)
     FaceMap* new2OldMap{nullptr};
     /// This enum defines the MR::cutMesh behaviour in case of bad faces acure
-    /// basicaly MR::cutMesh removes all faces which contours pass through, adds new edges to topology and fills all removed parts
+    /// basically MR::cutMesh removes all faces which contours pass through, adds new edges to topology and fills all removed parts
     /// 
     /// \note Bad faces here mean faces where contours have intersections and cannot be cut and filled in an good way
     enum class ForceFill

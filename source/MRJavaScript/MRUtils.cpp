@@ -604,6 +604,10 @@ EMSCRIPTEN_BINDINGS( FunctorTypedModule )
 	class_<std::function<std::string( std::string )>>( "StringFunctorString" )
 		.constructor<>()
 		.function( "opcall", &std::function<std::string( std::string )>::operator() );
+
+	class_<std::function<float( int )>>( "FloatFunctorInt" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( int )>::operator() );
 	///
 
 

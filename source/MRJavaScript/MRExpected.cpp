@@ -25,6 +25,7 @@
 #include <MRMesh/MRGridSettings.h>
 #include <MRMesh/MRMeshTexture.h>
 #include <MRMesh/MROneMeshContours.h>
+#include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRTriMesh.h>
 #include <MRPch/MRExpected.h>
 #include <MRMesh/MRExpected.h>
@@ -77,6 +78,22 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
 
 
     ///
+    MRJS::bindExpected<FaceBitSet>( "ExpectedFaceBitSet" );
+    MRJS::bindExpected<VertBitSet>( "ExpectedVertBitSet" );
+    MRJS::bindExpected<EdgeBitSet>( "ExpectedEdgeBitSet" );
+    MRJS::bindExpected<UndirectedEdgeBitSet>( "ExpectedUndirectedEdgeBitSet" );
+    MRJS::bindExpected<PixelBitSet>( "ExpectedPixelBitSet" );
+    MRJS::bindExpected<VoxelBitSet>( "ExpectedVoxelBitSet" );
+    MRJS::bindExpected<RegionBitSet>( "ExpectedRegionBitSet" );
+    MRJS::bindExpected<NodeBitSet>( "ExpectedNodeBitSet" );
+    MRJS::bindExpected<ObjBitSet>( "ExpectedObjBitSet" );
+    MRJS::bindExpected<TextureBitSet>( "ExpectedTextureBitSet" );
+    MRJS::bindExpected<GraphVertBitSet>( "ExpectedGraphVertBitSet" );
+    MRJS::bindExpected<GraphEdgeBitSet>( "ExpectedGraphEdgeBitSet" );
+    ///
+
+
+    ///
     MRJS::bindExpected<PackMapping>( "ExpectedPackMapping" );
     ///
 
@@ -88,6 +105,7 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
     MRJS::bindExpected<EdgePath>( "ExpectedEdgePath" );
     MRJS::bindExpected<EdgeLoops>( "ExpectedEdgeLoops" );
     MRJS::bindExpected<OneMeshContour>( "ExpectedOneMeshContour" );
+    MRJS::bindExpected<OneMeshContours>( "ExpectedOneMeshContours" );
     MRJS::bindExpected<SurfacePath>( "ExpectedSurfacePath" );
     ///
 }
