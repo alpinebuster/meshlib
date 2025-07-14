@@ -27,7 +27,7 @@ EMSCRIPTEN_BINDINGS( MeshTriPointModule )
         .property( "e", &MeshTriPoint::e )
         .property( "bary", &MeshTriPoint::bary )
         .function( "valid", &MeshTriPoint::valid )
-        .function( "asBool", select_overload<bool() const>( &MeshTriPoint::operator bool ) )
+        .function( "opbool", select_overload<bool() const>( &MeshTriPoint::operator bool ) )
         .function( "inVertex", select_overload<bool() const>( &MeshTriPoint::inVertex ))
         .function( "onEdge", &MeshTriPoint::onEdge )
         // NOTE:

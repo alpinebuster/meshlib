@@ -19,7 +19,7 @@ Rules that should obey.
 
 ## TODOs
 
-- Distinguish between "JavaScript interfaces exported according to the original API" and "JavaScript interfaces exported with encapsulated specialized functionalities".
+- Distinguish between "JavaScript interfaces exported according to the original API" and "JavaScript interfaces exported with encapsulated specialized functionalities" by utilizing suffix `*Impl`.
 - V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
 - V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
 

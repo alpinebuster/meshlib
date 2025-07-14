@@ -35,7 +35,8 @@ VertScalars findSignedDistancesWrapper(
 EMSCRIPTEN_BINDINGS( PointsToMeshProjectorModule )
 {
     class_<IPointsToMeshProjector>( "IPointsToMeshProjector" )
-        .smart_ptr<std::shared_ptr<IPointsToMeshProjector>>( "IPointsToMeshProjector" )
+        .smart_ptr<std::shared_ptr<IPointsToMeshProjector>>( "IPointsToMeshProjectorSharedPtr" )
+
         .function( "updateMeshData", &IPointsToMeshProjector::updateMeshData, pure_virtual(), allow_raw_pointers() )
         .function( "findProjections", &IPointsToMeshProjector::findProjections, pure_virtual(), allow_raw_pointers() )
         .function( "projectionsHeapBytes", &IPointsToMeshProjector::projectionsHeapBytes, pure_virtual() );

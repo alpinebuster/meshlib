@@ -12,5 +12,5 @@ EMSCRIPTEN_BINDINGS( PointOnFaceModule )
         .property( "face", &PointOnFace::face )      // FaceId
         .property( "point", &PointOnFace::point )     // Vector3f
         .function( "valid", &PointOnFace::valid )
-        .function( "asBool", select_overload<bool() const>( &PointOnFace::operator bool ) );
+        .function( "opbool", select_overload<bool() const>( &PointOnFace::operator bool ) );
 }

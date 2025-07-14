@@ -17,6 +17,7 @@
 using namespace emscripten;
 using namespace MR;
 
+
 std::shared_ptr<FreeFormDeformer> makeFreeFormDeformerFromMesh( Mesh& mesh, const VertBitSet* region )
 {
 	return std::make_shared<FreeFormDeformer>( mesh, region );
@@ -26,10 +27,11 @@ std::shared_ptr<FreeFormDeformer> makeFreeFormDeformerFromCoords( VertCoords& co
 	return std::make_shared<FreeFormDeformer>( coords, valid );
 }
 
+
 EMSCRIPTEN_BINDINGS( FreeFormDeformerModule )
 {
 	class_<FreeFormDeformer>( "FreeFormDeformer" )
-		.smart_ptr<std::shared_ptr<FreeFormDeformer>>( "FreeFormDeformer" )
+		.smart_ptr<std::shared_ptr<FreeFormDeformer>>( "FreeFormDeformerSharedPtr" )
 
 		.constructor<VertCoords&, const VertBitSet&>()
 		.class_function( "createFreeFormDeformerFromMesh", &makeFreeFormDeformerFromMesh, allow_raw_pointers() )
@@ -55,6 +57,7 @@ EMSCRIPTEN_BINDINGS( FreeFormDeformerModule )
 		.function( "setStabilizer", &FreeFormBestFit::setStabilizer )
 		.function( "getStabilizer", &FreeFormBestFit::getStabilizer )
 		.function( "findBestDeformationReferenceGrid", &FreeFormBestFit::findBestDeformationReferenceGrid );
+
 
 	function( "makeFreeFormOriginGrid", &makeFreeFormOriginGrid );
 	function( "findBestFreeformDeformation", &findBestFreeformDeformation, allow_raw_pointers() );

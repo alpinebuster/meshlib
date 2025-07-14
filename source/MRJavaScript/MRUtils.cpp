@@ -10,6 +10,7 @@
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRVector4.h>
 #include <MRMesh/MRBox.h>
+#include <MRMesh/MRBuffer.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>
@@ -17,6 +18,7 @@
 #include <MRMesh/MREdgeMetric.h>
 #include <MRMesh/MRPointCloud.h>
 #include <MRMesh/MRAABBTreePoints.h>
+#include <MRMesh/MREdgePoint.h>
 #include <MRMesh/MRDipole.h>
 #include <MRMesh/MRGridSampling.h>
 #include <MRMesh/MRMeshProject.h>
@@ -24,9 +26,11 @@
 #include <MRMesh/MRProgressCallback.h>
 #include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRMeshBuilder.h>
-#include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRMeshExtrude.h>
 #include <MRMesh/MRRegionBoundary.h>
+#include <MRMesh/MROneMeshContours.h>
+#include <MRMesh/MRIntersectionContour.h>
+#include <MRMesh/MRMeshTriPoint.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
 
 #include "MRUtils.h"
@@ -159,7 +163,10 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 
 
 	///
-    register_vector<AABBTreePoints::Point>( "VectorAABBTreePointsPoint" );
+	register_vector<MeshBuilder::MeshPiece>( "VectorMeshPiece" );
+	register_vector<EdgePoint>( "SurfacePath" );
+
+	register_vector<AABBTreePoints::Point>( "VectorAABBTreePointsPoint" );
     register_vector<AABBTreePoints::Node>( "VectorAABBTreePointsNode" );
 
     register_vector<ModelPointsData>( "VectorModelPointsData" );
@@ -168,13 +175,41 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<MeshProjectionResult>( "VectorMeshProjectionResult" );
 	register_vector<MeshBuilder::VertDuplication>( "VectorVertDuplication" );
 
+    register_vector<EdgeTri>( "VectorEdgeTri" );
 	// ContinuousContour is `std::vector<VarEdgeTri>`
     register_vector<VarEdgeTri>( "ContinuousContour" );
     // `ContinuousContours` is `std::vector<ContinuousContour>`
 	register_vector<ContinuousContour>( "ContinuousContours" );
+    register_vector<OneMeshContour>( "OneMeshContours" );
+    register_vector<OneMeshIntersection>( "VectorOneMeshIntersection" );
+    register_vector<MeshTriPoint>( "VectorMeshTriPoint" );
+	///
 
-	
-	register_vector<MeshBuilder::MeshPiece>( "VectorMeshPiece" );
+
+	///
+	register_vector<std::vector<MeshBuilder::MeshPiece>>( "VectorVectorMeshPiece" );
+	register_vector<std::vector<EdgePoint>>( "SurfacePaths" );
+
+	register_vector<std::vector<AABBTreePoints::Point>>( "VectorVectorAABBTreePointsPoint" );
+    register_vector<std::vector<AABBTreePoints::Node>>( "VectorVectorAABBTreePointsNode" );
+
+    register_vector<std::vector<ModelPointsData>>( "VectorVectorModelPointsData" );
+    register_vector<std::vector<ObjVertId>>( "VectorVectorObjVertId" );
+
+    register_vector<std::vector<MeshProjectionResult>>( "VectorVectorMeshProjectionResult" );
+	register_vector<std::vector<MeshBuilder::VertDuplication>>( "VectorVectorVertDuplication" );
+
+    register_vector<std::vector<EdgeTri>>( "VectorVectorEdgeTri" );
+    // NOTE: `std::vector<std::vector<VarEdgeTri>>` is `std::vector<ContinuousContour>`;
+	register_vector<std::vector<ContinuousContour>>( "VectorContinuousContours" );
+    register_vector<std::vector<OneMeshContour>>( "VectorOneMeshContours" );
+    register_vector<std::vector<OneMeshIntersection>>( "VectorVectorOneMeshIntersection" );
+    register_vector<std::vector<MeshTriPoint>>( "VectorVectorMeshTriPoint" );
+	///
+
+
+	///
+	register_vector<std::vector<std::vector<EdgePoint>>>( "VectorSurfacePaths" );
 	///
 
 
@@ -456,6 +491,8 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 	register_optional<EdgeMap>();
 	register_optional<UndirectedEdgeMap>();
 	register_optional<ObjMap>();
+
+	register_optional<PackMapping>();
 	///
 
 
@@ -570,6 +607,10 @@ EMSCRIPTEN_BINDINGS( FunctorTypedModule )
 	class_<std::function<std::string( std::string )>>( "StringFunctorString" )
 		.constructor<>()
 		.function( "opcall", &std::function<std::string( std::string )>::operator() );
+
+	class_<std::function<float( int )>>( "FloatFunctorInt" )
+		.constructor<>()
+		.function( "opcall", &std::function<float( int )>::operator() );
 	///
 
 
@@ -703,5 +744,12 @@ EMSCRIPTEN_BINDINGS( FunctorTypedModule )
 	class_<std::function<float( GraphEdgeBitSet )>>( "FloatFunctorGraphEdgeBitSet" )
 		.constructor<>()
 		.function( "opcall", &std::function<float( GraphEdgeBitSet )>::operator() );
+	///
+
+
+	///
+	class_<std::function<Expected<SurfacePath>( const MeshTriPoint&, const MeshTriPoint&, int, int )>>( "ExpectedSurfacePathFunctorMeshTriPoint" )
+		.constructor<>()
+		.function( "opcall", &std::function<Expected<SurfacePath>( const MeshTriPoint&, const MeshTriPoint&, int, int )>::operator() );
 	///
 }

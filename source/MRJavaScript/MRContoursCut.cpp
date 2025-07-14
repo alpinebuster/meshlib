@@ -5,8 +5,10 @@
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRPolyline.h>
 #include <MRMesh/MRLine3.h>
+#include <MRMesh/MRVector.h>
+#include <MRMesh/MRVector3.h>
+#include <MRMesh/MRAffineXf.h>
 #include <MRMesh/MRMeshProject.h>
-#include <MRMesh/MRContoursCut.h>
 #include <MRMesh/MRPolylineProject.h>
 #include <MRMesh/MRMeshBoolean.h>
 #include <MRMesh/MROneMeshContours.h>
@@ -14,27 +16,13 @@
 #include <MRMesh/MRParallelFor.h>
 #include <MRMesh/MRFillContour.h>
 #include <MRMesh/MREdgePaths.h>
+#include <MRMesh/MRContoursCut.h>
 
 #include "MRUtils.h"
 
 using namespace emscripten;
 using namespace MR;
 
-class BoolResults {
-public:
-    float* vertices;
-    size_t verticesLength;
-    int* faces;
-    size_t facesLength;
-
-    // Constructor
-    BoolResults() : vertices(nullptr), verticesLength(0), faces(nullptr), facesLength(0) {}
-
-    ~BoolResults() {
-        delete[] vertices;
-        delete[] faces;
-    }
-};
 
 val cutMeshWithPolylineImplTest( Mesh& mesh, const std::vector<float>& coordinates )
 {
@@ -193,6 +181,8 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 		obj.set( "success", true );
 		obj.set( "innerMesh", innerMeshData );
 		obj.set( "outerMesh", outerMeshData );
+		obj.set( "innerMeshInstance", innerMesh );
+		obj.set( "outerMeshInstance", outerMesh );
 
 		return obj;
 	} else {
@@ -212,15 +202,27 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
  * 1. Project points of polyline to mesh
  * 2. Convert result vector to `cutMesh()` input type
  * 3. Do `cutMesh()` (it works only with contours without self-intersections)
- * 4. Pull resultCut vertices to corresponding original polyline positions
+ * 4. Pull `resultCut` vertices to corresponding original polyline positions
  *
  * @param mesh
  * @param coordinates 
  * @param coordinatesLength 
  * @return val 
  */
-BoolResults cutAndExtrudeMeshWithPolyline( Mesh * mesh, float coordinates[], int coordinatesLength )
+val cutAndExtrudeMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 {
+	val obj = val::object();
+
+	Mesh meshCopy;
+	meshCopy = mesh;
+
+	int coordinatesLength = coordinates.size();
+    if (coordinatesLength % 3 != 0) {
+		obj.set( "success", false );
+		obj.set( "error", "Coordinates length must be a multiple of 3!" );
+		return obj;
+    }
+
 	std::vector<Vector3f> polyline;
 	polyline.reserve( coordinatesLength / 3 );
 
@@ -229,15 +231,15 @@ BoolResults cutAndExtrudeMeshWithPolyline( Mesh * mesh, float coordinates[], int
 		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
 	}
 	Polyline3 initialPolyline;
-	initialPolyline.addFromPoints( polyline.data(), polyline.size() );
+	initialPolyline.addFromPoints( polyline.data(), polyline.size(), true );
 
-	// We are initializing the vector with a certain length
+	// Initializing the vector with a certain length
 	std::vector<MeshTriPoint> projectedPolyline( initialPolyline.points.size() );
-	const MeshPart m = MeshPart( *mesh, nullptr );
+	const MeshPart m = MeshPart( meshCopy, nullptr );
 	const Vector3f vectorUp = Vector3f( 0, 0, 1 );
 	// const Vector3f vectorDown = Vector3f( 0, 0, -1 );
 
-	mesh->getAABBTree(); // Create tree in parallel before loop
+	meshCopy.getAABBTree(); // Create tree in parallel before loop
 	ParallelFor( initialPolyline.points, [&] ( VertId v )
 	{
 		const auto& pt = initialPolyline.points[v];
@@ -246,7 +248,7 @@ BoolResults cutAndExtrudeMeshWithPolyline( Mesh * mesh, float coordinates[], int
 		if ( rmi ) projectedPolyline[v.get()] = rmi.mtp;
 	} );
 
-	// Make sure we weed out points which never hit the target mesh
+	// Make sure to weed out points which never hit the target mesh
 	std::vector<MeshTriPoint> validPoints;
 	std::copy_if( projectedPolyline.begin(), projectedPolyline.end(), std::back_inserter( validPoints ), [] ( const MeshTriPoint& point )
 	{
@@ -255,63 +257,46 @@ BoolResults cutAndExtrudeMeshWithPolyline( Mesh * mesh, float coordinates[], int
 
 	if ( !validPoints.empty() )
 	{
-		auto meshContour = convertMeshTriPointsToMeshContour( *mesh, validPoints );
+		auto meshContour = convertMeshTriPointsToMeshContour( meshCopy, validPoints );
 		if ( meshContour ) {
-			CutMeshResult cutResults = cutMesh( *mesh, { *meshContour } );
+			CutMeshResult cutResults = cutMesh( meshCopy, { *meshContour } );
 
 			initialPolyline.getAABBTree(); // create tree in parallel before loop
 			for ( const EdgeLoop& cut : cutResults.resultCut )
 			{
 				ParallelFor( cut, [&] ( size_t i )
 				{
-					Vector3f& orgP = mesh->points[mesh->topology.org( cut[i] )];
+					Vector3f& orgP = meshCopy.points[meshCopy.topology.org( cut[i] )];
 					orgP = findProjectionOnPolyline( Line3f( orgP, vectorUp ), initialPolyline ).point;
 				} );
 
-				if ( mesh->topology.org( cut.front() ) != mesh->topology.dest( cut.back() ) )
+				if ( meshCopy.topology.org( cut.front() ) != meshCopy.topology.dest( cut.back() ) )
 				{
-					Vector3f& destP = mesh->points[mesh->topology.dest( cut.back() )];
+					Vector3f& destP = meshCopy.points[meshCopy.topology.dest( cut.back() )];
 					destP = findProjectionOnPolyline( Line3f( destP, vectorUp ), initialPolyline ).point;
 				}
 			}
 
 			// important to call after manual changing of mesh structure fields
-			mesh->invalidateCaches();
+			meshCopy.invalidateCaches();
 		} else {
 			std::string error = meshContour.error();
-			// ...
+
+			obj.set( "success", false );
+			obj.set( "error", error );
+
+			return obj;
 		}
 	}
 	
-	BoolResults result = BoolResults();
-	result.verticesLength = mesh->topology.numValidVerts() * 3;
-	result.vertices = new float[result.verticesLength];
 
-	size_t i = 0;
-	for ( auto v : mesh->topology.getValidVerts() )
-	{
-		result.vertices[i] = mesh->points[v].x;
-		result.vertices[i + 1] = mesh->points[v].y;
-		result.vertices[i + 2] = mesh->points[v].z;
-		i += 3;
-	}
+	val resultMeshData = MRJS::exportMeshMemoryView( meshCopy );
+	obj.set( "success", true );
+	obj.set( "mesh", resultMeshData );
 
-	result.facesLength = mesh->topology.numValidFaces() * 3;
-	result.faces = new int[result.facesLength];
-
-	i = 0;
-	VertId v[3];
-	for ( FaceId f : mesh->topology.getFaceIds( nullptr ) )
-	{
-		mesh->topology.getTriVerts( f, v );
-		result.faces[i] = ( uint32_t )v[0];
-		result.faces[i + 1] = ( uint32_t )v[1];
-		result.faces[i + 2] = ( uint32_t )v[2];
-		i += 3;
-	}
-	
-	return result;
+	return obj;
 }
+
 
 EMSCRIPTEN_BINDINGS( ContoursCutModule )
 {
@@ -327,7 +312,7 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 	
 	class_<CutMeshParameters>( "CutMeshParameters" )
 		.constructor<>()
-		.property("sortData", &CutMeshParameters::sortData, return_value_policy::reference() ) // SortIntersectionsData*
+		.property( "sortData", &CutMeshParameters::sortData, return_value_policy::reference() ) // SortIntersectionsData*
 		.property( "new2OldMap", &CutMeshParameters::new2OldMap, return_value_policy::reference() ) // FaceMap*
 		.property( "forceFillMode", &CutMeshParameters::forceFillMode )
 		.property( "new2oldEdgesMap", &CutMeshParameters::new2oldEdgesMap, return_value_policy::reference() ) // NewEdgesMap*
@@ -337,6 +322,29 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 		.field( "resultCut", &CutMeshResult::resultCut )
 		.field( "fbsWithContourIntersections", &CutMeshResult::fbsWithContourIntersections );
 
+
+	///
+	function( "cutMesh", &cutMesh );
+	function( "cutMeshByContour", &cutMeshByContour);
+
+	function( "convertMeshTriPointsSurfaceOffsetToMeshContours",
+		select_overload<Expected<OneMeshContours>( const Mesh&, const std::vector<MeshTriPoint>&, float, SearchPathSettings )>(
+			&convertMeshTriPointsSurfaceOffsetToMeshContours
+		),
+		allow_raw_pointers()
+	);
+	function( "convertMeshTriPointsSurfaceOffsetToMeshContoursWithFunctor",
+		select_overload<Expected<OneMeshContours>( const Mesh&, const std::vector<MeshTriPoint>&, const std::function<float( int )>&, SearchPathSettings )>(
+			&convertMeshTriPointsSurfaceOffsetToMeshContours
+		),
+		allow_raw_pointers()
+	);
+	///
+
+
+	///
 	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
 	function( "cutMeshWithPolylineImplTest", &cutMeshWithPolylineImplTest );
+	function( "cutAndExtrudeMeshWithPolylineImpl", &cutAndExtrudeMeshWithPolylineImpl );
+	///
 }
