@@ -1,9 +1,11 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
-#include <MRMesh/MRBitSet.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRBitSet.h>
+
+#include "MRBitSet.h"
 
 using namespace emscripten;
 using namespace MR;
@@ -19,7 +21,8 @@ EMSCRIPTEN_BINDINGS( __internalBoostDynamicBitsetModule )
         .constructor<size_t, bool>();
 }
 
-// BitSet base class bindings
+
+// `BitSet` base class bindings
 EMSCRIPTEN_BINDINGS( BitSetModule )
 {
     class_<BitSet>( "BitSet" )
@@ -28,7 +31,7 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
         .constructor<>()
         .constructor<size_t>()
         .constructor<size_t, bool>()
-        .class_function( "createFromBool", optional_override( [] ( size_t numBits, bool fillValue )
+        .class_function( "createFromValue", optional_override( [] ( size_t numBits, bool fillValue )
         {
             return BitSet( numBits, fillValue );
         } ) )
@@ -81,6 +84,7 @@ EMSCRIPTEN_BINDINGS( BitSetModule )
         .class_function( "beginId", &BitSet::beginId );
 }
 
+
 EMSCRIPTEN_BINDINGS( TypedBitSetModule )
 {
     // NOTE:
@@ -92,143 +96,19 @@ EMSCRIPTEN_BINDINGS( TypedBitSetModule )
     //         Type 'number' is not assignable to type 'FaceId'.ts(2430)
     // 
     // class_<FaceBitSet, base<BitSet>>( "FaceBitSet" )
-    class_<FaceBitSet>( "FaceBitSet" )
-        // NOTE:
-        // 
-        // `.smart_ptr<std::shared_ptr<FaceBitSet>>()` will not work!
-        // 
-        // In embind, the `class_<T>` has two overloaded `.smart_ptr()` methods:
-        // 
-        // ✅ When there is no base class, use:
-        // 
-        // ```cpp
-        // .smart_ptr<std::shared_ptr<T>>()
-        // ```
-        // 
-        // ✅ When there is a base class, must provide the name of the smart pointer as a string:
-        // 
-        // ```cpp
-        // .smart_ptr<std::shared_ptr<T>>( "TSharedPtr" )
-        // ```
-        // 
-        .smart_ptr<std::shared_ptr<FaceBitSet>>( "FaceBitSetSharedPtr" )
-        
-        .constructor<>()
-        .constructor<const BitSet&>()
-        // The factory function replaces the overloaded constructor
-        .class_function( "createFromSize", optional_override( [] ( size_t numBits )
-        {
-            return FaceBitSet( numBits );
-        } ) )
-        .class_function( "createFromValue", optional_override( [] ( size_t numBits, bool fillValue )
-        {
-            return FaceBitSet( numBits, fillValue );
-        } ) )
-        .class_function( "createFromBitSet", optional_override( [] ( const BitSet& src )
-        {
-            return FaceBitSet( src );
-        } ) )
-        .class_function( "createFromBitSetMove", optional_override( [] ( BitSet&& src )
-        {
-            return FaceBitSet( std::move( src ) );
-        } ) )
-
-        // The instance method is used for replication and movement
-        .function( "copyFrom", optional_override( [] ( FaceBitSet& self, const BitSet& src ) -> FaceBitSet&
-        {
-            self = FaceBitSet( src );
-            return self;
-        } ), return_value_policy::reference() )
-        .function( "moveFrom", optional_override( [] ( FaceBitSet& self, BitSet&& src ) -> FaceBitSet&
-        {
-            self = FaceBitSet( std::move( src ) );
-            return self;
-        } ), return_value_policy::reference() )
-
-        // Type-safe bit operations
-        // NOTE:
-        // .function( "test", select_overload<bool ( FaceId ) const>( &FaceBitSet::test ) )
-        .function( "test", &FaceBitSet::test )
-        .function( "testFromInt", optional_override([](const FaceBitSet& self, int index) {
-            return self.test(FaceId{index});
-        }) )
-        .function( "testSet", &FaceBitSet::test_set )
-        .function( "set", select_overload<FaceBitSet & ( FaceId, bool )>( &FaceBitSet::set ), return_value_policy::reference() )
-        .function( "setAll", select_overload<FaceBitSet & ( )>( &FaceBitSet::set ), return_value_policy::reference() )
-        .function( "setRange", select_overload<FaceBitSet & ( FaceId, FaceBitSet::size_type, bool )>( &FaceBitSet::set ), return_value_policy::reference() )
-        .function( "reset", select_overload<FaceBitSet & ( FaceId )>( &FaceBitSet::reset ), return_value_policy::reference() )
-        .function( "resetAll", select_overload<FaceBitSet & ( )>( &FaceBitSet::reset ), return_value_policy::reference() )
-        .function( "resetRange", select_overload<FaceBitSet & ( FaceId, FaceBitSet::size_type )>( &FaceBitSet::reset ), return_value_policy::reference() )
-        .function( "flip", select_overload<FaceBitSet & ( FaceId )>( &FaceBitSet::flip ), return_value_policy::reference() )
-        .function( "flipAll", select_overload<FaceBitSet & ( )>( &FaceBitSet::flip ), return_value_policy::reference() )
-
-        .function( "findFirst", &FaceBitSet::find_first )
-        .function( "findNext", &FaceBitSet::find_next )
-        .function( "findLast", &FaceBitSet::find_last )
-        .function( "nthSetBit", &FaceBitSet::nthSetBit )
-
-        .function( "bitwiseAndAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator&= ), return_value_policy::reference() )
-        .function( "bitwiseOrAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator|= ), return_value_policy::reference() )
-        .function( "bitwiseXorAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator^= ), return_value_policy::reference() )
-        .function( "subtractAssign", select_overload<FaceBitSet & ( const FaceBitSet& )>( &FaceBitSet::operator-= ), return_value_policy::reference() )
-
-        .function( "isSubsetOf", &FaceBitSet::is_subset_of )
-        .function( "isProperSubsetOf", &FaceBitSet::is_proper_subset_of )
-        .function( "intersects", &FaceBitSet::intersects )
-
-        .function( "autoResizeSet", select_overload<void( FaceId, bool )>( &FaceBitSet::autoResizeSet ) )
-        .function( "autoResizeSetRange", select_overload<void( FaceId, FaceBitSet::size_type, bool )>( &FaceBitSet::autoResizeSet ) )
-        .function( "autoResizeTestSet", &FaceBitSet::autoResizeTestSet )
-
-        .function( "backId", &FaceBitSet::backId )
-        .function( "endId", &FaceBitSet::endId )
-        .class_function( "beginId", &FaceBitSet::beginId );
-
-
-    // TODO: V2
-    class_<VertBitSet>( "VertBitSet" )
-        .smart_ptr<std::shared_ptr<VertBitSet>>( "VertBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<EdgeBitSet>( "EdgeBitSet" )
-        .smart_ptr<std::shared_ptr<EdgeBitSet>>( "EdgeBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" )
-        .smart_ptr<std::shared_ptr<UndirectedEdgeBitSet>>( "UndirectedEdgeBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<PixelBitSet>( "PixelBitSet" )
-        .smart_ptr<std::shared_ptr<PixelBitSet>>( "PixelBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<VoxelBitSet>( "VoxelBitSet" )
-        .smart_ptr<std::shared_ptr<VoxelBitSet>>( "VoxelBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<RegionBitSet>( "RegionBitSet" )
-        .smart_ptr<std::shared_ptr<RegionBitSet>>( "RegionBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<NodeBitSet>( "NodeBitSet" )
-        .smart_ptr<std::shared_ptr<NodeBitSet>>( "NodeBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<ObjBitSet>( "ObjBitSet" )
-        .smart_ptr<std::shared_ptr<ObjBitSet>>( "ObjBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<TextureBitSet>( "TextureBitSet" )
-        .smart_ptr<std::shared_ptr<TextureBitSet>>( "TextureBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<GraphVertBitSet>( "GraphVertBitSet" )
-        .smart_ptr<std::shared_ptr<GraphVertBitSet>>( "GraphVertBitSetSharedPtr" )
-        .constructor<>();
-
-    class_<GraphEdgeBitSet>( "GraphEdgeBitSet" )
-        .smart_ptr<std::shared_ptr<GraphEdgeBitSet>>( "GraphEdgeBitSetSharedPtr" )
-        .constructor<>();
+    // 
+    bindTypedBitSet<FaceBitSet>( "FaceBitSet" );
+    bindTypedBitSet<VertBitSet>( "VertBitSet" );
+    bindTypedBitSet<EdgeBitSet>( "EdgeBitSet" );
+    bindTypedBitSet<UndirectedEdgeBitSet>( "UndirectedEdgeBitSet" );
+    bindTypedBitSet<PixelBitSet>( "PixelBitSet" );
+    bindTypedBitSet<VoxelBitSet>( "VoxelBitSet" );
+    bindTypedBitSet<RegionBitSet>( "RegionBitSet" );
+    bindTypedBitSet<NodeBitSet>( "NodeBitSet" );
+    bindTypedBitSet<ObjBitSet>( "ObjBitSet" );
+    bindTypedBitSet<TextureBitSet>( "TextureBitSet" );
+    bindTypedBitSet<GraphVertBitSet>( "GraphVertBitSet" );
+    bindTypedBitSet<GraphEdgeBitSet>( "GraphEdgeBitSet" );
 }
 
 
