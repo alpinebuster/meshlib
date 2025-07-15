@@ -33,6 +33,8 @@
 #include <MRMesh/MRMeshTriPoint.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
 
+#include <MRVoxels/MRTeethMaskToDirectionVolume.h>
+
 #include "MRUtils.h"
 
 using namespace emscripten;
@@ -480,6 +482,9 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 
 	///
 	register_optional<MeshOrPoints>();
+    register_optional<ModelPointsData>();
+    register_optional<MultiObjsSamples>();
+    register_optional<DentalId>();
 	///
 
 
