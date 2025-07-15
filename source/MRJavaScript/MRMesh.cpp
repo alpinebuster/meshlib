@@ -783,7 +783,7 @@ val MeshWrapper::getFaceNormalImpl( int faceId ) const
 
 val MeshWrapper::segmentByPointsImpl(
 	const std::vector<float>& coordinates, const std::vector<float>& dir,
-	const EdgeMetricWrapper& edgeMetricWrapper )
+	const EdgeMetricWrapper& edgeMetricWrapper ) const
 {
 	val result = val::object();
 
@@ -889,7 +889,7 @@ val MeshWrapper::segmentByPointsImpl(
 	return result;
 }
 
-val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params )
+val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params ) const
 {
 	// Return the mesh wrapped in an object that indicates success
 	val returnObj = val::object();
@@ -1043,8 +1043,12 @@ val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params 
 	}
 }
 
-val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates )
+val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates ) const
 {
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
 	std::vector<Vector3f> polyline;
 
     int coordinatesLength = coordinates.size();
@@ -1067,12 +1071,12 @@ val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates 
 
 	std::vector<MeshTriPoint> projectedPolyline;
 	projectedPolyline.reserve( initialPolyline.points.size() );
-	MeshPart m = MeshPart( mesh, nullptr );
+	MeshPart m = MeshPart( meshCopy, nullptr );
 
 
 	val jsTestProjectedPoint = val::array();
 
-	mesh.getAABBTree(); // Create tree in parallel before loop
+	meshCopy.getAABBTree(); // Create tree in parallel before loop
 	for ( Vector3f pt : initialPolyline.points )
 	{
 		MeshProjectionResult mpr = findProjection( pt, m );
@@ -1086,7 +1090,7 @@ val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates 
 		jsTestProjectedPoint.call<void>("push", projPoint);
 	}
 
-	auto meshContour = convertMeshTriPointsToMeshContour( mesh, projectedPolyline );
+	auto meshContour = convertMeshTriPointsToMeshContour( meshCopy, projectedPolyline );
 	if ( meshContour )
 	{
     	const MR::OneMeshContour& testContour = *meshContour;
@@ -1101,13 +1105,13 @@ val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates 
 		}
 
 
-		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
+		CutMeshResult cutResults = cutMesh( meshCopy, { *meshContour } );
 
 
 		val jsTestCutPoints = val::array();
 		for (const auto& loop : cutResults.resultCut) {
 			for (const auto& edge : loop) {
-				Vector3f p = mesh.orgPnt(edge);
+				Vector3f p = meshCopy.orgPnt(edge);
 				val point = val::object();
 				point.set("x", p.x);
 				point.set("y", p.y);
@@ -1117,7 +1121,7 @@ val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates 
 		}
 		
 
-		auto [innerMesh, outerMesh] = MRJS::returnParts( mesh, cutResults.resultCut );
+		auto [innerMesh, outerMesh] = MRJS::returnParts( meshCopy, cutResults.resultCut );
 		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
 		val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
 
@@ -1182,7 +1186,6 @@ val MeshWrapper::fillHolesImpl() const
     return MRJS::exportMeshMemoryView( meshCopy );
 }
 
-// Point projection
 val MeshWrapper::projectPointImpl( const val& point, float maxDistance ) const
 {
 	Vector3f p = MRJS::arrayToVector3f( point );

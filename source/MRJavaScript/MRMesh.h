@@ -190,10 +190,10 @@ public:
      */
     val projectPointImpl( const val& point, float maxDistance = std::numeric_limits<float>::max() ) const;
 
-    val thickenMeshImpl( float offset, GeneralOffsetParameters &params );
-    val cutMeshWithPolylineImpl( const std::vector<float>& coordinates );
+    val thickenMeshImpl( float offset, GeneralOffsetParameters &params ) const;
+    val cutMeshWithPolylineImpl( const std::vector<float>& coordinates ) const;
     val segmentByPointsImpl( const std::vector<float>& coordinates, const std::vector<float>& dir,
-	const EdgeMetricWrapper& edgeMetricWrapper );
+	const EdgeMetricWrapper& edgeMetricWrapper ) const;
     val fixUndercutsImpl( const Vector3f& upDirection ) const;
     val fillHolesImpl() const;
 };

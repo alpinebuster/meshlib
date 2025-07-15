@@ -113,7 +113,7 @@ val fixUndercutsImpl( Mesh& mesh, const Vector3f& upDirection, float voxelSize =
 	{
 		val meshData = MRJS::exportMeshMemoryView( mesh );
 
-		// The mesh has been modified in place, so we just report success
+		// The mesh has been modified in place
 		returnObj.set( "success", true );
 		returnObj.set( "mesh", meshData );
 	}
@@ -127,7 +127,6 @@ val fixUndercutsImpl( Mesh& mesh, const Vector3f& upDirection, float voxelSize =
 }
 
 // Alternative wrapper that throws exceptions instead of returning error objects
-// This gives JavaScript developers a choice in how they want to handle errors
 void fixUndercutsImplThrows( Mesh& mesh, const Vector3f& upDirection, float voxelSize = 0.0f, float bottomExtension = 0.0f )
 {
 	auto result = fix( mesh, { {upDirection}, voxelSize, bottomExtension } );
@@ -135,11 +134,9 @@ void fixUndercutsImplThrows( Mesh& mesh, const Vector3f& upDirection, float voxe
 	if ( !result )
 	{
 		// Convert the C++ error into a JavaScript exception
-		// This follows JavaScript conventions where errors are typically thrown
 		std::string errorMsg = "fixUndercuts failed: " + std::string( result.error() );
 		emscripten::val::global( "Error" ).new_( errorMsg ).throw_();
 	}
-	// If we reach here, the operation succeeded and the mesh has been modified
 }
 
 
@@ -158,15 +155,10 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 		.property( "smooth", &FixParams::smooth );
 
 
-	// Expose the wrapper that returns a result object
-	// This approach gives JavaScript maximum control over error handling
 	function( "fixUndercutsImpl", &fixUndercutsImpl );
 	function( "fixUndercutsImplTest", &fixUndercutsImplTest );
-	// Also expose the exception-throwing version for developers who prefer try/catch
 	function( "fixUndercutsImplThrows", &fixUndercutsImplThrows );
 
-	// Utility function to help JavaScript developers understand voxel size implications
-	// This addresses the "if voxelSize == 0.0f it will be counted automatically" comment
 	function( "calculateRecommendedVoxelSizeImpl", optional_override( [] ( const Mesh& mesh, float qualityFactor = 1.0f ) -> float
 	{
 		auto bbox = mesh.getBoundingBox();
@@ -174,7 +166,7 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 
 		return meshSize / ( 100.0f * qualityFactor );
 	} ) );
-	
+
     function("createFindParamsImpl", &createFindParamsImpl);
     function("createFixParamsImpl", &createFixParamsImpl);
 }

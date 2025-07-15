@@ -467,7 +467,7 @@ function SidebarObject( editor ) {
 					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
 
 					// FIXME: Why using the returned `Mesh` instance is not working?
-					// const result = editor.mrmesh.fillHolesImpl( mesh ); // ⚠️
+					// const result = editor.mrmesh.fillHolesImpl( mesh ); // ❌
 					// const result = editor.mrmesh.fillHolesImpl( curMeshWrapper.mesh ); // ✅
 					
 					// const result = editor.mrmesh.Mesh.getGeometry( mesh ); // ✅
