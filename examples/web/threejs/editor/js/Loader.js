@@ -419,13 +419,13 @@ function Loader( editor ) {
 					editor.mrmesh.HEAPU8.set( uint8Array, ptr );
 					const result = await editor.mrmesh.MeshLoadWrapper.fromBinaryData( ptr, uint8Array.byteLength, 'stl' );
 
-					if (!result.success) {
+					if ( !result.success ) {
 						// console.log( "WASM ERR: ", result );
 						console.log( "Retrying with `readAsArrayBuffer()`" );
 						reader.readAsArrayBuffer( file );
 						return; // Exit the current function to avoid further processing
 					}
-					const mrmeshObj = result.mesh;
+					const mrmeshObj = result.meshWrapper;
 
 					const { STLLoader } = await import( 'three/addons/loaders/STLLoader.js' );
 

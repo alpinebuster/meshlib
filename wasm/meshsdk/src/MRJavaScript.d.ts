@@ -6131,7 +6131,7 @@ interface EmbindModule {
   };
   Mesh: {
     new(): Mesh;
-    fromTrianglesMemoryView(_0: any, _1: any): Mesh | null;
+    fromTrianglesMemoryView(_0: any, _1: any): Mesh;
     fromTrianglesArray(_0: any, _1: any): Mesh | null;
     getGeometry(_0: Mesh): any;
   };

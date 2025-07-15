@@ -117,7 +117,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		//  ```
 		// 
 		.class_function( "fromTrianglesMemoryView", 
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> std::shared_ptr<Mesh>
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh
 			{
 				try
 				{
@@ -186,8 +186,8 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					}
 					///
 
-					Mesh mesh = Mesh::fromTriangles( std::move( vCoords ), triangulation );
-					return std::make_shared<Mesh>(std::move(mesh));
+					const auto res = Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( vCoords ), triangulation );
+					return res;
 				}
 				catch ( const std::exception& e )
 				{

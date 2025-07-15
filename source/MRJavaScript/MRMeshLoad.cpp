@@ -120,7 +120,7 @@ public:
 			{
 				val obj = val::object();
 				obj.set( "success", true );
-				obj.set( "mesh", MRJS::MeshWrapper( result.value() ) );
+				obj.set( "meshWrapper", MRJS::MeshWrapper( result.value() ) );
 
 				return obj;
 			}

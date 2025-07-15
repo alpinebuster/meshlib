@@ -464,10 +464,13 @@ function SidebarObject( editor ) {
 					///
 
 					// 4) Now `jsVertices.buffer === editor.mrmesh.HEAPF32.buffer`
-					let mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
 
-					// const result = editor.mrmesh.fillHolesImpl( mesh );
-					// const result = editor.mrmesh.Mesh.getGeometry( mesh );
+					// FIXME: Why using the returned `Mesh` instance is not working?
+					// const result = editor.mrmesh.fillHolesImpl( mesh ); // ⚠️
+					// const result = editor.mrmesh.fillHolesImpl( curMeshWrapper.mesh ); // ✅
+					
+					// const result = editor.mrmesh.Mesh.getGeometry( mesh ); // ✅
 
 
 					///
@@ -478,9 +481,9 @@ function SidebarObject( editor ) {
 						-threeWorldDir.y,
 						-threeWorldDir.z,
 					)
-					// FIXME: Why using the returned `mesh` is much slower?
-					// const result = editor.mrmesh.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
-					const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
+					// FIXME: Why using the returned `Mesh` instance is much slower?
+					const result = editor.mrmesh.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ⚠️
+					// const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 ); // ✅
 					///
 
 
