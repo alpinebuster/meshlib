@@ -18,7 +18,6 @@ using namespace emscripten;
 using namespace MR;
 
 
-// Wrapper for MeshLoad functions
 class MeshLoadWrapper {
 public:
 	// NOTE: Load from emscripten **virtual** file path
@@ -146,7 +145,7 @@ public:
 	}
 };
 
-// Embind declarations
+
 EMSCRIPTEN_BINDINGS( MeshLoadWrapperModule )
 {
 	class_<MeshLoadWrapper>( "MeshLoadWrapper" )

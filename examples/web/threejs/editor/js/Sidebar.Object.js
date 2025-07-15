@@ -254,10 +254,10 @@ function SidebarObject( editor ) {
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
 							const innerVertices = result.innerMesh.vertices;
-							const innerIndices = new Uint32Array(result.innerMesh.indices);
+							const innerIndices = result.innerMesh.indices;
 						
 							const outerVertices = result.outerMesh.vertices;
-							const outerIndices = new Uint32Array(result.outerMesh.indices);
+							const outerIndices = result.outerMesh.indices;
 							
 							showMesh( innerVertices, innerIndices );
 							showMesh( outerVertices, outerIndices );
@@ -426,6 +426,31 @@ function SidebarObject( editor ) {
 		}
 	});
 
+	const wasmOpLoadFromThreeJS = new UIButton( strings.getKey( 'sidebar/object/wasmOpLoadFromThreeJS') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if (currentUUID) {
+			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const geometry = editor.selected.geometry;
+				const vertices = geometry.getAttribute('position').array; // `Float32Array`
+				const indices = geometry.getIndex().array; // `Uint32Array`
+
+				try {
+					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( vertices, indices );
+					const result = editor.mrmesh.fillHolesImpl( mesh );
+
+					const newVertices = result.vertices;
+					const newIndices = result.indices;
+
+					showMesh( newVertices, newIndices );
+				} catch ( error ) {
+					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				}
+			}
+		}
+	});
+
 
 	wasmOpsRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
 
@@ -444,7 +469,11 @@ function SidebarObject( editor ) {
 	const wasmOpsRowThicken = new UIRow();
 	wasmOpsRowThicken.add( wasmOpThickenMesh );
 	
+	const wasmOpsRowLoad = new UIRow();
+	wasmOpsRowLoad.add( wasmOpLoadFromThreeJS );
+	
 	container.add( wasmOpsRow );
+	container.add( wasmOpsRowLoad );
 	container.add( wasmOpsRowHole );
 	container.add( wasmOpsRowSelector );
 	container.add( wasmOpsRowFixUndercuts );

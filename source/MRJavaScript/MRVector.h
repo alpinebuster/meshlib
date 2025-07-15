@@ -234,15 +234,15 @@ auto bindTypedVector3( const std::string& name, const std::string& suffix )
     {
         cls.function( "furthestBasisVector", &Vec3Type::furthestBasisVector );
     
-        function( ( "distanceSq" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &distanceSq<T> ) );
-        function( ( "distance" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &distance<T> ) );
-        function( ( "cross" + suffix ).c_str(), select_overload<Vec3Type( const Vec3Type&, const Vec3Type& )>( &cross<T> ) );
-        function( ( "dot" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &dot<T> ) );
-        function( ( "sqr" + suffix ).c_str(), select_overload<T( const Vec3Type& )>( &sqr<T> ) );
-        function( ( "mixed" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type&, const Vec3Type& )>( &mixed<T> ) );
-        function( ( "mult" + suffix ).c_str(), select_overload<Vec3Type( const Vec3Type&, const Vec3Type& )>( &mult<T> ) );
-        function( ( "div" + suffix ).c_str(), select_overload<Vec3Type( const Vec3Type&, const Vec3Type& )>( &div<T> ) );
-        function( ( "angle" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &angle<T> ) );
+        function( ( "distanceSq3" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &distanceSq<T> ) );
+        function( ( "distance3" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &distance<T> ) );
+        function( ( "cross3" + suffix ).c_str(), select_overload<Vec3Type( const Vec3Type&, const Vec3Type& )>( &cross<T> ) );
+        function( ( "dot3" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &dot<T> ) );
+        function( ( "sqr3" + suffix ).c_str(), select_overload<T( const Vec3Type& )>( &sqr<T> ) );
+        function( ( "mixed3" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type&, const Vec3Type& )>( &mixed<T> ) );
+        function( ( "mult3" + suffix ).c_str(), select_overload<Vec3Type( const Vec3Type&, const Vec3Type& )>( &mult<T> ) );
+        function( ( "div3" + suffix ).c_str(), select_overload<Vec3Type( const Vec3Type&, const Vec3Type& )>( &div<T> ) );
+        function( ( "angle3" + suffix ).c_str(), select_overload<T( const Vec3Type&, const Vec3Type& )>( &angle<T> ) );
     }
 
     return cls;
@@ -286,14 +286,14 @@ auto bindTypedVector4( const std::string& name, const std::string& suffix )
 
     if constexpr ( !std::is_same_v<T, bool> )
     {
-        function( ( "dot" + suffix ).c_str(), select_overload<T ( const Vec4Type&, const Vec4Type& )>( &dot<T> ) );
-        function( ( "mult" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &mult<T> ) );
-        function( ( "div" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &div<T> ) );
+        function( ( "dot4" + suffix ).c_str(), select_overload<T ( const Vec4Type&, const Vec4Type& )>( &dot<T> ) );
+        function( ( "mult4" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &mult<T> ) );
+        function( ( "div4" + suffix ).c_str(), select_overload<Vec4Type( const Vec4Type&, const Vec4Type& )>( &div<T> ) );
     }
 
-    function( ( "distanceSq" + suffix ).c_str(), select_overload<T( const Vec4Type&, const Vec4Type& )>( &distanceSq<T> ) );
-    function( ( "distance" + suffix ).c_str(), select_overload<T( const Vec4Type&, const Vec4Type& )>( &distance<T> ) );
-    function( ( "sqr" + suffix ).c_str(), select_overload<T( const Vec4Type& )>( &sqr<T> ) );
+    function( ( "distanceSq4" + suffix ).c_str(), select_overload<T( const Vec4Type&, const Vec4Type& )>( &distanceSq<T> ) );
+    function( ( "distance4" + suffix ).c_str(), select_overload<T( const Vec4Type&, const Vec4Type& )>( &distance<T> ) );
+    function( ( "sqr4" + suffix ).c_str(), select_overload<T( const Vec4Type& )>( &sqr<T> ) );
 
     return cls;
 }

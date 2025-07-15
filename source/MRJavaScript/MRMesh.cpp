@@ -80,8 +80,192 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.property( "points", &Mesh::points )
 
 		///
+		.class_function( "fromTrianglesMemoryView",
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh 
+			{
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						throw std::runtime_error( "vertices must be Float32Array" );
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						throw std::runtime_error( "indices must be Uint32Array" );
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "vertices array length must be divisible by 3" );
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "indices array length must be divisible by 3" );
+					}
+
+					int numVerts = verticesLength / 3;
+					int numTris = indicesLength / 3;
+
+
+					///
+					// NOT Working: Calling `subarray` creates a new view.
+					// 
+					// float* verticesPtr = reinterpret_cast<float*>(
+					// 	verticesArray.call<val>("subarray", 0)["buffer"].as<uintptr_t>()
+					// );
+					// uint32_t* indicesPtr = reinterpret_cast<uint32_t*>(
+					// 	indicesArray.call<val>("subarray", 0)["buffer"].as<uintptr_t>()
+					// );
+					// 
+					// NOTE: Directly access the memory of `TypedArray` without copying
+					val verticesBuffer = verticesArray["buffer"];
+					size_t verticesOffset = verticesArray["byteOffset"].as<size_t>();
+					// Get a pointer to `HEAP` memory
+					const float* verticesPtr = reinterpret_cast<const float*>(
+						reinterpret_cast<uint8_t*>( verticesBuffer.as<uintptr_t>() ) + verticesOffset
+					);
+
+					val indicesBuffer = indicesArray["buffer"];
+					size_t indicesOffset = indicesArray["byteOffset"].as<size_t>();
+					const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>(
+						reinterpret_cast<uint8_t*>( indicesBuffer.as<uintptr_t>() ) + indicesOffset
+					);
+					///
+
+
+					///
+					VertCoords vCoords;
+					vCoords.resize( numVerts );
+
+					for ( int i = 0; i < numVerts; ++i )
+					{
+						int baseIdx = i * 3;
+						vCoords[VertId( i )] = Vector3f(
+							verticesPtr[baseIdx],
+							verticesPtr[baseIdx + 1],
+							verticesPtr[baseIdx + 2]
+						);
+					}
+					///
+
+					///
+					Triangulation triangulation;
+					triangulation.resize( numTris );
+
+					for ( int i = 0; i < numTris; ++i )
+					{
+						int baseIdx = i * 3;
+						triangulation[FaceId( i )] = ThreeVertIds{
+							VertId( indicesPtr[baseIdx] ),
+							VertId( indicesPtr[baseIdx + 1] ),
+							VertId( indicesPtr[baseIdx + 2] )
+						};
+					}
+					///
+
+					return Mesh::fromTriangles( std::move( vCoords ), triangulation );
+				}
+				catch ( const std::exception& e )
+				{
+					// NOTE: Let `emscripten` to handle exceptions
+					// It will throw them on the JS side
+					// 
+					//  ```js
+					//  try {
+					//  	const mesh = Module.fromTrianglesMemoryView( vertices, indices );
+					//  	// ...
+					//  } catch ( error ) {
+					//  	console.error( 'Error creating mesh:', error.message );
+					//  }
+					//  ```
+					// 
+					// Or return an empty `Mesh`
+					// return Mesh();
+					// 
+					throw std::runtime_error( std::string( e.what() ) );
+				}
+			} )
+		)
+		.class_function( "fromTrianglesArray",
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh 
+			{
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						throw std::runtime_error( "vertices must be Float32Array" );
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						throw std::runtime_error( "indices must be Uint32Array" );
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "vertices array length must be divisible by 3" );
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "indices array length must be divisible by 3" );
+					}
+
+					int numVerts = verticesLength / 3;
+					int numTris = indicesLength / 3;
+
+					// NOTE: Using `emscripten::convertJSArrayToNumberVector`, a safer way to obtain data from a `TypedArray`
+					std::vector<float> verticesData = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+					std::vector<uint32_t> indicesData = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+
+					///
+					VertCoords vCoords;
+					vCoords.resize( numVerts );
+
+					// Read vertex data from vector (memory contiguous, high performance)
+					for ( int i = 0; i < numVerts; ++i )
+					{
+						int baseIdx = i * 3;
+						vCoords[VertId( i )] = Vector3f(
+							verticesData[baseIdx],
+							verticesData[baseIdx + 1],
+							verticesData[baseIdx + 2]
+						);
+					}
+					///
+
+					///
+					Triangulation triangulation;
+					triangulation.resize( numTris );
+
+					for ( int i = 0; i < numTris; ++i )
+					{
+						int baseIdx = i * 3;
+						triangulation[FaceId( i )] = ThreeVertIds{
+							VertId( indicesData[baseIdx] ),
+							VertId( indicesData[baseIdx + 1] ),
+							VertId( indicesData[baseIdx + 2] )
+						};
+					}
+					///
+
+					return Mesh::fromTriangles( std::move( vCoords ), triangulation );
+				}
+				catch ( const std::exception& e )
+				{
+					throw std::runtime_error( std::string( e.what() ) );
+				}
+			} )
+		)
+		///
+
+		///
 		.function( "fromTriangles", &Mesh::fromTriangles )
-		
+
 		.function( "fromTriMesh",
 			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
 			{
@@ -303,61 +487,191 @@ MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
 
 Mesh* MeshWrapper::getMeshPtr() { return &mesh; }
 
-// Static factory methods for creating meshes from various sources
-val MeshWrapper::fromTrianglesImpl( const val& vertexCoords, const val& triangles )
+/**
+ *@brief Static factory methods for creating meshes from various sources
+ *
+ *  ```js
+ *  // Three.js geometry
+ *  const geometry = new THREE.BufferGeometry();
+ *  const vertices = geometry.getAttribute('position').array; // `Float32Array`
+ *  const indices = geometry.getIndex().array; // `Uint32Array`
+ *  
+ *  const result = MeshWrapper.fromTrianglesImpl( vertices, indices );
+ *  ```
+ *
+ * @param vertexCoords 
+ * @param triangles 
+ * @return val 
+ */
+val MeshWrapper::fromTrianglesImpl( const val& verticesArray, const val& indicesArray )
 {
+	val result = val::object();
+
 	try
 	{
-		// Convert JavaScript arrays to C++ vectors
-		VertCoords coords;
-		int numVerts = vertexCoords["length"].as<int>();
-		coords.resize( numVerts );
+		if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+		{
+			throw std::runtime_error( "vertices must be Float32Array" );
+		}
+		if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+		{
+			throw std::runtime_error( "indices must be Uint32Array" );
+		}
+
+		int verticesLength = verticesArray["length"].as<int>();
+		int indicesLength = indicesArray["length"].as<int>();
+
+		if ( verticesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "vertices array length must be divisible by 3" );
+		}
+		if ( indicesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "indices array length must be divisible by 3" );
+		}
+
+		int numVerts = verticesLength / 3;
+		int numTris = indicesLength / 3;
+
+
+		///
+		val verticesBuffer = verticesArray["buffer"];
+		size_t verticesOffset = verticesArray["byteOffset"].as<size_t>();
+		const float* verticesPtr = reinterpret_cast<const float*>(
+			reinterpret_cast<uint8_t*>( verticesBuffer.as<uintptr_t>() ) + verticesOffset
+		);
+
+		val indicesBuffer = indicesArray["buffer"];
+		size_t indicesOffset = indicesArray["byteOffset"].as<size_t>();
+		const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>(
+			reinterpret_cast<uint8_t*>( indicesBuffer.as<uintptr_t>() ) + indicesOffset
+		);
+		///
+
+
+		///
+		VertCoords vCoords;
+		vCoords.resize( numVerts );
 
 		for ( int i = 0; i < numVerts; ++i )
 		{
-			val vertex = vertexCoords[i];
-			coords[VertId( i )] = MRJS::arrayToVector3f( vertex );
+			int baseIdx = i * 3;
+			vCoords[VertId( i )] = Vector3f(
+				verticesPtr[baseIdx],
+				verticesPtr[baseIdx + 1],
+				verticesPtr[baseIdx + 2]
+			);
 		}
+		///
 
-		// Convert triangles array
+		///
 		Triangulation triangulation;
-		int numTris = triangles["length"].as<int>();
+		triangulation.resize( numTris );
 
 		for ( int i = 0; i < numTris; ++i )
 		{
-			val tri = triangles[i];
-			triangulation.push_back( {
-				VertId( tri[0].as<int>() ),
-				VertId( tri[1].as<int>() ),
-				VertId( tri[2].as<int>() )
-			} );
+			int baseIdx = i * 3;
+			triangulation[FaceId( i )] = ThreeVertIds{
+				VertId( indicesPtr[baseIdx] ),
+				VertId( indicesPtr[baseIdx + 1] ),
+				VertId( indicesPtr[baseIdx + 2] )
+			};
 		}
+		///
 
-		auto mesh = Mesh::fromTriangles( std::move( coords ), triangulation );
-		val result = val::object();
+		auto mesh = Mesh::fromTriangles( std::move( vCoords ), triangulation );
+
 		result.set( "success", true );
 		result.set( "mesh", MeshWrapper( mesh ) );
-
-		return result;
 	}
 	catch ( const std::exception& e )
 	{
-		val result = val::object();
 		result.set( "success", false );
 		result.set( "error", std::string( e.what() ) );
-
-		return result;
 	}
+
+	return result;
 }
-// val MeshWrapper::fromTrianglesMemoryView( const float* vertexPtr,
-// 										  size_t        numVerts,
-// 										  const uint32_t* triPtr,
-// 										  size_t         numTris )
-// {
 
-// }
+val MeshWrapper::fromTrianglesImplWithArray( const val& verticesArray, const val& indicesArray )
+{
+	val result = val::object();
 
-// Geometric queries
+	try
+	{
+		if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+		{
+			throw std::runtime_error( "vertices must be Float32Array" );
+		}
+		if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+		{
+			throw std::runtime_error( "indices must be Uint32Array" );
+		}
+
+		int verticesLength = verticesArray["length"].as<int>();
+		int indicesLength = indicesArray["length"].as<int>();
+
+		if ( verticesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "vertices array length must be divisible by 3" );
+		}
+		if ( indicesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "indices array length must be divisible by 3" );
+		}
+
+		int numVerts = verticesLength / 3;
+		int numTris = indicesLength / 3;
+
+        // NOTE: Using `emscripten::convertJSArrayToNumberVector`, a safer way to obtain data from a `TypedArray`
+		std::vector<float> verticesData = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+		std::vector<uint32_t> indicesData = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+
+		///
+		VertCoords vCoords;
+		vCoords.resize( numVerts );
+
+		// Read vertex data from vector (memory contiguous, high performance)
+		for ( int i = 0; i < numVerts; ++i )
+		{
+			int baseIdx = i * 3;
+			vCoords[VertId( i )] = Vector3f(
+				verticesData[baseIdx],
+				verticesData[baseIdx + 1],
+				verticesData[baseIdx + 2]
+			);
+		}
+		///
+
+		///
+		Triangulation triangulation;
+		triangulation.resize( numTris );
+
+		for ( int i = 0; i < numTris; ++i )
+		{
+			int baseIdx = i * 3;
+			triangulation[FaceId( i )] = ThreeVertIds{
+				VertId( indicesData[baseIdx] ),
+				VertId( indicesData[baseIdx + 1] ),
+				VertId( indicesData[baseIdx + 2] )
+			};
+		}
+		///
+
+		auto mesh = Mesh::fromTriangles( std::move( vCoords ), triangulation );
+
+		result.set( "success", true );
+		result.set( "mesh", MeshWrapper( mesh ) );
+	}
+	catch ( const std::exception& e )
+	{
+		result.set( "success", false );
+		result.set( "error", std::string( e.what() ) );
+	}
+
+	return result;
+}
+
 val MeshWrapper::getBoundingBox() const
 {
 	return MRJS::box3fToObject( mesh.getBoundingBox() );
@@ -377,7 +691,7 @@ void MeshWrapper::setVertexPosition( int vertId, const val& position )
 	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
 	{
 		mesh.points[VertId( vertId )] = MRJS::arrayToVector3f( position );
-		mesh.invalidateCaches(); // Important: invalidate caches after modification
+		mesh.invalidateCaches(); // IMPORTANT: invalidate caches after modification
 	}
 }
 
@@ -406,7 +720,6 @@ val MeshWrapper::findCenter() const
 	return MRJS::vector3fToArray( mesh.findCenterFromBBox() );
 }
 
-// Face operations
 val MeshWrapper::getFaceVertices( int faceId ) const
 {
 	if ( faceId >= 0 && faceId < ( int )mesh.topology.lastValidFace() + 1 )
@@ -418,7 +731,8 @@ val MeshWrapper::getFaceVertices( int faceId ) const
 			EdgeId e = mesh.topology.edgeWithLeft( f );
 
 			for ( int i = 0; i < 3; ++i )
-			{ // Assuming triangular faces
+			{
+				// Assuming triangular faces
 				result.set( i, ( int )mesh.topology.org( e ) );
 				e = mesh.topology.next( e );
 			}
@@ -451,7 +765,6 @@ val MeshWrapper::segmentByPointsImpl(
 	meshCopy.topology = mesh.topology;
 	meshCopy.points = mesh.points;
 
-	// Input validation
 	if ( meshCopy.points.empty() )
 	{
 		result.set( "success", false );
@@ -463,7 +776,6 @@ val MeshWrapper::segmentByPointsImpl(
 	try
 	{
 		auto edgeMetric_ = edgeMetricWrapper.getMetric();
-		// Parse coordinates into Vector3f points
 		std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
 
 		if ( inputPoints.size() < 2 )
@@ -911,6 +1223,7 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.constructor<>()
 		.constructor<const Mesh&>()
 		.class_function( "fromTrianglesImpl", &MeshWrapper::fromTrianglesImpl )
+		.class_function( "fromTrianglesImplWithArray", &MeshWrapper::fromTrianglesImplWithArray )
 
 		.property( "mesh", &MeshWrapper::mesh )
 		.function( "getMesh", &MeshWrapper::getMeshPtr, allow_raw_pointers() )

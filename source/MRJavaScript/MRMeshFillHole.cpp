@@ -17,12 +17,12 @@ using namespace MR;
 
 // 1. `extendHole()` with Plane3f
 // Basic version without output parameter
-EdgeId extendHoleBasic( Mesh& mesh, EdgeId a, const Plane3f& plane )
+EdgeId extendHoleBasicImpl( Mesh& mesh, EdgeId a, const Plane3f& plane )
 {
 	return extendHole( mesh, a, plane, nullptr );
 }
 // Version with output parameter
-val extendHoleWithOutput( Mesh& mesh, EdgeId a, const Plane3f& plane )
+val extendHoleWithOutputImpl( Mesh& mesh, EdgeId a, const Plane3f& plane )
 {
 	FaceBitSet outNewFaces;
 	EdgeId result = extendHole( mesh, a, plane, &outNewFaces );
@@ -42,12 +42,12 @@ val extendHoleWithOutput( Mesh& mesh, EdgeId a, const Plane3f& plane )
 
 // 2. `extendAllHoles()`
 // Basic version
-std::vector<EdgeId> extendAllHolesBasic( Mesh& mesh, const Plane3f& plane )
+std::vector<EdgeId> extendAllHolesBasicImpl( Mesh& mesh, const Plane3f& plane )
 {
 	return extendAllHoles( mesh, plane, nullptr );
 }
 // Version with output parameter
-val extendAllHoles_withOutput( Mesh& mesh, const Plane3f& plane )
+val extendAllHolesWithOutputImpl( Mesh& mesh, const Plane3f& plane )
 {
 	FaceBitSet outNewFaces;
 	std::vector<EdgeId> result = extendAllHoles( mesh, plane, &outNewFaces );
@@ -69,7 +69,7 @@ val extendAllHoles_withOutput( Mesh& mesh, const Plane3f& plane )
 
 // 3. `extendHole()` with function
 // Basic version
-EdgeId extendHoleFuncBasic( Mesh& mesh, EdgeId a, val jsFunc )
+EdgeId extendHoleWithFuncBasicImpl( Mesh& mesh, EdgeId a, val jsFunc )
 {
 	// Convert JavaScript function to C++ function
 	std::function<Vector3f( const Vector3f& )> cppFunc = [jsFunc] ( const Vector3f& pos ) -> Vector3f
@@ -81,7 +81,7 @@ EdgeId extendHoleFuncBasic( Mesh& mesh, EdgeId a, val jsFunc )
 	return extendHole( mesh, a, cppFunc, nullptr );
 }
 // Version with output parameter
-val extendHoleFuncWithOutput( Mesh& mesh, EdgeId a, val jsFunc )
+val extendHoleWithFuncAndOutputImpl( Mesh& mesh, EdgeId a, val jsFunc )
 {
 	std::function<Vector3f( const Vector3f& )> cppFunc = [jsFunc] ( const Vector3f& pos ) -> Vector3f
 	{
@@ -107,7 +107,7 @@ val extendHoleFuncWithOutput( Mesh& mesh, EdgeId a, val jsFunc )
 
 // 4. `buildBottom()`
 // Basic version
-EdgeId buildBottomBasic( Mesh& mesh, EdgeId a, Vector3f dir, float holeExtension )
+EdgeId buildBottomBasicImpl( Mesh& mesh, EdgeId a, Vector3f dir, float holeExtension )
 {
 	return buildBottom( mesh, a, dir, holeExtension, nullptr );
 }
@@ -132,12 +132,12 @@ val buildBottomWithOutput( Mesh& mesh, EdgeId a, Vector3f dir, float holeExtensi
 
 // 5. `makeDegenerateBandAroundHole()`
 // Basic version
-EdgeId makeDegenerateBandAroundHoleBasic( Mesh& mesh, EdgeId a )
+EdgeId makeDegenerateBandAroundHoleBasicImpl( Mesh& mesh, EdgeId a )
 {
 	return makeDegenerateBandAroundHole( mesh, a, nullptr );
 }
 // Version with output parameter
-val makeDegenerateBandAroundHoleWithOutput( Mesh& mesh, EdgeId a )
+val makeDegenerateBandAroundHoleWithOutputImpl( Mesh& mesh, EdgeId a )
 {
 	FaceBitSet outNewFaces;
 	EdgeId result = makeDegenerateBandAroundHole( mesh, a, &outNewFaces );
@@ -154,6 +154,24 @@ val makeDegenerateBandAroundHoleWithOutput( Mesh& mesh, EdgeId a )
 
 	return returnObj;
 }
+
+val fillHolesImpl( Mesh& mesh )
+{
+	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
+
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
+	for ( EdgeId e : holeEdges )
+	{
+		FillHoleParams params;
+		fillHole( meshCopy, e, params );
+	}
+
+    return MRJS::exportMeshMemoryView( meshCopy );
+}
+
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 {
@@ -184,22 +202,25 @@ EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 
 	function( "fillHole", &fillHole );
 	function( "fillHoles", &fillHoles );
+	function( "fillHolesImpl", &fillHolesImpl );
 
-	// Basic versions without output
-	function( "extendHole", &extendHoleBasic );
-	function( "extendAllHoles", &extendAllHolesBasic );
-	function( "extendHoleWithFunc", &extendHoleFuncBasic );
-	function( "buildBottom", &buildBottomBasic );
-	function( "makeDegenerateBandAroundHole", &makeDegenerateBandAroundHoleBasic );
-
-	// Versions with output parameter (returning objects with both result and new faces)
-	function( "extendHoleWithOutput", &extendHoleWithOutput );
-	function( "extendAllHolesWithOutput", &extendAllHoles_withOutput );
-	function( "extendHoleWithFuncAndOutput", &extendHoleFuncWithOutput );
-	function( "buildBottomWithOutput", &buildBottomWithOutput );
-	function( "makeDegenerateBandAroundHoleWithOutput", &makeDegenerateBandAroundHoleWithOutput );
-
-	
 	function( "buildCylinderBetweenTwoHolesWithEdges", select_overload<void( Mesh&, EdgeId, EdgeId, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
 	function( "buildCylinderBetweenTwoHoles", select_overload<bool( Mesh&, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
+
+
+	///
+	// Basic versions without output
+	function( "extendHoleBasicImpl", &extendHoleBasicImpl );
+	function( "extendAllHolesBasicImpl", &extendAllHolesBasicImpl );
+	function( "extendHoleWithFuncBasicImpl", &extendHoleWithFuncBasicImpl );
+	function( "buildBottomBasicImpl", &buildBottomBasicImpl );
+	function( "makeDegenerateBandAroundHoleBasicImpl", &makeDegenerateBandAroundHoleBasicImpl );
+
+	// Versions with output parameter (returning objects with both result and new faces)
+	function( "extendHoleWithOutputImpl", &extendHoleWithOutputImpl );
+	function( "extendAllHolesWithOutputImpl", &extendAllHolesWithOutputImpl );
+	function( "extendHoleWithFuncAndOutputImpl", &extendHoleWithFuncAndOutputImpl );
+	function( "buildBottomWithOutput", &buildBottomWithOutput );
+	function( "makeDegenerateBandAroundHoleWithOutputImpl", &makeDegenerateBandAroundHoleWithOutputImpl );
+	///
 }

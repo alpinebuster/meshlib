@@ -4032,6 +4032,15 @@ export interface SymMatrix4f extends ClassHandle {
 export interface SymMatrix4d extends ClassHandle {
 }
 
+export interface DentalId extends ClassHandle {
+  fdi(): number;
+  equals(_0: DentalId): boolean;
+  lessThan(_0: DentalId): boolean;
+  greaterThan(_0: DentalId): boolean;
+  hash(): number;
+  toString(): string;
+}
+
 export interface TriMesh extends ClassHandle {
   tris: Triangulation;
   points: VertCoords;
@@ -5854,8 +5863,8 @@ interface EmbindModule {
     brown(): Color;
     purple(): Color;
     transparent(): Color;
-    fromVector3I(_0: Vector3i): Color;
-    fromVector4I(_0: Vector4i): Color;
+    fromVector3i(_0: Vector3i): Color;
+    fromVector4i(_0: Vector4i): Color;
   };
   ColorAdd(_0: Color, _1: Color): Color;
   ColorSub(_0: Color, _1: Color): Color;
@@ -6080,6 +6089,8 @@ interface EmbindModule {
   };
   Mesh: {
     new(): Mesh;
+    fromTrianglesMemoryView(_0: any, _1: any): Mesh;
+    fromTrianglesArray(_0: any, _1: any): Mesh;
   };
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
   findTwinEdges(_0: Mesh, _1: number): EdgeBitSet;
@@ -6095,6 +6106,7 @@ interface EmbindModule {
     new(): MeshWrapper;
     new(_0: Mesh): MeshWrapper;
     fromTrianglesImpl(_0: any, _1: any): any;
+    fromTrianglesImplWithArray(_0: any, _1: any): any;
   };
   BooleanResult: {
     new(): BooleanResult;
@@ -6161,6 +6173,7 @@ interface EmbindModule {
   FillHoleParams: {
     new(): FillHoleParams;
   };
+  fillHolesImpl(_0: Mesh): any;
   buildCylinderBetweenTwoHoles(_0: Mesh, _1: StitchHolesParams): boolean;
   noInit: NoInit;
   EdgeId: {
@@ -6177,11 +6190,11 @@ interface EmbindModule {
   subEdgeIdUInt(_0: EdgeId, _1: number): EdgeId;
   subEdgeIdSize(_0: EdgeId, _1: number): EdgeId;
   fillHole(_0: Mesh, _1: EdgeId, _2: FillHoleParams): void;
-  extendHoleWithFunc(_0: Mesh, _1: EdgeId, _2: any): EdgeId;
-  makeDegenerateBandAroundHole(_0: Mesh, _1: EdgeId): EdgeId;
-  extendHoleWithFuncAndOutput(_0: Mesh, _1: EdgeId, _2: any): any;
-  makeDegenerateBandAroundHoleWithOutput(_0: Mesh, _1: EdgeId): any;
   buildCylinderBetweenTwoHolesWithEdges(_0: Mesh, _1: EdgeId, _2: EdgeId, _3: StitchHolesParams): void;
+  extendHoleWithFuncBasicImpl(_0: Mesh, _1: EdgeId, _2: any): EdgeId;
+  makeDegenerateBandAroundHoleBasicImpl(_0: Mesh, _1: EdgeId): EdgeId;
+  extendHoleWithFuncAndOutputImpl(_0: Mesh, _1: EdgeId, _2: any): any;
+  makeDegenerateBandAroundHoleWithOutputImpl(_0: Mesh, _1: EdgeId): any;
   VoxelId: {
     new(): VoxelId;
     new(_0: number): VoxelId;
@@ -6598,9 +6611,9 @@ interface EmbindModule {
     new(_0: Vector3f, _1: number): Plane3f;
     fromDirAndPt(_0: Vector3f, _1: Vector3f): Plane3f;
   };
-  extendHole(_0: Mesh, _1: EdgeId, _2: Plane3f): EdgeId;
-  extendHoleWithOutput(_0: Mesh, _1: EdgeId, _2: Plane3f): any;
-  extendAllHolesWithOutput(_0: Mesh, _1: Plane3f): any;
+  extendHoleBasicImpl(_0: Mesh, _1: EdgeId, _2: Plane3f): EdgeId;
+  extendHoleWithOutputImpl(_0: Mesh, _1: EdgeId, _2: Plane3f): any;
+  extendAllHolesWithOutputImpl(_0: Mesh, _1: Plane3f): any;
   createComplexFillMetricWithPlane3f(_0: Mesh, _1: EdgeId, _2: Plane3f | null): FillHoleMetricWrapper;
   Plane3d: {
     new(): Plane3d;
@@ -6744,6 +6757,9 @@ interface EmbindModule {
   };
   SymMatrix4d: {
     new(): SymMatrix4d;
+  };
+  DentalId: {
+    creatFromFDI(_0: number): DentalId | undefined;
   };
   TriMesh: {
     new(): TriMesh;
@@ -6954,7 +6970,7 @@ interface EmbindModule {
   };
   fillContourLeft(_0: MeshTopology, _1: VectorEdgeId): FaceBitSet;
   fillHoles(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): void;
-  extendAllHoles(_0: Mesh, _1: Plane3f): VectorEdgeId;
+  extendAllHolesBasicImpl(_0: Mesh, _1: Plane3f): VectorEdgeId;
   trackLeftBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
   trackRightBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
   VectorUndirectedEdgeId: {
@@ -7340,7 +7356,7 @@ interface EmbindModule {
   fixUndercutsImplTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsImplThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   closestPointOnLineSegm3f(_0: Vector3f, _1: LineSegm3f): Vector3f;
-  buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
+  buildBottomBasicImpl(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
   buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
   createVerticalStitchMetric(_0: Mesh, _1: Vector3f): FillHoleMetricWrapper;
   projectOnAllWithProgress(_0: Vector3f, _1: AABBTreeObjects, _2: number, _3: any, _4: ObjId): void;
@@ -7349,15 +7365,15 @@ interface EmbindModule {
   surroundingContourEdges(_0: Mesh, _1: VectorEdgeId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
   surroundingContourVertices(_0: Mesh, _1: VectorVertId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
   unitVector3f(_0: number, _1: number): Vector3f;
-  distanceSqf(_0: Vector3f, _1: Vector3f): number;
-  distancef(_0: Vector3f, _1: Vector3f): number;
-  crossf(_0: Vector3f, _1: Vector3f): Vector3f;
-  dotf(_0: Vector3f, _1: Vector3f): number;
-  sqrf(_0: Vector3f): number;
-  mixedf(_0: Vector3f, _1: Vector3f, _2: Vector3f): number;
-  multf(_0: Vector3f, _1: Vector3f): Vector3f;
-  divf(_0: Vector3f, _1: Vector3f): Vector3f;
-  anglef(_0: Vector3f, _1: Vector3f): number;
+  distanceSq3f(_0: Vector3f, _1: Vector3f): number;
+  distance3f(_0: Vector3f, _1: Vector3f): number;
+  cross3f(_0: Vector3f, _1: Vector3f): Vector3f;
+  dot3f(_0: Vector3f, _1: Vector3f): number;
+  sqr3f(_0: Vector3f): number;
+  mixed3f(_0: Vector3f, _1: Vector3f, _2: Vector3f): number;
+  mult3f(_0: Vector3f, _1: Vector3f): Vector3f;
+  div3f(_0: Vector3f, _1: Vector3f): Vector3f;
+  angle3f(_0: Vector3f, _1: Vector3f): number;
   Vector3b: {
     new(): Vector3b;
     new(_0: boolean, _1: boolean, _2: boolean): Vector3b;
@@ -7386,15 +7402,15 @@ interface EmbindModule {
   makeFreeFormOriginGrid(_0: Box3f, _1: Vector3i): VectorVector3f;
   findBestFreeformDeformation(_0: Box3f, _1: VectorVector3f, _2: VectorVector3f, _3: Vector3i, _4: AffineXf3f | null): VectorVector3f;
   unitVector3i(_0: number, _1: number): Vector3f;
-  distanceSqi(_0: Vector3i, _1: Vector3i): number;
-  distancei(_0: Vector3i, _1: Vector3i): number;
-  crossi(_0: Vector3i, _1: Vector3i): Vector3i;
-  doti(_0: Vector3i, _1: Vector3i): number;
-  sqri(_0: Vector3i): number;
-  mixedi(_0: Vector3i, _1: Vector3i, _2: Vector3i): number;
-  multi(_0: Vector3i, _1: Vector3i): Vector3i;
-  divi(_0: Vector3i, _1: Vector3i): Vector3i;
-  anglei(_0: Vector3i, _1: Vector3i): number;
+  distanceSq3i(_0: Vector3i, _1: Vector3i): number;
+  distance3i(_0: Vector3i, _1: Vector3i): number;
+  cross3i(_0: Vector3i, _1: Vector3i): Vector3i;
+  dot3i(_0: Vector3i, _1: Vector3i): number;
+  sqr3i(_0: Vector3i): number;
+  mixed3i(_0: Vector3i, _1: Vector3i, _2: Vector3i): number;
+  mult3i(_0: Vector3i, _1: Vector3i): Vector3i;
+  div3i(_0: Vector3i, _1: Vector3i): Vector3i;
+  angle3i(_0: Vector3i, _1: Vector3i): number;
   Vector3ll: {
     new(): Vector3ll;
     new(_0: bigint, _1: bigint, _2: bigint): Vector3ll;
@@ -7408,15 +7424,15 @@ interface EmbindModule {
     minusZ(): Vector3ll;
   };
   unitVector3ll(_0: bigint, _1: bigint): Vector3f;
-  distanceSqll(_0: Vector3ll, _1: Vector3ll): bigint;
-  distancell(_0: Vector3ll, _1: Vector3ll): bigint;
-  crossll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
-  dotll(_0: Vector3ll, _1: Vector3ll): bigint;
-  sqrll(_0: Vector3ll): bigint;
-  mixedll(_0: Vector3ll, _1: Vector3ll, _2: Vector3ll): bigint;
-  multll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
-  divll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
-  anglell(_0: Vector3ll, _1: Vector3ll): bigint;
+  distanceSq3ll(_0: Vector3ll, _1: Vector3ll): bigint;
+  distance3ll(_0: Vector3ll, _1: Vector3ll): bigint;
+  cross3ll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
+  dot3ll(_0: Vector3ll, _1: Vector3ll): bigint;
+  sqr3ll(_0: Vector3ll): bigint;
+  mixed3ll(_0: Vector3ll, _1: Vector3ll, _2: Vector3ll): bigint;
+  mult3ll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
+  div3ll(_0: Vector3ll, _1: Vector3ll): Vector3ll;
+  angle3ll(_0: Vector3ll, _1: Vector3ll): bigint;
   Vector3d: {
     new(): Vector3d;
     new(_0: number, _1: number, _2: number): Vector3d;
@@ -7433,67 +7449,67 @@ interface EmbindModule {
   to2dimVecd(_0: Vector3d): Vector2d;
   closestPointOnLineSegm3d(_0: Vector3d, _1: LineSegm3d): Vector3d;
   unitVector3d(_0: number, _1: number): Vector3d;
-  distanceSqd(_0: Vector3d, _1: Vector3d): number;
-  distanced(_0: Vector3d, _1: Vector3d): number;
-  crossd(_0: Vector3d, _1: Vector3d): Vector3d;
-  dotd(_0: Vector3d, _1: Vector3d): number;
-  sqrd(_0: Vector3d): number;
-  mixedd(_0: Vector3d, _1: Vector3d, _2: Vector3d): number;
-  multd(_0: Vector3d, _1: Vector3d): Vector3d;
-  divd(_0: Vector3d, _1: Vector3d): Vector3d;
-  angled(_0: Vector3d, _1: Vector3d): number;
+  distanceSq3d(_0: Vector3d, _1: Vector3d): number;
+  distance3d(_0: Vector3d, _1: Vector3d): number;
+  cross3d(_0: Vector3d, _1: Vector3d): Vector3d;
+  dot3d(_0: Vector3d, _1: Vector3d): number;
+  sqr3d(_0: Vector3d): number;
+  mixed3d(_0: Vector3d, _1: Vector3d, _2: Vector3d): number;
+  mult3d(_0: Vector3d, _1: Vector3d): Vector3d;
+  div3d(_0: Vector3d, _1: Vector3d): Vector3d;
+  angle3d(_0: Vector3d, _1: Vector3d): number;
   Vector4b: {
     new(): Vector4b;
     new(_0: boolean, _1: boolean, _2: boolean, _3: boolean): Vector4b;
     diagonal(_0: boolean): Vector4b;
   };
-  distanceSqb(_0: Vector4b, _1: Vector4b): boolean;
-  distanceb(_0: Vector4b, _1: Vector4b): boolean;
-  sqrb(_0: Vector4b): boolean;
+  distanceSq4b(_0: Vector4b, _1: Vector4b): boolean;
+  distance4b(_0: Vector4b, _1: Vector4b): boolean;
+  sqr4b(_0: Vector4b): boolean;
   Vector4f: {
     new(): Vector4f;
     new(_0: number, _1: number, _2: number, _3: number): Vector4f;
     diagonal(_0: number): Vector4f;
   };
-  dotf(_0: Vector4f, _1: Vector4f): number;
-  multf(_0: Vector4f, _1: Vector4f): Vector4f;
-  divf(_0: Vector4f, _1: Vector4f): Vector4f;
-  distanceSqf(_0: Vector4f, _1: Vector4f): number;
-  distancef(_0: Vector4f, _1: Vector4f): number;
-  sqrf(_0: Vector4f): number;
+  dot4f(_0: Vector4f, _1: Vector4f): number;
+  mult4f(_0: Vector4f, _1: Vector4f): Vector4f;
+  div4f(_0: Vector4f, _1: Vector4f): Vector4f;
+  distanceSq4f(_0: Vector4f, _1: Vector4f): number;
+  distance4f(_0: Vector4f, _1: Vector4f): number;
+  sqr4f(_0: Vector4f): number;
   Vector4i: {
     new(): Vector4i;
     new(_0: number, _1: number, _2: number, _3: number): Vector4i;
     diagonal(_0: number): Vector4i;
   };
-  doti(_0: Vector4i, _1: Vector4i): number;
-  multi(_0: Vector4i, _1: Vector4i): Vector4i;
-  divi(_0: Vector4i, _1: Vector4i): Vector4i;
-  distanceSqi(_0: Vector4i, _1: Vector4i): number;
-  distancei(_0: Vector4i, _1: Vector4i): number;
-  sqri(_0: Vector4i): number;
+  dot4i(_0: Vector4i, _1: Vector4i): number;
+  mult4i(_0: Vector4i, _1: Vector4i): Vector4i;
+  div4i(_0: Vector4i, _1: Vector4i): Vector4i;
+  distanceSq4i(_0: Vector4i, _1: Vector4i): number;
+  distance4i(_0: Vector4i, _1: Vector4i): number;
+  sqr4i(_0: Vector4i): number;
   Vector4ll: {
     new(): Vector4ll;
     new(_0: bigint, _1: bigint, _2: bigint, _3: bigint): Vector4ll;
     diagonal(_0: bigint): Vector4ll;
   };
-  dotll(_0: Vector4ll, _1: Vector4ll): bigint;
-  multll(_0: Vector4ll, _1: Vector4ll): Vector4ll;
-  divll(_0: Vector4ll, _1: Vector4ll): Vector4ll;
-  distanceSqll(_0: Vector4ll, _1: Vector4ll): bigint;
-  distancell(_0: Vector4ll, _1: Vector4ll): bigint;
-  sqrll(_0: Vector4ll): bigint;
+  dot4ll(_0: Vector4ll, _1: Vector4ll): bigint;
+  mult4ll(_0: Vector4ll, _1: Vector4ll): Vector4ll;
+  div4ll(_0: Vector4ll, _1: Vector4ll): Vector4ll;
+  distanceSq4ll(_0: Vector4ll, _1: Vector4ll): bigint;
+  distance4ll(_0: Vector4ll, _1: Vector4ll): bigint;
+  sqr4ll(_0: Vector4ll): bigint;
   Vector4d: {
     new(): Vector4d;
     new(_0: number, _1: number, _2: number, _3: number): Vector4d;
     diagonal(_0: number): Vector4d;
   };
-  dotd(_0: Vector4d, _1: Vector4d): number;
-  multd(_0: Vector4d, _1: Vector4d): Vector4d;
-  divd(_0: Vector4d, _1: Vector4d): Vector4d;
-  distanceSqd(_0: Vector4d, _1: Vector4d): number;
-  distanced(_0: Vector4d, _1: Vector4d): number;
-  sqrd(_0: Vector4d): number;
+  dot4d(_0: Vector4d, _1: Vector4d): number;
+  mult4d(_0: Vector4d, _1: Vector4d): Vector4d;
+  div4d(_0: Vector4d, _1: Vector4d): Vector4d;
+  distanceSq4d(_0: Vector4d, _1: Vector4d): number;
+  distance4d(_0: Vector4d, _1: Vector4d): number;
+  sqr4d(_0: Vector4d): number;
   VisualObject: {
     new(): VisualObject;
   };
