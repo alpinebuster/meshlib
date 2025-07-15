@@ -80,6 +80,38 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.property( "points", &Mesh::points )
 
 		///
+		// NOTE: Let `emscripten` to handle exceptions, it will throw them on the JS side
+		// 
+		// Example usage:
+		// 
+		//  ```js
+		//  /// Vertices
+		//  // 1) allocate `nVerts*3` floats in WASM
+		//  const verticesCount = vertices.length; 
+		//  // NOTE: In `_malloc`, the specified value is in bytes, not in the number of elements
+		//  // Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
+		//  const verticesPtr = editor.mrmesh._malloc( verticesCount * 4 );
+		//  // 2) construct a JS Float32Array that _views_ the WASM heap:
+		//  const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
+		//  // 3) copy into it (once), or let your own code fill it:
+		//  jsVertices.set( vertices );
+		//  ///
+		// 
+		// 
+		// 	/// Indices
+		// 	const indicesCount = indices.length;
+		// 	const indicesPtr = editor.mrmesh._malloc( indicesCount * 4 );
+		// 	const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
+		// 	jsIndices.set( indices );
+		// 	///
+		//  try {
+		//  	const mesh = Module.fromTrianglesMemoryView( jsVertices, jsIndices );
+		//  	// ...
+		//  } catch ( error ) {
+		//  	console.error( 'Error creating mesh:', error.message );
+		//  }
+		//  ```
+		// 
 		.class_function( "fromTrianglesMemoryView",
 			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh 
 			{
@@ -111,28 +143,12 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
-					// NOT Working: Calling `subarray` creates a new view.
-					// 
-					// float* verticesPtr = reinterpret_cast<float*>(
-					// 	verticesArray.call<val>("subarray", 0)["buffer"].as<uintptr_t>()
-					// );
-					// uint32_t* indicesPtr = reinterpret_cast<uint32_t*>(
-					// 	indicesArray.call<val>("subarray", 0)["buffer"].as<uintptr_t>()
-					// );
-					// 
 					// NOTE: Directly access the memory of `TypedArray` without copying
-					val verticesBuffer = verticesArray["buffer"];
-					size_t verticesOffset = verticesArray["byteOffset"].as<size_t>();
-					// Get a pointer to `HEAP` memory
-					const float* verticesPtr = reinterpret_cast<const float*>(
-						reinterpret_cast<uint8_t*>( verticesBuffer.as<uintptr_t>() ) + verticesOffset
-					);
+					size_t verticesByteOffset = verticesArray["byteOffset"].as<size_t>();
+					const float* verticesPtr = reinterpret_cast<const float*>( verticesByteOffset );
 
-					val indicesBuffer = indicesArray["buffer"];
-					size_t indicesOffset = indicesArray["byteOffset"].as<size_t>();
-					const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>(
-						reinterpret_cast<uint8_t*>( indicesBuffer.as<uintptr_t>() ) + indicesOffset
-					);
+					size_t indicesByteOffset = indicesArray["byteOffset"].as<size_t>();
+					const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>( indicesByteOffset );
 					///
 
 
@@ -170,25 +186,24 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 				}
 				catch ( const std::exception& e )
 				{
-					// NOTE: Let `emscripten` to handle exceptions
-					// It will throw them on the JS side
-					// 
-					//  ```js
-					//  try {
-					//  	const mesh = Module.fromTrianglesMemoryView( vertices, indices );
-					//  	// ...
-					//  } catch ( error ) {
-					//  	console.error( 'Error creating mesh:', error.message );
-					//  }
-					//  ```
-					// 
 					// Or return an empty `Mesh`
 					// return Mesh();
-					// 
 					throw std::runtime_error( std::string( e.what() ) );
 				}
 			} )
 		)
+		// 
+		// Example usage
+		// 
+		//  ```js
+		//  // Three.js geometry
+		//  const geometry = new THREE.BufferGeometry();
+		//  const vertices = geometry.getAttribute('position').array; // `Float32Array`
+		//  const indices = geometry.getIndex().array; // `Uint32Array`
+		//  
+		//  const result = MeshWrapper.fromTrianglesImpl( vertices, indices );
+		//  ```
+		// 
 		.class_function( "fromTrianglesArray",
 			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh 
 			{
@@ -218,9 +233,14 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					int numVerts = verticesLength / 3;
 					int numTris = indicesLength / 3;
 
-					// NOTE: Using `emscripten::convertJSArrayToNumberVector`, a safer way to obtain data from a `TypedArray`
-					std::vector<float> verticesData = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
-					std::vector<uint32_t> indicesData = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+
+					///
+					std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+					std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+					const float* verticesPtr = verticesVec.data();
+					const uint32_t* indicesPtr = indicesVec.data();
+					///
+
 
 					///
 					VertCoords vCoords;
@@ -231,9 +251,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					{
 						int baseIdx = i * 3;
 						vCoords[VertId( i )] = Vector3f(
-							verticesData[baseIdx],
-							verticesData[baseIdx + 1],
-							verticesData[baseIdx + 2]
+							verticesPtr[baseIdx],
+							verticesPtr[baseIdx + 1],
+							verticesPtr[baseIdx + 2]
 						);
 					}
 					///
@@ -246,9 +266,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					{
 						int baseIdx = i * 3;
 						triangulation[FaceId( i )] = ThreeVertIds{
-							VertId( indicesData[baseIdx] ),
-							VertId( indicesData[baseIdx + 1] ),
-							VertId( indicesData[baseIdx + 2] )
+							VertId( indicesPtr[baseIdx] ),
+							VertId( indicesPtr[baseIdx + 1] ),
+							VertId( indicesPtr[baseIdx + 2] )
 						};
 					}
 					///
@@ -487,22 +507,6 @@ MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
 
 Mesh* MeshWrapper::getMeshPtr() { return &mesh; }
 
-/**
- *@brief Static factory methods for creating meshes from various sources
- *
- *  ```js
- *  // Three.js geometry
- *  const geometry = new THREE.BufferGeometry();
- *  const vertices = geometry.getAttribute('position').array; // `Float32Array`
- *  const indices = geometry.getIndex().array; // `Uint32Array`
- *  
- *  const result = MeshWrapper.fromTrianglesImpl( vertices, indices );
- *  ```
- *
- * @param vertexCoords 
- * @param triangles 
- * @return val 
- */
 val MeshWrapper::fromTrianglesImpl( const val& verticesArray, const val& indicesArray )
 {
 	val result = val::object();
@@ -535,17 +539,11 @@ val MeshWrapper::fromTrianglesImpl( const val& verticesArray, const val& indices
 
 
 		///
-		val verticesBuffer = verticesArray["buffer"];
-		size_t verticesOffset = verticesArray["byteOffset"].as<size_t>();
-		const float* verticesPtr = reinterpret_cast<const float*>(
-			reinterpret_cast<uint8_t*>( verticesBuffer.as<uintptr_t>() ) + verticesOffset
-		);
+		size_t verticesByteOffset = verticesArray["byteOffset"].as<size_t>();
+		const float* verticesPtr = reinterpret_cast<const float*>( verticesByteOffset );
 
-		val indicesBuffer = indicesArray["buffer"];
-		size_t indicesOffset = indicesArray["byteOffset"].as<size_t>();
-		const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>(
-			reinterpret_cast<uint8_t*>( indicesBuffer.as<uintptr_t>() ) + indicesOffset
-		);
+		size_t indicesByteOffset = indicesArray["byteOffset"].as<size_t>();
+		const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>( indicesByteOffset );
 		///
 
 
@@ -624,8 +622,10 @@ val MeshWrapper::fromTrianglesImplWithArray( const val& verticesArray, const val
 		int numTris = indicesLength / 3;
 
         // NOTE: Using `emscripten::convertJSArrayToNumberVector`, a safer way to obtain data from a `TypedArray`
-		std::vector<float> verticesData = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
-		std::vector<uint32_t> indicesData = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+		std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+		std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+		const float* verticesPtr = verticesVec.data();
+		const uint32_t* indicesPtr = indicesVec.data();
 
 		///
 		VertCoords vCoords;
@@ -636,9 +636,9 @@ val MeshWrapper::fromTrianglesImplWithArray( const val& verticesArray, const val
 		{
 			int baseIdx = i * 3;
 			vCoords[VertId( i )] = Vector3f(
-				verticesData[baseIdx],
-				verticesData[baseIdx + 1],
-				verticesData[baseIdx + 2]
+				verticesPtr[baseIdx],
+				verticesPtr[baseIdx + 1],
+				verticesPtr[baseIdx + 2]
 			);
 		}
 		///
@@ -651,9 +651,9 @@ val MeshWrapper::fromTrianglesImplWithArray( const val& verticesArray, const val
 		{
 			int baseIdx = i * 3;
 			triangulation[FaceId( i )] = ThreeVertIds{
-				VertId( indicesData[baseIdx] ),
-				VertId( indicesData[baseIdx + 1] ),
-				VertId( indicesData[baseIdx + 2] )
+				VertId( indicesPtr[baseIdx] ),
+				VertId( indicesPtr[baseIdx + 1] ),
+				VertId( indicesPtr[baseIdx + 2] )
 			};
 		}
 		///
@@ -1225,7 +1225,7 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.class_function( "fromTrianglesImpl", &MeshWrapper::fromTrianglesImpl )
 		.class_function( "fromTrianglesImplWithArray", &MeshWrapper::fromTrianglesImplWithArray )
 
-		.property( "mesh", &MeshWrapper::mesh )
+		.property( "mesh", &MeshWrapper::mesh, return_value_policy::reference() )
 		.function( "getMesh", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
 
 		// Geometric properties

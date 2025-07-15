@@ -437,7 +437,57 @@ function SidebarObject( editor ) {
 				const indices = geometry.getIndex().array; // `Uint32Array`
 
 				try {
-					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( vertices, indices );
+					/// Vertices
+					// 1) allocate `nVerts*3` floats in WASM
+					const verticesCount = vertices.length; 
+					// NOTE: In `_malloc`, the specified value is in bytes, not in the number of elements
+					// Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
+					const verticesPtr = editor.mrmesh._malloc( verticesCount * 4 );
+					// 2) construct a JS Float32Array that _views_ the WASM heap:
+					const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
+					// 3) copy into it (once), or let your own code fill it:
+					jsVertices.set( vertices );
+					///
+
+					/// Indices
+					const indicesCount = indices.length;
+					const indicesPtr = editor.mrmesh._malloc( indicesCount * 4 );
+					const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
+					jsIndices.set( indices );
+					///
+
+					// 4) Now `jsVertices.buffer === editor.mrmesh.HEAPF32.buffer`
+					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+					const result = editor.mrmesh.fillHolesImpl( mesh );
+
+					const newVertices = result.vertices;
+					const newIndices = result.indices;
+
+					showMesh( newVertices, newIndices );
+
+
+					/// IMPORTANT！！！
+					editor.mrmesh._free( verticesPtr );
+					editor.mrmesh._free( indicesPtr );
+					///
+				} catch ( error ) {
+					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				}
+			}
+		}
+	});
+	const wasmOpLoadFromThreeJSArray = new UIButton( strings.getKey( 'sidebar/object/wasmOpLoadFromThreeJSArray') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if (currentUUID) {
+			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const geometry = editor.selected.geometry;
+				const vertices = geometry.getAttribute('position').array; // `Float32Array`
+				const indices = geometry.getIndex().array; // `Uint32Array`
+
+				try {
+					const mesh = editor.mrmesh.Mesh.fromTrianglesArray( vertices, indices );
 					const result = editor.mrmesh.fillHolesImpl( mesh );
 
 					const newVertices = result.vertices;
@@ -471,6 +521,7 @@ function SidebarObject( editor ) {
 	
 	const wasmOpsRowLoad = new UIRow();
 	wasmOpsRowLoad.add( wasmOpLoadFromThreeJS );
+	wasmOpsRowLoad.add( wasmOpLoadFromThreeJSArray );
 	
 	container.add( wasmOpsRow );
 	container.add( wasmOpsRowLoad );

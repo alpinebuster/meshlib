@@ -414,16 +414,15 @@ function Loader( editor ) {
 					const contents = event.target.result;
 
 					// NOTE: Wasm Object with emscripten memory views
-					const uint8Array = new Uint8Array(contents);
-					const ptr = editor.mrmesh._malloc(uint8Array.byteLength);
-					editor.mrmesh.HEAPU8.set(uint8Array, ptr);
-					const result = await editor.mrmesh.MeshLoadWrapper.fromBinaryData(ptr, uint8Array.byteLength, 'stl');
+					const uint8Array = new Uint8Array( contents );
+					const ptr = editor.mrmesh._malloc( uint8Array.byteLength );
+					editor.mrmesh.HEAPU8.set( uint8Array, ptr );
+					const result = await editor.mrmesh.MeshLoadWrapper.fromBinaryData( ptr, uint8Array.byteLength, 'stl' );
 
 					if (!result.success) {
-						console.log("WASM ERR: ", result);
-
-						console.log("Retrying with `readAsArrayBuffer()`");
-						reader.readAsArrayBuffer(file);
+						// console.log( "WASM ERR: ", result );
+						console.log( "Retrying with `readAsArrayBuffer()`" );
+						reader.readAsArrayBuffer( file );
 						return; // Exit the current function to avoid further processing
 					}
 					const mrmeshObj = result.mesh;
@@ -436,10 +435,10 @@ function Loader( editor ) {
 					const mesh = new THREE.Mesh( geometry, material );
 					mesh.name = filename;
 
-					editor.execute(new AddObjectCommand(editor, mesh, null, null, mrmeshObj));
+					editor.execute( new AddObjectCommand( editor, mesh, null, null, mrmeshObj ) );
 
 					// NOTE: Remember to free after processing
-					editor.mrmesh._free(ptr);
+					editor.mrmesh._free( ptr );
 				}, false );
 
 				if ( reader.readAsBinaryString !== undefined ) {
