@@ -281,6 +281,13 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 				}
 			} )
 		)
+
+		.class_function( "getGeometry",
+			optional_override( []( Mesh& mesh ) -> val
+			{
+				return MRJS::exportMeshMemoryView( mesh );
+			})
+		)
 		///
 
 		///

@@ -119,8 +119,8 @@ inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
     meshData.set( "indices", triangleArray );
     meshData.set( "indexElementCount", triElementCount );
     meshData.set( "indexCount", triangleCount );
-    meshData.set( "sizeofThreeVertIds", sizeof( ThreeVertIds ) );
-    meshData.set( "sizeofUInt32", sizeof( uint32_t ) * 3 );
+    // meshData.set( "sizeofThreeVertIds", sizeof( ThreeVertIds ) );
+    // meshData.set( "sizeofUInt32", sizeof( uint32_t ) * 3 );
 
     return meshData;
 };

@@ -458,7 +458,9 @@ function SidebarObject( editor ) {
 
 					// 4) Now `jsVertices.buffer === editor.mrmesh.HEAPF32.buffer`
 					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
-					const result = editor.mrmesh.fillHolesImpl( mesh );
+
+					// const result = editor.mrmesh.fillHolesImpl( mesh );
+					const result = editor.mrmesh.Mesh.getGeometry( mesh );
 
 					const newVertices = result.vertices;
 					const newIndices = result.indices;
