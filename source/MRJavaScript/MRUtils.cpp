@@ -31,6 +31,7 @@
 #include <MRMesh/MROneMeshContours.h>
 #include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRMeshTriPoint.h>
+#include <MRMesh/MRMeshFillHole.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
 
 #include <MRVoxels/MRTeethMaskToDirectionVolume.h>
@@ -184,7 +185,10 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<ContinuousContour>( "ContinuousContours" );
     register_vector<OneMeshContour>( "OneMeshContours" );
     register_vector<OneMeshIntersection>( "VectorOneMeshIntersection" );
-    register_vector<MeshTriPoint>( "VectorMeshTriPoint" );
+	register_vector<MeshTriPoint>( "VectorMeshTriPoint" );
+	
+	register_vector<FillHoleItem>( "VectorFillHoleItem" );
+	register_vector<HoleFillPlan>( "VectorHoleFillPlan" );
 	///
 
 
@@ -756,5 +760,12 @@ EMSCRIPTEN_BINDINGS( FunctorTypedModule )
 	class_<std::function<Expected<SurfacePath>( const MeshTriPoint&, const MeshTriPoint&, int, int )>>( "ExpectedSurfacePathFunctorMeshTriPoint" )
 		.constructor<>()
 		.function( "opcall", &std::function<Expected<SurfacePath>( const MeshTriPoint&, const MeshTriPoint&, int, int )>::operator() );
+	///
+
+
+	///
+	class_<std::function<Vector3f ( const Vector3f & )>>( "Vector3fFunctorVector3f" )
+		.constructor<>()
+		.function( "opcall", &std::function<Vector3f ( const Vector3f & )>::operator() );
 	///
 }

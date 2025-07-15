@@ -4,11 +4,12 @@
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMesh.h>
-#include <MRMesh/MRMeshFillHole.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MRPlane3.h>
+#include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRId.h>
+#include <MRMesh/MRMeshFillHole.h>
 
 #include "MRUtils.h"
 
@@ -159,33 +160,35 @@ val fillHolesImpl( Mesh& mesh )
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
 
-	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
-
 	for ( EdgeId e : holeEdges )
 	{
 		FillHoleParams params;
-		fillHole( meshCopy, e, params );
+		fillHole( mesh, e, params );
 	}
 
-    return MRJS::exportMeshMemoryView( meshCopy );
+	val meshData = MRJS::exportMeshMemoryView( mesh );
+
+	val geoObj = val::object();
+	geoObj.set( "success", true );
+	geoObj.set( "mesh", meshData );
+
+	return geoObj;
 }
 
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 {
-	class_<StitchHolesParams>( "StitchHolesParams" )
-		.constructor<>()
-
-		.property( "metric", &StitchHolesParams::metric )
-		.property( "outNewFaces", &StitchHolesParams::outNewFaces, return_value_policy::reference() );
+    enum_<FillHoleParams::MultipleEdgesResolveMode>( "MultipleEdgesResolveMode" )
+        .value( "None", FillHoleParams::MultipleEdgesResolveMode::None )
+        .value( "Simple", FillHoleParams::MultipleEdgesResolveMode::Simple )
+        .value( "Strong", FillHoleParams::MultipleEdgesResolveMode::Strong );
 	
 	class_<FillHoleParams>( "FillHoleParams" )
 		.constructor<>()
 
 		.property( "metric", &FillHoleParams::metric )
 		.property( "outNewFaces", &FillHoleParams::outNewFaces, return_value_policy::reference() )
+		.property( "multipleEdgesResolveMode", &FillHoleParams::multipleEdgesResolveMode )
 		.property( "makeDegenerateBand", &FillHoleParams::makeDegenerateBand )
 		.property( "maxPolygonSubdivisions", &FillHoleParams::maxPolygonSubdivisions )
 
@@ -200,15 +203,65 @@ EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 			*self.stopBeforeBadTriangulation = v;
 		}));
 
-	function( "fillHole", &fillHole );
-	function( "fillHoles", &fillHoles );
-	function( "fillHolesImpl", &fillHolesImpl );
+	class_<StitchHolesParams>( "StitchHolesParams" )
+		.constructor<>()
 
-	function( "buildCylinderBetweenTwoHolesWithEdges", select_overload<void( Mesh&, EdgeId, EdgeId, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
-	function( "buildCylinderBetweenTwoHoles", select_overload<bool( Mesh&, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
+		.property( "metric", &StitchHolesParams::metric )
+		.property( "outNewFaces", &StitchHolesParams::outNewFaces, return_value_policy::reference() );
+
+	
+	value_object<FillHoleItem>( "FillHoleItem" )
+		.field( "edgeCode1", &FillHoleItem::edgeCode1 )
+		.field( "edgeCode2", &FillHoleItem::edgeCode2 );
+
+	value_object<HoleFillPlan>( "HoleFillPlan" )
+		.field( "items", &HoleFillPlan::items )
+		.field( "numTris", &HoleFillPlan::numTris );
+
+	class_<MakeBridgeResult>( "MakeBridgeResult" )
+		.constructor<>()
+
+		.property( "newFaces", &MakeBridgeResult::newFaces )
+		.property( "na", &MakeBridgeResult::na )
+		.property( "nb", &MakeBridgeResult::nb )
+
+        .function( "opbool", select_overload<bool() const>( &MakeBridgeResult::operator bool ) );
 
 
 	///
+	function( "buildCylinderBetweenTwoHolesWithEdges", select_overload<void( Mesh&, EdgeId, EdgeId, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
+	function( "buildCylinderBetweenTwoHoles", select_overload<bool( Mesh&, const StitchHolesParams& )>( &buildCylinderBetweenTwoHoles ) );
+
+	function( "fillHole", &fillHole );
+	function( "fillHoles", &fillHoles );
+
+	function( "isHoleBd", &isHoleBd );
+	function( "getHoleFillPlan", &getHoleFillPlan );
+	function( "getHoleFillPlans", &getHoleFillPlans );
+	function( "getPlanarHoleFillPlan", &getPlanarHoleFillPlan );
+	function( "getPlanarHoleFillPlans", &getPlanarHoleFillPlans );
+
+	function( "executeHoleFillPlan", &executeHoleFillPlan, allow_raw_pointers() );
+	function( "fillHoleTrivially", &fillHoleTrivially, allow_raw_pointers() );
+
+	function( "extendHole", select_overload<EdgeId( Mesh&, EdgeId, const Plane3f &, FaceBitSet * )>( &extendHole ), allow_raw_pointers() );
+	function( "extendAllHoles", &extendAllHoles, allow_raw_pointers() );
+	function( "extendHoleWithFunctor", select_overload<EdgeId( Mesh&, EdgeId, std::function<Vector3f(const Vector3f &)>, FaceBitSet * )>( &extendHole ), allow_raw_pointers() );
+
+	function( "buildBottom", &buildBottom, allow_raw_pointers() );
+	function( "makeDegenerateBandAroundHole", &makeDegenerateBandAroundHole, allow_raw_pointers() );
+
+	function( "makeQuadBridge", &makeQuadBridge, allow_raw_pointers() );
+	function( "makeBridge", &makeBridge, allow_raw_pointers() );
+	function( "makeSmoothBridge", &makeSmoothBridge, allow_raw_pointers() );
+	function( "makeBridgeEdge", &makeBridgeEdge );
+	function( "splitQuad", &splitQuad, allow_raw_pointers() );
+	///
+
+
+	///
+	function( "fillHolesImpl", &fillHolesImpl );
+
 	// Basic versions without output
 	function( "extendHoleBasicImpl", &extendHoleBasicImpl );
 	function( "extendAllHolesBasicImpl", &extendAllHolesBasicImpl );

@@ -213,9 +213,6 @@ val cutAndExtrudeMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coo
 {
 	val obj = val::object();
 
-	Mesh meshCopy;
-	meshCopy = mesh;
-
 	int coordinatesLength = coordinates.size();
     if (coordinatesLength % 3 != 0) {
 		obj.set( "success", false );
@@ -235,11 +232,11 @@ val cutAndExtrudeMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coo
 
 	// Initializing the vector with a certain length
 	std::vector<MeshTriPoint> projectedPolyline( initialPolyline.points.size() );
-	const MeshPart m = MeshPart( meshCopy, nullptr );
+	const MeshPart m = MeshPart( mesh, nullptr );
 	const Vector3f vectorUp = Vector3f( 0, 0, 1 );
 	// const Vector3f vectorDown = Vector3f( 0, 0, -1 );
 
-	meshCopy.getAABBTree(); // Create tree in parallel before loop
+	mesh.getAABBTree(); // Create tree in parallel before loop
 	ParallelFor( initialPolyline.points, [&] ( VertId v )
 	{
 		const auto& pt = initialPolyline.points[v];
@@ -257,28 +254,28 @@ val cutAndExtrudeMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coo
 
 	if ( !validPoints.empty() )
 	{
-		auto meshContour = convertMeshTriPointsToMeshContour( meshCopy, validPoints );
+		auto meshContour = convertMeshTriPointsToMeshContour( mesh, validPoints );
 		if ( meshContour ) {
-			CutMeshResult cutResults = cutMesh( meshCopy, { *meshContour } );
+			CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
 
 			initialPolyline.getAABBTree(); // create tree in parallel before loop
 			for ( const EdgeLoop& cut : cutResults.resultCut )
 			{
 				ParallelFor( cut, [&] ( size_t i )
 				{
-					Vector3f& orgP = meshCopy.points[meshCopy.topology.org( cut[i] )];
+					Vector3f& orgP = mesh.points[mesh.topology.org( cut[i] )];
 					orgP = findProjectionOnPolyline( Line3f( orgP, vectorUp ), initialPolyline ).point;
 				} );
 
-				if ( meshCopy.topology.org( cut.front() ) != meshCopy.topology.dest( cut.back() ) )
+				if ( mesh.topology.org( cut.front() ) != mesh.topology.dest( cut.back() ) )
 				{
-					Vector3f& destP = meshCopy.points[meshCopy.topology.dest( cut.back() )];
+					Vector3f& destP = mesh.points[mesh.topology.dest( cut.back() )];
 					destP = findProjectionOnPolyline( Line3f( destP, vectorUp ), initialPolyline ).point;
 				}
 			}
 
 			// important to call after manual changing of mesh structure fields
-			meshCopy.invalidateCaches();
+			mesh.invalidateCaches();
 		} else {
 			std::string error = meshContour.error();
 
@@ -290,7 +287,7 @@ val cutAndExtrudeMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coo
 	}
 	
 
-	val resultMeshData = MRJS::exportMeshMemoryView( meshCopy );
+	val resultMeshData = MRJS::exportMeshMemoryView( mesh );
 	obj.set( "success", true );
 	obj.set( "mesh", resultMeshData );
 

@@ -377,9 +377,8 @@ function SidebarObject( editor ) {
 				)
 
 				const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
-				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.mesh, upDir );
 				// const result = curMeshWrapper.fixUndercutsImpl( upDir );
-				
+
 				const newVertices = result.mesh.vertices;
 				// NOTE: No need to wrap `Uint32Array` again!
 				// const newIndices = new Uint32Array( result.mesh.indices );
@@ -432,6 +431,8 @@ function SidebarObject( editor ) {
 		const currentUUID = editor.selected.uuid;
 		if (currentUUID) {
 			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const curMeshWrapper = editor.wasmObject[currentUUID];
+
 				const geometry = editor.selected.geometry;
 				const vertices = geometry.getAttribute('position').array; // `Float32Array`
 				const indices = geometry.getIndex().array; // `Uint32Array`
@@ -440,9 +441,15 @@ function SidebarObject( editor ) {
 					/// Vertices
 					// 1) allocate `nVerts*3` floats in WASM
 					const verticesCount = vertices.length; 
-					// NOTE: In `_malloc`, the specified value is in bytes, not in the number of elements
+					// NOTE: 
+					//
+					// In`_malloc`, the specified value is in bytes, not in the number of elements
+					// 
 					// Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
-					const verticesPtr = editor.mrmesh._malloc( verticesCount * 4 );
+					// const verticesPtr = editor.mrmesh._malloc(verticesCount * 4);
+					//
+					const bytes = verticesCount * Float32Array.BYTES_PER_ELEMENT; // BYTES_PER_ELEMENT === 4
+					const verticesPtr = editor.mrmesh._malloc( bytes );
 					// 2) construct a JS Float32Array that _views_ the WASM heap:
 					const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
 					// 3) copy into it (once), or let your own code fill it:
@@ -457,20 +464,36 @@ function SidebarObject( editor ) {
 					///
 
 					// 4) Now `jsVertices.buffer === editor.mrmesh.HEAPF32.buffer`
-					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+					let mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
 
 					// const result = editor.mrmesh.fillHolesImpl( mesh );
-					const result = editor.mrmesh.Mesh.getGeometry( mesh );
+					// const result = editor.mrmesh.Mesh.getGeometry( mesh );
 
-					const newVertices = result.vertices;
-					const newIndices = result.indices;
 
+					///
+					const threeWorldDir = new THREE.Vector3();
+					editor.camera.getWorldDirection( threeWorldDir );
+					const upDir = new editor.mrmesh.Vector3f(
+						-threeWorldDir.x,
+						-threeWorldDir.y,
+						-threeWorldDir.z,
+					)
+					// FIXME: Why using the returned `mesh` is much slower?
+					// const result = editor.mrmesh.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
+					const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
+					///
+
+
+					const newVertices = result.mesh.vertices;
+					const newIndices = result.mesh.indices;
 					showMesh( newVertices, newIndices );
 
 
 					/// IMPORTANT！！！
 					editor.mrmesh._free( verticesPtr );
 					editor.mrmesh._free( indicesPtr );
+
+					mesh.delete();
 					///
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
@@ -482,18 +505,32 @@ function SidebarObject( editor ) {
 		if ( !editor.selected ) return;
 
 		const currentUUID = editor.selected.uuid;
-		if (currentUUID) {
-			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const geometry = editor.selected.geometry;
-				const vertices = geometry.getAttribute('position').array; // `Float32Array`
+				const vertices = geometry.getAttribute( 'position' ).array; // `Float32Array`
 				const indices = geometry.getIndex().array; // `Uint32Array`
 
 				try {
 					const mesh = editor.mrmesh.Mesh.fromTrianglesArray( vertices, indices );
-					const result = editor.mrmesh.fillHolesImpl( mesh );
 
-					const newVertices = result.vertices;
-					const newIndices = result.indices;
+					// const result = editor.mrmesh.fillHolesImpl( mesh );
+
+
+					///
+					const threeWorldDir = new THREE.Vector3();
+					editor.camera.getWorldDirection( threeWorldDir );
+					const upDir = new editor.mrmesh.Vector3f(
+						-threeWorldDir.x,
+						-threeWorldDir.y,
+						-threeWorldDir.z,
+					)
+					const result = editor.mrmesh.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
+					///
+
+
+					const newVertices = result.mesh.vertices;
+					const newIndices = result.mesh.indices;
 
 					showMesh( newVertices, newIndices );
 				} catch ( error ) {
@@ -516,7 +553,7 @@ function SidebarObject( editor ) {
 
 	const wasmOpsRowFixUndercuts = new UIRow();
 	wasmOpsRowFixUndercuts.add( wasmOpFixUndercuts );
-	wasmOpsRowFixUndercuts.add(wasmOpSegmentByPoints);
+	wasmOpsRowFixUndercuts.add( wasmOpSegmentByPoints );
 	
 	const wasmOpsRowThicken = new UIRow();
 	wasmOpsRowThicken.add( wasmOpThickenMesh );

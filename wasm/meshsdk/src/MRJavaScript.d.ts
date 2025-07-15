@@ -1912,21 +1912,20 @@ export interface Mesh extends ClassHandle {
 
 export interface MeshWrapper extends ClassHandle {
   mesh: Mesh;
-  getMesh(): Mesh | null;
-  getBoundingBox(): any;
-  getVertexCount(): number;
-  getFaceCount(): number;
-  getVolume(): number;
-  getArea(): number;
-  findCenter(): any;
-  getVertexPosition(_0: number): any;
-  setVertexPosition(_0: number, _1: any): void;
-  getFaceVertices(_0: number): any;
-  getFaceNormal(_0: number): any;
+  getMesh(): Mesh;
+  getMeshPtr(): Mesh | null;
+  getBoundingBoxImpl(): any;
+  getVertexCountImpl(): number;
+  getFaceCountImpl(): number;
+  getVolumeImpl(): number;
+  getAreaImpl(): number;
+  findCenterImpl(): any;
+  getVertexPositionImpl(_0: number): any;
+  setVertexPositionImpl(_0: number, _1: any): void;
+  getFaceVerticesImpl(_0: number): any;
+  getFaceNormalImpl(_0: number): any;
   fillHolesImpl(): any;
-  projectPoint(_0: any, _1: number): any;
-  transform(_0: any): void;
-  pack(): void;
+  projectPointImpl(_0: any, _1: number): any;
   thickenMeshImpl(_0: number, _1: GeneralOffsetParameters): any;
   cutMeshWithPolylineImpl(_0: StdVectorf): any;
   segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
@@ -2059,18 +2058,36 @@ export interface MakeDegenerateBandAroundRegionParams extends ClassHandle {
   setMaxEdgeLength(_0: number): void;
 }
 
-export interface StitchHolesParams extends ClassHandle {
-  outNewFaces: FaceBitSet | null;
-  metric: FillHoleMetric;
+export interface MultipleEdgesResolveModeValue<T extends number> {
+  value: T;
 }
+export type MultipleEdgesResolveMode = MultipleEdgesResolveModeValue<0>|MultipleEdgesResolveModeValue<1>|MultipleEdgesResolveModeValue<2>;
 
 export interface FillHoleParams extends ClassHandle {
   outNewFaces: FaceBitSet | null;
+  multipleEdgesResolveMode: MultipleEdgesResolveMode;
   makeDegenerateBand: boolean;
   maxPolygonSubdivisions: number;
   metric: FillHoleMetric;
   getStopBeforeBadTriangulation(): boolean;
   setStopBeforeBadTriangulation(_0: boolean): void;
+}
+
+export interface StitchHolesParams extends ClassHandle {
+  outNewFaces: FaceBitSet | null;
+  metric: FillHoleMetric;
+}
+
+export type FillHoleItem = {
+  edgeCode1: number,
+  edgeCode2: number
+};
+
+export interface MakeBridgeResult extends ClassHandle {
+  newFaces: number;
+  na: EdgeId;
+  nb: EdgeId;
+  opbool(): boolean;
 }
 
 export type NoInit = {
@@ -4208,6 +4225,27 @@ export interface VectorMeshTriPoint extends ClassHandle {
   set(_0: number, _1: MeshTriPoint): boolean;
 }
 
+export interface VectorFillHoleItem extends ClassHandle {
+  push_back(_0: FillHoleItem): void;
+  resize(_0: number, _1: FillHoleItem): void;
+  size(): number;
+  get(_0: number): FillHoleItem | undefined;
+  set(_0: number, _1: FillHoleItem): boolean;
+}
+
+export type HoleFillPlan = {
+  items: VectorFillHoleItem,
+  numTris: number
+};
+
+export interface VectorHoleFillPlan extends ClassHandle {
+  push_back(_0: HoleFillPlan): void;
+  resize(_0: number, _1: HoleFillPlan): void;
+  size(): number;
+  get(_0: number): HoleFillPlan | undefined;
+  set(_0: number, _1: HoleFillPlan): boolean;
+}
+
 export interface VectorVectorMeshPiece extends ClassHandle {
   push_back(_0: VectorMeshPiece): void;
   resize(_0: number, _1: VectorMeshPiece): void;
@@ -5160,6 +5198,10 @@ export interface ExpectedSurfacePathFunctorMeshTriPoint extends ClassHandle {
   opcall(_0: MeshTriPoint, _1: MeshTriPoint, _2: number, _3: number): ExpectedSurfacePath;
 }
 
+export interface Vector3fFunctorVector3f extends ClassHandle {
+  opcall(_0: Vector3f): Vector3f;
+}
+
 export interface Vectori extends ClassHandle {
   size(): number;
   empty(): boolean;
@@ -6089,8 +6131,8 @@ interface EmbindModule {
   };
   Mesh: {
     new(): Mesh;
-    fromTrianglesMemoryView(_0: any, _1: any): Mesh;
-    fromTrianglesArray(_0: any, _1: any): Mesh;
+    fromTrianglesMemoryView(_0: any, _1: any): Mesh | null;
+    fromTrianglesArray(_0: any, _1: any): Mesh | null;
     getGeometry(_0: Mesh): any;
   };
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
@@ -6101,7 +6143,7 @@ interface EmbindModule {
   discreteMinusAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
   edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetricWrapper;
   smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
-  calculateRecommendedVoxelSize(_0: Mesh, _1: number): number;
+  calculateRecommendedVoxelSizeImpl(_0: Mesh, _1: number): number;
   computeVertexNormalsImpl(_0: Mesh): any;
   MeshWrapper: {
     new(): MeshWrapper;
@@ -6168,14 +6210,18 @@ interface EmbindModule {
     new(): MakeDegenerateBandAroundRegionParams;
   };
   makeDegenerateBandAroundRegion(_0: Mesh, _1: FaceBitSet, _2: MakeDegenerateBandAroundRegionParams): void;
-  StitchHolesParams: {
-    new(): StitchHolesParams;
-  };
+  MultipleEdgesResolveMode: {None: MultipleEdgesResolveModeValue<0>, Simple: MultipleEdgesResolveModeValue<1>, Strong: MultipleEdgesResolveModeValue<2>};
   FillHoleParams: {
     new(): FillHoleParams;
   };
-  fillHolesImpl(_0: Mesh): any;
+  StitchHolesParams: {
+    new(): StitchHolesParams;
+  };
+  MakeBridgeResult: {
+    new(): MakeBridgeResult;
+  };
   buildCylinderBetweenTwoHoles(_0: Mesh, _1: StitchHolesParams): boolean;
+  fillHolesImpl(_0: Mesh): any;
   noInit: NoInit;
   EdgeId: {
     new(): EdgeId;
@@ -6190,8 +6236,10 @@ interface EmbindModule {
   subEdgeId(_0: EdgeId, _1: number): EdgeId;
   subEdgeIdUInt(_0: EdgeId, _1: number): EdgeId;
   subEdgeIdSize(_0: EdgeId, _1: number): EdgeId;
-  fillHole(_0: Mesh, _1: EdgeId, _2: FillHoleParams): void;
   buildCylinderBetweenTwoHolesWithEdges(_0: Mesh, _1: EdgeId, _2: EdgeId, _3: StitchHolesParams): void;
+  fillHole(_0: Mesh, _1: EdgeId, _2: FillHoleParams): void;
+  makeDegenerateBandAroundHole(_0: Mesh, _1: EdgeId, _2: FaceBitSet | null): EdgeId;
+  makeSmoothBridge(_0: Mesh, _1: EdgeId, _2: EdgeId, _3: number, _4: FaceBitSet | null): MakeBridgeResult;
   extendHoleWithFuncBasicImpl(_0: Mesh, _1: EdgeId, _2: any): EdgeId;
   makeDegenerateBandAroundHoleBasicImpl(_0: Mesh, _1: EdgeId): EdgeId;
   extendHoleWithFuncAndOutputImpl(_0: Mesh, _1: EdgeId, _2: any): any;
@@ -6240,6 +6288,7 @@ interface EmbindModule {
   subVertId(_0: VertId, _1: number): VertId;
   subVertIdUInt(_0: VertId, _1: number): VertId;
   subVertIdSize(_0: VertId, _1: number): VertId;
+  fillHoleTrivially(_0: Mesh, _1: EdgeId, _2: FaceBitSet | null): VertId;
   PixelId: {
     new(): PixelId;
     new(_0: number): PixelId;
@@ -6558,6 +6607,10 @@ interface EmbindModule {
   edgeTableSymMetric(_0: MeshTopology, _1: EdgeMetricWrapper): EdgeMetricWrapper;
   fromSameTriangle(_0: MeshTopology, _1: EdgePoint, _2: EdgePoint): boolean;
   addTriangles(_0: MeshTopology, _1: Triangulation, _2: BuildSettings): void;
+  makeQuadBridge(_0: MeshTopology, _1: EdgeId, _2: EdgeId, _3: FaceBitSet | null): MakeBridgeResult;
+  makeBridge(_0: MeshTopology, _1: EdgeId, _2: EdgeId, _3: FaceBitSet | null): MakeBridgeResult;
+  makeBridgeEdge(_0: MeshTopology, _1: EdgeId, _2: EdgeId): EdgeId;
+  splitQuad(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): void;
   removeSpikesWithTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number, _4: VertBitSet | null): void;
   hardSmoothTetrahedrons_topology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet | null): void;
   loadMeshDll(): void;
@@ -6612,6 +6665,7 @@ interface EmbindModule {
     new(_0: Vector3f, _1: number): Plane3f;
     fromDirAndPt(_0: Vector3f, _1: Vector3f): Plane3f;
   };
+  extendHole(_0: Mesh, _1: EdgeId, _2: Plane3f, _3: FaceBitSet | null): EdgeId;
   extendHoleBasicImpl(_0: Mesh, _1: EdgeId, _2: Plane3f): EdgeId;
   extendHoleWithOutputImpl(_0: Mesh, _1: EdgeId, _2: Plane3f): any;
   extendAllHolesWithOutputImpl(_0: Mesh, _1: Plane3f): any;
@@ -6850,6 +6904,15 @@ interface EmbindModule {
   convertMeshTriPointsSurfaceOffsetToMeshContours(_0: Mesh, _1: VectorMeshTriPoint, _2: number, _3: SearchPathSettings): ExpectedOneMeshContours;
   convertMeshTriPointsToMeshContour(_0: Mesh, _1: VectorMeshTriPoint, _2: SearchPathSettings, _3: StdVectori | null): ExpectedOneMeshContour;
   convertMeshTriPointsToClosedContour(_0: Mesh, _1: VectorMeshTriPoint, _2: SearchPathSettings, _3: StdVectori | null): ExpectedOneMeshContour;
+  VectorFillHoleItem: {
+    new(): VectorFillHoleItem;
+  };
+  getHoleFillPlan(_0: Mesh, _1: EdgeId, _2: FillHoleParams): HoleFillPlan;
+  getPlanarHoleFillPlan(_0: Mesh, _1: EdgeId): HoleFillPlan;
+  executeHoleFillPlan(_0: Mesh, _1: EdgeId, _2: HoleFillPlan, _3: FaceBitSet | null): void;
+  VectorHoleFillPlan: {
+    new(): VectorHoleFillPlan;
+  };
   VectorVectorMeshPiece: {
     new(): VectorVectorMeshPiece;
   };
@@ -6971,6 +7034,10 @@ interface EmbindModule {
   };
   fillContourLeft(_0: MeshTopology, _1: VectorEdgeId): FaceBitSet;
   fillHoles(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): void;
+  isHoleBd(_0: MeshTopology, _1: VectorEdgeId): boolean;
+  getHoleFillPlans(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): VectorHoleFillPlan;
+  getPlanarHoleFillPlans(_0: Mesh, _1: VectorEdgeId): VectorHoleFillPlan;
+  extendAllHoles(_0: Mesh, _1: Plane3f, _2: FaceBitSet | null): VectorEdgeId;
   extendAllHolesBasicImpl(_0: Mesh, _1: Plane3f): VectorEdgeId;
   trackLeftBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
   trackRightBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
@@ -7266,6 +7333,10 @@ interface EmbindModule {
     new(): ExpectedSurfacePathFunctorMeshTriPoint;
   };
   convertMeshTriPointsToMeshContourWithConnector(_0: Mesh, _1: VectorMeshTriPoint, _2: ExpectedSurfacePathFunctorMeshTriPoint, _3: StdVectori | null): ExpectedOneMeshContour;
+  Vector3fFunctorVector3f: {
+    new(): Vector3fFunctorVector3f;
+  };
+  extendHoleWithFunctor(_0: Mesh, _1: EdgeId, _2: Vector3fFunctorVector3f, _3: FaceBitSet | null): EdgeId;
   Vectori: {
     new(): Vectori;
     new(_0: number): Vectori;
@@ -7357,6 +7428,7 @@ interface EmbindModule {
   fixUndercutsImplTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsImplThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   closestPointOnLineSegm3f(_0: Vector3f, _1: LineSegm3f): Vector3f;
+  buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number, _4: FaceBitSet | null): EdgeId;
   buildBottomBasicImpl(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
   buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
   createVerticalStitchMetric(_0: Mesh, _1: Vector3f): FillHoleMetricWrapper;

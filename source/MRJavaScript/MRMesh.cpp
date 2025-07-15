@@ -73,7 +73,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 {
 	class_<Mesh>( "Mesh" )
 		.smart_ptr<std::shared_ptr<Mesh>>( "MeshSharedPtr" )
-
 		.constructor<>()
 
 		.property( "topology", &Mesh::topology )
@@ -104,16 +103,21 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		// 	const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
 		// 	jsIndices.set( indices );
 		// 	///
+		// 
 		//  try {
 		//  	const mesh = Module.fromTrianglesMemoryView( jsVertices, jsIndices );
-		//  	// ...
+		// 
+		//      // ...
+		// 
+		//      // NOTE: This is IMPORTANT!!!
+		//      mesh.delete();
 		//  } catch ( error ) {
 		//  	console.error( 'Error creating mesh:', error.message );
 		//  }
 		//  ```
 		// 
-		.class_function( "fromTrianglesMemoryView",
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh 
+		.class_function( "fromTrianglesMemoryView", 
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> std::shared_ptr<Mesh>
 			{
 				try
 				{
@@ -182,7 +186,8 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					}
 					///
 
-					return Mesh::fromTriangles( std::move( vCoords ), triangulation );
+					Mesh mesh = Mesh::fromTriangles( std::move( vCoords ), triangulation );
+					return std::make_shared<Mesh>(std::move(mesh));
 				}
 				catch ( const std::exception& e )
 				{
@@ -201,11 +206,16 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		//  const vertices = geometry.getAttribute('position').array; // `Float32Array`
 		//  const indices = geometry.getIndex().array; // `Uint32Array`
 		//  
-		//  const result = MeshWrapper.fromTrianglesImpl( vertices, indices );
+		//  const mesh = MeshWrapper.fromTrianglesImpl( vertices, indices );
+		// 
+		//  // ...
+		// 
+		//  // NOTE: This is IMPORTANT!!!
+		//  mesh.delete();
 		//  ```
 		// 
 		.class_function( "fromTrianglesArray",
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh 
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh*
 			{
 				try
 				{
@@ -273,19 +283,27 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					}
 					///
 
-					return Mesh::fromTriangles( std::move( vCoords ), triangulation );
+					return new Mesh( Mesh::fromTriangles( std::move(vCoords ), triangulation ) );
 				}
 				catch ( const std::exception& e )
 				{
 					throw std::runtime_error( std::string( e.what() ) );
 				}
-			} )
+			} ),
+			// IMPORTANT: JS is responsible for `.delete()` when it gets it!!!
+			return_value_policy::take_ownership()
 		)
 
 		.class_function( "getGeometry",
 			optional_override( []( Mesh& mesh ) -> val
 			{
-				return MRJS::exportMeshMemoryView( mesh );
+				val meshData = MRJS::exportMeshMemoryView( mesh );
+
+				val geoObj = val::object();
+				geoObj.set( "success", true );
+				geoObj.set( "mesh", meshData );
+
+				return geoObj;
 			})
 		)
 		///
@@ -512,6 +530,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 // ------------------------------------------------------------------------
 MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
 
+Mesh MeshWrapper::getMesh() { return mesh; }
 Mesh* MeshWrapper::getMeshPtr() { return &mesh; }
 
 val MeshWrapper::fromTrianglesImpl( const val& verticesArray, const val& indicesArray )
@@ -679,12 +698,12 @@ val MeshWrapper::fromTrianglesImplWithArray( const val& verticesArray, const val
 	return result;
 }
 
-val MeshWrapper::getBoundingBox() const
+val MeshWrapper::getBoundingBoxImpl() const
 {
 	return MRJS::box3fToObject( mesh.getBoundingBox() );
 }
 
-val MeshWrapper::getVertexPosition( int vertId ) const
+val MeshWrapper::getVertexPositionImpl( int vertId ) const
 {
 	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
 	{
@@ -693,7 +712,7 @@ val MeshWrapper::getVertexPosition( int vertId ) const
 	return val::null();
 }
 
-void MeshWrapper::setVertexPosition( int vertId, const val& position )
+void MeshWrapper::setVertexPositionImpl( int vertId, const val& position )
 {
 	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
 	{
@@ -702,32 +721,32 @@ void MeshWrapper::setVertexPosition( int vertId, const val& position )
 	}
 }
 
-int MeshWrapper::getVertexCount() const
+int MeshWrapper::getVertexCountImpl() const
 {
 	return ( int )mesh.topology.lastValidVert() + 1;
 }
 
-int MeshWrapper::getFaceCount() const
+int MeshWrapper::getFaceCountImpl() const
 {
 	return ( int )mesh.topology.lastValidFace() + 1;
 }
 
-double MeshWrapper::getVolume() const
+double MeshWrapper::getVolumeImpl() const
 {
 	return mesh.volume();
 }
 
-double MeshWrapper::getArea() const
+double MeshWrapper::getAreaImpl() const
 {
 	return mesh.area();
 }
 
-val MeshWrapper::findCenter() const
+val MeshWrapper::findCenterImpl() const
 {
 	return MRJS::vector3fToArray( mesh.findCenterFromBBox() );
 }
 
-val MeshWrapper::getFaceVertices( int faceId ) const
+val MeshWrapper::getFaceVerticesImpl( int faceId ) const
 {
 	if ( faceId >= 0 && faceId < ( int )mesh.topology.lastValidFace() + 1 )
 	{
@@ -749,7 +768,7 @@ val MeshWrapper::getFaceVertices( int faceId ) const
 	return val::null();
 }
 
-val MeshWrapper::getFaceNormal( int faceId ) const
+val MeshWrapper::getFaceNormalImpl( int faceId ) const
 {
 	if ( faceId >= 0 && faceId < ( int )mesh.topology.lastValidFace() + 1 )
 	{
@@ -1131,6 +1150,8 @@ val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
 	fixParams.findParameters.upDirection = upDirection.normalized();
 
 	Mesh meshCopy;
+	// NOTE: Both methods will work
+	// meshCopy = mesh;
 	meshCopy.topology = mesh.topology;
 	meshCopy.points = mesh.points;
 	
@@ -1162,7 +1183,7 @@ val MeshWrapper::fillHolesImpl() const
 }
 
 // Point projection
-val MeshWrapper::projectPoint( const val& point, float maxDistance ) const
+val MeshWrapper::projectPointImpl( const val& point, float maxDistance ) const
 {
 	Vector3f p = MRJS::arrayToVector3f( point );
 	MeshProjectionResult result = mesh.projectPoint( p, maxDistance * maxDistance ); // Note: function expects squared distance
@@ -1186,38 +1207,6 @@ val MeshWrapper::projectPoint( const val& point, float maxDistance ) const
 	}
 }
 
-// Transformation
-void MeshWrapper::transform( const val& matrix )
-{
-	// Assuming 4x4 transformation matrix as flat array of 16 elements
-	if ( matrix["length"].as<int>() == 16 )
-	{
-		AffineXf3f xf;
-		// Fill transformation matrix from JavaScript array
-		for ( int i = 0; i < 4; ++i )
-		{
-			for ( int j = 0; j < 4; ++j )
-			{
-				if ( i < 3 && j < 3 )
-				{
-					xf.A[i][j] = matrix[i * 4 + j].as<float>();
-				}
-				else if ( i < 3 && j == 3 )
-				{
-					xf.b[i] = matrix[i * 4 + j].as<float>();
-				}
-			}
-		}
-		mesh.transform( xf );
-	}
-}
-
-// Pack mesh (optimize memory layout)
-void MeshWrapper::pack()
-{
-	mesh.pack();
-}
-
 
 // ------------------------------------------------------------------------
 // Bindings for `MeshWrapper`
@@ -1233,36 +1222,29 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.class_function( "fromTrianglesImplWithArray", &MeshWrapper::fromTrianglesImplWithArray )
 
 		.property( "mesh", &MeshWrapper::mesh, return_value_policy::reference() )
-		.function( "getMesh", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
+		.function( "getMesh", &MeshWrapper::getMesh )
+		.function( "getMeshPtr", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
 
 		// Geometric properties
-		.function( "getBoundingBox", &MeshWrapper::getBoundingBox )
-		.function( "getVertexCount", &MeshWrapper::getVertexCount )
-		.function( "getFaceCount", &MeshWrapper::getFaceCount )
-		.function( "getVolume", &MeshWrapper::getVolume )
-		.function( "getArea", &MeshWrapper::getArea )
-		.function( "findCenter", &MeshWrapper::findCenter )
+		.function( "getBoundingBoxImpl", &MeshWrapper::getBoundingBoxImpl )
+		.function( "getVertexCountImpl", &MeshWrapper::getVertexCountImpl )
+		.function( "getFaceCountImpl", &MeshWrapper::getFaceCountImpl )
+		.function( "getVolumeImpl", &MeshWrapper::getVolumeImpl )
+		.function( "getAreaImpl", &MeshWrapper::getAreaImpl )
+		.function( "findCenterImpl", &MeshWrapper::findCenterImpl )
+		.function( "getVertexPositionImpl", &MeshWrapper::getVertexPositionImpl )
+		.function( "setVertexPositionImpl", &MeshWrapper::setVertexPositionImpl )
+		.function( "getFaceVerticesImpl", &MeshWrapper::getFaceVerticesImpl )
+		.function( "getFaceNormalImpl", &MeshWrapper::getFaceNormalImpl )
 
-		// Vertex operations
-		.function( "getVertexPosition", &MeshWrapper::getVertexPosition )
-		.function( "setVertexPosition", &MeshWrapper::setVertexPosition )
-
-		// Face operations
-		.function( "getFaceVertices", &MeshWrapper::getFaceVertices )
-		.function( "getFaceNormal", &MeshWrapper::getFaceNormal )
-
-		.function( "thickenMeshImpl", &MeshWrapper::thickenMeshImpl)
+		.function( "thickenMeshImpl", &MeshWrapper::thickenMeshImpl )
 		.function( "cutMeshWithPolylineImpl", &MeshWrapper::cutMeshWithPolylineImpl )
 		.function( "segmentByPointsImpl", &MeshWrapper::segmentByPointsImpl )
 		.function( "fixUndercutsImpl", &MeshWrapper::fixUndercutsImpl )
 		.function( "fillHolesImpl", &MeshWrapper::fillHolesImpl )
 
 		// Spatial queries
-		.function( "projectPoint", &MeshWrapper::projectPoint )
-
-		// Transformations
-		.function( "transform", &MeshWrapper::transform )
-		.function( "pack", &MeshWrapper::pack );
+		.function( "projectPointImpl", &MeshWrapper::projectPointImpl );
 }
 
 } //namespace MRJS
