@@ -14,6 +14,7 @@ import { SetColorCommand } from './commands/SetColorCommand.js';
 import { SetShadowValueCommand } from './commands/SetShadowValueCommand.js';
 
 import { SidebarObjectAnimation } from './Sidebar.Object.Animation.js';
+import createMemoryViewFromGeometry from './Utils.js';
 
 function SidebarObject( editor ) {
 	const strings = editor.strings;
@@ -151,11 +152,11 @@ function SidebarObject( editor ) {
 	const clicked = [];
 	const pointMaterial = new THREE.PointsMaterial({ color: 0xff0000, size: 3 });
 	let pointGeo = new THREE.BufferGeometry();
-	const pointCloud = new THREE.Points(pointGeo, pointMaterial);
+	const pointCloud = new THREE.Points( pointGeo, pointMaterial );
 	pointCloud.name = 'wasm-selector-point';
 
-	const curveMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
-	let curveLine = new THREE.Line(new THREE.BufferGeometry(), curveMaterial);
+	const curveMaterial = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
+	let curveLine = new THREE.Line( new THREE.BufferGeometry(), curveMaterial );
 	curveLine.name = 'wasm-selector-curve';
 
 	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelector') ).setMarginLeft( '7px' ).onClick(function () {
@@ -247,10 +248,10 @@ function SidebarObject( editor ) {
 							const positions = positionAttribute.array; // Float32Array
 							const positionsArr = [...positions];
 							// Convert to std::vector<float>
-							const floatVec = new editor.mrmesh.StdVectorf();
+							const floatVec = new editor.MeshSDK.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
 							
-							const result = editor.mrmesh.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+							const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
 							const innerVertices = result.innerMesh.vertices;
@@ -275,8 +276,8 @@ function SidebarObject( editor ) {
 							const positionAttr = pointGeo.getAttribute( 'position' );
 							const posi = positionAttr.array;
 							const posiArr = [...posi];
-							const _pArr = new editor.mrmesh.StdVectorf();
-							const _dArr = new editor.mrmesh.StdVectorf();
+							const _pArr = new editor.MeshSDK.StdVectorf();
+							const _dArr = new editor.MeshSDK.StdVectorf();
 														
 							for (let val of posiArr) {
 								_pArr.push_back(val);
@@ -285,9 +286,9 @@ function SidebarObject( editor ) {
 								_dArr.push_back(val_);
 							}
 
-							// const metricWrapper = editor.mrmesh.edgeLengthMetric( curMeshWrapper.mesh );
-							// const metricWrapper = editor.mrmesh.identityMetric( );
-							const metricWrapper = editor.mrmesh.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
+							// const metricWrapper = editor.MeshSDK.edgeLengthMetric( curMeshWrapper.mesh );
+							// const metricWrapper = editor.MeshSDK.identityMetric( );
+							const metricWrapper = editor.MeshSDK.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
 							const result_ = curMeshWrapper.segmentByPointsImpl( _pArr, _dArr, metricWrapper );
 							_pArr.delete();
 							const newVertices_ = result_.mesh.vertices;
@@ -370,13 +371,13 @@ function SidebarObject( editor ) {
 
 				const threeWorldDir = new THREE.Vector3();
 				editor.camera.getWorldDirection( threeWorldDir );
-				const upDir = new editor.mrmesh.Vector3f(
+				const upDir = new editor.MeshSDK.Vector3f(
 					-threeWorldDir.x,
 					-threeWorldDir.y,
 					-threeWorldDir.z,
 				)
 
-				const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
+				const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
 				// const result = curMeshWrapper.fixUndercutsImpl( upDir );
 
 				const newVertices = result.mesh.vertices;
@@ -406,16 +407,16 @@ function SidebarObject( editor ) {
 		if ( !editor.selected ) return;
 
 		const currentUUID = editor.selected.uuid;
-		if (currentUUID) {
-			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const curMeshWrapper = editor.wasmObject[currentUUID];
 
-				const params = new editor.mrmesh.GeneralOffsetParameters();
-				params.signDetectionMode = editor.mrmesh.SignDetectionMode.Unsigned;
-				const meshPart = new editor.mrmesh.MeshPart( curMeshWrapper.getMesh() );
-				params.voxelSize = editor.mrmesh.suggestVoxelSize( meshPart, 5e6 );
+				const params = new editor.MeshSDK.GeneralOffsetParameters();
+				params.signDetectionMode = editor.MeshSDK.SignDetectionMode.Unsigned;
+				const meshPart = new editor.MeshSDK.MeshPart( curMeshWrapper.getMesh() );
+				params.voxelSize = editor.MeshSDK.suggestVoxelSize( meshPart, 5e6 );
 
-				// const result = editor.mrmesh.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
+				// const result = editor.MeshSDK.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
 				const result = curMeshWrapper.thickenMeshImpl( 1.2, params );
 				
 				const newVertices = result.mesh.vertices;
@@ -433,57 +434,29 @@ function SidebarObject( editor ) {
 			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
 				const curMeshWrapper = editor.wasmObject[currentUUID];
 
-				const geometry = editor.selected.geometry;
-				const vertices = geometry.getAttribute('position').array; // `Float32Array`
-				const indices = geometry.getIndex().array; // `Uint32Array`
-
+				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor.selected.geometry );
 				try {
-					/// Vertices
-					// 1) allocate `nVerts*3` floats in WASM
-					const verticesCount = vertices.length; 
-					// NOTE: 
-					//
-					// In`_malloc`, the specified value is in bytes, not in the number of elements
-					// 
-					// Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
-					// const verticesPtr = editor.mrmesh._malloc(verticesCount * 4);
-					//
-					const bytes = verticesCount * Float32Array.BYTES_PER_ELEMENT; // BYTES_PER_ELEMENT === 4
-					const verticesPtr = editor.mrmesh._malloc( bytes );
-					// 2) construct a JS Float32Array that _views_ the WASM heap:
-					const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
-					// 3) copy into it (once), or let your own code fill it:
-					jsVertices.set( vertices );
-					///
-
-					/// Indices
-					const indicesCount = indices.length;
-					const indicesPtr = editor.mrmesh._malloc( indicesCount * 4 );
-					const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
-					jsIndices.set( indices );
-					///
-
-					// 4) Now `jsVertices.buffer === editor.mrmesh.HEAPF32.buffer`
-					const mesh = editor.mrmesh.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+					// Now `jsVertices.buffer === editor.MeshSDK.HEAPF32.buffer`
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
 
 					// FIXME: Why using the returned `Mesh` instance is not working?
-					// const result = editor.mrmesh.fillHolesImpl( mesh ); // ❌
-					// const result = editor.mrmesh.fillHolesImpl( curMeshWrapper.mesh ); // ✅
+					// const result = editor.MeshSDK.fillHolesImpl( mesh ); // ❌
+					// const result = editor.MeshSDK.fillHolesImpl( curMeshWrapper.mesh ); // ✅
 					
-					// const result = editor.mrmesh.Mesh.getGeometry( mesh ); // ✅
+					// const result = editor.MeshSDK.Mesh.getGeometry( mesh ); // ✅
 
 
 					///
 					const threeWorldDir = new THREE.Vector3();
 					editor.camera.getWorldDirection( threeWorldDir );
-					const upDir = new editor.mrmesh.Vector3f(
+					const upDir = new editor.MeshSDK.Vector3f(
 						-threeWorldDir.x,
 						-threeWorldDir.y,
 						-threeWorldDir.z,
 					)
 					// FIXME: Why using the returned `Mesh` instance is much slower?
-					const result = editor.mrmesh.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ⚠️
-					// const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 ); // ✅
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ⚠️
+					// const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 ); // ✅
 					///
 
 
@@ -493,8 +466,8 @@ function SidebarObject( editor ) {
 
 
 					/// IMPORTANT！！！
-					editor.mrmesh._free( verticesPtr );
-					editor.mrmesh._free( indicesPtr );
+					editor.MeshSDK._free( verticesPtr );
+					editor.MeshSDK._free( indicesPtr );
 
 					mesh.delete();
 					///
@@ -515,20 +488,20 @@ function SidebarObject( editor ) {
 				const indices = geometry.getIndex().array; // `Uint32Array`
 
 				try {
-					const mesh = editor.mrmesh.Mesh.fromTrianglesArray( vertices, indices );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
 
-					// const result = editor.mrmesh.fillHolesImpl( mesh );
+					// const result = editor.MeshSDK.fillHolesImpl( mesh );
 
 
 					///
 					const threeWorldDir = new THREE.Vector3();
 					editor.camera.getWorldDirection( threeWorldDir );
-					const upDir = new editor.mrmesh.Vector3f(
+					const upDir = new editor.MeshSDK.Vector3f(
 						-threeWorldDir.x,
 						-threeWorldDir.y,
 						-threeWorldDir.z,
 					)
-					const result = editor.mrmesh.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
 					///
 
 

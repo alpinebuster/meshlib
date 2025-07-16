@@ -120,7 +120,7 @@ function Editor() {
 	this.strings = new Strings( this.config );
 
 	this.loader = new Loader( this );
-	this.mrmesh = null;
+	this.MeshSDK = null;
 
 	this.camera = _DEFAULT_CAMERA.clone();
 
@@ -131,7 +131,7 @@ function Editor() {
 	this.sceneHelpers.add( new THREE.HemisphereLight( 0xffffff, 0x888888, 2 ) );
 
 	this.wasmObject = {};
-	// this.object = {};
+
 	this.geometries = {};
 	this.materials = {};
 	this.textures = {};
@@ -186,7 +186,7 @@ Editor.prototype = {
 	addObject: function( object, parent=null, index=null ) {
 		var scope = this;
 
-		object.traverse(function ( child ) {
+		object.traverse( function ( child ) {
 			if ( child.geometry !== undefined ) scope.addGeometry( child.geometry );
 			if ( child.material !== undefined ) scope.addMaterial( child.material );
 
@@ -446,13 +446,13 @@ Editor.prototype = {
 			return;
 		}
 
-		this.select( this.scene.getObjectById(id) );
+		this.select( this.scene.getObjectById( id ) );
 	},
 
 	selectByUuid: function( uuid ) {
 		var scope = this;
 
-		this.scene.traverse(function ( child ) {
+		this.scene.traverse( function ( child ) {
 			if ( child.uuid === uuid ) {
 				scope.select( child );
 			}
@@ -533,12 +533,33 @@ Editor.prototype = {
 		this.history.fromJSON( json.history );
 		this.scripts = json.scripts;
 
-		this.setScene(await loader.parseAsync( json.scene ));
+		this.setScene( await loader.parseAsync( json.scene ) );
+
+
+		///
+		const _meshes = this.scene.children.filter( child => child.isMesh );
+		_meshes.forEach( ( curM, _ ) => {
+			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( curM.geometry );
+			
+			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView(jsVertices, jsIndices);
+			try {
+				const wasmMeshWrapper = this.MeshSDK.MeshWrapper( wasmMesh );
+				if ( wasmMeshWrapper ) this.addWasmObject( curM.uuid, wasmMeshWrapper );
+			}
+			finally {
+				// IMPORTANT!!!
+				this.MeshSDK._free( verticesPtr );
+				this.MeshSDK._free( indicesPtr );
+				wasmMesh.delete();
+			}
+		});
+		///
+
 
 		if ( json.environment === 'Room' ||
 			 json.environment === 'ModelViewer' /* DEPRECATED */ ) {
 
-			this.signals.sceneEnvironmentChanged.dispatch(json.environment);
+			this.signals.sceneEnvironmentChanged.dispatch( json.environment );
 			this.signals.refreshSidebarEnvironment.dispatch();
 		}
 	},
@@ -606,8 +627,8 @@ Editor.prototype = {
 		formatNumber: formatNumber
 	},
 
-	async initMRMesh() {
-		this.mrmesh = await createMeshSDK();
+	async initMeshSDK() {
+		this.MeshSDK = await createMeshSDK();
 	},
 };
 

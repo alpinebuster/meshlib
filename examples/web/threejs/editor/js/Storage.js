@@ -6,7 +6,7 @@ function Storage() {
 		return { init: function () {}, get: function () {}, set: function () {}, clear: function () {} };
 	}
 
-	const name = 'three-meshlib-editor';
+	const name = 'three-meshsdk-editor';
 	const version = 1;
 
 	let database;

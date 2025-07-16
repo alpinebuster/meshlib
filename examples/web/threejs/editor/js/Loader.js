@@ -415,9 +415,9 @@ function Loader( editor ) {
 
 					// NOTE: Wasm Object with emscripten memory views
 					const uint8Array = new Uint8Array( contents );
-					const ptr = editor.mrmesh._malloc( uint8Array.byteLength );
-					editor.mrmesh.HEAPU8.set( uint8Array, ptr );
-					const result = await editor.mrmesh.MeshLoadWrapper.fromBinaryData( ptr, uint8Array.byteLength, 'stl' );
+					const ptr = editor.MeshSDK._malloc( uint8Array.byteLength );
+					editor.MeshSDK.HEAPU8.set( uint8Array, ptr );
+					const result = await editor.MeshSDK.MeshLoadWrapper.fromBinaryData( ptr, uint8Array.byteLength, 'stl' );
 
 					if ( !result.success ) {
 						// console.log( "WASM ERR: ", result );
@@ -438,7 +438,7 @@ function Loader( editor ) {
 					editor.execute( new AddObjectCommand( editor, mesh, null, null, mrmeshObj ) );
 
 					// NOTE: Remember to free after processing
-					editor.mrmesh._free( ptr );
+					editor.MeshSDK._free( ptr );
 				}, false );
 
 				if ( reader.readAsBinaryString !== undefined ) {
