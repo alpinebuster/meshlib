@@ -26,33 +26,38 @@ on:
 jobs:
   linux-vcpkg-build-test:
     timeout-minutes: 40
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     container:
-      image: meshlib/meshlib-vcpkg:${{ inputs.docker_image_tag }}
+      image: meshlib/meshlib-vcpkg-${{ matrix.arch }}:${{ inputs.docker_image_tag }}
       options: --user root
     strategy:
       fail-fast: false
       matrix:
         config: [Debug, Release]
-        compiler: [Clang 18, GCC 11]
+        arch: [x64, arm64]
+        compiler: [Clang 19, GCC 11]
         full_config_build:
           - ${{ fromJSON( inputs.full_config_build ) }}
         exclude:
-          # Do not run Debug Clang 18 build on every commit (but only once a day)
+          # Do not run Debug Clang 19 build on every commit (but only once a day)
           - full_config_build: false
-            compiler: Clang 18
+            compiler: Clang 19
             config: Debug
           # Do not run Release GCC 11 build on every commit (but only once a day)
           - full_config_build: false
             compiler: GCC 11
             config: Release
         include:
-          - compiler: Clang 18
-            cxx-compiler: /usr/bin/clang++-18
-            c-compiler: /usr/bin/clang-18
+          - compiler: Clang 19
+            cxx-compiler: /usr/bin/clang++-19
+            c-compiler: /usr/bin/clang-19
           - compiler: GCC 11
             cxx-compiler: /usr/bin/g++
             c-compiler: /usr/bin/gcc
+          - arch: x64
+            os: ubuntu-latest
+          - arch: arm64
+            os: [ self-hosted, linux-arm64, spot, meshinspector ]
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: read  # This is required for actions/checkout
@@ -64,6 +69,25 @@ jobs:
       AWS_EC2_METADATA_DISABLED: true
 
     steps:
+      # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html
+      - name: Get AWS instance type
+        run: |
+          TOKEN=$(curl -fsS --max-time 2 \
+            -X PUT "http://169.254.169.254/latest/api/token" \
+            -H "X-aws-ec2-metadata-token-ttl-seconds: 10" || true)
+
+          AWS_INSTANCE_TYPE=$(curl -fsS --max-time 2 \
+            -H "X-aws-ec2-metadata-token: $TOKEN" \
+            "http://169.254.169.254/latest/meta-data/instance-type" || true)
+          
+          # if not an EC2 instance
+          if test -z "$AWS_INSTANCE_TYPE" ; then
+            AWS_INSTANCE_TYPE="self-hosted"
+          fi
+
+          echo "AWS_INSTANCE_TYPE=$AWS_INSTANCE_TYPE" >> $GITHUB_ENV
+          echo $AWS_INSTANCE_TYPE
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -73,9 +97,10 @@ jobs:
         uses: ./.github/actions/collect-runner-stats
         with:
           target_os: linux-vcpkg
-          target_arch: x64
+          target_arch: ${{ matrix.arch }}
           cxx_compiler: ${{ matrix.cxx-compiler }}
           build_config: ${{ matrix.config }}
+          aws_instance_type: ${{ env.AWS_INSTANCE_TYPE }}
 
       - name: Checkout third-party submodules
         run: |
@@ -99,13 +124,13 @@ jobs:
             -DMESHLIB_PYTHON_SUPPORT=OFF
 
       - name: Collect Timings
-        run: ./scripts/devops/collect_timing_logs.sh linux-vcpkg ${{matrix.config}} "${{matrix.compiler}}"
+        run: ./scripts/devops/collect_timing_logs.sh linux-vcpkg-${{ matrix.arch }} ${{matrix.config}} "${{matrix.compiler}}"
 
       #Save timing in artifact
       - name: Upload Timings
         uses: actions/upload-artifact@v4
         with:
-          name: Timing_Logs_linux-vcpkg_${{matrix.config}}_${{matrix.compiler}}
+          name: Timing_Logs_linux-vcpkg-${{ matrix.arch }}_${{matrix.config}}_${{matrix.compiler}}
           path: time_log/
 
       - name: Run Start-and-Exit Tests
@@ -116,17 +141,19 @@ jobs:
         run: ./build/${{ matrix.config }}/bin/MRTest
 
       - name: Create Package
-        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 18' }}
-        run: ./scripts/distribution_vcpkg.sh ${{ inputs.app_version }}
+        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 19' }}
+        run: |
+          ./scripts/distribution_vcpkg.sh ${{ inputs.app_version }}
+          mv meshlib_linux-vcpkg.tar.xz meshlib_linux-vcpkg-${{ matrix.arch }}.tar.xz
 
       - name: Extract Package
-        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 18' }}
+        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 19' }}
         run: |
           mkdir meshlib_install
-          tar -xf meshlib_linux-vcpkg-x64.tar.xz -C meshlib_install
+          tar -xf meshlib_linux-vcpkg-${{ matrix.arch }}.tar.xz -C meshlib_install
 
       - name: Build C++ examples
-        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 18' }}
+        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 19' }}
         run: |
           cmake \
             -S examples/cpp-examples \
@@ -138,7 +165,7 @@ jobs:
             --parallel $(nproc)
 
       - name: Build C examples
-        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 18'}}
+        if: ${{ matrix.config == 'Release' && matrix.compiler == 'Clang 19'}}
         run: |
           cmake \
             -S examples/c-examples \
@@ -150,9 +177,9 @@ jobs:
             --parallel $(nproc)
 
       - name: Upload vcpkg Distribution
-        if: ${{ inputs.upload_artifacts && matrix.config == 'Release' && matrix.compiler == 'Clang 18' }}
+        if: ${{ inputs.upload_artifacts && matrix.config == 'Release' && matrix.compiler == 'Clang 19' }}
         uses: actions/upload-artifact@v4
         with:
-          name: Distributives_linux-vcpkg-x64
-          path: meshlib_linux-vcpkg-x64.tar.xz
+          name: Distributives_linux-vcpkg-${{ matrix.arch }}
+          path: meshlib_linux-vcpkg-${{ matrix.arch }}.tar.xz
           retention-days: 1
