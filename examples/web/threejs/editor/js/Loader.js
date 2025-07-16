@@ -430,7 +430,7 @@ function Loader( editor ) {
 					const { STLLoader } = await import( 'three/addons/loaders/STLLoader.js' );
 
 					const geometry = new STLLoader().parse( contents );
-					const material = new THREE.MeshStandardMaterial();
+					const material = new THREE.MeshNormalMaterial();
 
 					const mesh = new THREE.Mesh( geometry, material );
 					mesh.name = filename;

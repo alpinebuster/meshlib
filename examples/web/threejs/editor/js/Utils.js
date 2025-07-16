@@ -30,4 +30,22 @@ const createMemoryViewFromGeometry = ( editor, geometry ) => {
 	return { verticesPtr, jsVertices, indicesPtr, jsIndices };
 } 
 
+function showMesh( newVertices, newIndices ) {
+	const newGeometry = new THREE.BufferGeometry();
+	newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
+	newGeometry.computeVertexNormals();
+	newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
+
+	const newMaterial = new THREE.MeshNormalMaterial();
+	const newMesh = new THREE.Mesh( newGeometry, newMaterial );
+	newMesh.name = `wasm-${editor.selected.name}-${editor.selected.uuid.substring(0, 3)}`;
+	newMesh.castShadow = true;
+	newMesh.receiveShadow = true;
+
+	editor.execute( new AddObjectCommand( editor, newMesh ) );
+	editor.signals.geometryChanged.dispatch( newMesh );
+	editor.select( newMesh );
+}
+
 export default createMemoryViewFromGeometry;
+export { showMesh };
