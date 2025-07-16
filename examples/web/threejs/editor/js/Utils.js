@@ -1,3 +1,7 @@
+import * as THREE from 'three';
+
+import { AddObjectCommand } from './commands/AddObjectCommand.js';
+
 const createMemoryViewFromGeometry = ( editor, geometry ) => {
 	const vertices = geometry.getAttribute('position').array; // `Float32Array`
 	const indices = geometry.getIndex().array; // `Uint32Array`
