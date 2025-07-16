@@ -42,7 +42,7 @@ document.body.appendChild( resizer.dom );
 
 // Wasm initialization
 
-editor.initMeshSDK();
+await editor.initMeshSDK();
 
 //
 

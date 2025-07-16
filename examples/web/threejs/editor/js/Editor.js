@@ -11,6 +11,7 @@ import { History as _History } from './History.js';
 import { Strings } from './Strings.js';
 import { Storage as _Storage } from './Storage.js';
 import { Selector } from './Selector.js';
+import createMemoryViewFromGeometry from './Utils.js';
 
 // Add the extension functions
 THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree;
@@ -537,13 +538,19 @@ Editor.prototype = {
 
 
 		///
+		const ctx = this;
 		const _meshes = this.scene.children.filter( child => child.isMesh );
 		_meshes.forEach( ( curM, _ ) => {
-			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( curM.geometry );
+			if ( ( curM.isLine || curM.isPoints ) && ( curM.name.includes( "wasm-selector" ) ) ) return;
+			for ( let subChild in curM.children ) {
+				if ( ( subChild.isLine || subChild.isPoints ) && ( subChild.name.includes( "wasm-selector" ) ) ) return;
+			}
+
+			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( ctx, curM.geometry );
 			
 			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView(jsVertices, jsIndices);
 			try {
-				const wasmMeshWrapper = this.MeshSDK.MeshWrapper( wasmMesh );
+				const wasmMeshWrapper = new this.MeshSDK.MeshWrapper( wasmMesh );
 				if ( wasmMeshWrapper ) this.addWasmObject( curM.uuid, wasmMeshWrapper );
 			}
 			finally {

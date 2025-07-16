@@ -1,4 +1,4 @@
-const createMemoryViewFromGeometry = ( geometry ) => {
+const createMemoryViewFromGeometry = ( editor, geometry ) => {
 	const vertices = geometry.getAttribute('position').array; // `Float32Array`
 	const indices = geometry.getIndex().array; // `Uint32Array`
 
@@ -27,7 +27,7 @@ const createMemoryViewFromGeometry = ( geometry ) => {
 	jsIndices.set( indices );
 	///
 
-	return verticesPtr, jsVertices, indicesPtr, jsIndices
+	return { verticesPtr, jsVertices, indicesPtr, jsIndices };
 } 
 
 export default createMemoryViewFromGeometry;

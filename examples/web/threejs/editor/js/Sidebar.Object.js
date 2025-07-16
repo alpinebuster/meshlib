@@ -162,15 +162,9 @@ function SidebarObject( editor ) {
 	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelector') ).setMarginLeft( '7px' ).onClick(function () {
 		if ( !editor.selected ) return;
 
-		selectorEnabled = !selectorEnabled;
 		if ( selectorEnabled ) {
-			TOOL_MODE = 'wasmOpSelector';
-			wasmOpSelector.addClass( 'selected' );
-
-			pointGeo.dispose();
-			pointGeo = new THREE.BufferGeometry();
-			curveLine.geometry.dispose();
-			curveLine.geometry = new THREE.BufferGeometry();
+			TOOL_MODE = 'none';
+			wasmOpSelector.removeClass( 'selected' );
 
 			if ( editor.selected.children.length > 0 ) {
 				const subMeshes = editor.selected.children.filter( child => child.isLine || child.isPoints );
@@ -179,11 +173,16 @@ function SidebarObject( editor ) {
 				});
 			}
 		} else {
-			TOOL_MODE = 'none';
-			wasmOpSelector.removeClass( 'selected' );
-			editor.execute( new RemoveObjectCommand( editor, pointCloud ) );
-			editor.execute( new RemoveObjectCommand( editor, curveLine ) );
+			TOOL_MODE = 'wasmOpSelector';
+			wasmOpSelector.addClass( 'selected' );
+
+			pointGeo.dispose();
+			pointGeo = new THREE.BufferGeometry();
+			curveLine.geometry.dispose();
+			curveLine.geometry = new THREE.BufferGeometry();
 		}
+
+		selectorEnabled = !selectorEnabled;
 	});
 	signals.intersectionsDetected.add( ( intersects, source, event ) => {
 		if ( (TOOL_MODE == 'wasmOpSelector' || TOOL_MODE == 'wasmOpSegmentByPoints') && intersects.length > 0 ) {
@@ -212,7 +211,7 @@ function SidebarObject( editor ) {
 				_cur_intersect = _intersected_object;
 			}
 
-			clicked.push( intersects[0].point.clone() );
+			clicked.push( editor.selected.worldToLocal( intersects[0].point.clone() ) );
 			// console.log("pts: ", clicked);
 
 			refreshPoints();
@@ -226,7 +225,7 @@ function SidebarObject( editor ) {
 		if ( intersects.length > 0 ) {
 			const intersect = intersects[ 0 ];
 
-			clicked[draggingIndex].copy( intersect.point );
+			clicked[draggingIndex] = editor.selected.worldToLocal( intersect.point.clone() );
 			// console.log("intersect: ", intersect);
 			refreshPoints();
 			refreshCurve();
@@ -355,18 +354,18 @@ function SidebarObject( editor ) {
 		}
 	} );
 	const wasmOpSelectedInverter = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelectedInverter') ).setMarginLeft( '7px' ).onClick(function () {
-		if (!editor.selected) return;
+		if ( !editor.selected ) return;
 	});
 	const wasmOpSelectedDeleter = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelectedDeleter') ).setMarginLeft( '7px' ).onClick(function () {
-		if (!editor.selected) return;
+		if ( !editor.selected ) return;
 	});
 
 	const wasmOpFixUndercuts = new UIButton( strings.getKey( 'sidebar/object/wasmOpFixUndercuts') ).setMarginLeft( '7px' ).onClick(function () {
-		if (!editor.selected) return;
+		if ( !editor.selected ) return;
 
 		const currentUUID = editor.selected.uuid;
-		if (currentUUID) {
-			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const curMeshWrapper = editor.wasmObject[currentUUID];
 
 				const threeWorldDir = new THREE.Vector3();
@@ -434,7 +433,7 @@ function SidebarObject( editor ) {
 			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
 				const curMeshWrapper = editor.wasmObject[currentUUID];
 
-				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor.selected.geometry );
+				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 				try {
 					// Now `jsVertices.buffer === editor.MeshSDK.HEAPF32.buffer`
 					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
