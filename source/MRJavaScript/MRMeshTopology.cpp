@@ -71,27 +71,33 @@ EMSCRIPTEN_BINDINGS( MeshTopologyModule )
 
         // Triangle operations
         .function( "isLeftTri", &MeshTopology::isLeftTri )
+
         ///
         .function( "getTriVerts", select_overload<void( FaceId, VertId&, VertId&, VertId& ) const>( &MeshTopology::getTriVerts ) )
-        .function( "getTriVertsWithArray3VertId", select_overload<void( FaceId, std::array<VertId, 3>& ) const>( &MeshTopology::getTriVerts ) )
+        .function( "getTriVertsWithArray3VertId", select_overload<void( FaceId, ThreeVertIds& ) const>( &MeshTopology::getTriVerts ) )
         .function( "getTriVertsWithThreeVertIds", select_overload<void( FaceId, ThreeVertIds& ) const>( &MeshTopology::getTriVerts ) )
         .function( "getTriVertsWithFaceId", select_overload<ThreeVertIds( FaceId ) const>( &MeshTopology::getTriVerts ) )
-        /// END
+        ///
+
         .function( "isTriVert", &MeshTopology::isTriVert )
         .function( "getAllTriVerts", &MeshTopology::getAllTriVerts )
         .function( "getTriangulation", &MeshTopology::getTriangulation )
+
         ///
         .function( "getLeftTriVerts", select_overload<void( EdgeId, VertId&, VertId&, VertId& ) const>( &MeshTopology::getLeftTriVerts ) )
-        .function( "getLeftTriVertsWithArray3VertId", select_overload<void( EdgeId, std::array<VertId, 3>& ) const>( &MeshTopology::getLeftTriVerts ) )
-        .function( "getLeftTriVertsWithThreeVertIds", select_overload<void( EdgeId, ThreeVertIds & ) const>( &MeshTopology::getLeftTriVerts ) )
+        .function( "getLeftTriVertsWithArray3VertId", select_overload<void( EdgeId, ThreeVertIds& ) const>( &MeshTopology::getLeftTriVerts ) )
+        .function( "getLeftTriVertsWithThreeVertIds", select_overload<void( EdgeId, ThreeVertIds& ) const>( &MeshTopology::getLeftTriVerts ) )
         .function( "getLeftTriVertsWithEdgeId", select_overload<ThreeVertIds( EdgeId ) const>( &MeshTopology::getLeftTriVerts ) )
-        /// END
+        ///
+
         .function( "getLeftTriEdges", &MeshTopology::getLeftTriEdges )
+
         ///
         .function( "getTriEdges", select_overload<void( FaceId, EdgeId&, EdgeId&, EdgeId& ) const>( &MeshTopology::getTriEdges ) )
         // FIXME
         // .function( "getTriEdgesWithArray3EdgeId", select_overload<void( FaceId, std::array<EdgeId, 3>& ) const>( &MeshTopology::getTriEdges ) )
-        /// END
+        ///
+
         .function( "isLeftQuad", &MeshTopology::isLeftQuad )
 
         // Vertex operations
@@ -179,13 +185,15 @@ EMSCRIPTEN_BINDINGS( MeshTopologyModule )
         // Mesh building and packing
         .function( "addPart", select_overload<void( const MeshTopology&, FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &MeshTopology::addPart ), allow_raw_pointers() )
         .function( "addPartWithPartMapping", select_overload<void( const MeshTopology&, const PartMapping&, bool )>( &MeshTopology::addPart ), allow_raw_pointers() )
+    
         ///
         .function( "addPartByMaskWithPtr", select_overload<void( const MeshTopology&, const FaceBitSet*, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
         .function( "addPartByMask", select_overload<void( const MeshTopology&, const FaceBitSet&, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
 
         .function( "addPartByMaskWithEdgePathPtr", select_overload<void( const MeshTopology&, const FaceBitSet*, bool, const std::vector<EdgePath>&, const std::vector<EdgePath>&, const PartMapping& )>( &MeshTopology::addPartByMask ), allow_raw_pointers() )
         .function( "addPartByMaskWithEdgePath",        select_overload<void( const MeshTopology&, const FaceBitSet&, bool, const std::vector<EdgePath>&, const std::vector<EdgePath>&, const PartMapping& )>( &MeshTopology::addPartByMask ) )
-        ///END
+        ///
+    
         .function( "rotateTriangles", &MeshTopology::rotateTriangles )
         .function( "pack", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &MeshTopology::pack ), allow_raw_pointers() )
         .function( "packWithPackMapping", select_overload<void( const PackMapping& )>( &MeshTopology::pack ) )

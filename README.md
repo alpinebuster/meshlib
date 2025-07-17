@@ -43,6 +43,9 @@ The MeshSDK is an open-source library that provides advanced algorithms for 3D d
 git submodule update --init
 ./scripts/build_thirdparty.sh
 ./scripts/build_source.sh
+
+# Common sense
+emcc --clear-cache
 ```
 
 ### Docker

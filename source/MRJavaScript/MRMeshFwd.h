@@ -18,6 +18,9 @@ using namespace emscripten;
 using namespace MR;
 
 
+namespace MRJS 
+{
+
 ///
 template<typename IdType, typename ValueType = int>
 auto bindTypedId( const std::string& className )
@@ -145,3 +148,5 @@ auto bindTypedId<VoxelId, size_t>( const std::string& className ) {
     return cls;
 }
 ///
+
+}

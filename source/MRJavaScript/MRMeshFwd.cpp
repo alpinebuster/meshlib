@@ -51,19 +51,19 @@ EMSCRIPTEN_BINDINGS( MeshFwdModule )
     constant( "noInit", MR::noInit );
     
     ///
-    bindTypedId<EdgeId>( "EdgeId" );  // Using specialized versions
-    bindTypedId<VoxelId, size_t>( "VoxelId" );  // Using specialized versions
+    MRJS::bindTypedId<EdgeId>( "EdgeId" );  // Using specialized versions
+    MRJS::bindTypedId<VoxelId, size_t>( "VoxelId" );  // Using specialized versions
 
-    bindTypedId<UndirectedEdgeId>( "UndirectedEdgeId" );
-    bindTypedId<FaceId>( "FaceId" );
-    bindTypedId<VertId>( "VertId" );
-    bindTypedId<PixelId>( "PixelId" );
-    bindTypedId<RegionId>( "RegionId" );
-    bindTypedId<NodeId>( "NodeId" );
-    bindTypedId<ObjId>( "ObjId" );
-    bindTypedId<TextureId>( "TextureId" );
-    bindTypedId<GraphVertId>( "GraphVertId" );
-    bindTypedId<GraphEdgeId>( "GraphEdgeId" );
+    MRJS::bindTypedId<UndirectedEdgeId>( "UndirectedEdgeId" );
+    MRJS::bindTypedId<FaceId>( "FaceId" );
+    MRJS::bindTypedId<VertId>( "VertId" );
+    MRJS::bindTypedId<PixelId>( "PixelId" );
+    MRJS::bindTypedId<RegionId>( "RegionId" );
+    MRJS::bindTypedId<NodeId>( "NodeId" );
+    MRJS::bindTypedId<ObjId>( "ObjId" );
+    MRJS::bindTypedId<TextureId>( "TextureId" );
+    MRJS::bindTypedId<GraphVertId>( "GraphVertId" );
+    MRJS::bindTypedId<GraphEdgeId>( "GraphEdgeId" );
     ///
 }
 
@@ -88,15 +88,22 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
     ///
     MRJS::bindTypedVector<Triangulation, FaceId>( "Triangulation" );
     MRJS::bindTypedVector<Dipoles, NodeId>( "Dipoles" );
-    ///
 
-
-    ///
     MRJS::bindTypedVector<FaceMap, FaceId>( "FaceMap" );
     MRJS::bindTypedVector<VertMap, VertId>( "VertMap" );
     // NOTE: `EdgeMap` -> `Vector<EdgeId, EdgeId>`
     MRJS::bindTypedVector<EdgeMap, EdgeId>( "EdgeMap" );
 
+    MRJS::bindTypedVector<UndirectedEdgeMap, UndirectedEdgeId>( "UndirectedEdgeMap" );
+    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjMap" );
+    MRJS::bindTypedVector<WholeEdgeMap, UndirectedEdgeId>( "WholeEdgeMap" );
+    MRJS::bindTypedVector<UndirectedEdge2RegionMap, UndirectedEdgeId>( "UndirectedEdge2RegionMap" );
+    MRJS::bindTypedVector<Face2RegionMap, FaceId>( "Face2RegionMap" );
+    MRJS::bindTypedVector<Vert2RegionMap, VertId>( "Vert2RegionMap" );
+    ///
+
+
+    ///
     MRJS::bindTypedVector<Vector<VertId, EdgeId>, EdgeId>( "VertIdEdgeIdMap" );
     MRJS::bindTypedVector<Vector<EdgeId, VertId>, VertId>( "EdgeIdVertIdMap" );
     MRJS::bindTypedVector<Vector<EdgeId, FaceId>, FaceId>( "EdgeIdFaceIdMap" );
@@ -104,16 +111,6 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
 
     MRJS::bindTypedVector<Vector<ModelPointsData, ObjId>, ObjId>( "ModelPointsDataObjIdMap" );
     MRJS::bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, FaceId>( "VertSpanFaceIdMap" );
-    ///
-
-    
-    ///
-    MRJS::bindTypedVector<UndirectedEdgeMap, UndirectedEdgeId>( "UndirectedEdgeMap" );
-    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjMap" );
-    MRJS::bindTypedVector<WholeEdgeMap, UndirectedEdgeId>( "WholeEdgeMap" );
-    MRJS::bindTypedVector<UndirectedEdge2RegionMap, UndirectedEdgeId>( "UndirectedEdge2RegionMap" );
-    MRJS::bindTypedVector<Face2RegionMap, FaceId>( "Face2RegionMap" );
-    MRJS::bindTypedVector<Vert2RegionMap, VertId>( "Vert2RegionMap" );
     ///
 }
 
