@@ -1,6 +1,7 @@
 #pragma once
 
 #include <optional>
+#include <type_traits>
 
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
@@ -9,9 +10,11 @@
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRBox.h>
+#include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
+#include <MRMesh/MRVector4.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>

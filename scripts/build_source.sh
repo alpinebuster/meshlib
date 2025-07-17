@@ -180,7 +180,7 @@ if [ "${MESHLIB_BUILD_DEBUG}" = "ON" ]; then
   fi
   cd build/Debug
     cmake -S ../.. -B . -D CMAKE_BUILD_TYPE=Debug ${MR_CMAKE_OPTIONS} | tee ${logfile}
-    cmake --build . -j ${NPROC} | tee ${logfile}
+    EMCC_DEBUG=1 cmake --build . -j ${NPROC} | tee ${logfile}
   cd ../..
 fi
 

@@ -44,7 +44,7 @@ public:
 
     /// unite two elements,
     /// \return first: new common root, second: true = union was done, false = first and second were already united
-    std::pair<I,bool> unite( I first, I second )
+    std::pair<I, bool> unite( I first, I second )
     {
         auto firstRoot = updateRoot_( first );
         auto secondRoot = updateRoot_( second );

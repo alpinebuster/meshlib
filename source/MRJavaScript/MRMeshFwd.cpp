@@ -5,6 +5,7 @@
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
+#include <MRMesh/MRVector4.h>
 #include <MRMesh/MRColor.h>
 #include <MRMesh/MRDipole.h>
 #include <MRMesh/MRAABBTreePoints.h>
@@ -20,6 +21,7 @@
 #include <MRMesh/MRMeshFwd.h>
 
 #include "MRMeshFwd.h"
+#include "MRVector.h"
 
 using namespace emscripten;
 using namespace MR;
@@ -67,32 +69,36 @@ EMSCRIPTEN_BINDINGS( BMapTypedModule )
 
 EMSCRIPTEN_BINDINGS( MapTypedModule )
 {
-    BIND_TYPED_VECTOR( Triangulation, ThreeVertIds, FaceId );
+    ///
+    bindTypedVector<Triangulation, FaceId>( "Triangulation" );
+    bindTypedVector<Dipoles, NodeId>( "Dipoles" );
+    ///
 
-    bindTypedVector<Dipoles, Dipole, NodeId>( "Dipoles" );
-
-    BIND_TYPED_VECTOR( FaceMap, FaceId, FaceId );
-    BIND_TYPED_VECTOR( VertMap, VertId, VertId );
 
     ///
+    bindTypedVector<FaceMap, FaceId>( "FaceMap" );
+    bindTypedVector<VertMap, VertId>( "VertMap" );
     // NOTE: `EdgeMap` -> `Vector<EdgeId, EdgeId>`
-    BIND_TYPED_VECTOR( EdgeMap, EdgeId, EdgeId );
-    bindTypedVector<Vector<VertId, EdgeId>, VertId, EdgeId>( "VertIdEdgeIdMap" );
-    bindTypedVector<Vector<EdgeId, VertId>, EdgeId, VertId>( "EdgeIdVertIdMap" );
-    bindTypedVector<Vector<EdgeId, FaceId>, EdgeId, FaceId>( "EdgeIdFaceIdMap" );
-    bindTypedVector<Vector<FaceId, EdgeId>, FaceId, EdgeId>( "FaceIdEdgeIdMap" );
+    bindTypedVector<EdgeMap, EdgeId>( "EdgeMap" );
 
-    bindTypedVector<Vector<ModelPointsData, ObjId>, ModelPointsData, ObjId>( "ModelPointsDataObjIdMap" );
-    bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, MeshBuilder::VertSpan, FaceId>( "VertSpanFaceIdMap" );
+    bindTypedVector<Vector<VertId, EdgeId>, EdgeId>( "VertIdEdgeIdMap" );
+    bindTypedVector<Vector<EdgeId, VertId>, VertId>( "EdgeIdVertIdMap" );
+    bindTypedVector<Vector<EdgeId, FaceId>, FaceId>( "EdgeIdFaceIdMap" );
+    bindTypedVector<Vector<FaceId, EdgeId>, EdgeId>( "FaceIdEdgeIdMap" );
+
+    bindTypedVector<Vector<ModelPointsData, ObjId>, ObjId>( "ModelPointsDataObjIdMap" );
+    bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, FaceId>( "VertSpanFaceIdMap" );
     ///
 
-    BIND_TYPED_VECTOR( UndirectedEdgeMap, UndirectedEdgeId, UndirectedEdgeId );
-    BIND_TYPED_VECTOR( ObjMap, ObjId, ObjId );
-
-    BIND_TYPED_VECTOR( WholeEdgeMap, EdgeId, UndirectedEdgeId );
-    BIND_TYPED_VECTOR( UndirectedEdge2RegionMap, RegionId, UndirectedEdgeId );
-    BIND_TYPED_VECTOR( Face2RegionMap, RegionId, FaceId );
-    BIND_TYPED_VECTOR( Vert2RegionMap, RegionId, VertId );
+    
+    ///
+    bindTypedVector<UndirectedEdgeMap, UndirectedEdgeId>( "UndirectedEdgeMap" );
+    bindTypedVector<ObjMap, ObjId>( "ObjMap" );
+    bindTypedVector<WholeEdgeMap, UndirectedEdgeId>( "WholeEdgeMap" );
+    bindTypedVector<UndirectedEdge2RegionMap, UndirectedEdgeId>( "UndirectedEdge2RegionMap" );
+    bindTypedVector<Face2RegionMap, FaceId>( "Face2RegionMap" );
+    bindTypedVector<Vert2RegionMap, VertId>( "Vert2RegionMap" );
+    ///
 }
 
 EMSCRIPTEN_BINDINGS( CoordsTypedModule )
@@ -102,33 +108,33 @@ EMSCRIPTEN_BINDINGS( CoordsTypedModule )
     // It will throw `BindingError: Cannot register type 'VertUVCoords' twice`
     // BIND_TYPED_VECTOR( VertNormals, Vector3f, VertId );
     // 
-    BIND_TYPED_VECTOR( VertCoords, Vector3f, VertId );
+    bindTypedVector<VertCoords, VertId>( "VertCoords" );
     // NOTE: `VertUVCoords` is the same as `VertCoords2`
     // BIND_TYPED_VECTOR( VertUVCoords, UVCoord, VertId );
-    BIND_TYPED_VECTOR( VertCoords2, Vector2f, VertId );
-    BIND_TYPED_VECTOR( FaceNormals, Vector3f, FaceId );
+    bindTypedVector<VertCoords2, VertId>( "VertCoords2" );
+    bindTypedVector<FaceNormals, FaceId>( "FaceNormals" );
 }
 
 EMSCRIPTEN_BINDINGS( ColorsTypedModule )
 {
-    BIND_TYPED_VECTOR( TexturePerFace, TextureId, FaceId );
-    BIND_TYPED_VECTOR( VertColors, Color, VertId );
-    BIND_TYPED_VECTOR( FaceColors, Color, FaceId );
-    BIND_TYPED_VECTOR( EdgeColors, Color, EdgeId );
-    BIND_TYPED_VECTOR( UndirectedEdgeColors, Color, UndirectedEdgeId );
+    bindTypedVector<TexturePerFace, FaceId>( "TexturePerFace" );
+    bindTypedVector<VertColors, VertId>( "VertColors" );
+    bindTypedVector<FaceColors, FaceId>( "FaceColors" );
+    bindTypedVector<EdgeColors, EdgeId>( "EdgeColors" );
+    bindTypedVector<UndirectedEdgeColors, UndirectedEdgeId>( "UndirectedEdgeColors" );
 }
 
 EMSCRIPTEN_BINDINGS( ScalarsTypedModule )
 {
-    BIND_TYPED_VECTOR( VertScalars, float, VertId );
-    BIND_TYPED_VECTOR( FaceScalars, float, FaceId );
-    BIND_TYPED_VECTOR( EdgeScalars, float, EdgeId );
-    BIND_TYPED_VECTOR( UndirectedEdgeScalars, float, UndirectedEdgeId );
+    bindTypedVector<VertScalars, VertId>( "VertScalars" );
+    bindTypedVector<FaceScalars, FaceId>( "FaceScalars" );
+    bindTypedVector<EdgeScalars, EdgeId>( "EdgeScalars" );
+    bindTypedVector<UndirectedEdgeScalars, UndirectedEdgeId>( "UndirectedEdgeScalars" );
 }
 
 EMSCRIPTEN_BINDINGS( NodeVecTypedModule )
 {
-    bindTypedVector<AABBTreePoints::NodeVec, AABBTreePoints::Node, NodeId>( "NodeVec" );
+    bindTypedVector<AABBTreePoints::NodeVec, NodeId>( "NodeVec" );
 }
 
 
