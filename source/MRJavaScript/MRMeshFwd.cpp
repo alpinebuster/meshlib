@@ -89,21 +89,22 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
     MRJS::bindTypedVector<Triangulation, FaceId>( "Triangulation" );
     MRJS::bindTypedVector<Dipoles, NodeId>( "Dipoles" );
 
-    MRJS::bindTypedVector<FaceMap, FaceId>( "FaceMap" );
-    MRJS::bindTypedVector<VertMap, VertId>( "VertMap" );
+
+    ///
     // NOTE: `EdgeMap` -> `Vector<EdgeId, EdgeId>`
     MRJS::bindTypedVector<EdgeMap, EdgeId>( "EdgeMap" );
-
     MRJS::bindTypedVector<UndirectedEdgeMap, UndirectedEdgeId>( "UndirectedEdgeMap" );
-    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjMap" );
-    MRJS::bindTypedVector<WholeEdgeMap, UndirectedEdgeId>( "WholeEdgeMap" );
-    MRJS::bindTypedVector<UndirectedEdge2RegionMap, UndirectedEdgeId>( "UndirectedEdge2RegionMap" );
-    MRJS::bindTypedVector<Face2RegionMap, FaceId>( "Face2RegionMap" );
-    MRJS::bindTypedVector<Vert2RegionMap, VertId>( "Vert2RegionMap" );
-    ///
+    MRJS::bindTypedVector<FaceMap, FaceId>( "FaceMap" );
+    MRJS::bindTypedVector<VertMap, VertId>( "VertMap" );    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjMap" );
+    MRJS::bindTypedVector<Vector<PixelId, PixelId>, PixelId>( "PixelIdPixelIdMap" );
+    MRJS::bindTypedVector<Vector<VoxelId, VoxelId>, VoxelId>( "VoxelIdVoxelIdMap" );
+    MRJS::bindTypedVector<Vector<RegionId, RegionId>, RegionId>( "RegionIdRegionIdMap" );
+    MRJS::bindTypedVector<Vector<NodeId, NodeId>, NodeId>( "NodeIdNodeIdMap" );
+    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjIdObjIdMap" );
+    MRJS::bindTypedVector<Vector<TextureId, TextureId>, TextureId>( "TextureIdTextureIdMap" );
+    MRJS::bindTypedVector<Vector<GraphVertId, GraphVertId>, GraphVertId>( "GraphVertIdGraphVertIdMap" );
+    MRJS::bindTypedVector<Vector<GraphEdgeId, GraphEdgeId>, GraphEdgeId>( "GraphEdgeIdGraphEdgeIdMap" );
 
-
-    ///
     MRJS::bindTypedVector<Vector<VertId, EdgeId>, EdgeId>( "VertIdEdgeIdMap" );
     MRJS::bindTypedVector<Vector<EdgeId, VertId>, VertId>( "EdgeIdVertIdMap" );
     MRJS::bindTypedVector<Vector<EdgeId, FaceId>, FaceId>( "EdgeIdFaceIdMap" );
@@ -112,6 +113,12 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
     MRJS::bindTypedVector<Vector<ModelPointsData, ObjId>, ObjId>( "ModelPointsDataObjIdMap" );
     MRJS::bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, FaceId>( "VertSpanFaceIdMap" );
     ///
+
+    
+    MRJS::bindTypedVector<WholeEdgeMap, UndirectedEdgeId>( "WholeEdgeMap" );
+    MRJS::bindTypedVector<UndirectedEdge2RegionMap, UndirectedEdgeId>( "UndirectedEdge2RegionMap" );
+    MRJS::bindTypedVector<Face2RegionMap, FaceId>( "Face2RegionMap" );
+    MRJS::bindTypedVector<Vert2RegionMap, VertId>( "Vert2RegionMap" );
 }
 
 EMSCRIPTEN_BINDINGS( CoordsTypedModule )

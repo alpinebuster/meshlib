@@ -463,6 +463,36 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 
 
 	///
+	register_vector<std::vector<int>>( "VectorStdVectori" );
+	register_vector<std::vector<float>>( "VectorStdVectorf" );
+	register_vector<std::vector<double>>( "VectorStdVectord" );
+	register_vector<std::vector<long long>>( "VectorStdVectorll" );
+	register_vector<std::vector<uint64_t>>( "VectorStdVectorUi64" );
+
+	register_vector<std::array<int, 3>>( "VectorArray3StdVectori" );
+	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
+	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
+	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
+	register_vector<std::array<uint64_t, 3>>( "VectorArray3StdVectorUi64" );
+	///
+
+
+	///
+	register_vector<std::vector<int>>( "VectorStdVectori" );
+	register_vector<std::vector<float>>( "VectorStdVectorf" );
+	register_vector<std::vector<double>>( "VectorStdVectord" );
+	register_vector<std::vector<long long>>( "VectorStdVectorll" );
+	register_vector<std::vector<uint64_t>>( "VectorStdVectorUi64" );
+
+	register_vector<std::array<int, 3>>( "VectorArray3StdVectori" );
+	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
+	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
+	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
+	register_vector<std::array<uint64_t, 3>>( "VectorArray3StdVectorUi64" );
+	///
+
+
+	///
 	register_vector<MeshBuilder::MeshPiece>( "VectorMeshPiece" );
 	register_vector<EdgePoint>( "SurfacePath" );
 
@@ -656,7 +686,16 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 
 
 	///
-	register_vector<Vector<MeshBuilder::VertSpan, FaceId>>( "VectorVertSpanFaceId" );
+	register_vector<Vector<MeshBuilder::VertSpan, FaceId>>( "VectorVertSpanFaceIdMap" );
+	register_vector<Vector<VertId, EdgeId>>( "VectorVertIdEdgeIdMap" );
+	register_vector<Vector<EdgeId, VertId>>( "VectorEdgeIdVertIdMap" );
+	register_vector<Vector<EdgeId, FaceId>>( "VectorEdgeIdFaceIdMap" );
+	register_vector<Vector<FaceId, EdgeId>>( "VectorFaceIdEdgeIdMap" );
+	register_vector<Vector<ModelPointsData, ObjId>>( "VectorModelPointsDataObjIdMap" );
+	register_vector<WholeEdgeMap>( "VectorWholeEdgeMap" );
+	register_vector<UndirectedEdge2RegionMap>( "VectorUndirectedEdge2RegionMap" );
+	register_vector<Face2RegionMap>( "VectorFace2RegionMap" );
+	register_vector<Vert2RegionMap>( "VectorVert2RegionMap" );
 	///
 
 
@@ -853,8 +892,17 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 	register_optional<bool>();
 	register_optional<double>();
 	register_optional<long long>();
+	register_optional<uint64_t>();
 	///
 
+
+	///
+    register_optional<Vector<int, size_t>>();
+    register_optional<Vector<float, size_t>>();
+	register_optional<Vector<double, size_t>>();
+	register_optional<Vector<long long, size_t>>();
+	register_optional<Vector<uint64_t, size_t>>();
+	///
 
 	///
 	register_optional<MeshOrPoints>();

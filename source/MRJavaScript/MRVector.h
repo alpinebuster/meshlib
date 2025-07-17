@@ -2,6 +2,7 @@
 
 #include <string>
 #include <type_traits>
+#include <type_traits>
 
 #include <emscripten/bind.h>
 
@@ -93,8 +94,16 @@ auto bindTypedVector( const std::string& className )
         .function( "swap", &VecType::swap )
 
         .function( "heapBytes", &VecType::heapBytes )
-        .function( "data", select_overload<typename VecType::value_type* ()>( &VecType::data ), allow_raw_pointers() )
-        .function( "dataConst", select_overload<const typename VecType::value_type* () const>( &VecType::data ), allow_raw_pointers() );
+        // .function( "data", select_overload<typename VecType::value_type* ()>( &VecType::data ), allow_raw_pointers() )
+        // .function( "dataConst", select_overload<const typename VecType::value_type* () const>( &VecType::data ), allow_raw_pointers() )        
+        .function( "getData", optional_override( [] ( VecType& self )
+        {
+            return val( typed_memory_view( self.size(), self.data() ) );
+        }))
+        .function( "getDataConst", optional_override( [] ( const VecType& self )
+        {
+            return val( typed_memory_view( self.size(), self.data() ) );
+        }));
 
     // If the element type supports `==/!=`, then register `equals`/`notEquals`
     if constexpr ( std::equality_comparable<typename VecType::value_type> )

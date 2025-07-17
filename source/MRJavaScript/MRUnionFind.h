@@ -14,6 +14,8 @@
 using namespace emscripten;
 using namespace MR;
 
+namespace MRJS 
+{
 
 template<typename IdType>
 auto bindTypedUnionFind( const std::string& className ) {
@@ -34,4 +36,6 @@ auto bindTypedUnionFind( const std::string& className ) {
         .function( "sizeOfComp", &UnionFind<IdType>::sizeOfComp );
     
     return cls;
+}
+
 }

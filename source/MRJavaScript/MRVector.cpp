@@ -15,7 +15,7 @@ using namespace MR;
 
 
 // ------------------------------------------------------------------------
-// Bind the Embind interface for `Vector*`
+// Bind the Embind interface for `Vector<*, *>`
 // ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( VectorModule )
 {
@@ -76,8 +76,8 @@ EMSCRIPTEN_BINDINGS( VectorModule )
     ///
 
 
-    function( "getAti", select_overload<int ( const Vector<int, size_t>&,    size_t, int    )>( &getAt ));
-    function( "getAtf", select_overload<float ( const Vector<float, size_t>&,  size_t, float  )>( &getAt ) );
+    function( "getAti", select_overload<int ( const Vector<int, size_t>&,    size_t, int )>( &getAt ) );
+    function( "getAtf", select_overload<float ( const Vector<float, size_t>&,  size_t, float )>( &getAt ) );
     function( "getAtd", select_overload<double ( const Vector<double, size_t>&, size_t, double )>( &getAt ) );
     function( "getAtll", select_overload<long long ( const Vector<long long, size_t>&, size_t, long long )>( &getAt ) );
 }
