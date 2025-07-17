@@ -73,6 +73,7 @@ EMSCRIPTEN_BINDINGS( VectorModule )
     MRJS::bindTypedVector<Vector<long long, size_t>, size_t>( "VectorLongLongSizeT" );
     MRJS::bindTypedVector<Vector<double, size_t>, size_t>( "VectorDoubleSizeT" );
     MRJS::bindTypedVector<Vector<size_t, size_t>, size_t>( "VectorSizeTSizeT" );
+    MRJS::bindTypedVector<Vector<uint64_t, size_t>, size_t>( "VectorUi64SizeT" );
     ///
 
 

@@ -463,36 +463,6 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 
 
 	///
-	register_vector<std::vector<int>>( "VectorStdVectori" );
-	register_vector<std::vector<float>>( "VectorStdVectorf" );
-	register_vector<std::vector<double>>( "VectorStdVectord" );
-	register_vector<std::vector<long long>>( "VectorStdVectorll" );
-	register_vector<std::vector<uint64_t>>( "VectorStdVectorUi64" );
-
-	register_vector<std::array<int, 3>>( "VectorArray3StdVectori" );
-	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
-	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
-	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
-	register_vector<std::array<uint64_t, 3>>( "VectorArray3StdVectorUi64" );
-	///
-
-
-	///
-	register_vector<std::vector<int>>( "VectorStdVectori" );
-	register_vector<std::vector<float>>( "VectorStdVectorf" );
-	register_vector<std::vector<double>>( "VectorStdVectord" );
-	register_vector<std::vector<long long>>( "VectorStdVectorll" );
-	register_vector<std::vector<uint64_t>>( "VectorStdVectorUi64" );
-
-	register_vector<std::array<int, 3>>( "VectorArray3StdVectori" );
-	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
-	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
-	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
-	register_vector<std::array<uint64_t, 3>>( "VectorArray3StdVectorUi64" );
-	///
-
-
-	///
 	register_vector<MeshBuilder::MeshPiece>( "VectorMeshPiece" );
 	register_vector<EdgePoint>( "SurfacePath" );
 
@@ -704,6 +674,7 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<Vector<float, size_t>>( "VectorVectorStdd" );
 	register_vector<Vector<double, size_t>>( "VectorVectorStdf" );
 	register_vector<Vector<long long, size_t>>( "VectorVectorStdll" );
+	register_vector<Vector<size_t, size_t>>( "VectorVectorStdSizeT" );
 	register_vector<Vector<uint64_t, size_t>>( "VectorVectorStdUi64" );
 	///
 
@@ -878,6 +849,10 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 	MRJS::bindStdArray<GraphEdgeId, 3>( "Array3GraphEdgeId" );
 	MRJS::bindStdArray<GraphEdgeId, 4>( "Array4GraphEdgeId" );
 	///
+
+
+	///
+	///
 }
 
 
@@ -892,6 +867,7 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 	register_optional<bool>();
 	register_optional<double>();
 	register_optional<long long>();
+	register_optional<size_t>();
 	register_optional<uint64_t>();
 	///
 
@@ -901,6 +877,7 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
     register_optional<Vector<float, size_t>>();
 	register_optional<Vector<double, size_t>>();
 	register_optional<Vector<long long, size_t>>();
+	register_optional<Vector<size_t, size_t>>();
 	register_optional<Vector<uint64_t, size_t>>();
 	///
 

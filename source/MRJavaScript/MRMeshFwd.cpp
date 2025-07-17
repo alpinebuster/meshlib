@@ -95,12 +95,12 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
     MRJS::bindTypedVector<EdgeMap, EdgeId>( "EdgeMap" );
     MRJS::bindTypedVector<UndirectedEdgeMap, UndirectedEdgeId>( "UndirectedEdgeMap" );
     MRJS::bindTypedVector<FaceMap, FaceId>( "FaceMap" );
-    MRJS::bindTypedVector<VertMap, VertId>( "VertMap" );    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjMap" );
+    MRJS::bindTypedVector<VertMap, VertId>( "VertMap" );    
+    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjMap" );
     MRJS::bindTypedVector<Vector<PixelId, PixelId>, PixelId>( "PixelIdPixelIdMap" );
     MRJS::bindTypedVector<Vector<VoxelId, VoxelId>, VoxelId>( "VoxelIdVoxelIdMap" );
     MRJS::bindTypedVector<Vector<RegionId, RegionId>, RegionId>( "RegionIdRegionIdMap" );
     MRJS::bindTypedVector<Vector<NodeId, NodeId>, NodeId>( "NodeIdNodeIdMap" );
-    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjIdObjIdMap" );
     MRJS::bindTypedVector<Vector<TextureId, TextureId>, TextureId>( "TextureIdTextureIdMap" );
     MRJS::bindTypedVector<Vector<GraphVertId, GraphVertId>, GraphVertId>( "GraphVertIdGraphVertIdMap" );
     MRJS::bindTypedVector<Vector<GraphEdgeId, GraphEdgeId>, GraphEdgeId>( "GraphEdgeIdGraphEdgeIdMap" );

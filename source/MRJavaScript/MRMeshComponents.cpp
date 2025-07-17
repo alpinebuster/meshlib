@@ -67,7 +67,8 @@ EMSCRIPTEN_BINDINGS( MeshComponentsModule )
     function( "getComponentVerts", &MeshComponents::getComponentVerts, allow_raw_pointers() );
     function( "getLargestComponentVerts", &MeshComponents::getLargestComponentVerts, allow_raw_pointers() );
     function( "getLargeComponentVerts", &MeshComponents::getLargeComponentVerts, allow_raw_pointers() );
-    function( "getLargestComponent", &MeshComponents::getLargestComponent, allow_raw_pointers() );
+    // FIXME: "`int*` -> Missing binding for type: 'Pi' typeId"
+    // function( "getLargestComponent", &MeshComponents::getLargestComponent, allow_raw_pointers() );
     function( "getComponents", &MeshComponents::getComponents, allow_raw_pointers() );
 
     function( "getLargeByAreaComponents", select_overload<FaceBitSet( const MeshPart&, float, const UndirectedEdgeBitSet* )>( &MeshComponents::getLargeByAreaComponents ), allow_raw_pointers() );
