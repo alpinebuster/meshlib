@@ -20,33 +20,8 @@ using namespace emscripten;
 using namespace MR;
 
 
-template<typename MapType, typename ElementType, typename IdType>
-auto bindTypedBMap(const char* jsName)
+namespace MRJS
 {
-    auto cls = class_<MapType>( jsName )
-        .constructor<>()
-        // Using pointer cause `Buffer` does NOT support the **copy** assignment operator
-        .function( "getB", optional_override( [] ( MapType& self ) -> Buffer<ElementType, IdType>*
-            {
-                return &self.b;
-            } ), allow_raw_pointers() )
-        // NOTE:
-        // 
-        // 1) If `setB` accepts optional arguments or allows "clearing", use **pointer**
-        // 2) If `setB` always requires a valid `Buffer` object, change it with a **reference**
-        // 
-        .function( "setB", optional_override( []( MapType& self, Buffer<ElementType, IdType>& newB ) {
-            self.b = std::move( newB );
-        } ), allow_raw_pointers() )
-        .function( "setBWithPtr", optional_override( []( MapType& self, Buffer<ElementType, IdType>* newB ) {
-            // Move assignment, because `Buffer` does not support the copy assignment operator
-            if ( newB ) self.b = std::move( *newB );
-        } ), allow_raw_pointers() )
-        .property( "tsize", &MapType::tsize );
-
-    return cls;
-}
-
 
 // NOTE:
 // 
@@ -60,8 +35,8 @@ template<typename VecType, typename I>
 auto bindTypedVector( const std::string& className )
 {
     auto cls = class_<VecType>( className.c_str() )
-        .constructor<>()
-        .constructor<size_t>()
+        .template constructor<>()
+        .template constructor<size_t>()
         .template constructor<size_t, const typename VecType::value_type &>()
 
         .function( "size", &VecType::size )
@@ -326,8 +301,8 @@ auto bindTypedVector4( const std::string& name, const std::string& suffix )
 
     auto cls = class_<Vec4Type>( name.c_str() )
         .template smart_ptr<std::shared_ptr<Vec4Type>>( ( name + "SharedPtr" ).c_str() )
-        .constructor<>()
-        .constructor<T, T, T, T>()
+        .template constructor<>()
+        .template constructor<T, T, T, T>()
 
         .property( "x", &Vec4Type::x )
         .property( "y", &Vec4Type::y )
@@ -366,4 +341,6 @@ auto bindTypedVector4( const std::string& name, const std::string& suffix )
     function( ( "sqr4" + suffix ).c_str(), select_overload<T( const Vec4Type& )>( &sqr<T> ) );
 
     return cls;
+}
+
 }

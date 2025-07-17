@@ -1,4 +1,7 @@
 #include <optional>
+#include <vector>
+#include <type_traits>
+#include <array>
 
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
@@ -63,8 +66,8 @@ val vector3fToArray( const Vector3f& v )
 val box3fToObject( const Box<Vector3<float>>& box )
 {
 	val obj = val::object();
-	obj.set( "min", vector3fToArray( box.min ) );
-	obj.set( "max", vector3fToArray( box.max ) );
+	obj.set( "min", MRJS::vector3fToArray( box.min ) );
+	obj.set( "max", MRJS::vector3fToArray( box.max ) );
 	return obj;
 }
 
@@ -143,6 +146,7 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 }
 
 }
+
 
 // ------------------------------------------------------------------------
 // Bindings for `std::pair<*, *>`
@@ -449,6 +453,12 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<std::vector<double>>( "VectorStdVectord" );
 	register_vector<std::vector<long long>>( "VectorStdVectorll" );
 	register_vector<std::vector<uint64_t>>( "VectorStdVectorUi64" );
+
+	register_vector<std::array<int, 3>>( "VectorArray3StdVectori" );
+	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
+	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
+	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
+	register_vector<std::array<uint64_t, 3>>( "VectorArray3StdVectorUi64" );
 	///
 
 
@@ -585,8 +595,8 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<std::array<FaceId, 3>>( "VectorArray3FaceId" );
 
 	// NOTE: `ThreeVertIds` is `std::array<VertId, 3>`
-    // register_vector<std::array<VertId, 3>>( "VectorArray3VertId" );
-    register_vector<ThreeVertIds>( "VectorThreeVertIds" );
+    // register_vector<ThreeVertIds>( "VectorThreeVertIds" );
+    register_vector<std::array<VertId, 3>>( "VectorArray3VertId" );
 
     register_vector<std::array<PixelId, 3>>( "VectorArray3PixelId" );
     register_vector<std::array<VoxelId, 3>>( "VectorArray3VoxelId" );

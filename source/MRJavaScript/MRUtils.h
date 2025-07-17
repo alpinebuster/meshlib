@@ -26,17 +26,10 @@ using namespace MR;
 namespace MRJS
 {
 
-
-// Helper function to create Vector3f from JavaScript array
 Vector3f arrayToVector3f( const val& arr );
-
-// Helper function to convert Vector3f to JavaScript array
 val vector3fToArray( const Vector3f& v );
-
-// Helper function to convert Box3F to JavaScript object
 val box3fToObject( const Box<Vector3<float>>& box );
 
-// Helper function to convert Expected<T> to JavaScript-friendly result
 template<typename T>
 val expectedToJs( const Expected<T>& expected );
 
@@ -203,4 +196,4 @@ void bindStdArray( const char* jsName )
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
 }
 
-} // namespace MRUtil
+} // MRJS

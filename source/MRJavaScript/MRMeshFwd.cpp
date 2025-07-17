@@ -22,6 +22,7 @@
 
 #include "MRMeshFwd.h"
 #include "MRVector.h"
+#include "MRBuffer.h"
 
 using namespace emscripten;
 using namespace MR;
@@ -29,6 +30,21 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( MeshFwdModule )
 {
+    enum_<FilterType>( "FilterType" )
+        .value( "Linear", FilterType::Linear )
+        .value( "Discrete", FilterType::Discrete );
+
+    enum_<WrapType>( "WrapType" )
+        .value( "Repeat", WrapType::Repeat )
+        .value( "Mirror", WrapType::Mirror )
+        .value( "Clamp", WrapType::Clamp );
+
+    enum_<Reorder>( "Reorder" )
+        .value( "None", Reorder::None )
+        .value( "Lexicographically", Reorder::Lexicographically )
+        .value( "AABBTree", Reorder::AABBTree );
+
+
     // 1) Expose `NoInit` as an empty value type
     value_object<MR::NoInit>( "NoInit" );
     // 2) Expose the global constant `noInit` to JS
@@ -54,50 +70,50 @@ EMSCRIPTEN_BINDINGS( MeshFwdModule )
 EMSCRIPTEN_BINDINGS( BMapTypedModule )
 {
     ///
-    bindTypedBMap<FaceBMap, FaceId, FaceId>( "FaceBMap" );
-    bindTypedBMap<VertBMap, VertId, VertId>( "VertBMap" );
-    bindTypedBMap<EdgeBMap, EdgeId, EdgeId>( "EdgeBMap" );
-    bindTypedBMap<UndirectedEdgeBMap, UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMap" );
-    bindTypedBMap<WholeEdgeBMap, EdgeId, UndirectedEdgeId>( "WholeEdgeBMap" );
+    MRJS::bindTypedBMap<FaceBMap, FaceId, FaceId>( "FaceBMap" );
+    MRJS::bindTypedBMap<VertBMap, VertId, VertId>( "VertBMap" );
+    MRJS::bindTypedBMap<EdgeBMap, EdgeId, EdgeId>( "EdgeBMap" );
+    MRJS::bindTypedBMap<UndirectedEdgeBMap, UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMap" );
+    MRJS::bindTypedBMap<WholeEdgeBMap, EdgeId, UndirectedEdgeId>( "WholeEdgeBMap" );
     ///
 
 
-    bindTypedBMap<BMap<VertId, size_t>, VertId, size_t>( "VertIdSizeTBMap" );
-    bindTypedBMap<BMap<UndirectedEdgeId, size_t>, UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMap" );
-    bindTypedBMap<BMap<FaceId, size_t>, FaceId, size_t>( "FaceIdSizeTBMap" );
+    MRJS::bindTypedBMap<BMap<VertId, size_t>, VertId, size_t>( "VertIdSizeTBMap" );
+    MRJS::bindTypedBMap<BMap<UndirectedEdgeId, size_t>, UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMap" );
+    MRJS::bindTypedBMap<BMap<FaceId, size_t>, FaceId, size_t>( "FaceIdSizeTBMap" );
 }
 
 EMSCRIPTEN_BINDINGS( MapTypedModule )
 {
     ///
-    bindTypedVector<Triangulation, FaceId>( "Triangulation" );
-    bindTypedVector<Dipoles, NodeId>( "Dipoles" );
+    MRJS::bindTypedVector<Triangulation, FaceId>( "Triangulation" );
+    MRJS::bindTypedVector<Dipoles, NodeId>( "Dipoles" );
     ///
 
 
     ///
-    bindTypedVector<FaceMap, FaceId>( "FaceMap" );
-    bindTypedVector<VertMap, VertId>( "VertMap" );
+    MRJS::bindTypedVector<FaceMap, FaceId>( "FaceMap" );
+    MRJS::bindTypedVector<VertMap, VertId>( "VertMap" );
     // NOTE: `EdgeMap` -> `Vector<EdgeId, EdgeId>`
-    bindTypedVector<EdgeMap, EdgeId>( "EdgeMap" );
+    MRJS::bindTypedVector<EdgeMap, EdgeId>( "EdgeMap" );
 
-    bindTypedVector<Vector<VertId, EdgeId>, EdgeId>( "VertIdEdgeIdMap" );
-    bindTypedVector<Vector<EdgeId, VertId>, VertId>( "EdgeIdVertIdMap" );
-    bindTypedVector<Vector<EdgeId, FaceId>, FaceId>( "EdgeIdFaceIdMap" );
-    bindTypedVector<Vector<FaceId, EdgeId>, EdgeId>( "FaceIdEdgeIdMap" );
+    MRJS::bindTypedVector<Vector<VertId, EdgeId>, EdgeId>( "VertIdEdgeIdMap" );
+    MRJS::bindTypedVector<Vector<EdgeId, VertId>, VertId>( "EdgeIdVertIdMap" );
+    MRJS::bindTypedVector<Vector<EdgeId, FaceId>, FaceId>( "EdgeIdFaceIdMap" );
+    MRJS::bindTypedVector<Vector<FaceId, EdgeId>, EdgeId>( "FaceIdEdgeIdMap" );
 
-    bindTypedVector<Vector<ModelPointsData, ObjId>, ObjId>( "ModelPointsDataObjIdMap" );
-    bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, FaceId>( "VertSpanFaceIdMap" );
+    MRJS::bindTypedVector<Vector<ModelPointsData, ObjId>, ObjId>( "ModelPointsDataObjIdMap" );
+    MRJS::bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, FaceId>( "VertSpanFaceIdMap" );
     ///
 
     
     ///
-    bindTypedVector<UndirectedEdgeMap, UndirectedEdgeId>( "UndirectedEdgeMap" );
-    bindTypedVector<ObjMap, ObjId>( "ObjMap" );
-    bindTypedVector<WholeEdgeMap, UndirectedEdgeId>( "WholeEdgeMap" );
-    bindTypedVector<UndirectedEdge2RegionMap, UndirectedEdgeId>( "UndirectedEdge2RegionMap" );
-    bindTypedVector<Face2RegionMap, FaceId>( "Face2RegionMap" );
-    bindTypedVector<Vert2RegionMap, VertId>( "Vert2RegionMap" );
+    MRJS::bindTypedVector<UndirectedEdgeMap, UndirectedEdgeId>( "UndirectedEdgeMap" );
+    MRJS::bindTypedVector<ObjMap, ObjId>( "ObjMap" );
+    MRJS::bindTypedVector<WholeEdgeMap, UndirectedEdgeId>( "WholeEdgeMap" );
+    MRJS::bindTypedVector<UndirectedEdge2RegionMap, UndirectedEdgeId>( "UndirectedEdge2RegionMap" );
+    MRJS::bindTypedVector<Face2RegionMap, FaceId>( "Face2RegionMap" );
+    MRJS::bindTypedVector<Vert2RegionMap, VertId>( "Vert2RegionMap" );
     ///
 }
 
@@ -108,49 +124,31 @@ EMSCRIPTEN_BINDINGS( CoordsTypedModule )
     // It will throw `BindingError: Cannot register type 'VertUVCoords' twice`
     // BIND_TYPED_VECTOR( VertNormals, Vector3f, VertId );
     // 
-    bindTypedVector<VertCoords, VertId>( "VertCoords" );
+    MRJS::bindTypedVector<VertCoords, VertId>( "VertCoords" );
     // NOTE: `VertUVCoords` is the same as `VertCoords2`
     // BIND_TYPED_VECTOR( VertUVCoords, UVCoord, VertId );
-    bindTypedVector<VertCoords2, VertId>( "VertCoords2" );
-    bindTypedVector<FaceNormals, FaceId>( "FaceNormals" );
+    MRJS::bindTypedVector<VertCoords2, VertId>( "VertCoords2" );
+    MRJS::bindTypedVector<FaceNormals, FaceId>( "FaceNormals" );
 }
 
 EMSCRIPTEN_BINDINGS( ColorsTypedModule )
 {
-    bindTypedVector<TexturePerFace, FaceId>( "TexturePerFace" );
-    bindTypedVector<VertColors, VertId>( "VertColors" );
-    bindTypedVector<FaceColors, FaceId>( "FaceColors" );
-    bindTypedVector<EdgeColors, EdgeId>( "EdgeColors" );
-    bindTypedVector<UndirectedEdgeColors, UndirectedEdgeId>( "UndirectedEdgeColors" );
+    MRJS::bindTypedVector<TexturePerFace, FaceId>( "TexturePerFace" );
+    MRJS::bindTypedVector<VertColors, VertId>( "VertColors" );
+    MRJS::bindTypedVector<FaceColors, FaceId>( "FaceColors" );
+    MRJS::bindTypedVector<EdgeColors, EdgeId>( "EdgeColors" );
+    MRJS::bindTypedVector<UndirectedEdgeColors, UndirectedEdgeId>( "UndirectedEdgeColors" );
 }
 
 EMSCRIPTEN_BINDINGS( ScalarsTypedModule )
 {
-    bindTypedVector<VertScalars, VertId>( "VertScalars" );
-    bindTypedVector<FaceScalars, FaceId>( "FaceScalars" );
-    bindTypedVector<EdgeScalars, EdgeId>( "EdgeScalars" );
-    bindTypedVector<UndirectedEdgeScalars, UndirectedEdgeId>( "UndirectedEdgeScalars" );
+    MRJS::bindTypedVector<VertScalars, VertId>( "VertScalars" );
+    MRJS::bindTypedVector<FaceScalars, FaceId>( "FaceScalars" );
+    MRJS::bindTypedVector<EdgeScalars, EdgeId>( "EdgeScalars" );
+    MRJS::bindTypedVector<UndirectedEdgeScalars, UndirectedEdgeId>( "UndirectedEdgeScalars" );
 }
 
 EMSCRIPTEN_BINDINGS( NodeVecTypedModule )
 {
-    bindTypedVector<AABBTreePoints::NodeVec, NodeId>( "NodeVec" );
-}
-
-
-EMSCRIPTEN_BINDINGS( MeshFwdTypeModule )
-{
-    enum_<FilterType>( "FilterType" )
-        .value( "Linear", FilterType::Linear )
-        .value( "Discrete", FilterType::Discrete );
-
-    enum_<WrapType>( "WrapType" )
-        .value( "Repeat", WrapType::Repeat )
-        .value( "Mirror", WrapType::Mirror )
-        .value( "Clamp", WrapType::Clamp );
-
-    enum_<Reorder>( "Reorder" )
-        .value( "None", Reorder::None )
-        .value( "Lexicographically", Reorder::Lexicographically )
-        .value( "AABBTree", Reorder::AABBTree );
+    MRJS::bindTypedVector<AABBTreePoints::NodeVec, NodeId>( "NodeVec" );
 }

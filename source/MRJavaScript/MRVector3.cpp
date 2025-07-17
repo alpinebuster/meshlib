@@ -15,9 +15,9 @@ using namespace MR;
 // ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( Vector3Module )
 {
-    bindTypedVector3<Vector3f>( "Vector3f", "f" );
-    bindTypedVector3<Vector3b>( "Vector3b", "b" );
-    bindTypedVector3<Vector3i>( "Vector3i", "i" );
-    bindTypedVector3<Vector3ll>( "Vector3ll", "ll" );
-    bindTypedVector3<Vector3d>( "Vector3d", "d" );
+    MRJS::bindTypedVector3<Vector3f>( "Vector3f", "f" );
+    MRJS::bindTypedVector3<Vector3b>( "Vector3b", "b" );
+    MRJS::bindTypedVector3<Vector3i>( "Vector3i", "i" );
+    MRJS::bindTypedVector3<Vector3ll>( "Vector3ll", "ll" );
+    MRJS::bindTypedVector3<Vector3d>( "Vector3d", "d" );
 }

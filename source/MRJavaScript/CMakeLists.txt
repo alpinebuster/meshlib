@@ -25,6 +25,7 @@ IF(MR_EMSCRIPTEN)
     # REF: `https://emscripten.org/docs/porting/Debugging.html`
     string(JOIN " " CMAKE_EXE_LINKER_FLAGS
       "${CMAKE_EXE_LINKER_FLAGS}"
+      "-v"
 
       ###
       # NOTE
@@ -38,7 +39,7 @@ IF(MR_EMSCRIPTEN)
       "-O1"
       ###
 
-      "-sASSERTIONS=2"              # More runtime assertions
+      "-sASSERTIONS=1"              # More runtime assertions
       "-sSTACK_OVERFLOW_CHECK=2"    # Stack overflow check
     )
   ENDIF()

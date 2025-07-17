@@ -19,22 +19,19 @@ using UndirectedEdgeBMapBuffer = Buffer<UndirectedEdgeId, UndirectedEdgeId>;
 using WholeEdgeBMapBuffer = Buffer<EdgeId, UndirectedEdgeId>;
 
 
-namespace MRJS
-{
-
 EMSCRIPTEN_BINDINGS( BufferModule )
 {
     ///
-    BufferBinding<FaceId, FaceId>( "FaceBMapBuffer" ).init();
-    BufferBinding<VertId, VertId>( "VertBMapBuffer" ).init();
-    BufferBinding<EdgeId, EdgeId>( "EdgeBMapBuffer" ).init();
-    BufferBinding<UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMapBuffer" ).init();
-    BufferBinding<EdgeId, UndirectedEdgeId>( "WholeEdgeBMapBuffer" ).init();
+    MRJS::BufferBinding<FaceId, FaceId>( "FaceBMapBuffer" ).init();
+    MRJS::BufferBinding<VertId, VertId>( "VertBMapBuffer" ).init();
+    MRJS::BufferBinding<EdgeId, EdgeId>( "EdgeBMapBuffer" ).init();
+    MRJS::BufferBinding<UndirectedEdgeId, UndirectedEdgeId>( "UndirectedEdgeBMapBuffer" ).init();
+    MRJS::BufferBinding<EdgeId, UndirectedEdgeId>( "WholeEdgeBMapBuffer" ).init();
 
-    BufferBinding<FaceId, size_t>( "FaceIdEdgeIdSizeTBMapBuffer" ).init();
-    BufferBinding<VertId, size_t>( "VertIdSizeTBMapBuffer" ).init();
-    BufferBinding<EdgeId, size_t>( "EdgeIdSizeTBMapBuffer" ).init();
-    BufferBinding<UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMapBuffer" ).init();
+    MRJS::BufferBinding<FaceId, size_t>( "FaceIdEdgeIdSizeTBMapBuffer" ).init();
+    MRJS::BufferBinding<VertId, size_t>( "VertIdSizeTBMapBuffer" ).init();
+    MRJS::BufferBinding<EdgeId, size_t>( "EdgeIdSizeTBMapBuffer" ).init();
+    MRJS::BufferBinding<UndirectedEdgeId, size_t>( "UndirectedEdgeIdSizeTBMapBuffer" ).init();
     ///
 
 
@@ -84,6 +81,4 @@ EMSCRIPTEN_BINDINGS( BufferModule )
             if ( newV ) self.v = std::move( *newV );
         } ), allow_raw_pointers() );
     ///
-}
-
 }
