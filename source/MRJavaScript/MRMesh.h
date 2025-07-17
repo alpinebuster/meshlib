@@ -37,36 +37,6 @@ namespace MRJS
 {
 
 /**
- * @brief Helper function to convert a JavaScript array to a Vector3f
- * @param arr JavaScript array containing 3 floating-point elements
- * @return Vector3f object
- *
- * This function extracts three floating-point values from the array passed in from JavaScript,
- * creates, and returns a 3D vector object for passing coordinate data between C++ and JavaScript.
- */
-Vector3f arrayToVector3f( const val& arr );
-
-/**
- * @brief Helper function to convert a Vector3f to a JavaScript array
- * @param v Vector3f object
- * @return JavaScript array containing the x, y, and z components
- *
- * This function converts a C++ 3D vector object into an array format that can be understood by JavaScript,
- * facilitating the display or processing of coordinate data in a web interface.
- */
-val vector3fToArray( const Vector3f& v );
-
-/**
- * @brief Helper function to convert a Box3F to a JavaScript object
- * @param box 3D bounding box object
- * @return JavaScript object containing min and max properties
- *
- * A bounding box is an important data structure that describes the spatial extent of a 3D object.
- * This function converts it into a JavaScript object for easier visualization or collision detection on the frontend.
- */
-val box3fToObject( const Box<Vector3<float>>& box );
-
-/**
  * @brief JavaScript-friendly wrapper for the Mesh class
  *
  * This class provides a bridge for JavaScript code to easily manipulate C++ Mesh objects.
@@ -198,4 +168,4 @@ public:
     val fillHolesImpl() const;
 };
 
-} // namespace MRJS
+} // MRJS

@@ -63,467 +63,9 @@ using namespace emscripten;
 using namespace MR;
 using namespace MeshBuilder;
 
-namespace MRJS
+
+namespace MRJS 
 {
-
-// ------------------------------------------------------------------------
-// Bindings for `Mesh`
-// ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS( MeshModule )
-{
-	class_<Mesh>( "Mesh" )
-		.smart_ptr<std::shared_ptr<Mesh>>( "MeshSharedPtr" )
-		.constructor<>()
-
-		.property( "topology", &Mesh::topology )
-		.property( "points", &Mesh::points )
-
-		///
-		// NOTE: Let `emscripten` to handle exceptions, it will throw them on the JS side
-		// 
-		// Example usage:
-		// 
-		//  ```js
-		//  /// Vertices
-		//  // 1) allocate `nVerts*3` floats in WASM
-		//  const verticesCount = vertices.length; 
-		//  // NOTE: In `_malloc`, the specified value is in bytes, not in the number of elements
-		//  // Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
-		//  const verticesPtr = editor.mrmesh._malloc( verticesCount * 4 );
-		//  // 2) construct a JS Float32Array that _views_ the WASM heap:
-		//  const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
-		//  // 3) copy into it (once), or let your own code fill it:
-		//  jsVertices.set( vertices );
-		//  ///
-		// 
-		// 
-		// 	/// Indices
-		// 	const indicesCount = indices.length;
-		// 	const indicesPtr = editor.mrmesh._malloc( indicesCount * 4 );
-		// 	const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
-		// 	jsIndices.set( indices );
-		// 	///
-		// 
-		//  try {
-		//  	const mesh = Module.fromTrianglesMemoryView( jsVertices, jsIndices );
-		// 
-		//      // ...
-		// 
-		//      // NOTE: This is IMPORTANT!!!
-		//      mesh.delete();
-		//  } catch ( error ) {
-		//  	console.error( 'Error creating mesh:', error.message );
-		//  }
-		//  ```
-		// 
-		.class_function( "fromTrianglesMemoryView", 
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh
-			{
-				try
-				{
-					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
-					{
-						throw std::runtime_error( "vertices must be Float32Array" );
-					}
-					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
-					{
-						throw std::runtime_error( "indices must be Uint32Array" );
-					}
-
-					int verticesLength = verticesArray["length"].as<int>();
-					int indicesLength = indicesArray["length"].as<int>();
-
-					if ( verticesLength % 3 != 0 )
-					{
-						throw std::runtime_error( "vertices array length must be divisible by 3" );
-					}
-					if ( indicesLength % 3 != 0 )
-					{
-						throw std::runtime_error( "indices array length must be divisible by 3" );
-					}
-
-					int numVerts = verticesLength / 3;
-					int numTris = indicesLength / 3;
-
-
-					///
-					// NOTE: Directly access the memory of `TypedArray` without copying
-					size_t verticesByteOffset = verticesArray["byteOffset"].as<size_t>();
-					const float* verticesPtr = reinterpret_cast<const float*>( verticesByteOffset );
-
-					size_t indicesByteOffset = indicesArray["byteOffset"].as<size_t>();
-					const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>( indicesByteOffset );
-					///
-
-
-					///
-					VertCoords vCoords;
-					vCoords.resize( numVerts );
-
-					for ( int i = 0; i < numVerts; ++i )
-					{
-						int baseIdx = i * 3;
-						vCoords[VertId( i )] = Vector3f(
-							verticesPtr[baseIdx],
-							verticesPtr[baseIdx + 1],
-							verticesPtr[baseIdx + 2]
-						);
-					}
-					///
-
-					///
-					Triangulation triangulation;
-					triangulation.resize( numTris );
-
-					for ( int i = 0; i < numTris; ++i )
-					{
-						int baseIdx = i * 3;
-						triangulation[FaceId( i )] = ThreeVertIds{
-							VertId( indicesPtr[baseIdx] ),
-							VertId( indicesPtr[baseIdx + 1] ),
-							VertId( indicesPtr[baseIdx + 2] )
-						};
-					}
-					///
-
-					const auto res = Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( vCoords ), triangulation );
-					return res;
-				}
-				catch ( const std::exception& e )
-				{
-					// Or return an empty `Mesh`
-					// return Mesh();
-					throw std::runtime_error( std::string( e.what() ) );
-				}
-			} )
-		)
-		// 
-		// Example usage
-		// 
-		//  ```js
-		//  // Three.js geometry
-		//  const geometry = new THREE.BufferGeometry();
-		//  const vertices = geometry.getAttribute('position').array; // `Float32Array`
-		//  const indices = geometry.getIndex().array; // `Uint32Array`
-		//  
-		//  const mesh = MeshWrapper.fromTrianglesImpl( vertices, indices );
-		// 
-		//  // ...
-		// 
-		//  // NOTE: This is IMPORTANT!!!
-		//  mesh.delete();
-		//  ```
-		// 
-		.class_function( "fromTrianglesArray",
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh*
-			{
-				try
-				{
-					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
-					{
-						throw std::runtime_error( "vertices must be Float32Array" );
-					}
-					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
-					{
-						throw std::runtime_error( "indices must be Uint32Array" );
-					}
-
-					int verticesLength = verticesArray["length"].as<int>();
-					int indicesLength = indicesArray["length"].as<int>();
-
-					if ( verticesLength % 3 != 0 )
-					{
-						throw std::runtime_error( "vertices array length must be divisible by 3" );
-					}
-					if ( indicesLength % 3 != 0 )
-					{
-						throw std::runtime_error( "indices array length must be divisible by 3" );
-					}
-
-					int numVerts = verticesLength / 3;
-					int numTris = indicesLength / 3;
-
-
-					///
-					std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
-					std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
-					const float* verticesPtr = verticesVec.data();
-					const uint32_t* indicesPtr = indicesVec.data();
-					///
-
-
-					///
-					VertCoords vCoords;
-					vCoords.resize( numVerts );
-
-					// Read vertex data from vector (memory contiguous, high performance)
-					for ( int i = 0; i < numVerts; ++i )
-					{
-						int baseIdx = i * 3;
-						vCoords[VertId( i )] = Vector3f(
-							verticesPtr[baseIdx],
-							verticesPtr[baseIdx + 1],
-							verticesPtr[baseIdx + 2]
-						);
-					}
-					///
-
-					///
-					Triangulation triangulation;
-					triangulation.resize( numTris );
-
-					for ( int i = 0; i < numTris; ++i )
-					{
-						int baseIdx = i * 3;
-						triangulation[FaceId( i )] = ThreeVertIds{
-							VertId( indicesPtr[baseIdx] ),
-							VertId( indicesPtr[baseIdx + 1] ),
-							VertId( indicesPtr[baseIdx + 2] )
-						};
-					}
-					///
-
-					return new Mesh( Mesh::fromTriangles( std::move(vCoords ), triangulation ) );
-				}
-				catch ( const std::exception& e )
-				{
-					throw std::runtime_error( std::string( e.what() ) );
-				}
-			} ),
-			// IMPORTANT: JS is responsible for `.delete()` when it gets it!!!
-			return_value_policy::take_ownership()
-		)
-
-		.class_function( "getGeometry",
-			optional_override( []( Mesh& mesh ) -> val
-			{
-				val meshData = MRJS::exportMeshMemoryView( mesh );
-
-				val geoObj = val::object();
-				geoObj.set( "success", true );
-				geoObj.set( "mesh", meshData );
-
-				return geoObj;
-			})
-		)
-		///
-
-		///
-		.function( "fromTriangles", &Mesh::fromTriangles )
-
-		.function( "fromTriMesh",
-			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
-			{
-				return Mesh::fromTriMesh( std::move( triMesh ), settings, cb );
-			} )
-		)
-		.function( "fromTriMeshWithUniquePtr",
-			optional_override( [] ( std::unique_ptr<TriMesh> triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
-			{
-				return Mesh::fromTriMesh( std::move( *triMesh ), settings, cb );
-			} ),
-			allow_raw_pointers()
-		)
-		.function( "fromTriMeshWithoutProgressCallback",
-			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings ) -> Mesh
-			{
-				return Mesh::fromTriMesh( std::move( triMesh ), settings );
-			} )
-		)
-		.function( "fromTriMeshWithDefaultSettings",
-			optional_override( [] ( TriMesh& triMesh ) -> Mesh
-			{
-				MeshBuilder::BuildSettings defaultSettings;
-				return Mesh::fromTriMesh( std::move( triMesh ), defaultSettings );
-			} )
-		)
-
-		.function( "fromTrianglesDuplicatingNonManifoldVertices", &Mesh::fromTrianglesDuplicatingNonManifoldVertices, allow_raw_pointers() )
-		.function( "fromFaceSoup", &Mesh::fromFaceSoup )
-		.function( "fromPointTriples", &Mesh::fromPointTriples )
-		///
-
-		.function( "equals", optional_override( [] ( const Mesh& self, const Mesh& other )
-		{
-			return self == other;
-		} ) )
-
-		.function( "orgPnt", &Mesh::orgPnt )
-		.function( "destPnt", &Mesh::destPnt )
-		.function( "edgeVector", &Mesh::edgeVector )
-		.function( "edgeSegment", &Mesh::edgeSegment )
-
-		.function( "edgePoint", select_overload<Vector3f ( EdgeId, float ) const>( &Mesh::edgePoint ))
-		.function( "edgePointWithMeshEdgePoint", select_overload<Vector3f ( const MeshEdgePoint& ) const>( &Mesh::edgePoint ))
-
-		.function( "edgeCenter", &Mesh::edgeCenter )
-
-		.function( "getLeftTriPoints", select_overload<void( EdgeId, Vector3f&, Vector3f&, Vector3f& ) const>( &Mesh::getLeftTriPoints ) )
-		// FIXME
-		// .function( "getLeftTriPointsWithArray3Vector3f", select_overload<void ( EdgeId, std::array<Vector3f, 3>& ) const>( &Mesh::getLeftTriPoints ))
-		.function( "getLeftTriPointsWithTriangle3f", select_overload<Triangle3f ( EdgeId ) const>( &Mesh::getLeftTriPoints ))
-
-		.function( "getTriPoints", select_overload<void( FaceId, Vector3f &, Vector3f &, Vector3f & ) const>( &Mesh::getTriPoints ) )
-		// FIXME
-		// .function( "getTriPointsWithArray3Vector3f", select_overload<void( FaceId, std::array<Vector3f, 3>& ) const>( &Mesh::getTriPoints ) )
-		.function( "getTriPointsWithTriangle3f", select_overload<Triangle3f( FaceId ) const>( &Mesh::getTriPoints ) )
-	
-		.function( "triPoint", &Mesh::triPoint )
-		.function( "triCenter", &Mesh::triCenter )
-		.function( "triangleAspectRatio", &Mesh::triangleAspectRatio )
-		.function( "circumcircleDiameterSq", &Mesh::circumcircleDiameterSq )
-		.function( "circumcircleDiameter", &Mesh::circumcircleDiameter )
-
-		.function( "toTriPoint", select_overload<MeshTriPoint( VertId ) const>( &Mesh::toTriPoint ) )
-		.function( "toTriPointWithFaceId", select_overload<MeshTriPoint( FaceId, const Vector3f & ) const>( &Mesh::toTriPoint ) )
-		.function( "toTriPointWithPointOnFace", select_overload<MeshTriPoint( const PointOnFace& ) const>( &Mesh::toTriPoint ) )
-	
-		.function( "toEdgePoint", select_overload<MeshEdgePoint( VertId ) const>( &Mesh::toEdgePoint ) )
-		.function( "toEdgePointWithEdgeId", select_overload<MeshEdgePoint( EdgeId, const Vector3f & ) const>( &Mesh::toEdgePoint ) )
-
-		.function( "getClosestVertex", select_overload<VertId( const PointOnFace & ) const>( &Mesh::getClosestVertex ) )
-		.function( "getClosestVertexWithMeshTriPoint", select_overload<VertId( const MeshTriPoint & p ) const>( &Mesh::getClosestVertex ) )
-	
-		.function( "getClosestEdge", select_overload<UndirectedEdgeId( const PointOnFace& ) const>( &Mesh::getClosestEdge ) )
-		.function( "getClosestEdgeWithMeshTriPoint", select_overload<UndirectedEdgeId( const MeshTriPoint& ) const>( &Mesh::getClosestEdge ) )
-
-		.function( "volume", &Mesh::volume, allow_raw_pointers() )
-		.function( "normalWithFaceId", select_overload<Vector3f ( const FaceId ) const>( &Mesh::normal ))
-		.function( "normalWithMeshTriPoint", select_overload<Vector3f ( VertId ) const>( &Mesh::normal ))
-		.function( "normal", select_overload<Vector3f ( const MeshTriPoint & ) const>( &Mesh::normal ))
-
-		.function( "getBoundingBox", &Mesh::getBoundingBox )
-		.function( "computeBoundingBoxWithFaceBitSet", select_overload<Box3f ( const AffineXf3f * ) const>( &Mesh::computeBoundingBox ), allow_raw_pointers() )
-		.function( "computeBoundingBox", select_overload<Box3f ( const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::computeBoundingBox ), allow_raw_pointers() )
-		.function( "transform", &Mesh::transform, allow_raw_pointers() )
-		.function( "addPoint", &Mesh::addPoint )
-		.function( "addSeparateEdgeLoop", &Mesh::addSeparateEdgeLoop )
-		.function( "addSeparateContours", &Mesh::addSeparateContours, allow_raw_pointers() )
-		.function( "attachEdgeLoopPart", &Mesh::attachEdgeLoopPart )
-	
-		.function( "addMeshWithPartMapping", select_overload<void( const Mesh&, PartMapping, bool )>( &Mesh::addMesh ) )
-		.function( "addMesh", select_overload<void (const Mesh &, FaceMap *, VertMap *, WholeEdgeMap *, bool)>( &Mesh::addMesh ), allow_raw_pointers())
-		.function( "addMeshPartWithPartMapping", select_overload<void ( const MeshPart &, const PartMapping& )>( &Mesh::addMeshPart ))
-		.function( "addMeshPart", select_overload<void ( const MeshPart &, bool,
-        const std::vector<EdgePath> &, const std::vector<EdgePath> &, PartMapping )>( &Mesh::addMeshPart ))
-		.function( "cloneRegion", &Mesh::cloneRegion )
-		
-		.function( "packWithPartMapping", select_overload<void( const PartMapping&, bool )>( &Mesh::pack ) )
-		.function( "packWithMap", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &Mesh::pack ), allow_raw_pointers() )
-		.function( "pack", select_overload<Expected<void>( const PackMapping&, ProgressCallback )>( &Mesh::pack ) )
-
-		///
-		// NOTE: `copy constructor of 'PackMapping' is implicitly deleted because field 'e' has a deleted copy constructor`
-		.function( "packOptimally", 
-			optional_override( []( Mesh& self, bool param ) -> std::unique_ptr<PackMapping> {
-				// `packOptimally` returns the value by using `std::move()`
-				return std::make_unique<PackMapping>( self.packOptimally( param ) );
-			}),
-			allow_raw_pointers()
-		)
-		// 
-		// NOTE
-		// 
-		// 1️⃣ `static`: Ensures that `result` is the same object across multiple calls to the function (independent for each thread).
-		// 2️⃣ `thread_local`: In a multithreaded context, each thread has its own copy of `result`, avoiding interference and preventing data races.
-		// 3️⃣ `return &result;`: Returns a pointer to this static variable to Emscripten, allowing JS to obtain a raw pointer.
-		// 
-		// 📌 Why do this?
-		// - Because `PackMapping` cannot be copied, it can only be moved.
-		// - Emscripten defaults to copying return values (it does not support directly returning move-only values).
-		// - Using a `thread_local` static variable effectively places `PackMapping` outside the stack, and returning a pointer bypasses the copy restriction.
-		// 
-		// ⚡ This is an older technique used to expose a non-copyable large object to JS.
-		// 
-		// ✅ When is it reasonable to use?
-		// - Multiple threads will not share the same `result` instance, as `thread_local` ensures each thread has its own copy.
-		// - The pointer returned from C++ to JS must be used quickly and not stored for too long or used asynchronously, as the next C++ call will overwrite `result`.
-		// - Be cautious: if there is concurrent access in multithreading, or if JS holds the pointer for too long, there is a risk. If JS saves this pointer to a global variable or passes it to asynchronous logic, the next C++ call may have overwritten or released `result`, leading to reading invalid memory.
-		// 
-		// 🔑 Modern solution:
-		// - Use `std::unique_ptr<PackMapping>`, directly returning a smart pointer, allowing Embind to manage the lifecycle, which is safer and free from race conditions.
-		// 
-		.function( "packOptimallyWithThreadLocalPtr",
-			optional_override( [] ( Mesh& self, bool param ) -> PackMapping*
-			{
-				static thread_local PackMapping result;
-				result = self.packOptimally( param );
-				return &result;
-			} ),
-			allow_raw_pointers()
-		)
-		// The JS side must call `.delete()` to release it manually, otherwise it will leak memory!
-		.function( "packOptimallyByNew",
-			optional_override( [] ( Mesh& self, bool param ) -> PackMapping*
-				{
-					return new PackMapping( self.packOptimally( param ) );
-				} 
-			),
-			allow_raw_pointers()
-		)
-
-		.function( "packOptimallyWithProgressCallback",
-			optional_override( []( Mesh& self, bool param, ProgressCallback callback ) -> std::unique_ptr<PackMapping> {
-				auto result = self.packOptimally( param, callback );
-				
-				if ( result.has_value() ) {
-					return std::make_unique<PackMapping>( std::move( result.value() ) );
-				} else {
-					throw std::runtime_error( result.error() );
-				}
-			}),
-			allow_raw_pointers()
-		)
-		///
-
-		.function( "deleteFaces", &Mesh::deleteFaces, allow_raw_pointers() )
-
-		.function( "projectPointWithPointOnFace", select_overload<bool( const Vector3f&, PointOnFace&, float, const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
-		.function( "projectPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
-		.function( "projectPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
-		.function( "findClosestPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
-		.function( "findClosestPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
-
-		// HACK
-		// 
-		// The copy constructor of the `AABBTree` class is private, 
-		// while Emscripten needs to create a copy of the object when generating the binding
-		// 
-		.function( "getAABBTree", optional_override( [] ( const Mesh& mesh ) -> const AABBTree*
-		{
-			return &mesh.getAABBTree();
-		} ), allow_raw_pointers() )
-		.function( "getAABBTreeNotCreate", &Mesh::getAABBTreeNotCreate, allow_raw_pointers() )
-		// HACK
-		.function( "getAABBTreePoints", optional_override( [] ( const Mesh& mesh ) -> const AABBTreePoints*
-		{
-			return &mesh.getAABBTreePoints();
-		} ), allow_raw_pointers() )
-		.function( "getAABBTreePointsNotCreate", &Mesh::getAABBTreePointsNotCreate, allow_raw_pointers() )
-		.function( "getDipolesNotCreate", &Mesh::getDipolesNotCreate, allow_raw_pointers() )
-		.function( "invalidateCaches", &Mesh::invalidateCaches )
-		.function( "updateCaches", &Mesh::updateCaches )
-		.function( "heapBytes", &Mesh::heapBytes )
-		.function( "shrinkToFit", &Mesh::shrinkToFit )
-		.function( "mirror", &Mesh::mirror )
-		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
-
-
-	function( "computeVertexNormalsImpl", +[] ( const Mesh& mesh )
-	{
-		std::vector<Vector3f> normals;
-		for ( VertId v{ 0 }; v < mesh.topology.vertSize(); ++v )
-		{
-			if ( mesh.topology.hasVert( v ) )
-			{
-				normals.push_back( mesh.normal( v ) );
-			}
-		}
-		
-		return MRJS::vector3fToFloat32Array( normals );
-	} );
-}
-
 
 // ------------------------------------------------------------------------
 // Wrapper for `Mesh`
@@ -1210,44 +752,503 @@ val MeshWrapper::projectPointImpl( const val& point, float maxDistance ) const
 	}
 }
 
+}
+
+
+// ------------------------------------------------------------------------
+// Bindings for `Mesh`
+// ------------------------------------------------------------------------
+EMSCRIPTEN_BINDINGS( MeshModule )
+{
+	class_<Mesh>( "Mesh" )
+		.smart_ptr<std::shared_ptr<Mesh>>( "MeshSharedPtr" )
+		.constructor<>()
+
+		.property( "topology", &Mesh::topology )
+		.property( "points", &Mesh::points )
+
+		///
+		// NOTE: Let `emscripten` to handle exceptions, it will throw them on the JS side
+		// 
+		// Example usage:
+		// 
+		//  ```js
+		//  /// Vertices
+		//  // 1) allocate `nVerts*3` floats in WASM
+		//  const verticesCount = vertices.length; 
+		//  // NOTE: In `_malloc`, the specified value is in bytes, not in the number of elements
+		//  // Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
+		//  const verticesPtr = editor.mrmesh._malloc( verticesCount * 4 );
+		//  // 2) construct a JS Float32Array that _views_ the WASM heap:
+		//  const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
+		//  // 3) copy into it (once), or let your own code fill it:
+		//  jsVertices.set( vertices );
+		//  ///
+		// 
+		// 
+		// 	/// Indices
+		// 	const indicesCount = indices.length;
+		// 	const indicesPtr = editor.mrmesh._malloc( indicesCount * 4 );
+		// 	const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
+		// 	jsIndices.set( indices );
+		// 	///
+		// 
+		//  try {
+		//  	const mesh = Module.fromTrianglesMemoryView( jsVertices, jsIndices );
+		// 
+		//      // ...
+		// 
+		//      // NOTE: This is IMPORTANT!!!
+		//      mesh.delete();
+		//  } catch ( error ) {
+		//  	console.error( 'Error creating mesh:', error.message );
+		//  }
+		//  ```
+		// 
+		.class_function( "fromTrianglesMemoryView", 
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh
+			{
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						throw std::runtime_error( "vertices must be Float32Array" );
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						throw std::runtime_error( "indices must be Uint32Array" );
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "vertices array length must be divisible by 3" );
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "indices array length must be divisible by 3" );
+					}
+
+					int numVerts = verticesLength / 3;
+					int numTris = indicesLength / 3;
+
+
+					///
+					// NOTE: Directly access the memory of `TypedArray` without copying
+					size_t verticesByteOffset = verticesArray["byteOffset"].as<size_t>();
+					const float* verticesPtr = reinterpret_cast<const float*>( verticesByteOffset );
+
+					size_t indicesByteOffset = indicesArray["byteOffset"].as<size_t>();
+					const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>( indicesByteOffset );
+					///
+
+
+					///
+					VertCoords vCoords;
+					vCoords.resize( numVerts );
+
+					for ( int i = 0; i < numVerts; ++i )
+					{
+						int baseIdx = i * 3;
+						vCoords[VertId( i )] = Vector3f(
+							verticesPtr[baseIdx],
+							verticesPtr[baseIdx + 1],
+							verticesPtr[baseIdx + 2]
+						);
+					}
+					///
+
+					///
+					Triangulation triangulation;
+					triangulation.resize( numTris );
+
+					for ( int i = 0; i < numTris; ++i )
+					{
+						int baseIdx = i * 3;
+						triangulation[FaceId( i )] = ThreeVertIds{
+							VertId( indicesPtr[baseIdx] ),
+							VertId( indicesPtr[baseIdx + 1] ),
+							VertId( indicesPtr[baseIdx + 2] )
+						};
+					}
+					///
+
+					const auto res = Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( vCoords ), triangulation );
+					return res;
+				}
+				catch ( const std::exception& e )
+				{
+					// Or return an empty `Mesh`
+					// return Mesh();
+					throw std::runtime_error( std::string( e.what() ) );
+				}
+			} )
+		)
+		// 
+		// Example usage
+		// 
+		//  ```js
+		//  // Three.js geometry
+		//  const geometry = new THREE.BufferGeometry();
+		//  const vertices = geometry.getAttribute('position').array; // `Float32Array`
+		//  const indices = geometry.getIndex().array; // `Uint32Array`
+		//  
+		//  const mesh = MeshWrapper.fromTrianglesImpl( vertices, indices );
+		// 
+		//  // ...
+		// 
+		//  // NOTE: This is IMPORTANT!!!
+		//  mesh.delete();
+		//  ```
+		// 
+		.class_function( "fromTrianglesArray",
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh*
+			{
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						throw std::runtime_error( "vertices must be Float32Array" );
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						throw std::runtime_error( "indices must be Uint32Array" );
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "vertices array length must be divisible by 3" );
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "indices array length must be divisible by 3" );
+					}
+
+					int numVerts = verticesLength / 3;
+					int numTris = indicesLength / 3;
+
+
+					///
+					std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+					std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+					const float* verticesPtr = verticesVec.data();
+					const uint32_t* indicesPtr = indicesVec.data();
+					///
+
+
+					///
+					VertCoords vCoords;
+					vCoords.resize( numVerts );
+
+					// Read vertex data from vector (memory contiguous, high performance)
+					for ( int i = 0; i < numVerts; ++i )
+					{
+						int baseIdx = i * 3;
+						vCoords[VertId( i )] = Vector3f(
+							verticesPtr[baseIdx],
+							verticesPtr[baseIdx + 1],
+							verticesPtr[baseIdx + 2]
+						);
+					}
+					///
+
+					///
+					Triangulation triangulation;
+					triangulation.resize( numTris );
+
+					for ( int i = 0; i < numTris; ++i )
+					{
+						int baseIdx = i * 3;
+						triangulation[FaceId( i )] = ThreeVertIds{
+							VertId( indicesPtr[baseIdx] ),
+							VertId( indicesPtr[baseIdx + 1] ),
+							VertId( indicesPtr[baseIdx + 2] )
+						};
+					}
+					///
+
+					return new Mesh( Mesh::fromTriangles( std::move(vCoords ), triangulation ) );
+				}
+				catch ( const std::exception& e )
+				{
+					throw std::runtime_error( std::string( e.what() ) );
+				}
+			} ),
+			// IMPORTANT: JS is responsible for `.delete()` when it gets it!!!
+			return_value_policy::take_ownership()
+		)
+
+		.class_function( "getGeometry",
+			optional_override( []( Mesh& mesh ) -> val
+			{
+				val meshData = MRJS::exportMeshMemoryView( mesh );
+
+				val geoObj = val::object();
+				geoObj.set( "success", true );
+				geoObj.set( "mesh", meshData );
+
+				return geoObj;
+			})
+		)
+		///
+
+		///
+		.function( "fromTriangles", &Mesh::fromTriangles )
+
+		.function( "fromTriMesh",
+			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
+			{
+				return Mesh::fromTriMesh( std::move( triMesh ), settings, cb );
+			} )
+		)
+		.function( "fromTriMeshWithUniquePtr",
+			optional_override( [] ( std::unique_ptr<TriMesh> triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
+			{
+				return Mesh::fromTriMesh( std::move( *triMesh ), settings, cb );
+			} ),
+			allow_raw_pointers()
+		)
+		.function( "fromTriMeshWithoutProgressCallback",
+			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings ) -> Mesh
+			{
+				return Mesh::fromTriMesh( std::move( triMesh ), settings );
+			} )
+		)
+		.function( "fromTriMeshWithDefaultSettings",
+			optional_override( [] ( TriMesh& triMesh ) -> Mesh
+			{
+				MeshBuilder::BuildSettings defaultSettings;
+				return Mesh::fromTriMesh( std::move( triMesh ), defaultSettings );
+			} )
+		)
+
+		.function( "fromTrianglesDuplicatingNonManifoldVertices", &Mesh::fromTrianglesDuplicatingNonManifoldVertices, allow_raw_pointers() )
+		.function( "fromFaceSoup", &Mesh::fromFaceSoup )
+		.function( "fromPointTriples", &Mesh::fromPointTriples )
+		///
+
+		.function( "equals", optional_override( [] ( const Mesh& self, const Mesh& other )
+		{
+			return self == other;
+		} ) )
+
+		.function( "orgPnt", &Mesh::orgPnt )
+		.function( "destPnt", &Mesh::destPnt )
+		.function( "edgeVector", &Mesh::edgeVector )
+		.function( "edgeSegment", &Mesh::edgeSegment )
+
+		.function( "edgePoint", select_overload<Vector3f ( EdgeId, float ) const>( &Mesh::edgePoint ))
+		.function( "edgePointWithMeshEdgePoint", select_overload<Vector3f ( const MeshEdgePoint& ) const>( &Mesh::edgePoint ))
+
+		.function( "edgeCenter", &Mesh::edgeCenter )
+
+		.function( "getLeftTriPoints", select_overload<void( EdgeId, Vector3f&, Vector3f&, Vector3f& ) const>( &Mesh::getLeftTriPoints ) )
+		// FIXME
+		// .function( "getLeftTriPointsWithArray3Vector3f", select_overload<void ( EdgeId, std::array<Vector3f, 3>& ) const>( &Mesh::getLeftTriPoints ))
+		.function( "getLeftTriPointsWithTriangle3f", select_overload<Triangle3f ( EdgeId ) const>( &Mesh::getLeftTriPoints ))
+
+		.function( "getTriPoints", select_overload<void( FaceId, Vector3f &, Vector3f &, Vector3f & ) const>( &Mesh::getTriPoints ) )
+		// FIXME
+		// .function( "getTriPointsWithArray3Vector3f", select_overload<void( FaceId, std::array<Vector3f, 3>& ) const>( &Mesh::getTriPoints ) )
+		.function( "getTriPointsWithTriangle3f", select_overload<Triangle3f( FaceId ) const>( &Mesh::getTriPoints ) )
+	
+		.function( "triPoint", &Mesh::triPoint )
+		.function( "triCenter", &Mesh::triCenter )
+		.function( "triangleAspectRatio", &Mesh::triangleAspectRatio )
+		.function( "circumcircleDiameterSq", &Mesh::circumcircleDiameterSq )
+		.function( "circumcircleDiameter", &Mesh::circumcircleDiameter )
+
+		.function( "toTriPoint", select_overload<MeshTriPoint( VertId ) const>( &Mesh::toTriPoint ) )
+		.function( "toTriPointWithFaceId", select_overload<MeshTriPoint( FaceId, const Vector3f & ) const>( &Mesh::toTriPoint ) )
+		.function( "toTriPointWithPointOnFace", select_overload<MeshTriPoint( const PointOnFace& ) const>( &Mesh::toTriPoint ) )
+	
+		.function( "toEdgePoint", select_overload<MeshEdgePoint( VertId ) const>( &Mesh::toEdgePoint ) )
+		.function( "toEdgePointWithEdgeId", select_overload<MeshEdgePoint( EdgeId, const Vector3f & ) const>( &Mesh::toEdgePoint ) )
+
+		.function( "getClosestVertex", select_overload<VertId( const PointOnFace & ) const>( &Mesh::getClosestVertex ) )
+		.function( "getClosestVertexWithMeshTriPoint", select_overload<VertId( const MeshTriPoint & p ) const>( &Mesh::getClosestVertex ) )
+	
+		.function( "getClosestEdge", select_overload<UndirectedEdgeId( const PointOnFace& ) const>( &Mesh::getClosestEdge ) )
+		.function( "getClosestEdgeWithMeshTriPoint", select_overload<UndirectedEdgeId( const MeshTriPoint& ) const>( &Mesh::getClosestEdge ) )
+
+		.function( "volume", &Mesh::volume, allow_raw_pointers() )
+		.function( "normalWithFaceId", select_overload<Vector3f ( const FaceId ) const>( &Mesh::normal ))
+		.function( "normalWithMeshTriPoint", select_overload<Vector3f ( VertId ) const>( &Mesh::normal ))
+		.function( "normal", select_overload<Vector3f ( const MeshTriPoint & ) const>( &Mesh::normal ))
+
+		.function( "getBoundingBox", &Mesh::getBoundingBox )
+		.function( "computeBoundingBoxWithFaceBitSet", select_overload<Box3f ( const AffineXf3f * ) const>( &Mesh::computeBoundingBox ), allow_raw_pointers() )
+		.function( "computeBoundingBox", select_overload<Box3f ( const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::computeBoundingBox ), allow_raw_pointers() )
+		.function( "transform", &Mesh::transform, allow_raw_pointers() )
+		.function( "addPoint", &Mesh::addPoint )
+		.function( "addSeparateEdgeLoop", &Mesh::addSeparateEdgeLoop )
+		.function( "addSeparateContours", &Mesh::addSeparateContours, allow_raw_pointers() )
+		.function( "attachEdgeLoopPart", &Mesh::attachEdgeLoopPart )
+	
+		.function( "addMeshWithPartMapping", select_overload<void( const Mesh&, PartMapping, bool )>( &Mesh::addMesh ) )
+		.function( "addMesh", select_overload<void (const Mesh &, FaceMap *, VertMap *, WholeEdgeMap *, bool)>( &Mesh::addMesh ), allow_raw_pointers())
+		.function( "addMeshPartWithPartMapping", select_overload<void ( const MeshPart &, const PartMapping& )>( &Mesh::addMeshPart ))
+		.function( "addMeshPart", select_overload<void ( const MeshPart &, bool,
+        const std::vector<EdgePath> &, const std::vector<EdgePath> &, PartMapping )>( &Mesh::addMeshPart ))
+		.function( "cloneRegion", &Mesh::cloneRegion )
+		
+		.function( "packWithPartMapping", select_overload<void( const PartMapping&, bool )>( &Mesh::pack ) )
+		.function( "packWithMap", select_overload<void( FaceMap*, VertMap*, WholeEdgeMap*, bool )>( &Mesh::pack ), allow_raw_pointers() )
+		.function( "pack", select_overload<Expected<void>( const PackMapping&, ProgressCallback )>( &Mesh::pack ) )
+
+		///
+		// NOTE: `copy constructor of 'PackMapping' is implicitly deleted because field 'e' has a deleted copy constructor`
+		.function( "packOptimally", 
+			optional_override( []( Mesh& self, bool param ) -> std::unique_ptr<PackMapping> {
+				// `packOptimally` returns the value by using `std::move()`
+				return std::make_unique<PackMapping>( self.packOptimally( param ) );
+			}),
+			allow_raw_pointers()
+		)
+		// 
+		// NOTE
+		// 
+		// 1️⃣ `static`: Ensures that `result` is the same object across multiple calls to the function (independent for each thread).
+		// 2️⃣ `thread_local`: In a multithreaded context, each thread has its own copy of `result`, avoiding interference and preventing data races.
+		// 3️⃣ `return &result;`: Returns a pointer to this static variable to Emscripten, allowing JS to obtain a raw pointer.
+		// 
+		// 📌 Why do this?
+		// - Because `PackMapping` cannot be copied, it can only be moved.
+		// - Emscripten defaults to copying return values (it does not support directly returning move-only values).
+		// - Using a `thread_local` static variable effectively places `PackMapping` outside the stack, and returning a pointer bypasses the copy restriction.
+		// 
+		// ⚡ This is an older technique used to expose a non-copyable large object to JS.
+		// 
+		// ✅ When is it reasonable to use?
+		// - Multiple threads will not share the same `result` instance, as `thread_local` ensures each thread has its own copy.
+		// - The pointer returned from C++ to JS must be used quickly and not stored for too long or used asynchronously, as the next C++ call will overwrite `result`.
+		// - Be cautious: if there is concurrent access in multithreading, or if JS holds the pointer for too long, there is a risk. If JS saves this pointer to a global variable or passes it to asynchronous logic, the next C++ call may have overwritten or released `result`, leading to reading invalid memory.
+		// 
+		// 🔑 Modern solution:
+		// - Use `std::unique_ptr<PackMapping>`, directly returning a smart pointer, allowing Embind to manage the lifecycle, which is safer and free from race conditions.
+		// 
+		.function( "packOptimallyWithThreadLocalPtr",
+			optional_override( [] ( Mesh& self, bool param ) -> PackMapping*
+			{
+				static thread_local PackMapping result;
+				result = self.packOptimally( param );
+				return &result;
+			} ),
+			allow_raw_pointers()
+		)
+		// The JS side must call `.delete()` to release it manually, otherwise it will leak memory!
+		.function( "packOptimallyByNew",
+			optional_override( [] ( Mesh& self, bool param ) -> PackMapping*
+				{
+					return new PackMapping( self.packOptimally( param ) );
+				} 
+			),
+			allow_raw_pointers()
+		)
+
+		.function( "packOptimallyWithProgressCallback",
+			optional_override( []( Mesh& self, bool param, ProgressCallback callback ) -> std::unique_ptr<PackMapping> {
+				auto result = self.packOptimally( param, callback );
+				
+				if ( result.has_value() ) {
+					return std::make_unique<PackMapping>( std::move( result.value() ) );
+				} else {
+					throw std::runtime_error( result.error() );
+				}
+			}),
+			allow_raw_pointers()
+		)
+		///
+
+		.function( "deleteFaces", &Mesh::deleteFaces, allow_raw_pointers() )
+
+		.function( "projectPointWithPointOnFace", select_overload<bool( const Vector3f&, PointOnFace&, float, const FaceBitSet*, const AffineXf3f* ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
+		.function( "projectPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
+		.function( "projectPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::projectPoint ), allow_raw_pointers() )
+		.function( "findClosestPointWithProjectionResult", select_overload<bool ( const Vector3f&, MeshProjectionResult&, float, const FaceBitSet*, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
+		.function( "findClosestPoint", select_overload<MeshProjectionResult ( const Vector3f&, float, const FaceBitSet *, const AffineXf3f * ) const>( &Mesh::findClosestPoint ), allow_raw_pointers() )
+
+		// HACK
+		// 
+		// The copy constructor of the `AABBTree` class is private, 
+		// while Emscripten needs to create a copy of the object when generating the binding
+		// 
+		.function( "getAABBTree", optional_override( [] ( const Mesh& mesh ) -> const AABBTree*
+		{
+			return &mesh.getAABBTree();
+		} ), allow_raw_pointers() )
+		.function( "getAABBTreeNotCreate", &Mesh::getAABBTreeNotCreate, allow_raw_pointers() )
+		// HACK
+		.function( "getAABBTreePoints", optional_override( [] ( const Mesh& mesh ) -> const AABBTreePoints*
+		{
+			return &mesh.getAABBTreePoints();
+		} ), allow_raw_pointers() )
+		.function( "getAABBTreePointsNotCreate", &Mesh::getAABBTreePointsNotCreate, allow_raw_pointers() )
+		.function( "getDipolesNotCreate", &Mesh::getDipolesNotCreate, allow_raw_pointers() )
+		.function( "invalidateCaches", &Mesh::invalidateCaches )
+		.function( "updateCaches", &Mesh::updateCaches )
+		.function( "heapBytes", &Mesh::heapBytes )
+		.function( "shrinkToFit", &Mesh::shrinkToFit )
+		.function( "mirror", &Mesh::mirror )
+		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
+
+
+	function( "computeVertexNormalsImpl", +[] ( const Mesh& mesh )
+	{
+		std::vector<Vector3f> normals;
+		for ( VertId v{ 0 }; v < mesh.topology.vertSize(); ++v )
+		{
+			if ( mesh.topology.hasVert( v ) )
+			{
+				normals.push_back( mesh.normal( v ) );
+			}
+		}
+		
+		return MRJS::vector3fToFloat32Array( normals );
+	} );
+}
+
 
 // ------------------------------------------------------------------------
 // Bindings for `MeshWrapper`
 // ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 {
-	class_<MeshWrapper>( "MeshWrapper" )
-		.smart_ptr<std::shared_ptr<MeshWrapper>>( "MeshWrapperSharedPtr" )
+	class_<MRJS::MeshWrapper>( "MeshWrapper" )
+		.smart_ptr<std::shared_ptr<MRJS::MeshWrapper>>( "MeshWrapperSharedPtr" )
 
 		.constructor<>()
 		.constructor<const Mesh&>()
-		.class_function( "fromTrianglesImpl", &MeshWrapper::fromTrianglesImpl )
-		.class_function( "fromTrianglesImplWithArray", &MeshWrapper::fromTrianglesImplWithArray )
+		.class_function( "fromTrianglesImpl", &MRJS::MeshWrapper::fromTrianglesImpl )
+		.class_function( "fromTrianglesImplWithArray", &MRJS::MeshWrapper::fromTrianglesImplWithArray )
 
-		.property( "mesh", &MeshWrapper::mesh, return_value_policy::reference() )
-		.function( "getMesh", &MeshWrapper::getMesh )
-		.function( "getMeshPtr", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
+		.property( "mesh", &MRJS::MeshWrapper::mesh, return_value_policy::reference() )
+		.function( "getMesh", &MRJS::MeshWrapper::getMesh )
+		.function( "getMeshPtr", &MRJS::MeshWrapper::getMeshPtr, allow_raw_pointers() )
 
 		// Geometric properties
-		.function( "getBoundingBoxImpl", &MeshWrapper::getBoundingBoxImpl )
-		.function( "getVertexCountImpl", &MeshWrapper::getVertexCountImpl )
-		.function( "getFaceCountImpl", &MeshWrapper::getFaceCountImpl )
-		.function( "getVolumeImpl", &MeshWrapper::getVolumeImpl )
-		.function( "getAreaImpl", &MeshWrapper::getAreaImpl )
-		.function( "findCenterImpl", &MeshWrapper::findCenterImpl )
-		.function( "getVertexPositionImpl", &MeshWrapper::getVertexPositionImpl )
-		.function( "setVertexPositionImpl", &MeshWrapper::setVertexPositionImpl )
-		.function( "getFaceVerticesImpl", &MeshWrapper::getFaceVerticesImpl )
-		.function( "getFaceNormalImpl", &MeshWrapper::getFaceNormalImpl )
+		.function( "getBoundingBoxImpl", &MRJS::MeshWrapper::getBoundingBoxImpl )
+		.function( "getVertexCountImpl", &MRJS::MeshWrapper::getVertexCountImpl )
+		.function( "getFaceCountImpl", &MRJS::MeshWrapper::getFaceCountImpl )
+		.function( "getVolumeImpl", &MRJS::MeshWrapper::getVolumeImpl )
+		.function( "getAreaImpl", &MRJS::MeshWrapper::getAreaImpl )
+		.function( "findCenterImpl", &MRJS::MeshWrapper::findCenterImpl )
+		.function( "getVertexPositionImpl", &MRJS::MeshWrapper::getVertexPositionImpl )
+		.function( "setVertexPositionImpl", &MRJS::MeshWrapper::setVertexPositionImpl )
+		.function( "getFaceVerticesImpl", &MRJS::MeshWrapper::getFaceVerticesImpl )
+		.function( "getFaceNormalImpl", &MRJS::MeshWrapper::getFaceNormalImpl )
 
-		.function( "thickenMeshImpl", &MeshWrapper::thickenMeshImpl )
-		.function( "cutMeshWithPolylineImpl", &MeshWrapper::cutMeshWithPolylineImpl )
-		.function( "segmentByPointsImpl", &MeshWrapper::segmentByPointsImpl )
-		.function( "fixUndercutsImpl", &MeshWrapper::fixUndercutsImpl )
-		.function( "fillHolesImpl", &MeshWrapper::fillHolesImpl )
+		.function( "thickenMeshImpl", &MRJS::MeshWrapper::thickenMeshImpl )
+		.function( "cutMeshWithPolylineImpl", &MRJS::MeshWrapper::cutMeshWithPolylineImpl )
+		.function( "segmentByPointsImpl", &MRJS::MeshWrapper::segmentByPointsImpl )
+		.function( "fixUndercutsImpl", &MRJS::MeshWrapper::fixUndercutsImpl )
+		.function( "fillHolesImpl", &MRJS::MeshWrapper::fillHolesImpl )
 
 		// Spatial queries
-		.function( "projectPointImpl", &MeshWrapper::projectPointImpl );
+		.function( "projectPointImpl", &MRJS::MeshWrapper::projectPointImpl );
 }
-
-} //namespace MRJS

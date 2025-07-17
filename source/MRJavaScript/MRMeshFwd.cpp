@@ -71,12 +71,22 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
 
     bindTypedVector<Dipoles, Dipole, NodeId>( "Dipoles" );
 
-    BIND_TYPED_VECTOR( FaceMap, FaceId, FaceId );
-    BIND_TYPED_VECTOR( VertMap, VertId, VertId );
 
     ///
     // NOTE: `EdgeMap` -> `Vector<EdgeId, EdgeId>`
     BIND_TYPED_VECTOR( EdgeMap, EdgeId, EdgeId );
+    BIND_TYPED_VECTOR( UndirectedEdgeMap, UndirectedEdgeId, UndirectedEdgeId );
+    BIND_TYPED_VECTOR( FaceMap, FaceId, FaceId );
+    BIND_TYPED_VECTOR( VertMap, VertId, VertId );
+    bindTypedVector<Vector<PixelId, PixelId>, PixelId, PixelId>( "PixelIdPixelIdMap" );
+    bindTypedVector<Vector<VoxelId, VoxelId>, VoxelId, VoxelId>( "VoxelIdVoxelIdMap" );
+    bindTypedVector<Vector<RegionId, RegionId>, RegionId, RegionId>( "RegionIdRegionIdMap" );
+    bindTypedVector<Vector<NodeId, NodeId>, NodeId, NodeId>( "NodeIdNodeIdMap" );
+    BIND_TYPED_VECTOR( ObjMap, ObjId, ObjId );
+    bindTypedVector<Vector<TextureId, TextureId>, TextureId, TextureId>( "TextureIdTextureIdMap" );
+    bindTypedVector<Vector<GraphVertId, GraphVertId>, GraphVertId, GraphVertId>( "GraphVertIdGraphVertIdMap" );
+    bindTypedVector<Vector<GraphEdgeId, GraphEdgeId>, GraphEdgeId, GraphEdgeId>( "GraphEdgeIdGraphEdgeIdMap" );
+
     bindTypedVector<Vector<VertId, EdgeId>, VertId, EdgeId>( "VertIdEdgeIdMap" );
     bindTypedVector<Vector<EdgeId, VertId>, EdgeId, VertId>( "EdgeIdVertIdMap" );
     bindTypedVector<Vector<EdgeId, FaceId>, EdgeId, FaceId>( "EdgeIdFaceIdMap" );
@@ -86,8 +96,6 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
     bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, MeshBuilder::VertSpan, FaceId>( "VertSpanFaceIdMap" );
     ///
 
-    BIND_TYPED_VECTOR( UndirectedEdgeMap, UndirectedEdgeId, UndirectedEdgeId );
-    BIND_TYPED_VECTOR( ObjMap, ObjId, ObjId );
 
     BIND_TYPED_VECTOR( WholeEdgeMap, EdgeId, UndirectedEdgeId );
     BIND_TYPED_VECTOR( UndirectedEdge2RegionMap, RegionId, UndirectedEdgeId );

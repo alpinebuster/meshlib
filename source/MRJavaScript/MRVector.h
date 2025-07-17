@@ -1,11 +1,16 @@
 #pragma once
 
 #include <string>
+#include <type_traits>
 
 #include <emscripten/bind.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRAffineXf3.h>
+#include <MRMesh/MRId.h>
+#include <MRMesh/MRBuffer.h>
+#include <MRMesh/MRColor.h>
+#include <MRMesh/MRDipole.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
@@ -15,7 +20,18 @@ using namespace emscripten;
 using namespace MR;
 
 
-template<typename VecType>
+namespace MRJS
+{
+
+// NOTE:
+// 
+// 1) `.constructor` is `template<class... Args> class_& constructor();`
+// It is a template member function itself, so it must be used as `.template constructor<>()`
+// 
+// 2) `.function` is `class_& function( const char*, F )`
+// It is a regular member function (not a template!)
+// 
+template<typename VecType, typename I>
 auto bindTypedVector( const std::string& className )
 {
     auto cls = class_<VecType>( className.c_str() )
@@ -26,35 +42,59 @@ auto bindTypedVector( const std::string& className )
         .function( "size", &VecType::size )
         .function( "empty", &VecType::empty )
         .function( "clear", &VecType::clear )
-
-        .function( "get", select_overload<const typename VecType::value_type & ( size_t ) const>( &VecType::operator[] ) )
-        .function( "set", select_overload<typename VecType::value_type & ( size_t )>( &VecType::operator[] ))
-
+        .function( "capacity", &VecType::capacity )
+        .function( "reserve", &VecType::reserve )
+    
         .function( "resize", select_overload<void( size_t )>( &VecType::resize ) )
         .function( "resizeWithValue", select_overload<void( size_t, const typename VecType::value_type & )>( &VecType::resize ) )
         .function( "resizeWithReserve", select_overload<void( size_t )>( &VecType::resizeWithReserve ) )
         .function( "resizeWithReserveAndValue", select_overload<void( size_t, const typename VecType::value_type & )>( &VecType::resizeWithReserve ) )
 
-        .function( "autoResizeAt", &VecType::autoResizeAt, allow_raw_pointers() )
-        .function( "autoResizeSet", select_overload<void( size_t, typename VecType::value_type )>( &VecType::autoResizeSet ) )
+        .function( "get", select_overload<const typename VecType::const_reference & ( I ) const>( &VecType::operator[] ) )
+        .function( "set", select_overload<typename VecType::reference & ( I )>( &VecType::operator[] ))
+        .function( "getByIndex", select_overload<const typename VecType::value_type & ( I ) const>( &VecType::operator[] ) )
+        .function( "getByIndexMutable", select_overload<typename VecType::value_type & ( I )>( &VecType::operator[] ), allow_raw_pointers() )
+        .function( "getAt", optional_override( [] ( const VecType& self, I i ) -> typename VecType::value_type
+        {
+            if ( i >= self.size() ) throw std::out_of_range(
+                "Index out of range: " +
+                std::to_string( int( i ) ) + " >= " + std::to_string( self.size() )
+            );
+            return self[i];
+        } ) )
+        .function( "setAt", optional_override( [] ( VecType& self, I i, typename VecType::value_type value ) -> bool
+        {
+            if ( i >= self.size() ) throw std::out_of_range(
+                "Index out of range: " +
+                std::to_string( int( i ) ) + " >= " + std::to_string( self.size() )
+            );
+            self[i] = value;
+            return true;
+        } ) )
+
+        .function( "frontConst", select_overload<const typename VecType::const_reference & () const>( &VecType::front ) )
+        .function( "front", select_overload<typename VecType::reference & ()>( &VecType::front ) )
+        .function( "backConst", select_overload<const typename VecType::const_reference & () const>( &VecType::back ) )
+        .function( "back", select_overload<typename VecType::reference & ()>( &VecType::back ) )
 
         .function( "pushBack", select_overload<void( const typename VecType::value_type & )>( &VecType::push_back ) )
         .function( "popBack", &VecType::pop_back )
-
-        .function( "front", select_overload<const typename VecType::value_type & ( ) const>( &VecType::front ) )
-        .function( "back", select_overload<const typename VecType::value_type & ( ) const>( &VecType::back ) )
+        // HACK: `template`
+        .function( "emplaceBack", &VecType::template emplace_back<typename VecType::value_type> )
 
         .function( "beginId", &VecType::beginId )
         .function( "backId", &VecType::backId )
         .function( "endId", &VecType::endId )
 
-        .function( "capacity", &VecType::capacity )
-        .function( "reserve", &VecType::reserve )
+        .function( "autoResizeAt", &VecType::autoResizeAt, allow_raw_pointers() )
+        .function( "autoResizeSetWithRange", select_overload<void( I, size_t, typename VecType::value_type )>( &VecType::autoResizeSet ) )
+        .function( "autoResizeSet", select_overload<void( I, typename VecType::value_type )>( &VecType::autoResizeSet ) )
+
+        .function( "swap", &VecType::swap )
+
         .function( "heapBytes", &VecType::heapBytes )
-
-        .function("equals", optional_override( [](const VecType& self, const VecType& other ) {return self == other;} ))
-        .function("notEquals", optional_override( [](const VecType& self, const VecType& other ) {return self != other;} ))
-
+        // .function( "data", select_overload<typename VecType::value_type* ()>( &VecType::data ), allow_raw_pointers() )
+        // .function( "dataConst", select_overload<const typename VecType::value_type* () const>( &VecType::data ), allow_raw_pointers() )        
         .function( "getData", optional_override( [] ( VecType& self )
         {
             return val( typed_memory_view( self.size(), self.data() ) );
@@ -63,6 +103,19 @@ auto bindTypedVector( const std::string& className )
         {
             return val( typed_memory_view( self.size(), self.data() ) );
         }));
+
+    // If the element type supports `==/!=`, then register `equals`/`notEquals`
+    if constexpr ( std::equality_comparable<typename VecType::value_type> )
+    {
+        cls.function( "equals", optional_override( [] ( const VecType& a, const VecType& b )
+        {
+            return a == b;
+        } ) );
+        cls.function( "notEquals", optional_override( [] ( const VecType& a, const VecType& b )
+        {
+            return a != b;
+        } ) );
+    }
 
 	return cls;
 }
@@ -256,8 +309,8 @@ auto bindTypedVector4( const std::string& name, const std::string& suffix )
 
     auto cls = class_<Vec4Type>( name.c_str() )
         .template smart_ptr<std::shared_ptr<Vec4Type>>( ( name + "SharedPtr" ).c_str() )
-        .constructor<>()
-        .constructor<T, T, T, T>()
+        .template constructor<>()
+        .template constructor<T, T, T, T>()
 
         .property( "x", &Vec4Type::x )
         .property( "y", &Vec4Type::y )
@@ -296,4 +349,6 @@ auto bindTypedVector4( const std::string& name, const std::string& suffix )
     function( ( "sqr4" + suffix ).c_str(), select_overload<T( const Vec4Type& )>( &sqr<T> ) );
 
     return cls;
+}
+
 }

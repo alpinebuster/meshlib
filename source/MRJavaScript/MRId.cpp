@@ -1,8 +1,8 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
-#include <MRMesh/MRId.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRId.h>
 
 using namespace emscripten;
 using namespace MR;
@@ -10,31 +10,6 @@ using namespace MR;
 
 EMSCRIPTEN_BINDINGS( IdModule )
 {
-    ///
-    // Bind `std::pair` for use in maps
-    // NOTE: This is identical to `EdgePair`
-    value_array<std::pair<EdgeId, EdgeId>>( "EdgeIdPair" )
-        .element( &std::pair<EdgeId, EdgeId>::first )
-        .element( &std::pair<EdgeId, EdgeId>::second );
-
-    value_array<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "UndirectedEdgeIdPair" )
-        .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::first )
-        .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::second );
-
-    value_array<std::pair<UndirectedEdgeId, EdgeId>>( "UndirectedE2EIdPair" )
-        .element( &std::pair<UndirectedEdgeId, EdgeId>::first )
-        .element( &std::pair<UndirectedEdgeId, EdgeId>::second );
-
-    value_array<std::pair<FaceId, FaceId>>( "FaceIdPair" )
-        .element( &std::pair<FaceId, FaceId>::first )
-        .element( &std::pair<FaceId, FaceId>::second );
-
-    value_array<std::pair<VertId, VertId>>( "VertIdPair" )
-        .element( &std::pair<VertId, VertId>::first )
-        .element( &std::pair<VertId, VertId>::second );
-    ///
-
-
     // Alternative functions for user-defined literals (JavaScript does not support user-defined literals)
     // function("makeEdgeId", +[](int i) { return EdgeId{i}; });
     function( "makeEdgeId", static_cast< EdgeId( * )( int ) >( [] ( int i )
