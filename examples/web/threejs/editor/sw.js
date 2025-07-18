@@ -1,4 +1,4 @@
-const cacheName = 'three-meshlib-editor';
+const cacheName = 'three-meshsdk-editor';
 
 const assets = [
 	'./',

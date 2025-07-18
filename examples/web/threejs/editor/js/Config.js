@@ -1,5 +1,5 @@
 function Config() {
-	const name = 'three-meshlib-editor';
+	const name = 'three-meshsdk-editor';
 
 	const userLanguage = navigator.language.split( '-' )[ 0 ];
 

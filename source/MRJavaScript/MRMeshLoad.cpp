@@ -18,7 +18,6 @@ using namespace emscripten;
 using namespace MR;
 
 
-// Wrapper for MeshLoad functions
 class MeshLoadWrapper {
 public:
 	// NOTE: Load from emscripten **virtual** file path
@@ -121,7 +120,7 @@ public:
 			{
 				val obj = val::object();
 				obj.set( "success", true );
-				obj.set( "mesh", MRJS::MeshWrapper( result.value() ) );
+				obj.set( "meshWrapper", MRJS::MeshWrapper( result.value() ) );
 
 				return obj;
 			}
@@ -146,7 +145,7 @@ public:
 	}
 };
 
-// Embind declarations
+
 EMSCRIPTEN_BINDINGS( MeshLoadWrapperModule )
 {
 	class_<MeshLoadWrapper>( "MeshLoadWrapper" )

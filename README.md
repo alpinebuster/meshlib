@@ -10,7 +10,7 @@ The MeshSDK is an open-source library that provides advanced algorithms for 3D d
 
 **Multi-Language Support.** Written in C++ with bindings for C, C#, and Python, our library integrates easily into AI pipelines and workflows.
 
-**High Performance.** Internal benchmarks show up to 10x faster execution compared to alternative SDKs — especially in mesh boolean operations and simplification. [See performance data](https://meshlib.io/blog/).
+**High Performance.** Internal benchmarks show up to 10x faster execution compared to alternative SDKs — especially in mesh boolean operations and simplification.
 
 **GPU-Accelerated Architecture.** Built with speed and scalability in mind, MeshSDK supports GPU acceleration and CUDA for high-performance computing.
 
@@ -28,14 +28,12 @@ The MeshSDK is an open-source library that provides advanced algorithms for 3D d
 - **Hole Filling** fills flat and curved surfaces, connects or separates holes, and builds bridges.
 - **Mesh Simplification** optimizes mesh complexity while keeping details within set tolerance. We provide remeshing, and subdivision options as well.
 - **Collision Detection** verifies intersections between models for further operations.
-- **Extensive File Format Support** enables importing a wide range of file formats for meshes, point clouds, CT scans, polylines, distance maps, and G-code. Export functionalities—and support for color and texture data—are available for select formats, too (see the [full list for details](https://meshlib.io/feature/file-formats-supported-by-meshlib/)).
+- **Extensive File Format Support** enables importing a wide range of file formats for meshes, point clouds, CT scans, polylines, distance maps, and G-code. Export functionalities—and support for color and texture data—are available for select formats, too.
 - **Triangulation** converts point clouds into meshes with accurate normal creation.
 - **ICP** precisely aligns meshes using point-to-point and point-to-plane transformations.
 - **Segmentation** performs semi-automatic segmentation based on curvature for meshes and voxels.
 - **Deformation** applies Laplacian, freeform, and relaxation smoothing for fine mesh adjustments.
 - **Support of Distance Maps and Polylines** allows to generate distance maps and iso-lines and performs projection and intersection.
-
-For detailed information, explore our [website section](https://meshlib.io/features/) or refer to the corresponding sections in our [documentation](https://meshlib.io/documentation/index.html).
 
 ## Development
 
@@ -45,6 +43,9 @@ For detailed information, explore our [website section](https://meshlib.io/feat
 git submodule update --init
 ./scripts/build_thirdparty.sh
 ./scripts/build_source.sh
+
+# Common sense
+emcc --clear-cache
 ```
 
 ### Docker
@@ -156,10 +157,6 @@ For Python, simply install via pip:
 ```
 pip install meshlib
 ```
-
-If your chose is C++, C or C#, check out our [Installation Guide](https://meshlib.io/documentation/InstallationGuide.html).
-
-Here, you can find our [tutorials](https://meshlib.io/documentation/Tutorials.html) and [code samples](https://meshlib.io/documentation/Examples.html) to master our SDK quickly and with ease.
 
 ## **License**
 

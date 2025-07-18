@@ -20,7 +20,7 @@ jobs:
       - name: Checkout MeshLib
         uses: actions/checkout@v4
         with:
-          path: 'MeshLib/'
+          path: 'meshsdk/'
 
       - name: Checkout Doxygen Data
         uses: actions/checkout@v4
@@ -35,12 +35,12 @@ jobs:
         continue-on-error: true
         with:
           name: PythonStubs
-          path: MeshLib/scripts/wheel/meshlib/meshlib
+          path: meshsdk/scripts/wheel/meshlib/meshlib
 
       - name: Check for Python Stubs
         id: check_py_stubs
         run: |
-          if [ -d MeshLib/scripts/wheel/meshlib/meshlib ] ; then
+          if [ -d meshsdk/scripts/wheel/meshlib/meshlib ] ; then
             echo "py_stubs=true" >> $GITHUB_OUTPUT
           else
             echo "Failed to get Python stub files, aborting"
@@ -56,8 +56,8 @@ jobs:
         if: ${{ steps.check_py_stubs.outputs.py_stubs == 'true' }}
         working-directory: MeshInspector.github.io
         run: |
-          git config user.email "${{ secrets.MESHINSPECTOR_BOT_EMAIL }}@gmail.com"
-          git config user.name "meshinspector-bot"
+          git config user.email "${{ secrets.MESHSDK_BOT_EMAIL }}@hotmail.com"
+          git config user.name "meshsdk-bot"
           git add -A
           git commit --allow-empty -m "Auto update docs" -a
           git push

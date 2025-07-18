@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: "master"
+          ref: "main"
 
       - name: Search for Tag in .github/workflows/config.yml
         id: extract-tag
@@ -53,10 +53,10 @@ jobs:
         if: ${{ steps.compare.outputs.need_vcpkg_update == 'true' }}
         id: bunmp-vcpkg
         env:
-          GITHUB_TOKEN: ${{ secrets.MESHINSPECTOR_BOT_VCPKG_UPDATE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MESHSDK_BOT_VCPKG_UPDATE_TOKEN }}
         run: |
-          git config --global user.email "${{ secrets.MESHINSPECTOR_BOT_EMAIL }}@gmail.com"
-          git config --global user.name "meshinspector-bot"
+          git config --global user.email "${{ secrets.MESHSDK_BOT_EMAIL }}@hotmail.com"
+          git config --global user.name "meshsdk-bot"
           
           # Create new branch
           new_branch="vcpkg-update-${{ steps.get-latest-tag.outputs.latest_vcpkg_tag }}"
@@ -78,10 +78,7 @@ jobs:
           # Create a pull request using GitHub CLI
           gh pr create --title "Bump vcpkg to ${{ steps.get-latest-tag.outputs.latest_vcpkg_tag }}" \
                        --body "This PR updates the vcpkg tag to ${{ steps.get-latest-tag.outputs.latest_vcpkg_tag }}" \
-                       --base master \
+                       --base main \
                        --head ${new_branch} \
                        --label bump-vcpkg \
                        --reviewer MaxRayskiy,Grantim
-
-          
-

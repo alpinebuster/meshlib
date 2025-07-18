@@ -40,20 +40,24 @@ document.body.appendChild( menubar.dom );
 const resizer = new Resizer( editor );
 document.body.appendChild( resizer.dom );
 
+// Wasm initialization
+
+await editor.initMeshSDK();
+
 //
 
-editor.storage.init(function () {
-	editor.storage.get(async function ( state ) {
-		if (isLoadingFromHash) return;
+editor.storage.init( function () {
+	editor.storage.get( async function ( state ) {
+		if ( isLoadingFromHash ) return;
 
-		if (state !== undefined) {
-			await editor.fromJSON(state);
+		if ( state !== undefined) {
+			await editor.fromJSON( state );
 		}
 
-		const selected = editor.config.getKey('selected');
+		const selected = editor.config.getKey( 'selected' );
 
-		if (selected !== undefined) {
-			editor.selectByUuid(selected);
+		if ( selected !== undefined ) {
+			editor.selectByUuid( selected );
 		}
 	});
 
@@ -62,20 +66,20 @@ editor.storage.init(function () {
 	let timeout;
 
 	function saveState() {
-		if (editor.config.getKey('autosave') === false) {
+		if ( editor.config.getKey( 'autosave' ) === false ) {
 			return;
 		}
 
-		clearTimeout(timeout);
+		clearTimeout( timeout );
 
 		timeout = setTimeout(function () {
 			editor.signals.savingStarted.dispatch();
 
-			timeout = setTimeout(function () {
-				editor.storage.set(editor.toJSON());
+			timeout = setTimeout( function () {
+				editor.storage.set( editor.toJSON() );
 
 				editor.signals.savingFinished.dispatch();
-			}, 100);
+			}, 100 );
 		}, 1000);
 	}
 
@@ -94,8 +98,6 @@ editor.storage.init(function () {
 	signals.historyChanged.add( saveState );
 });
 
-// HACK
-editor.initMRMesh();
 
 //
 

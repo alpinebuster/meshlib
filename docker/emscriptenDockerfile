@@ -1,9 +1,9 @@
 # At project root directory, building image with:
 #
-#  `docker build -t zzz/em-build-server -f ./docker/emscripten.Dockerfile .`
+#  `docker build -t zzz/em-build-server -f ./docker/emscriptenDockerfile .`
 #  `docker run --rm -it zzz/em-build-server bash`
 #
-FROM emscripten/emsdk:4.0.10
+FROM emscripten/emsdk:4.0.11
 
 # Update and install req
 # Install yaru-theme-icon to fix `Icon 'dialog-warning' not present in theme Yaru: 'glib warning'` while testing
@@ -35,7 +35,7 @@ Pin-Priority: 1001\
     rm -rf /var/lib/apt/lists/*
 
 ## Prepare thirdparty
-WORKDIR /home/meshlib
+WORKDIR /home/meshsdk
 
 # Copy files
 COPY . .
@@ -46,6 +46,7 @@ RUN find . -type f -exec sed -i 's/\r$//' {} \;
 # Build thirdparty
 ENV MR_STATE=DOCKER_BUILD
 ENV MR_EMSCRIPTEN=ON
+ENV MR_EMSCRIPTEN_SDK=ON
 RUN ./scripts/build_thirdparty.sh && \
     ./scripts/cmake_install.sh /usr/local/lib/emscripten && \
     rm -rf bin include lib share thirdparty_build
@@ -69,7 +70,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
 
 WORKDIR /home/
-RUN rm -rf meshlib
+RUN rm -rf meshsdk
 
 # Add a new user "actions-runner" with user id 8877
 RUN useradd -u 8877 -m user && \

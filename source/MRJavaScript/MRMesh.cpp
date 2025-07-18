@@ -63,8 +63,697 @@ using namespace emscripten;
 using namespace MR;
 using namespace MeshBuilder;
 
-namespace MRJS
+
+namespace MRJS 
 {
+
+// ------------------------------------------------------------------------
+// Wrapper for `Mesh`
+// ------------------------------------------------------------------------
+MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
+
+Mesh MeshWrapper::getMesh() { return mesh; }
+Mesh* MeshWrapper::getMeshPtr() { return &mesh; }
+
+val MeshWrapper::fromTrianglesImpl( const val& verticesArray, const val& indicesArray )
+{
+	val result = val::object();
+
+	try
+	{
+		if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+		{
+			throw std::runtime_error( "vertices must be Float32Array" );
+		}
+		if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+		{
+			throw std::runtime_error( "indices must be Uint32Array" );
+		}
+
+		int verticesLength = verticesArray["length"].as<int>();
+		int indicesLength = indicesArray["length"].as<int>();
+
+		if ( verticesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "vertices array length must be divisible by 3" );
+		}
+		if ( indicesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "indices array length must be divisible by 3" );
+		}
+
+		int numVerts = verticesLength / 3;
+		int numTris = indicesLength / 3;
+
+
+		///
+		size_t verticesByteOffset = verticesArray["byteOffset"].as<size_t>();
+		const float* verticesPtr = reinterpret_cast<const float*>( verticesByteOffset );
+
+		size_t indicesByteOffset = indicesArray["byteOffset"].as<size_t>();
+		const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>( indicesByteOffset );
+		///
+
+
+		///
+		VertCoords vCoords;
+		vCoords.resize( numVerts );
+
+		for ( int i = 0; i < numVerts; ++i )
+		{
+			int baseIdx = i * 3;
+			vCoords[VertId( i )] = Vector3f(
+				verticesPtr[baseIdx],
+				verticesPtr[baseIdx + 1],
+				verticesPtr[baseIdx + 2]
+			);
+		}
+		///
+
+		///
+		Triangulation triangulation;
+		triangulation.resize( numTris );
+
+		for ( int i = 0; i < numTris; ++i )
+		{
+			int baseIdx = i * 3;
+			triangulation[FaceId( i )] = ThreeVertIds{
+				VertId( indicesPtr[baseIdx] ),
+				VertId( indicesPtr[baseIdx + 1] ),
+				VertId( indicesPtr[baseIdx + 2] )
+			};
+		}
+		///
+
+		auto mesh = Mesh::fromTriangles( std::move( vCoords ), triangulation );
+
+		result.set( "success", true );
+		result.set( "mesh", MeshWrapper( mesh ) );
+	}
+	catch ( const std::exception& e )
+	{
+		result.set( "success", false );
+		result.set( "error", std::string( e.what() ) );
+	}
+
+	return result;
+}
+
+val MeshWrapper::fromTrianglesImplWithArray( const val& verticesArray, const val& indicesArray )
+{
+	val result = val::object();
+
+	try
+	{
+		if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+		{
+			throw std::runtime_error( "vertices must be Float32Array" );
+		}
+		if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+		{
+			throw std::runtime_error( "indices must be Uint32Array" );
+		}
+
+		int verticesLength = verticesArray["length"].as<int>();
+		int indicesLength = indicesArray["length"].as<int>();
+
+		if ( verticesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "vertices array length must be divisible by 3" );
+		}
+		if ( indicesLength % 3 != 0 )
+		{
+			throw std::runtime_error( "indices array length must be divisible by 3" );
+		}
+
+		int numVerts = verticesLength / 3;
+		int numTris = indicesLength / 3;
+
+        // NOTE: Using `emscripten::convertJSArrayToNumberVector`, a safer way to obtain data from a `TypedArray`
+		std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+		std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+		const float* verticesPtr = verticesVec.data();
+		const uint32_t* indicesPtr = indicesVec.data();
+
+		///
+		VertCoords vCoords;
+		vCoords.resize( numVerts );
+
+		// Read vertex data from vector (memory contiguous, high performance)
+		for ( int i = 0; i < numVerts; ++i )
+		{
+			int baseIdx = i * 3;
+			vCoords[VertId( i )] = Vector3f(
+				verticesPtr[baseIdx],
+				verticesPtr[baseIdx + 1],
+				verticesPtr[baseIdx + 2]
+			);
+		}
+		///
+
+		///
+		Triangulation triangulation;
+		triangulation.resize( numTris );
+
+		for ( int i = 0; i < numTris; ++i )
+		{
+			int baseIdx = i * 3;
+			triangulation[FaceId( i )] = ThreeVertIds{
+				VertId( indicesPtr[baseIdx] ),
+				VertId( indicesPtr[baseIdx + 1] ),
+				VertId( indicesPtr[baseIdx + 2] )
+			};
+		}
+		///
+
+		auto mesh = Mesh::fromTriangles( std::move( vCoords ), triangulation );
+
+		result.set( "success", true );
+		result.set( "mesh", MeshWrapper( mesh ) );
+	}
+	catch ( const std::exception& e )
+	{
+		result.set( "success", false );
+		result.set( "error", std::string( e.what() ) );
+	}
+
+	return result;
+}
+
+val MeshWrapper::getBoundingBoxImpl() const
+{
+	return MRJS::box3fToObject( mesh.getBoundingBox() );
+}
+
+val MeshWrapper::getVertexPositionImpl( int vertId ) const
+{
+	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
+	{
+		return MRJS::vector3fToArray( mesh.points[VertId( vertId )] );
+	}
+	return val::null();
+}
+
+void MeshWrapper::setVertexPositionImpl( int vertId, const val& position )
+{
+	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
+	{
+		mesh.points[VertId( vertId )] = MRJS::arrayToVector3f( position );
+		mesh.invalidateCaches(); // IMPORTANT: invalidate caches after modification
+	}
+}
+
+int MeshWrapper::getVertexCountImpl() const
+{
+	return ( int )mesh.topology.lastValidVert() + 1;
+}
+
+int MeshWrapper::getFaceCountImpl() const
+{
+	return ( int )mesh.topology.lastValidFace() + 1;
+}
+
+double MeshWrapper::getVolumeImpl() const
+{
+	return mesh.volume();
+}
+
+double MeshWrapper::getAreaImpl() const
+{
+	return mesh.area();
+}
+
+val MeshWrapper::findCenterImpl() const
+{
+	return MRJS::vector3fToArray( mesh.findCenterFromBBox() );
+}
+
+val MeshWrapper::getFaceVerticesImpl( int faceId ) const
+{
+	if ( faceId >= 0 && faceId < ( int )mesh.topology.lastValidFace() + 1 )
+	{
+		FaceId f( faceId );
+		if ( mesh.topology.hasFace( f ) )
+		{
+			val result = val::array();
+			EdgeId e = mesh.topology.edgeWithLeft( f );
+
+			for ( int i = 0; i < 3; ++i )
+			{
+				// Assuming triangular faces
+				result.set( i, ( int )mesh.topology.org( e ) );
+				e = mesh.topology.next( e );
+			}
+			return result;
+		}
+	}
+	return val::null();
+}
+
+val MeshWrapper::getFaceNormalImpl( int faceId ) const
+{
+	if ( faceId >= 0 && faceId < ( int )mesh.topology.lastValidFace() + 1 )
+	{
+		FaceId f( faceId );
+		if ( mesh.topology.hasFace( f ) )
+		{
+			return MRJS::vector3fToArray( mesh.normal( f ) );
+		}
+	}
+	return val::null();
+}
+
+val MeshWrapper::segmentByPointsImpl(
+	const std::vector<float>& coordinates, const std::vector<float>& dir,
+	const EdgeMetricWrapper& edgeMetricWrapper ) const
+{
+	val result = val::object();
+
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
+	if ( meshCopy.points.empty() )
+	{
+		result.set( "success", false );
+		result.set( "error", std::string( "Mesh not initialized!" ) );
+
+		return result;
+	}
+
+	try
+	{
+		auto edgeMetric_ = edgeMetricWrapper.getMetric();
+		std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
+
+		if ( inputPoints.size() < 2 )
+		{
+			result.set( "success", false );
+			result.set( "error", std::string( "Segmenting mesh needs exactly 2 or 3 input points!" ) );
+
+			return result;
+		}
+
+		// Step 1: Find closest vertices on the mesh for each input point using `findProjection()`
+		std::vector<VertId> keyVertices;
+		keyVertices.reserve( inputPoints.size() );
+
+		MeshPart m = MeshPart( meshCopy );
+
+		meshCopy.getAABBTree();
+		for ( const Vector3f& point : inputPoints )
+		{
+			MeshProjectionResult closestVert = findProjection( point, m );
+			if ( !closestVert.valid() )
+			{
+				result.set( "success", false );
+				result.set( "error", std::string( "Could not find valid vertex for input point" ) );
+
+				return result;
+			}
+			keyVertices.push_back( meshCopy.getClosestVertex( closestVert.proj ) );
+		}
+
+		// Step 2: Use the direction provided by JavaScript
+		Vector3f contourDirection( dir[0], dir[1], dir[2] );
+
+		// Normalize the direction vector to ensure it's a unit vector
+		float dirLength = contourDirection.length();
+		if ( dirLength < 1e-6f )
+		{
+			result.set( "success", false );
+			result.set( "error", std::string( "Direction vector is too small or zero" ) );
+
+			return result;
+		}
+		contourDirection /= dirLength;
+
+		// Step 3: Create surrounding contour
+		auto contourResult = surroundingContour( meshCopy, keyVertices, edgeMetric_, contourDirection );
+
+		if ( !contourResult )
+		{
+			result.set( "success", false );
+			result.set( "error", std::string( "Failed to create surrounding contour: " ) + contourResult.error() );
+
+			return result;
+		}
+
+		// Step 4: Convert EdgeLoop to EdgePath for `fillContourLeftByGraphCut()`
+		EdgeLoop contour = contourResult.value();
+		EdgePath contourPath( contour.begin(), contour.end() );
+
+		// Step 5: Fill the contour to get the segmented region
+		Mesh segMesh;
+		FaceBitSet segmentedFaces = fillContourLeftByGraphCut( meshCopy.topology, contourPath, edgeMetric_ );
+		segMesh.addMeshPart( {meshCopy, &segmentedFaces} );
+
+		// Step 6: Convert results to JavaScript-friendly format using emscripten val
+		val meshData = MRJS::exportMeshMemoryView( segMesh );
+
+		// Since `EdgeId` has an implicit conversion operator to int, and it is internally represented as an int
+		// We can directly reinterpret `EdgeId*` as `int*`
+		const int* contourData = reinterpret_cast<const int*>( contour.data() );
+		size_t contourSize = contour.size();
+		val contourEdgesArray = val( typed_memory_view( contourSize, contourData ) );
+
+		// Build the result object
+		result.set( "success", true );
+		result.set( "contourEdges", contourEdgesArray );
+		result.set( "mesh", meshData );
+	}
+	catch ( const std::exception& e )
+	{
+		result.set( "success", false );
+		result.set( "error", std::string( "Exception during segmentation: " ) + e.what() );
+	}
+
+	return result;
+}
+
+val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params ) const
+{
+	// Return the mesh wrapped in an object that indicates success
+	val returnObj = val::object();
+
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
+	MeshBuilder::uniteCloseVertices( meshCopy, meshCopy.computeBoundingBox().diagonal() * 1e-6 );
+	auto result = thickenMesh( mesh, offset, params );
+	if ( result )
+	{
+		Mesh& shell = result.value();
+
+		///
+
+		// // Stitch boundaries 
+		// auto holes = shell.topology.findHoleRepresentiveEdges();
+		// if ( holes.size() != 2 )
+		// {
+		// 	returnObj.set( "success", false );
+
+		// 	std::string errorMessage = "Expected 2 holes, found " + std::to_string( holes.size() ) + "\n";
+		// 	returnObj.set( "error: ", errorMessage );
+		// 	return returnObj;
+		// }
+
+		///
+
+		// Find boundary holes
+		auto holes = findRightBoundary( shell.topology );
+		std::vector<float> holesLength( holes.size() );
+		std::vector<Vector3f> holeCenters( holes.size() );
+
+		for ( size_t i = 0; i < holes.size(); ++i )
+		{
+			float length = 0.0f;
+			Vector3f center;
+			for ( EdgeId e : holes[i] )
+			{
+				auto org = shell.topology.org( e );
+				auto dest = shell.topology.dest( e );
+				length += ( shell.points[dest] - shell.points[org] ).length();
+				center += shell.points[org];
+			}
+			holesLength[i] = length;
+			holeCenters[i] = center / float( holes[i].size() );
+		}
+
+		// Find largest two holes
+		int maxLengthI = 0, maxLengthI2 = -1;
+		float maxLength = -1.0f;
+		for ( int i = 0; i < holesLength.size(); ++i )
+		{
+			if ( holesLength[i] > maxLength )
+			{
+				maxLength = holesLength[i];
+				maxLengthI = i;
+			}
+		}
+
+		maxLength = -1.0f;
+		for ( int i = 0; i < holesLength.size(); ++i )
+		{
+			if ( i != maxLengthI && holesLength[i] > maxLength )
+			{
+				maxLength = holesLength[i];
+				maxLengthI2 = i;
+			}
+		}
+
+		// Build hole pairs
+		std::vector<std::array<int, 2>> holePairs;
+		if ( maxLengthI2 != -1 )
+			holePairs.push_back( { maxLengthI, maxLengthI2 } );
+
+		// Find nearest pairs for remaining holes
+		std::vector<int> minDistancesI( holes.size(), -1 );
+		for ( int i = 0; i < holes.size(); ++i )
+		{
+			if ( i == maxLengthI || i == maxLengthI2 )
+				continue;
+
+			float minDist = std::numeric_limits<float>::max();
+			int minJ = -1;
+
+			for ( int j = 0; j < holes.size(); ++j )
+			{
+				if ( j == i || j == maxLengthI || j == maxLengthI2 )
+					continue;
+
+				float dist = ( holeCenters[i] - holeCenters[j] ).length();
+				if ( dist < minDist )
+				{
+					minDist = dist;
+					minJ = j;
+				}
+			}
+			minDistancesI[i] = minJ;
+		}
+
+		for ( int i = 0; i < holes.size() / 2; ++i )
+		{
+			if ( minDistancesI[i] != -1 )
+				holePairs.push_back( { i, minDistancesI[i] } );
+		}
+
+		// Stitch holes with cylinders
+		FaceBitSet newFaces;
+		StitchHolesParams stitchParams;
+		stitchParams.metric = getMinAreaMetric( shell );
+		stitchParams.outNewFaces = &newFaces;
+
+		for ( const auto& pair : holePairs )
+		{
+			if ( pair[0] < holes.size() && pair[1] < holes.size() )
+			{
+				if ( !holes[pair[0]].empty() && !holes[pair[1]].empty() )
+					buildCylinderBetweenTwoHoles( shell, holes[pair[0]][0], holes[pair[1]][0], stitchParams );
+			}
+		}
+
+		// Subdivide new faces
+		SubdivideSettings subdivSettings;
+		subdivSettings.region = &newFaces;
+		subdivSettings.maxEdgeSplits = INT_MAX;
+		subdivSettings.maxEdgeLen = 1.0f;
+
+		subdivideMesh( shell, subdivSettings );
+
+		// Smooth vertices
+		auto smoothVerts = getInnerVerts( shell.topology, newFaces );
+		positionVertsSmoothly( shell, smoothVerts );
+
+
+		val meshData = MRJS::exportMeshMemoryView( shell );
+
+		returnObj.set( "success", true );
+		returnObj.set( "mesh", meshData );
+
+		return returnObj;
+	}
+	else
+	{
+		// Return an error object with the error message
+		val returnObj = val::object();
+		returnObj.set( "success", false );
+		returnObj.set( "error", result.error() );
+
+		return returnObj;
+	}
+}
+
+val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates ) const
+{
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
+	std::vector<Vector3f> polyline;
+
+    int coordinatesLength = coordinates.size();
+    if (coordinatesLength % 3 != 0) {
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "Coordinates length must be a multiple of 3!" );
+
+		return obj;
+    }
+
+	polyline.reserve( coordinatesLength / 3 );
+
+	for ( size_t i = 0; i < coordinatesLength; i += 3 )
+	{
+		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
+	}
+	Polyline3 initialPolyline;
+	initialPolyline.addFromPoints( polyline.data(), polyline.size() );
+
+	std::vector<MeshTriPoint> projectedPolyline;
+	projectedPolyline.reserve( initialPolyline.points.size() );
+	MeshPart m = MeshPart( meshCopy, nullptr );
+
+
+	val jsTestProjectedPoint = val::array();
+
+	meshCopy.getAABBTree(); // Create tree in parallel before loop
+	for ( Vector3f pt : initialPolyline.points )
+	{
+		MeshProjectionResult mpr = findProjection( pt, m );
+		projectedPolyline.push_back( mpr.mtp );
+
+
+		val projPoint = val::object();
+		projPoint.set("x", mpr.proj.point.x);
+		projPoint.set("y", mpr.proj.point.y);
+		projPoint.set("z", mpr.proj.point.z);
+		jsTestProjectedPoint.call<void>("push", projPoint);
+	}
+
+	auto meshContour = convertMeshTriPointsToMeshContour( meshCopy, projectedPolyline );
+	if ( meshContour )
+	{
+    	const MR::OneMeshContour& testContour = *meshContour;
+		val jsTestProjectedContour = val::array();
+		for (const auto& intersection : testContour.intersections)
+		{
+			val point = val::object();
+			point.set("x", intersection.coordinate.x);
+			point.set("y", intersection.coordinate.y);
+			point.set("z", intersection.coordinate.z);
+			jsTestProjectedContour.call<void>("push", point);
+		}
+
+
+		CutMeshResult cutResults = cutMesh( meshCopy, { *meshContour } );
+
+
+		val jsTestCutPoints = val::array();
+		for (const auto& loop : cutResults.resultCut) {
+			for (const auto& edge : loop) {
+				Vector3f p = meshCopy.orgPnt(edge);
+				val point = val::object();
+				point.set("x", p.x);
+				point.set("y", p.y);
+				point.set("z", p.z);
+				jsTestCutPoints.call<void>("push", point);
+			}
+		}
+		
+
+		auto [innerMesh, outerMesh] = MRJS::returnParts( meshCopy, cutResults.resultCut );
+		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
+		val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
+
+
+		val obj = val::object();
+		obj.set( "success", true );
+		obj.set( "innerMesh", innerMeshData );
+		obj.set( "outerMesh", outerMeshData );
+		obj.set( "jsTestProjectedPoint", jsTestProjectedPoint );
+		obj.set( "jsTestProjectedContour", jsTestProjectedContour );
+		obj.set( "jsTestCutPoints", jsTestCutPoints );
+
+		return obj;
+	} else {
+		std::string error = meshContour.error();
+
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "convertMeshTriPointsToMeshContour: " + error );
+	
+		return obj;
+	}
+}
+
+val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
+{
+	val returnObj = val::object();
+
+	FixUndercuts::FixParams fixParams;
+	fixParams.findParameters.upDirection = upDirection.normalized();
+
+	Mesh meshCopy;
+	// NOTE: Both methods will work
+	// meshCopy = mesh;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+	
+	auto result = FixUndercuts::fix( meshCopy, fixParams );
+
+	val meshData = MRJS::exportMeshMemoryView( meshCopy );
+	returnObj.set( "success", true );
+	returnObj.set( "mesh", meshData );
+	returnObj.set( "message", "Undercuts fixed successfully!" );
+
+    return returnObj;
+}
+
+val MeshWrapper::fillHolesImpl() const
+{
+	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
+
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
+	for ( EdgeId e : holeEdges )
+	{
+		FillHoleParams params;
+		fillHole( meshCopy, e, params );
+	}
+
+    return MRJS::exportMeshMemoryView( meshCopy );
+}
+
+val MeshWrapper::projectPointImpl( const val& point, float maxDistance ) const
+{
+	Vector3f p = MRJS::arrayToVector3f( point );
+	MeshProjectionResult result = mesh.projectPoint( p, maxDistance * maxDistance ); // Note: function expects squared distance
+
+	if ( result.valid() )
+	{
+		val obj = val::object();
+		obj.set( "success", true );
+		// obj.set( "point", MRJS::vector3fToArray( result.proj ) );
+		// obj.set( "faceId", ( int )result->face );
+		// obj.set( "distance", std::sqrt( result->distSq ) );
+		return obj;
+	}
+	else
+	{
+		val result = val::object();
+		result.set( "success", false );
+		result.set( "error", "No projection found within distance" );
+
+		return result;
+	}
+}
+
+}
+
 
 // ------------------------------------------------------------------------
 // Bindings for `Mesh`
@@ -73,15 +762,244 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 {
 	class_<Mesh>( "Mesh" )
 		.smart_ptr<std::shared_ptr<Mesh>>( "MeshSharedPtr" )
-
 		.constructor<>()
 
 		.property( "topology", &Mesh::topology )
 		.property( "points", &Mesh::points )
 
 		///
+		// NOTE: Let `emscripten` to handle exceptions, it will throw them on the JS side
+		// 
+		// Example usage:
+		// 
+		//  ```js
+		//  /// Vertices
+		//  // 1) allocate `nVerts*3` floats in WASM
+		//  const verticesCount = vertices.length; 
+		//  // NOTE: In `_malloc`, the specified value is in bytes, not in the number of elements
+		//  // Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
+		//  const verticesPtr = editor.mrmesh._malloc( verticesCount * 4 );
+		//  // 2) construct a JS Float32Array that _views_ the WASM heap:
+		//  const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
+		//  // 3) copy into it (once), or let your own code fill it:
+		//  jsVertices.set( vertices );
+		//  ///
+		// 
+		// 
+		// 	/// Indices
+		// 	const indicesCount = indices.length;
+		// 	const indicesPtr = editor.mrmesh._malloc( indicesCount * 4 );
+		// 	const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
+		// 	jsIndices.set( indices );
+		// 	///
+		// 
+		//  try {
+		//  	const mesh = Module.fromTrianglesMemoryView( jsVertices, jsIndices );
+		// 
+		//      // ...
+		// 
+		//      // NOTE: This is IMPORTANT!!!
+		//      mesh.delete();
+		//  } catch ( error ) {
+		//  	console.error( 'Error creating mesh:', error.message );
+		//  }
+		//  ```
+		// 
+		.class_function( "fromTrianglesMemoryView", 
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh
+			{
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						throw std::runtime_error( "vertices must be Float32Array" );
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						throw std::runtime_error( "indices must be Uint32Array" );
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "vertices array length must be divisible by 3" );
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "indices array length must be divisible by 3" );
+					}
+
+					int numVerts = verticesLength / 3;
+					int numTris = indicesLength / 3;
+
+
+					///
+					// NOTE: Directly access the memory of `TypedArray` without copying
+					size_t verticesByteOffset = verticesArray["byteOffset"].as<size_t>();
+					const float* verticesPtr = reinterpret_cast<const float*>( verticesByteOffset );
+
+					size_t indicesByteOffset = indicesArray["byteOffset"].as<size_t>();
+					const uint32_t* indicesPtr = reinterpret_cast<const uint32_t*>( indicesByteOffset );
+					///
+
+
+					///
+					VertCoords vCoords;
+					vCoords.resize( numVerts );
+
+					for ( int i = 0; i < numVerts; ++i )
+					{
+						int baseIdx = i * 3;
+						vCoords[VertId( i )] = Vector3f(
+							verticesPtr[baseIdx],
+							verticesPtr[baseIdx + 1],
+							verticesPtr[baseIdx + 2]
+						);
+					}
+					///
+
+					///
+					Triangulation triangulation;
+					triangulation.resize( numTris );
+
+					for ( int i = 0; i < numTris; ++i )
+					{
+						int baseIdx = i * 3;
+						triangulation[FaceId( i )] = ThreeVertIds{
+							VertId( indicesPtr[baseIdx] ),
+							VertId( indicesPtr[baseIdx + 1] ),
+							VertId( indicesPtr[baseIdx + 2] )
+						};
+					}
+					///
+
+					const auto res = Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( vCoords ), triangulation );
+					return res;
+				}
+				catch ( const std::exception& e )
+				{
+					// Or return an empty `Mesh`
+					// return Mesh();
+					throw std::runtime_error( std::string( e.what() ) );
+				}
+			} )
+		)
+		// 
+		// Example usage
+		// 
+		//  ```js
+		//  // Three.js geometry
+		//  const geometry = new THREE.BufferGeometry();
+		//  const vertices = geometry.getAttribute('position').array; // `Float32Array`
+		//  const indices = geometry.getIndex().array; // `Uint32Array`
+		//  
+		//  const mesh = MeshWrapper.fromTrianglesImpl( vertices, indices );
+		// 
+		//  // ...
+		// 
+		//  // NOTE: This is IMPORTANT!!!
+		//  mesh.delete();
+		//  ```
+		// 
+		.class_function( "fromTrianglesArray",
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh*
+			{
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						throw std::runtime_error( "vertices must be Float32Array" );
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						throw std::runtime_error( "indices must be Uint32Array" );
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "vertices array length must be divisible by 3" );
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						throw std::runtime_error( "indices array length must be divisible by 3" );
+					}
+
+					int numVerts = verticesLength / 3;
+					int numTris = indicesLength / 3;
+
+
+					///
+					std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+					std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+					const float* verticesPtr = verticesVec.data();
+					const uint32_t* indicesPtr = indicesVec.data();
+					///
+
+
+					///
+					VertCoords vCoords;
+					vCoords.resize( numVerts );
+
+					// Read vertex data from vector (memory contiguous, high performance)
+					for ( int i = 0; i < numVerts; ++i )
+					{
+						int baseIdx = i * 3;
+						vCoords[VertId( i )] = Vector3f(
+							verticesPtr[baseIdx],
+							verticesPtr[baseIdx + 1],
+							verticesPtr[baseIdx + 2]
+						);
+					}
+					///
+
+					///
+					Triangulation triangulation;
+					triangulation.resize( numTris );
+
+					for ( int i = 0; i < numTris; ++i )
+					{
+						int baseIdx = i * 3;
+						triangulation[FaceId( i )] = ThreeVertIds{
+							VertId( indicesPtr[baseIdx] ),
+							VertId( indicesPtr[baseIdx + 1] ),
+							VertId( indicesPtr[baseIdx + 2] )
+						};
+					}
+					///
+
+					return new Mesh( Mesh::fromTriangles( std::move(vCoords ), triangulation ) );
+				}
+				catch ( const std::exception& e )
+				{
+					throw std::runtime_error( std::string( e.what() ) );
+				}
+			} ),
+			// IMPORTANT: JS is responsible for `.delete()` when it gets it!!!
+			return_value_policy::take_ownership()
+		)
+
+		.class_function( "getGeometry",
+			optional_override( []( Mesh& mesh ) -> val
+			{
+				val meshData = MRJS::exportMeshMemoryView( mesh );
+
+				val geoObj = val::object();
+				geoObj.set( "success", true );
+				geoObj.set( "mesh", meshData );
+
+				return geoObj;
+			})
+		)
+		///
+
+		///
 		.function( "fromTriangles", &Mesh::fromTriangles )
-		
+
 		.function( "fromTriMesh",
 			optional_override( [] ( TriMesh& triMesh, const MeshBuilder::BuildSettings& settings, ProgressCallback cb ) -> Mesh
 			{
@@ -297,652 +1215,40 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 // ------------------------------------------------------------------------
-// Wrapper for `Mesh`
-// ------------------------------------------------------------------------
-MeshWrapper::MeshWrapper( const Mesh& m ) : mesh( m ) {}
-
-Mesh* MeshWrapper::getMeshPtr() { return &mesh; }
-
-// Static factory methods for creating meshes from various sources
-val MeshWrapper::fromTrianglesImpl( const val& vertexCoords, const val& triangles )
-{
-	try
-	{
-		// Convert JavaScript arrays to C++ vectors
-		VertCoords coords;
-		int numVerts = vertexCoords["length"].as<int>();
-		coords.resize( numVerts );
-
-		for ( int i = 0; i < numVerts; ++i )
-		{
-			val vertex = vertexCoords[i];
-			coords[VertId( i )] = MRJS::arrayToVector3f( vertex );
-		}
-
-		// Convert triangles array
-		Triangulation triangulation;
-		int numTris = triangles["length"].as<int>();
-
-		for ( int i = 0; i < numTris; ++i )
-		{
-			val tri = triangles[i];
-			triangulation.push_back( {
-				VertId( tri[0].as<int>() ),
-				VertId( tri[1].as<int>() ),
-				VertId( tri[2].as<int>() )
-			} );
-		}
-
-		auto mesh = Mesh::fromTriangles( std::move( coords ), triangulation );
-		val result = val::object();
-		result.set( "success", true );
-		result.set( "mesh", MeshWrapper( mesh ) );
-
-		return result;
-	}
-	catch ( const std::exception& e )
-	{
-		val result = val::object();
-		result.set( "success", false );
-		result.set( "error", std::string( e.what() ) );
-
-		return result;
-	}
-}
-// val MeshWrapper::fromTrianglesMemoryView( const float* vertexPtr,
-// 										  size_t        numVerts,
-// 										  const uint32_t* triPtr,
-// 										  size_t         numTris )
-// {
-
-// }
-
-// Geometric queries
-val MeshWrapper::getBoundingBox() const
-{
-	return MRJS::box3fToObject( mesh.getBoundingBox() );
-}
-
-val MeshWrapper::getVertexPosition( int vertId ) const
-{
-	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
-	{
-		return MRJS::vector3fToArray( mesh.points[VertId( vertId )] );
-	}
-	return val::null();
-}
-
-void MeshWrapper::setVertexPosition( int vertId, const val& position )
-{
-	if ( vertId >= 0 && vertId < ( int )mesh.points.size() )
-	{
-		mesh.points[VertId( vertId )] = MRJS::arrayToVector3f( position );
-		mesh.invalidateCaches(); // Important: invalidate caches after modification
-	}
-}
-
-int MeshWrapper::getVertexCount() const
-{
-	return ( int )mesh.topology.lastValidVert() + 1;
-}
-
-int MeshWrapper::getFaceCount() const
-{
-	return ( int )mesh.topology.lastValidFace() + 1;
-}
-
-double MeshWrapper::getVolume() const
-{
-	return mesh.volume();
-}
-
-double MeshWrapper::getArea() const
-{
-	return mesh.area();
-}
-
-val MeshWrapper::findCenter() const
-{
-	return MRJS::vector3fToArray( mesh.findCenterFromBBox() );
-}
-
-// Face operations
-val MeshWrapper::getFaceVertices( int faceId ) const
-{
-	if ( faceId >= 0 && faceId < ( int )mesh.topology.lastValidFace() + 1 )
-	{
-		FaceId f( faceId );
-		if ( mesh.topology.hasFace( f ) )
-		{
-			val result = val::array();
-			EdgeId e = mesh.topology.edgeWithLeft( f );
-
-			for ( int i = 0; i < 3; ++i )
-			{ // Assuming triangular faces
-				result.set( i, ( int )mesh.topology.org( e ) );
-				e = mesh.topology.next( e );
-			}
-			return result;
-		}
-	}
-	return val::null();
-}
-
-val MeshWrapper::getFaceNormal( int faceId ) const
-{
-	if ( faceId >= 0 && faceId < ( int )mesh.topology.lastValidFace() + 1 )
-	{
-		FaceId f( faceId );
-		if ( mesh.topology.hasFace( f ) )
-		{
-			return MRJS::vector3fToArray( mesh.normal( f ) );
-		}
-	}
-	return val::null();
-}
-
-val MeshWrapper::segmentByPointsImpl(
-	const std::vector<float>& coordinates, const std::vector<float>& dir,
-	const EdgeMetricWrapper& edgeMetricWrapper )
-{
-	val result = val::object();
-
-	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
-
-	// Input validation
-	if ( meshCopy.points.empty() )
-	{
-		result.set( "success", false );
-		result.set( "error", std::string( "Mesh not initialized!" ) );
-
-		return result;
-	}
-
-	try
-	{
-		auto edgeMetric_ = edgeMetricWrapper.getMetric();
-		// Parse coordinates into Vector3f points
-		std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
-
-		if ( inputPoints.size() < 2 )
-		{
-			result.set( "success", false );
-			result.set( "error", std::string( "Segmenting mesh needs exactly 2 or 3 input points!" ) );
-
-			return result;
-		}
-
-		// Step 1: Find closest vertices on the mesh for each input point using `findProjection()`
-		std::vector<VertId> keyVertices;
-		keyVertices.reserve( inputPoints.size() );
-
-		MeshPart m = MeshPart( meshCopy );
-
-		meshCopy.getAABBTree();
-		for ( const Vector3f& point : inputPoints )
-		{
-			MeshProjectionResult closestVert = findProjection( point, m );
-			if ( !closestVert.valid() )
-			{
-				result.set( "success", false );
-				result.set( "error", std::string( "Could not find valid vertex for input point" ) );
-
-				return result;
-			}
-			keyVertices.push_back( meshCopy.getClosestVertex( closestVert.proj ) );
-		}
-
-		// Step 2: Use the direction provided by JavaScript
-		Vector3f contourDirection( dir[0], dir[1], dir[2] );
-
-		// Normalize the direction vector to ensure it's a unit vector
-		float dirLength = contourDirection.length();
-		if ( dirLength < 1e-6f )
-		{
-			result.set( "success", false );
-			result.set( "error", std::string( "Direction vector is too small or zero" ) );
-
-			return result;
-		}
-		contourDirection /= dirLength;
-
-		// Step 3: Create surrounding contour
-		auto contourResult = surroundingContour( meshCopy, keyVertices, edgeMetric_, contourDirection );
-
-		if ( !contourResult )
-		{
-			result.set( "success", false );
-			result.set( "error", std::string( "Failed to create surrounding contour: " ) + contourResult.error() );
-
-			return result;
-		}
-
-		// Step 4: Convert EdgeLoop to EdgePath for `fillContourLeftByGraphCut()`
-		EdgeLoop contour = contourResult.value();
-		EdgePath contourPath( contour.begin(), contour.end() );
-
-		// Step 5: Fill the contour to get the segmented region
-		Mesh segMesh;
-		FaceBitSet segmentedFaces = fillContourLeftByGraphCut( meshCopy.topology, contourPath, edgeMetric_ );
-		segMesh.addMeshPart( {meshCopy, &segmentedFaces} );
-
-		// Step 6: Convert results to JavaScript-friendly format using emscripten val
-		val meshData = MRJS::exportMeshMemoryView( segMesh );
-
-		// Since `EdgeId` has an implicit conversion operator to int, and it is internally represented as an int
-		// We can directly reinterpret `EdgeId*` as `int*`
-		const int* contourData = reinterpret_cast<const int*>( contour.data() );
-		size_t contourSize = contour.size();
-		val contourEdgesArray = val( typed_memory_view( contourSize, contourData ) );
-
-		// Build the result object
-		result.set( "success", true );
-		result.set( "contourEdges", contourEdgesArray );
-		result.set( "mesh", meshData );
-	}
-	catch ( const std::exception& e )
-	{
-		result.set( "success", false );
-		result.set( "error", std::string( "Exception during segmentation: " ) + e.what() );
-	}
-
-	return result;
-}
-
-val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params )
-{
-	// Return the mesh wrapped in an object that indicates success
-	val returnObj = val::object();
-
-	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
-
-	MeshBuilder::uniteCloseVertices( meshCopy, meshCopy.computeBoundingBox().diagonal() * 1e-6 );
-	auto result = thickenMesh( mesh, offset, params );
-	if ( result )
-	{
-		Mesh& shell = result.value();
-
-		///
-
-		// // Stitch boundaries 
-		// auto holes = shell.topology.findHoleRepresentiveEdges();
-		// if ( holes.size() != 2 )
-		// {
-		// 	returnObj.set( "success", false );
-
-		// 	std::string errorMessage = "Expected 2 holes, found " + std::to_string( holes.size() ) + "\n";
-		// 	returnObj.set( "error: ", errorMessage );
-		// 	return returnObj;
-		// }
-
-		///
-
-		// Find boundary holes
-		auto holes = findRightBoundary( shell.topology );
-		std::vector<float> holesLength( holes.size() );
-		std::vector<Vector3f> holeCenters( holes.size() );
-
-		for ( size_t i = 0; i < holes.size(); ++i )
-		{
-			float length = 0.0f;
-			Vector3f center;
-			for ( EdgeId e : holes[i] )
-			{
-				auto org = shell.topology.org( e );
-				auto dest = shell.topology.dest( e );
-				length += ( shell.points[dest] - shell.points[org] ).length();
-				center += shell.points[org];
-			}
-			holesLength[i] = length;
-			holeCenters[i] = center / float( holes[i].size() );
-		}
-
-		// Find largest two holes
-		int maxLengthI = 0, maxLengthI2 = -1;
-		float maxLength = -1.0f;
-		for ( int i = 0; i < holesLength.size(); ++i )
-		{
-			if ( holesLength[i] > maxLength )
-			{
-				maxLength = holesLength[i];
-				maxLengthI = i;
-			}
-		}
-
-		maxLength = -1.0f;
-		for ( int i = 0; i < holesLength.size(); ++i )
-		{
-			if ( i != maxLengthI && holesLength[i] > maxLength )
-			{
-				maxLength = holesLength[i];
-				maxLengthI2 = i;
-			}
-		}
-
-		// Build hole pairs
-		std::vector<std::array<int, 2>> holePairs;
-		if ( maxLengthI2 != -1 )
-			holePairs.push_back( { maxLengthI, maxLengthI2 } );
-
-		// Find nearest pairs for remaining holes
-		std::vector<int> minDistancesI( holes.size(), -1 );
-		for ( int i = 0; i < holes.size(); ++i )
-		{
-			if ( i == maxLengthI || i == maxLengthI2 )
-				continue;
-
-			float minDist = std::numeric_limits<float>::max();
-			int minJ = -1;
-
-			for ( int j = 0; j < holes.size(); ++j )
-			{
-				if ( j == i || j == maxLengthI || j == maxLengthI2 )
-					continue;
-
-				float dist = ( holeCenters[i] - holeCenters[j] ).length();
-				if ( dist < minDist )
-				{
-					minDist = dist;
-					minJ = j;
-				}
-			}
-			minDistancesI[i] = minJ;
-		}
-
-		for ( int i = 0; i < holes.size() / 2; ++i )
-		{
-			if ( minDistancesI[i] != -1 )
-				holePairs.push_back( { i, minDistancesI[i] } );
-		}
-
-		// Stitch holes with cylinders
-		FaceBitSet newFaces;
-		StitchHolesParams stitchParams;
-		stitchParams.metric = getMinAreaMetric( shell );
-		stitchParams.outNewFaces = &newFaces;
-
-		for ( const auto& pair : holePairs )
-		{
-			if ( pair[0] < holes.size() && pair[1] < holes.size() )
-			{
-				if ( !holes[pair[0]].empty() && !holes[pair[1]].empty() )
-					buildCylinderBetweenTwoHoles( shell, holes[pair[0]][0], holes[pair[1]][0], stitchParams );
-			}
-		}
-
-		// Subdivide new faces
-		SubdivideSettings subdivSettings;
-		subdivSettings.region = &newFaces;
-		subdivSettings.maxEdgeSplits = INT_MAX;
-		subdivSettings.maxEdgeLen = 1.0f;
-
-		subdivideMesh( shell, subdivSettings );
-
-		// Smooth vertices
-		auto smoothVerts = getInnerVerts( shell.topology, newFaces );
-		positionVertsSmoothly( shell, smoothVerts );
-
-
-		val meshData = MRJS::exportMeshMemoryView( shell );
-
-		returnObj.set( "success", true );
-		returnObj.set( "mesh", meshData );
-
-		return returnObj;
-	}
-	else
-	{
-		// Return an error object with the error message
-		val returnObj = val::object();
-		returnObj.set( "success", false );
-		returnObj.set( "error", result.error() );
-
-		return returnObj;
-	}
-}
-
-val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates )
-{
-	std::vector<Vector3f> polyline;
-
-    int coordinatesLength = coordinates.size();
-    if (coordinatesLength % 3 != 0) {
-		val obj = val::object();
-		obj.set( "success", false );
-		obj.set( "error", "Coordinates length must be a multiple of 3!" );
-
-		return obj;
-    }
-
-	polyline.reserve( coordinatesLength / 3 );
-
-	for ( size_t i = 0; i < coordinatesLength; i += 3 )
-	{
-		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
-	}
-	Polyline3 initialPolyline;
-	initialPolyline.addFromPoints( polyline.data(), polyline.size() );
-
-	std::vector<MeshTriPoint> projectedPolyline;
-	projectedPolyline.reserve( initialPolyline.points.size() );
-	MeshPart m = MeshPart( mesh, nullptr );
-
-
-	val jsTestProjectedPoint = val::array();
-
-	mesh.getAABBTree(); // Create tree in parallel before loop
-	for ( Vector3f pt : initialPolyline.points )
-	{
-		MeshProjectionResult mpr = findProjection( pt, m );
-		projectedPolyline.push_back( mpr.mtp );
-
-
-		val projPoint = val::object();
-		projPoint.set("x", mpr.proj.point.x);
-		projPoint.set("y", mpr.proj.point.y);
-		projPoint.set("z", mpr.proj.point.z);
-		jsTestProjectedPoint.call<void>("push", projPoint);
-	}
-
-	auto meshContour = convertMeshTriPointsToMeshContour( mesh, projectedPolyline );
-	if ( meshContour )
-	{
-    	const MR::OneMeshContour& testContour = *meshContour;
-		val jsTestProjectedContour = val::array();
-		for (const auto& intersection : testContour.intersections)
-		{
-			val point = val::object();
-			point.set("x", intersection.coordinate.x);
-			point.set("y", intersection.coordinate.y);
-			point.set("z", intersection.coordinate.z);
-			jsTestProjectedContour.call<void>("push", point);
-		}
-
-
-		CutMeshResult cutResults = cutMesh( mesh, { *meshContour } );
-
-
-		val jsTestCutPoints = val::array();
-		for (const auto& loop : cutResults.resultCut) {
-			for (const auto& edge : loop) {
-				Vector3f p = mesh.orgPnt(edge);
-				val point = val::object();
-				point.set("x", p.x);
-				point.set("y", p.y);
-				point.set("z", p.z);
-				jsTestCutPoints.call<void>("push", point);
-			}
-		}
-		
-
-		auto [innerMesh, outerMesh] = MRJS::returnParts( mesh, cutResults.resultCut );
-		val innerMeshData = MRJS::exportMeshMemoryView( innerMesh );
-		val outerMeshData = MRJS::exportMeshMemoryView( outerMesh );
-
-
-		val obj = val::object();
-		obj.set( "success", true );
-		obj.set( "innerMesh", innerMeshData );
-		obj.set( "outerMesh", outerMeshData );
-		obj.set( "jsTestProjectedPoint", jsTestProjectedPoint );
-		obj.set( "jsTestProjectedContour", jsTestProjectedContour );
-		obj.set( "jsTestCutPoints", jsTestCutPoints );
-
-		return obj;
-	} else {
-		std::string error = meshContour.error();
-
-		val obj = val::object();
-		obj.set( "success", false );
-		obj.set( "error", "convertMeshTriPointsToMeshContour: " + error );
-	
-		return obj;
-	}
-}
-
-val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
-{
-	val returnObj = val::object();
-
-	FixUndercuts::FixParams fixParams;
-	fixParams.findParameters.upDirection = upDirection.normalized();
-
-	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
-	
-	auto result = FixUndercuts::fix( meshCopy, fixParams );
-
-	val meshData = MRJS::exportMeshMemoryView( meshCopy );
-	returnObj.set( "success", true );
-	returnObj.set( "mesh", meshData );
-	returnObj.set( "message", "Undercuts fixed successfully!" );
-
-    return returnObj;
-}
-
-val MeshWrapper::fillHolesImpl() const
-{
-	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
-
-	Mesh meshCopy;
-	meshCopy.topology = mesh.topology;
-	meshCopy.points = mesh.points;
-
-	for ( EdgeId e : holeEdges )
-	{
-		FillHoleParams params;
-		fillHole( meshCopy, e, params );
-	}
-
-    return MRJS::exportMeshMemoryView( meshCopy );
-}
-
-// Point projection
-val MeshWrapper::projectPoint( const val& point, float maxDistance ) const
-{
-	Vector3f p = MRJS::arrayToVector3f( point );
-	MeshProjectionResult result = mesh.projectPoint( p, maxDistance * maxDistance ); // Note: function expects squared distance
-
-	if ( result.valid() )
-	{
-		val obj = val::object();
-		obj.set( "success", true );
-		// obj.set( "point", MRJS::vector3fToArray( result.proj ) );
-		// obj.set( "faceId", ( int )result->face );
-		// obj.set( "distance", std::sqrt( result->distSq ) );
-		return obj;
-	}
-	else
-	{
-		val result = val::object();
-		result.set( "success", false );
-		result.set( "error", "No projection found within distance" );
-
-		return result;
-	}
-}
-
-// Transformation
-void MeshWrapper::transform( const val& matrix )
-{
-	// Assuming 4x4 transformation matrix as flat array of 16 elements
-	if ( matrix["length"].as<int>() == 16 )
-	{
-		AffineXf3f xf;
-		// Fill transformation matrix from JavaScript array
-		for ( int i = 0; i < 4; ++i )
-		{
-			for ( int j = 0; j < 4; ++j )
-			{
-				if ( i < 3 && j < 3 )
-				{
-					xf.A[i][j] = matrix[i * 4 + j].as<float>();
-				}
-				else if ( i < 3 && j == 3 )
-				{
-					xf.b[i] = matrix[i * 4 + j].as<float>();
-				}
-			}
-		}
-		mesh.transform( xf );
-	}
-}
-
-// Pack mesh (optimize memory layout)
-void MeshWrapper::pack()
-{
-	mesh.pack();
-}
-
-
-// ------------------------------------------------------------------------
 // Bindings for `MeshWrapper`
 // ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 {
-	class_<MeshWrapper>( "MeshWrapper" )
-		.smart_ptr<std::shared_ptr<MeshWrapper>>( "MeshWrapperSharedPtr" )
+	class_<MRJS::MeshWrapper>( "MeshWrapper" )
+		.smart_ptr<std::shared_ptr<MRJS::MeshWrapper>>( "MeshWrapperSharedPtr" )
 
 		.constructor<>()
 		.constructor<const Mesh&>()
-		.class_function( "fromTrianglesImpl", &MeshWrapper::fromTrianglesImpl )
+		.class_function( "fromTrianglesImpl", &MRJS::MeshWrapper::fromTrianglesImpl )
+		.class_function( "fromTrianglesImplWithArray", &MRJS::MeshWrapper::fromTrianglesImplWithArray )
 
-		.property( "mesh", &MeshWrapper::mesh )
-		.function( "getMesh", &MeshWrapper::getMeshPtr, allow_raw_pointers() )
+		.property( "mesh", &MRJS::MeshWrapper::mesh, return_value_policy::reference() )
+		.function( "getMesh", &MRJS::MeshWrapper::getMesh )
+		.function( "getMeshPtr", &MRJS::MeshWrapper::getMeshPtr, allow_raw_pointers() )
 
 		// Geometric properties
-		.function( "getBoundingBox", &MeshWrapper::getBoundingBox )
-		.function( "getVertexCount", &MeshWrapper::getVertexCount )
-		.function( "getFaceCount", &MeshWrapper::getFaceCount )
-		.function( "getVolume", &MeshWrapper::getVolume )
-		.function( "getArea", &MeshWrapper::getArea )
-		.function( "findCenter", &MeshWrapper::findCenter )
+		.function( "getBoundingBoxImpl", &MRJS::MeshWrapper::getBoundingBoxImpl )
+		.function( "getVertexCountImpl", &MRJS::MeshWrapper::getVertexCountImpl )
+		.function( "getFaceCountImpl", &MRJS::MeshWrapper::getFaceCountImpl )
+		.function( "getVolumeImpl", &MRJS::MeshWrapper::getVolumeImpl )
+		.function( "getAreaImpl", &MRJS::MeshWrapper::getAreaImpl )
+		.function( "findCenterImpl", &MRJS::MeshWrapper::findCenterImpl )
+		.function( "getVertexPositionImpl", &MRJS::MeshWrapper::getVertexPositionImpl )
+		.function( "setVertexPositionImpl", &MRJS::MeshWrapper::setVertexPositionImpl )
+		.function( "getFaceVerticesImpl", &MRJS::MeshWrapper::getFaceVerticesImpl )
+		.function( "getFaceNormalImpl", &MRJS::MeshWrapper::getFaceNormalImpl )
 
-		// Vertex operations
-		.function( "getVertexPosition", &MeshWrapper::getVertexPosition )
-		.function( "setVertexPosition", &MeshWrapper::setVertexPosition )
-
-		// Face operations
-		.function( "getFaceVertices", &MeshWrapper::getFaceVertices )
-		.function( "getFaceNormal", &MeshWrapper::getFaceNormal )
-
-		.function( "thickenMeshImpl", &MeshWrapper::thickenMeshImpl)
-		.function( "cutMeshWithPolylineImpl", &MeshWrapper::cutMeshWithPolylineImpl )
-		.function( "segmentByPointsImpl", &MeshWrapper::segmentByPointsImpl )
-		.function( "fixUndercutsImpl", &MeshWrapper::fixUndercutsImpl )
-		.function( "fillHolesImpl", &MeshWrapper::fillHolesImpl )
+		.function( "thickenMeshImpl", &MRJS::MeshWrapper::thickenMeshImpl )
+		.function( "cutMeshWithPolylineImpl", &MRJS::MeshWrapper::cutMeshWithPolylineImpl )
+		.function( "segmentByPointsImpl", &MRJS::MeshWrapper::segmentByPointsImpl )
+		.function( "fixUndercutsImpl", &MRJS::MeshWrapper::fixUndercutsImpl )
+		.function( "fillHolesImpl", &MRJS::MeshWrapper::fillHolesImpl )
 
 		// Spatial queries
-		.function( "projectPoint", &MeshWrapper::projectPoint )
-
-		// Transformations
-		.function( "transform", &MeshWrapper::transform )
-		.function( "pack", &MeshWrapper::pack );
+		.function( "projectPointImpl", &MRJS::MeshWrapper::projectPointImpl );
 }
-
-} //namespace MRJS

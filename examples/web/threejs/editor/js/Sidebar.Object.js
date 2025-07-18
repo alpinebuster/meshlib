@@ -14,6 +14,7 @@ import { SetColorCommand } from './commands/SetColorCommand.js';
 import { SetShadowValueCommand } from './commands/SetShadowValueCommand.js';
 
 import { SidebarObjectAnimation } from './Sidebar.Object.Animation.js';
+import createMemoryViewFromGeometry, { showMesh } from './Utils.js';
 
 function SidebarObject( editor ) {
 	const strings = editor.strings;
@@ -151,25 +152,19 @@ function SidebarObject( editor ) {
 	const clicked = [];
 	const pointMaterial = new THREE.PointsMaterial({ color: 0xff0000, size: 3 });
 	let pointGeo = new THREE.BufferGeometry();
-	const pointCloud = new THREE.Points(pointGeo, pointMaterial);
+	const pointCloud = new THREE.Points( pointGeo, pointMaterial );
 	pointCloud.name = 'wasm-selector-point';
 
-	const curveMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
-	let curveLine = new THREE.Line(new THREE.BufferGeometry(), curveMaterial);
+	const curveMaterial = new THREE.LineBasicMaterial( { color: 0x00ff00 } );
+	let curveLine = new THREE.Line( new THREE.BufferGeometry(), curveMaterial );
 	curveLine.name = 'wasm-selector-curve';
 
 	const wasmOpSelector = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelector') ).setMarginLeft( '7px' ).onClick(function () {
 		if ( !editor.selected ) return;
 
-		selectorEnabled = !selectorEnabled;
 		if ( selectorEnabled ) {
-			TOOL_MODE = 'wasmOpSelector';
-			wasmOpSelector.addClass( 'selected' );
-
-			pointGeo.dispose();
-			pointGeo = new THREE.BufferGeometry();
-			curveLine.geometry.dispose();
-			curveLine.geometry = new THREE.BufferGeometry();
+			TOOL_MODE = 'none';
+			wasmOpSelector.removeClass( 'selected' );
 
 			if ( editor.selected.children.length > 0 ) {
 				const subMeshes = editor.selected.children.filter( child => child.isLine || child.isPoints );
@@ -178,11 +173,16 @@ function SidebarObject( editor ) {
 				});
 			}
 		} else {
-			TOOL_MODE = 'none';
-			wasmOpSelector.removeClass( 'selected' );
-			editor.execute( new RemoveObjectCommand( editor, pointCloud ) );
-			editor.execute( new RemoveObjectCommand( editor, curveLine ) );
+			TOOL_MODE = 'wasmOpSelector';
+			wasmOpSelector.addClass( 'selected' );
+
+			pointGeo.dispose();
+			pointGeo = new THREE.BufferGeometry();
+			curveLine.geometry.dispose();
+			curveLine.geometry = new THREE.BufferGeometry();
 		}
+
+		selectorEnabled = !selectorEnabled;
 	});
 	signals.intersectionsDetected.add( ( intersects, source, event ) => {
 		if ( (TOOL_MODE == 'wasmOpSelector' || TOOL_MODE == 'wasmOpSegmentByPoints') && intersects.length > 0 ) {
@@ -211,7 +211,7 @@ function SidebarObject( editor ) {
 				_cur_intersect = _intersected_object;
 			}
 
-			clicked.push( intersects[0].point.clone() );
+			clicked.push( editor.selected.worldToLocal( intersects[0].point.clone() ) );
 			// console.log("pts: ", clicked);
 
 			refreshPoints();
@@ -225,7 +225,7 @@ function SidebarObject( editor ) {
 		if ( intersects.length > 0 ) {
 			const intersect = intersects[ 0 ];
 
-			clicked[draggingIndex].copy( intersect.point );
+			clicked[draggingIndex] = editor.selected.worldToLocal( intersect.point.clone() );
 			// console.log("intersect: ", intersect);
 			refreshPoints();
 			refreshCurve();
@@ -247,17 +247,17 @@ function SidebarObject( editor ) {
 							const positions = positionAttribute.array; // Float32Array
 							const positionsArr = [...positions];
 							// Convert to std::vector<float>
-							const floatVec = new editor.mrmesh.StdVectorf();
+							const floatVec = new editor.MeshSDK.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
 							
-							const result = editor.mrmesh.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+							const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
 							const innerVertices = result.innerMesh.vertices;
-							const innerIndices = new Uint32Array(result.innerMesh.indices);
+							const innerIndices = result.innerMesh.indices;
 						
 							const outerVertices = result.outerMesh.vertices;
-							const outerIndices = new Uint32Array(result.outerMesh.indices);
+							const outerIndices = result.outerMesh.indices;
 							
 							showMesh( innerVertices, innerIndices );
 							showMesh( outerVertices, outerIndices );
@@ -275,8 +275,8 @@ function SidebarObject( editor ) {
 							const positionAttr = pointGeo.getAttribute( 'position' );
 							const posi = positionAttr.array;
 							const posiArr = [...posi];
-							const _pArr = new editor.mrmesh.StdVectorf();
-							const _dArr = new editor.mrmesh.StdVectorf();
+							const _pArr = new editor.MeshSDK.StdVectorf();
+							const _dArr = new editor.MeshSDK.StdVectorf();
 														
 							for (let val of posiArr) {
 								_pArr.push_back(val);
@@ -285,9 +285,9 @@ function SidebarObject( editor ) {
 								_dArr.push_back(val_);
 							}
 
-							// const metricWrapper = editor.mrmesh.edgeLengthMetric( curMeshWrapper.mesh );
-							// const metricWrapper = editor.mrmesh.identityMetric( );
-							const metricWrapper = editor.mrmesh.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
+							// const metricWrapper = editor.MeshSDK.edgeLengthMetric( curMeshWrapper.mesh );
+							// const metricWrapper = editor.MeshSDK.identityMetric( );
+							const metricWrapper = editor.MeshSDK.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
 							const result_ = curMeshWrapper.segmentByPointsImpl( _pArr, _dArr, metricWrapper );
 							_pArr.delete();
 							const newVertices_ = result_.mesh.vertices;
@@ -354,32 +354,31 @@ function SidebarObject( editor ) {
 		}
 	} );
 	const wasmOpSelectedInverter = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelectedInverter') ).setMarginLeft( '7px' ).onClick(function () {
-		if (!editor.selected) return;
+		if ( !editor.selected ) return;
 	});
 	const wasmOpSelectedDeleter = new UIButton( strings.getKey( 'sidebar/object/wasmOpSelectedDeleter') ).setMarginLeft( '7px' ).onClick(function () {
-		if (!editor.selected) return;
+		if ( !editor.selected ) return;
 	});
 
 	const wasmOpFixUndercuts = new UIButton( strings.getKey( 'sidebar/object/wasmOpFixUndercuts') ).setMarginLeft( '7px' ).onClick(function () {
-		if (!editor.selected) return;
+		if ( !editor.selected ) return;
 
 		const currentUUID = editor.selected.uuid;
-		if (currentUUID) {
-			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const curMeshWrapper = editor.wasmObject[currentUUID];
 
 				const threeWorldDir = new THREE.Vector3();
 				editor.camera.getWorldDirection( threeWorldDir );
-				const upDir = new editor.mrmesh.Vector3f(
+				const upDir = new editor.MeshSDK.Vector3f(
 					-threeWorldDir.x,
 					-threeWorldDir.y,
 					-threeWorldDir.z,
 				)
 
-				const result = editor.mrmesh.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
-				// const result = editor.mrmesh.fixUndercutsTest( curMeshWrapper.mesh, upDir );
+				const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
 				// const result = curMeshWrapper.fixUndercutsImpl( upDir );
-				
+
 				const newVertices = result.mesh.vertices;
 				// NOTE: No need to wrap `Uint32Array` again!
 				// const newIndices = new Uint32Array( result.mesh.indices );
@@ -407,21 +406,111 @@ function SidebarObject( editor ) {
 		if ( !editor.selected ) return;
 
 		const currentUUID = editor.selected.uuid;
-		if (currentUUID) {
-			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const curMeshWrapper = editor.wasmObject[currentUUID];
 
-				const params = new editor.mrmesh.GeneralOffsetParameters();
-				params.signDetectionMode = editor.mrmesh.SignDetectionMode.Unsigned;
-				const meshPart = new editor.mrmesh.MeshPart( curMeshWrapper.getMesh() );
-				params.voxelSize = editor.mrmesh.suggestVoxelSize( meshPart, 5e6 );
+				const params = new editor.MeshSDK.GeneralOffsetParameters();
+				params.signDetectionMode = editor.MeshSDK.SignDetectionMode.Unsigned;
+				const meshPart = new editor.MeshSDK.MeshPart( curMeshWrapper.getMesh() );
+				params.voxelSize = editor.MeshSDK.suggestVoxelSize( meshPart, 5e6 );
 
-				// const result = editor.mrmesh.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
+				// const result = editor.MeshSDK.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
 				const result = curMeshWrapper.thickenMeshImpl( 1.2, params );
 				
 				const newVertices = result.mesh.vertices;
 				const newIndices = result.mesh.indices;
 				showMesh( newVertices, newIndices );
+			}
+		}
+	});
+
+	const wasmOpLoadFromThreeJS = new UIButton( strings.getKey( 'sidebar/object/wasmOpLoadFromThreeJS') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if (currentUUID) {
+			if (editor.wasmObject.hasOwnProperty(currentUUID)) {
+				const curMeshWrapper = editor.wasmObject[currentUUID];
+
+				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+				try {
+					// Now `jsVertices.buffer === editor.MeshSDK.HEAPF32.buffer`
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+
+					// FIXME: Why using the returned `Mesh` instance is not working?
+					// const result = editor.MeshSDK.fillHolesImpl( mesh ); // ❌
+					// const result = editor.MeshSDK.fillHolesImpl( curMeshWrapper.mesh ); // ✅
+					
+					// const result = editor.MeshSDK.Mesh.getGeometry( mesh ); // ✅
+
+
+					///
+					const threeWorldDir = new THREE.Vector3();
+					editor.camera.getWorldDirection( threeWorldDir );
+					const upDir = new editor.MeshSDK.Vector3f(
+						-threeWorldDir.x,
+						-threeWorldDir.y,
+						-threeWorldDir.z,
+					)
+					// FIXME: Why using the returned `Mesh` instance is much slower?
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ⚠️
+					// const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 ); // ✅
+					///
+
+
+					const newVertices = result.mesh.vertices;
+					const newIndices = result.mesh.indices;
+					showMesh( newVertices, newIndices );
+
+
+					/// IMPORTANT！！！
+					editor.MeshSDK._free( verticesPtr );
+					editor.MeshSDK._free( indicesPtr );
+
+					mesh.delete();
+					///
+				} catch ( error ) {
+					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				}
+			}
+		}
+	});
+	const wasmOpLoadFromThreeJSArray = new UIButton( strings.getKey( 'sidebar/object/wasmOpLoadFromThreeJSArray') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
+				const geometry = editor.selected.geometry;
+				const vertices = geometry.getAttribute( 'position' ).array; // `Float32Array`
+				const indices = geometry.getIndex().array; // `Uint32Array`
+
+				try {
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
+
+					// const result = editor.MeshSDK.fillHolesImpl( mesh );
+
+
+					///
+					const threeWorldDir = new THREE.Vector3();
+					editor.camera.getWorldDirection( threeWorldDir );
+					const upDir = new editor.MeshSDK.Vector3f(
+						-threeWorldDir.x,
+						-threeWorldDir.y,
+						-threeWorldDir.z,
+					)
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
+					///
+
+
+					const newVertices = result.mesh.vertices;
+					const newIndices = result.mesh.indices;
+
+					showMesh( newVertices, newIndices );
+				} catch ( error ) {
+					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				}
 			}
 		}
 	});
@@ -439,12 +528,17 @@ function SidebarObject( editor ) {
 
 	const wasmOpsRowFixUndercuts = new UIRow();
 	wasmOpsRowFixUndercuts.add( wasmOpFixUndercuts );
-	wasmOpsRowFixUndercuts.add(wasmOpSegmentByPoints);
+	wasmOpsRowFixUndercuts.add( wasmOpSegmentByPoints );
 	
 	const wasmOpsRowThicken = new UIRow();
 	wasmOpsRowThicken.add( wasmOpThickenMesh );
 	
+	const wasmOpsRowLoad = new UIRow();
+	wasmOpsRowLoad.add( wasmOpLoadFromThreeJS );
+	wasmOpsRowLoad.add( wasmOpLoadFromThreeJSArray );
+	
 	container.add( wasmOpsRow );
+	container.add( wasmOpsRowLoad );
 	container.add( wasmOpsRowHole );
 	container.add( wasmOpsRowSelector );
 	container.add( wasmOpsRowFixUndercuts );
@@ -1047,22 +1141,6 @@ function SidebarObject( editor ) {
 	}
 
 	return container;
-}
-
-function showMesh( newVertices, newIndices ) {
-	const newGeometry = new THREE.BufferGeometry();
-	newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
-	newGeometry.computeVertexNormals();
-	newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
-	const newMaterial = new THREE.MeshNormalMaterial();
-	const newMesh = new THREE.Mesh( newGeometry, newMaterial );
-	newMesh.name = `wasm-${editor.selected.name}-${editor.selected.uuid.substring(0, 3)}`;
-	newMesh.castShadow = true;
-	newMesh.receiveShadow = true;
-
-	editor.execute( new AddObjectCommand( editor, newMesh ) );
-	editor.signals.geometryChanged.dispatch( newMesh );
-	editor.select( newMesh );
 }
 
 export { SidebarObject };

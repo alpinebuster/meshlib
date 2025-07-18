@@ -25,6 +25,7 @@ IF(MR_EMSCRIPTEN)
     # REF: `https://emscripten.org/docs/porting/Debugging.html`
     string(JOIN " " CMAKE_EXE_LINKER_FLAGS
       "${CMAKE_EXE_LINKER_FLAGS}"
+      "-v"
 
       ###
       # NOTE
@@ -38,7 +39,7 @@ IF(MR_EMSCRIPTEN)
       "-O1"
       ###
 
-      "-sASSERTIONS=2"              # More runtime assertions
+      "-sASSERTIONS=1"              # More runtime assertions
       "-sSTACK_OVERFLOW_CHECK=2"    # Stack overflow check
     )
   ENDIF()
@@ -50,7 +51,7 @@ IF(MR_EMSCRIPTEN)
   #
   # Set target env: `-s ENVIRONMENT=web,worker,node` (see `../../cmake/Modules/CompilerOptions.cmake`)
   #
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshSDK -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_main\", \"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"HEAP32\", \"HEAPF32\", \"HEAPU32\", \"FS\"]'")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --bind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshSDK -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_main\", \"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"HEAP32\", \"HEAPF32\", \"HEAPU32\", \"FS\"]'")
 
   # FIXME:
   # REF: `https://github.com/emscripten-core/emscripten/issues/24620`

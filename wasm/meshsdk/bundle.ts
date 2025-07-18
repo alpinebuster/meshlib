@@ -42,12 +42,19 @@ async function build(): Promise<void> {
 		const wasmDTSPath = join(__dirname, 'src', 'MRJavaScript.d.ts');
 		if (existsSync(wasmDTSPath)) {
 			let wasmDTSContent = readFileSync(wasmDTSPath, 'utf-8');
-			wasmDTSContent = wasmDTSContent.replace(/Arguments/g, 'IArguments');
-			writeFileSync(wasmDTSPath, wasmDTSContent);
-			console.log('\n');
-			console.log('----------------------------------------------------------------------');
-			console.log('Replaced type `Arguments` with `IArguments` in `MRJavaScript.d.ts`！！！');
-			console.log('----------------------------------------------------------------------\n');
+
+			// Only replace if "Arguments" exists AND "IArguments" does NOT exist
+			if (/\bArguments\b/.test(wasmDTSContent) && !/\bIArguments\b/.test(wasmDTSContent)) {
+				wasmDTSContent = wasmDTSContent.replace(/\bArguments\b/g, 'IArguments');
+				writeFileSync(wasmDTSPath, wasmDTSContent);
+
+				console.log('\n');
+				console.log('----------------------------------------------------------------------');
+				console.log('Replaced type `Arguments` with `IArguments` in `MRJavaScript.d.ts`！！！');
+				console.log('----------------------------------------------------------------------\n');
+			} else {
+				console.log('No replacement needed: Either `Arguments` not found or `IArguments` already present.');
+			}
 		} else {
 			console.warn('`MRJavaScript.d.ts` not found, cannot replace type `Arguments`!');
 		}

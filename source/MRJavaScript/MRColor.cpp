@@ -7,8 +7,8 @@
 using namespace emscripten;
 using namespace MR;
 
-static Color fromVector3I( const Vector3<int>& v ) { return Color( v ); }
-static Color fromVector4I( const Vector4<int>& v ) { return Color( v ); }
+static Color fromVector3I( const Vector3i& v ) { return Color( v ); }
+static Color fromVector4I( const Vector4i& v ) { return Color( v ); }
 
 EMSCRIPTEN_BINDINGS( ColorModule )
 {
@@ -16,10 +16,10 @@ EMSCRIPTEN_BINDINGS( ColorModule )
         .constructor<>()
         .constructor<int, int, int>()      //  r, g, b (By default, a = 1.0)
         .constructor<int, int, int, int>() //  r, g, b, a
-        .constructor<const Vector4<int>&>()
+        .constructor<const Vector4i&>()
         // NOTE: Cannot register multiple constructors with identical number of parameters (1) for class 'Color'
-        .class_function("fromVector3I", select_overload<Color(const Vector3<int>&)>(&fromVector3I))
-        .class_function("fromVector4I", select_overload<Color(const Vector4<int>&)>(&fromVector4I))
+        .class_function( "fromVector3i", select_overload<Color( const Vector3i& )>( &fromVector3I ) )
+        .class_function( "fromVector4i", select_overload<Color( const Vector4i& )>( &fromVector4I ) )
 
         .property( "r", &Color::r )
         .property( "g", &Color::g )

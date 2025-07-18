@@ -29,7 +29,6 @@ EMSCRIPTEN_BINDINGS( GridSamplingModule )
         .property( "validPoints", &ModelPointsData::validPoints, allow_raw_pointers() )
         .property( "xf", &ModelPointsData::xf, allow_raw_pointers() )
         .property( "fakeObjId", &ModelPointsData::fakeObjId );
-    register_optional<ModelPointsData>();
 
 
     class_<ObjVertId>( "ObjVertId" )
@@ -42,7 +41,6 @@ EMSCRIPTEN_BINDINGS( GridSamplingModule )
         {
             return self == other;
         } ) );
-    register_optional<MultiObjsSamples>();
 
 
     function( "verticesGridSampling", &verticesGridSampling );

@@ -29,7 +29,7 @@ EMSCRIPTEN_BINDINGS( PolylineTopologyModule )
         .function( "buildOpenLines", &PolylineTopology::buildOpenLines )
 
         .function( "makeEdge", select_overload<EdgeId()>( &PolylineTopology::makeEdge ) )
-        .function( "makeEdgeWithVertId", select_overload<EdgeId( VertId, VertId )>( &PolylineTopology::makeEdge ) )
+        .function( "makeEdgeWithVertId", select_overload<EdgeId( VertId, VertId, EdgeId )>( &PolylineTopology::makeEdge ) )
 
         .function( "isLoneEdge", &PolylineTopology::isLoneEdge )
         .function( "lastNotLoneEdge", &PolylineTopology::lastNotLoneEdge )

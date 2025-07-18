@@ -1,12 +1,13 @@
 #include <iostream>
 
+#include <emscripten.h>
 #include <emscripten/bind.h>
 
 using namespace emscripten;
 
 extern "C" {
     EMSCRIPTEN_KEEPALIVE
-    void printtt() { std::cout << "Hello world from `meshlib` wasm binding tests!" << std::endl; }
+    void printtt() { std::cout << "Hello world from `MeshSDK` wasm binding tests!" << std::endl; }
 }
 
 float lerp( float a, float b, float t ) { return ( 1 - t ) * a + t * b; }
@@ -25,11 +26,11 @@ private:
     std::string y;
 };
 
-EMSCRIPTEN_BINDINGS( my_module ) {
-    function( "lerp", &lerp );
-}
 
-EMSCRIPTEN_BINDINGS( my_class_example ) {
+EMSCRIPTEN_BINDINGS( JSTestModule ) {
+    function( "lerp", &lerp );
+
+
     class_<MyClass>( "MyClass" )
         .constructor<int, std::string>()
         .function( "incrementX", &MyClass::incrementX )

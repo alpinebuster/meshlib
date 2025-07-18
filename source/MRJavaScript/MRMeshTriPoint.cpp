@@ -2,6 +2,7 @@
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRId.h>
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMeshTriPoint.h>
 
@@ -14,11 +15,6 @@ EMSCRIPTEN_BINDINGS( MeshTriPointModule )
         .field( "v", &WeightedVertex::v )
         .field( "weight", &WeightedVertex::weight );
 
-    using WVArr3 = std::array<WeightedVertex, 3>;
-    value_array<WVArr3>( "WeightedVertexArray3" )
-        .element( emscripten::index<0>() )
-        .element( emscripten::index<1>() )
-        .element( emscripten::index<2>() );
 
     class_<MeshTriPoint>( "MeshTriPoint" )
         .constructor<>()
@@ -30,8 +26,7 @@ EMSCRIPTEN_BINDINGS( MeshTriPointModule )
         .function( "opbool", select_overload<bool() const>( &MeshTriPoint::operator bool ) )
         .function( "inVertex", select_overload<bool() const>( &MeshTriPoint::inVertex ))
         .function( "onEdge", &MeshTriPoint::onEdge )
-        // NOTE:
-        // `[[nodiscard]] MRMESH_API bool isBd( const MeshTopology & topology, const FaceBitSet * region = nullptr ) const;`
+
         .function( "isBd", &MeshTriPoint::isBd, allow_raw_pointers() )
         .function( "fromTriangle", &MeshTriPoint::fromTriangle )
         .function( "lnext", &MeshTriPoint::lnext )

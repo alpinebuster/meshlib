@@ -2,56 +2,37 @@ import { promises as fs } from 'fs'
 import { join } from 'path'
 
 import { createMeshSDK } from '..'
-import { parseHeader } from './utils'
 
 const testdatadir = join(__dirname, '../../../cpp/test/raw-sets')
 
 test('file reader', async () => {
-  const file = await fs.readFile(join(testdatadir, 'autzen_trim.laz'))
-
-  const {
-    pointDataRecordFormat,
-    pointDataRecordLength,
-    pointCount,
-    scale,
-    offset,
-    min,
-    max,
-  } = parseHeader(file)
-
-  // Check some header values for sanity, for example we want to make sure we
-  // don't get a pointCount of 0 and then not perform any data checks.
-  expect(pointDataRecordFormat).toEqual(3)
-  expect(pointDataRecordLength).toEqual(34)
-  expect(pointCount).toEqual(110_000)
-  expect(scale).toEqual([0.01, 0.01, 0.01])
-  expect(min.every((v, i) => v < max[i])).toBe(true)
+  const file = await fs.readFile(join(testdatadir, 'test_mesh.stl'))
 
   // Create our Emscripten module.
-  const MRMesh = await createMeshSDK()
-  const laszip = new MRMesh.LASZip()
+  const MeshSDK = await createMeshSDK()
+  const mesh = new MeshSDK.Mesh()
 
   // Allocate our memory in the Emscripten heap: a filePtr buffer for our
   // compressed content and a single point's worth of bytes for our output.
-  const dataPtr = MRMesh._malloc(pointDataRecordLength)
-  const filePtr = MRMesh._malloc(file.byteLength)
+  const dataPtr = MeshSDK._malloc(pointDataRecordLength)
+  const filePtr = MeshSDK._malloc(file.byteLength)
 
   // Copy our data into the Emscripten heap so we can point at it in getPoint().
-  MRMesh.HEAPU8.set(
+  MeshSDK.HEAPU8.set(
     new Uint8Array(file.buffer, file.byteOffset, file.byteLength),
     filePtr
   )
 
   try {
-    laszip.open(filePtr, file.byteLength)
+    mesh.open(filePtr, file.byteLength)
 
     for (let i = 0; i < pointCount; ++i) {
-      laszip.getPoint(dataPtr)
+      mesh.getPoint(dataPtr)
 
       // Now our dataPtr (in the Emscripten heap) contains our point data, copy
       // it out into our own Buffer.
       const pointbuffer = Buffer.from(
-        MRMesh.HEAPU8.buffer,
+        MeshSDK.HEAPU8.buffer,
         dataPtr,
         pointDataRecordLength
       )
@@ -74,8 +55,8 @@ test('file reader', async () => {
       }
     }
   } finally {
-    MRMesh._free(filePtr)
-    MRMesh._free(dataPtr)
-    laszip.delete()
+    MeshSDK._free(filePtr)
+    MeshSDK._free(dataPtr)
+    mesh.delete()
   }
 })

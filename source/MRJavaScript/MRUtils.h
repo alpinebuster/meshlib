@@ -1,6 +1,7 @@
 #pragma once
 
 #include <optional>
+#include <type_traits>
 
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
@@ -9,9 +10,11 @@
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRBox.h>
+#include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
+#include <MRMesh/MRVector4.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>
@@ -23,17 +26,10 @@ using namespace MR;
 namespace MRJS
 {
 
-
-// Helper function to create Vector3f from JavaScript array
 Vector3f arrayToVector3f( const val& arr );
-
-// Helper function to convert Vector3f to JavaScript array
 val vector3fToArray( const Vector3f& v );
-
-// Helper function to convert Box3F to JavaScript object
 val box3fToObject( const Box<Vector3<float>>& box );
 
-// Helper function to convert Expected<T> to JavaScript-friendly result
 template<typename T>
 val expectedToJs( const Expected<T>& expected );
 
@@ -119,8 +115,8 @@ inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
     meshData.set( "indices", triangleArray );
     meshData.set( "indexElementCount", triElementCount );
     meshData.set( "indexCount", triangleCount );
-    meshData.set( "sizeofThreeVertIds", sizeof( ThreeVertIds ) );
-    meshData.set( "sizeofUInt32", sizeof( uint32_t ) * 3 );
+    // meshData.set( "sizeofThreeVertIds", sizeof( ThreeVertIds ) );
+    // meshData.set( "sizeofUInt32", sizeof( uint32_t ) * 3 );
 
     return meshData;
 };
@@ -200,4 +196,4 @@ void bindStdArray( const char* jsName )
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
 }
 
-} // namespace MRUtil
+} // MRJS

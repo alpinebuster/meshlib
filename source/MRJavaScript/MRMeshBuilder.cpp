@@ -4,6 +4,7 @@
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRVector.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRMeshBuilder.h>
@@ -11,6 +12,7 @@
 using namespace emscripten;
 using namespace MR;
 using namespace MeshBuilder;
+
 
 EMSCRIPTEN_BINDINGS( MeshBuilderModule )
 {

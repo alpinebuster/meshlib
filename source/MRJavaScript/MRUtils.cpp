@@ -1,8 +1,12 @@
 #include <optional>
+#include <vector>
+#include <type_traits>
+#include <array>
 
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
 
+#include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
@@ -31,7 +35,10 @@
 #include <MRMesh/MROneMeshContours.h>
 #include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRMeshTriPoint.h>
+#include <MRMesh/MRMeshFillHole.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
+
+#include <MRVoxels/MRTeethMaskToDirectionVolume.h>
 
 #include "MRUtils.h"
 
@@ -59,8 +66,8 @@ val vector3fToArray( const Vector3f& v )
 val box3fToObject( const Box<Vector3<float>>& box )
 {
 	val obj = val::object();
-	obj.set( "min", vector3fToArray( box.min ) );
-	obj.set( "max", vector3fToArray( box.max ) );
+	obj.set( "min", MRJS::vector3fToArray( box.min ) );
+	obj.set( "max", MRJS::vector3fToArray( box.max ) );
 	return obj;
 }
 
@@ -140,11 +147,289 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 
 }
 
+
 // ------------------------------------------------------------------------
-// Bindings for utilities
+// Bindings for `std::pair<*, *>`
 // ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS( UtilsModule )
+EMSCRIPTEN_BINDINGS( PairTypedModule )
 {
+    ///
+    value_array<std::pair<std::vector<int>, int>>( "VectorStdIntIntPair" )
+        .element( &std::pair<std::vector<int>, int>::first )
+        .element( &std::pair<std::vector<int>, int>::second );
+
+    value_array<std::pair<std::vector<float>, int>>( "VectorStdFloatIntPair" )
+        .element( &std::pair<std::vector<float>, int>::first )
+        .element( &std::pair<std::vector<float>, int>::second );
+
+    value_array<std::pair<std::vector<float>, float>>( "VectorStdFloatFloatPair" )
+        .element( &std::pair<std::vector<float>, float>::first )
+        .element( &std::pair<std::vector<float>, float>::second );
+	///
+
+
+    ///
+    value_array<std::pair<EdgeId, bool>>( "EdgeIdBoolPair" )
+        .element( &std::pair<EdgeId, bool>::first )
+        .element( &std::pair<EdgeId, bool>::second );
+
+    value_array<std::pair<UndirectedEdgeId, bool>>( "UndirectedEdgeIdBoolPair" )
+        .element( &std::pair<UndirectedEdgeId, bool>::first )
+        .element( &std::pair<UndirectedEdgeId, bool>::second );
+
+    value_array<std::pair<FaceId, bool>>( "FaceIdBoolPair" )
+        .element( &std::pair<FaceId, bool>::first )
+        .element( &std::pair<FaceId, bool>::second );
+
+    value_array<std::pair<VertId, bool>>( "VertIdBoolPair" )
+        .element( &std::pair<VertId, bool>::first )
+        .element( &std::pair<VertId, bool>::second );
+
+    value_array<std::pair<PixelId, bool>>( "PixelIdBoolPair" )
+        .element( &std::pair<PixelId, bool>::first )
+        .element( &std::pair<PixelId, bool>::second );
+
+    value_array<std::pair<VoxelId, bool>>( "VoxelIdBoolPair" )
+        .element( &std::pair<VoxelId, bool>::first )
+        .element( &std::pair<VoxelId, bool>::second );
+
+    value_array<std::pair<RegionId, bool>>( "RegionIdBoolPair" )
+        .element( &std::pair<RegionId, bool>::first )
+        .element( &std::pair<RegionId, bool>::second );
+
+    value_array<std::pair<NodeId, bool>>( "NodeIdBoolPair" )
+        .element( &std::pair<NodeId, bool>::first )
+        .element( &std::pair<NodeId, bool>::second );
+
+    value_array<std::pair<ObjId, bool>>( "ObjIdBoolPair" )
+        .element( &std::pair<ObjId, bool>::first )
+        .element( &std::pair<ObjId, bool>::second );
+
+    value_array<std::pair<TextureId, bool>>( "TextureIdBoolPair" )
+        .element( &std::pair<TextureId, bool>::first )
+        .element( &std::pair<TextureId, bool>::second );
+
+    value_array<std::pair<GraphVertId, bool>>( "GraphVertIdBoolPair" )
+        .element( &std::pair<GraphVertId, bool>::first )
+        .element( &std::pair<GraphVertId, bool>::second );
+
+    value_array<std::pair<GraphEdgeId, bool>>( "GraphEdgeIdBoolPair" )
+        .element( &std::pair<GraphEdgeId, bool>::first )
+        .element( &std::pair<GraphEdgeId, bool>::second );
+    ///
+
+
+    ///
+    // NOTE: This is identical to `EdgePair`
+    value_array<std::pair<EdgeId, EdgeId>>( "EdgeIdPair" )
+        .element( &std::pair<EdgeId, EdgeId>::first )
+        .element( &std::pair<EdgeId, EdgeId>::second );
+
+    value_array<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "UndirectedEdgeIdPair" )
+        .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::first )
+        .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::second );
+
+    value_array<std::pair<UndirectedEdgeId, EdgeId>>( "UndirectedE2EIdPair" )
+        .element( &std::pair<UndirectedEdgeId, EdgeId>::first )
+        .element( &std::pair<UndirectedEdgeId, EdgeId>::second );
+
+    value_array<std::pair<FaceId, FaceId>>( "FaceIdPair" )
+        .element( &std::pair<FaceId, FaceId>::first )
+        .element( &std::pair<FaceId, FaceId>::second );
+
+    value_array<std::pair<VertId, VertId>>( "VertIdPair" )
+        .element( &std::pair<VertId, VertId>::first )
+        .element( &std::pair<VertId, VertId>::second );
+    ///
+
+
+	///
+    value_array<std::pair<Vector4b, Vector4b>>( "Vector4bPair" )
+        .element( &std::pair<Vector4b, Vector4b>::first )
+        .element( &std::pair<Vector4b, Vector4b>::second );
+
+    value_array<std::pair<Vector4f, Vector4f>>( "Vector4fPair" )
+        .element( &std::pair<Vector4f, Vector4f>::first )
+        .element( &std::pair<Vector4f, Vector4f>::second );
+
+    value_array<std::pair<Vector4i, Vector4i>>( "Vector4iPair" )
+        .element( &std::pair<Vector4i, Vector4i>::first )
+        .element( &std::pair<Vector4i, Vector4i>::second );
+
+    value_array<std::pair<Vector4ll, Vector4ll>>( "Vector4llPair" )
+        .element( &std::pair<Vector4ll, Vector4ll>::first )
+        .element( &std::pair<Vector4ll, Vector4ll>::second );
+
+    value_array<std::pair<Vector4d, Vector4d>>( "Vector4dPair" )
+        .element( &std::pair<Vector4d, Vector4d>::first )
+        .element( &std::pair<Vector4d, Vector4d>::second );
+	///
+	
+	
+	///
+    value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" )
+        .element( &std::pair<Vector3f, Vector3f>::first )
+        .element( &std::pair<Vector3f, Vector3f>::second );
+
+    value_array<std::pair<Vector3b, Vector3b>>( "Vector3bPair" )
+        .element( &std::pair<Vector3b, Vector3b>::first )
+        .element( &std::pair<Vector3b, Vector3b>::second );
+
+    value_array<std::pair<Vector3i, Vector3i>>( "Vector3iPair" )
+        .element( &std::pair<Vector3i, Vector3i>::first )
+        .element( &std::pair<Vector3i, Vector3i>::second );
+
+    value_array<std::pair<Vector3ll, Vector3ll>>( "Vector3llPair" )
+        .element( &std::pair<Vector3ll, Vector3ll>::first )
+        .element( &std::pair<Vector3ll, Vector3ll>::second );
+
+    value_array<std::pair<Vector3d, Vector3d>>( "Vector3dPair" )
+        .element( &std::pair<Vector3d, Vector3d>::first )
+        .element( &std::pair<Vector3d, Vector3d>::second );
+	///
+
+
+	///
+    value_array<std::pair<Vector2i, Vector2i>>( "Vector2iPair" )
+        .element( &std::pair<Vector2i, Vector2i>::first )
+        .element( &std::pair<Vector2i, Vector2i>::second );
+
+    value_array<std::pair<Vector2f, Vector2f>>( "Vector2fPair" )
+        .element( &std::pair<Vector2f, Vector2f>::first )
+        .element( &std::pair<Vector2f, Vector2f>::second );
+
+    value_array<std::pair<Vector2ll, Vector2ll>>( "Vector2llPair" )
+        .element( &std::pair<Vector2ll, Vector2ll>::first )
+        .element( &std::pair<Vector2ll, Vector2ll>::second );
+
+    value_array<std::pair<Vector2b, Vector2b>>( "Vector2bPair" )
+        .element( &std::pair<Vector2b, Vector2b>::first )
+        .element( &std::pair<Vector2b, Vector2b>::second );
+
+    value_array<std::pair<Vector2d, Vector2d>>( "Vector2dPair" )
+        .element( &std::pair<Vector2d, Vector2d>::first )
+        .element( &std::pair<Vector2d, Vector2d>::second );
+	///
+
+
+	///
+    value_array<std::pair<Mesh, Mesh>>( "MeshPair" )
+        .element( &std::pair<Mesh, Mesh>::first )
+        .element( &std::pair<Mesh, Mesh>::second );
+	///
+
+
+	///
+    value_array<std::pair<Face2RegionMap, int>>( "Face2RegionMapIntPair" )
+        .element( &std::pair<Face2RegionMap, int>::first )
+        .element( &std::pair<Face2RegionMap, int>::second );
+
+    value_array<std::pair<std::vector<Face2RegionMap>, int>>( "VectorFace2RegionMapIntPair" )
+        .element( &std::pair<std::vector<Face2RegionMap>, int>::first )
+        .element( &std::pair<std::vector<Face2RegionMap>, int>::second );
+	///
+
+
+	///
+    value_array<std::pair<FaceBitSet, int>>( "FaceBitSetIntPair" )
+        .element( &std::pair<FaceBitSet, int>::first )
+        .element( &std::pair<FaceBitSet, int>::second );
+
+    value_array<std::pair<VertBitSet, int>>( "VertBitSetIntPair" )
+        .element( &std::pair<VertBitSet, int>::first )
+        .element( &std::pair<VertBitSet, int>::second );
+
+    value_array<std::pair<EdgeBitSet, int>>( "EdgeBitSetIntPair" )
+        .element( &std::pair<EdgeBitSet, int>::first )
+        .element( &std::pair<EdgeBitSet, int>::second );
+
+    value_array<std::pair<UndirectedEdgeBitSet, int>>( "UndirectedEdgeBitSetIntPair" )
+        .element( &std::pair<UndirectedEdgeBitSet, int>::first )
+        .element( &std::pair<UndirectedEdgeBitSet, int>::second );
+
+    value_array<std::pair<PixelBitSet, int>>( "PixelBitSetIntPair" )
+        .element( &std::pair<PixelBitSet, int>::first )
+        .element( &std::pair<PixelBitSet, int>::second );
+
+    value_array<std::pair<VoxelBitSet, int>>( "VoxelBitSetIntPair" )
+        .element( &std::pair<VoxelBitSet, int>::first )
+        .element( &std::pair<VoxelBitSet, int>::second );
+
+    value_array<std::pair<RegionBitSet, int>>( "RegionBitSetIntPair" )
+        .element( &std::pair<RegionBitSet, int>::first )
+        .element( &std::pair<RegionBitSet, int>::second );
+
+    value_array<std::pair<NodeBitSet, int>>( "NodeBitSetIntPair" )
+        .element( &std::pair<NodeBitSet, int>::first )
+        .element( &std::pair<NodeBitSet, int>::second );
+
+    value_array<std::pair<ObjBitSet, int>>( "ObjBitSetIntPair" )
+        .element( &std::pair<ObjBitSet, int>::first )
+        .element( &std::pair<ObjBitSet, int>::second );
+
+    value_array<std::pair<TextureBitSet, int>>( "TextureBitSetIntPair" )
+        .element( &std::pair<TextureBitSet, int>::first )
+        .element( &std::pair<TextureBitSet, int>::second );
+
+    value_array<std::pair<GraphVertBitSet, int>>( "GraphVertBitSetIntPair" )
+        .element( &std::pair<GraphVertBitSet, int>::first )
+        .element( &std::pair<GraphVertBitSet, int>::second );
+
+    value_array<std::pair<GraphEdgeBitSet, int>>( "GraphEdgeBitSetIntPair" )
+        .element( &std::pair<GraphEdgeBitSet, int>::first )
+        .element( &std::pair<GraphEdgeBitSet, int>::second );
+	///
+
+
+	///
+    value_array<std::pair<std::vector<FaceBitSet>, int>>( "VectorFaceBitSetIntPair" )
+        .element( &std::pair<std::vector<FaceBitSet>, int>::first )
+        .element( &std::pair<std::vector<FaceBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<VertBitSet>, int>>( "VectorVertBitSetIntPair" )
+        .element( &std::pair<std::vector<VertBitSet>, int>::first )
+        .element( &std::pair<std::vector<VertBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<EdgeBitSet>, int>>( "VectorEdgeBitSetIntPair" )
+        .element( &std::pair<std::vector<EdgeBitSet>, int>::first )
+        .element( &std::pair<std::vector<EdgeBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<UndirectedEdgeBitSet>, int>>( "VectorUndirectedEdgeBitSetIntPair" )
+        .element( &std::pair<std::vector<UndirectedEdgeBitSet>, int>::first )
+        .element( &std::pair<std::vector<UndirectedEdgeBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<PixelBitSet>, int>>( "VectorPixelBitSetIntPair" )
+        .element( &std::pair<std::vector<PixelBitSet>, int>::first )
+        .element( &std::pair<std::vector<PixelBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<VoxelBitSet>, int>>( "VectorVoxelBitSetIntPair" )
+        .element( &std::pair<std::vector<VoxelBitSet>, int>::first )
+        .element( &std::pair<std::vector<VoxelBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<RegionBitSet>, int>>( "VectorRegionBitSetIntPair" )
+        .element( &std::pair<std::vector<RegionBitSet>, int>::first )
+        .element( &std::pair<std::vector<RegionBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<NodeBitSet>, int>>( "VectorNodeBitSetIntPair" )
+        .element( &std::pair<std::vector<NodeBitSet>, int>::first )
+        .element( &std::pair<std::vector<NodeBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<ObjBitSet>, int>>( "VectorObjBitSetIntPair" )
+        .element( &std::pair<std::vector<ObjBitSet>, int>::first )
+        .element( &std::pair<std::vector<ObjBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<TextureBitSet>, int>>( "VectorTextureBitSetIntPair" )
+        .element( &std::pair<std::vector<TextureBitSet>, int>::first )
+        .element( &std::pair<std::vector<TextureBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<GraphVertBitSet>, int>>( "VectorGraphVertBitSetIntPair" )
+        .element( &std::pair<std::vector<GraphVertBitSet>, int>::first )
+        .element( &std::pair<std::vector<GraphVertBitSet>, int>::second );
+
+    value_array<std::pair<std::vector<GraphEdgeBitSet>, int>>( "VectorGraphEdgeBitSetIntPair" )
+        .element( &std::pair<std::vector<GraphEdgeBitSet>, int>::first )
+        .element( &std::pair<std::vector<GraphEdgeBitSet>, int>::second );
+	///
 }
 
 
@@ -159,6 +444,21 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<double>( "StdVectord" );
 	register_vector<long long>( "StdVectorll" );
 	register_vector<uint64_t>( "StdVectorUi64" );
+	///
+
+
+	///
+	register_vector<std::vector<int>>( "VectorStdVectori" );
+	register_vector<std::vector<float>>( "VectorStdVectorf" );
+	register_vector<std::vector<double>>( "VectorStdVectord" );
+	register_vector<std::vector<long long>>( "VectorStdVectorll" );
+	register_vector<std::vector<uint64_t>>( "VectorStdVectorUi64" );
+
+	register_vector<std::array<int, 3>>( "VectorArray3StdVectori" );
+	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
+	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
+	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
+	register_vector<std::array<uint64_t, 3>>( "VectorArray3StdVectorUi64" );
 	///
 
 
@@ -182,7 +482,10 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<ContinuousContour>( "ContinuousContours" );
     register_vector<OneMeshContour>( "OneMeshContours" );
     register_vector<OneMeshIntersection>( "VectorOneMeshIntersection" );
-    register_vector<MeshTriPoint>( "VectorMeshTriPoint" );
+	register_vector<MeshTriPoint>( "VectorMeshTriPoint" );
+	
+	register_vector<FillHoleItem>( "VectorFillHoleItem" );
+	register_vector<HoleFillPlan>( "VectorHoleFillPlan" );
 	///
 
 
@@ -255,9 +558,71 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	///
 
 
-    ///
-    register_vector<ThreeVertIds>( "VectorThreeVertIds" );
+	///
+	register_vector<FaceBitSet>( "VectorFaceBitSet" );
+	register_vector<VertBitSet>( "VectorVertBitSet" );
+	register_vector<EdgeBitSet>( "VectorEdgeBitSet" );
+	register_vector<UndirectedEdgeBitSet>( "VectorUndirectedEdgeBitSet" );
+	register_vector<PixelBitSet>( "VectorPixelBitSet" );
+	register_vector<VoxelBitSet>( "VectorVoxelBitSet" );
+	register_vector<RegionBitSet>( "VectorRegionBitSet" );
+	register_vector<NodeBitSet>( "VectorNodeBitSet" );
+	register_vector<ObjBitSet>( "VectorObjBitSet" );
+	register_vector<TextureBitSet>( "VectorTextureBitSet" );
+	register_vector<GraphVertBitSet>( "VectorGraphVertBitSet" );
+	register_vector<GraphEdgeBitSet>( "VectorGraphEdgeBitSet" );
+	///
 
+
+	///
+    // Register vector structures of `VectorArray*Id()`
+    register_vector<std::array<EdgeId, 2>>( "VectorArray2EdgeId" );
+    register_vector<std::array<UndirectedEdgeId, 2>>( "VectorArray2UndirectedEdgeId" );
+    register_vector<std::array<FaceId, 2>>( "VectorArray2FaceId" );
+    register_vector<std::array<VertId, 2>>( "VectorArray2VertId" );
+    register_vector<std::array<PixelId, 2>>( "VectorArray2PixelId" );
+    register_vector<std::array<VoxelId, 2>>( "VectorArray2VoxelId" );
+    register_vector<std::array<RegionId, 2>>( "VectorArray2RegionId" );
+    register_vector<std::array<NodeId, 2>>( "VectorArray2NodeId" );
+    register_vector<std::array<ObjId, 2>>( "VectorArray2ObjId" );
+    register_vector<std::array<TextureId, 2>>( "VectorArray2TextureId" );
+    register_vector<std::array<GraphVertId, 2>>( "VectorArray2GraphVertId" );
+    register_vector<std::array<GraphEdgeId, 2>>( "VectorArray2GraphEdgeId" );
+
+
+    register_vector<std::array<EdgeId, 3>>( "VectorArray3EdgeId" );
+    register_vector<std::array<UndirectedEdgeId, 3>>( "VectorArray3UndirectedEdgeId" );
+    register_vector<std::array<FaceId, 3>>( "VectorArray3FaceId" );
+
+	// NOTE: `ThreeVertIds` is `std::array<VertId, 3>`
+    // register_vector<ThreeVertIds>( "VectorThreeVertIds" );
+    register_vector<std::array<VertId, 3>>( "VectorArray3VertId" );
+
+    register_vector<std::array<PixelId, 3>>( "VectorArray3PixelId" );
+    register_vector<std::array<VoxelId, 3>>( "VectorArray3VoxelId" );
+    register_vector<std::array<RegionId, 3>>( "VectorArray3RegionId" );
+    register_vector<std::array<NodeId, 3>>( "VectorArray3NodeId" );
+    register_vector<std::array<ObjId, 3>>( "VectorArray3ObjId" );
+    register_vector<std::array<TextureId, 3>>( "VectorArray3TextureId" );
+    register_vector<std::array<GraphVertId, 3>>( "VectorArray3GraphVertId" );
+    register_vector<std::array<GraphEdgeId, 3>>( "VectorArray3GraphEdgeId" );
+
+
+    register_vector<std::array<EdgeId, 4>>( "VectorArray4EdgeId" );
+    register_vector<std::array<UndirectedEdgeId, 4>>( "VectorArray4UndirectedEdgeId" );
+    register_vector<std::array<FaceId, 4>>( "VectorArray4FaceId" );
+    register_vector<std::array<VertId, 4>>( "VectorArray4VertId" );
+    register_vector<std::array<PixelId, 4>>( "VectorArray4PixelId" );
+    register_vector<std::array<VoxelId, 4>>( "VectorArray4VoxelId" );
+    register_vector<std::array<RegionId, 4>>( "VectorArray4RegionId" );
+    register_vector<std::array<NodeId, 4>>( "VectorArray4NodeId" );
+    register_vector<std::array<ObjId, 4>>( "VectorArray4ObjId" );
+    register_vector<std::array<TextureId, 4>>( "VectorArray4TextureId" );
+    register_vector<std::array<GraphVertId, 4>>( "VectorArray4GraphVertId" );
+    register_vector<std::array<GraphEdgeId, 4>>( "VectorArray4GraphEdgeId" );
+	///
+
+    ///
     // Register vector structures of `*Id()`
     register_vector<EdgeId>( "VectorEdgeId" );
     register_vector<UndirectedEdgeId>( "VectorUndirectedEdgeId" );
@@ -291,14 +656,26 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 
 
 	///
-	register_vector<Vector<MeshBuilder::VertSpan, FaceId>>( "VectorVertSpanFaceId" );
+	register_vector<Vector<MeshBuilder::VertSpan, FaceId>>( "VectorVertSpanFaceIdMap" );
+	register_vector<Vector<VertId, EdgeId>>( "VectorVertIdEdgeIdMap" );
+	register_vector<Vector<EdgeId, VertId>>( "VectorEdgeIdVertIdMap" );
+	register_vector<Vector<EdgeId, FaceId>>( "VectorEdgeIdFaceIdMap" );
+	register_vector<Vector<FaceId, EdgeId>>( "VectorFaceIdEdgeIdMap" );
+	register_vector<Vector<ModelPointsData, ObjId>>( "VectorModelPointsDataObjIdMap" );
+	register_vector<WholeEdgeMap>( "VectorWholeEdgeMap" );
+	register_vector<UndirectedEdge2RegionMap>( "VectorUndirectedEdge2RegionMap" );
+	register_vector<Face2RegionMap>( "VectorFace2RegionMap" );
+	register_vector<Vert2RegionMap>( "VectorVert2RegionMap" );
 	///
 
 
 	///
-    register_vector<Vector<int, size_t>>( "VectorVectori" );
-    register_vector<Vector<float, size_t>>( "VectorVectord" );
-	register_vector<Vector<double, size_t>>( "VectorVectorf" );
+    register_vector<Vector<int, size_t>>( "VectorVectorStdi" );
+    register_vector<Vector<float, size_t>>( "VectorVectorStdd" );
+	register_vector<Vector<double, size_t>>( "VectorVectorStdf" );
+	register_vector<Vector<long long, size_t>>( "VectorVectorStdll" );
+	register_vector<Vector<size_t, size_t>>( "VectorVectorStdSizeT" );
+	register_vector<Vector<uint64_t, size_t>>( "VectorVectorStdUi64" );
 	///
 
 
@@ -363,6 +740,13 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 {
 	///
+	MRJS::bindStdArray<WeightedVertex, 2>( "Array2WeightedVertex" );
+	MRJS::bindStdArray<WeightedVertex, 3>( "Array3WeightedVertex" );
+	MRJS::bindStdArray<WeightedVertex, 4>( "Array4WeightedVertex" );
+	///
+
+
+	///
 	MRJS::bindStdArray<Vector2b, 2>( "Array2Vector2b" );
 	MRJS::bindStdArray<Vector2i, 2>( "Array2Vector2i" );
 	MRJS::bindStdArray<Vector2ll, 2>( "Array2Vector2ll" );
@@ -390,25 +774,29 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 	///
 
 	
-	/// Bind the Embind interface for `Array2*`
-	MRJS::bindStdArray<float, 2>( "Array2f" );
-	MRJS::bindStdArray<double, 2>( "Array2d" );
+	/// Bind the Embind interface for `Array2Std*`
+	MRJS::bindStdArray<float, 2>( "Array2Stdf" );
+	MRJS::bindStdArray<double, 2>( "Array2Stdd" );
+	MRJS::bindStdArray<int, 2>( "Array2Stdi" );
+	MRJS::bindStdArray<long long, 2>( "Array2Stdll" );
+	MRJS::bindStdArray<uint64_t, 2>( "Array2StdUi64" );
+
+	MRJS::bindStdArray<float, 3>( "Array3Stdf" );
+	MRJS::bindStdArray<double, 3>( "Array3Stdd" );
+	MRJS::bindStdArray<int, 3>( "Array3Stdi" );
+	MRJS::bindStdArray<long long, 3>( "Array3Stdll" );
+	MRJS::bindStdArray<uint64_t, 3>( "Array3StdUi64" );
+
+	MRJS::bindStdArray<float, 4>( "Array4Stdf" );
+	MRJS::bindStdArray<double, 4>( "Array4Stdd" );
+	MRJS::bindStdArray<int, 4>( "Array4Stdi" );
+	MRJS::bindStdArray<long long, 4>( "Array4Stdll" );
+	MRJS::bindStdArray<uint64_t, 4>( "Array4StdUi64" );
 	///
 
 
-	/// Bind the Embind interface for `Array3*`
-	MRJS::bindStdArray<float, 3>( "Array3f" );
-	MRJS::bindStdArray<double, 3>( "Array3d" );
-	///
-
-
-	/// Bind the Embind interface for `Array4*`
-	MRJS::bindStdArray<float, 4>( "Array4f" );
-	MRJS::bindStdArray<double, 4>( "Array4d" );
-	///
-
-
-	/// Bind the Embind interface for `Array*Id`
+	/// 
+	// Bind the Embind interface for `Array*Id`
 	MRJS::bindStdArray<EdgeId, 2>( "Array2EdgeId" );
 	MRJS::bindStdArray<EdgeId, 3>( "Array3EdgeId" );
 	MRJS::bindStdArray<EdgeId, 4>( "Array4EdgeId" );
@@ -461,6 +849,10 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 	MRJS::bindStdArray<GraphEdgeId, 3>( "Array3GraphEdgeId" );
 	MRJS::bindStdArray<GraphEdgeId, 4>( "Array4GraphEdgeId" );
 	///
+
+
+	///
+	///
 }
 
 
@@ -475,11 +867,25 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 	register_optional<bool>();
 	register_optional<double>();
 	register_optional<long long>();
+	register_optional<size_t>();
+	register_optional<uint64_t>();
 	///
 
+
+	///
+    register_optional<Vector<int, size_t>>();
+    register_optional<Vector<float, size_t>>();
+	register_optional<Vector<double, size_t>>();
+	register_optional<Vector<long long, size_t>>();
+	register_optional<Vector<size_t, size_t>>();
+	register_optional<Vector<uint64_t, size_t>>();
+	///
 
 	///
 	register_optional<MeshOrPoints>();
+    register_optional<ModelPointsData>();
+    register_optional<MultiObjsSamples>();
+    register_optional<DentalId>();
 	///
 
 
@@ -751,5 +1157,12 @@ EMSCRIPTEN_BINDINGS( FunctorTypedModule )
 	class_<std::function<Expected<SurfacePath>( const MeshTriPoint&, const MeshTriPoint&, int, int )>>( "ExpectedSurfacePathFunctorMeshTriPoint" )
 		.constructor<>()
 		.function( "opcall", &std::function<Expected<SurfacePath>( const MeshTriPoint&, const MeshTriPoint&, int, int )>::operator() );
+	///
+
+
+	///
+	class_<std::function<Vector3f ( const Vector3f & )>>( "Vector3fFunctorVector3f" )
+		.constructor<>()
+		.function( "opcall", &std::function<Vector3f ( const Vector3f & )>::operator() );
 	///
 }
