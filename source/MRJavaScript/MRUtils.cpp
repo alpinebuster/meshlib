@@ -90,29 +90,57 @@ val expectedToJs( const Expected<T>& expected )
 	}
 }
 
-val vector3fToFloat32Array( const std::vector<Vector3f>& vec )
+val verticesToFloat32ArrayMemoryView( const VertCoords& vec )
 {
-	return val( typed_memory_view( vec.size() * 3, reinterpret_cast< const float* >( vec.data() ) ) );
+	return val( typed_memory_view( vec.size() * 3, reinterpret_cast<const float*>( vec.data() ) ) );
 }
 
-std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates )
+val indicesToUint32ArrayMemoryView( const Triangulation& vec )
 {
-    std::vector<Vector3f> points;
+	return val( typed_memory_view( vec.size() * 3, reinterpret_cast<const uint32_t*>( vec.data() ) ) );
+}
+
+VertCoords parseJSVertices( const std::vector<float>& coordinates )
+{
+    VertCoords verts;
 
     // Validate that we have complete sets of 3D coordinates
     if ( coordinates.size() % 3 != 0 )
     {
-        throw std::invalid_argument( "Coordinate array length must be divisible by 3" );
+        throw std::invalid_argument( "Vertices array length must be divisible by 3" );
     }
 
     // Convert flat array to Vector3f objects
-    points.reserve( coordinates.size() / 3 );
+    verts.reserve( coordinates.size() / 3 );
     for ( size_t i = 0; i < coordinates.size(); i += 3 )
     {
-        points.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
+        verts.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
     }
 
-    return points;
+    return verts;
+}
+
+Triangulation parseJSIndices( const std::vector<int>& indices )
+{
+    Triangulation indis_;
+
+    if ( indices.size() % 3 != 0 )
+    {
+		throw std::invalid_argument( "Indices array length must be divisible by 3" );
+    }
+
+    indis_.reserve( indices.size() / 3 );
+    for ( size_t i = 0; i < indices.size(); i += 3 )
+    {
+		ThreeVertIds tri {
+			VertId( static_cast< int >( indices[i] ) ),
+			VertId( static_cast< int >( indices[i + 1] ) ),
+			VertId( static_cast< int >( indices[i + 2] ) )
+		};
+		indis_.emplace_back( tri );
+    }
+
+    return indis_;
 }
 
 /**
@@ -128,7 +156,7 @@ std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates 
  */
 std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut )
 {
-	// NOTE: This works!
+	// NOTE: This also works!
 	// auto innerBitSet = fillContourLeft( mesh.topology, cut );
 	// Mesh innerMesh = mesh.cloneRegion( innerBitSet );
 

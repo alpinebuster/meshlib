@@ -30,6 +30,7 @@ async function build(): Promise<void> {
 		const srcFiles = readdirSync(srcDir).filter(f => f.startsWith('MRJavaScript.'));
 		if (srcFiles.length > 0) {
 			console.log('\n');
+			console.log('----------------------------------------------------------------------');
 			for (const file of srcFiles) {
 				const filePath = join(srcDir, file);
 				unlinkSync(filePath);
@@ -72,10 +73,10 @@ async function build(): Promise<void> {
 				console.log('Replaced type `Arguments` with `IArguments` in `MRJavaScript.d.ts`！！！');
 				console.log('----------------------------------------------------------------------\n');
 			} else {
-				console.log('No replacement needed: Either `Arguments` not found or `IArguments` already present.');
+				console.log('\nNo replacement needed: Either `Arguments` not found or `IArguments` already present.');
 			}
 		} else {
-			console.warn('`MRJavaScript.d.ts` not found, cannot replace type `Arguments`!');
+			console.warn('\n`MRJavaScript.d.ts` not found, cannot replace type `Arguments`!');
 		}
 		///
 

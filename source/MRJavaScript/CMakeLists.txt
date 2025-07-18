@@ -25,7 +25,6 @@ IF(MR_EMSCRIPTEN)
     # REF: `https://emscripten.org/docs/porting/Debugging.html`
     string(JOIN " " CMAKE_EXE_LINKER_FLAGS
       "${CMAKE_EXE_LINKER_FLAGS}"
-      "-v"
 
       ###
       # NOTE
@@ -38,9 +37,6 @@ IF(MR_EMSCRIPTEN)
       # so the compilation speed and debugging experience is still relatively balanced.
       "-O1"
       ###
-
-      "-sASSERTIONS=1"              # More runtime assertions
-      "-sSTACK_OVERFLOW_CHECK=2"    # Stack overflow check
     )
   ENDIF()
 
@@ -51,8 +47,25 @@ IF(MR_EMSCRIPTEN)
   #
   # Set target env: `-s ENVIRONMENT=web,worker,node` (see `../../cmake/Modules/CompilerOptions.cmake`)
   #
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --bind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshSDK -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_main\", \"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"HEAP32\", \"HEAPF32\", \"HEAPU32\", \"FS\"]'")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lembind -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME=createMeshSDK -s SINGLE_FILE=0 -s 'EXPORTED_FUNCTIONS=[\"_main\", \"_malloc\", \"_free\"]' -s 'EXPORTED_RUNTIME_METHODS=[\"ccall\", \"HEAPU8\", \"HEAP32\", \"HEAPF32\", \"HEAPU32\", \"FS\"]'")
 
+  string(JOIN " " CMAKE_EXE_LINKER_FLAGS
+    "${CMAKE_EXE_LINKER_FLAGS}"
+    "-v"
+
+    # REF: Uncaught RuntimeError: null function or function signature mismatch
+    # 
+    # `https://github.com/emscripten-core/emscripten/issues/16126#issuecomment-1023067658` & 
+    # `https://github.com/emscripten-core/emscripten/issues/16305`
+    # 
+    # "-fsanitize=undefined"
+    # "-Wbad-function-cast -Wcast-function-type"
+    # "-sEMULATE_FUNCTION_POINTER_CASTS"
+
+    "-sASSERTIONS=2"              # More runtime assertions
+    "-sSTACK_OVERFLOW_CHECK=2"    # Stack overflow check
+  )
+ 
   # FIXME:
   # REF: `https://github.com/emscripten-core/emscripten/issues/24620`
   #

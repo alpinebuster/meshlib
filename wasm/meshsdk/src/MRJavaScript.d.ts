@@ -157,12 +157,18 @@ declare namespace RuntimeExports {
         export function createDevice(parent: any, name: any, input: any, output: any): any;
         export function forceLoadFile(obj: any): boolean;
         export function createLazyFile(parent: any, name: any, url: any, canRead: any, canWrite: any): any;
+        export function absolutePath(): void;
+        export function createFolder(): void;
+        export function createLink(): void;
+        export function joinPath(): void;
+        export function mmapAlloc(): void;
+        export function standardizePath(): void;
     }
 }
-declare class ErrnoError {
+declare class ErrnoError extends Error {
     constructor(errno: any);
-    name: string;
     errno: any;
+    code: string;
 }
 declare class FSStream {
     shared: {};
@@ -205,6 +211,7 @@ interface WasmModule {
   _free(_0: number): void;
   _printtt(): void;
   _main(_0: number, _1: number): number;
+  ___set_stack_limits(_0: number, _1: number): void;
 }
 
 type EmbindString = ArrayBuffer|Uint8Array|Uint8ClampedArray|Int8Array|string;
@@ -4142,7 +4149,7 @@ export interface Polyline2 extends ClassHandle {
 
 export interface PolylineTopology extends ClassHandle {
   makeEdge(): EdgeId;
-  makeEdgeWithVertId(_0: VertId, _1: VertId): EdgeId;
+  makeEdgeWithVertId(_0: VertId, _1: VertId, _2: EdgeId): EdgeId;
   isLoneEdge(_0: EdgeId): boolean;
   lastNotLoneEdge(): EdgeId;
   edgeSize(): number;
@@ -8623,7 +8630,6 @@ interface EmbindModule {
   edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetricWrapper;
   smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
   calculateRecommendedVoxelSizeImpl(_0: Mesh, _1: number): number;
-  computeVertexNormalsImpl(_0: Mesh): any;
   MeshWrapper: {
     new(): MeshWrapper;
     new(_0: Mesh): MeshWrapper;

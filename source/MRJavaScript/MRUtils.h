@@ -35,14 +35,16 @@ val expectedToJs( const Expected<T>& expected );
 
 // Convert C++ vector to JavaScript `Float32Array`
 // REF: [Memory Views](`https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#memory-views`)
-[[nodiscard]] val vector3fToFloat32Array( const std::vector<Vector3f>& vec );
+[[nodiscard]] val verticesToFloat32ArrayMemoryView( const VertCoords& vec );
+[[nodiscard]] val indicesToUint32ArrayMemoryView( const Triangulation& vec );
 
 /**
  * @brief Helper function to convert flat coordinate array to Vector3f points
  * This design is more JavaScript-friendly than individual Point3D objects
  * coordinates should contain [x1,y1,z1, x2,y2,z2, x3,y3,z3, ...] for each point
  */
-[[nodiscard]] std::vector<Vector3f> parseJSCoordinates( const std::vector<float>& coordinates );
+[[nodiscard]] VertCoords parseJSVertices( const std::vector<float>& coordinates );
+[[nodiscard]] Triangulation parseJSIndices( const std::vector<int>& indices );
 
 std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut );
 

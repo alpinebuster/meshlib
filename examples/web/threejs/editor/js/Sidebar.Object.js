@@ -261,6 +261,8 @@ function SidebarObject( editor ) {
 							
 							showMesh( innerVertices, innerIndices );
 							showMesh( outerVertices, outerIndices );
+
+							floatVec.delete();
 							break;
 
 						case 'wasmOpSegmentByPoints':

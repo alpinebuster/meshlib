@@ -344,7 +344,7 @@ val MeshWrapper::segmentByPointsImpl(
 	try
 	{
 		auto edgeMetric_ = edgeMetricWrapper.getMetric();
-		std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
+		VertCoords inputPoints = MRJS::parseJSVertices( coordinates );
 
 		if ( inputPoints.size() < 2 )
 		{
@@ -1196,21 +1196,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "shrinkToFit", &Mesh::shrinkToFit )
 		.function( "mirror", &Mesh::mirror )
 		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
-
-
-	function( "computeVertexNormalsImpl", +[] ( const Mesh& mesh )
-	{
-		std::vector<Vector3f> normals;
-		for ( VertId v{ 0 }; v < mesh.topology.vertSize(); ++v )
-		{
-			if ( mesh.topology.hasVert( v ) )
-			{
-				normals.push_back( mesh.normal( v ) );
-			}
-		}
-		
-		return MRJS::vector3fToFloat32Array( normals );
-	} );
 }
 
 
