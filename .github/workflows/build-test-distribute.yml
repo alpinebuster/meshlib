@@ -2,11 +2,11 @@ name: Build Test Distribute
 
 # Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -139,7 +139,7 @@ jobs:
       - config
       - windows-build-test
     timeout-minutes: 60
-    runs-on: [self-hosted, windows, x64, vs-2019, vcpkg-2024.10.21, meshinspector]
+    runs-on: [ self-hosted, windows, x64, vs-2019, vcpkg-2024.10.21 ]
     env:
       vs19_vcpkg_version: ${{ needs.config.outputs.vs19_vcpkg_version }}
     steps:
@@ -280,7 +280,7 @@ jobs:
             mv "$PKG_FILE" "${PKG_FILE/Dist/Dist_${{ needs.config.outputs.app_version }}}"
           done
           for PKG_FILE in MeshLib*.nupkg ; do
-            mv "$PKG_FILE" "${PKG_FILE/MeshLib/MeshLib_${{ needs.config.outputs.app_version }}}"
+            mv "$PKG_FILE" "${PKG_FILE/meshsdk/MeshLib_${{ needs.config.outputs.app_version }}}"
           done
           for PKG_FILE in meshlib*-dev.deb meshlib*-dev.rpm meshlib*.pkg meshlib_*.zip meshlib_*.tar.xz; do
             mv "$PKG_FILE" "${PKG_FILE/meshlib/meshlib_${{ needs.config.outputs.app_version }}}"
@@ -324,7 +324,7 @@ jobs:
     needs: [ config, ubuntu-arm64-build-test ]
     uses: ./.github/workflows/update-docs.yml
     with:
-      output_folder: MeshLib/dev
+      output_folder: meshsdk/dev
     secrets: inherit
 
   test-pip-build:

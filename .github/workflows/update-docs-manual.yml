@@ -7,14 +7,14 @@ on:
       output_folder:
         required: false
         type: string
-        default: "MeshLib/dev"
+        default: "meshsdk/dev"
 
 jobs:
   create-stubs:
     timeout-minutes: 40
-    runs-on: [ self-hosted, linux-arm64, spot, meshinspector ]
+    runs-on: [ self-hosted, linux-arm64, spot ]
     container:
-      image: meshlib/meshlib-ubuntu22-arm64:latest
+      image: meshsdk/meshsdk-ubuntu22-arm64:latest
     strategy:
       fail-fast: false
     env:

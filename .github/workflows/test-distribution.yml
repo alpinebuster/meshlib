@@ -113,13 +113,13 @@ jobs:
       - name: Ubuntu python test
         if: ${{ always() }}
         env:
-          PYTHONPATH: /usr/local/lib/MeshLib/
+          PYTHONPATH: /usr/local/lib/meshsdk/
         working-directory: test_python
         run: python3 -m pytest -s -v
 
   linux-arm64-test:
     timeout-minutes: 30
-    runs-on: [self-hosted, linux-arm64, spot, meshinspector]
+    runs-on: [ self-hosted, linux-arm64, spot ]
     container:
       image: ${{ matrix.os }}
     strategy:
@@ -212,7 +212,7 @@ jobs:
       - name: Ubuntu python test
         if: always()
         env:
-          PYTHONPATH: /usr/local/lib/MeshLib/
+          PYTHONPATH: /usr/local/lib/meshsdk/
         working-directory: test_python
         run: python3 -m pytest -s -v
 

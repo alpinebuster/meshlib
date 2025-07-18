@@ -1,7 +1,7 @@
 name: Build Pip Wheels
 
 # When ran from the github UI, we build the target commit exactly.
-# When ran on release, we use the latest tagged commit in the `master` branch.
+# When ran on release, we use the latest tagged commit in the `main` branch.
 # This doesn't run directly on pull request, because it's impossible to disable the whole file
 #   with a single condition (specific label present). Because of that, we conditionally run this from a separate `.yml` file.
 
@@ -52,7 +52,7 @@ jobs:
     timeout-minutes: 80
     runs-on: ${{ matrix.runner }}
     container:
-      image: meshlib/meshlib-${{matrix.os}}:${{inputs.docker_image_tag || 'latest'}}
+      image: meshsdk/meshsdk-${{matrix.os}}:${{inputs.docker_image_tag || 'latest'}}
       options: ${{ matrix.container-options }}
     strategy:
       fail-fast: false
@@ -67,7 +67,7 @@ jobs:
           - platform: "aarch64"
             os: "ubuntu20-arm64"
             container-options: " " # empty
-            runner: [ self-hosted, linux-arm64, on-demand, meshinspector ]
+            runner: [ self-hosted, linux-arm64, on-demand ]
             # When using Clang 11 on Ubuntu Arm 20.04, we get some obscure ABI issues that fail some tests,
             # see the comments in `test_regression/test_algorithms/test_decimate.py` for more details.
             compiler: /usr/bin/clang++-18
@@ -182,7 +182,7 @@ jobs:
   windows-pip-build:
     needs: setup
     timeout-minutes: 90
-    runs-on:  [self-hosted, windows, x64, vs-2019, meshinspector]
+    runs-on:  [ self-hosted, windows, x64, vs-2019 ]
     strategy:
       fail-fast: false
     permissions:
@@ -414,7 +414,7 @@ jobs:
             container-options: "--user root"
             container-prefix: " "
           - platform: "aarch64"
-            runner: [ self-hosted, linux-arm64, on-demand, meshinspector ]
+            runner: [ self-hosted, linux-arm64, on-demand ]
             container-options: " " # empty
             container-prefix: "arm64v8/"
           - os: "ubuntu:20.04"
@@ -611,7 +611,7 @@ jobs:
   post-release-test:
     if: ${{ github.event_name == 'release' }}
     needs: upload-to-release
-    uses: MeshInspector/MeshLib/.github/workflows/release-tests.yml@master
+    uses: alpinebuster/meshsdk/.github/workflows/release-tests.yml@main
 
   delete-artifacts:
     timeout-minutes: 5
