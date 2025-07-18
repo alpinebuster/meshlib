@@ -2,7 +2,10 @@
 
 import { fileURLToPath } from 'url';
 import { dirname, join, normalize } from 'path';
-import { existsSync, rmSync, mkdirSync, copyFileSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import {
+	existsSync, rmSync, mkdirSync, copyFileSync,
+	readdirSync, readFileSync, writeFileSync, unlinkSync 
+} from 'fs';
 import { execSync } from 'child_process';
 
 // Get current directory (equivalent to cd "$(dirname "$0")")
@@ -20,6 +23,22 @@ async function build(): Promise<void> {
 		const releaseBin = join(__dirname, '../../build/Release/bin');
 		const binDir = existsSync(debugBin) ? debugBin : releaseBin;
 		console.log(`\n************ Using WASM bin directory: ${binDir} ************`);
+
+
+		// Delete `MRJavaScript.*` files in `src/`
+		const srcDir = join(__dirname, 'src');
+		const srcFiles = readdirSync(srcDir).filter(f => f.startsWith('MRJavaScript.'));
+		if (srcFiles.length > 0) {
+			console.log('\n');
+			for (const file of srcFiles) {
+				const filePath = join(srcDir, file);
+				unlinkSync(filePath);
+				console.log(`Deleted old ${file} from \`src/\` directory`);
+			}
+			console.log('----------------------------------------------------------------------');
+		} else {
+			console.log(`No old MRJavaScript.* files found in ${srcDir}`);
+		}
 
 		// Copy `MRJavaScript.*` files from `binDir` to `src/`
 		const binFiles = readdirSync(binDir).filter(f => f.startsWith('MRJavaScript.'));
@@ -62,7 +81,6 @@ async function build(): Promise<void> {
 
 
 		console.log('\n************ Starting build process ************');
-
 		// Clean or create lib directory
 		if (existsSync(OUT_DIRECTORY)) {
 			console.log(`Cleaning existing ${OUT_DIRECTORY} directory...`);
@@ -81,7 +99,6 @@ async function build(): Promise<void> {
 		console.log('\n************ Copying required files ************');
 		const filesToCopy = [
 			'src/MRJavaScript.wasm',
-			// 'src/MRJavaScript.data',
 			'src/MRJavaScript.d.ts',
 			'src/MRJavaScript.js'
 		];
