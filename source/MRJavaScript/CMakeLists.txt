@@ -31,12 +31,15 @@ IF(MR_EMSCRIPTEN)
       "-g"                          # DWARF
       "-gsource-map"                # Source‑map
       "-gseparate-dwarf"            # Separate DWARF files
-
-      # Compared to `-O0` will do some basic code optimization (such as simple constant folding, dead code removal, etc.), 
+      # Compared to `-O0` will do some basic code optimization
+      # (such as simple constant folding, dead code removal, etc.), 
       # but won't do deep inlining or loop unrolling like `-O2/O3`, 
       # so the compilation speed and debugging experience is still relatively balanced.
       "-O1"
       ###
+
+      "-sASSERTIONS=2"              # More runtime assertions
+      "-sSTACK_OVERFLOW_CHECK=2"    # Stack overflow check
     )
   ENDIF()
 
@@ -51,7 +54,7 @@ IF(MR_EMSCRIPTEN)
 
   string(JOIN " " CMAKE_EXE_LINKER_FLAGS
     "${CMAKE_EXE_LINKER_FLAGS}"
-    "-v"
+    "-v" # Display more detailed compilation process information (verbose output)
 
     # REF: Uncaught RuntimeError: null function or function signature mismatch
     # 
@@ -61,9 +64,6 @@ IF(MR_EMSCRIPTEN)
     # "-fsanitize=undefined"
     # "-Wbad-function-cast -Wcast-function-type"
     # "-sEMULATE_FUNCTION_POINTER_CASTS"
-
-    "-sASSERTIONS=2"              # More runtime assertions
-    "-sSTACK_OVERFLOW_CHECK=2"    # Stack overflow check
   )
  
   # FIXME:

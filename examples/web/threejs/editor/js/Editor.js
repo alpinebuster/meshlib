@@ -497,6 +497,7 @@ Editor.prototype = {
 
 		this.signals.sceneGraphChanged.active = true;
 
+		// TODO: Is it necessary to call `.delete();`?
 		this.wasmObject = {};
 		this.geometries = {};
 		this.materials = {};
@@ -548,7 +549,7 @@ Editor.prototype = {
 
 			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( ctx, curM.geometry );
 			
-			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView(jsVertices, jsIndices);
+			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
 			try {
 				const wasmMeshWrapper = new this.MeshSDK.MeshWrapper( wasmMesh );
 				if ( wasmMeshWrapper ) this.addWasmObject( curM.uuid, wasmMeshWrapper );
@@ -557,7 +558,13 @@ Editor.prototype = {
 				// IMPORTANT!!!
 				this.MeshSDK._free( verticesPtr );
 				this.MeshSDK._free( indicesPtr );
-				wasmMesh.delete();
+				///
+				// NOTE:
+				// 
+				// Do not use `wasmMesh.delete();` here !!!
+				// Only call `wasmMeshWrapper.delete();` at the end
+				// wasmMesh.delete();
+				////
 			}
 		});
 		///

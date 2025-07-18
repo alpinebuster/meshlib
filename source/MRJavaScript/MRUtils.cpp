@@ -471,7 +471,6 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<float>( "StdVectorf" );
 	register_vector<double>( "StdVectord" );
 	register_vector<long long>( "StdVectorll" );
-	register_vector<uint64_t>( "StdVectorUi64" );
 	///
 
 
@@ -480,13 +479,11 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<std::vector<float>>( "VectorStdVectorf" );
 	register_vector<std::vector<double>>( "VectorStdVectord" );
 	register_vector<std::vector<long long>>( "VectorStdVectorll" );
-	register_vector<std::vector<uint64_t>>( "VectorStdVectorUi64" );
 
 	register_vector<std::array<int, 3>>( "VectorArray3StdVectori" );
 	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
 	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
 	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
-	register_vector<std::array<uint64_t, 3>>( "VectorArray3StdVectorUi64" );
 	///
 
 
@@ -703,7 +700,6 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<Vector<double, size_t>>( "VectorVectorStdf" );
 	register_vector<Vector<long long, size_t>>( "VectorVectorStdll" );
 	register_vector<Vector<size_t, size_t>>( "VectorVectorStdSizeT" );
-	register_vector<Vector<uint64_t, size_t>>( "VectorVectorStdUi64" );
 	///
 
 
@@ -807,19 +803,16 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 	MRJS::bindStdArray<double, 2>( "Array2Stdd" );
 	MRJS::bindStdArray<int, 2>( "Array2Stdi" );
 	MRJS::bindStdArray<long long, 2>( "Array2Stdll" );
-	MRJS::bindStdArray<uint64_t, 2>( "Array2StdUi64" );
 
 	MRJS::bindStdArray<float, 3>( "Array3Stdf" );
 	MRJS::bindStdArray<double, 3>( "Array3Stdd" );
 	MRJS::bindStdArray<int, 3>( "Array3Stdi" );
 	MRJS::bindStdArray<long long, 3>( "Array3Stdll" );
-	MRJS::bindStdArray<uint64_t, 3>( "Array3StdUi64" );
 
 	MRJS::bindStdArray<float, 4>( "Array4Stdf" );
 	MRJS::bindStdArray<double, 4>( "Array4Stdd" );
 	MRJS::bindStdArray<int, 4>( "Array4Stdi" );
 	MRJS::bindStdArray<long long, 4>( "Array4Stdll" );
-	MRJS::bindStdArray<uint64_t, 4>( "Array4StdUi64" );
 	///
 
 
@@ -890,23 +883,25 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 {
 	///
-	register_optional<float>();
+	// NOTE:
+	// 
+	// int          4 bytes    Ordinary count, index
+	// float        4 bytes    Requires decimals, but prioritizes memory and speed
+	// long long    8 bytes    Very large integers
+	// double       8 bytes    High precision decimals, commonly used in scientific calculations
+	// 
 	register_optional<int>();
-	register_optional<bool>();
-	register_optional<double>();
+	register_optional<float>();
 	register_optional<long long>();
-	register_optional<size_t>();
-	register_optional<uint64_t>();
+	register_optional<double>();
 	///
 
 
 	///
     register_optional<Vector<int, size_t>>();
     register_optional<Vector<float, size_t>>();
-	register_optional<Vector<double, size_t>>();
 	register_optional<Vector<long long, size_t>>();
-	register_optional<Vector<size_t, size_t>>();
-	register_optional<Vector<uint64_t, size_t>>();
+	register_optional<Vector<double, size_t>>();
 	///
 
 	///

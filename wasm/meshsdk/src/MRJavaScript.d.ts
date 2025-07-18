@@ -157,18 +157,12 @@ declare namespace RuntimeExports {
         export function createDevice(parent: any, name: any, input: any, output: any): any;
         export function forceLoadFile(obj: any): boolean;
         export function createLazyFile(parent: any, name: any, url: any, canRead: any, canWrite: any): any;
-        export function absolutePath(): void;
-        export function createFolder(): void;
-        export function createLink(): void;
-        export function joinPath(): void;
-        export function mmapAlloc(): void;
-        export function standardizePath(): void;
     }
 }
-declare class ErrnoError extends Error {
+declare class ErrnoError {
     constructor(errno: any);
+    name: string;
     errno: any;
-    code: string;
 }
 declare class FSStream {
     shared: {};
@@ -211,7 +205,6 @@ interface WasmModule {
   _free(_0: number): void;
   _printtt(): void;
   _main(_0: number, _1: number): number;
-  ___set_stack_limits(_0: number, _1: number): void;
 }
 
 type EmbindString = ArrayBuffer|Uint8Array|Uint8ClampedArray|Int8Array|string;
@@ -4603,14 +4596,6 @@ export interface StdVectorll extends ClassHandle {
   set(_0: number, _1: bigint): boolean;
 }
 
-export interface StdVectorUi64 extends ClassHandle {
-  push_back(_0: bigint): void;
-  resize(_0: number, _1: bigint): void;
-  size(): number;
-  get(_0: number): bigint | undefined;
-  set(_0: number, _1: bigint): boolean;
-}
-
 export interface VectorStdVectori extends ClassHandle {
   push_back(_0: StdVectori): void;
   resize(_0: number, _1: StdVectori): void;
@@ -4643,14 +4628,6 @@ export interface VectorStdVectorll extends ClassHandle {
   set(_0: number, _1: StdVectorll): boolean;
 }
 
-export interface VectorStdVectorUi64 extends ClassHandle {
-  push_back(_0: StdVectorUi64): void;
-  resize(_0: number, _1: StdVectorUi64): void;
-  size(): number;
-  get(_0: number): StdVectorUi64 | undefined;
-  set(_0: number, _1: StdVectorUi64): boolean;
-}
-
 export interface VectorArray3StdVectori extends ClassHandle {
   size(): number;
   get(_0: number): Array3Stdi | undefined;
@@ -4681,14 +4658,6 @@ export interface VectorArray3StdVectorll extends ClassHandle {
   push_back(_0: Array3Stdll): void;
   resize(_0: number, _1: Array3Stdll): void;
   set(_0: number, _1: Array3Stdll): boolean;
-}
-
-export interface VectorArray3StdVectorUi64 extends ClassHandle {
-  size(): number;
-  get(_0: number): Array3StdUi64 | undefined;
-  push_back(_0: Array3StdUi64): void;
-  resize(_0: number, _1: Array3StdUi64): void;
-  set(_0: number, _1: Array3StdUi64): boolean;
 }
 
 export interface VectorMeshPiece extends ClassHandle {
@@ -5808,14 +5777,6 @@ export interface VectorVectorStdSizeT extends ClassHandle {
   set(_0: number, _1: VectorSizeTSizeT): boolean;
 }
 
-export interface VectorVectorStdUi64 extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorUi64SizeT | undefined;
-  push_back(_0: VectorUi64SizeT): void;
-  resize(_0: number, _1: VectorUi64SizeT): void;
-  set(_0: number, _1: VectorUi64SizeT): boolean;
-}
-
 export interface VectorVector2f extends ClassHandle {
   size(): number;
   get(_0: number): Vector2f | undefined;
@@ -6070,8 +6031,6 @@ export type Array2Stdi = [ number, number ];
 
 export type Array2Stdll = [ bigint, bigint ];
 
-export type Array2StdUi64 = [ bigint, bigint ];
-
 export type Array3Stdf = [ number, number, number ];
 
 export type Array3Stdd = [ number, number, number ];
@@ -6080,8 +6039,6 @@ export type Array3Stdi = [ number, number, number ];
 
 export type Array3Stdll = [ bigint, bigint, bigint ];
 
-export type Array3StdUi64 = [ bigint, bigint, bigint ];
-
 export type Array4Stdf = [ number, number, number, number ];
 
 export type Array4Stdd = [ number, number, number, number ];
@@ -6089,8 +6046,6 @@ export type Array4Stdd = [ number, number, number, number ];
 export type Array4Stdi = [ number, number, number, number ];
 
 export type Array4Stdll = [ bigint, bigint, bigint, bigint ];
-
-export type Array4StdUi64 = [ bigint, bigint, bigint, bigint ];
 
 export type Array2EdgeId = [ EdgeId, EdgeId ];
 
@@ -7735,41 +7690,6 @@ export interface VectorSizeTSizeT extends ClassHandle {
   heapBytes(): number;
   equals(_0: VectorSizeTSizeT): boolean;
   notEquals(_0: VectorSizeTSizeT): boolean;
-}
-
-export interface VectorUi64SizeT extends ClassHandle {
-  size(): number;
-  empty(): boolean;
-  clear(): void;
-  capacity(): number;
-  reserve(_0: number): void;
-  resize(_0: number): void;
-  resizeWithValue(_0: number, _1: bigint): void;
-  resizeWithReserve(_0: number): void;
-  resizeWithReserveAndValue(_0: number, _1: bigint): void;
-  get(_0: number): bigint;
-  set(_0: number): bigint;
-  getByIndex(_0: number): bigint;
-  getByIndexMutable(_0: number): bigint;
-  getAt(_0: number): bigint;
-  setAt(_0: number, _1: bigint): boolean;
-  frontConst(): bigint;
-  front(): bigint;
-  backConst(): bigint;
-  back(): bigint;
-  pushBack(_0: bigint): void;
-  popBack(): void;
-  emplaceBack(_0: bigint): bigint;
-  beginId(): number;
-  backId(): number;
-  endId(): number;
-  autoResizeAt(_0: number): bigint;
-  autoResizeSetWithRange(_0: number, _1: number, _2: bigint): void;
-  autoResizeSet(_0: number, _1: bigint): void;
-  swap(_0: VectorUi64SizeT): void;
-  heapBytes(): number;
-  equals(_0: VectorUi64SizeT): boolean;
-  notEquals(_0: VectorUi64SizeT): boolean;
 }
 
 export interface Vector2i extends ClassHandle {
@@ -9441,9 +9361,6 @@ interface EmbindModule {
   StdVectorll: {
     new(): StdVectorll;
   };
-  StdVectorUi64: {
-    new(): StdVectorUi64;
-  };
   VectorStdVectori: {
     new(): VectorStdVectori;
   };
@@ -9456,9 +9373,6 @@ interface EmbindModule {
   VectorStdVectorll: {
     new(): VectorStdVectorll;
   };
-  VectorStdVectorUi64: {
-    new(): VectorStdVectorUi64;
-  };
   VectorArray3StdVectori: {
     new(): VectorArray3StdVectori;
   };
@@ -9470,9 +9384,6 @@ interface EmbindModule {
   };
   VectorArray3StdVectorll: {
     new(): VectorArray3StdVectorll;
-  };
-  VectorArray3StdVectorUi64: {
-    new(): VectorArray3StdVectorUi64;
   };
   VectorMeshPiece: {
     new(): VectorMeshPiece;
@@ -9936,9 +9847,6 @@ interface EmbindModule {
   VectorVectorStdSizeT: {
     new(): VectorVectorStdSizeT;
   };
-  VectorVectorStdUi64: {
-    new(): VectorVectorStdUi64;
-  };
   VectorVector2f: {
     new(): VectorVector2f;
   };
@@ -10360,11 +10268,6 @@ interface EmbindModule {
     new(): VectorSizeTSizeT;
     new(_0: number): VectorSizeTSizeT;
     new(_0: number, _1: number): VectorSizeTSizeT;
-  };
-  VectorUi64SizeT: {
-    new(): VectorUi64SizeT;
-    new(_0: number): VectorUi64SizeT;
-    new(_0: number, _1: bigint): VectorUi64SizeT;
   };
   getAti(_0: VectorIntSizeT, _1: number, _2: number): number;
   getAtf(_0: VectorFloatSizeT, _1: number, _2: number): number;
