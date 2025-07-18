@@ -467,6 +467,13 @@ EMSCRIPTEN_BINDINGS( PairTypedModule )
 EMSCRIPTEN_BINDINGS( VectorTypedModule )
 {
 	///
+	// NOTE:
+	//
+	// int          4 bytes    Ordinary count, index
+	// float        4 bytes    Requires decimals, but prioritizes memory and speed
+	// long long    8 bytes    Very large integers
+	// double       8 bytes    High precision decimals, commonly used in scientific calculations
+	//
 	register_vector<int>( "StdVectori" );
 	register_vector<float>( "StdVectorf" );
 	register_vector<double>( "StdVectord" );
@@ -484,6 +491,14 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<std::array<float, 3>>( "VectorArray3StdVectorf" );
 	register_vector<std::array<double, 3>>( "VectorArray3StdVectord" );
 	register_vector<std::array<long long, 3>>( "VectorArray3StdVectorll" );
+	///
+
+
+	///
+    register_vector<Vector<int, size_t>>( "VectorVectorStdi" );
+    register_vector<Vector<float, size_t>>( "VectorVectorStdd" );
+	register_vector<Vector<double, size_t>>( "VectorVectorStdf" );
+	register_vector<Vector<long long, size_t>>( "VectorVectorStdll" );
 	///
 
 
@@ -537,11 +552,6 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 
 
 	///
-	register_vector<std::vector<std::vector<EdgePoint>>>( "VectorSurfacePaths" );
-	///
-
-
-	///
     register_vector<std::array<Vector2i, 2>>( "VectorArray2Vector2i" );
     register_vector<std::array<Vector2f, 2>>( "VectorArray2Vector2f" );
 	register_vector<std::array<Vector2d, 2>>( "VectorArray2Vector2d" );
@@ -559,6 +569,32 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<std::array<Vector3f, 3>>( "VectorArray3Triangle3f" );
     register_vector<std::array<Vector3d, 3>>( "VectorArray3Triangle3d" );
 	///
+
+    ///
+    // Register vector structures of `*Id()`
+    register_vector<EdgeId>( "VectorEdgeId" );
+    register_vector<UndirectedEdgeId>( "VectorUndirectedEdgeId" );
+    register_vector<FaceId>( "VectorFaceId" );
+    register_vector<VertId>( "VectorVertId" );
+    register_vector<PixelId>( "VectorPixelId" );
+    register_vector<VoxelId>( "VectorVoxelId" );
+    register_vector<RegionId>( "VectorRegionId" );
+    register_vector<NodeId>( "VectorNodeId" );
+    register_vector<ObjId>( "VectorObjId" );
+    register_vector<TextureId>( "VectorTextureId" );
+    register_vector<GraphVertId>( "VectorGraphVertId" );
+    register_vector<GraphEdgeId>( "VectorGraphEdgeId" );
+
+    // NOTE: `EdgeLoop` equals `EdgePath` 
+    // register_vector<EdgeLoop>( "VectorEdgeLoop" );
+    register_vector<EdgePath>( "VectorEdgePath" );
+    // NOTE: `EdgeLoops` equals `std::vector<EdgePath>`
+    // register_vector<EdgeLoops>( "VectorEdgeLoops" );
+    register_vector<std::vector<EdgePath>>( "VectorVectorEdgePath" );
+
+	register_vector<std::vector<std::vector<EdgePoint>>>( "VectorSurfacePaths" );
+	///
+
 
 	///
 	// Register vector structures of `std::vector<*Id()>`
@@ -647,29 +683,6 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<std::array<GraphEdgeId, 4>>( "VectorArray4GraphEdgeId" );
 	///
 
-    ///
-    // Register vector structures of `*Id()`
-    register_vector<EdgeId>( "VectorEdgeId" );
-    register_vector<UndirectedEdgeId>( "VectorUndirectedEdgeId" );
-    register_vector<FaceId>( "VectorFaceId" );
-    register_vector<VertId>( "VectorVertId" );
-    register_vector<PixelId>( "VectorPixelId" );
-    register_vector<VoxelId>( "VectorVoxelId" );
-    register_vector<RegionId>( "VectorRegionId" );
-    register_vector<NodeId>( "VectorNodeId" );
-    register_vector<ObjId>( "VectorObjId" );
-    register_vector<TextureId>( "VectorTextureId" );
-    register_vector<GraphVertId>( "VectorGraphVertId" );
-    register_vector<GraphEdgeId>( "VectorGraphEdgeId" );
-
-    // NOTE: `EdgeLoop` equals `EdgePath` 
-    // register_vector<EdgeLoop>( "VectorEdgeLoop" );
-    register_vector<EdgePath>( "VectorEdgePath" );
-    // NOTE: `EdgeLoops` equals `std::vector<EdgePath>`
-    // register_vector<EdgeLoops>( "VectorEdgeLoops" );
-    register_vector<std::vector<EdgePath>>( "VectorVectorEdgePath" );
-	///
-
 	
 	///
     register_vector<std::pair<EdgeId, EdgeId>>( "EdgeHashMapEntries" );
@@ -691,15 +704,6 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<UndirectedEdge2RegionMap>( "VectorUndirectedEdge2RegionMap" );
 	register_vector<Face2RegionMap>( "VectorFace2RegionMap" );
 	register_vector<Vert2RegionMap>( "VectorVert2RegionMap" );
-	///
-
-
-	///
-    register_vector<Vector<int, size_t>>( "VectorVectorStdi" );
-    register_vector<Vector<float, size_t>>( "VectorVectorStdd" );
-	register_vector<Vector<double, size_t>>( "VectorVectorStdf" );
-	register_vector<Vector<long long, size_t>>( "VectorVectorStdll" );
-	register_vector<Vector<size_t, size_t>>( "VectorVectorStdSizeT" );
 	///
 
 
@@ -763,6 +767,24 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 // ------------------------------------------------------------------------
 EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 {
+	/// Bind the Embind interface for `Array2Std*`
+	MRJS::bindStdArray<int, 2>( "Array2Stdi" );
+	MRJS::bindStdArray<float, 2>( "Array2Stdf" );
+	MRJS::bindStdArray<long long, 2>( "Array2Stdll" );
+	MRJS::bindStdArray<double, 2>( "Array2Stdd" );
+
+	MRJS::bindStdArray<int, 3>( "Array3Stdi" );
+	MRJS::bindStdArray<float, 3>( "Array3Stdf" );
+	MRJS::bindStdArray<long long, 3>( "Array3Stdll" );
+	MRJS::bindStdArray<double, 3>( "Array3Stdd" );
+
+	MRJS::bindStdArray<int, 4>( "Array4Stdi" );
+	MRJS::bindStdArray<float, 4>( "Array4Stdf" );
+	MRJS::bindStdArray<long long, 4>( "Array4Stdll" );
+	MRJS::bindStdArray<double, 4>( "Array4Stdd" );
+	///
+
+
 	///
 	MRJS::bindStdArray<WeightedVertex, 2>( "Array2WeightedVertex" );
 	MRJS::bindStdArray<WeightedVertex, 3>( "Array3WeightedVertex" );
@@ -795,24 +817,6 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 	MRJS::bindStdArray<Vector3ll, 3>( "Array3Triangle3ll" );
 	MRJS::bindStdArray<Vector3f, 3>( "Array3Triangle3f" );
 	MRJS::bindStdArray<Vector3d, 3>( "Array3Triangle3d" );
-	///
-
-	
-	/// Bind the Embind interface for `Array2Std*`
-	MRJS::bindStdArray<float, 2>( "Array2Stdf" );
-	MRJS::bindStdArray<double, 2>( "Array2Stdd" );
-	MRJS::bindStdArray<int, 2>( "Array2Stdi" );
-	MRJS::bindStdArray<long long, 2>( "Array2Stdll" );
-
-	MRJS::bindStdArray<float, 3>( "Array3Stdf" );
-	MRJS::bindStdArray<double, 3>( "Array3Stdd" );
-	MRJS::bindStdArray<int, 3>( "Array3Stdi" );
-	MRJS::bindStdArray<long long, 3>( "Array3Stdll" );
-
-	MRJS::bindStdArray<float, 4>( "Array4Stdf" );
-	MRJS::bindStdArray<double, 4>( "Array4Stdd" );
-	MRJS::bindStdArray<int, 4>( "Array4Stdi" );
-	MRJS::bindStdArray<long long, 4>( "Array4Stdll" );
 	///
 
 
@@ -870,10 +874,6 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 	MRJS::bindStdArray<GraphEdgeId, 3>( "Array3GraphEdgeId" );
 	MRJS::bindStdArray<GraphEdgeId, 4>( "Array4GraphEdgeId" );
 	///
-
-
-	///
-	///
 }
 
 
@@ -883,13 +883,6 @@ EMSCRIPTEN_BINDINGS( ArrayTypedModule )
 EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 {
 	///
-	// NOTE:
-	// 
-	// int          4 bytes    Ordinary count, index
-	// float        4 bytes    Requires decimals, but prioritizes memory and speed
-	// long long    8 bytes    Very large integers
-	// double       8 bytes    High precision decimals, commonly used in scientific calculations
-	// 
 	register_optional<int>();
 	register_optional<float>();
 	register_optional<long long>();

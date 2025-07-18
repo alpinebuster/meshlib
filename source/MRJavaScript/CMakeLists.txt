@@ -29,13 +29,13 @@ IF(MR_EMSCRIPTEN)
       ###
       # NOTE
       "-g"                          # DWARF
-      "-gsource-map"                # Source‑map
-      "-gseparate-dwarf"            # Separate DWARF files
+      # "-gsource-map"                # ⚠️ Source‑map
+      # "-gseparate-dwarf"            # ⚠️ Separate DWARF files
       # Compared to `-O0` will do some basic code optimization
       # (such as simple constant folding, dead code removal, etc.), 
       # but won't do deep inlining or loop unrolling like `-O2/O3`, 
       # so the compilation speed and debugging experience is still relatively balanced.
-      "-O1"
+      # "-O1"                         # ⚠️
       ###
 
       "-sASSERTIONS=2"              # More runtime assertions
@@ -44,7 +44,7 @@ IF(MR_EMSCRIPTEN)
   ENDIF()
 
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_BOOST_HEADERS=1")
-  # REF: 
+  # REF:
   #   1. `https://emscripten.org/docs/tools_reference/settings_reference.html#exported-runtime-methods`
   #   2. `https://emscripten.org/docs/tools_reference/settings_reference.html#exported-functions`
   #
@@ -56,14 +56,21 @@ IF(MR_EMSCRIPTEN)
     "${CMAKE_EXE_LINKER_FLAGS}"
     "-v" # Display more detailed compilation process information (verbose output)
 
-    # REF: Uncaught RuntimeError: null function or function signature mismatch
     # 
-    # `https://github.com/emscripten-core/emscripten/issues/16126#issuecomment-1023067658` & 
-    # `https://github.com/emscripten-core/emscripten/issues/16305`
+    # NOTE:
+    # After updating `emcc` to v4.0.11, an error will occur:
     # 
-    # "-fsanitize=undefined"
-    # "-Wbad-function-cast -Wcast-function-type"
-    # "-sEMULATE_FUNCTION_POINTER_CASTS"
+    #   Uncaught RuntimeError: null function or function signature mismatch
+    # 
+    # More at REF: 
+    # 
+    # `https://github.com/emscripten-core/emscripten/issues/23952#issuecomment-3000283706` &
+    # `https://github.com/emscripten-core/emscripten/issues/19953#issuecomment-1662439751`
+    # 
+    # "-fsanitize=address"                        # ⚠️
+    # "-sEMULATE_FUNCTION_POINTER_CASTS"          # ⚠️
+    # 
+    "-Wbad-function-cast -Wcast-function-type"
   )
  
   # FIXME:

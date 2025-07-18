@@ -39,13 +39,31 @@ The MeshSDK is an open-source library that provides advanced algorithms for 3D d
 
 ### Linux & MacOS
 
+Install emscripten toolkit:
+
+```sh
+# Fetch the latest version of the emsdk (not needed the first time you clone)
+git pull
+
+# Download and install the latest SDK tools.
+# ./emsdk install latest # ⚠️
+./emsdk install 4.0.10
+
+# Make the "latest" SDK "active" for the current user. (writes .emscripten file)
+# ./emsdk activate latest # ⚠️
+./emsdk activate latest
+
+# Activate PATH and other environment variables in the current terminal
+source ./emsdk_env.sh
+```
+
+Build source code:
+
 ```sh
 git submodule update --init
+
 ./scripts/build_thirdparty.sh
 ./scripts/build_source.sh
-
-# Common sense
-emcc --clear-cache
 ```
 
 ### Docker
@@ -67,7 +85,7 @@ emcc --clear-cache
 `docker compose exec meshlib-emscripten-build-wasm64 bash`
 ```
 
-### Windows
+### Windows (Desktop)
 
 #### Prerequisites
  1. **Git**
@@ -146,8 +164,8 @@ cd vcpkg
 Install with npm or yarn:
 
 ```sh
-npm install @alpinebuster/meshlib
-yarn add @alpinebuster/meshlib
+npm install @alpinebuster/meshsdk
+yarn add @alpinebuster/meshsdk
 ```
 
 #### Python
@@ -160,4 +178,4 @@ pip install meshlib
 
 ## **License**
 
-Here, you can access our [Non-Commercial Free License](https://github.com/MeshInspector/MeshLib?tab=License-1-ov-file#readme) with a Commercial License Requirement. Also, see extra details on the [license page](https://meshlib.io/license/).
+Here, you can access our Non-Commercial Free License with a Commercial License Requirement. Also, see [license](./LICENSE).
