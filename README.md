@@ -98,7 +98,7 @@ git submodule update --init
  3. **CUDA Toolkit**
   - For **Visual Studio 2019**: Install [CUDA v11.4](https://developer.nvidia.com/cuda-11-4-0-download-archive)
   - For **Visual Studio 2022**: Install [CUDA v12.0](https://developer.nvidia.com/cuda-12-0-0-download-archive)
- \n Choose the appropriate version based on your Visual Studio installation.
+ Choose the appropriate version based on your Visual Studio installation.
  4. **vcpkg**
   - To install `vcpkg`, follow these steps:
    1. **Open a command prompt (CMD) or PowerShell window**.
@@ -132,7 +132,7 @@ vcpkg integrate install
 [Learn more about](https://github.com/Microsoft/vcpkg) `vcpkg`
 
 #### Installing the local build
-\note The following steps will require approximately 40 GB of disk space.
+The following steps will require approximately 40 GB of disk space.
 
  1. **Clone the Submodules**:
 ```cmd
@@ -140,7 +140,7 @@ git submodule update --init
 # or
 git submodule update --init --recursive
 ```
- 2. \b (Optional) **Speed Up with AWS CLI**
+ 2. (Optional) **Speed Up with AWS CLI**
   - Optionally, [install AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) to speed up the process before using the Installation Script. Restart your terminal after installation.
  3. **Install Third-Party Dependencies**
   - Execute the following commands to run the third-party installation script:
@@ -172,7 +172,7 @@ yarn add @alpinebuster/meshsdk
 
 For Python, simply install via pip:  
 
-```
+```sh
 pip install meshlib
 ```
 
