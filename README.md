@@ -69,10 +69,10 @@ git submodule update --init
 ### Docker
 
 ```sh
-`docker compose up --build meshlib-emscripten-build`
+`docker compose up --build meshsdk-emscripten-build`
 
-`docker compose up meshlib-emscripten-build`
-`docker compose up meshlib-emscripten-build -d`
+`docker compose up meshsdk-emscripten-build`
+`docker compose up meshsdk-emscripten-build -d`
 
 `docker compose --profile singlethreaded up meshlib-emscripten-build-singlethreaded`
 `docker compose --profile wasm64 up meshlib-emscripten-build-wasm64`
@@ -80,9 +80,9 @@ git submodule update --init
 #
 # To run custom build commands:
 #
-`docker compose exec meshlib-emscripten-build bash`
-`docker compose exec meshlib-emscripten-build-singlethreaded bash`
-`docker compose exec meshlib-emscripten-build-wasm64 bash`
+`docker compose exec meshsdk-emscripten-build bash`
+`docker compose exec meshsdk-emscripten-build-singlethreaded bash`
+`docker compose exec meshsdk-emscripten-build-wasm64 bash`
 ```
 
 ### Windows (Desktop)
@@ -146,15 +146,15 @@ git submodule update --init --recursive
   - Execute the following commands to run the third-party installation script:
 ```cmd
 cd vcpkg
-..\meshlib\thirdparty\install.bat
+..\meshsdk\thirdparty\install.bat
 ```
   - This script automates the installation of necessary third-party dependencies.
  4. **Build and Run Visual Studio Solution**
-  - Open `meshlib/source/MeshLib.sln` in Visual Studio.
+  - Open `meshsdk/source/MeshLib.sln` in Visual Studio.
   - Build the solution and run the application.
  5. **Build and Run CMake Project**
   - Make sure you have the "C++ CMake tools for Windows" component installed.
-  - Open `meshlib/CMakeLists.txt` in Visual Studio (File - Open - CMake).
+  - Open `meshsdk/CMakeLists.txt` in Visual Studio (File - Open - CMake).
   - Build the project and run the application.
 
 ### Installation
