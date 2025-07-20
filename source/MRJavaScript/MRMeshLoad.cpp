@@ -2,8 +2,7 @@
 #include <vector>
 #include <memory>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshLoad.h>

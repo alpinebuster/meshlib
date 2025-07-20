@@ -1,7 +1,7 @@
 #include <optional>
 #include <memory>
 
-#include <emscripten/bind.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>

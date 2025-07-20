@@ -1,4 +1,4 @@
-#include <emscripten/bind.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRId.h>

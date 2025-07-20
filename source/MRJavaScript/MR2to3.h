@@ -1,5 +1,4 @@
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector2.h>
@@ -11,7 +10,6 @@
 
 using namespace emscripten;
 using namespace MR;
-
 
 namespace MRJS
 {
@@ -29,5 +27,4 @@ void bindTyped2to3Conversions( const std::string& suffix )
     function( ( "to2dimXf" + suffix ).c_str(), select_overload<Xf2( const Xf3& )>( &to2dim<typename Vec2::ValueType> ) );
 }
 
-} // MRJS
-
+} // namespace MRJS

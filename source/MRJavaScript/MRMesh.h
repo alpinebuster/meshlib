@@ -168,4 +168,4 @@ public:
     val fillHolesImpl() const;
 };
 
-} // MRJS
+} // namespace MRJS

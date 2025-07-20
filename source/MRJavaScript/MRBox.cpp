@@ -3,8 +3,7 @@
 #include <cmath>
 #include <algorithm>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector2.h>

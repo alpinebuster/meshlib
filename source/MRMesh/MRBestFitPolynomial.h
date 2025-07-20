@@ -9,10 +9,8 @@
 #include <variant>
 #include <optional>
 
-
 namespace MR
 {
-
 
 constexpr bool canSolvePolynomial( auto degree )
 {
@@ -117,7 +115,5 @@ using BestFitPolynomialf = BestFitPolynomial<float, degree>;
 
 template <size_t degree>
 using BestFitPolynomiald = BestFitPolynomial<double, degree>;
-
-
 
 }

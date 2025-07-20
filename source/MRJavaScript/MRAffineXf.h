@@ -2,8 +2,7 @@
 
 #include <type_traits>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 using namespace emscripten;
 

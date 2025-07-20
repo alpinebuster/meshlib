@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include <emscripten.h>
-#include <emscripten/bind.h>
+#include <MRPch/MRWasm.h>
 
 using namespace emscripten;
 

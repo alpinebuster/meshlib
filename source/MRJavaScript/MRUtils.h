@@ -3,8 +3,7 @@
 #include <optional>
 #include <type_traits>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshTopology.h>
@@ -198,4 +197,4 @@ void bindStdArray( const char* jsName )
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
 }
 
-} // MRJS
+} // namespace MRJS
