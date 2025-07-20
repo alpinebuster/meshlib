@@ -8530,7 +8530,8 @@ interface EmbindModule {
   Mesh: {
     new(): Mesh;
     fromTrianglesMemoryView(_0: any, _1: any): Mesh;
-    fromTrianglesArray(_0: any, _1: any): Mesh | null;
+    fromTrianglesArray(_0: any, _1: any): Mesh;
+    fromTrianglesArrayTest(_0: any, _1: any): any;
     getGeometry(_0: Mesh): any;
   };
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;

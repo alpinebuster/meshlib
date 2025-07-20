@@ -467,13 +467,15 @@ function SidebarObject( editor ) {
 
 
 					/// IMPORTANT！！！
-					editor.MeshSDK._free( verticesPtr );
-					editor.MeshSDK._free( indicesPtr );
-
 					mesh.delete();
 					///
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				} finally {
+					/// IMPORTANT！！！
+					editor.MeshSDK._free( verticesPtr );
+					editor.MeshSDK._free( indicesPtr );
+					///
 				}
 			}
 		}
@@ -489,7 +491,8 @@ function SidebarObject( editor ) {
 				const indices = geometry.getIndex().array; // `Uint32Array`
 
 				try {
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
+					// const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTest( vertices, indices );
 
 					// const result = editor.MeshSDK.fillHolesImpl( mesh );
 
