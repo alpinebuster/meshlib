@@ -344,7 +344,7 @@ val MeshWrapper::segmentByPointsImpl(
 	try
 	{
 		auto edgeMetric_ = edgeMetricWrapper.getMetric();
-		std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
+		VertCoords inputPoints = MRJS::parseJSVertices( coordinates );
 
 		if ( inputPoints.size() < 2 )
 		{
@@ -831,9 +831,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 						throw std::runtime_error( "indices array length must be divisible by 3" );
 					}
 
-					int numVerts = verticesLength / 3;
-					int numTris = indicesLength / 3;
-
 
 					///
 					// NOTE: Directly access the memory of `TypedArray` without copying
@@ -846,37 +843,40 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
-					VertCoords vCoords;
-					vCoords.resize( numVerts );
+					Mesh mesh;
+					VertCoords verts;
 
-					for ( int i = 0; i < numVerts; ++i )
-					{
-						int baseIdx = i * 3;
-						vCoords[VertId( i )] = Vector3f(
-							verticesPtr[baseIdx],
-							verticesPtr[baseIdx + 1],
-							verticesPtr[baseIdx + 2]
-						);
-					}
-					///
-
-					///
-					Triangulation triangulation;
-					triangulation.resize( numTris );
+					Triangulation triangles;
+					int numTris = indicesLength / 3;
+					verts.resize( numTris );
 
 					for ( int i = 0; i < numTris; ++i )
 					{
-						int baseIdx = i * 3;
-						triangulation[FaceId( i )] = ThreeVertIds{
-							VertId( indicesPtr[baseIdx] ),
-							VertId( indicesPtr[baseIdx + 1] ),
-							VertId( indicesPtr[baseIdx + 2] )
-						};
+						int fId = i * 3;
+
+						ThreeVertIds threevrtids;
+						threevrtids[0] = static_cast< VertId >( indicesPtr[fId] );
+						threevrtids[1] = static_cast< VertId >( indicesPtr[fId + 1] );
+						threevrtids[2] = static_cast< VertId >( indicesPtr[fId + 2] );
+
+						auto id1 = threevrtids[0];
+						auto id2 = threevrtids[1];
+						auto id3 = threevrtids[2];
+
+						triangles.push_back( threevrtids );
+
+						int vIdx1 = static_cast<int>(id1) * 3;
+						int vIdx2 = static_cast<int>(id2) * 3;
+						int vIdx3 = static_cast<int>(id3) * 3;
+
+						verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
+						verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
+						verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
 					}
 					///
 
-					const auto res = Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( vCoords ), triangulation );
-					return res;
+					mesh = Mesh::fromTriangles( verts, triangles );
+					return mesh;
 				}
 				catch ( const std::exception& e )
 				{
@@ -895,7 +895,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		//  const vertices = geometry.getAttribute('position').array; // `Float32Array`
 		//  const indices = geometry.getIndex().array; // `Uint32Array`
 		//  
-		//  const mesh = MeshWrapper.fromTrianglesImpl( vertices, indices );
+		//  const mesh = MeshWrapper.fromTrianglesArray( vertices, indices );
 		// 
 		//  // ...
 		// 
@@ -904,7 +904,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		//  ```
 		// 
 		.class_function( "fromTrianglesArray",
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh*
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh
 			{
 				try
 				{
@@ -929,9 +929,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 						throw std::runtime_error( "indices array length must be divisible by 3" );
 					}
 
-					int numVerts = verticesLength / 3;
-					int numTris = indicesLength / 3;
-
 
 					///
 					std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
@@ -942,45 +939,136 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
-					VertCoords vCoords;
-					vCoords.resize( numVerts );
-
-					// Read vertex data from vector (memory contiguous, high performance)
-					for ( int i = 0; i < numVerts; ++i )
-					{
-						int baseIdx = i * 3;
-						vCoords[VertId( i )] = Vector3f(
-							verticesPtr[baseIdx],
-							verticesPtr[baseIdx + 1],
-							verticesPtr[baseIdx + 2]
-						);
-					}
-					///
-
-					///
-					Triangulation triangulation;
-					triangulation.resize( numTris );
+					Mesh mesh;
+					VertCoords verts;
+					Triangulation triangles;
+					int numTris = indicesLength / 3;
+					verts.resize( numTris );
 
 					for ( int i = 0; i < numTris; ++i )
 					{
-						int baseIdx = i * 3;
-						triangulation[FaceId( i )] = ThreeVertIds{
-							VertId( indicesPtr[baseIdx] ),
-							VertId( indicesPtr[baseIdx + 1] ),
-							VertId( indicesPtr[baseIdx + 2] )
-						};
+						int fId = i * 3;
+
+						ThreeVertIds threevrtids;
+						threevrtids[0] = static_cast< VertId >( indicesPtr[fId] );
+						threevrtids[1] = static_cast< VertId >( indicesPtr[fId + 1] );
+						threevrtids[2] = static_cast< VertId >( indicesPtr[fId + 2] );
+
+						auto id1 = threevrtids[0];
+						auto id2 = threevrtids[1];
+						auto id3 = threevrtids[2];
+
+						triangles.push_back( threevrtids );
+
+						int vIdx1 = static_cast<int>(id1) * 3;
+						int vIdx2 = static_cast<int>(id2) * 3;
+						int vIdx3 = static_cast<int>(id3) * 3;
+
+						verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
+						verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
+						verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
 					}
 					///
 
-					return new Mesh( Mesh::fromTriangles( std::move(vCoords ), triangulation ) );
+					mesh = Mesh::fromTriangles( verts, triangles );
+					return mesh;
 				}
 				catch ( const std::exception& e )
 				{
 					throw std::runtime_error( std::string( e.what() ) );
 				}
-			} ),
-			// IMPORTANT: JS is responsible for `.delete()` when it gets it!!!
-			return_value_policy::take_ownership()
+			} )
+		)
+		.class_function( "fromTrianglesArrayTest",
+			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> val
+			{
+				val meshObj = val::object();
+
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "vertices must be Float32Array" );
+						return meshObj;
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "indices must be Uint32Array" );
+						return meshObj;
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "vertices array length must be divisible by 3" );
+						return meshObj;
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "indices array length must be divisible by 3" );
+						return meshObj;
+					}
+
+
+					///
+					// std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+					std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+					// const float* verticesPtr = verticesVec.data();
+					const uint32_t* indicesPtr = indicesVec.data();
+					///
+
+
+					///
+					Mesh mesh;
+					VertCoords verts;
+					Triangulation triangles;
+					int numTris = indicesLength / 3;
+					verts.resize( numTris );
+
+					for ( int i = 0; i < numTris; ++i )
+					{
+						int fId = i * 3;
+
+						ThreeVertIds threevrtids;
+						threevrtids[0] = static_cast< VertId >( indicesPtr[fId] );
+						threevrtids[1] = static_cast< VertId >( indicesPtr[fId + 1] );
+						threevrtids[2] = static_cast< VertId >( indicesPtr[fId + 2] );
+
+						// auto id1 = threevrtids[0];
+						// auto id2 = threevrtids[1];
+						// auto id3 = threevrtids[2];
+
+						triangles.push_back( threevrtids );
+
+						// FIXME
+						// int vIdx1 = static_cast<int>(id1) * 3;
+						// int vIdx2 = static_cast<int>(id2) * 3;
+						// int vIdx3 = static_cast<int>(id3) * 3;
+
+						// verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
+						// verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
+						// verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
+					}
+					///
+
+					// mesh = Mesh::fromTriangles( verts, triangles );
+					meshObj.set( "success", true );
+					// meshObj.set( "mesh", MRJS::exportMeshMemoryView( mesh ) );
+					return meshObj;
+				}
+				catch ( const std::exception& e )
+				{
+					meshObj.set( "success", false );
+					meshObj.set( "error", std::string( e.what() ) );
+					return meshObj;
+				}
+			} )
 		)
 
 		.class_function( "getGeometry",
@@ -996,6 +1084,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 			})
 		)
 		///
+
 
 		///
 		.function( "fromTriangles", &Mesh::fromTriangles )
@@ -1196,21 +1285,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "shrinkToFit", &Mesh::shrinkToFit )
 		.function( "mirror", &Mesh::mirror )
 		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
-
-
-	function( "computeVertexNormalsImpl", +[] ( const Mesh& mesh )
-	{
-		std::vector<Vector3f> normals;
-		for ( VertId v{ 0 }; v < mesh.topology.vertSize(); ++v )
-		{
-			if ( mesh.topology.hasVert( v ) )
-			{
-				normals.push_back( mesh.normal( v ) );
-			}
-		}
-		
-		return MRJS::vector3fToFloat32Array( normals );
-	} );
 }
 
 

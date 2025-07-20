@@ -10,9 +10,9 @@ IF(NOT MR_EMSCRIPTEN AND NOT APPLE AND EXISTS /usr/bin/time)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "/usr/bin/time -f \",%U,%S,%C\" -a -o link_timings.txt")
 ENDIF()
 
-project(MeshLib CXX)
+project(MeshSDK CXX)
 
-set(MESHLIB_PROJECT_NAME "MeshLib" CACHE STRING "Project name")
+set(MESHLIB_PROJECT_NAME "MeshSDK" CACHE STRING "Project name")
 add_compile_definitions(MR_PROJECT_NAME=\"${MESHLIB_PROJECT_NAME}\")
 
 include(CompilerOptions)

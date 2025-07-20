@@ -35,7 +35,7 @@ RUN --mount=type=cache,target=/root/.npm \
     npm install -g typescript
 
 # Set up working directory and change ownership
-WORKDIR /meshlib
+WORKDIR /meshsdk
 
 # Copy files
 COPY .git .git
@@ -95,8 +95,8 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 # TODO: Switch to non-root user for security
 RUN useradd -ms /bin/bash zzz && \
     sudo chmod -R 777 /emsdk/upstream/emscripten/
-RUN chown -R zzz:zzz /meshlib/ && \
-    sudo chmod -R 777 /meshlib/
+RUN chown -R zzz:zzz /meshsdk/ && \
+    sudo chmod -R 777 /meshsdk/
 # USER zzz
 
 # Set default environment variables for source build

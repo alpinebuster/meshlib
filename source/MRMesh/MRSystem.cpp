@@ -54,7 +54,7 @@
 #endif
 
 #ifndef MR_PROJECT_NAME
-#define MR_PROJECT_NAME "MeshInspector"
+#define MR_PROJECT_NAME "MeshSDK"
 #endif
 
 namespace

@@ -69,8 +69,7 @@ public:
 
 		try
 		{
-			// Parse coordinates into Vector3f points
-			std::vector<Vector3f> inputPoints = MRJS::parseJSCoordinates( coordinates );
+			VertCoords inputPoints = MRJS::parseJSVertices( coordinates );
 
 			if ( inputPoints.size() < 2 || inputPoints.size() > 3 )
 			{

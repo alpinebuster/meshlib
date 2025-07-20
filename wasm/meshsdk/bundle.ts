@@ -2,7 +2,10 @@
 
 import { fileURLToPath } from 'url';
 import { dirname, join, normalize } from 'path';
-import { existsSync, rmSync, mkdirSync, copyFileSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import {
+	existsSync, rmSync, mkdirSync, copyFileSync,
+	readdirSync, readFileSync, writeFileSync, unlinkSync 
+} from 'fs';
 import { execSync } from 'child_process';
 
 // Get current directory (equivalent to cd "$(dirname "$0")")
@@ -19,7 +22,24 @@ async function build(): Promise<void> {
 		const debugBin = join(__dirname, '../../build/Debug/bin');
 		const releaseBin = join(__dirname, '../../build/Release/bin');
 		const binDir = existsSync(debugBin) ? debugBin : releaseBin;
-		console.log(`\n************ Using WASM bin directory: ${binDir} ************`);
+		console.log(`\n************ Using WASM Bin Directory: ${binDir} ************`);
+
+
+		// Delete `MRJavaScript.*` files in `src/`
+		const srcDir = join(__dirname, 'src');
+		const oldWasmFiles = readdirSync(srcDir).filter(f => f.startsWith('MRJavaScript.'));
+		if (oldWasmFiles.length > 0) {
+			console.log('\n');
+			console.log('----------------------------------------------------------------------');
+			for (const file of oldWasmFiles) {
+				const filePath = join(srcDir, file);
+				unlinkSync(filePath);
+				console.log(`Deleted old ${file} from \`src/\` directory`);
+			}
+			console.log('----------------------------------------------------------------------');
+		} else {
+			console.log(`No old MRJavaScript.* files found in ${srcDir}`);
+		}
 
 		// Copy `MRJavaScript.*` files from `binDir` to `src/`
 		const binFiles = readdirSync(binDir).filter(f => f.startsWith('MRJavaScript.'));
@@ -32,7 +52,7 @@ async function build(): Promise<void> {
 				const destPath = join(__dirname, 'src', file);
 				copyFileSync(srcPath, destPath);
 				console.log('----------------------------------------------------------------------');
-				console.log(`Copied WASM bin ${file} to \`src/\` directory！！！`);
+				console.log(`Copied WASM bin ${srcPath} to \`src/\` directory！！！`);
 			}
 			console.log('----------------------------------------------------------------------');
 		}
@@ -53,16 +73,15 @@ async function build(): Promise<void> {
 				console.log('Replaced type `Arguments` with `IArguments` in `MRJavaScript.d.ts`！！！');
 				console.log('----------------------------------------------------------------------\n');
 			} else {
-				console.log('No replacement needed: Either `Arguments` not found or `IArguments` already present.');
+				console.log('\nNo replacement needed: Either `Arguments` not found or `IArguments` already present.');
 			}
 		} else {
-			console.warn('`MRJavaScript.d.ts` not found, cannot replace type `Arguments`!');
+			console.warn('\n`MRJavaScript.d.ts` not found, cannot replace type `Arguments`!');
 		}
 		///
 
 
-		console.log('\n************ Starting build process ************');
-
+		console.log('\n************ Starting Bundling Process ************');
 		// Clean or create lib directory
 		if (existsSync(OUT_DIRECTORY)) {
 			console.log(`Cleaning existing ${OUT_DIRECTORY} directory...`);
@@ -72,72 +91,36 @@ async function build(): Promise<void> {
 
 		// Compile TypeScript
 		console.log('\n************ Compiling TypeScript ************');
-		execSync('npx tsc --project tsconfig.production.json', {
+		execSync('npx tsc --project tsconfig.bundle.json', {
 			stdio: 'inherit',
 			cwd: process.cwd()
 		});
 
-		// Copy required files to lib directory
-		console.log('\n************ Copying required files ************');
-		const filesToCopy = [
-			'src/MRJavaScript.wasm',
-			// 'src/MRJavaScript.data',
-			'src/MRJavaScript.d.ts',
-			'src/MRJavaScript.js'
-		];
-
-		for (const file of filesToCopy) {
-			if (existsSync(file)) {
+		// Copy required files to `lib/` directory
+		console.log('\n************ Copying Required Files ************');
+		const wasmFiles = readdirSync(srcDir).filter(f => f.startsWith('MRJavaScript.'));
+		console.log('\n');
+		for (const file of wasmFiles) {
+			const srcPath = join(srcDir, file);
+			if (existsSync(srcPath)) {
 				const fileName = file.split('/').pop()!;
-				copyFileSync(file, join(OUT_DIRECTORY, fileName));
-				console.log(`Copied ${file} to ${OUT_DIRECTORY}/`);
+				const destPath = join(__dirname, OUT_DIRECTORY, fileName);
+
+				copyFileSync(srcPath, destPath);
+
+				console.log('----------------------------------------------------------------------');
+				console.log(`Copied ${srcPath} to ${OUT_DIRECTORY}/`);
 			} else {
-				console.warn(`Warning: ${file} not found, skipping...`);
+				console.log('----------------------------------------------------------------------');
+				console.warn(`Warning: ${srcPath} not found, skipping...`);
 			}
 		}
+		console.log('----------------------------------------------------------------------');
 
-		///
-		// Bundle for different environments
-		// const environments = ['node', 'web'];
-		// for (const env of environments) {
-		// 	await bundle(env);
-		// }
-		///
-
-		console.log('\n************ Build completed successfully! ************');
+		console.log('\n************ Bundle Completed Successfully! ************');
 	} catch (error) {
-		console.error('Build failed:', error);
+		console.error('Bundle failed:', error);
 		process.exit(1);
-	}
-}
-
-// Bundle function for specific environment
-async function bundle(environment: string): Promise<void> {
-	console.log(`Bundling for ${environment} environment...`);
-
-	const envDir = join(OUT_DIRECTORY, environment);
-	mkdirSync(envDir, { recursive: true });
-
-	// Files to copy for each environment
-	const filesToBundle = [
-		'index.js',
-		'index.d.ts',
-		'MRJavaScript.js',
-		'MRJavaScript.wasm',
-		// 'MRJavaScript.data',
-		'MRJavaScript.d.ts'
-	];
-
-	for (const file of filesToBundle) {
-		const srcPath = join(OUT_DIRECTORY, file);
-		const destPath = join(envDir, file);
-
-		if (existsSync(srcPath)) {
-			copyFileSync(srcPath, destPath);
-			console.log(`  Copied ${file} to ${environment}/`);
-		} else {
-			console.warn(`  Warning: ${srcPath} not found for ${environment} bundle`);
-		}
 	}
 }
 
@@ -149,4 +132,4 @@ if (normalize(import.meta.url) === normalize(`file://${process.argv[1]}`)) {
 	});
 }
 
-export { build, bundle };
+export { build };

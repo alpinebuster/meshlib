@@ -3,10 +3,10 @@ declare namespace RuntimeExports {
     /**
      * @param {string|null=} returnType
      * @param {Array=} argTypes
-     * @param {Array=} args
+     * @param {IArguments|Array=} args
      * @param {Object=} opts
      */
-    function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: any[] | undefined, opts?: any | undefined): any;
+    function ccall(ident: any, returnType?: (string | null) | undefined, argTypes?: any[] | undefined, args?: (IArguments | any[]) | undefined, opts?: any | undefined): any;
     let HEAPU8: any;
     let HEAP32: any;
     let HEAPF32: any;
@@ -3864,7 +3864,6 @@ export interface MeshTopology extends ClassHandle {
   addPartWithPartMapping(_0: MeshTopology, _1: PartMapping, _2: boolean): void;
   addPartByMaskWithPtr(_0: MeshTopology, _1: FaceBitSet | null, _2: PartMapping): void;
   addPartByMask(_0: MeshTopology, _1: FaceBitSet, _2: PartMapping): void;
-  getAllTriVerts(): VectorArray3VertId;
   findHoleRepresentiveEdges(_0: FaceBitSet | null): VectorEdgeId;
   getLeftRing(_0: EdgeId): VectorEdgeId;
   getPathVertices(_0: VectorEdgeId): VertBitSet;
@@ -3873,6 +3872,7 @@ export interface MeshTopology extends ClassHandle {
   getLeftRings(_0: VectorEdgeId): VectorEdgePath;
   addPartByMaskWithEdgePathPtr(_0: MeshTopology, _1: FaceBitSet | null, _2: boolean, _3: VectorEdgePath, _4: VectorEdgePath, _5: PartMapping): void;
   addPartByMaskWithEdgePath(_0: MeshTopology, _1: FaceBitSet, _2: boolean, _3: VectorEdgePath, _4: VectorEdgePath, _5: PartMapping): void;
+  getAllTriVerts(): VectorArray3VertId;
   getTriVertsWithArray3VertId(_0: FaceId, _1: Array3VertId): void;
   getTriVertsWithThreeVertIds(_0: FaceId, _1: Array3VertId): void;
   getTriVertsWithFaceId(_0: FaceId): Array3VertId;
@@ -4142,7 +4142,7 @@ export interface Polyline2 extends ClassHandle {
 
 export interface PolylineTopology extends ClassHandle {
   makeEdge(): EdgeId;
-  makeEdgeWithVertId(_0: VertId, _1: VertId): EdgeId;
+  makeEdgeWithVertId(_0: VertId, _1: VertId, _2: EdgeId): EdgeId;
   isLoneEdge(_0: EdgeId): boolean;
   lastNotLoneEdge(): EdgeId;
   edgeSize(): number;
@@ -4596,14 +4596,6 @@ export interface StdVectorll extends ClassHandle {
   set(_0: number, _1: bigint): boolean;
 }
 
-export interface StdVectorUi64 extends ClassHandle {
-  push_back(_0: bigint): void;
-  resize(_0: number, _1: bigint): void;
-  size(): number;
-  get(_0: number): bigint | undefined;
-  set(_0: number, _1: bigint): boolean;
-}
-
 export interface VectorStdVectori extends ClassHandle {
   push_back(_0: StdVectori): void;
   resize(_0: number, _1: StdVectori): void;
@@ -4634,14 +4626,6 @@ export interface VectorStdVectorll extends ClassHandle {
   size(): number;
   get(_0: number): StdVectorll | undefined;
   set(_0: number, _1: StdVectorll): boolean;
-}
-
-export interface VectorStdVectorUi64 extends ClassHandle {
-  push_back(_0: StdVectorUi64): void;
-  resize(_0: number, _1: StdVectorUi64): void;
-  size(): number;
-  get(_0: number): StdVectorUi64 | undefined;
-  set(_0: number, _1: StdVectorUi64): boolean;
 }
 
 export interface VectorArray3StdVectori extends ClassHandle {
@@ -4676,12 +4660,36 @@ export interface VectorArray3StdVectorll extends ClassHandle {
   set(_0: number, _1: Array3Stdll): boolean;
 }
 
-export interface VectorArray3StdVectorUi64 extends ClassHandle {
+export interface VectorVectorStdi extends ClassHandle {
   size(): number;
-  get(_0: number): Array3StdUi64 | undefined;
-  push_back(_0: Array3StdUi64): void;
-  resize(_0: number, _1: Array3StdUi64): void;
-  set(_0: number, _1: Array3StdUi64): boolean;
+  get(_0: number): VectorIntSizeT | undefined;
+  push_back(_0: VectorIntSizeT): void;
+  resize(_0: number, _1: VectorIntSizeT): void;
+  set(_0: number, _1: VectorIntSizeT): boolean;
+}
+
+export interface VectorVectorStdd extends ClassHandle {
+  size(): number;
+  get(_0: number): VectorFloatSizeT | undefined;
+  push_back(_0: VectorFloatSizeT): void;
+  resize(_0: number, _1: VectorFloatSizeT): void;
+  set(_0: number, _1: VectorFloatSizeT): boolean;
+}
+
+export interface VectorVectorStdf extends ClassHandle {
+  size(): number;
+  get(_0: number): VectorDoubleSizeT | undefined;
+  push_back(_0: VectorDoubleSizeT): void;
+  resize(_0: number, _1: VectorDoubleSizeT): void;
+  set(_0: number, _1: VectorDoubleSizeT): boolean;
+}
+
+export interface VectorVectorStdll extends ClassHandle {
+  size(): number;
+  get(_0: number): VectorLongLongSizeT | undefined;
+  push_back(_0: VectorLongLongSizeT): void;
+  resize(_0: number, _1: VectorLongLongSizeT): void;
+  set(_0: number, _1: VectorLongLongSizeT): boolean;
 }
 
 export interface VectorMeshPiece extends ClassHandle {
@@ -4921,14 +4929,6 @@ export interface VectorVectorMeshTriPoint extends ClassHandle {
   set(_0: number, _1: VectorMeshTriPoint): boolean;
 }
 
-export interface VectorSurfacePaths extends ClassHandle {
-  push_back(_0: SurfacePaths): void;
-  resize(_0: number, _1: SurfacePaths): void;
-  size(): number;
-  get(_0: number): SurfacePaths | undefined;
-  set(_0: number, _1: SurfacePaths): boolean;
-}
-
 export interface VectorArray2Vector2i extends ClassHandle {
   size(): number;
   get(_0: number): Array2Vector2i | undefined;
@@ -5026,91 +5026,216 @@ export interface VectorArray3Triangle3d extends ClassHandle {
   set(_0: number, _1: Array3Triangle3d): boolean;
 }
 
-export interface VectorVectorUndirectedEdgeId extends ClassHandle {
+export interface VectorEdgeId extends ClassHandle {
+  push_back(_0: EdgeId): void;
+  resize(_0: number, _1: EdgeId): void;
   size(): number;
-  get(_0: number): VectorUndirectedEdgeId | undefined;
+  get(_0: number): EdgeId | undefined;
+  set(_0: number, _1: EdgeId): boolean;
+}
+
+export interface VectorUndirectedEdgeId extends ClassHandle {
+  push_back(_0: UndirectedEdgeId): void;
+  resize(_0: number, _1: UndirectedEdgeId): void;
+  size(): number;
+  get(_0: number): UndirectedEdgeId | undefined;
+  set(_0: number, _1: UndirectedEdgeId): boolean;
+}
+
+export interface VectorFaceId extends ClassHandle {
+  push_back(_0: FaceId): void;
+  resize(_0: number, _1: FaceId): void;
+  size(): number;
+  get(_0: number): FaceId | undefined;
+  set(_0: number, _1: FaceId): boolean;
+}
+
+export interface VectorVertId extends ClassHandle {
+  push_back(_0: VertId): void;
+  resize(_0: number, _1: VertId): void;
+  size(): number;
+  get(_0: number): VertId | undefined;
+  set(_0: number, _1: VertId): boolean;
+}
+
+export interface VectorPixelId extends ClassHandle {
+  push_back(_0: PixelId): void;
+  resize(_0: number, _1: PixelId): void;
+  size(): number;
+  get(_0: number): PixelId | undefined;
+  set(_0: number, _1: PixelId): boolean;
+}
+
+export interface VectorVoxelId extends ClassHandle {
+  push_back(_0: VoxelId): void;
+  resize(_0: number, _1: VoxelId): void;
+  size(): number;
+  get(_0: number): VoxelId | undefined;
+  set(_0: number, _1: VoxelId): boolean;
+}
+
+export interface VectorRegionId extends ClassHandle {
+  push_back(_0: RegionId): void;
+  resize(_0: number, _1: RegionId): void;
+  size(): number;
+  get(_0: number): RegionId | undefined;
+  set(_0: number, _1: RegionId): boolean;
+}
+
+export interface VectorNodeId extends ClassHandle {
+  push_back(_0: NodeId): void;
+  resize(_0: number, _1: NodeId): void;
+  size(): number;
+  get(_0: number): NodeId | undefined;
+  set(_0: number, _1: NodeId): boolean;
+}
+
+export interface VectorObjId extends ClassHandle {
+  push_back(_0: ObjId): void;
+  resize(_0: number, _1: ObjId): void;
+  size(): number;
+  get(_0: number): ObjId | undefined;
+  set(_0: number, _1: ObjId): boolean;
+}
+
+export interface VectorTextureId extends ClassHandle {
+  push_back(_0: TextureId): void;
+  resize(_0: number, _1: TextureId): void;
+  size(): number;
+  get(_0: number): TextureId | undefined;
+  set(_0: number, _1: TextureId): boolean;
+}
+
+export interface VectorGraphVertId extends ClassHandle {
+  push_back(_0: GraphVertId): void;
+  resize(_0: number, _1: GraphVertId): void;
+  size(): number;
+  get(_0: number): GraphVertId | undefined;
+  set(_0: number, _1: GraphVertId): boolean;
+}
+
+export interface VectorGraphEdgeId extends ClassHandle {
+  push_back(_0: GraphEdgeId): void;
+  resize(_0: number, _1: GraphEdgeId): void;
+  size(): number;
+  get(_0: number): GraphEdgeId | undefined;
+  set(_0: number, _1: GraphEdgeId): boolean;
+}
+
+export interface VectorEdgePath extends ClassHandle {
+  push_back(_0: VectorEdgeId): void;
+  resize(_0: number, _1: VectorEdgeId): void;
+  size(): number;
+  get(_0: number): VectorEdgeId | undefined;
+  set(_0: number, _1: VectorEdgeId): boolean;
+}
+
+export type CutMeshResult = {
+  resultCut: VectorEdgePath,
+  fbsWithContourIntersections: FaceBitSet
+};
+
+export interface VectorVectorEdgePath extends ClassHandle {
+  push_back(_0: VectorEdgePath): void;
+  resize(_0: number, _1: VectorEdgePath): void;
+  size(): number;
+  get(_0: number): VectorEdgePath | undefined;
+  set(_0: number, _1: VectorEdgePath): boolean;
+}
+
+export interface VectorSurfacePaths extends ClassHandle {
+  push_back(_0: SurfacePaths): void;
+  resize(_0: number, _1: SurfacePaths): void;
+  size(): number;
+  get(_0: number): SurfacePaths | undefined;
+  set(_0: number, _1: SurfacePaths): boolean;
+}
+
+export interface VectorVectorUndirectedEdgeId extends ClassHandle {
   push_back(_0: VectorUndirectedEdgeId): void;
   resize(_0: number, _1: VectorUndirectedEdgeId): void;
+  size(): number;
+  get(_0: number): VectorUndirectedEdgeId | undefined;
   set(_0: number, _1: VectorUndirectedEdgeId): boolean;
 }
 
 export interface VectorVectorFaceId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorFaceId | undefined;
   push_back(_0: VectorFaceId): void;
   resize(_0: number, _1: VectorFaceId): void;
+  size(): number;
+  get(_0: number): VectorFaceId | undefined;
   set(_0: number, _1: VectorFaceId): boolean;
 }
 
 export interface VectorVectorVertId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorVertId | undefined;
   push_back(_0: VectorVertId): void;
   resize(_0: number, _1: VectorVertId): void;
+  size(): number;
+  get(_0: number): VectorVertId | undefined;
   set(_0: number, _1: VectorVertId): boolean;
 }
 
 export interface VectorVectorPixelId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorPixelId | undefined;
   push_back(_0: VectorPixelId): void;
   resize(_0: number, _1: VectorPixelId): void;
+  size(): number;
+  get(_0: number): VectorPixelId | undefined;
   set(_0: number, _1: VectorPixelId): boolean;
 }
 
 export interface VectorVectorVoxelId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorVoxelId | undefined;
   push_back(_0: VectorVoxelId): void;
   resize(_0: number, _1: VectorVoxelId): void;
+  size(): number;
+  get(_0: number): VectorVoxelId | undefined;
   set(_0: number, _1: VectorVoxelId): boolean;
 }
 
 export interface VectorVectorRegionId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorRegionId | undefined;
   push_back(_0: VectorRegionId): void;
   resize(_0: number, _1: VectorRegionId): void;
+  size(): number;
+  get(_0: number): VectorRegionId | undefined;
   set(_0: number, _1: VectorRegionId): boolean;
 }
 
 export interface VectorVectorNodeId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorNodeId | undefined;
   push_back(_0: VectorNodeId): void;
   resize(_0: number, _1: VectorNodeId): void;
+  size(): number;
+  get(_0: number): VectorNodeId | undefined;
   set(_0: number, _1: VectorNodeId): boolean;
 }
 
 export interface VectorVectorObjId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorObjId | undefined;
   push_back(_0: VectorObjId): void;
   resize(_0: number, _1: VectorObjId): void;
+  size(): number;
+  get(_0: number): VectorObjId | undefined;
   set(_0: number, _1: VectorObjId): boolean;
 }
 
 export interface VectorVectorTextureId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorTextureId | undefined;
   push_back(_0: VectorTextureId): void;
   resize(_0: number, _1: VectorTextureId): void;
+  size(): number;
+  get(_0: number): VectorTextureId | undefined;
   set(_0: number, _1: VectorTextureId): boolean;
 }
 
 export interface VectorVectorGraphVertId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorGraphVertId | undefined;
   push_back(_0: VectorGraphVertId): void;
   resize(_0: number, _1: VectorGraphVertId): void;
+  size(): number;
+  get(_0: number): VectorGraphVertId | undefined;
   set(_0: number, _1: VectorGraphVertId): boolean;
 }
 
 export interface VectorVectorGraphEdgeId extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorGraphEdgeId | undefined;
   push_back(_0: VectorGraphEdgeId): void;
   resize(_0: number, _1: VectorGraphEdgeId): void;
+  size(): number;
+  get(_0: number): VectorGraphEdgeId | undefined;
   set(_0: number, _1: VectorGraphEdgeId): boolean;
 }
 
@@ -5522,123 +5647,6 @@ export interface VectorArray4GraphEdgeId extends ClassHandle {
   set(_0: number, _1: Array4GraphEdgeId): boolean;
 }
 
-export interface VectorEdgeId extends ClassHandle {
-  push_back(_0: EdgeId): void;
-  resize(_0: number, _1: EdgeId): void;
-  size(): number;
-  get(_0: number): EdgeId | undefined;
-  set(_0: number, _1: EdgeId): boolean;
-}
-
-export interface VectorUndirectedEdgeId extends ClassHandle {
-  push_back(_0: UndirectedEdgeId): void;
-  resize(_0: number, _1: UndirectedEdgeId): void;
-  size(): number;
-  get(_0: number): UndirectedEdgeId | undefined;
-  set(_0: number, _1: UndirectedEdgeId): boolean;
-}
-
-export interface VectorFaceId extends ClassHandle {
-  push_back(_0: FaceId): void;
-  resize(_0: number, _1: FaceId): void;
-  size(): number;
-  get(_0: number): FaceId | undefined;
-  set(_0: number, _1: FaceId): boolean;
-}
-
-export interface VectorVertId extends ClassHandle {
-  push_back(_0: VertId): void;
-  resize(_0: number, _1: VertId): void;
-  size(): number;
-  get(_0: number): VertId | undefined;
-  set(_0: number, _1: VertId): boolean;
-}
-
-export interface VectorPixelId extends ClassHandle {
-  push_back(_0: PixelId): void;
-  resize(_0: number, _1: PixelId): void;
-  size(): number;
-  get(_0: number): PixelId | undefined;
-  set(_0: number, _1: PixelId): boolean;
-}
-
-export interface VectorVoxelId extends ClassHandle {
-  push_back(_0: VoxelId): void;
-  resize(_0: number, _1: VoxelId): void;
-  size(): number;
-  get(_0: number): VoxelId | undefined;
-  set(_0: number, _1: VoxelId): boolean;
-}
-
-export interface VectorRegionId extends ClassHandle {
-  push_back(_0: RegionId): void;
-  resize(_0: number, _1: RegionId): void;
-  size(): number;
-  get(_0: number): RegionId | undefined;
-  set(_0: number, _1: RegionId): boolean;
-}
-
-export interface VectorNodeId extends ClassHandle {
-  push_back(_0: NodeId): void;
-  resize(_0: number, _1: NodeId): void;
-  size(): number;
-  get(_0: number): NodeId | undefined;
-  set(_0: number, _1: NodeId): boolean;
-}
-
-export interface VectorObjId extends ClassHandle {
-  push_back(_0: ObjId): void;
-  resize(_0: number, _1: ObjId): void;
-  size(): number;
-  get(_0: number): ObjId | undefined;
-  set(_0: number, _1: ObjId): boolean;
-}
-
-export interface VectorTextureId extends ClassHandle {
-  push_back(_0: TextureId): void;
-  resize(_0: number, _1: TextureId): void;
-  size(): number;
-  get(_0: number): TextureId | undefined;
-  set(_0: number, _1: TextureId): boolean;
-}
-
-export interface VectorGraphVertId extends ClassHandle {
-  push_back(_0: GraphVertId): void;
-  resize(_0: number, _1: GraphVertId): void;
-  size(): number;
-  get(_0: number): GraphVertId | undefined;
-  set(_0: number, _1: GraphVertId): boolean;
-}
-
-export interface VectorGraphEdgeId extends ClassHandle {
-  push_back(_0: GraphEdgeId): void;
-  resize(_0: number, _1: GraphEdgeId): void;
-  size(): number;
-  get(_0: number): GraphEdgeId | undefined;
-  set(_0: number, _1: GraphEdgeId): boolean;
-}
-
-export interface VectorEdgePath extends ClassHandle {
-  push_back(_0: VectorEdgeId): void;
-  resize(_0: number, _1: VectorEdgeId): void;
-  size(): number;
-  get(_0: number): VectorEdgeId | undefined;
-  set(_0: number, _1: VectorEdgeId): boolean;
-}
-
-export type CutMeshResult = {
-  resultCut: VectorEdgePath,
-  fbsWithContourIntersections: FaceBitSet
-};
-
-export interface VectorVectorEdgePath extends ClassHandle {
-  push_back(_0: VectorEdgePath): void;
-  resize(_0: number, _1: VectorEdgePath): void;
-  size(): number;
-  get(_0: number): VectorEdgePath | undefined;
-  set(_0: number, _1: VectorEdgePath): boolean;
-}
-
 export interface EdgeHashMapEntries extends ClassHandle {
   push_back(_0: EdgeIdPair): void;
   resize(_0: number, _1: EdgeIdPair): void;
@@ -5759,54 +5767,6 @@ export interface VectorVert2RegionMap extends ClassHandle {
   size(): number;
   get(_0: number): Vert2RegionMap | undefined;
   set(_0: number, _1: Vert2RegionMap): boolean;
-}
-
-export interface VectorVectorStdi extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorIntSizeT | undefined;
-  push_back(_0: VectorIntSizeT): void;
-  resize(_0: number, _1: VectorIntSizeT): void;
-  set(_0: number, _1: VectorIntSizeT): boolean;
-}
-
-export interface VectorVectorStdd extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorFloatSizeT | undefined;
-  push_back(_0: VectorFloatSizeT): void;
-  resize(_0: number, _1: VectorFloatSizeT): void;
-  set(_0: number, _1: VectorFloatSizeT): boolean;
-}
-
-export interface VectorVectorStdf extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorDoubleSizeT | undefined;
-  push_back(_0: VectorDoubleSizeT): void;
-  resize(_0: number, _1: VectorDoubleSizeT): void;
-  set(_0: number, _1: VectorDoubleSizeT): boolean;
-}
-
-export interface VectorVectorStdll extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorLongLongSizeT | undefined;
-  push_back(_0: VectorLongLongSizeT): void;
-  resize(_0: number, _1: VectorLongLongSizeT): void;
-  set(_0: number, _1: VectorLongLongSizeT): boolean;
-}
-
-export interface VectorVectorStdSizeT extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorSizeTSizeT | undefined;
-  push_back(_0: VectorSizeTSizeT): void;
-  resize(_0: number, _1: VectorSizeTSizeT): void;
-  set(_0: number, _1: VectorSizeTSizeT): boolean;
-}
-
-export interface VectorVectorStdUi64 extends ClassHandle {
-  size(): number;
-  get(_0: number): VectorUi64SizeT | undefined;
-  push_back(_0: VectorUi64SizeT): void;
-  resize(_0: number, _1: VectorUi64SizeT): void;
-  set(_0: number, _1: VectorUi64SizeT): boolean;
 }
 
 export interface VectorVector2f extends ClassHandle {
@@ -6049,41 +6009,35 @@ export interface VectorVectorVector4d extends ClassHandle {
   set(_0: number, _1: VectorVector4d): boolean;
 }
 
+export type Array2Stdi = [ number, number ];
+
+export type Array2Stdf = [ number, number ];
+
+export type Array2Stdll = [ bigint, bigint ];
+
+export type Array2Stdd = [ number, number ];
+
+export type Array3Stdi = [ number, number, number ];
+
+export type Array3Stdf = [ number, number, number ];
+
+export type Array3Stdll = [ bigint, bigint, bigint ];
+
+export type Array3Stdd = [ number, number, number ];
+
+export type Array4Stdi = [ number, number, number, number ];
+
+export type Array4Stdf = [ number, number, number, number ];
+
+export type Array4Stdll = [ bigint, bigint, bigint, bigint ];
+
+export type Array4Stdd = [ number, number, number, number ];
+
 export type Array2WeightedVertex = [ WeightedVertex, WeightedVertex ];
 
 export type Array3WeightedVertex = [ WeightedVertex, WeightedVertex, WeightedVertex ];
 
 export type Array4WeightedVertex = [ WeightedVertex, WeightedVertex, WeightedVertex, WeightedVertex ];
-
-export type Array2Stdf = [ number, number ];
-
-export type Array2Stdd = [ number, number ];
-
-export type Array2Stdi = [ number, number ];
-
-export type Array2Stdll = [ bigint, bigint ];
-
-export type Array2StdUi64 = [ bigint, bigint ];
-
-export type Array3Stdf = [ number, number, number ];
-
-export type Array3Stdd = [ number, number, number ];
-
-export type Array3Stdi = [ number, number, number ];
-
-export type Array3Stdll = [ bigint, bigint, bigint ];
-
-export type Array3StdUi64 = [ bigint, bigint, bigint ];
-
-export type Array4Stdf = [ number, number, number, number ];
-
-export type Array4Stdd = [ number, number, number, number ];
-
-export type Array4Stdi = [ number, number, number, number ];
-
-export type Array4Stdll = [ bigint, bigint, bigint, bigint ];
-
-export type Array4StdUi64 = [ bigint, bigint, bigint, bigint ];
 
 export type Array2EdgeId = [ EdgeId, EdgeId ];
 
@@ -7730,41 +7684,6 @@ export interface VectorSizeTSizeT extends ClassHandle {
   notEquals(_0: VectorSizeTSizeT): boolean;
 }
 
-export interface VectorUi64SizeT extends ClassHandle {
-  size(): number;
-  empty(): boolean;
-  clear(): void;
-  capacity(): number;
-  reserve(_0: number): void;
-  resize(_0: number): void;
-  resizeWithValue(_0: number, _1: bigint): void;
-  resizeWithReserve(_0: number): void;
-  resizeWithReserveAndValue(_0: number, _1: bigint): void;
-  get(_0: number): bigint;
-  set(_0: number): bigint;
-  getByIndex(_0: number): bigint;
-  getByIndexMutable(_0: number): bigint;
-  getAt(_0: number): bigint;
-  setAt(_0: number, _1: bigint): boolean;
-  frontConst(): bigint;
-  front(): bigint;
-  backConst(): bigint;
-  back(): bigint;
-  pushBack(_0: bigint): void;
-  popBack(): void;
-  emplaceBack(_0: bigint): bigint;
-  beginId(): number;
-  backId(): number;
-  endId(): number;
-  autoResizeAt(_0: number): bigint;
-  autoResizeSetWithRange(_0: number, _1: number, _2: bigint): void;
-  autoResizeSet(_0: number, _1: bigint): void;
-  swap(_0: VectorUi64SizeT): void;
-  heapBytes(): number;
-  equals(_0: VectorUi64SizeT): boolean;
-  notEquals(_0: VectorUi64SizeT): boolean;
-}
-
 export interface Vector2i extends ClassHandle {
   x: number;
   y: number;
@@ -8611,7 +8530,8 @@ interface EmbindModule {
   Mesh: {
     new(): Mesh;
     fromTrianglesMemoryView(_0: any, _1: any): Mesh;
-    fromTrianglesArray(_0: any, _1: any): Mesh | null;
+    fromTrianglesArray(_0: any, _1: any): Mesh;
+    fromTrianglesArrayTest(_0: any, _1: any): any;
     getGeometry(_0: Mesh): any;
   };
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
@@ -8623,7 +8543,6 @@ interface EmbindModule {
   edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetricWrapper;
   smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
   calculateRecommendedVoxelSizeImpl(_0: Mesh, _1: number): number;
-  computeVertexNormalsImpl(_0: Mesh): any;
   MeshWrapper: {
     new(): MeshWrapper;
     new(_0: Mesh): MeshWrapper;
@@ -9435,9 +9354,6 @@ interface EmbindModule {
   StdVectorll: {
     new(): StdVectorll;
   };
-  StdVectorUi64: {
-    new(): StdVectorUi64;
-  };
   VectorStdVectori: {
     new(): VectorStdVectori;
   };
@@ -9449,9 +9365,6 @@ interface EmbindModule {
   };
   VectorStdVectorll: {
     new(): VectorStdVectorll;
-  };
-  VectorStdVectorUi64: {
-    new(): VectorStdVectorUi64;
   };
   VectorArray3StdVectori: {
     new(): VectorArray3StdVectori;
@@ -9465,8 +9378,17 @@ interface EmbindModule {
   VectorArray3StdVectorll: {
     new(): VectorArray3StdVectorll;
   };
-  VectorArray3StdVectorUi64: {
-    new(): VectorArray3StdVectorUi64;
+  VectorVectorStdi: {
+    new(): VectorVectorStdi;
+  };
+  VectorVectorStdd: {
+    new(): VectorVectorStdd;
+  };
+  VectorVectorStdf: {
+    new(): VectorVectorStdf;
+  };
+  VectorVectorStdll: {
+    new(): VectorVectorStdll;
   };
   VectorMeshPiece: {
     new(): VectorMeshPiece;
@@ -9579,9 +9501,6 @@ interface EmbindModule {
   VectorVectorMeshTriPoint: {
     new(): VectorVectorMeshTriPoint;
   };
-  VectorSurfacePaths: {
-    new(): VectorSurfacePaths;
-  };
   VectorArray2Vector2i: {
     new(): VectorArray2Vector2i;
   };
@@ -9618,6 +9537,70 @@ interface EmbindModule {
   fromPointTriples(_0: VectorArray3Triangle3f): Mesh;
   VectorArray3Triangle3d: {
     new(): VectorArray3Triangle3d;
+  };
+  VectorEdgeId: {
+    new(): VectorEdgeId;
+  };
+  fillContourLeft(_0: MeshTopology, _1: VectorEdgeId): FaceBitSet;
+  fillHoles(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): void;
+  isHoleBd(_0: MeshTopology, _1: VectorEdgeId): boolean;
+  getHoleFillPlans(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): VectorHoleFillPlan;
+  getPlanarHoleFillPlans(_0: Mesh, _1: VectorEdgeId): VectorHoleFillPlan;
+  extendAllHoles(_0: Mesh, _1: Plane3f, _2: FaceBitSet | null): VectorEdgeId;
+  extendAllHolesBasicImpl(_0: Mesh, _1: Plane3f): VectorEdgeId;
+  trackLeftBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
+  trackRightBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
+  VectorUndirectedEdgeId: {
+    new(): VectorUndirectedEdgeId;
+  };
+  VectorFaceId: {
+    new(): VectorFaceId;
+  };
+  findCollidingEdgeTrisPrecise_MeshEdges(_0: Mesh, _1: VectorEdgeId, _2: Mesh, _3: VectorFaceId, _4: ConvertToIntVector, _5: AffineXf3f | null): VectorEdgeTri;
+  findCollidingEdgeTrisPrecise_MeshFaces(_0: Mesh, _1: VectorFaceId, _2: Mesh, _3: VectorEdgeId, _4: ConvertToIntVector, _5: AffineXf3f | null): VectorEdgeTri;
+  VectorVertId: {
+    new(): VectorVertId;
+  };
+  addTrianglesWithVertTriples(_0: MeshTopology, _1: VectorVertId, _2: FaceBitSet | null): void;
+  VectorPixelId: {
+    new(): VectorPixelId;
+  };
+  VectorVoxelId: {
+    new(): VectorVoxelId;
+  };
+  VectorRegionId: {
+    new(): VectorRegionId;
+  };
+  VectorNodeId: {
+    new(): VectorNodeId;
+  };
+  VectorObjId: {
+    new(): VectorObjId;
+  };
+  VectorTextureId: {
+    new(): VectorTextureId;
+  };
+  VectorGraphVertId: {
+    new(): VectorGraphVertId;
+  };
+  VectorGraphEdgeId: {
+    new(): VectorGraphEdgeId;
+  };
+  VectorEdgePath: {
+    new(): VectorEdgePath;
+  };
+  doBooleanOperation(_0: Mesh, _1: Mesh, _2: VectorEdgePath, _3: VectorEdgePath, _4: BooleanOperation, _5: AffineXf3f | null, _6: BooleanResultMapper | null, _7: boolean, _8: BooleanInternalParameters): ExpectedMesh;
+  cutMesh(_0: Mesh, _1: OneMeshContours, _2: CutMeshParameters): CutMeshResult;
+  fillContourLeftMultiple(_0: MeshTopology, _1: VectorEdgePath): FaceBitSet;
+  findLeftBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
+  findRightBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
+  delRegionKeepBd(_0: Mesh, _1: FaceBitSet | null, _2: boolean): VectorEdgePath;
+  findLeftBoundaryInsideMesh(_0: MeshTopology, _1: FaceBitSet): VectorEdgePath;
+  VectorVectorEdgePath: {
+    new(): VectorVectorEdgePath;
+  };
+  VectorSurfacePaths: {
+    new(): VectorSurfacePaths;
   };
   VectorVectorUndirectedEdgeId: {
     new(): VectorVectorUndirectedEdgeId;
@@ -9805,67 +9788,6 @@ interface EmbindModule {
   VectorArray4GraphEdgeId: {
     new(): VectorArray4GraphEdgeId;
   };
-  VectorEdgeId: {
-    new(): VectorEdgeId;
-  };
-  fillContourLeft(_0: MeshTopology, _1: VectorEdgeId): FaceBitSet;
-  fillHoles(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): void;
-  isHoleBd(_0: MeshTopology, _1: VectorEdgeId): boolean;
-  getHoleFillPlans(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): VectorHoleFillPlan;
-  getPlanarHoleFillPlans(_0: Mesh, _1: VectorEdgeId): VectorHoleFillPlan;
-  extendAllHoles(_0: Mesh, _1: Plane3f, _2: FaceBitSet | null): VectorEdgeId;
-  extendAllHolesBasicImpl(_0: Mesh, _1: Plane3f): VectorEdgeId;
-  trackLeftBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
-  trackRightBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
-  VectorUndirectedEdgeId: {
-    new(): VectorUndirectedEdgeId;
-  };
-  VectorFaceId: {
-    new(): VectorFaceId;
-  };
-  findCollidingEdgeTrisPrecise_MeshEdges(_0: Mesh, _1: VectorEdgeId, _2: Mesh, _3: VectorFaceId, _4: ConvertToIntVector, _5: AffineXf3f | null): VectorEdgeTri;
-  findCollidingEdgeTrisPrecise_MeshFaces(_0: Mesh, _1: VectorFaceId, _2: Mesh, _3: VectorEdgeId, _4: ConvertToIntVector, _5: AffineXf3f | null): VectorEdgeTri;
-  VectorVertId: {
-    new(): VectorVertId;
-  };
-  addTrianglesWithVertTriples(_0: MeshTopology, _1: VectorVertId, _2: FaceBitSet | null): void;
-  VectorPixelId: {
-    new(): VectorPixelId;
-  };
-  VectorVoxelId: {
-    new(): VectorVoxelId;
-  };
-  VectorRegionId: {
-    new(): VectorRegionId;
-  };
-  VectorNodeId: {
-    new(): VectorNodeId;
-  };
-  VectorObjId: {
-    new(): VectorObjId;
-  };
-  VectorTextureId: {
-    new(): VectorTextureId;
-  };
-  VectorGraphVertId: {
-    new(): VectorGraphVertId;
-  };
-  VectorGraphEdgeId: {
-    new(): VectorGraphEdgeId;
-  };
-  VectorEdgePath: {
-    new(): VectorEdgePath;
-  };
-  doBooleanOperation(_0: Mesh, _1: Mesh, _2: VectorEdgePath, _3: VectorEdgePath, _4: BooleanOperation, _5: AffineXf3f | null, _6: BooleanResultMapper | null, _7: boolean, _8: BooleanInternalParameters): ExpectedMesh;
-  cutMesh(_0: Mesh, _1: OneMeshContours, _2: CutMeshParameters): CutMeshResult;
-  fillContourLeftMultiple(_0: MeshTopology, _1: VectorEdgePath): FaceBitSet;
-  findLeftBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
-  findRightBoundary(_0: MeshTopology, _1: FaceBitSet | null): VectorEdgePath;
-  delRegionKeepBd(_0: Mesh, _1: FaceBitSet | null, _2: boolean): VectorEdgePath;
-  findLeftBoundaryInsideMesh(_0: MeshTopology, _1: FaceBitSet): VectorEdgePath;
-  VectorVectorEdgePath: {
-    new(): VectorVectorEdgePath;
-  };
   EdgeHashMapEntries: {
     new(): EdgeHashMapEntries;
   };
@@ -9914,24 +9836,6 @@ interface EmbindModule {
   };
   VectorVert2RegionMap: {
     new(): VectorVert2RegionMap;
-  };
-  VectorVectorStdi: {
-    new(): VectorVectorStdi;
-  };
-  VectorVectorStdd: {
-    new(): VectorVectorStdd;
-  };
-  VectorVectorStdf: {
-    new(): VectorVectorStdf;
-  };
-  VectorVectorStdll: {
-    new(): VectorVectorStdll;
-  };
-  VectorVectorStdSizeT: {
-    new(): VectorVectorStdSizeT;
-  };
-  VectorVectorStdUi64: {
-    new(): VectorVectorStdUi64;
   };
   VectorVector2f: {
     new(): VectorVector2f;
@@ -10354,11 +10258,6 @@ interface EmbindModule {
     new(): VectorSizeTSizeT;
     new(_0: number): VectorSizeTSizeT;
     new(_0: number, _1: number): VectorSizeTSizeT;
-  };
-  VectorUi64SizeT: {
-    new(): VectorUi64SizeT;
-    new(_0: number): VectorUi64SizeT;
-    new(_0: number, _1: bigint): VectorUi64SizeT;
   };
   getAti(_0: VectorIntSizeT, _1: number, _2: number): number;
   getAtf(_0: VectorFloatSizeT, _1: number, _2: number): number;
