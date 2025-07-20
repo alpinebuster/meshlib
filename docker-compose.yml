@@ -25,7 +25,7 @@ services:
       # target: development
     image: zzz/meshsdk-emscripten-build-server
     pull_policy: never
-    container_name: meshlib_emscripten_build_server
+    container_name: meshsdk_emscripten_build_server
     volumes:
       - ./cmake:/meshsdk/cmake
       - ./source:/meshsdk/source
@@ -78,7 +78,7 @@ services:
       dockerfile: docker/emscripten.dev.Dockerfile
     image: zzz/meshsdk-emscripten-build-server
     pull_policy: never
-    container_name: meshlib_emscripten_build_server-single
+    container_name: meshsdk_emscripten_build_server-singlethreaded
     volumes:
       - ./cmake:/meshsdk/cmake
       - ./source:/meshsdk/source
@@ -100,12 +100,12 @@ services:
     command: >
       bash -c "
         echo '=== MeshLib Emscripten Build (Single-threaded, 32-bit) ===' &&
-        echo 'Using pre-built single-threaded thirdparty dependencies.' &&
+        echo 'Using pre-built singlethreaded thirdparty dependencies.' &&
         ln -s /usr/local/lib/emscripten-single/bin /meshsdk/bin &&
         ln -s /usr/local/lib/emscripten-single/include /meshsdk/include &&
         ln -s /usr/local/lib/emscripten-single/lib /meshsdk/lib &&
         ln -s /usr/local/lib/emscripten-single/share /meshsdk/share &&
-        echo 'Building source code in single-threaded mode...' &&
+        echo 'Building source code in singlethreaded mode...' &&
         ./scripts/build_source.sh &&
         
         echo 'Single-threaded build completed!' &&
@@ -125,7 +125,7 @@ services:
       dockerfile: docker/emscripten.dev.Dockerfile
     image: zzz/meshsdk-emscripten-build-server
     pull_policy: never
-    container_name: meshlib_emscripten_build_server-wasm64
+    container_name: meshsdk_emscripten_build_server-wasm64
     volumes:
       - ./cmake:/meshsdk/cmake
       - ./source:/meshsdk/source

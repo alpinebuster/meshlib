@@ -942,8 +942,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					Mesh mesh;
 					VertCoords verts;
 					Triangulation triangles;
+					int numVerts = verticesLength / 3;
 					int numTris = indicesLength / 3;
-					verts.resize( numTris );
+					verts.resize( numVerts );
 
 					for ( int i = 0; i < numTris; ++i )
 					{
@@ -1017,9 +1018,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
-					// std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+					std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
 					std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
-					// const float* verticesPtr = verticesVec.data();
+					const float* verticesPtr = verticesVec.data();
 					const uint32_t* indicesPtr = indicesVec.data();
 					///
 
@@ -1028,8 +1029,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					Mesh mesh;
 					VertCoords verts;
 					Triangulation triangles;
+					int numVerts = verticesLength / 3;
 					int numTris = indicesLength / 3;
-					verts.resize( numTris );
+					verts.resize( numVerts );
 
 					for ( int i = 0; i < numTris; ++i )
 					{
@@ -1040,26 +1042,26 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 						threevrtids[1] = static_cast< VertId >( indicesPtr[fId + 1] );
 						threevrtids[2] = static_cast< VertId >( indicesPtr[fId + 2] );
 
-						// auto id1 = threevrtids[0];
-						// auto id2 = threevrtids[1];
-						// auto id3 = threevrtids[2];
+						auto id1 = threevrtids[0];
+						auto id2 = threevrtids[1];
+						auto id3 = threevrtids[2];
 
 						triangles.push_back( threevrtids );
 
 						// FIXME
-						// int vIdx1 = static_cast<int>(id1) * 3;
-						// int vIdx2 = static_cast<int>(id2) * 3;
-						// int vIdx3 = static_cast<int>(id3) * 3;
+						int vIdx1 = static_cast<int>(id1) * 3;
+						int vIdx2 = static_cast<int>(id2) * 3;
+						int vIdx3 = static_cast<int>(id3) * 3;
 
-						// verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
-						// verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
-						// verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
+						verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
+						verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
+						verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
 					}
 					///
 
-					// mesh = Mesh::fromTriangles( verts, triangles );
+					mesh = Mesh::fromTriangles( verts, triangles );
 					meshObj.set( "success", true );
-					// meshObj.set( "mesh", MRJS::exportMeshMemoryView( mesh ) );
+					meshObj.set( "mesh", MRJS::exportMeshMemoryView( mesh ) );
 					return meshObj;
 				}
 				catch ( const std::exception& e )

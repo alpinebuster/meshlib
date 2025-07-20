@@ -66,7 +66,7 @@ RUN echo "Building thirdparty dependencies (default: multithreaded, 32-bit)..." 
 # Build thirdparty dependencies for single-threaded configuration
 # This creates a separate installation to avoid conflicts
 ENV MR_EMSCRIPTEN_SINGLE=ON
-RUN echo "Building thirdparty dependencies (single-threaded, 32-bit)..." && \
+RUN echo "Building thirdparty dependencies (singlethreaded, 32-bit)..." && \
     ./scripts/build_thirdparty.sh && \
     ./scripts/cmake_install.sh /usr/local/lib/emscripten-single && \
     echo "Cleaning up build artifacts..." && \
