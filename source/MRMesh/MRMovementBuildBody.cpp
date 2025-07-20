@@ -196,4 +196,4 @@ Mesh makeMovementBuildBody( const Contours3f& bodyContours, const Contours3f& tr
     return res;
 }
 
-}
+} //namespace MR

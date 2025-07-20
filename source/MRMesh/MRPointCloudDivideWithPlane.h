@@ -3,6 +3,7 @@
 
 namespace MR
 {
+
 /// \return All vertices on the positive side of the plane
 /// \param pc Input point cloud that will be cut by the plane
 /// \param plane Input plane to cut point cloud with
@@ -25,4 +26,5 @@ struct DividePointCloudOptionalOutput
 /// \param plane Input plane to cut point cloud with
 /// \param optOut optional output of the function
 MRMESH_API PointCloud divideWithPlane( const PointCloud& points, const Plane3f& plane, const DividePointCloudOptionalOutput& optOut = {} );
-}
+
+} // namespace MR
