@@ -361,7 +361,7 @@ jobs:
   update-artifacts:
     timeout-minutes: 15
     runs-on: aws-micro
-    needs: [ collect-stats, update-dev-documentation ]
+    needs: [ collect-stats ]
     if: always()
     continue-on-error: true
     steps:
