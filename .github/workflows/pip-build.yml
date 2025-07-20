@@ -168,17 +168,6 @@ jobs:
           path: ./scripts/wheel/meshlib/wheelhouse/meshlib-*.whl
           retention-days: 1
 
-  update-documentation:
-    # always() need to ignore general fail previous job, because this job depends on one matrix variant (aarch64 && py-version == 3.10),
-    # and if this variant failed this job also will fail
-    if: ${{ ( github.event_name == 'release' ) && always() }}
-    needs:
-      - manylinux-pip-build
-    uses: ./.github/workflows/update-docs.yml
-    with:
-      output_folder: MeshLib
-    secrets: inherit
-
   windows-pip-build:
     needs: setup
     timeout-minutes: 90
