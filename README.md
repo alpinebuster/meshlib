@@ -69,10 +69,10 @@ git submodule update --init
 ### Docker
 
 ```sh
-`docker compose up --build meshlib-emscripten-build`
+`docker compose up --build meshsdk-emscripten-build`
 
-`docker compose up meshlib-emscripten-build`
-`docker compose up meshlib-emscripten-build -d`
+`docker compose up meshsdk-emscripten-build`
+`docker compose up meshsdk-emscripten-build -d`
 
 `docker compose --profile singlethreaded up meshlib-emscripten-build-singlethreaded`
 `docker compose --profile wasm64 up meshlib-emscripten-build-wasm64`
@@ -80,9 +80,9 @@ git submodule update --init
 #
 # To run custom build commands:
 #
-`docker compose exec meshlib-emscripten-build bash`
-`docker compose exec meshlib-emscripten-build-singlethreaded bash`
-`docker compose exec meshlib-emscripten-build-wasm64 bash`
+`docker compose exec meshsdk-emscripten-build bash`
+`docker compose exec meshsdk-emscripten-build-singlethreaded bash`
+`docker compose exec meshsdk-emscripten-build-wasm64 bash`
 ```
 
 ### Windows (Desktop)
@@ -98,7 +98,7 @@ git submodule update --init
  3. **CUDA Toolkit**
   - For **Visual Studio 2019**: Install [CUDA v11.4](https://developer.nvidia.com/cuda-11-4-0-download-archive)
   - For **Visual Studio 2022**: Install [CUDA v12.0](https://developer.nvidia.com/cuda-12-0-0-download-archive)
- \n Choose the appropriate version based on your Visual Studio installation.
+ Choose the appropriate version based on your Visual Studio installation.
  4. **vcpkg**
   - To install `vcpkg`, follow these steps:
    1. **Open a command prompt (CMD) or PowerShell window**.
@@ -132,7 +132,7 @@ vcpkg integrate install
 [Learn more about](https://github.com/Microsoft/vcpkg) `vcpkg`
 
 #### Installing the local build
-\note The following steps will require approximately 40 GB of disk space.
+The following steps will require approximately 40 GB of disk space.
 
  1. **Clone the Submodules**:
 ```cmd
@@ -140,21 +140,21 @@ git submodule update --init
 # or
 git submodule update --init --recursive
 ```
- 2. \b (Optional) **Speed Up with AWS CLI**
+ 2. (Optional) **Speed Up with AWS CLI**
   - Optionally, [install AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) to speed up the process before using the Installation Script. Restart your terminal after installation.
  3. **Install Third-Party Dependencies**
   - Execute the following commands to run the third-party installation script:
 ```cmd
 cd vcpkg
-..\meshlib\thirdparty\install.bat
+..\meshsdk\thirdparty\install.bat
 ```
   - This script automates the installation of necessary third-party dependencies.
  4. **Build and Run Visual Studio Solution**
-  - Open `meshlib/source/MeshLib.sln` in Visual Studio.
+  - Open `meshsdk/source/MeshLib.sln` in Visual Studio.
   - Build the solution and run the application.
  5. **Build and Run CMake Project**
   - Make sure you have the "C++ CMake tools for Windows" component installed.
-  - Open `meshlib/CMakeLists.txt` in Visual Studio (File - Open - CMake).
+  - Open `meshsdk/CMakeLists.txt` in Visual Studio (File - Open - CMake).
   - Build the project and run the application.
 
 ### Installation
@@ -172,7 +172,7 @@ yarn add @alpinebuster/meshsdk
 
 For Python, simply install via pip:  
 
-```
+```sh
 pip install meshlib
 ```
 
