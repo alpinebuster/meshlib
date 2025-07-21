@@ -176,6 +176,10 @@ function SidebarObject( editor ) {
 			TOOL_MODE = 'wasmOpSelector';
 			wasmOpSelector.addClass( 'selected' );
 
+			_cur_intersect = null;
+			draggingIndex = -1;
+			clicked.length = 0;
+			draggingIndex = -1;
 			pointGeo.dispose();
 			pointGeo = new THREE.BufferGeometry();
 			curveLine.geometry.dispose();
