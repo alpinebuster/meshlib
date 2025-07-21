@@ -249,7 +249,7 @@ function SidebarObject( editor ) {
 							// Convert to std::vector<float>
 							const floatVec = new editor.MeshSDK.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
-							
+
 							const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
 							const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 							const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
@@ -440,7 +440,7 @@ function SidebarObject( editor ) {
 				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 				try {
 					// Now `jsVertices.buffer === editor.MeshSDK.HEAPF32.buffer`
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 
 					// FIXME: Why using the returned `Mesh` instance is not working?
 					// const result = editor.MeshSDK.fillHolesImpl( mesh ); // ❌
@@ -493,8 +493,8 @@ function SidebarObject( editor ) {
 				const indices = geometry.getIndex().array; // `Uint32Array`
 
 				try {
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
-					// const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTest( vertices, indices );
+					// const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTestVertexIdentifier( vertices, indices, true );
 
 					// const result = editor.MeshSDK.fillHolesImpl( mesh );
 
@@ -507,7 +507,7 @@ function SidebarObject( editor ) {
 						-threeWorldDir.y,
 						-threeWorldDir.z,
 					)
-					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh.mesh, upDir, 0.0, 0.0 );
 					///
 
 

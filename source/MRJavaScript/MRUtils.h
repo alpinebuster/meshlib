@@ -130,22 +130,22 @@ inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
 
     val pointsArray = val::array();
     // Pre-allocate the array length to improve performance
-    pointsArray.set("length", vertexElementCount);
+    pointsArray.set( "length", vertexElementCount );
     // Batch setting values - faster than pushing them one by one
     for (size_t i = 0; i < vertexElementCount; ++i) {
-        pointsArray.set(i, val(pointDataPtr[i]));
+        pointsArray.set( i, val( pointDataPtr[i] ) );
     }
 
     // === Export triangle data ===
     const auto& tris_ = meshToExport.topology.getTriangulation();
     size_t triangleCount = tris_.size();
     size_t indexElementCount = triangleCount * 3; // Each triangle has 3 indexes
-    const int* triDataPtr = reinterpret_cast<const int*>( tris_.data() );
+    const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
 
 	val triangleArray = val::array();
     triangleArray.set("length", indexElementCount);
-	for (size_t i = 0; i < indexElementCount; ++i) {
-		triangleArray.set(i, val(triDataPtr[i]));
+	for ( size_t i = 0; i < indexElementCount; ++i ) {
+		triangleArray.set( i, val(triDataPtr[i]) );
 	}
 
     val meshData = val::object();

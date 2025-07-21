@@ -4496,6 +4496,23 @@ export interface UnionFindGraphEdgeId extends ClassHandle {
   unite(_0: GraphEdgeId, _1: GraphEdgeId): GraphEdgeIdBoolPair;
 }
 
+export interface NestedComponenetsModeValue<T extends number> {
+  value: T;
+}
+export type NestedComponenetsMode = NestedComponenetsModeValue<0>|NestedComponenetsModeValue<1>|NestedComponenetsModeValue<2>;
+
+export interface UniteManyMeshesParams extends ClassHandle {
+  useRandomShifts: boolean;
+  fixDegenerations: boolean;
+  maxAllowedError: number;
+  randomShiftsSeed: number;
+  newFaces: FaceBitSet | null;
+  nestedComponentsMode: NestedComponenetsMode;
+  mergeOnFail: boolean;
+  forceCut: boolean;
+  progressCb: ProgressCallback;
+}
+
 export type EdgeIdBoolPair = [ EdgeId, boolean ];
 
 export type UndirectedEdgeIdBoolPair = [ UndirectedEdgeId, boolean ];
@@ -4690,6 +4707,22 @@ export interface VectorVectorStdll extends ClassHandle {
   push_back(_0: VectorLongLongSizeT): void;
   resize(_0: number, _1: VectorLongLongSizeT): void;
   set(_0: number, _1: VectorLongLongSizeT): boolean;
+}
+
+export interface VectorConstMeshPtr extends ClassHandle {
+  push_back(_0: Mesh | null): void;
+  resize(_0: number, _1: Mesh | null): void;
+  size(): number;
+  get(_0: number): Mesh | undefined;
+  set(_0: number, _1: Mesh | null): boolean;
+}
+
+export interface VectorConstMeshTopologyPtr extends ClassHandle {
+  push_back(_0: MeshTopology | null): void;
+  resize(_0: number, _1: MeshTopology | null): void;
+  size(): number;
+  get(_0: number): MeshTopology | undefined;
+  set(_0: number, _1: MeshTopology | null): boolean;
 }
 
 export interface VectorMeshPiece extends ClassHandle {
@@ -8531,7 +8564,8 @@ interface EmbindModule {
     new(): Mesh;
     fromTrianglesMemoryView(_0: any, _1: any, _2: boolean): Mesh;
     fromTrianglesArray(_0: any, _1: any, _2: boolean): Mesh;
-    fromTrianglesArrayTest(_0: any, _1: any): any;
+    fromTrianglesArrayTest(_0: any, _1: any, _2: boolean): any;
+    fromTrianglesArrayTestVertexIdentifier(_0: any, _1: any, _2: boolean): any;
     getGeometry(_0: Mesh): any;
   };
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
@@ -9337,6 +9371,10 @@ interface EmbindModule {
     new(): UnionFindGraphEdgeId;
     new(_0: number): UnionFindGraphEdgeId;
   };
+  NestedComponenetsMode: {Remove: NestedComponenetsModeValue<0>, Merge: NestedComponenetsModeValue<1>, Union: NestedComponenetsModeValue<2>};
+  UniteManyMeshesParams: {
+    new(): UniteManyMeshesParams;
+  };
   getAllComponentsMap(_0: MeshPart, _1: FaceIncidence, _2: UndirectedEdgeBitSet | null): Face2RegionMapIntPair;
   getLargeByAreaRegions(_0: MeshPart, _1: Face2RegionMap, _2: number, _3: number): FaceBitSetIntPair;
   StdVectori: {
@@ -9389,6 +9427,13 @@ interface EmbindModule {
   };
   VectorVectorStdll: {
     new(): VectorVectorStdll;
+  };
+  VectorConstMeshPtr: {
+    new(): VectorConstMeshPtr;
+  };
+  uniteManyMeshes(_0: VectorConstMeshPtr, _1: UniteManyMeshesParams): ExpectedMesh;
+  VectorConstMeshTopologyPtr: {
+    new(): VectorConstMeshTopologyPtr;
   };
   VectorMeshPiece: {
     new(): VectorMeshPiece;

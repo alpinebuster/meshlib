@@ -5,6 +5,8 @@
 #include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRIdentifyVertices.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
 #include <MRMesh/MRVector3.h>
@@ -49,6 +51,8 @@
 #include <MRMesh/MRLineSegm3.h>
 #include <MRMesh/MRMeshMath.h>
 #include <MRMesh/MRPointOnFace.h>
+#include <MRMesh/MRMeshComponents.h>
+#include <MRMesh/MRUniteManyMeshes.h>
 #include <MRMesh/MRMesh.h>
 
 #include <MRVoxels/MRFixUndercuts.h>
@@ -634,7 +638,7 @@ val MeshWrapper::cutMeshWithPolylineImpl( const std::vector<float>& coordinates 
 	auto meshContour = convertMeshTriPointsToMeshContour( meshCopy, projectedPolyline );
 	if ( meshContour )
 	{
-    	const MR::OneMeshContour& testContour = *meshContour;
+    	const OneMeshContour& testContour = *meshContour;
 		val jsTestProjectedContour = val::array();
 		for (const auto& intersection : testContour.intersections)
 		{
@@ -876,9 +880,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					///
 
 					if ( duplicateNonManifoldVertices )
-						return MR::Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
+						return Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
 					else
-						return MR::Mesh::fromTriangles( std::move( verts ), triangles );
+						return Mesh::fromTriangles( std::move( verts ), triangles );
 				}
 				catch ( const std::exception& e )
 				{
@@ -975,9 +979,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					///
 
 					if ( duplicateNonManifoldVertices )
-						return MR::Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
+						return Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
 					else
-						return MR::Mesh::fromTriangles( std::move( verts ), triangles );
+						return Mesh::fromTriangles( std::move( verts ), triangles );
 				}
 				catch ( const std::exception& e )
 				{
@@ -986,7 +990,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 			} )
 		)
 		.class_function( "fromTrianglesArrayTest",
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> val
+			optional_override( [] ( const val& verticesArray, const val& indicesArray, bool duplicateNonManifoldVertices ) -> val
 			{
 				val meshObj = val::object();
 
@@ -1031,41 +1035,210 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
-					Mesh mesh;
 					VertCoords verts;
 					Triangulation triangles;
 					int numVerts = verticesLength / 3;
 					int numTris = indicesLength / 3;
-					verts.resize( numVerts );
 
+
+					auto fillTris = [&] ( const auto* data )
+					{
+						triangles.reserve( numTris );
+						for ( auto i = 0; i < numTris; i++ )
+						{
+							int fId = i * 3;
+							triangles.push_back( {
+								VertId( int( data[fId] ) ),
+								VertId( int( data[fId + 1] ) ),
+								VertId( int( data[fId + 2] ) )
+							}  );
+						}
+					};
+        			fillTris( indicesPtr );
+
+
+					std::vector<Vector3f> vec;
+					auto fillVerts = [&] ( const auto* data )
+					{
+						vec.resize( numVerts );
+						for ( auto i = 0; i < numVerts; i++ )
+						{
+							auto vId = i * 3;
+							vec[i] = Vector3f(
+								float( data[vId] ),
+								float( data[vId + 1] ),
+								float( data[vId + 2] ) 
+							);
+						}
+					};
+					fillVerts( verticesPtr );
+					verts.vec_ = vec;
+					///
+
+					Mesh mesh;
+					if ( duplicateNonManifoldVertices )
+						mesh = Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
+					else
+						mesh = Mesh::fromTriangles( std::move( verts ), triangles );
+
+
+					meshObj.set( "success", true );
+					meshObj.set( "meshMV", MRJS::exportMeshMemoryView( mesh ) );
+					meshObj.set( "mesh", mesh );
+					meshObj.set( "triangles", triangles );
+					meshObj.set( "verts", verts );
+	
+	
+					///
+					auto& topology = mesh.topology;
+					meshObj.set( "debug_numFaces", int( topology.numValidFaces() ) );
+					meshObj.set( "debug_numEdges", int( topology.edgeSize() ) );
+					meshObj.set( "debug_numVerts", int( topology.vertSize() ) );
+
+
+					auto components = MeshComponents::getAllComponents( mesh );
+					if ( components.size() <= 1 ) {
+						return meshObj;
+					}
+					meshObj.set( "debug_componentsBefore", components.size() );
+					meshObj.set( "debug_pointsBefore", mesh.points.size() );
+					meshObj.set( "debug_firstCompFaceCountBefore", components[0].count() );
+
+					// Create a vector to hold meshes and their pointers
+					// std::vector<Mesh> meshes( components.size() );
+					// std::vector<const Mesh*> vecMeshes( components.size() );
+					// for ( size_t i = 0; i < components.size(); ++i )
+					// {
+					// 	// Create meshes from separated components
+					// 	auto part = Mesh();
+					// 	part.addMeshPart( {mesh, &components[i]} );
+					// 	meshes[i] = part;
+					// 	vecMeshes[i] = &meshes[i];
+					// }
+					// UniteManyMeshesParams params;
+					// params.nestedComponentsMode = NestedComponenetsMode::Merge;
+					// params.fixDegenerations = true;
+
+					// auto mergedMesh = *uniteManyMeshes( vecMeshes, params );
+
+					// auto postMergeComponents = MeshComponents::getAllComponents( mergedMesh );
+					// meshObj.set( "debug_componentsAfter", postMergeComponents.size() );
+					// meshObj.set( "debug_pointsAfter", mergedMesh.points.size() );
+					// meshObj.set( "debug_firstCompFaceCountAfter", postMergeComponents[0].count() );
+					///
+
+					return meshObj;
+				}
+				catch ( const std::exception& e )
+				{
+					meshObj.set( "success", false );
+					meshObj.set( "error", std::string( e.what() ) );
+					return meshObj;
+				}
+			} )
+		)
+		.class_function( "fromTrianglesArrayTestVertexIdentifier",
+			optional_override( [] ( const val& verticesArray, const val& indicesArray, bool duplicateNonManifoldVertices ) -> val
+			{
+				val meshObj = val::object();
+
+				try
+				{
+					if ( !verticesArray.instanceof( val::global( "Float32Array" ) ) )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "vertices must be Float32Array" );
+						return meshObj;
+					}
+					if ( !indicesArray.instanceof( val::global( "Uint32Array" ) ) )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "indices must be Uint32Array" );
+						return meshObj;
+					}
+
+					int verticesLength = verticesArray["length"].as<int>();
+					int indicesLength = indicesArray["length"].as<int>();
+
+					if ( verticesLength % 3 != 0 )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "vertices array length must be divisible by 3" );
+						return meshObj;
+					}
+					if ( indicesLength % 3 != 0 )
+					{
+						meshObj.set( "success", false );
+						meshObj.set( "error", "indices array length must be divisible by 3" );
+						return meshObj;
+					}
+
+
+					///
+					std::vector<float> verticesVec = emscripten::convertJSArrayToNumberVector<float>( verticesArray );
+					std::vector<uint32_t> indicesVec = emscripten::convertJSArrayToNumberVector<uint32_t>( indicesArray );
+					const float* verticesPtr = verticesVec.data();
+					const uint32_t* indicesPtr = indicesVec.data();
+					///
+
+
+					///
+					int numTris = indicesLength / 3;
+
+					// NOTE: `template <typename T> using Triangle3 = std::array<Vector3<T>, 3>;`
+    				std::vector<Triangle3f> chunk;
+					MeshBuilder::VertexIdentifier vi;
+            		chunk.resize( numTris );
+					vi.reserve( numTris );
 					for ( int i = 0; i < numTris; ++i )
 					{
 						int fId = i * 3;
 
-						ThreeVertIds threevrtids;
-						threevrtids[0] = static_cast< VertId >( indicesPtr[fId] );
-						threevrtids[1] = static_cast< VertId >( indicesPtr[fId + 1] );
-						threevrtids[2] = static_cast< VertId >( indicesPtr[fId + 2] );
-
-						auto id1 = threevrtids[0];
-						auto id2 = threevrtids[1];
-						auto id3 = threevrtids[2];
-
-						triangles.push_back( threevrtids );
+						VertId id1 = static_cast<VertId>( indicesPtr[fId] );
+						VertId id2 = static_cast<VertId>( indicesPtr[fId + 1] );
+						VertId id3 = static_cast<VertId>( indicesPtr[fId + 2] );
 
 						int vIdx1 = static_cast<int>(id1) * 3;
 						int vIdx2 = static_cast<int>(id2) * 3;
 						int vIdx3 = static_cast<int>(id3) * 3;
 
-						verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
-						verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
-						verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
+						chunk[i][0] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
+						chunk[i][1] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
+						chunk[i][2] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
 					}
+
+            		vi.addTriangles( chunk );
+    				auto t = vi.takeTriangulation();
 					///
 
-					mesh = Mesh::fromTriangles( verts, triangles );
+					Mesh mesh;
+					if ( duplicateNonManifoldVertices )
+						mesh = Mesh::fromTrianglesDuplicatingNonManifoldVertices( vi.takePoints(), t );
+					else
+						mesh = Mesh::fromTriangles( vi.takePoints(), t );
+
+
 					meshObj.set( "success", true );
-					meshObj.set( "mesh", MRJS::exportMeshMemoryView( mesh ) );
+					meshObj.set( "meshMV", MRJS::exportMeshMemoryView( mesh ) );
+					meshObj.set( "mesh", mesh );
+	
+	
+					///
+					auto& topology = mesh.topology;
+					meshObj.set( "debug_numFaces", int( topology.numValidFaces() ) );
+					meshObj.set( "debug_numEdges", int( topology.edgeSize() ) );
+					meshObj.set( "debug_numVerts", int( topology.vertSize() ) );
+
+
+					auto components = MeshComponents::getAllComponents( mesh );
+					if ( components.size() <= 1 ) {
+						return meshObj;
+					}
+					meshObj.set( "debug_componentsBefore", components.size() );
+					meshObj.set( "debug_pointsBefore", mesh.points.size() );
+					meshObj.set( "debug_firstCompFaceCountBefore", components[0].count() );
+					///
+
 					return meshObj;
 				}
 				catch ( const std::exception& e )
