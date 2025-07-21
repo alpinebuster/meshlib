@@ -844,10 +844,10 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					///
 					Mesh mesh;
 					VertCoords verts;
-
 					Triangulation triangles;
+					int numVerts = verticesLength / 3;
 					int numTris = indicesLength / 3;
-					verts.resize( numTris );
+					verts.resize( numVerts );
 
 					for ( int i = 0; i < numTris; ++i )
 					{
@@ -1047,7 +1047,6 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 						triangles.push_back( threevrtids );
 
-						// FIXME
 						int vIdx1 = static_cast<int>(id1) * 3;
 						int vIdx2 = static_cast<int>(id2) * 3;
 						int vIdx3 = static_cast<int>(id3) * 3;

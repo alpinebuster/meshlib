@@ -491,8 +491,8 @@ function SidebarObject( editor ) {
 				const indices = geometry.getIndex().array; // `Uint32Array`
 
 				try {
-					// const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTest( vertices, indices );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
+					// const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTest( vertices, indices );
 
 					// const result = editor.MeshSDK.fillHolesImpl( mesh );
 
