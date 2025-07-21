@@ -7,6 +7,7 @@
 using namespace emscripten;
 using namespace MR;
 
+
 EMSCRIPTEN_BINDINGS( ArrowModule )
 {
     // NOTE: Why use `optional_override`?

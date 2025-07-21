@@ -11,6 +11,7 @@
 using namespace emscripten;
 using namespace MR;
 
+
 EMSCRIPTEN_BINDINGS( BooleanOperationModule )
 {
 	enum_<BooleanOperation>( "BooleanOperation" )
@@ -55,5 +56,7 @@ EMSCRIPTEN_BINDINGS( BooleanOperationModule )
 		.function( "filteredOldFaceBitSet", &BooleanResultMapper::filteredOldFaceBitSet )
 		.function( "getMaps", &BooleanResultMapper::getMaps );
 
+
+	/// \note: actually this function is meant to be internal, use `boolean()` instead
 	function( "doBooleanOperation", &doBooleanOperation, allow_raw_pointers() );
 }

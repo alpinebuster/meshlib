@@ -174,6 +174,7 @@ public:
 	}
 };
 
+
 EMSCRIPTEN_BINDINGS( MeshSegmentationModule )
 {
 	class_<MeshSegmentation>( "MeshSegmentation" )

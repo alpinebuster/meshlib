@@ -7,6 +7,7 @@
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
@@ -498,6 +499,12 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<Vector<float, size_t>>( "VectorVectorStdd" );
 	register_vector<Vector<double, size_t>>( "VectorVectorStdf" );
 	register_vector<Vector<long long, size_t>>( "VectorVectorStdll" );
+	///
+
+
+	///
+    register_vector<const Mesh*>( "VectorConstMeshPtr" );
+    register_vector<const MeshTopology*>( "VectorConstMeshTopologyPtr" );
 	///
 
 

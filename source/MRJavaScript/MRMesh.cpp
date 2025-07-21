@@ -777,9 +777,9 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		//  const verticesCount = vertices.length; 
 		//  // NOTE: In `_malloc`, the specified value is in bytes, not in the number of elements
 		//  // Each element in `Float32Array` occupies **4 bytes** (32 bits = 4 bytes)
-		//  const verticesPtr = editor.mrmesh._malloc( verticesCount * 4 );
+		//  const verticesPtr = editor.MeshSDK._malloc( verticesCount * 4 );
 		//  // 2) construct a JS Float32Array that _views_ the WASM heap:
-		//  const jsVertices = new Float32Array( editor.mrmesh.HEAPF32.buffer, verticesPtr, verticesCount );
+		//  const jsVertices = new Float32Array( editor.MeshSDK.HEAPF32.buffer, verticesPtr, verticesCount );
 		//  // 3) copy into it (once), or let your own code fill it:
 		//  jsVertices.set( vertices );
 		//  ///
@@ -787,10 +787,11 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		// 
 		// 	/// Indices
 		// 	const indicesCount = indices.length;
-		// 	const indicesPtr = editor.mrmesh._malloc( indicesCount * 4 );
-		// 	const jsIndices = new Uint32Array( editor.mrmesh.HEAPU32.buffer, indicesPtr, indicesCount );
+		// 	const indicesPtr = editor.MeshSDK._malloc( indicesCount * 4 );
+		// 	const jsIndices = new Uint32Array( editor.MeshSDK.HEAPU32.buffer, indicesPtr, indicesCount );
 		// 	jsIndices.set( indices );
 		// 	///
+		// 
 		// 
 		//  try {
 		//  	const mesh = Module.fromTrianglesMemoryView( jsVertices, jsIndices );
@@ -1224,7 +1225,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		// - Be cautious: if there is concurrent access in multithreading, or if JS holds the pointer for too long, there is a risk. If JS saves this pointer to a global variable or passes it to asynchronous logic, the next C++ call may have overwritten or released `result`, leading to reading invalid memory.
 		// 
 		// 🔑 Modern solution:
-		// - Use `std::unique_ptr<PackMapping>`, directly returning a smart pointer, allowing Embind to manage the lifecycle, which is safer and free from race conditions.
+		// - Use `std::unique_ptr<PackMapping>`, directly returning a smart pointer, allowing `embind` to manage the lifecycle (`embind` has built-in support for return values of type `std::unique_ptr`), which is safer and free from race conditions.
 		// 
 		.function( "packOptimallyWithThreadLocalPtr",
 			optional_override( [] ( Mesh& self, bool param ) -> PackMapping*
