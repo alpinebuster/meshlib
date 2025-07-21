@@ -1849,6 +1849,28 @@ export interface Matrix4f extends ClassHandle {
 export interface Matrix4d extends ClassHandle {
 }
 
+export interface MeshWrapper extends ClassHandle {
+  mesh: Mesh;
+  getBoundingBoxImpl(): any;
+  getVertexCountImpl(): number;
+  getFaceCountImpl(): number;
+  getVolumeImpl(): number;
+  getAreaImpl(): number;
+  findCenterImpl(): any;
+  getVertexPositionImpl(_0: number): any;
+  setVertexPositionImpl(_0: number, _1: any): void;
+  getFaceVerticesImpl(_0: number): any;
+  getFaceNormalImpl(_0: number): any;
+  fillAllHolesImpl(): any;
+  projectPointImpl(_0: any, _1: number): any;
+  getMesh(): Mesh;
+  getMeshPtr(): Mesh | null;
+  thickenMeshImpl(_0: number, _1: GeneralOffsetParameters): any;
+  cutMeshWithPolylineImpl(_0: StdVectorf): any;
+  segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
+  fixUndercutsImpl(_0: Vector3f): any;
+}
+
 export interface Mesh extends ClassHandle {
   points: VertCoords;
   topology: MeshTopology;
@@ -1919,28 +1941,6 @@ export interface Mesh extends ClassHandle {
   signedDistance(_0: Vector3f): number;
   getLeftTriPointsWithTriangle3f(_0: EdgeId): Array3Triangle3f;
   getTriPointsWithTriangle3f(_0: FaceId): Array3Triangle3f;
-}
-
-export interface MeshWrapper extends ClassHandle {
-  mesh: Mesh;
-  getMesh(): Mesh;
-  getMeshPtr(): Mesh | null;
-  getBoundingBoxImpl(): any;
-  getVertexCountImpl(): number;
-  getFaceCountImpl(): number;
-  getVolumeImpl(): number;
-  getAreaImpl(): number;
-  findCenterImpl(): any;
-  getVertexPositionImpl(_0: number): any;
-  setVertexPositionImpl(_0: number, _1: any): void;
-  getFaceVerticesImpl(_0: number): any;
-  getFaceNormalImpl(_0: number): any;
-  fillHolesImpl(): any;
-  projectPointImpl(_0: any, _1: number): any;
-  thickenMeshImpl(_0: number, _1: GeneralOffsetParameters): any;
-  cutMeshWithPolylineImpl(_0: StdVectorf): any;
-  segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
-  fixUndercutsImpl(_0: Vector3f): any;
 }
 
 export interface BooleanResult extends ClassHandle {
@@ -8577,6 +8577,12 @@ interface EmbindModule {
   Matrix4d: {
     new(): Matrix4d;
   };
+  MeshWrapper: {
+    new(): MeshWrapper;
+    new(_0: Mesh): MeshWrapper;
+    fromTrianglesImpl(_0: any, _1: any): any;
+    fromTrianglesImplWithArray(_0: any, _1: any): any;
+  };
   Mesh: {
     new(): Mesh;
     fromTrianglesMemoryView(_0: any, _1: any, _2: boolean): Mesh;
@@ -8594,12 +8600,6 @@ interface EmbindModule {
   edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetricWrapper;
   smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
   calculateRecommendedVoxelSizeImpl(_0: Mesh, _1: number): number;
-  MeshWrapper: {
-    new(): MeshWrapper;
-    new(_0: Mesh): MeshWrapper;
-    fromTrianglesImpl(_0: any, _1: any): any;
-    fromTrianglesImplWithArray(_0: any, _1: any): any;
-  };
   BooleanResult: {
     new(): BooleanResult;
   };
@@ -8683,7 +8683,7 @@ interface EmbindModule {
     new(): MakeBridgeResult;
   };
   buildCylinderBetweenTwoHoles(_0: Mesh, _1: StitchHolesParams): boolean;
-  fillHolesImpl(_0: Mesh): any;
+  fillAllHolesImpl(_0: Mesh): any;
   FilterType: {Linear: FilterTypeValue<0>, Discrete: FilterTypeValue<1>};
   WrapType: {Repeat: WrapTypeValue<0>, Mirror: WrapTypeValue<1>, Clamp: WrapTypeValue<2>};
   Reorder: {None: ReorderValue<0>, Lexicographically: ReorderValue<1>, AABBTree: ReorderValue<2>};
@@ -8706,9 +8706,7 @@ interface EmbindModule {
   makeDegenerateBandAroundHole(_0: Mesh, _1: EdgeId, _2: FaceBitSet | null): EdgeId;
   makeSmoothBridge(_0: Mesh, _1: EdgeId, _2: EdgeId, _3: number, _4: FaceBitSet | null): MakeBridgeResult;
   extendHoleWithFuncBasicImpl(_0: Mesh, _1: EdgeId, _2: any): EdgeId;
-  makeDegenerateBandAroundHoleBasicImpl(_0: Mesh, _1: EdgeId): EdgeId;
   extendHoleWithFuncAndOutputImpl(_0: Mesh, _1: EdgeId, _2: any): any;
-  makeDegenerateBandAroundHoleWithOutputImpl(_0: Mesh, _1: EdgeId): any;
   VoxelId: {
     new(): VoxelId;
     new(_0: number): VoxelId;
@@ -9171,9 +9169,6 @@ interface EmbindModule {
     fromDirAndPt(_0: Vector3f, _1: Vector3f): Plane3f;
   };
   extendHole(_0: Mesh, _1: EdgeId, _2: Plane3f, _3: FaceBitSet | null): EdgeId;
-  extendHoleBasicImpl(_0: Mesh, _1: EdgeId, _2: Plane3f): EdgeId;
-  extendHoleWithOutputImpl(_0: Mesh, _1: EdgeId, _2: Plane3f): any;
-  extendAllHolesWithOutputImpl(_0: Mesh, _1: Plane3f): any;
   createComplexFillMetricWithPlane3f(_0: Mesh, _1: EdgeId, _2: Plane3f | null): FillHoleMetricWrapper;
   Plane3d: {
     new(): Plane3d;
@@ -9392,6 +9387,8 @@ interface EmbindModule {
   UniteManyMeshesParams: {
     new(): UniteManyMeshesParams;
   };
+  exportMeshMemoryView(_0: Mesh): any;
+  exportMeshData(_0: Mesh): any;
   getAllComponentsMap(_0: MeshPart, _1: FaceIncidence, _2: UndirectedEdgeBitSet | null): Face2RegionMapIntPair;
   getLargeByAreaRegions(_0: MeshPart, _1: Face2RegionMap, _2: number, _3: number): FaceBitSetIntPair;
   StdVectori: {
@@ -9609,7 +9606,6 @@ interface EmbindModule {
   getHoleFillPlans(_0: Mesh, _1: VectorEdgeId, _2: FillHoleParams): VectorHoleFillPlan;
   getPlanarHoleFillPlans(_0: Mesh, _1: VectorEdgeId): VectorHoleFillPlan;
   extendAllHoles(_0: Mesh, _1: Plane3f, _2: FaceBitSet | null): VectorEdgeId;
-  extendAllHolesBasicImpl(_0: Mesh, _1: Plane3f): VectorEdgeId;
   trackLeftBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
   trackRightBoundaryLoop(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): VectorEdgeId;
   VectorUndirectedEdgeId: {
@@ -10399,8 +10395,6 @@ interface EmbindModule {
   fixUndercutsImplThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   closestPointOnLineSegm3f(_0: Vector3f, _1: LineSegm3f): Vector3f;
   buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number, _4: FaceBitSet | null): EdgeId;
-  buildBottomBasicImpl(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): EdgeId;
-  buildBottomWithOutput(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
   createVerticalStitchMetric(_0: Mesh, _1: Vector3f): FillHoleMetricWrapper;
   projectOnAllWithProgress(_0: Vector3f, _1: AABBTreeObjects, _2: number, _3: any, _4: ObjId): void;
   vertexPosEqualNeiAreas(_0: Mesh, _1: VertId, _2: boolean): Vector3f;

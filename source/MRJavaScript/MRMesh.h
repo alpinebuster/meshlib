@@ -167,7 +167,7 @@ public:
     val segmentByPointsImpl( const std::vector<float>& coordinates, const std::vector<float>& dir,
 	const EdgeMetricWrapper& edgeMetricWrapper ) const;
     val fixUndercutsImpl( const Vector3f& upDirection ) const;
-    val fillHolesImpl() const;
+    val fillAllHolesImpl() const;
 };
 
 } // namespace MRJS

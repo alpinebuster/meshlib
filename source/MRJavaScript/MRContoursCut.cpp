@@ -15,6 +15,7 @@
 #include <MRMesh/MRParallelFor.h>
 #include <MRMesh/MRFillContour.h>
 #include <MRMesh/MREdgePaths.h>
+#include <MRMesh/MRMeshFillHole.h>
 #include <MRMesh/MRContoursCut.h>
 
 #include "MRUtils.h"
@@ -69,7 +70,7 @@ val cutMeshWithPolylineImplTest( Mesh& mesh, const std::vector<float>& coordinat
 	auto meshContour = convertMeshTriPointsToMeshContour( mesh, projectedPolyline );
 	if ( meshContour )
 	{
-    	const MR::OneMeshContour& testContour = *meshContour;
+    	const OneMeshContour& testContour = *meshContour;
 		val jsTestProjectedContour = val::array();
 		for (const auto& intersection : testContour.intersections)
 		{
@@ -145,6 +146,28 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 
 		return obj;
     }
+
+
+	///
+	// NOTE: The holes will exhibit a line connecting to the origin.
+    // 1. Find the representative edges of each hole
+    std::vector<EdgeId> holeEdges = mesh.topology.findHoleRepresentiveEdges();  
+    // 2. Iterate through all holes
+    for ( EdgeId e : holeEdges )
+    {
+        // 3. Calculate the perimeter of the hole
+        // double perim = mesh.holePerimiter( e );  
+        // if ( perim < 60 )
+        // {
+        //     // 4. Fill the hole using default parameters
+        //     FillHoleParams params;  
+        //     // 5. (Optional) If a more optimal algorithm is desired, use `fillHoleNicely(mesh,e,params)`;
+        //     fillHole( mesh, e, params );  
+        // }
+		fillHole( mesh, e );  
+    }
+	///
+
 
 	polyline.reserve( coordinatesLength / 3 );
 

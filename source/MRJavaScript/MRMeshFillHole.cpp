@@ -15,60 +15,7 @@
 using namespace emscripten;
 using namespace MR;
 
-// 1. `extendHole()` with Plane3f
-// Basic version without output parameter
-EdgeId extendHoleBasicImpl( Mesh& mesh, EdgeId a, const Plane3f& plane )
-{
-	return extendHole( mesh, a, plane, nullptr );
-}
-// Version with output parameter
-val extendHoleWithOutputImpl( Mesh& mesh, EdgeId a, const Plane3f& plane )
-{
-	FaceBitSet outNewFaces;
-	EdgeId result = extendHole( mesh, a, plane, &outNewFaces );
 
-	int resultId = static_cast<int>( result );
-
-	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
-	auto bitsView = typed_memory_view( bits.size(), bits.data() );
-	val bitsArray = val( bitsView );
-
-	val returnObj = val::object();
-	returnObj.set( "edgeId", resultId );
-	returnObj.set( "newFaces", bitsArray );
-
-	return returnObj;
-}
-
-// 2. `extendAllHoles()`
-// Basic version
-std::vector<EdgeId> extendAllHolesBasicImpl( Mesh& mesh, const Plane3f& plane )
-{
-	return extendAllHoles( mesh, plane, nullptr );
-}
-// Version with output parameter
-val extendAllHolesWithOutputImpl( Mesh& mesh, const Plane3f& plane )
-{
-	FaceBitSet outNewFaces;
-	std::vector<EdgeId> result = extendAllHoles( mesh, plane, &outNewFaces );
-
-	const int* resultIds = reinterpret_cast<const int*>( result.data() );
-	size_t resultIdsSize = result.size();
-	val resultIdsArray = val( typed_memory_view( resultIdsSize, resultIds ) );
-
-	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
-	auto bitsView = typed_memory_view( bits.size(), bits.data() );
-	val bitsArray = val( bitsView );
-
-	val returnObj = val::object();
-	returnObj.set( "edgeIds", resultIdsArray );
-	returnObj.set( "newFaces", bitsArray );
-
-	return returnObj;
-}
-
-// 3. `extendHole()` with function
-// Basic version
 EdgeId extendHoleWithFuncBasicImpl( Mesh& mesh, EdgeId a, val jsFunc )
 {
 	// Convert JavaScript function to C++ function
@@ -80,7 +27,6 @@ EdgeId extendHoleWithFuncBasicImpl( Mesh& mesh, EdgeId a, val jsFunc )
 
 	return extendHole( mesh, a, cppFunc, nullptr );
 }
-// Version with output parameter
 val extendHoleWithFuncAndOutputImpl( Mesh& mesh, EdgeId a, val jsFunc )
 {
 	std::function<Vector3f( const Vector3f& )> cppFunc = [jsFunc] ( const Vector3f& pos ) -> Vector3f
@@ -105,57 +51,7 @@ val extendHoleWithFuncAndOutputImpl( Mesh& mesh, EdgeId a, val jsFunc )
 	return returnObj;
 }
 
-// 4. `buildBottom()`
-// Basic version
-EdgeId buildBottomBasicImpl( Mesh& mesh, EdgeId a, Vector3f dir, float holeExtension )
-{
-	return buildBottom( mesh, a, dir, holeExtension, nullptr );
-}
-// Version with output parameter
-val buildBottomWithOutput( Mesh& mesh, EdgeId a, Vector3f dir, float holeExtension )
-{
-	FaceBitSet outNewFaces;
-	EdgeId result = buildBottom( mesh, a, dir, holeExtension, &outNewFaces );
-
-	int resultId = static_cast<int>(result);
-	
-	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
-	auto bitsView = typed_memory_view( bits.size(), bits.data() );
-	val bitsArray = val( bitsView );
-
-	val returnObj = val::object();
-	returnObj.set( "edgeId", resultId );
-	returnObj.set( "newFaces", bitsArray );
-
-	return returnObj;
-}
-
-// 5. `makeDegenerateBandAroundHole()`
-// Basic version
-EdgeId makeDegenerateBandAroundHoleBasicImpl( Mesh& mesh, EdgeId a )
-{
-	return makeDegenerateBandAroundHole( mesh, a, nullptr );
-}
-// Version with output parameter
-val makeDegenerateBandAroundHoleWithOutputImpl( Mesh& mesh, EdgeId a )
-{
-	FaceBitSet outNewFaces;
-	EdgeId result = makeDegenerateBandAroundHole( mesh, a, &outNewFaces );
-
-	int resultId = static_cast<int>(result);
-
-	const auto& bits = outNewFaces.bits(); // Obtain the `uint64_t` block array
-	auto bitsView = typed_memory_view( bits.size(), bits.data() );
-	val bitsArray = val( bitsView );
-
-	val returnObj = val::object();
-	returnObj.set( "edgeId", resultId );
-	returnObj.set( "newFaces", bitsArray );
-
-	return returnObj;
-}
-
-val fillHolesImpl( Mesh& mesh )
+val fillAllHolesImpl( Mesh& mesh )
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
 
@@ -259,20 +155,8 @@ EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 
 
 	///
-	function( "fillHolesImpl", &fillHolesImpl );
-
-	// Basic versions without output
-	function( "extendHoleBasicImpl", &extendHoleBasicImpl );
-	function( "extendAllHolesBasicImpl", &extendAllHolesBasicImpl );
+	function( "fillAllHolesImpl", &fillAllHolesImpl );
 	function( "extendHoleWithFuncBasicImpl", &extendHoleWithFuncBasicImpl );
-	function( "buildBottomBasicImpl", &buildBottomBasicImpl );
-	function( "makeDegenerateBandAroundHoleBasicImpl", &makeDegenerateBandAroundHoleBasicImpl );
-
-	// Versions with output parameter (returning objects with both result and new faces)
-	function( "extendHoleWithOutputImpl", &extendHoleWithOutputImpl );
-	function( "extendAllHolesWithOutputImpl", &extendAllHolesWithOutputImpl );
 	function( "extendHoleWithFuncAndOutputImpl", &extendHoleWithFuncAndOutputImpl );
-	function( "buildBottomWithOutput", &buildBottomWithOutput );
-	function( "makeDegenerateBandAroundHoleWithOutputImpl", &makeDegenerateBandAroundHoleWithOutputImpl );
 	///
 }

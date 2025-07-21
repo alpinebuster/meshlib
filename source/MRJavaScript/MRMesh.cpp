@@ -36,7 +36,6 @@
 #include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRProgressCallback.h>
 #include <MRMesh/MRTriMesh.h>
-#include <MRMesh/MRMeshFillHole.h>
 #include <MRMesh/MRMeshSubdivide.h>
 #include <MRMesh/MRPositionVertsSmoothly.h>
 #include <MRMesh/MRRegionBoundary.h>
@@ -714,7 +713,7 @@ val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
     return returnObj;
 }
 
-val MeshWrapper::fillHolesImpl() const
+val MeshWrapper::fillAllHolesImpl() const
 {
 	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
 
@@ -755,6 +754,46 @@ val MeshWrapper::projectPointImpl( const val& point, float maxDistance ) const
 	}
 }
 
+}
+
+
+// ------------------------------------------------------------------------
+// Bindings for `MeshWrapper`
+// ------------------------------------------------------------------------
+EMSCRIPTEN_BINDINGS( MeshWrapperModule )
+{
+	class_<MRJS::MeshWrapper>( "MeshWrapper" )
+		.smart_ptr<std::shared_ptr<MRJS::MeshWrapper>>( "MeshWrapperSharedPtr" )
+
+		.constructor<>()
+		.constructor<const Mesh&>()
+		.class_function( "fromTrianglesImpl", &MRJS::MeshWrapper::fromTrianglesImpl )
+		.class_function( "fromTrianglesImplWithArray", &MRJS::MeshWrapper::fromTrianglesImplWithArray )
+
+		.property( "mesh", &MRJS::MeshWrapper::mesh, return_value_policy::reference() )
+		.function( "getMesh", &MRJS::MeshWrapper::getMesh )
+		.function( "getMeshPtr", &MRJS::MeshWrapper::getMeshPtr, allow_raw_pointers() )
+
+		// Geometric properties
+		.function( "getBoundingBoxImpl", &MRJS::MeshWrapper::getBoundingBoxImpl )
+		.function( "getVertexCountImpl", &MRJS::MeshWrapper::getVertexCountImpl )
+		.function( "getFaceCountImpl", &MRJS::MeshWrapper::getFaceCountImpl )
+		.function( "getVolumeImpl", &MRJS::MeshWrapper::getVolumeImpl )
+		.function( "getAreaImpl", &MRJS::MeshWrapper::getAreaImpl )
+		.function( "findCenterImpl", &MRJS::MeshWrapper::findCenterImpl )
+		.function( "getVertexPositionImpl", &MRJS::MeshWrapper::getVertexPositionImpl )
+		.function( "setVertexPositionImpl", &MRJS::MeshWrapper::setVertexPositionImpl )
+		.function( "getFaceVerticesImpl", &MRJS::MeshWrapper::getFaceVerticesImpl )
+		.function( "getFaceNormalImpl", &MRJS::MeshWrapper::getFaceNormalImpl )
+
+		.function( "thickenMeshImpl", &MRJS::MeshWrapper::thickenMeshImpl )
+		.function( "cutMeshWithPolylineImpl", &MRJS::MeshWrapper::cutMeshWithPolylineImpl )
+		.function( "segmentByPointsImpl", &MRJS::MeshWrapper::segmentByPointsImpl )
+		.function( "fixUndercutsImpl", &MRJS::MeshWrapper::fixUndercutsImpl )
+		.function( "fillAllHolesImpl", &MRJS::MeshWrapper::fillAllHolesImpl )
+
+		// Spatial queries
+		.function( "projectPointImpl", &MRJS::MeshWrapper::projectPointImpl );
 }
 
 
@@ -1391,44 +1430,4 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		.function( "shrinkToFit", &Mesh::shrinkToFit )
 		.function( "mirror", &Mesh::mirror )
 		.function( "signedDistance", select_overload<float( const Vector3f& ) const>( &Mesh::signedDistance ) );
-}
-
-
-// ------------------------------------------------------------------------
-// Bindings for `MeshWrapper`
-// ------------------------------------------------------------------------
-EMSCRIPTEN_BINDINGS( MeshWrapperModule )
-{
-	class_<MRJS::MeshWrapper>( "MeshWrapper" )
-		.smart_ptr<std::shared_ptr<MRJS::MeshWrapper>>( "MeshWrapperSharedPtr" )
-
-		.constructor<>()
-		.constructor<const Mesh&>()
-		.class_function( "fromTrianglesImpl", &MRJS::MeshWrapper::fromTrianglesImpl )
-		.class_function( "fromTrianglesImplWithArray", &MRJS::MeshWrapper::fromTrianglesImplWithArray )
-
-		.property( "mesh", &MRJS::MeshWrapper::mesh, return_value_policy::reference() )
-		.function( "getMesh", &MRJS::MeshWrapper::getMesh )
-		.function( "getMeshPtr", &MRJS::MeshWrapper::getMeshPtr, allow_raw_pointers() )
-
-		// Geometric properties
-		.function( "getBoundingBoxImpl", &MRJS::MeshWrapper::getBoundingBoxImpl )
-		.function( "getVertexCountImpl", &MRJS::MeshWrapper::getVertexCountImpl )
-		.function( "getFaceCountImpl", &MRJS::MeshWrapper::getFaceCountImpl )
-		.function( "getVolumeImpl", &MRJS::MeshWrapper::getVolumeImpl )
-		.function( "getAreaImpl", &MRJS::MeshWrapper::getAreaImpl )
-		.function( "findCenterImpl", &MRJS::MeshWrapper::findCenterImpl )
-		.function( "getVertexPositionImpl", &MRJS::MeshWrapper::getVertexPositionImpl )
-		.function( "setVertexPositionImpl", &MRJS::MeshWrapper::setVertexPositionImpl )
-		.function( "getFaceVerticesImpl", &MRJS::MeshWrapper::getFaceVerticesImpl )
-		.function( "getFaceNormalImpl", &MRJS::MeshWrapper::getFaceNormalImpl )
-
-		.function( "thickenMeshImpl", &MRJS::MeshWrapper::thickenMeshImpl )
-		.function( "cutMeshWithPolylineImpl", &MRJS::MeshWrapper::cutMeshWithPolylineImpl )
-		.function( "segmentByPointsImpl", &MRJS::MeshWrapper::segmentByPointsImpl )
-		.function( "fixUndercutsImpl", &MRJS::MeshWrapper::fixUndercutsImpl )
-		.function( "fillHolesImpl", &MRJS::MeshWrapper::fillHolesImpl )
-
-		// Spatial queries
-		.function( "projectPointImpl", &MRJS::MeshWrapper::projectPointImpl );
 }

@@ -353,7 +353,7 @@ function SidebarObject( editor ) {
 		const currentUUID = editor.selected.uuid;
 		if ( currentUUID ) {
 			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
-				const newMeshData = editor.wasmObject[currentUUID].fillHolesImpl();
+				const newMeshData = editor.wasmObject[currentUUID].fillAllHolesImpl();
 
 				const newVertices = newMeshData.vertices;
 				const newIndices = newMeshData.indices;
@@ -447,8 +447,8 @@ function SidebarObject( editor ) {
 					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 
 					// FIXME: Why using the returned `Mesh` instance is not working?
-					// const result = editor.MeshSDK.fillHolesImpl( mesh ); // ❌
-					// const result = editor.MeshSDK.fillHolesImpl( curMeshWrapper.mesh ); // ✅
+					// const result = editor.MeshSDK.fillAllHolesImpl( mesh ); // ❌
+					// const result = editor.MeshSDK.fillAllHolesImpl( curMeshWrapper.mesh ); // ✅
 					
 					// const result = editor.MeshSDK.Mesh.getGeometry( mesh ); // ✅
 
@@ -502,7 +502,7 @@ function SidebarObject( editor ) {
 					// const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
 					const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTestVertexIdentifier( vertices, indices, true );
 
-					// const result = editor.MeshSDK.fillHolesImpl( mesh );
+					// const result = editor.MeshSDK.fillAllHolesImpl( mesh );
 
 					const mp = new editor.MeshSDK.MeshPart( mesh.mesh );
 					const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
@@ -522,6 +522,80 @@ function SidebarObject( editor ) {
 					const newVertices = result.mesh.vertices;
 					const newIndices = result.mesh.indices;
 
+					showMesh( newVertices, newIndices );
+				} catch ( error ) {
+					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				}
+			}
+		}
+	});
+
+	const wasmOpBuildMaxillaBottom = new UIButton( strings.getKey( 'sidebar/object/wasmOpBuildMaxillaBottom') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
+				const geometry = editor.selected.geometry;
+				const vertices = geometry.getAttribute( 'position' ).array; // `Float32Array`
+				const indices = geometry.getIndex().array; // `Uint32Array`
+
+				try {
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( vertices, indices, true );
+
+					///
+					const threeWorldDir = new THREE.Vector3();
+					editor.camera.getWorldDirection( threeWorldDir );
+					const upDir = new editor.MeshSDK.Vector3f(
+						-threeWorldDir.x,
+						-threeWorldDir.y,
+						-threeWorldDir.z,
+					)
+
+					const e = mesh.mesh.topology.findHoleRepresentiveEdges( null );
+					const result = editor.MeshSDK.buildBottom( mesh.mesh, e, upDir, 0.0, null );
+					///
+
+
+					const newVertices = result.mesh.vertices;
+					const newIndices = result.mesh.indices;
+
+					showMesh( newVertices, newIndices );
+				} catch ( error ) {
+					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				}
+			}
+		}
+	});
+	const wasmOpBuildMandibleBottom = new UIButton( strings.getKey( 'sidebar/object/wasmOpBuildMandibleBottom') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
+				const geometry = editor.selected.geometry;
+				const vertices = geometry.getAttribute( 'position' ).array; // `Float32Array`
+				const indices = geometry.getIndex().array; // `Uint32Array`
+
+				try {
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( vertices, indices, true );
+
+					///
+					const threeWorldDir = new THREE.Vector3();
+					editor.camera.getWorldDirection( threeWorldDir );
+					const upDir = new editor.MeshSDK.Vector3f(
+						-threeWorldDir.x,
+						-threeWorldDir.y,
+						-threeWorldDir.z,
+					)
+
+					const e = mesh.mesh.topology.findHoleRepresentiveEdges( null );
+					const result = editor.MeshSDK.buildBottom( mesh.mesh, e, upDir, 0.0, null );
+					///
+
+
+					const newVertices = result.mesh.vertices;
+					const newIndices = result.mesh.indices;
 					showMesh( newVertices, newIndices );
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
@@ -552,12 +626,17 @@ function SidebarObject( editor ) {
 	wasmOpsRowLoad.add( wasmOpLoadFromThreeJS );
 	wasmOpsRowLoad.add( wasmOpLoadFromThreeJSArray );
 	
+	const wasmOpsRowGypsum = new UIRow();
+	wasmOpsRowGypsum.add( wasmOpBuildMaxillaBottom );
+	wasmOpsRowGypsum.add( wasmOpBuildMandibleBottom );
+
 	container.add( wasmOpsRow );
 	container.add( wasmOpsRowLoad );
 	container.add( wasmOpsRowHole );
 	container.add( wasmOpsRowSelector );
 	container.add( wasmOpsRowFixUndercuts );
 	container.add( wasmOpsRowThicken );
+	container.add( wasmOpsRowGypsum );
 
 	// fov
 
