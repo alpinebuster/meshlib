@@ -8,6 +8,8 @@
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRIdentifyVertices.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
@@ -46,6 +48,7 @@ val expectedToJs( const Expected<T>& expected );
 [[nodiscard]] Triangulation parseJSIndices( const std::vector<int>& indices );
 
 std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut );
+MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris );
 
 // NOTE: Export mesh data using `typed_memory_view()`
 // 

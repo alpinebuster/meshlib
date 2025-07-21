@@ -1694,6 +1694,17 @@ export interface ICPExitTypeValue<T extends number> {
 }
 export type ICPExitType = ICPExitTypeValue<0>|ICPExitTypeValue<1>|ICPExitTypeValue<2>|ICPExitTypeValue<3>|ICPExitTypeValue<4>;
 
+export interface VertexIdentifier extends ClassHandle {
+  reserve(_0: number): void;
+  numTris(): number;
+  takeTriangulation(): Triangulation;
+  takePoints(): VertCoords;
+}
+
+export interface EqualVector3f extends ClassHandle {
+  opcall(_0: Vector3f, _1: Vector3f): boolean;
+}
+
 export interface MyClass extends ClassHandle {
   x: number;
   readonly x_readonly: number;
@@ -8461,6 +8472,12 @@ interface EmbindModule {
   ICPMethod: {Combined: ICPMethodValue<0>, PointToPoint: ICPMethodValue<1>, PointToPlane: ICPMethodValue<2>};
   ICPMode: {RigidScale: ICPModeValue<0>, AnyRigidXf: ICPModeValue<1>, OrthogonalAxis: ICPModeValue<2>, FixedAxis: ICPModeValue<3>, TranslationOnly: ICPModeValue<4>};
   ICPExitType: {NotStarted: ICPExitTypeValue<0>, NotFoundSolution: ICPExitTypeValue<1>, MaxIterations: ICPExitTypeValue<2>, MaxBadIterations: ICPExitTypeValue<3>, StopMsdReached: ICPExitTypeValue<4>};
+  VertexIdentifier: {
+    new(): VertexIdentifier;
+  };
+  EqualVector3f: {
+    new(): EqualVector3f;
+  };
   lerp(_0: number, _1: number, _2: number): number;
   MyClass: {
     new(_0: number, _1: EmbindString): MyClass;

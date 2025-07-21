@@ -847,42 +847,16 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
-					Mesh mesh;
-					VertCoords verts;
-					Triangulation triangles;
-					int numVerts = verticesLength / 3;
 					int numTris = indicesLength / 3;
-					verts.resize( numVerts );
-
-					for ( int i = 0; i < numTris; ++i )
-					{
-						int fId = i * 3;
-
-						ThreeVertIds threevrtids;
-						threevrtids[0] = static_cast< VertId >( indicesPtr[fId] );
-						threevrtids[1] = static_cast< VertId >( indicesPtr[fId + 1] );
-						threevrtids[2] = static_cast< VertId >( indicesPtr[fId + 2] );
-
-						auto id1 = threevrtids[0];
-						auto id2 = threevrtids[1];
-						auto id3 = threevrtids[2];
-
-						triangles.push_back( threevrtids );
-
-						int vIdx1 = static_cast<int>(id1) * 3;
-						int vIdx2 = static_cast<int>(id2) * 3;
-						int vIdx3 = static_cast<int>(id3) * 3;
-
-						verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
-						verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
-						verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
-					}
+					MeshBuilder::VertexIdentifier vi = MRJS::createVertexIdentifier( verticesPtr, indicesPtr, numTris );
+    				auto t = vi.takeTriangulation();
 					///
 
+
 					if ( duplicateNonManifoldVertices )
-						return Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
+						return Mesh::fromTrianglesDuplicatingNonManifoldVertices( vi.takePoints(), t );
 					else
-						return Mesh::fromTriangles( std::move( verts ), triangles );
+						return Mesh::fromTriangles( vi.takePoints(), t );
 				}
 				catch ( const std::exception& e )
 				{
@@ -946,42 +920,16 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
-					Mesh mesh;
-					VertCoords verts;
-					Triangulation triangles;
-					int numVerts = verticesLength / 3;
 					int numTris = indicesLength / 3;
-					verts.resize( numVerts );
-
-					for ( int i = 0; i < numTris; ++i )
-					{
-						int fId = i * 3;
-
-						ThreeVertIds threevrtids;
-						threevrtids[0] = static_cast< VertId >( indicesPtr[fId] );
-						threevrtids[1] = static_cast< VertId >( indicesPtr[fId + 1] );
-						threevrtids[2] = static_cast< VertId >( indicesPtr[fId + 2] );
-
-						auto id1 = threevrtids[0];
-						auto id2 = threevrtids[1];
-						auto id3 = threevrtids[2];
-
-						triangles.push_back( threevrtids );
-
-						int vIdx1 = static_cast<int>(id1) * 3;
-						int vIdx2 = static_cast<int>(id2) * 3;
-						int vIdx3 = static_cast<int>(id3) * 3;
-
-						verts[id1] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
-						verts[id2] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
-						verts[id3] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
-					}
+					MeshBuilder::VertexIdentifier vi = MRJS::createVertexIdentifier( verticesPtr, indicesPtr, numTris );
+    				auto t = vi.takeTriangulation();
 					///
 
+
 					if ( duplicateNonManifoldVertices )
-						return Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
+						return Mesh::fromTrianglesDuplicatingNonManifoldVertices( vi.takePoints(), t );
 					else
-						return Mesh::fromTriangles( std::move( verts ), triangles );
+						return Mesh::fromTriangles( vi.takePoints(), t );
 				}
 				catch ( const std::exception& e )
 				{
@@ -1035,6 +983,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 
 					///
+					// FIXME: What distinguishes this from `VertexIdentifier`?
 					VertCoords verts;
 					Triangulation triangles;
 					int numVerts = verticesLength / 3;
@@ -1184,32 +1133,10 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 
 					///
 					int numTris = indicesLength / 3;
-
-					// NOTE: `template <typename T> using Triangle3 = std::array<Vector3<T>, 3>;`
-    				std::vector<Triangle3f> chunk;
-					MeshBuilder::VertexIdentifier vi;
-            		chunk.resize( numTris );
-					vi.reserve( numTris );
-					for ( int i = 0; i < numTris; ++i )
-					{
-						int fId = i * 3;
-
-						VertId id1 = static_cast<VertId>( indicesPtr[fId] );
-						VertId id2 = static_cast<VertId>( indicesPtr[fId + 1] );
-						VertId id3 = static_cast<VertId>( indicesPtr[fId + 2] );
-
-						int vIdx1 = static_cast<int>(id1) * 3;
-						int vIdx2 = static_cast<int>(id2) * 3;
-						int vIdx3 = static_cast<int>(id3) * 3;
-
-						chunk[i][0] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
-						chunk[i][1] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
-						chunk[i][2] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
-					}
-
-            		vi.addTriangles( chunk );
+					MeshBuilder::VertexIdentifier vi = MRJS::createVertexIdentifier( verticesPtr, indicesPtr, numTris );
     				auto t = vi.takeTriangulation();
 					///
+
 
 					Mesh mesh;
 					if ( duplicateNonManifoldVertices )

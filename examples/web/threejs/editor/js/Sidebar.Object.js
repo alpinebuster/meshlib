@@ -448,6 +448,8 @@ function SidebarObject( editor ) {
 					
 					// const result = editor.MeshSDK.Mesh.getGeometry( mesh ); // ✅
 
+					const mp = new editor.MeshSDK.MeshPart( mesh );
+					const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 
 					///
 					const threeWorldDir = new THREE.Vector3();
@@ -498,6 +500,8 @@ function SidebarObject( editor ) {
 
 					// const result = editor.MeshSDK.fillHolesImpl( mesh );
 
+					const mp = new editor.MeshSDK.MeshPart( mesh.mesh );
+					const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 
 					///
 					const threeWorldDir = new THREE.Vector3();

@@ -7,6 +7,9 @@
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMeshBuilderTypes.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRIdentifyVertices.h>
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
@@ -26,10 +29,7 @@
 #include <MRMesh/MRDipole.h>
 #include <MRMesh/MRGridSampling.h>
 #include <MRMesh/MRMeshProject.h>
-#include <MRMesh/MRMeshBuilder.h>
 #include <MRMesh/MRProgressCallback.h>
-#include <MRMesh/MRMeshBuilderTypes.h>
-#include <MRMesh/MRMeshBuilder.h>
 #include <MRMesh/MRMeshExtrude.h>
 #include <MRMesh/MRRegionBoundary.h>
 #include <MRMesh/MROneMeshContours.h>
@@ -171,6 +171,35 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 	outerMesh.addMeshPart( {mesh, &outerBitSet} );
 	
 	return { innerMesh, outerMesh };
+}
+
+MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris ) 
+{
+	// NOTE: `template <typename T> using Triangle3 = std::array<Vector3<T>, 3>;`
+	std::vector<Triangle3f> chunk;
+	MeshBuilder::VertexIdentifier vi;
+	chunk.resize( numTris );
+	vi.reserve( numTris );
+	for ( int i = 0; i < numTris; ++i )
+	{
+		int fId = i * 3;
+
+		VertId id1 = static_cast<VertId>( indicesPtr[fId] );
+		VertId id2 = static_cast<VertId>( indicesPtr[fId + 1] );
+		VertId id3 = static_cast<VertId>( indicesPtr[fId + 2] );
+
+		int vIdx1 = static_cast<int>(id1) * 3;
+		int vIdx2 = static_cast<int>(id2) * 3;
+		int vIdx3 = static_cast<int>(id3) * 3;
+
+		chunk[i][0] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
+		chunk[i][1] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
+		chunk[i][2] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
+	}
+
+	vi.addTriangles( chunk );
+
+	return vi;
 }
 
 }
