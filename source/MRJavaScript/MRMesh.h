@@ -5,6 +5,8 @@
 #include <exception>
 #include <string>
 
+#include "exports.h"
+
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMesh.h>
@@ -47,7 +49,7 @@ namespace MRJS
  * - Provide error handling mechanisms to ensure stability of JavaScript calls
  * - Support for creating, modifying, and querying mesh operations
  */
-class MeshWrapper {
+class MRJS_CLASS MeshWrapper {
 public:
     /// The internally stored grid object
     Mesh mesh;

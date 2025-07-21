@@ -250,6 +250,8 @@ function SidebarObject( editor ) {
 							const floatVec = new editor.MeshSDK.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
 							
+							const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
+							const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 							const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 

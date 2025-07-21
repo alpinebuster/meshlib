@@ -549,7 +549,7 @@ Editor.prototype = {
 
 			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( ctx, curM.geometry );
 			
-			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 			try {
 				const wasmMeshWrapper = new this.MeshSDK.MeshWrapper( wasmMesh );
 				if ( wasmMeshWrapper ) this.addWasmObject( curM.uuid, wasmMeshWrapper );

@@ -805,7 +805,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		//  ```
 		// 
 		.class_function( "fromTrianglesMemoryView", 
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh
+			optional_override( [] ( const val& verticesArray, const val& indicesArray, bool duplicateNonManifoldVertices ) -> Mesh
 			{
 				try
 				{
@@ -874,8 +874,10 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					}
 					///
 
-					mesh = Mesh::fromTriangles( verts, triangles );
-					return mesh;
+					if ( duplicateNonManifoldVertices )
+						return MR::Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
+					else
+						return MR::Mesh::fromTriangles( std::move( verts ), triangles );
 				}
 				catch ( const std::exception& e )
 				{
@@ -883,7 +885,8 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					// return Mesh();
 					throw std::runtime_error( std::string( e.what() ) );
 				}
-			} )
+			} ),
+			allow_raw_pointers()
 		)
 		// 
 		// Example usage
@@ -903,7 +906,7 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 		//  ```
 		// 
 		.class_function( "fromTrianglesArray",
-			optional_override( [] ( const val& verticesArray, const val& indicesArray ) -> Mesh
+			optional_override( [] ( const val& verticesArray, const val& indicesArray, bool duplicateNonManifoldVertices ) -> Mesh
 			{
 				try
 				{
@@ -970,8 +973,10 @@ EMSCRIPTEN_BINDINGS( MeshModule )
 					}
 					///
 
-					mesh = Mesh::fromTriangles( verts, triangles );
-					return mesh;
+					if ( duplicateNonManifoldVertices )
+						return MR::Mesh::fromTrianglesDuplicatingNonManifoldVertices( std::move( verts ), triangles );
+					else
+						return MR::Mesh::fromTriangles( std::move( verts ), triangles );
 				}
 				catch ( const std::exception& e )
 				{
