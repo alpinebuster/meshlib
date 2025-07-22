@@ -3,6 +3,8 @@
 #include <optional>
 #include <type_traits>
 
+#include "exports.h"
+
 #include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
@@ -49,6 +51,12 @@ val expectedToJs( const Expected<T>& expected );
 
 std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut );
 MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris );
+
+/// Finds all triangles of a mesh that having normals oriented toward the camera in this viewport
+// REF `source/MRViewer/MRViewport.cpp`
+MRJS_API FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Vector3f lookDirection, bool orthographic );
+MRJS_API Mesh findSilhouetteEdges( const Mesh& mesh, Vector3f lookDirection );
+///
 
 // NOTE: Export mesh data using `typed_memory_view()`
 // 

@@ -69,6 +69,28 @@ val fillAllHolesImpl( Mesh& mesh )
 
 	return geoObj;
 }
+Mesh fillHoleWithSizeLimitImpl( Mesh& mesh, int holeSizeLimit )
+{
+	///
+	// NOTE: The holes will exhibit a line connecting to the origin.
+    // 1. Find the representative edges of each hole
+    std::vector<EdgeId> holeEdges = mesh.topology.findHoleRepresentiveEdges();  
+    // 2. Iterate through all holes
+    for ( EdgeId e : holeEdges )
+    {
+        // 3. Calculate the perimeter of the hole
+        double perim = mesh.holePerimiter( e );  
+        if ( perim < holeSizeLimit )
+        {
+            // 4. Fill the hole using default parameters
+            FillHoleParams params;  
+            // 5. (Optional) If a more optimal algorithm is desired, use `fillHoleNicely(mesh,e,params)`;
+            fillHole( mesh, e, params );  
+        }
+    }
+	///
+	return mesh;
+}
 
 
 EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
@@ -155,6 +177,7 @@ EMSCRIPTEN_BINDINGS( MeshFillHoleModule )
 
 
 	///
+	function( "fillHoleWithSizeLimitImpl", &fillHoleWithSizeLimitImpl );
 	function( "fillAllHolesImpl", &fillAllHolesImpl );
 	function( "extendHoleWithFuncBasicImpl", &extendHoleWithFuncBasicImpl );
 	function( "extendHoleWithFuncAndOutputImpl", &extendHoleWithFuncAndOutputImpl );

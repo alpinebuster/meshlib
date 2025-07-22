@@ -8683,6 +8683,7 @@ interface EmbindModule {
     new(): MakeBridgeResult;
   };
   buildCylinderBetweenTwoHoles(_0: Mesh, _1: StitchHolesParams): boolean;
+  fillHoleWithSizeLimitImpl(_0: Mesh, _1: number): Mesh;
   fillAllHolesImpl(_0: Mesh): any;
   FilterType: {Linear: FilterTypeValue<0>, Discrete: FilterTypeValue<1>};
   WrapType: {Repeat: WrapTypeValue<0>, Mirror: WrapTypeValue<1>, Clamp: WrapTypeValue<2>};
@@ -10401,6 +10402,8 @@ interface EmbindModule {
   vertexPosEqualNeiAreasWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertId, _3: boolean): Vector3f;
   surroundingContourEdges(_0: Mesh, _1: VectorEdgeId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
   surroundingContourVertices(_0: Mesh, _1: VectorVertId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
+  findLookingFaces(_0: Mesh, _1: AffineXf3f, _2: Vector3f, _3: boolean): FaceBitSet;
+  findSilhouetteEdges(_0: Mesh, _1: Vector3f): Mesh;
   unitVector3f(_0: number, _1: number): Vector3f;
   distanceSq3f(_0: Vector3f, _1: Vector3f): number;
   distance3f(_0: Vector3f, _1: Vector3f): number;

@@ -10,6 +10,8 @@
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRBitSetParallelFor.h>
 #include <MRMesh/MRIdentifyVertices.h>
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRId.h>
@@ -20,7 +22,6 @@
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRBuffer.h>
 #include <MRMesh/MRMeshOrPoints.h>
-#include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>
 #include <MRMesh/MRFillContour.h>
 #include <MRMesh/MREdgeMetric.h>
@@ -37,7 +38,10 @@
 #include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRMeshTriPoint.h>
 #include <MRMesh/MRMeshFillHole.h>
+#include <MRMesh/MRMeshNormals.h>
 #include <MRMesh/MRParallelFor.h>
+#include <MRMesh/MR2to3.h>
+#include <MRMesh/MR2DContoursTriangulation.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
 
 #include <MRVoxels/MRTeethMaskToDirectionVolume.h>
@@ -145,6 +149,7 @@ Triangulation parseJSIndices( const std::vector<int>& indices )
     return indis_;
 }
 
+
 /**
  *@brief CutMesh with contour and extracting cutted parts
  * 
@@ -199,6 +204,71 @@ MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, 
 
 	vi.addTriangles( chunk );
 	return vi;
+}
+
+FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Vector3f lookDirection, bool orthographic )
+{
+    const auto normals = computePerFaceNormals( mesh );
+    FaceBitSet faces;
+    faces.resize( normals.size() );
+
+    BitSetParallelFor( mesh.topology.getValidFaces(), [&]( FaceId f )
+    {
+        auto transformedNormal = meshToWorld.A * normals[f];
+        if ( orthographic )
+        {
+            if ( ( dot( transformedNormal, lookDirection ) > 0.0f ) )
+                faces.set( f );
+        }
+        else
+        {
+            if ( dot( transformedNormal, lookDirection - mesh.triCenter( f ) ) > 0.0f )
+                faces.set( f );
+        }
+    } );
+    return faces;
+}
+
+Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
+{
+    // Find faces that looks in this direction
+    FaceBitSet facesLookingInThisDirection( meshRes.topology.faceSize() );
+    BitSetParallelFor( meshRes.topology.getValidFaces(), [&] ( FaceId f )
+    {
+        if ( MR::dot( meshRes.normal( f ), lookDirection ) > 0.0f )
+            facesLookingInThisDirection.set( f );
+    } );
+
+    // Find boundaries of direction looking faces
+    auto boundaries = findRightBoundary( meshRes.topology, facesLookingInThisDirection );
+
+    // Project boundaries to 2d plane
+    auto [x, y] = lookDirection.perpendicular();
+    auto fromPlaneRot = Matrix3f::fromColumns( x, y, lookDirection );
+    auto toPlaneRot = fromPlaneRot.inverse();
+
+    Contours2f contours( boundaries.size() );
+    ParallelFor( contours, [&] ( size_t i )
+    {
+        const auto& bound = boundaries[i];
+        auto& cont = contours[i];
+        cont.resize( bound.size() + 1 );
+        MR::ParallelFor( bound, [&] ( size_t j )
+        {
+            cont[j] = MR::to2dim( toPlaneRot * meshRes.orgPnt( bound[j] ) );
+        } );
+        cont.back() = cont.front(); // close loops
+    } );
+
+    // Find silhouette outline
+    auto outline = PlanarTriangulation::getOutline( contours );
+    // Triangulate outline
+    auto projectedMesh = PlanarTriangulation::triangulateContours( outline );
+
+    // Project silhouette mesh back to original plane
+    projectedMesh.transform( MR::AffineXf3f::linear( fromPlaneRot ) );
+
+	return projectedMesh;
 }
 
 val exportMeshMemoryView( const Mesh& meshToExport )
@@ -309,6 +379,9 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 {
 	function( "exportMeshMemoryView", &MRJS::exportMeshMemoryView, allow_raw_pointers() );
 	function( "exportMeshData", &MRJS::exportMeshData, allow_raw_pointers() );
+
+	function( "findLookingFaces", &MRJS::findLookingFaces, allow_raw_pointers() );
+	function( "findSilhouetteEdges", &MRJS::findSilhouetteEdges, allow_raw_pointers() );
 }
 
 
