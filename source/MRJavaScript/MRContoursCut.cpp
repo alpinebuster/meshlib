@@ -220,7 +220,7 @@ val cutMeshByContourImpl( Mesh& mesh, const std::vector<float>& coordinates )
 
 	for ( size_t i = 0; i < coordinatesLength; i += 3 )
 	{
-		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
+		polyline.emplace_back( Vector3f( coordinates[i], coordinates[i + 1], coordinates[i + 2] ) );
 	}
 
 	// FIXME: Why this will cause the inner mesh have a outlier point?
