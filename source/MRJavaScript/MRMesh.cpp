@@ -754,6 +754,41 @@ val MeshWrapper::projectPointImpl( const val& point, float maxDistance ) const
 	}
 }
 
+val MeshWrapper::cutMeshByContourImpl( const std::vector<float>& coordinates ) const
+{
+    int coordinatesLength = coordinates.size();
+    if ( coordinatesLength % 3 != 0 ) {
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "Coordinates length must be a multiple of 3!" );
+
+		return obj;
+    }
+
+	Mesh meshCopy;
+	meshCopy.topology = mesh.topology;
+	meshCopy.points = mesh.points;
+
+    MR::Contour3f cont( coordinatesLength / 3 );
+    for ( int i = 0; i < cont.size(); ++i )
+        cont[i] = MR::Vector3f( coordinates[3 * i + 0], coordinates[3 * i + 1], coordinates[3 * i + 2] );
+
+    auto cutRes = MR::cutMeshByContour( meshCopy, cont );
+
+    auto cutPartMeshL = meshCopy.cloneRegion( *cutRes );
+    auto cutPartMeshR = meshCopy.cloneRegion( meshCopy.topology.getValidFaces() - *cutRes );
+
+	val smallerMeshData = MRJS::exportMeshMemoryView( cutPartMeshL );
+	val largerMeshData = MRJS::exportMeshMemoryView( cutPartMeshR );
+
+	val obj = val::object();
+	obj.set( "success", true );
+	obj.set( "smallerMesh", smallerMeshData );
+	obj.set( "largerMesh", largerMeshData );
+
+	return obj;
+}
+
 }
 
 
@@ -791,6 +826,7 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 		.function( "segmentByPointsImpl", &MRJS::MeshWrapper::segmentByPointsImpl )
 		.function( "fixUndercutsImpl", &MRJS::MeshWrapper::fixUndercutsImpl )
 		.function( "fillAllHolesImpl", &MRJS::MeshWrapper::fillAllHolesImpl )
+		.function( "cutMeshByContourImpl", &MRJS::MeshWrapper::cutMeshByContourImpl )
 
 		// Spatial queries
 		.function( "projectPointImpl", &MRJS::MeshWrapper::projectPointImpl );

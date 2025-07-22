@@ -498,6 +498,10 @@ Editor.prototype = {
 		this.signals.sceneGraphChanged.active = true;
 
 		// TODO: Is it necessary to call `.delete();`?
+		for ( const key in this.wasmObject ) {
+			console.log(`Deleting WASM object ${key}`);
+			this.wasmObject[key].delete();
+		}
 		this.wasmObject = {};
 		this.geometries = {};
 		this.materials = {};

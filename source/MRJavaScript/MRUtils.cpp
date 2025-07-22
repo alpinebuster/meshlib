@@ -186,7 +186,7 @@ std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut 
 	
 	return { innerMesh, outerMesh };
 }
-std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet fb )
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet& fb )
 {
 	auto otherPart = mesh.topology.getValidFaces() - fb;
 	const auto fbArea = mesh.area( fb );

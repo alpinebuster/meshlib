@@ -1868,6 +1868,7 @@ export interface MeshWrapper extends ClassHandle {
   thickenMeshImpl(_0: number, _1: GeneralOffsetParameters): any;
   cutMeshWithPolylineImpl(_0: StdVectorf): any;
   segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
+  cutMeshByContourImpl(_0: StdVectorf): any;
   fixUndercutsImpl(_0: Vector3f): any;
 }
 

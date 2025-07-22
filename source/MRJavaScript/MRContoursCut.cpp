@@ -128,7 +128,6 @@ val cutMeshWithPolylineImplTest( Mesh& mesh, const std::vector<float>& coordinat
 		return obj;
 	}
 }
-
 /**
  *@brief Cut mesh with polyline
  *
@@ -201,6 +200,7 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
 		return obj;
 	}
 }
+
 /**
  * The input polyline must be closed!!!
  */
@@ -414,7 +414,7 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 
 	///
 	function( "cutMeshByContourImpl", &cutMeshByContourImpl );
-	function( "cutMeshByContourImplTest", &cutMeshByContourImplTest );
+	function( "cutMeshByContourImplTest", &cutMeshByContourImplTest, allow_raw_pointers() );
 	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
 	function( "cutMeshWithPolylineImplTest", &cutMeshWithPolylineImplTest );
 	function( "cutAndExtrudeMeshWithPolylineImpl", &cutAndExtrudeMeshWithPolylineImpl );

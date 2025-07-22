@@ -244,9 +244,11 @@ function SidebarObject( editor ) {
 			if ( currentUUID ) {
 				if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {	
 					const curMeshWrapper = editor.wasmObject[currentUUID];
+					const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 
 					switch ( TOOL_MODE ) {
 						case 'wasmOpSelector':
+							const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 							const positionAttribute = curveLine.geometry.getAttribute( 'position' );
 							const positions = positionAttribute.array; // Float32Array
 							const positionsArr = [...positions];
@@ -254,13 +256,15 @@ function SidebarObject( editor ) {
 							const floatVec = new editor.MeshSDK.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back(v) );
 
-							const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
-							const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
+							// const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
+							// const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
+							
+							// const result = editor.MeshSDK.cutMeshByContourImpl( mesh, floatVec );
+							// const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
 							// const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 							// const result = editor.MeshSDK.cutMeshWithPolylineImplTest( curMeshWrapper.mesh, floatVec );
-							// const result = editor.MeshSDK.cutMeshByContourImpl( curMeshWrapper.mesh, floatVec );
-							const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
+							const result = curMeshWrapper.cutMeshByContourImpl( floatVec );
 
 							// const mVertices = result.mesh.vertices;
 							// const mIndices = result.mesh.indices;
@@ -272,13 +276,6 @@ function SidebarObject( editor ) {
 							const largerIndices = result.largerMesh.indices;
 							
 
-							let indexList = [];
-							for (let i = 0; i < smallerVertices.length; i++) {
-								if (smallerVertices[i] === 0.0) {
-									indexList.push( i )
-								}
-							}
-							console.log( indexList )
 
 
 							// showMesh( mVertices, mIndices );
@@ -286,6 +283,9 @@ function SidebarObject( editor ) {
 							showMesh( largerVertices, largerIndices );
 
 							floatVec.delete();
+							mesh.delete();
+							editor.MeshSDK._free( verticesPtr );
+							editor.MeshSDK._free( indicesPtr );
 							break;
 
 						case 'wasmOpSegmentByPoints':

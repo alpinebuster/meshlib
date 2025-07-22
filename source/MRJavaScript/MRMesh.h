@@ -168,6 +168,7 @@ public:
 	const EdgeMetricWrapper& edgeMetricWrapper ) const;
     val fixUndercutsImpl( const Vector3f& upDirection ) const;
     val fillAllHolesImpl() const;
+    val cutMeshByContourImpl( const std::vector<float>& coordinates ) const;
 };
 
 } // namespace MRJS
