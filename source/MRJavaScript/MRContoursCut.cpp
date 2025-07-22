@@ -223,6 +223,7 @@ val cutMeshByContourImpl( Mesh& mesh, const std::vector<float>& coordinates )
 		polyline.emplace_back( coordinates[i], coordinates[i + 1], coordinates[i + 2] );
 	}
 
+	// FIXME: Why this will cause the inner mesh have a outlier point?
 	auto expectedFaceBitSet = cutMeshByContour( mesh, polyline );
 	if ( expectedFaceBitSet )
 	{

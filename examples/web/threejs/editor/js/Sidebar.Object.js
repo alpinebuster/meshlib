@@ -553,12 +553,10 @@ function SidebarObject( editor ) {
 		const currentUUID = editor.selected.uuid;
 		if ( currentUUID ) {
 			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
-				const geometry = editor.selected.geometry;
-				const vertices = geometry.getAttribute( 'position' ).array; // `Float32Array`
-				const indices = geometry.getIndex().array; // `Uint32Array`
+				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 
 				try {
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( vertices, indices, true );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 
 					///
 					const threeWorldDir = new THREE.Vector3();
@@ -569,17 +567,19 @@ function SidebarObject( editor ) {
 						-threeWorldDir.z,
 					)
 
-					const e = mesh.mesh.topology.findHoleRepresentiveEdges( null );
-					const result = editor.MeshSDK.buildBottom( mesh.mesh, e, upDir, 0.0, null );
+					const e = mesh.topology.findHoleRepresentiveEdges( null );
+					const result = editor.MeshSDK.buildBottom( mesh, e.get(0), upDir, 0.0, null );
 					///
 
 
-					const newVertices = result.mesh.vertices;
-					const newIndices = result.mesh.indices;
+					const newVertices = result.vertices;
+					const newIndices = result.indices;
 
 					showMesh( newVertices, newIndices );
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+					editor.MeshSDK._free( verticesPtr );
+					editor.MeshSDK._free( indicesPtr );
 				}
 			}
 		}
@@ -589,34 +589,33 @@ function SidebarObject( editor ) {
 
 		const currentUUID = editor.selected.uuid;
 		if ( currentUUID ) {
-			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
-				const geometry = editor.selected.geometry;
-				const vertices = geometry.getAttribute( 'position' ).array; // `Float32Array`
-				const indices = geometry.getIndex().array; // `Uint32Array`
+			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 
-				try {
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( vertices, indices, true );
+			try {
+				const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 
-					///
-					const threeWorldDir = new THREE.Vector3();
-					editor.camera.getWorldDirection( threeWorldDir );
-					const upDir = new editor.MeshSDK.Vector3f(
-						-threeWorldDir.x,
-						-threeWorldDir.y,
-						-threeWorldDir.z,
-					)
+				///
+				const threeWorldDir = new THREE.Vector3();
+				editor.camera.getWorldDirection( threeWorldDir );
+				const upDir = new editor.MeshSDK.Vector3f(
+					-threeWorldDir.x,
+					-threeWorldDir.y,
+					-threeWorldDir.z,
+				)
 
-					const e = mesh.mesh.topology.findHoleRepresentiveEdges( null );
-					const result = editor.MeshSDK.buildBottom( mesh.mesh, e, upDir, 0.0, null );
-					///
+				const e = mesh.topology.findHoleRepresentiveEdges( null );
+				editor.MeshSDK.buildBottom( mesh, e.get(0), upDir, 0.0, null );
+				const result = editor.MeshSDK.exportMeshMemoryView( mesh );
+				///
 
 
-					const newVertices = result.mesh.vertices;
-					const newIndices = result.mesh.indices;
-					showMesh( newVertices, newIndices );
-				} catch ( error ) {
-					console.error( 'Error creating from ThreeJS Mesh:', error.message );
-				}
+				const newVertices = result.vertices;
+				const newIndices = result.indices;
+				showMesh( newVertices, newIndices );
+			} catch ( error ) {
+				console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				editor.MeshSDK._free( verticesPtr );
+				editor.MeshSDK._free( indicesPtr );
 			}
 		}
 	});
