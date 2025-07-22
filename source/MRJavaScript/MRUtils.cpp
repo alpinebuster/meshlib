@@ -4,6 +4,7 @@
 #include <array>
 
 #include <MRPch/MRWasm.h>
+#include <MRPch/MRTBB.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
@@ -36,6 +37,7 @@
 #include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRMeshTriPoint.h>
 #include <MRMesh/MRMeshFillHole.h>
+#include <MRMesh/MRParallelFor.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
 
 #include <MRVoxels/MRTeethMaskToDirectionVolume.h>
@@ -180,13 +182,11 @@ MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, 
 	MeshBuilder::VertexIdentifier vi;
 	chunk.resize( numTris );
 	vi.reserve( numTris );
-	for ( int i = 0; i < numTris; ++i )
-	{
+	ParallelFor(0, numTris, [&](int i) {
 		int fId = i * 3;
-
-		VertId id1 = static_cast<VertId>( indicesPtr[fId] );
-		VertId id2 = static_cast<VertId>( indicesPtr[fId + 1] );
-		VertId id3 = static_cast<VertId>( indicesPtr[fId + 2] );
+		VertId id1 = static_cast<VertId>(indicesPtr[fId]);
+		VertId id2 = static_cast<VertId>(indicesPtr[fId + 1]);
+		VertId id3 = static_cast<VertId>(indicesPtr[fId + 2]);
 
 		int vIdx1 = static_cast<int>(id1) * 3;
 		int vIdx2 = static_cast<int>(id2) * 3;
@@ -195,10 +195,9 @@ MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, 
 		chunk[i][0] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
 		chunk[i][1] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
 		chunk[i][2] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
-	}
+	});
 
 	vi.addTriangles( chunk );
-
 	return vi;
 }
 
