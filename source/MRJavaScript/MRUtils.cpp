@@ -161,12 +161,18 @@ Triangulation parseJSIndices( const std::vector<int>& indices )
  * @param cut 
  * @return std::pair<Mesh, Mesh> 
  */
-std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut )
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut )
 {
+	///
 	// NOTE: This also works!
+	// 
 	// auto innerBitSet = fillContourLeft( mesh.topology, cut );
 	// Mesh innerMesh = mesh.cloneRegion( innerBitSet );
+	///
 
+	///	
+	// NOTE: This also works!
+	// 
 	Mesh innerMesh;
     auto innerBitSet = fillContourLeft( mesh.topology, cut );
     innerMesh.addMeshPart( {mesh, &innerBitSet} );
@@ -176,8 +182,38 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
     MR::reverse( cutReverse );
     auto outerBitSet = fillContourLeft( mesh.topology, cutReverse  );
 	outerMesh.addMeshPart( {mesh, &outerBitSet} );
+	///
 	
 	return { innerMesh, outerMesh };
+}
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet& fb )
+{
+	auto otherPart = mesh.topology.getValidFaces() - fb;
+	FaceBitSet *smallerPart, *largerPart;
+	
+	if ( mesh.area( fb ) < mesh.area( otherPart ) )
+	{
+		smallerPart = &fb;
+		largerPart = &otherPart;
+	}
+	else 
+	{
+		smallerPart = &otherPart;
+		largerPart = &fb;
+	}
+
+	Mesh smallerMesh, largerMesh;
+    smallerMesh.addMeshPart( {mesh, smallerPart} );
+    largerMesh.addMeshPart( {mesh, largerPart} );
+
+	///
+	// // Larger mesh
+	// mesh.deleteFaces( smallerPart );
+	// // eliminate the redundant information
+	// mesh.pack();
+	///
+
+	return { smallerMesh, largerMesh };
 }
 
 MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris ) 

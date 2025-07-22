@@ -256,17 +256,33 @@ function SidebarObject( editor ) {
 
 							const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
 							const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
-							const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+							// const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+							// const result = editor.MeshSDK.cutMeshWithPolylineImplTest( curMeshWrapper.mesh, floatVec );
+							const result = editor.MeshSDK.cutMeshByContourImpl( curMeshWrapper.mesh, floatVec );
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
-							const innerVertices = result.innerMesh.vertices;
-							const innerIndices = result.innerMesh.indices;
+							// const mVertices = result.mesh.vertices;
+							// const mIndices = result.mesh.indices;
+
+							const smallerVertices = result.smallerMesh.vertices;
+							const smallerIndices = result.smallerMesh.indices;
 						
-							const outerVertices = result.outerMesh.vertices;
-							const outerIndices = result.outerMesh.indices;
+							const largerVertices = result.largerMesh.vertices;
+							const largerIndices = result.largerMesh.indices;
 							
-							showMesh( innerVertices, innerIndices );
-							showMesh( outerVertices, outerIndices );
+
+							let indexList = [];
+							for (let i = 0; i < smallerVertices.length; i++) {
+								if (smallerVertices[i] === 0.0) {
+									indexList.push( i )
+								}
+							}
+							console.log( indexList )
+
+
+							// showMesh( mVertices, mIndices );
+							showMesh( smallerVertices, smallerIndices );
+							showMesh( largerVertices, largerIndices );
 
 							floatVec.delete();
 							break;
@@ -319,7 +335,7 @@ function SidebarObject( editor ) {
 		// pointGeo.setFromPoints(clicked);
 		//
 		pointGeo.dispose();
-		pointGeo = new THREE.BufferGeometry().setFromPoints(clicked);
+		pointGeo = new THREE.BufferGeometry().setFromPoints( clicked );
 		pointGeo.attributes.position.needsUpdate = true;
 		pointCloud.geometry = pointGeo;
 
@@ -328,23 +344,24 @@ function SidebarObject( editor ) {
 		}
 	}
 	function refreshCurve() {
-		if (clicked.length >= 2) {
-			const curve = new THREE.CatmullRomCurve3(clicked, clicked.length > 2, 'centripetal');
+		if ( clicked.length >= 2 ) {
+			const curve = new THREE.CatmullRomCurve3( clicked, clicked.length > 2, 'centripetal' );
+			// const curve = new THREE.CatmullRomCurve3( clicked );
 			// Sample a number of points on the curve and then fit the surface
-			const pts = curve.getPoints(clicked.length * 6);
-			
+			const pts = curve.getPoints( clicked.length * 6 );
+
 			// Nearest point lookup
-			const projectedSurfacePts = pts.map(p => {
+			const projectedSurfacePts = pts.map( p => {
 				const target = new THREE.Vector3();
-				_cur_intersect.geometry.boundsTree.closestPointToPoint(p, target);
+				_cur_intersect.geometry.boundsTree.closestPointToPoint( p, target );
 
 				return target.point.clone();
 			});
 
 			curveLine.geometry.dispose();
-			curveLine.geometry = new THREE.BufferGeometry().setFromPoints(projectedSurfacePts);
+			curveLine.geometry = new THREE.BufferGeometry().setFromPoints( projectedSurfacePts );
 		}
-		if (clicked.length == 2) {
+		if ( clicked.length == 2 ) {
 			editor.execute( new AddObjectCommand( editor, curveLine, editor.selected ) );
 		}
 	}

@@ -49,7 +49,9 @@ val expectedToJs( const Expected<T>& expected );
 [[nodiscard]] VertCoords parseJSVertices( const std::vector<float>& coordinates );
 [[nodiscard]] Triangulation parseJSIndices( const std::vector<int>& indices );
 
-std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut );
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut );
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet& fb );
+
 MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris );
 
 /// Finds all triangles of a mesh that having normals oriented toward the camera in this viewport

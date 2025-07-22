@@ -9399,6 +9399,7 @@ interface EmbindModule {
     new(): StdVectorf;
   };
   cutMeshWithPolylineImpl(_0: Mesh, _1: StdVectorf): any;
+  cutMeshByContourImpl(_0: Mesh, _1: StdVectorf): any;
   cutMeshWithPolylineImplTest(_0: Mesh, _1: StdVectorf): any;
   cutAndExtrudeMeshWithPolylineImpl(_0: Mesh, _1: StdVectorf): any;
   StdVectord: {
