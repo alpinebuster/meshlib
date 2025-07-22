@@ -163,16 +163,6 @@ Triangulation parseJSIndices( const std::vector<int>& indices )
  */
 std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut )
 {
-	///
-	// NOTE: This also works!
-	// 
-	// auto innerBitSet = fillContourLeft( mesh.topology, cut );
-	// Mesh innerMesh = mesh.cloneRegion( innerBitSet );
-	///
-
-	///	
-	// NOTE: This also works!
-	// 
 	Mesh innerMesh;
     auto innerBitSet = fillContourLeft( mesh.topology, cut );
     innerMesh.addMeshPart( {mesh, &innerBitSet} );
@@ -182,7 +172,6 @@ std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut 
     MR::reverse( cutReverse );
     auto outerBitSet = fillContourLeft( mesh.topology, cutReverse  );
 	outerMesh.addMeshPart( {mesh, &outerBitSet} );
-	///
 	
 	return { innerMesh, outerMesh };
 }
@@ -292,6 +281,7 @@ Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
 	return projectedMesh;
 }
 
+// FIXME:
 val exportMeshMemoryView( const Mesh& meshToExport )
 {
     // === Export point data ===
@@ -305,6 +295,7 @@ val exportMeshMemoryView( const Mesh& meshToExport )
         vertexElementCount, 
         pointDataPtr
     ) );
+
 
     // === Export triangle data ===
     const auto& tris_ = meshToExport.topology.getTriangulation();
@@ -322,6 +313,7 @@ val exportMeshMemoryView( const Mesh& meshToExport )
     val triangleView_ = val( typed_memory_view( triElementCount, triDataPtr ) ); // Use `typed_memory_view()` for triangles
     triangleArray.call<void>( "set", triangleView_ );
     ///
+
 
     /// NOTE: V2 - NOT WORKING:
     // This will return corrupted indices because the `tris_` returned by `getTriangulation()` must be copied
@@ -342,6 +334,7 @@ val exportMeshMemoryView( const Mesh& meshToExport )
 	// 	triangleArray.set(i, val(triDataPtr[i]));
 	// }
     ///
+
 
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );

@@ -40,12 +40,24 @@ function showMesh( newVertices, newIndices ) {
 	newGeometry.computeVertexNormals();
 	newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
 
-	const newMaterial = new THREE.MeshNormalMaterial();
+	const newMaterial = new THREE.MeshNormalMaterial( { wireframe: false } );
 	const newMesh = new THREE.Mesh( newGeometry, newMaterial );
 	newMesh.name = `wasm-${editor.selected.name}-${editor.selected.uuid.substring(0, 3)}`;
 	newMesh.castShadow = true;
 	newMesh.receiveShadow = true;
 
+
+	///
+	// const pointMaterial = new THREE.PointsMaterial({
+	// 	color: 0xff0000,
+	// 	size: 0.5,
+	// 	sizeAttenuation: true
+	// });
+	// const points = new THREE.Points( newGeometry, pointMaterial );
+	// editor.execute( new AddObjectCommand( editor, points ) );
+	///
+
+	
 	editor.execute( new AddObjectCommand( editor, newMesh ) );
 	editor.signals.geometryChanged.dispatch( newMesh );
 	editor.select( newMesh );

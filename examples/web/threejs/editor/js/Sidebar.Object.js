@@ -254,23 +254,27 @@ function SidebarObject( editor ) {
 							const positionsArr = [...positions];
 							// Convert to std::vector<float>
 							const floatVec = new editor.MeshSDK.StdVectorf();
-							positionsArr.forEach( v => floatVec.push_back(v) );
+							positionsArr.forEach( v => floatVec.push_back( v ) );
 
 							// const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
 							// const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 							
 							// const result = editor.MeshSDK.cutMeshByContourImpl( mesh, floatVec );
-							// const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
 							// const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
-							// const result = editor.MeshSDK.cutMeshWithPolylineImplTest( curMeshWrapper.mesh, floatVec );
+
+							// const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
+							const result = editor.MeshSDK.cutMeshWithPolylineImplTest( curMeshWrapper.mesh, floatVec );
+
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
-							const result = curMeshWrapper.cutMeshByContourImpl( floatVec );
+							// const result = curMeshWrapper.cutMeshByContourImpl( floatVec );
 
 							// const mVertices = result.mesh.vertices;
 							// const mIndices = result.mesh.indices;
 
 							const smallerVertices = result.smallerMesh.vertices;
 							const smallerIndices = result.smallerMesh.indices;
+							const json = JSON.stringify(Array.from(smallerVertices));
+							console.log(json);
 						
 							const largerVertices = result.largerMesh.vertices;
 							const largerIndices = result.largerMesh.indices;
@@ -279,8 +283,8 @@ function SidebarObject( editor ) {
 
 
 							// showMesh( mVertices, mIndices );
-							showMesh( smallerVertices, smallerIndices );
-							showMesh( largerVertices, largerIndices );
+							showMesh( new Float32Array(smallerVertices), new Uint32Array(smallerIndices) );
+							showMesh( new Float32Array(largerVertices), new Uint32Array(largerIndices) );
 
 							floatVec.delete();
 							mesh.delete();
@@ -346,7 +350,7 @@ function SidebarObject( editor ) {
 	}
 	function refreshCurve() {
 		if ( clicked.length >= 2 ) {
-			const curve = new THREE.CatmullRomCurve3( clicked, clicked.length > 2, 'centripetal' );
+			const curve = new THREE.CatmullRomCurve3( clicked, clicked.length > 2 );
 			// const curve = new THREE.CatmullRomCurve3( clicked );
 			// Sample a number of points on the curve and then fit the surface
 			const pts = curve.getPoints( clicked.length * 6 );
