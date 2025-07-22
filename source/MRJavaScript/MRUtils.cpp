@@ -186,34 +186,19 @@ std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut 
 	
 	return { innerMesh, outerMesh };
 }
-std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet& fb )
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet fb )
 {
 	auto otherPart = mesh.topology.getValidFaces() - fb;
-	FaceBitSet *smallerPart, *largerPart;
-	
-	if ( mesh.area( fb ) < mesh.area( otherPart ) )
-	{
-		smallerPart = &fb;
-		largerPart = &otherPart;
-	}
-	else 
-	{
-		smallerPart = &otherPart;
-		largerPart = &fb;
-	}
+	const auto fbArea = mesh.area( fb );
+	const auto otherArea = mesh.area( otherPart );
 
-	Mesh smallerMesh, largerMesh;
-    smallerMesh.addMeshPart( {mesh, smallerPart} );
-    largerMesh.addMeshPart( {mesh, largerPart} );
+	const FaceBitSet& smallerPart = fbArea < otherArea ? fb : otherPart;
+	const FaceBitSet& largerPart = fbArea < otherArea ? otherPart : fb;
 
-	///
-	// // Larger mesh
-	// mesh.deleteFaces( smallerPart );
-	// // eliminate the redundant information
-	// mesh.pack();
-	///
-
-	return { smallerMesh, largerMesh };
+	return {
+		mesh.cloneRegion( smallerPart ),
+		mesh.cloneRegion( largerPart )
+	};
 }
 
 MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris ) 

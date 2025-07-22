@@ -258,7 +258,8 @@ function SidebarObject( editor ) {
 							const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 							// const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 							// const result = editor.MeshSDK.cutMeshWithPolylineImplTest( curMeshWrapper.mesh, floatVec );
-							const result = editor.MeshSDK.cutMeshByContourImpl( curMeshWrapper.mesh, floatVec );
+							// const result = editor.MeshSDK.cutMeshByContourImpl( curMeshWrapper.mesh, floatVec );
+							const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 
 							// const mVertices = result.mesh.vertices;

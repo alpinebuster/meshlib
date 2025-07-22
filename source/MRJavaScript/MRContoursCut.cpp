@@ -206,8 +206,6 @@ val cutMeshWithPolylineImpl( Mesh& mesh, const std::vector<float>& coordinates )
  */
 val cutMeshByContourImpl( Mesh& mesh, const std::vector<float>& coordinates )
 {
-	std::vector<Vector3f> polyline;
-
     int coordinatesLength = coordinates.size();
     if ( coordinatesLength % 3 != 0 ) {
 		val obj = val::object();
@@ -216,44 +214,59 @@ val cutMeshByContourImpl( Mesh& mesh, const std::vector<float>& coordinates )
 
 		return obj;
     }
-	polyline.reserve( coordinatesLength / 3 );
 
+    MR::Contour3f cont( coordinatesLength / 3 );
+    for ( int i = 0; i < cont.size(); ++i )
+        cont[i] = MR::Vector3f( coordinates[3 * i + 0], coordinates[3 * i + 1], coordinates[3 * i + 2] );
+
+    auto cutRes = MR::cutMeshByContour( mesh, cont );
+
+    auto cutPartMeshL = mesh.cloneRegion( *cutRes );
+    auto cutPartMeshR = mesh.cloneRegion( mesh.topology.getValidFaces() - *cutRes );
+
+	val smallerMeshData = MRJS::exportMeshMemoryView( cutPartMeshL );
+	val largerMeshData = MRJS::exportMeshMemoryView( cutPartMeshR );
+
+	val obj = val::object();
+	obj.set( "success", true );
+	obj.set( "smallerMesh", smallerMeshData );
+	obj.set( "largerMesh", largerMeshData );
+
+	return obj;
+}
+val cutMeshByContourImplTest( Mesh& mesh, const std::vector<float>& coordinates )
+{
+    int coordinatesLength = coordinates.size();
+    if ( coordinatesLength % 3 != 0 ) {
+		val obj = val::object();
+		obj.set( "success", false );
+		obj.set( "error", "Coordinates length must be a multiple of 3!" );
+
+		return obj;
+    }
+
+	std::vector<Vector3f> polyline;
+	polyline.reserve( coordinatesLength / 3 );
 	for ( size_t i = 0; i < coordinatesLength; i += 3 )
 	{
 		polyline.emplace_back( Vector3f( coordinates[i], coordinates[i + 1], coordinates[i + 2] ) );
 	}
 
-	// FIXME: Why this will cause the inner mesh have a outlier point?
 	auto expectedFaceBitSet = cutMeshByContour( mesh, polyline );
-	if ( expectedFaceBitSet )
-	{
-		auto onePart = expectedFaceBitSet.value();
 
-		auto [smallerMesh, largerMesh] = MRJS::returnParts( mesh, onePart );
-		val smallerMeshData = MRJS::exportMeshMemoryView( smallerMesh );
-		val largerMeshData = MRJS::exportMeshMemoryView( largerMesh );
-		val meshData = MRJS::exportMeshMemoryView( mesh );
+	auto [smallerMesh, largerMesh] = MRJS::returnParts( mesh, *expectedFaceBitSet );
+	val smallerMeshData = MRJS::exportMeshMemoryView( smallerMesh );
+	val largerMeshData = MRJS::exportMeshMemoryView( largerMesh );
 
 
-		val obj = val::object();
-		obj.set( "success", true );
-		obj.set( "mesh", meshData );
-		obj.set( "smallerMesh", smallerMeshData );
-		obj.set( "largerMesh", largerMeshData );
-		obj.set( "meshInstance", mesh );
-		obj.set( "smallerMeshInstance", smallerMesh );
-		obj.set( "largerMeshInstance", largerMesh );
+	val obj = val::object();
+	obj.set( "success", true );
+	obj.set( "smallerMesh", smallerMeshData );
+	obj.set( "largerMesh", largerMeshData );
+	obj.set( "smallerMeshInstance", smallerMesh );
+	obj.set( "largerMeshInstance", largerMesh );
 
-		return obj;
-	} else {
-		std::string error = expectedFaceBitSet.error();
-
-		val obj = val::object();
-		obj.set( "success", false );
-		obj.set( "error", "cutMeshByContour: " + error );
-	
-		return obj;
-	}
+	return obj;
 }
 
 /**
@@ -400,8 +413,9 @@ EMSCRIPTEN_BINDINGS( ContoursCutModule )
 
 
 	///
-	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
 	function( "cutMeshByContourImpl", &cutMeshByContourImpl );
+	function( "cutMeshByContourImplTest", &cutMeshByContourImplTest );
+	function( "cutMeshWithPolylineImpl", &cutMeshWithPolylineImpl );
 	function( "cutMeshWithPolylineImplTest", &cutMeshWithPolylineImplTest );
 	function( "cutAndExtrudeMeshWithPolylineImpl", &cutAndExtrudeMeshWithPolylineImpl );
 	///
