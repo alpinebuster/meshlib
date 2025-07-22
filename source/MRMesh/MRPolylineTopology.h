@@ -48,14 +48,23 @@ public:
     /// checks whether the edge is disconnected from all other edges and disassociated from all vertices (as if after makeEdge)
     [[nodiscard]] MRMESH_API bool isLoneEdge( EdgeId a ) const;
 
+    /// returns last not lone undirected edge id, or invalid id if no such edge exists
+    [[nodiscard]] MRMESH_API UndirectedEdgeId lastNotLoneUndirectedEdge() const;
+
     /// returns last not lone edge id, or invalid id if no such edge exists
-    [[nodiscard]] MRMESH_API EdgeId lastNotLoneEdge() const;
+    [[nodiscard]] EdgeId lastNotLoneEdge() const { auto ue = lastNotLoneUndirectedEdge(); return ue ? EdgeId( ue ) + 1 : EdgeId(); }
 
     /// returns the number of half-edge records including lone ones
     [[nodiscard]] size_t edgeSize() const { return edges_.size(); }
 
+    /// returns the number of allocated edge records
+    [[nodiscard]] size_t edgeCapacity() const { return edges_.capacity(); }
+
     /// returns the number of undirected edges (pairs of half-edges) including lone ones
     [[nodiscard]] size_t undirectedEdgeSize() const { return edges_.size() >> 1; }
+
+    /// returns the number of allocated undirected edges (pairs of half-edges)
+    [[nodiscard]] size_t undirectedEdgeCapacity() const { return edges_.capacity() >> 1; }
 
     /// computes the number of not-lone (valid) undirected edges
     [[nodiscard]] MRMESH_API size_t computeNotLoneUndirectedEdges() const;
