@@ -92,30 +92,6 @@ IF(MR_EMSCRIPTEN)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s WASM_BIGINT")
   ENDIF()
 
-  ###
-  IF(MR_EMSCRIPTEN_BUILD_DEBUG)
-    # 1. Gather all files under `wasm/assets` and `wasm/css`.
-    file(GLOB_RECURSE LOCAL_WASM_FILES
-        "${CMAKE_CURRENT_SOURCE_DIR}/../../wasm/assets/*"
-        "${CMAKE_CURRENT_SOURCE_DIR}/../../wasm/css/*"
-    )
-    # 2. Add the source files used for debug in the `wasm` root directory to the list
-    set(WASM_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../wasm")
-    list(APPEND LOCAL_WASM_FILES
-        "${WASM_ROOT_DIR}/index_mrjs.html"
-        "${WASM_ROOT_DIR}/main.js"
-        "${WASM_ROOT_DIR}/server.py"
-        "${WASM_ROOT_DIR}/post_load_mrjs.js"
-        "${WASM_ROOT_DIR}/wasm_loader_mrjs.js"
-    )
-    # 3. Exclude all files in the `meshsdk` directory
-    list(FILTER LOCAL_WASM_FILES EXCLUDE REGEX ".*[/\\]wasm[/\\]meshsdk[/\\].*")
-
-    message(STATUS "Will copy these wasm-debug related files: ${LOCAL_WASM_FILES}")
-    file(COPY ${LOCAL_WASM_FILES} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-  ENDIF()
-  ###
-
   target_link_libraries(${PROJECT_NAME} PRIVATE
     MRMesh
     MRIOExtras

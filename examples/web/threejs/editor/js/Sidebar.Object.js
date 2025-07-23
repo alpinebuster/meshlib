@@ -244,22 +244,28 @@ function SidebarObject( editor ) {
 			if ( currentUUID ) {
 				if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {	
 					const curMeshWrapper = editor.wasmObject[currentUUID];
-					const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+					// const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 
 					switch ( TOOL_MODE ) {
 						case 'wasmOpSelector':
-							const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+							// const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+
+							///
 							const positionAttribute = curveLine.geometry.getAttribute( 'position' );
 							const positions = positionAttribute.array; // Float32Array
 							const positionsArr = [...positions];
 							// Convert to std::vector<float>
 							const floatVec = new editor.MeshSDK.StdVectorf();
 							positionsArr.forEach( v => floatVec.push_back( v ) );
+							///
+
 
 							// const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
 							// const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 							
-							const result = editor.MeshSDK.cutMeshByContourImpl( mesh, floatVec );
+
+							///
+							const result = editor.MeshSDK.cutMeshByContourImpl( curMeshWrapper.mesh, floatVec );
 							// const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 
 							// const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
@@ -267,31 +273,31 @@ function SidebarObject( editor ) {
 
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
 							// const result = curMeshWrapper.cutMeshByContourImpl( floatVec );
+							///
 
+
+							///
 							// const mVertices = result.mesh.vertices;
 							// const mIndices = result.mesh.indices;
 
 							const smallerVertices = result.smallerMesh.vertices;
 							const smallerIndices = result.smallerMesh.indices;
-							// const json = JSON.stringify( Array.from( smallerVertices ) );
-							// console.log( json );
-						
+	
 							const largerVertices = result.largerMesh.vertices;
 							const largerIndices = result.largerMesh.indices;
 							
-
 							// showMesh( mVertices, mIndices );
-							// showMesh( new Float32Array(smallerVertices), new Uint32Array(smallerIndices) );
-							// showMesh( new Float32Array(largerVertices), new Uint32Array(largerIndices) );
-
 							showMesh( smallerVertices, smallerIndices );
 							showMesh( largerVertices, largerIndices );
-		
+							///
 
+
+							///
 							floatVec.delete();
-							mesh.delete();
-							editor.MeshSDK._free( verticesPtr );
-							editor.MeshSDK._free( indicesPtr );
+							// mesh.delete();
+							// editor.MeshSDK._free( verticesPtr );
+							// editor.MeshSDK._free( indicesPtr );
+							///
 							break;
 
 						case 'wasmOpSegmentByPoints':

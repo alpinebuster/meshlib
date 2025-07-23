@@ -283,29 +283,38 @@ Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
 
 val exportMeshMemoryView( const Mesh& meshToExport )
 {
+	///
     // === Export point data ===
     const auto& points_ = meshToExport.points;
     size_t pointCount = points_.size();
     size_t vertexElementCount = pointCount * 3;
     const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
-    val pointsArray = val( typed_memory_view( vertexElementCount, pointDataPtr ) );
+
+    // NOTE: Can NOT use `val pointsArray = val( typed_memory_view( vertexElementCount, pointDataPtr ) );` directly,
+	// because it will corrupt the data
+	val pointsArray = val::global( "Float32Array" ).new_( vertexElementCount );
+	pointsArray.call<void>( "set", val( typed_memory_view( vertexElementCount, pointDataPtr ) ) );
+	///
 
 
+	///
     // === Export triangle data ===
-    // NOTE: The `tris_` returned by `getTriangulation()` is a temporary variable, and directly using it in `typed_memory_view` will lead to incorrect indices data
+    // NOTE: The `tris_` returned by `getTriangulation()` is a temporary variable,
+	// and directly using it in `typed_memory_view` will lead to incorrect indices data
     // While the vertices returned by `meshToExport.points` will live long enough to be called by JS side
     const Triangulation tris_ = meshToExport.topology.getTriangulation();
     size_t triangleCount = tris_.size();
     size_t triElementCount = triangleCount * 3;
+    const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
+
     // NOTE:
     // 
     //  uint32_t*   	-> Uint32Array, we need `Uint32Array` for threejs
     //  int*	        -> Int32Array
     // 
-    uint32_t* triBuffer = (uint32_t*) malloc( triElementCount * sizeof( uint32_t ) );
-	memcpy( triBuffer, tris_.data(), triElementCount * sizeof(uint32_t) );
-    val triangleArray = val( typed_memory_view( triElementCount, triBuffer ) );
-
+    val triangleArray = val::global( "Uint32Array" ).new_( triElementCount );
+	triangleArray.call<void>( "set", val( typed_memory_view( triElementCount, triDataPtr ) ) );
+	///
 
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );
@@ -313,7 +322,7 @@ val exportMeshMemoryView( const Mesh& meshToExport )
 
     return meshData;
 };
-val exportMeshData( const Mesh& meshToExport ) {
+val exportMeshMemoryViewTest( const Mesh& meshToExport ) {
     // === Export point data ===
     const auto& points_ = meshToExport.points;
     size_t pointCount = points_.size();
@@ -321,8 +330,8 @@ val exportMeshData( const Mesh& meshToExport ) {
     const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
 
 	/// WORKING
-	// `val::array` + loop set: 1) non-contiguous, dynamic; 2) N cross-language operations
 	// 
+	// NOTE: `val::array` + loop set: 1) non-contiguous, dynamic; 2) N cross-language operations
     // val pointsArray = val::array();
     // // Pre-allocate the array length to improve performance
     // pointsArray.set( "length", vertexElementCount );
@@ -331,7 +340,7 @@ val exportMeshData( const Mesh& meshToExport ) {
     //     pointsArray.set( i, val( pointDataPtr[i] ) );
     // }
 	//
-	// `typed_memory_view` + `TypedArray.set`: 1) compact, contiguous; 2) 1 cross-language operation
+	// NOTE: `typed_memory_view` + `TypedArray.set`: 1) compact, contiguous; 2) 1 cross-language operation
     val pointsArray = val::global( "Float32Array" ).new_( vertexElementCount );
 	pointsArray.call<void>( "set", val( typed_memory_view( vertexElementCount, pointDataPtr ) ) );
 	///
@@ -349,7 +358,7 @@ val exportMeshData( const Mesh& meshToExport ) {
 	// for ( size_t i = 0; i < indexElementCount; ++i ) {
 	// 	triangleArray.set( i, val(triDataPtr[i]) );
 	// }
-	// 
+	//
     val triangleArray = val::global( "Uint32Array" ).new_( indexElementCount );
 	triangleArray.call<void>( "set", val( typed_memory_view( indexElementCount, triDataPtr ) ) );
 	///
@@ -368,7 +377,7 @@ val exportMeshData( const Mesh& meshToExport ) {
 EMSCRIPTEN_BINDINGS( UtilsModule )
 {
 	function( "exportMeshMemoryView", &MRJS::exportMeshMemoryView );
-	function( "exportMeshData", &MRJS::exportMeshData );
+	function( "exportMeshMemoryViewTest", &MRJS::exportMeshMemoryViewTest );
 
 	function( "findLookingFaces", &MRJS::findLookingFaces );
 	function( "findSilhouetteEdges", &MRJS::findSilhouetteEdges );

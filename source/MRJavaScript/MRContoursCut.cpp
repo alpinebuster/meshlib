@@ -118,8 +118,8 @@ val cutMeshByContourImpl( Mesh& mesh, const std::vector<float>& coordinates )
     auto cutPartMeshL = mesh.cloneRegion( *cutRes );
     auto cutPartMeshR = mesh.cloneRegion( mesh.topology.getValidFaces() - *cutRes );
 
-	val smallerMeshData = MRJS::exportMeshData( cutPartMeshL );
-	val largerMeshData = MRJS::exportMeshData( cutPartMeshR );
+	val smallerMeshData = MRJS::exportMeshMemoryView( cutPartMeshL );
+	val largerMeshData = MRJS::exportMeshMemoryView( cutPartMeshR );
 
 	val obj = val::object();
 	obj.set( "success", true );
@@ -205,8 +205,8 @@ val cutMeshWithPolylineImplTest( Mesh& mesh, const std::vector<float>& coordinat
 		}
 
 		auto [smallerMesh, largerMesh] = MRJS::returnParts( mesh, cutResults.resultCut );
-		val smallerMeshData = MRJS::exportMeshData( smallerMesh );
-		val largerMeshData = MRJS::exportMeshData( largerMesh );
+		val smallerMeshData = MRJS::exportMeshMemoryViewTest( smallerMesh );
+		val largerMeshData = MRJS::exportMeshMemoryViewTest( largerMesh );
 
 
 		val obj = val::object();

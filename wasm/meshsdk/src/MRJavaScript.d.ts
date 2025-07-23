@@ -158,6 +158,14 @@ declare namespace RuntimeExports {
         export function forceLoadFile(obj: any): boolean;
         export function createLazyFile(parent: any, name: any, url: any, canRead: any, canWrite: any): any;
     }
+    function FS_createPath(...args: any[]): any;
+    function FS_createDataFile(...args: any[]): any;
+    function FS_createPreloadedFile(parent: any, name: any, url: any, canRead: any, canWrite: any, onload: any, onerror: any, dontCreateFile: any, canOwn: any, preFinish: any): void;
+    function FS_unlink(...args: any[]): any;
+    function FS_createLazyFile(...args: any[]): any;
+    function FS_createDevice(...args: any[]): any;
+    let addRunDependency: any;
+    let removeRunDependency: any;
 }
 declare class ErrnoError {
     constructor(errno: any);
@@ -9390,7 +9398,7 @@ interface EmbindModule {
     new(): UniteManyMeshesParams;
   };
   exportMeshMemoryView(_0: Mesh): any;
-  exportMeshData(_0: Mesh): any;
+  exportMeshMemoryViewTest(_0: Mesh): any;
   getAllComponentsMap(_0: MeshPart, _1: FaceIncidence, _2: UndirectedEdgeBitSet | null): Face2RegionMapIntPair;
   getLargeByAreaRegions(_0: MeshPart, _1: Face2RegionMap, _2: number, _3: number): FaceBitSetIntPair;
   StdVectori: {

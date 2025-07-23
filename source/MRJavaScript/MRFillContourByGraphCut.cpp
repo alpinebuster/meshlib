@@ -151,7 +151,7 @@ public:
 			segMesh.addMeshPart( {mesh_, &segmentedFaces} );
 
 			// Step 6: Convert results to JavaScript-friendly format using emscripten val
-			val meshData = MRJS::exportMeshData( segMesh );
+			val meshData = MRJS::exportMeshMemoryView( segMesh );
 						
 			// Since `EdgeId` has an implicit conversion operator to int, and it is internally represented as an int
 			// We can directly reinterpret `EdgeId*` as `int*`

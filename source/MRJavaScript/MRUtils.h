@@ -72,7 +72,7 @@ MRJS_API Mesh findSilhouetteEdges( const Mesh& mesh, Vector3f lookDirection );
 //  double*	        -> Float64Array
 // 
 val exportMeshMemoryView( const Mesh& meshToExport );
-val exportMeshData( const Mesh& meshToExport );
+val exportMeshMemoryViewTest( const Mesh& meshToExport );
 
 
 // Impl：Automatically registering elements `0, 1, …, N − 1` at compile time
