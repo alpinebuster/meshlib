@@ -277,6 +277,12 @@ function SidebarObject( editor ) {
 
 
 							///
+							// const smallerG = editor.MeshSDK.exportGeometryBuffer( result.smallerMesh );
+							// const largerG = editor.MeshSDK.exportGeometryBuffer( result.largerMesh );
+							// showMesh( result.smallerMesh, smallerG.vertices, smallerG.indices );
+							// showMesh( result.largerMesh, largerG.vertices, largerG.indices );
+
+
 							// const mVertices = result.mesh.vertices;
 							// const mIndices = result.mesh.indices;
 

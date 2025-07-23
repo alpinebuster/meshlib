@@ -281,6 +281,11 @@ Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
 	return projectedMesh;
 }
 
+
+std::shared_ptr<GeometryBuffer> exportGeometryBuffer( const Mesh& meshToExport )
+{
+    return GeometryBuffer::fromMesh(meshToExport);
+}
 val exportMeshMemoryView( const Mesh& meshToExport )
 {
 	///
@@ -376,6 +381,13 @@ val exportMeshMemoryViewTest( const Mesh& meshToExport ) {
 
 EMSCRIPTEN_BINDINGS( UtilsModule )
 {
+	class_<MRJS::GeometryBuffer>( "GeometryBuffer" )
+        .smart_ptr<std::shared_ptr<MRJS::GeometryBuffer>>(" GeometryBuffer ")
+        .constructor<val, val>()
+		.property( "vertices", &MRJS::GeometryBuffer::vertices )
+		.property( "indices", &MRJS::GeometryBuffer::indices );
+
+	function( "exportGeometryBuffer", &MRJS::exportGeometryBuffer );
 	function( "exportMeshMemoryView", &MRJS::exportMeshMemoryView );
 	function( "exportMeshMemoryViewTest", &MRJS::exportMeshMemoryViewTest );
 
