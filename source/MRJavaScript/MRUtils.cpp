@@ -197,20 +197,20 @@ MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, 
 	MeshBuilder::VertexIdentifier vi;
 	chunk.resize( numTris );
 	vi.reserve( numTris );
-	ParallelFor(0, numTris, [&](int i) {
+	ParallelFor( 0, numTris, [&]( int i ) {
 		int fId = i * 3;
-		VertId id1 = static_cast<VertId>(indicesPtr[fId]);
-		VertId id2 = static_cast<VertId>(indicesPtr[fId + 1]);
-		VertId id3 = static_cast<VertId>(indicesPtr[fId + 2]);
+		VertId id1 = static_cast<VertId>( indicesPtr[fId] );
+		VertId id2 = static_cast<VertId>( indicesPtr[fId + 1] );
+		VertId id3 = static_cast<VertId>( indicesPtr[fId + 2] );
 
-		int vIdx1 = static_cast<int>(id1) * 3;
-		int vIdx2 = static_cast<int>(id2) * 3;
-		int vIdx3 = static_cast<int>(id3) * 3;
+		int vIdx1 = static_cast<int>( id1 ) * 3;
+		int vIdx2 = static_cast<int>( id2 ) * 3;
+		int vIdx3 = static_cast<int>( id3 ) * 3;
 
 		chunk[i][0] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
 		chunk[i][1] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
 		chunk[i][2] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
-	});
+	} );
 
 	vi.addTriangles( chunk );
 	return vi;
@@ -281,7 +281,6 @@ Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
 	return projectedMesh;
 }
 
-// FIXME:
 val exportMeshMemoryView( const Mesh& meshToExport )
 {
     // === Export point data ===
@@ -289,16 +288,13 @@ val exportMeshMemoryView( const Mesh& meshToExport )
     size_t pointCount = points_.size();
     size_t vertexElementCount = pointCount * 3;
     const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
-
-    // Use `typed_memory_view()` for vertices
-    val pointsArray = val( typed_memory_view(
-        vertexElementCount, 
-        pointDataPtr
-    ) );
+    val pointsArray = val( typed_memory_view( vertexElementCount, pointDataPtr ) );
 
 
     // === Export triangle data ===
-    const auto& tris_ = meshToExport.topology.getTriangulation();
+    // NOTE: The `tris_` returned by `getTriangulation()` is a temporary variable, and directly using it in `typed_memory_view` will lead to incorrect indices data
+    // While the vertices returned by `meshToExport.points` will live long enough to be called by JS side
+    const Triangulation tris_ = meshToExport.topology.getTriangulation();
     size_t triangleCount = tris_.size();
     size_t triElementCount = triangleCount * 3;
     // NOTE:
@@ -306,45 +302,14 @@ val exportMeshMemoryView( const Mesh& meshToExport )
     //  uint32_t*   	-> Uint32Array, we need `Uint32Array` for threejs
     //  int*	        -> Int32Array
     // 
-    const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
-
-    /// NOTE: V3 - Working & Faster than V1
-    val triangleArray = val::global( "Uint32Array" ).new_( triElementCount );
-    val triangleView_ = val( typed_memory_view( triElementCount, triDataPtr ) ); // Use `typed_memory_view()` for triangles
-    triangleArray.call<void>( "set", triangleView_ );
-    ///
-
-
-    /// NOTE: V2 - NOT WORKING:
-    // This will return corrupted indices because the `tris_` returned by `getTriangulation()` must be copied
-    // While the vertices returned by `meshToExport.points` will live long enough to be called by JS side.
-    // 
-    // val triangleArray = val( typed_memory_view(
-    //     triElementCount,
-    //     triDataPtr
-    // ) );
-    ///
-
-    /// NOTE: V1 - Working
-    // TODO: Use `ParallelFor` to optimize this?
-    // 
-    // val triangleArray = val::array();
-    // triangleArray.set("length", triElementCount);
-	// for (size_t i = 0; i < triElementCount; ++i) {
-	// 	triangleArray.set(i, val(triDataPtr[i]));
-	// }
-    ///
+    uint32_t* triBuffer = (uint32_t*) malloc( triElementCount * sizeof( uint32_t ) );
+	memcpy( triBuffer, tris_.data(), triElementCount * sizeof(uint32_t) );
+    val triangleArray = val( typed_memory_view( triElementCount, triBuffer ) );
 
 
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );
-    meshData.set( "vertexElementCount", vertexElementCount );
-    meshData.set( "vertexCount", pointCount );
     meshData.set( "indices", triangleArray );
-    meshData.set( "indexElementCount", triElementCount );
-    meshData.set( "indexCount", triangleCount );
-    // meshData.set( "sizeofThreeVertIds", sizeof( ThreeVertIds ) );
-    // meshData.set( "sizeofUInt32", sizeof( uint32_t ) * 3 );
 
     return meshData;
 };
@@ -355,33 +320,44 @@ val exportMeshData( const Mesh& meshToExport ) {
     size_t vertexElementCount = pointCount * 3;
     const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
 
-    val pointsArray = val::array();
-    // Pre-allocate the array length to improve performance
-    pointsArray.set( "length", vertexElementCount );
-    // Batch setting values - faster than pushing them one by one
-    for (size_t i = 0; i < vertexElementCount; ++i) {
-        pointsArray.set( i, val( pointDataPtr[i] ) );
-    }
+	/// WORKING
+	// `val::array` + loop set: 1) non-contiguous, dynamic; 2) N cross-language operations
+	// 
+    // val pointsArray = val::array();
+    // // Pre-allocate the array length to improve performance
+    // pointsArray.set( "length", vertexElementCount );
+    // // Batch setting values - faster than pushing them one by one
+    // for (size_t i = 0; i < vertexElementCount; ++i) {
+    //     pointsArray.set( i, val( pointDataPtr[i] ) );
+    // }
+	//
+	// `typed_memory_view` + `TypedArray.set`: 1) compact, contiguous; 2) 1 cross-language operation
+    val pointsArray = val::global( "Float32Array" ).new_( vertexElementCount );
+	pointsArray.call<void>( "set", val( typed_memory_view( vertexElementCount, pointDataPtr ) ) );
+	///
+
 
     // === Export triangle data ===
     const auto& tris_ = meshToExport.topology.getTriangulation();
     size_t triangleCount = tris_.size();
-    size_t indexElementCount = triangleCount * 3; // Each triangle has 3 indexes
+    size_t indexElementCount = triangleCount * 3;
     const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
 
-	val triangleArray = val::array();
-    triangleArray.set("length", indexElementCount);
-	for ( size_t i = 0; i < indexElementCount; ++i ) {
-		triangleArray.set( i, val(triDataPtr[i]) );
-	}
+	/// WORKING
+	// val triangleArray = val::array();
+    // triangleArray.set( "length", indexElementCount );
+	// for ( size_t i = 0; i < indexElementCount; ++i ) {
+	// 	triangleArray.set( i, val(triDataPtr[i]) );
+	// }
+	// 
+    val triangleArray = val::global( "Uint32Array" ).new_( indexElementCount );
+	triangleArray.call<void>( "set", val( typed_memory_view( indexElementCount, triDataPtr ) ) );
+	///
+
 
     val meshData = val::object();
     meshData.set( "vertices", pointsArray );
-    meshData.set( "vertexElementCount", val(vertexElementCount) );
-    meshData.set( "vertexCount", val( pointCount ) );
     meshData.set( "indices", triangleArray );
-    meshData.set( "indexElementCount", val(indexElementCount) );
-    meshData.set( "indexCount", triangleCount );
 
     return meshData;
 };
@@ -391,11 +367,11 @@ val exportMeshData( const Mesh& meshToExport ) {
 
 EMSCRIPTEN_BINDINGS( UtilsModule )
 {
-	function( "exportMeshMemoryView", &MRJS::exportMeshMemoryView, allow_raw_pointers() );
-	function( "exportMeshData", &MRJS::exportMeshData, allow_raw_pointers() );
+	function( "exportMeshMemoryView", &MRJS::exportMeshMemoryView );
+	function( "exportMeshData", &MRJS::exportMeshData );
 
-	function( "findLookingFaces", &MRJS::findLookingFaces, allow_raw_pointers() );
-	function( "findSilhouetteEdges", &MRJS::findSilhouetteEdges, allow_raw_pointers() );
+	function( "findLookingFaces", &MRJS::findLookingFaces );
+	function( "findSilhouetteEdges", &MRJS::findSilhouetteEdges );
 }
 
 

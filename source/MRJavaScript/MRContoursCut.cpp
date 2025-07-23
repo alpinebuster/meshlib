@@ -118,8 +118,8 @@ val cutMeshByContourImpl( Mesh& mesh, const std::vector<float>& coordinates )
     auto cutPartMeshL = mesh.cloneRegion( *cutRes );
     auto cutPartMeshR = mesh.cloneRegion( mesh.topology.getValidFaces() - *cutRes );
 
-	val smallerMeshData = MRJS::exportMeshMemoryView( cutPartMeshL );
-	val largerMeshData = MRJS::exportMeshMemoryView( cutPartMeshR );
+	val smallerMeshData = MRJS::exportMeshData( cutPartMeshL );
+	val largerMeshData = MRJS::exportMeshData( cutPartMeshR );
 
 	val obj = val::object();
 	obj.set( "success", true );
