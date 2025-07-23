@@ -6,6 +6,7 @@
 
 namespace MR
 {
+
 /// Structure to hold and work with dense box
 /// \details Scalar operations that are not provided in this struct can be called via `box()`
 /// For example `box().size()`, `box().diagonal()` or `box().volume()`

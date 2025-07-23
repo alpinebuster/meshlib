@@ -32,11 +32,11 @@ struct CutMeshParameters
 {
     /// This is optional input for better contours resolving\n
     /// it provides additional info from other mesh used in boolean operation, useful to solve some degeneration
-    /// \note Most likely you don't need this in case you call MR::cutMesh manualy, use case of it is MR::boolean
+    /// \note Most likely you don't need this in case you call MR::cutMesh manually, use case of it is MR::boolean
     const SortIntersectionsData* sortData{nullptr};
     /// This is optional output - map from newly generated faces to old faces (N-1)
     FaceMap* new2OldMap{nullptr};
-    /// This enum defines the MR::cutMesh behaviour in case of bad faces acure
+    /// This enum defines the MR::cutMesh behaviour in case of bad faces occur
     /// basically MR::cutMesh removes all faces which contours pass through, adds new edges to topology and fills all removed parts
     /// 
     /// \note Bad faces here mean faces where contours have intersections and cannot be cut and filled in an good way
@@ -87,7 +87,13 @@ MRMESH_API CutMeshResult cutMesh( Mesh& mesh, const OneMeshContours& contours, c
 /// \param xf transformation from the CSYS of \p contour to the CSYS of \p mesh
 /// \note \p mesh is modified, see \ref cutMesh for info
 /// \return Faces to the left of the polyline
-MRMESH_API Expected<FaceBitSet> cutMeshByContour( Mesh& mesh, const Contour3f& contour, const AffineXf3f& xf = {} );
+[[nodiscard]] MRMESH_API Expected<FaceBitSet> cutMeshByContour( Mesh& mesh, const Contour3f& contour, const AffineXf3f& xf = {} );
+
+/// Cuts \p mesh by \p contours by projecting all the points
+/// \param xf transformation from the CSYS of \p contour to the CSYS of \p mesh
+/// \note \p mesh is modified, see \ref cutMesh for info
+/// \return Faces to the left of the polyline
+[[nodiscard]] MRMESH_API Expected<FaceBitSet> cutMeshByContours( Mesh& mesh, const Contours3f& contours, const AffineXf3f& xf = {} );
 
 /** \ingroup BooleanGroup
   * \brief Makes continuous contour by iso-line from mesh tri points, if first and last meshTriPoint is the same, makes closed contour

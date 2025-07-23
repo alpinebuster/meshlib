@@ -2,7 +2,7 @@
 
 Rules that should obey.
 
-- Standard library `tl::expected<T, E>`: ``
+- Standard library `tl::expected<T, E>`: use `bindExpected()`
 - Standard library `std::function`: `class_<std::function<std::string( std::string )>>( "StringFunctorString" ).constructor<>().function( "opcall", &std::function<std::string( std::string )>::operator() );`
 - Standard library `std::optional`: `register_optional<SmallClass>();`
 - Standard library `std::array`: `value_array<std::array<float, 3>>( "Array3f" ).element( emscripten::index<0>() ).element( emscripten::index<1>() ).element( emscripten::index<2>() );`, `value_array<std::array<EdgeId, 2>>( "Array2EdgeId" ).element( emscripten::index<0>() ).element( emscripten::index<1>() );`
@@ -10,18 +10,10 @@ Rules that should obey.
 - Standard library `std::pair`: `value_array<std::pair<Vector3f, Vector3f>>( "Vector3fPair" ).element( &std::pair<Vector3f, Vector3f>::first ).element( &std::pair<Vector3f, Vector3f>::second )`
 - Wrapper functions for structs consistently use `create#ORIGINAL_NAME` (e.g., for `SortIntersectionsData`, the name is `createSortIntersectionsData`)
 - Encapsulate common functional processes that are composed of different modules by adding the `Impl` suffix to the corresponding key function name (e.g., `fixUndercuts` corresponds to `fixUndercutsImpl`).
+- For function overloading, adds `#ORIGINAL_NAMEFromXXX` or `#ORIGINAL_NAMEWithXXX` to the function name based on the parameters
 
 - Prioritize using `val(typed_memory_view(...))` and `HEAPU8.set(uint8Array, ptr)`
-
 - Automatically delete short-lived C++ objects at the end of the scope when they’re declared with a using keyword: `using x = new Module.MyClass; x.method();`. Using `smart_ptr_constructor()` ensures that when creating an object in JavaScript, a **smart pointer** is returned, making it easier to manage the object's lifecycle. Using `smart_ptr()` allows for more flexible parameter and return types, but still returns a **raw pointer** when creating an object.
-- Provide **wrapper** functions or classes to handle complex pointer logic
-
-
-## TODOs
-
-- Distinguish between "JavaScript interfaces exported according to the original API" and "JavaScript interfaces exported with encapsulated specialized functionalities" by utilizing suffix `*Impl`.
-- V2: In version 2, use functions (MACROs) to generate emscripten bindings to reduce redundancy
-- V3: In version 3, use clang's ast related api to parse C++ source code then generate emscripten bindings
 
 ### FIXME: WASM DEBUGGING
 

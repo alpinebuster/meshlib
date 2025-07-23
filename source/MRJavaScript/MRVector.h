@@ -4,8 +4,7 @@
 #include <type_traits>
 #include <type_traits>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRAffineXf3.h>

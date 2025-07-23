@@ -1,5 +1,4 @@
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
@@ -11,6 +10,7 @@
 
 using namespace emscripten;
 using namespace MR;
+
 
 EMSCRIPTEN_BINDINGS( BooleanOperationModule )
 {
@@ -56,5 +56,7 @@ EMSCRIPTEN_BINDINGS( BooleanOperationModule )
 		.function( "filteredOldFaceBitSet", &BooleanResultMapper::filteredOldFaceBitSet )
 		.function( "getMaps", &BooleanResultMapper::getMaps );
 
+
+	/// \note: actually this function is meant to be internal, use `boolean()` instead
 	function( "doBooleanOperation", &doBooleanOperation, allow_raw_pointers() );
 }

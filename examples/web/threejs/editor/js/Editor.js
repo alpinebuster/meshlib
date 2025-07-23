@@ -498,6 +498,10 @@ Editor.prototype = {
 		this.signals.sceneGraphChanged.active = true;
 
 		// TODO: Is it necessary to call `.delete();`?
+		for ( const key in this.wasmObject ) {
+			console.log(`Deleting WASM object ${key}`);
+			this.wasmObject[key].delete();
+		}
 		this.wasmObject = {};
 		this.geometries = {};
 		this.materials = {};
@@ -549,7 +553,7 @@ Editor.prototype = {
 
 			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( ctx, curM.geometry );
 			
-			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 			try {
 				const wasmMeshWrapper = new this.MeshSDK.MeshWrapper( wasmMesh );
 				if ( wasmMeshWrapper ) this.addWasmObject( curM.uuid, wasmMeshWrapper );

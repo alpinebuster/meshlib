@@ -1,7 +1,6 @@
 #pragma once
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRMatrix.h>

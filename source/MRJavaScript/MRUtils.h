@@ -3,12 +3,15 @@
 #include <optional>
 #include <type_traits>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include "exports.h"
+
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRIdentifyVertices.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
@@ -46,7 +49,47 @@ val expectedToJs( const Expected<T>& expected );
 [[nodiscard]] VertCoords parseJSVertices( const std::vector<float>& coordinates );
 [[nodiscard]] Triangulation parseJSIndices( const std::vector<int>& indices );
 
-std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut );
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut );
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet& fb );
+
+MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris );
+
+/// Finds all triangles of a mesh that having normals oriented toward the camera in this viewport
+// REF `source/MRViewer/MRViewport.cpp`
+MRJS_API FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Vector3f lookDirection, bool orthographic );
+MRJS_API Mesh findSilhouetteEdges( const Mesh& mesh, Vector3f lookDirection );
+///
+
+
+struct GeometryBuffer
+{
+    val vertices;
+    val indices;
+
+    GeometryBuffer( val verts, val inds )
+        : vertices( std::move( verts ) ), indices( std::move( inds ) ) {}
+
+    static std::shared_ptr<GeometryBuffer> fromMesh( const Mesh& meshToExport )
+    {
+        // === Export point data ===
+        const auto& points_ = meshToExport.points;
+        size_t pointCount = points_.size();
+        size_t vertexElementCount = pointCount * 3;
+        const float* pointDataPtr = reinterpret_cast< const float* >( points_.data() );
+        // FIXME
+        val pointsArray = val( typed_memory_view( vertexElementCount, pointDataPtr ) );
+
+        // === Export triangle data ===
+        const Triangulation& tris_ = meshToExport.topology.getTriangulation();
+        size_t triangleCount = tris_.size();
+        size_t triElementCount = triangleCount * 3;
+        const uint32_t* triDataPtr = reinterpret_cast< const uint32_t* >( tris_.data() );
+        val triangleArray = val( typed_memory_view( triElementCount, triDataPtr ) );
+
+        return std::make_shared<GeometryBuffer>( pointsArray, triangleArray );
+    }
+};
+std::shared_ptr<GeometryBuffer> exportGeometryBuffer( const Mesh& meshToExport );
 
 // NOTE: Export mesh data using `typed_memory_view()`
 // 
@@ -59,106 +102,8 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 //  float*	        -> Float32Array
 //  double*	        -> Float64Array
 // 
-inline auto exportMeshMemoryView = [] ( const Mesh& meshToExport ) -> val
-{
-    // === Export point data ===
-    const auto& points_ = meshToExport.points;
-    size_t pointCount = points_.size();
-    size_t vertexElementCount = pointCount * 3;
-    const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
-
-    // Use `typed_memory_view()` for vertices
-    val pointsArray = val( typed_memory_view(
-        vertexElementCount, 
-        pointDataPtr
-    ) );
-
-    // === Export triangle data ===
-    const auto& tris_ = meshToExport.topology.getTriangulation();
-    size_t triangleCount = tris_.size();
-    size_t triElementCount = triangleCount * 3;
-    // NOTE:
-    // 
-    //  uint32_t*   	-> Uint32Array, we need `Uint32Array` for threejs
-    //  int*	        -> Int32Array
-    // 
-    const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
-
-    /// NOTE: V3 - Working & Faster than V1
-    val triangleArray = val::global( "Uint32Array" ).new_( triElementCount );
-    val triangleView_ = val( typed_memory_view( triElementCount, triDataPtr ) ); // Use `typed_memory_view()` for triangles
-    triangleArray.call<void>( "set", triangleView_ );
-    ///
-
-    /// NOTE: V2 - NOT WORKING:
-    // This will return corrupted indices because the `tris_` returned by `getTriangulation()` must be copied
-    // While the vertices returned by `meshToExport.points` will live long enough to be called by JS side.
-    // 
-    // val triangleArray = val( typed_memory_view(
-    //     triElementCount,
-    //     triDataPtr
-    // ) );
-    ///
-
-    /// NOTE: V1 - Working
-    // TODO: Use `ParallelFor` to optimize this?
-    // 
-    // val triangleArray = val::array();
-    // triangleArray.set("length", triElementCount);
-	// for (size_t i = 0; i < triElementCount; ++i) {
-	// 	triangleArray.set(i, val(triDataPtr[i]));
-	// }
-    ///
-
-    val meshData = val::object();
-    meshData.set( "vertices", pointsArray );
-    meshData.set( "vertexElementCount", vertexElementCount );
-    meshData.set( "vertexCount", pointCount );
-    meshData.set( "indices", triangleArray );
-    meshData.set( "indexElementCount", triElementCount );
-    meshData.set( "indexCount", triangleCount );
-    // meshData.set( "sizeofThreeVertIds", sizeof( ThreeVertIds ) );
-    // meshData.set( "sizeofUInt32", sizeof( uint32_t ) * 3 );
-
-    return meshData;
-};
-inline auto exportMeshData = []( const Mesh& meshToExport ) -> val {
-    // === Export point data ===
-    const auto& points_ = meshToExport.points;
-    size_t pointCount = points_.size();
-    size_t vertexElementCount = pointCount * 3;
-    const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
-
-    val pointsArray = val::array();
-    // Pre-allocate the array length to improve performance
-    pointsArray.set("length", vertexElementCount);
-    // Batch setting values - faster than pushing them one by one
-    for (size_t i = 0; i < vertexElementCount; ++i) {
-        pointsArray.set(i, val(pointDataPtr[i]));
-    }
-
-    // === Export triangle data ===
-    const auto& tris_ = meshToExport.topology.getTriangulation();
-    size_t triangleCount = tris_.size();
-    size_t indexElementCount = triangleCount * 3; // Each triangle has 3 indexes
-    const int* triDataPtr = reinterpret_cast<const int*>( tris_.data() );
-
-	val triangleArray = val::array();
-    triangleArray.set("length", indexElementCount);
-	for (size_t i = 0; i < indexElementCount; ++i) {
-		triangleArray.set(i, val(triDataPtr[i]));
-	}
-
-    val meshData = val::object();
-    meshData.set( "vertices", pointsArray );
-    meshData.set( "vertexElementCount", val(vertexElementCount) );
-    meshData.set( "vertexCount", val( pointCount ) );
-    meshData.set( "indices", triangleArray );
-    meshData.set( "indexElementCount", val(indexElementCount) );
-    meshData.set( "indexCount", triangleCount );
-
-    return meshData;
-};
+val exportMeshMemoryView( const Mesh& meshToExport );
+val exportMeshMemoryViewTest( const Mesh& meshToExport );
 
 
 // Impl：Automatically registering elements `0, 1, …, N − 1` at compile time
@@ -198,4 +143,4 @@ void bindStdArray( const char* jsName )
     bindStdArrayImpl<T>( jsName, std::make_index_sequence<N>{} );
 }
 
-} // MRJS
+} // namespace MRJS

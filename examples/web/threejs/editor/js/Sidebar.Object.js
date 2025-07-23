@@ -176,6 +176,10 @@ function SidebarObject( editor ) {
 			TOOL_MODE = 'wasmOpSelector';
 			wasmOpSelector.addClass( 'selected' );
 
+			_cur_intersect = null;
+			draggingIndex = -1;
+			clicked.length = 0;
+			draggingIndex = -1;
 			pointGeo.dispose();
 			pointGeo = new THREE.BufferGeometry();
 			curveLine.geometry.dispose();
@@ -239,30 +243,66 @@ function SidebarObject( editor ) {
 			const currentUUID = editor.selected.uuid;
 			if ( currentUUID ) {
 				if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {	
-					const curMeshWrapper = editor.wasmObject[currentUUID];
+					// const curMeshWrapper = editor.wasmObject[currentUUID];
+					const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 
 					switch ( TOOL_MODE ) {
 						case 'wasmOpSelector':
+							const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+
+							///
 							const positionAttribute = curveLine.geometry.getAttribute( 'position' );
 							const positions = positionAttribute.array; // Float32Array
 							const positionsArr = [...positions];
 							// Convert to std::vector<float>
 							const floatVec = new editor.MeshSDK.StdVectorf();
-							positionsArr.forEach( v => floatVec.push_back(v) );
+							positionsArr.forEach( v => floatVec.push_back( v ) );
+							///
+
+
+							// const mp = new editor.MeshSDK.MeshPart( curMeshWrapper.mesh );
+							// const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 							
-							const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+
+							///
+							const result = editor.MeshSDK.cutMeshByContourImpl( mesh, floatVec );
+							// const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
+
+							// const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
+							// const result = editor.MeshSDK.cutMeshWithPolylineImplTest( curMeshWrapper.mesh, floatVec );
+
 							// const result = curMeshWrapper.cutMeshWithPolylineImpl( floatVec );
+							// const result = curMeshWrapper.cutMeshByContourImpl( floatVec );
+							///
 
-							const innerVertices = result.innerMesh.vertices;
-							const innerIndices = result.innerMesh.indices;
-						
-							const outerVertices = result.outerMesh.vertices;
-							const outerIndices = result.outerMesh.indices;
+
+							///
+							// const smallerG = editor.MeshSDK.exportGeometryBuffer( result.smallerMesh );
+							// const largerG = editor.MeshSDK.exportGeometryBuffer( result.largerMesh );
+							// showMesh( result.smallerMesh, smallerG.vertices, smallerG.indices );
+							// showMesh( result.largerMesh, largerG.vertices, largerG.indices );
+
+
+							// const mVertices = result.mesh.vertices;
+							// const mIndices = result.mesh.indices;
+
+							const smallerVertices = result.smallerMeshMV.vertices;
+							const smallerIndices = result.smallerMeshMV.indices;
+	
+							const largerVertices = result.largerMeshMV.vertices;
+							const largerIndices = result.largerMeshMV.indices;
 							
-							showMesh( innerVertices, innerIndices );
-							showMesh( outerVertices, outerIndices );
+							// showMesh( mesh, mVertices, mIndices );
+							showMesh( result.smallerMesh, smallerVertices, smallerIndices );
+							showMesh( result.largerMesh, largerVertices, largerIndices );
+							///
 
+
+							///
 							floatVec.delete();
+							editor.MeshSDK._free( verticesPtr );
+							editor.MeshSDK._free( indicesPtr );
+							///
 							break;
 
 						case 'wasmOpSegmentByPoints':
@@ -292,9 +332,9 @@ function SidebarObject( editor ) {
 							const metricWrapper = editor.MeshSDK.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
 							const result_ = curMeshWrapper.segmentByPointsImpl( _pArr, _dArr, metricWrapper );
 							_pArr.delete();
-							const newVertices_ = result_.mesh.vertices;
-							const newIndices_ = new Uint32Array( result_.mesh.indices );
-							showMesh( newVertices_, newIndices_ );
+							const newVertices_ = result_.meshMV.vertices;
+							const newIndices_ = new Uint32Array( result_.meshMV.indices );
+							showMesh( result_.mesh, newVertices_, newIndices_ );
 							
 							break;
 
@@ -313,7 +353,7 @@ function SidebarObject( editor ) {
 		// pointGeo.setFromPoints(clicked);
 		//
 		pointGeo.dispose();
-		pointGeo = new THREE.BufferGeometry().setFromPoints(clicked);
+		pointGeo = new THREE.BufferGeometry().setFromPoints( clicked );
 		pointGeo.attributes.position.needsUpdate = true;
 		pointCloud.geometry = pointGeo;
 
@@ -322,23 +362,24 @@ function SidebarObject( editor ) {
 		}
 	}
 	function refreshCurve() {
-		if (clicked.length >= 2) {
-			const curve = new THREE.CatmullRomCurve3(clicked, clicked.length > 2, 'centripetal');
+		if ( clicked.length >= 2 ) {
+			const curve = new THREE.CatmullRomCurve3( clicked, clicked.length > 2 );
+			// const curve = new THREE.CatmullRomCurve3( clicked );
 			// Sample a number of points on the curve and then fit the surface
-			const pts = curve.getPoints(clicked.length * 6);
-			
+			const pts = curve.getPoints( clicked.length * 6 );
+
 			// Nearest point lookup
-			const projectedSurfacePts = pts.map(p => {
+			const projectedSurfacePts = pts.map( p => {
 				const target = new THREE.Vector3();
-				_cur_intersect.geometry.boundsTree.closestPointToPoint(p, target);
+				_cur_intersect.geometry.boundsTree.closestPointToPoint( p, target );
 
 				return target.point.clone();
 			});
 
 			curveLine.geometry.dispose();
-			curveLine.geometry = new THREE.BufferGeometry().setFromPoints(projectedSurfacePts);
+			curveLine.geometry = new THREE.BufferGeometry().setFromPoints( projectedSurfacePts );
 		}
-		if (clicked.length == 2) {
+		if ( clicked.length == 2 ) {
 			editor.execute( new AddObjectCommand( editor, curveLine, editor.selected ) );
 		}
 	}
@@ -347,11 +388,11 @@ function SidebarObject( editor ) {
 		const currentUUID = editor.selected.uuid;
 		if ( currentUUID ) {
 			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
-				const newMeshData = editor.wasmObject[currentUUID].fillHolesImpl();
+				const newMeshData = editor.wasmObject[currentUUID].fillAllHolesImpl();
 
-				const newVertices = newMeshData.vertices;
-				const newIndices = newMeshData.indices;
-				showMesh( newVertices, newIndices );
+				const newVertices = newMeshData.meshMV.vertices;
+				const newIndices = newMeshData.meshMV.indices;
+				showMesh( newMeshData.mesh, newVertices, newIndices );
 			}
 		}
 	} );
@@ -381,11 +422,11 @@ function SidebarObject( editor ) {
 				const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
 				// const result = curMeshWrapper.fixUndercutsImpl( upDir );
 
-				const newVertices = result.mesh.vertices;
+				const newVertices = result.meshMV.vertices;
 				// NOTE: No need to wrap `Uint32Array` again!
-				// const newIndices = new Uint32Array( result.mesh.indices );
-				const newIndices = result.mesh.indices;
-				showMesh( newVertices, newIndices );
+				// const newIndices = new Uint32Array( result.meshMV.indices );
+				const newIndices = result.meshMV.indices;
+				showMesh( result.mesh, newVertices, newIndices );
 			}
 		}
 	});
@@ -420,9 +461,9 @@ function SidebarObject( editor ) {
 				// const result = editor.MeshSDK.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
 				const result = curMeshWrapper.thickenMeshImpl( 1.2, params );
 				
-				const newVertices = result.mesh.vertices;
-				const newIndices = result.mesh.indices;
-				showMesh( newVertices, newIndices );
+				const newVertices = result.meshMV.vertices;
+				const newIndices = result.meshMV.indices;
+				showMesh( result.mesh, newVertices, newIndices );
 			}
 		}
 	});
@@ -438,14 +479,16 @@ function SidebarObject( editor ) {
 				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 				try {
 					// Now `jsVertices.buffer === editor.MeshSDK.HEAPF32.buffer`
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 
 					// FIXME: Why using the returned `Mesh` instance is not working?
-					// const result = editor.MeshSDK.fillHolesImpl( mesh ); // ❌
-					// const result = editor.MeshSDK.fillHolesImpl( curMeshWrapper.mesh ); // ✅
+					// const result = editor.MeshSDK.fillAllHolesImpl( mesh ); // ❌
+					// const result = editor.MeshSDK.fillAllHolesImpl( curMeshWrapper.mesh ); // ✅
 					
 					// const result = editor.MeshSDK.Mesh.getGeometry( mesh ); // ✅
 
+					const mp = new editor.MeshSDK.MeshPart( mesh );
+					const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 
 					///
 					const threeWorldDir = new THREE.Vector3();
@@ -456,14 +499,14 @@ function SidebarObject( editor ) {
 						-threeWorldDir.z,
 					)
 					// FIXME: Why using the returned `Mesh` instance is much slower?
-					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ⚠️
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ✅
 					// const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 ); // ✅
 					///
 
 
-					const newVertices = result.mesh.vertices;
-					const newIndices = result.mesh.indices;
-					showMesh( newVertices, newIndices );
+					const newVertices = result.meshMV.vertices;
+					const newIndices = result.meshMV.indices;
+					showMesh( result.mesh, newVertices, newIndices );
 
 
 					/// IMPORTANT！！！
@@ -492,10 +535,12 @@ function SidebarObject( editor ) {
 
 				try {
 					// const mesh = editor.MeshSDK.Mesh.fromTrianglesArray( vertices, indices );
-					const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTest( vertices, indices );
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesArrayTestVertexIdentifier( vertices, indices, true );
 
-					// const result = editor.MeshSDK.fillHolesImpl( mesh );
+					// const result = editor.MeshSDK.fillAllHolesImpl( mesh );
 
+					const mp = new editor.MeshSDK.MeshPart( mesh.mesh );
+					const numComponents = editor.MeshSDK.getNumComponents( mp, editor.MeshSDK.FaceIncidence.PerEdge, null );
 
 					///
 					const threeWorldDir = new THREE.Vector3();
@@ -505,17 +550,124 @@ function SidebarObject( editor ) {
 						-threeWorldDir.y,
 						-threeWorldDir.z,
 					)
-					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 );
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh.mesh, upDir, 0.0, 0.0 );
 					///
 
 
-					const newVertices = result.mesh.vertices;
-					const newIndices = result.mesh.indices;
+					const newVertices = result.meshMV.vertices;
+					const newIndices = result.meshMV.indices;
+
+					showMesh( result.mesh, newVertices, newIndices );
+				} catch ( error ) {
+					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				}
+			}
+		}
+	});
+
+	const wasmOpFindSilhouetteEdges = new UIButton( strings.getKey( 'sidebar/object/wasmOpFindSilhouetteEdges') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+
+			try {
+				const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+
+				///
+				const threeWorldDir = new THREE.Vector3();
+				editor.camera.getWorldDirection( threeWorldDir );
+				const upDir = new editor.MeshSDK.Vector3f(
+					threeWorldDir.x,
+					threeWorldDir.y,
+					threeWorldDir.z,
+				)
+
+				const projectedMesh = editor.MeshSDK.findSilhouetteEdges( mesh, upDir );
+				const result = editor.MeshSDK.exportMeshMemoryView( projectedMesh );
+				///
+
+
+				const newVertices = result.vertices;
+				const newIndices = result.indices;
+				showMesh( projectedMesh, newVertices, newIndices );
+			} catch ( error ) {
+				console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				editor.MeshSDK._free( verticesPtr );
+				editor.MeshSDK._free( indicesPtr );
+			}
+		}
+	});
+	const wasmOpBuildMaxillaBottom = new UIButton( strings.getKey( 'sidebar/object/wasmOpBuildMaxillaBottom') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
+				const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+
+				try {
+					const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+
+					///
+					const threeWorldDir = new THREE.Vector3();
+					editor.camera.getWorldDirection( threeWorldDir );
+					const upDir = new editor.MeshSDK.Vector3f(
+						-threeWorldDir.x,
+						-threeWorldDir.y,
+						-threeWorldDir.z,
+					)
+
+					const e = mesh.topology.findHoleRepresentiveEdges( null );
+					const result = editor.MeshSDK.buildBottom( mesh, e.get(0), upDir, 0.0, null );
+					///
+
+
+					const newVertices = result.vertices;
+					const newIndices = result.indices;
 
 					showMesh( newVertices, newIndices );
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
+					editor.MeshSDK._free( verticesPtr );
+					editor.MeshSDK._free( indicesPtr );
 				}
+			}
+		}
+	});
+	const wasmOpBuildMandibleBottom = new UIButton( strings.getKey( 'sidebar/object/wasmOpBuildMandibleBottom') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+
+			try {
+				const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+
+				///
+				const threeWorldDir = new THREE.Vector3();
+				editor.camera.getWorldDirection( threeWorldDir );
+				const upDir = new editor.MeshSDK.Vector3f(
+					-threeWorldDir.x,
+					-threeWorldDir.y,
+					-threeWorldDir.z,
+				)
+
+				const e = mesh.topology.findHoleRepresentiveEdges( null );
+				editor.MeshSDK.buildBottom( mesh, e.get(0), upDir, 0.0, null );
+				const result = editor.MeshSDK.exportMeshMemoryView( mesh );
+				///
+
+
+				const newVertices = result.vertices;
+				const newIndices = result.indices;
+				showMesh( mesh, newVertices, newIndices );
+			} catch ( error ) {
+				console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				editor.MeshSDK._free( verticesPtr );
+				editor.MeshSDK._free( indicesPtr );
 			}
 		}
 	});
@@ -542,12 +694,18 @@ function SidebarObject( editor ) {
 	wasmOpsRowLoad.add( wasmOpLoadFromThreeJS );
 	wasmOpsRowLoad.add( wasmOpLoadFromThreeJSArray );
 	
+	const wasmOpsRowGypsum = new UIRow();
+	wasmOpsRowGypsum.add( wasmOpBuildMaxillaBottom );
+	wasmOpsRowGypsum.add( wasmOpBuildMandibleBottom );
+	wasmOpsRowGypsum.add( wasmOpFindSilhouetteEdges );
+
 	container.add( wasmOpsRow );
 	container.add( wasmOpsRowLoad );
 	container.add( wasmOpsRowHole );
 	container.add( wasmOpsRowSelector );
 	container.add( wasmOpsRowFixUndercuts );
 	container.add( wasmOpsRowThicken );
+	container.add( wasmOpsRowGypsum );
 
 	// fov
 

@@ -1,7 +1,6 @@
 #include <array>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRVector.h>
@@ -13,7 +12,6 @@
 
 using namespace emscripten;
 using namespace MR;
-
 
 namespace MRJS
 {
@@ -38,5 +36,4 @@ auto bindTypedCubicBezierCurve( const std::string& className ) {
     return cls;
 }
 
-} // MRJS
-
+} // namespace MRJS

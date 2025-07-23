@@ -3,11 +3,17 @@
 #include <type_traits>
 #include <array>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
+#include <MRPch/MRTBB.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMeshBuilderTypes.h>
+#include <MRMesh/MRMeshBuilder.h>
+#include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRBitSetParallelFor.h>
+#include <MRMesh/MRIdentifyVertices.h>
+#include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRId.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
@@ -16,7 +22,6 @@
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRBuffer.h>
 #include <MRMesh/MRMeshOrPoints.h>
-#include <MRMesh/MRBitSet.h>
 #include <MRMesh/MREdgePaths.h>
 #include <MRMesh/MRFillContour.h>
 #include <MRMesh/MREdgeMetric.h>
@@ -26,16 +31,17 @@
 #include <MRMesh/MRDipole.h>
 #include <MRMesh/MRGridSampling.h>
 #include <MRMesh/MRMeshProject.h>
-#include <MRMesh/MRMeshBuilder.h>
 #include <MRMesh/MRProgressCallback.h>
-#include <MRMesh/MRMeshBuilderTypes.h>
-#include <MRMesh/MRMeshBuilder.h>
 #include <MRMesh/MRMeshExtrude.h>
 #include <MRMesh/MRRegionBoundary.h>
 #include <MRMesh/MROneMeshContours.h>
 #include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRMeshTriPoint.h>
 #include <MRMesh/MRMeshFillHole.h>
+#include <MRMesh/MRMeshNormals.h>
+#include <MRMesh/MRParallelFor.h>
+#include <MRMesh/MR2to3.h>
+#include <MRMesh/MR2DContoursTriangulation.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
 
 #include <MRVoxels/MRTeethMaskToDirectionVolume.h>
@@ -143,6 +149,7 @@ Triangulation parseJSIndices( const std::vector<int>& indices )
     return indis_;
 }
 
+
 /**
  *@brief CutMesh with contour and extracting cutted parts
  * 
@@ -154,12 +161,8 @@ Triangulation parseJSIndices( const std::vector<int>& indices )
  * @param cut 
  * @return std::pair<Mesh, Mesh> 
  */
-std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>& cut )
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut )
 {
-	// NOTE: This also works!
-	// auto innerBitSet = fillContourLeft( mesh.topology, cut );
-	// Mesh innerMesh = mesh.cloneRegion( innerBitSet );
-
 	Mesh innerMesh;
     auto innerBitSet = fillContourLeft( mesh.topology, cut );
     innerMesh.addMeshPart( {mesh, &innerBitSet} );
@@ -172,7 +175,224 @@ std::pair<Mesh, Mesh> returnParts( const Mesh& mesh, const std::vector<EdgePath>
 	
 	return { innerMesh, outerMesh };
 }
+std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet& fb )
+{
+	auto otherPart = mesh.topology.getValidFaces() - fb;
+	const auto fbArea = mesh.area( fb );
+	const auto otherArea = mesh.area( otherPart );
 
+	const FaceBitSet& smallerPart = fbArea < otherArea ? fb : otherPart;
+	const FaceBitSet& largerPart = fbArea < otherArea ? otherPart : fb;
+
+	return {
+		mesh.cloneRegion( smallerPart ),
+		mesh.cloneRegion( largerPart )
+	};
+}
+
+MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris ) 
+{
+	// NOTE: `template <typename T> using Triangle3 = std::array<Vector3<T>, 3>;`
+	std::vector<Triangle3f> chunk;
+	MeshBuilder::VertexIdentifier vi;
+	chunk.resize( numTris );
+	vi.reserve( numTris );
+	ParallelFor( 0, numTris, [&]( int i ) {
+		int fId = i * 3;
+		VertId id1 = static_cast<VertId>( indicesPtr[fId] );
+		VertId id2 = static_cast<VertId>( indicesPtr[fId + 1] );
+		VertId id3 = static_cast<VertId>( indicesPtr[fId + 2] );
+
+		int vIdx1 = static_cast<int>( id1 ) * 3;
+		int vIdx2 = static_cast<int>( id2 ) * 3;
+		int vIdx3 = static_cast<int>( id3 ) * 3;
+
+		chunk[i][0] = { verticesPtr[vIdx1], verticesPtr[vIdx1 + 1], verticesPtr[vIdx1 + 2] };
+		chunk[i][1] = { verticesPtr[vIdx2], verticesPtr[vIdx2 + 1], verticesPtr[vIdx2 + 2] };
+		chunk[i][2] = { verticesPtr[vIdx3], verticesPtr[vIdx3 + 1], verticesPtr[vIdx3 + 2] };
+	} );
+
+	vi.addTriangles( chunk );
+	return vi;
+}
+
+FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Vector3f lookDirection, bool orthographic )
+{
+    const auto normals = computePerFaceNormals( mesh );
+    FaceBitSet faces;
+    faces.resize( normals.size() );
+
+    BitSetParallelFor( mesh.topology.getValidFaces(), [&]( FaceId f )
+    {
+        auto transformedNormal = meshToWorld.A * normals[f];
+        if ( orthographic )
+        {
+            if ( ( dot( transformedNormal, lookDirection ) > 0.0f ) )
+                faces.set( f );
+        }
+        else
+        {
+            if ( dot( transformedNormal, lookDirection - mesh.triCenter( f ) ) > 0.0f )
+                faces.set( f );
+        }
+    } );
+    return faces;
+}
+
+Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
+{
+    // Find faces that looks in this direction
+    FaceBitSet facesLookingInThisDirection( meshRes.topology.faceSize() );
+    BitSetParallelFor( meshRes.topology.getValidFaces(), [&] ( FaceId f )
+    {
+        if ( MR::dot( meshRes.normal( f ), lookDirection ) > 0.0f )
+            facesLookingInThisDirection.set( f );
+    } );
+
+    // Find boundaries of direction looking faces
+    auto boundaries = findRightBoundary( meshRes.topology, facesLookingInThisDirection );
+
+    // Project boundaries to 2d plane
+    auto [x, y] = lookDirection.perpendicular();
+    auto fromPlaneRot = Matrix3f::fromColumns( x, y, lookDirection );
+    auto toPlaneRot = fromPlaneRot.inverse();
+
+    Contours2f contours( boundaries.size() );
+    ParallelFor( contours, [&] ( size_t i )
+    {
+        const auto& bound = boundaries[i];
+        auto& cont = contours[i];
+        cont.resize( bound.size() + 1 );
+        MR::ParallelFor( bound, [&] ( size_t j )
+        {
+            cont[j] = MR::to2dim( toPlaneRot * meshRes.orgPnt( bound[j] ) );
+        } );
+        cont.back() = cont.front(); // close loops
+    } );
+
+    // Find silhouette outline
+    auto outline = PlanarTriangulation::getOutline( contours );
+    // Triangulate outline
+    auto projectedMesh = PlanarTriangulation::triangulateContours( outline );
+
+    // Project silhouette mesh back to original plane
+    projectedMesh.transform( MR::AffineXf3f::linear( fromPlaneRot ) );
+
+	return projectedMesh;
+}
+
+
+std::shared_ptr<GeometryBuffer> exportGeometryBuffer( const Mesh& meshToExport )
+{
+    return GeometryBuffer::fromMesh(meshToExport);
+}
+val exportMeshMemoryView( const Mesh& meshToExport )
+{
+	///
+    // === Export point data ===
+    const auto& points_ = meshToExport.points;
+    size_t pointCount = points_.size();
+    size_t vertexElementCount = pointCount * 3;
+    const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
+
+    // NOTE: Can NOT use `val pointsArray = val( typed_memory_view( vertexElementCount, pointDataPtr ) );` directly,
+	// because it will corrupt the data
+	val pointsArray = val::global( "Float32Array" ).new_( vertexElementCount );
+	pointsArray.call<void>( "set", val( typed_memory_view( vertexElementCount, pointDataPtr ) ) );
+	///
+
+
+	///
+    // === Export triangle data ===
+    // NOTE: The `tris_` returned by `getTriangulation()` is a temporary variable,
+	// and directly using it in `typed_memory_view` will lead to incorrect indices data
+    // While the vertices returned by `meshToExport.points` will live long enough to be called by JS side
+    const Triangulation tris_ = meshToExport.topology.getTriangulation();
+    size_t triangleCount = tris_.size();
+    size_t triElementCount = triangleCount * 3;
+    const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
+
+    // NOTE:
+    // 
+    //  uint32_t*   	-> Uint32Array, we need `Uint32Array` for threejs
+    //  int*	        -> Int32Array
+    // 
+    val triangleArray = val::global( "Uint32Array" ).new_( triElementCount );
+	triangleArray.call<void>( "set", val( typed_memory_view( triElementCount, triDataPtr ) ) );
+	///
+
+    val meshData = val::object();
+    meshData.set( "vertices", pointsArray );
+    meshData.set( "indices", triangleArray );
+
+    return meshData;
+};
+val exportMeshMemoryViewTest( const Mesh& meshToExport ) {
+    // === Export point data ===
+    const auto& points_ = meshToExport.points;
+    size_t pointCount = points_.size();
+    size_t vertexElementCount = pointCount * 3;
+    const float* pointDataPtr = reinterpret_cast<const float*>( points_.data() );
+
+	/// WORKING
+	// 
+	// NOTE: `val::array` + loop set: 1) non-contiguous, dynamic; 2) N cross-language operations
+    // val pointsArray = val::array();
+    // // Pre-allocate the array length to improve performance
+    // pointsArray.set( "length", vertexElementCount );
+    // // Batch setting values - faster than pushing them one by one
+    // for (size_t i = 0; i < vertexElementCount; ++i) {
+    //     pointsArray.set( i, val( pointDataPtr[i] ) );
+    // }
+	//
+	// NOTE: `typed_memory_view` + `TypedArray.set`: 1) compact, contiguous; 2) 1 cross-language operation
+    val pointsArray = val::global( "Float32Array" ).new_( vertexElementCount );
+	pointsArray.call<void>( "set", val( typed_memory_view( vertexElementCount, pointDataPtr ) ) );
+	///
+
+
+    // === Export triangle data ===
+    const auto& tris_ = meshToExport.topology.getTriangulation();
+    size_t triangleCount = tris_.size();
+    size_t indexElementCount = triangleCount * 3;
+    const uint32_t* triDataPtr = reinterpret_cast<const uint32_t*>( tris_.data() );
+
+	/// WORKING
+	// val triangleArray = val::array();
+    // triangleArray.set( "length", indexElementCount );
+	// for ( size_t i = 0; i < indexElementCount; ++i ) {
+	// 	triangleArray.set( i, val(triDataPtr[i]) );
+	// }
+	//
+    val triangleArray = val::global( "Uint32Array" ).new_( indexElementCount );
+	triangleArray.call<void>( "set", val( typed_memory_view( indexElementCount, triDataPtr ) ) );
+	///
+
+
+    val meshData = val::object();
+    meshData.set( "vertices", pointsArray );
+    meshData.set( "indices", triangleArray );
+
+    return meshData;
+};
+
+}
+
+
+EMSCRIPTEN_BINDINGS( UtilsModule )
+{
+	class_<MRJS::GeometryBuffer>( "GeometryBuffer" )
+        .smart_ptr<std::shared_ptr<MRJS::GeometryBuffer>>(" GeometryBuffer ")
+        .constructor<val, val>()
+		.property( "vertices", &MRJS::GeometryBuffer::vertices )
+		.property( "indices", &MRJS::GeometryBuffer::indices );
+
+	function( "exportGeometryBuffer", &MRJS::exportGeometryBuffer );
+	function( "exportMeshMemoryView", &MRJS::exportMeshMemoryView );
+	function( "exportMeshMemoryViewTest", &MRJS::exportMeshMemoryViewTest );
+
+	function( "findLookingFaces", &MRJS::findLookingFaces );
+	function( "findSilhouetteEdges", &MRJS::findSilhouetteEdges );
 }
 
 
@@ -499,6 +719,12 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<Vector<float, size_t>>( "VectorVectorStdd" );
 	register_vector<Vector<double, size_t>>( "VectorVectorStdf" );
 	register_vector<Vector<long long, size_t>>( "VectorVectorStdll" );
+	///
+
+
+	///
+    register_vector<const Mesh*>( "VectorConstMeshPtr" );
+    register_vector<const MeshTopology*>( "VectorConstMeshTopologyPtr" );
 	///
 
 

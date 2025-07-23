@@ -3,8 +3,7 @@
 #include <optional>
 #include <string>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRId.h>
@@ -12,7 +11,6 @@
 
 using namespace emscripten;
 using namespace MR;
-
 
 namespace MRJS
 {

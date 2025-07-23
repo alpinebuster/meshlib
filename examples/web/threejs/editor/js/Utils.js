@@ -34,19 +34,31 @@ const createMemoryViewFromGeometry = ( editor, geometry ) => {
 	return { verticesPtr, jsVertices, indicesPtr, jsIndices };
 } 
 
-function showMesh( newVertices, newIndices ) {
+function showMesh( wasmMesh, newVertices, newIndices ) {
 	const newGeometry = new THREE.BufferGeometry();
 	newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
 	newGeometry.computeVertexNormals();
 	newGeometry.setIndex( new THREE.BufferAttribute( newIndices, 1 ) );
 
-	const newMaterial = new THREE.MeshNormalMaterial();
+	const newMaterial = new THREE.MeshNormalMaterial( { wireframe: false } );
 	const newMesh = new THREE.Mesh( newGeometry, newMaterial );
 	newMesh.name = `wasm-${editor.selected.name}-${editor.selected.uuid.substring(0, 3)}`;
 	newMesh.castShadow = true;
 	newMesh.receiveShadow = true;
 
-	editor.execute( new AddObjectCommand( editor, newMesh ) );
+
+	///
+	// const pointMaterial = new THREE.PointsMaterial({
+	// 	color: 0xff0000,
+	// 	size: 0.5,
+	// 	sizeAttenuation: true
+	// });
+	// const points = new THREE.Points( newGeometry, pointMaterial );
+	// editor.execute( new AddObjectCommand( editor, points ) );
+	///
+
+	
+	editor.execute( new AddObjectCommand( editor, newMesh, null, null, new editor.MeshSDK.MeshWrapper( wasmMesh ) ) );
 	editor.signals.geometryChanged.dispatch( newMesh );
 	editor.select( newMesh );
 }

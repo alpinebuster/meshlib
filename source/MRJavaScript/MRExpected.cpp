@@ -1,8 +1,7 @@
 #include <optional>
 #include <string>
 
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRMeshTopology.h>

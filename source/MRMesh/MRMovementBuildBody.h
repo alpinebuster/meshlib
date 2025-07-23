@@ -27,5 +27,4 @@ struct MovementBuildBodyParams
 [[nodiscard]] MRMESH_API Mesh makeMovementBuildBody( const Contours3f& body, const Contours3f& trajectory,
     const MovementBuildBodyParams& params = {} );
 
-}
-
+} //namespace MR

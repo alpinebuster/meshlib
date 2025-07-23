@@ -1,5 +1,4 @@
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
+#include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
@@ -115,7 +114,8 @@ val fixUndercutsImpl( Mesh& mesh, const Vector3f& upDirection, float voxelSize =
 
 		// The mesh has been modified in place
 		returnObj.set( "success", true );
-		returnObj.set( "mesh", meshData );
+		returnObj.set( "mesh", mesh );
+		returnObj.set( "meshMV", meshData );
 	}
 	else
 	{
@@ -155,9 +155,9 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 		.property( "smooth", &FixParams::smooth );
 
 
-	function( "fixUndercutsImpl", &fixUndercutsImpl );
-	function( "fixUndercutsImplTest", &fixUndercutsImplTest );
-	function( "fixUndercutsImplThrows", &fixUndercutsImplThrows );
+	function( "fixUndercutsImpl", &fixUndercutsImpl, allow_raw_pointers() );
+	function( "fixUndercutsImplTest", &fixUndercutsImplTest, allow_raw_pointers() );
+	function( "fixUndercutsImplThrows", &fixUndercutsImplThrows, allow_raw_pointers() );
 
 	function( "calculateRecommendedVoxelSizeImpl", optional_override( [] ( const Mesh& mesh, float qualityFactor = 1.0f ) -> float
 	{
@@ -167,6 +167,6 @@ EMSCRIPTEN_BINDINGS( FixUndercutsModule )
 		return meshSize / ( 100.0f * qualityFactor );
 	} ) );
 
-    function("createFindParamsImpl", &createFindParamsImpl);
-    function("createFixParamsImpl", &createFixParamsImpl);
+    function( "createFindParamsImpl", &createFindParamsImpl, allow_raw_pointers() );
+    function( "createFixParamsImpl", &createFixParamsImpl, allow_raw_pointers() );
 }
