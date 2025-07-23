@@ -422,7 +422,8 @@ val MeshWrapper::segmentByPointsImpl(
 		// Build the result object
 		result.set( "success", true );
 		result.set( "contourEdges", contourEdgesArray );
-		result.set( "mesh", meshData );
+		result.set( "mesh", segMesh );
+		result.set( "meshMV", meshData );
 	}
 	catch ( const std::exception& e )
 	{
@@ -572,7 +573,8 @@ val MeshWrapper::thickenMeshImpl( float offset, GeneralOffsetParameters &params 
 		val meshData = MRJS::exportMeshMemoryView( shell );
 
 		returnObj.set( "success", true );
-		returnObj.set( "mesh", meshData );
+		returnObj.set( "mesh", shell );
+		returnObj.set( "meshMV", meshData );
 
 		return returnObj;
 	}
@@ -707,7 +709,8 @@ val MeshWrapper::fixUndercutsImpl( const Vector3f& upDirection ) const
 
 	val meshData = MRJS::exportMeshMemoryView( meshCopy );
 	returnObj.set( "success", true );
-	returnObj.set( "mesh", meshData );
+	returnObj.set( "mesh", meshCopy );
+	returnObj.set( "meshMV", meshData );
 	returnObj.set( "message", "Undercuts fixed successfully!" );
 
     return returnObj;
@@ -727,7 +730,14 @@ val MeshWrapper::fillAllHolesImpl() const
 		fillHole( meshCopy, e, params );
 	}
 
-    return MRJS::exportMeshMemoryView( meshCopy );
+	val meshMV = MRJS::exportMeshMemoryView( meshCopy );
+
+	val obj = val::object();
+	obj.set( "success", true );
+	obj.set( "mesh", meshCopy );
+	obj.set( "meshMV", meshMV );
+
+    return obj;
 }
 
 val MeshWrapper::projectPointImpl( const val& point, float maxDistance ) const

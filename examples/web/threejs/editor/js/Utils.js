@@ -34,7 +34,7 @@ const createMemoryViewFromGeometry = ( editor, geometry ) => {
 	return { verticesPtr, jsVertices, indicesPtr, jsIndices };
 } 
 
-function showMesh( newVertices, newIndices ) {
+function showMesh( wasmMesh, newVertices, newIndices ) {
 	const newGeometry = new THREE.BufferGeometry();
 	newGeometry.setAttribute( 'position', new THREE.BufferAttribute( newVertices, 3 ) );
 	newGeometry.computeVertexNormals();
@@ -58,7 +58,7 @@ function showMesh( newVertices, newIndices ) {
 	///
 
 	
-	editor.execute( new AddObjectCommand( editor, newMesh ) );
+	editor.execute( new AddObjectCommand( editor, newMesh, null, null, new editor.MeshSDK.MeshWrapper( wasmMesh ) ) );
 	editor.signals.geometryChanged.dispatch( newMesh );
 	editor.select( newMesh );
 }

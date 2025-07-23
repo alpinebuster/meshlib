@@ -114,7 +114,8 @@ val fixUndercutsImpl( Mesh& mesh, const Vector3f& upDirection, float voxelSize =
 
 		// The mesh has been modified in place
 		returnObj.set( "success", true );
-		returnObj.set( "mesh", meshData );
+		returnObj.set( "mesh", mesh );
+		returnObj.set( "meshMV", meshData );
 	}
 	else
 	{

@@ -243,12 +243,12 @@ function SidebarObject( editor ) {
 			const currentUUID = editor.selected.uuid;
 			if ( currentUUID ) {
 				if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {	
-					const curMeshWrapper = editor.wasmObject[currentUUID];
-					// const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+					// const curMeshWrapper = editor.wasmObject[currentUUID];
+					const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
 
 					switch ( TOOL_MODE ) {
 						case 'wasmOpSelector':
-							// const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+							const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 
 							///
 							const positionAttribute = curveLine.geometry.getAttribute( 'position' );
@@ -265,7 +265,7 @@ function SidebarObject( editor ) {
 							
 
 							///
-							const result = editor.MeshSDK.cutMeshByContourImpl( curMeshWrapper.mesh, floatVec );
+							const result = editor.MeshSDK.cutMeshByContourImpl( mesh, floatVec );
 							// const result = editor.MeshSDK.cutMeshWithPolylineImpl( curMeshWrapper.mesh, floatVec );
 
 							// const result = editor.MeshSDK.cutMeshByContourImplTest( curMeshWrapper.mesh, floatVec );
@@ -280,23 +280,22 @@ function SidebarObject( editor ) {
 							// const mVertices = result.mesh.vertices;
 							// const mIndices = result.mesh.indices;
 
-							const smallerVertices = result.smallerMesh.vertices;
-							const smallerIndices = result.smallerMesh.indices;
+							const smallerVertices = result.smallerMeshMV.vertices;
+							const smallerIndices = result.smallerMeshMV.indices;
 	
-							const largerVertices = result.largerMesh.vertices;
-							const largerIndices = result.largerMesh.indices;
+							const largerVertices = result.largerMeshMV.vertices;
+							const largerIndices = result.largerMeshMV.indices;
 							
-							// showMesh( mVertices, mIndices );
-							showMesh( smallerVertices, smallerIndices );
-							showMesh( largerVertices, largerIndices );
+							// showMesh( mesh, mVertices, mIndices );
+							showMesh( result.smallerMesh, smallerVertices, smallerIndices );
+							showMesh( result.largerMesh, largerVertices, largerIndices );
 							///
 
 
 							///
 							floatVec.delete();
-							// mesh.delete();
-							// editor.MeshSDK._free( verticesPtr );
-							// editor.MeshSDK._free( indicesPtr );
+							editor.MeshSDK._free( verticesPtr );
+							editor.MeshSDK._free( indicesPtr );
 							///
 							break;
 
@@ -327,9 +326,9 @@ function SidebarObject( editor ) {
 							const metricWrapper = editor.MeshSDK.discreteAbsMeanCurvatureMetric( curMeshWrapper.mesh );
 							const result_ = curMeshWrapper.segmentByPointsImpl( _pArr, _dArr, metricWrapper );
 							_pArr.delete();
-							const newVertices_ = result_.mesh.vertices;
-							const newIndices_ = new Uint32Array( result_.mesh.indices );
-							showMesh( newVertices_, newIndices_ );
+							const newVertices_ = result_.meshMV.vertices;
+							const newIndices_ = new Uint32Array( result_.meshMV.indices );
+							showMesh( result_.mesh, newVertices_, newIndices_ );
 							
 							break;
 
@@ -385,9 +384,9 @@ function SidebarObject( editor ) {
 			if ( editor.wasmObject.hasOwnProperty( currentUUID ) ) {
 				const newMeshData = editor.wasmObject[currentUUID].fillAllHolesImpl();
 
-				const newVertices = newMeshData.vertices;
-				const newIndices = newMeshData.indices;
-				showMesh( newVertices, newIndices );
+				const newVertices = newMeshData.meshMV.vertices;
+				const newIndices = newMeshData.meshMV.indices;
+				showMesh( newMeshData.mesh, newVertices, newIndices );
 			}
 		}
 	} );
@@ -417,11 +416,11 @@ function SidebarObject( editor ) {
 				const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 );
 				// const result = curMeshWrapper.fixUndercutsImpl( upDir );
 
-				const newVertices = result.mesh.vertices;
+				const newVertices = result.meshMV.vertices;
 				// NOTE: No need to wrap `Uint32Array` again!
-				// const newIndices = new Uint32Array( result.mesh.indices );
-				const newIndices = result.mesh.indices;
-				showMesh( newVertices, newIndices );
+				// const newIndices = new Uint32Array( result.meshMV.indices );
+				const newIndices = result.meshMV.indices;
+				showMesh( result.mesh, newVertices, newIndices );
 			}
 		}
 	});
@@ -456,9 +455,9 @@ function SidebarObject( editor ) {
 				// const result = editor.MeshSDK.thickenMesh( curMeshWrapper.getMesh(), 0.2, params );
 				const result = curMeshWrapper.thickenMeshImpl( 1.2, params );
 				
-				const newVertices = result.mesh.vertices;
-				const newIndices = result.mesh.indices;
-				showMesh( newVertices, newIndices );
+				const newVertices = result.meshMV.vertices;
+				const newIndices = result.meshMV.indices;
+				showMesh( result.mesh, newVertices, newIndices );
 			}
 		}
 	});
@@ -494,14 +493,14 @@ function SidebarObject( editor ) {
 						-threeWorldDir.z,
 					)
 					// FIXME: Why using the returned `Mesh` instance is much slower?
-					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ⚠️
+					const result = editor.MeshSDK.fixUndercutsImpl( mesh, upDir, 0.0, 0.0 ); // ✅
 					// const result = editor.MeshSDK.fixUndercutsImpl( curMeshWrapper.mesh, upDir, 0.0, 0.0 ); // ✅
 					///
 
 
-					const newVertices = result.mesh.vertices;
-					const newIndices = result.mesh.indices;
-					showMesh( newVertices, newIndices );
+					const newVertices = result.meshMV.vertices;
+					const newIndices = result.meshMV.indices;
+					showMesh( result.mesh, newVertices, newIndices );
 
 
 					/// IMPORTANT！！！
@@ -549,10 +548,10 @@ function SidebarObject( editor ) {
 					///
 
 
-					const newVertices = result.mesh.vertices;
-					const newIndices = result.mesh.indices;
+					const newVertices = result.meshMV.vertices;
+					const newIndices = result.meshMV.indices;
 
-					showMesh( newVertices, newIndices );
+					showMesh( result.mesh, newVertices, newIndices );
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
 				}
@@ -624,7 +623,7 @@ function SidebarObject( editor ) {
 
 				const newVertices = result.vertices;
 				const newIndices = result.indices;
-				showMesh( newVertices, newIndices );
+				showMesh( mesh, newVertices, newIndices );
 			} catch ( error ) {
 				console.error( 'Error creating from ThreeJS Mesh:', error.message );
 				editor.MeshSDK._free( verticesPtr );
