@@ -565,6 +565,40 @@ function SidebarObject( editor ) {
 		}
 	});
 
+	const wasmOpFindSilhouetteEdges = new UIButton( strings.getKey( 'sidebar/object/wasmOpFindSilhouetteEdges') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+
+			try {
+				const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+
+				///
+				const threeWorldDir = new THREE.Vector3();
+				editor.camera.getWorldDirection( threeWorldDir );
+				const upDir = new editor.MeshSDK.Vector3f(
+					threeWorldDir.x,
+					threeWorldDir.y,
+					threeWorldDir.z,
+				)
+
+				const projectedMesh = editor.MeshSDK.findSilhouetteEdges( mesh, upDir );
+				const result = editor.MeshSDK.exportMeshMemoryView( projectedMesh );
+				///
+
+
+				const newVertices = result.vertices;
+				const newIndices = result.indices;
+				showMesh( projectedMesh, newVertices, newIndices );
+			} catch ( error ) {
+				console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				editor.MeshSDK._free( verticesPtr );
+				editor.MeshSDK._free( indicesPtr );
+			}
+		}
+	});
 	const wasmOpBuildMaxillaBottom = new UIButton( strings.getKey( 'sidebar/object/wasmOpBuildMaxillaBottom') ).setMarginLeft( '7px' ).onClick( function () {
 		if ( !editor.selected ) return;
 
@@ -663,6 +697,7 @@ function SidebarObject( editor ) {
 	const wasmOpsRowGypsum = new UIRow();
 	wasmOpsRowGypsum.add( wasmOpBuildMaxillaBottom );
 	wasmOpsRowGypsum.add( wasmOpBuildMandibleBottom );
+	wasmOpsRowGypsum.add( wasmOpFindSilhouetteEdges );
 
 	container.add( wasmOpsRow );
 	container.add( wasmOpsRowLoad );
