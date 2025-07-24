@@ -579,9 +579,9 @@ function SidebarObject( editor ) {
 				const threeWorldDir = new THREE.Vector3();
 				editor.camera.getWorldDirection( threeWorldDir );
 				const upDir = new editor.MeshSDK.Vector3f(
-					threeWorldDir.x,
-					threeWorldDir.y,
-					threeWorldDir.z,
+					-threeWorldDir.x,
+					-threeWorldDir.y,
+					-threeWorldDir.z,
 				)
 
 				const projectedMesh = editor.MeshSDK.findSilhouetteEdges( mesh, upDir );
