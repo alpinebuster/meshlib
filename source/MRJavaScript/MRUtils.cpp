@@ -6,8 +6,8 @@
 #include <MRPch/MRWasm.h>
 #include <MRPch/MRTBB.h>
 
-#include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRMeshBuilder.h>
 #include <MRMesh/MRBitSet.h>
@@ -43,6 +43,7 @@
 #include <MRMesh/MR2to3.h>
 #include <MRMesh/MR2DContoursTriangulation.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
+#include <MRMesh/MRConvexHull.h>
 
 #include <MRVoxels/MRTeethMaskToDirectionVolume.h>
 
@@ -239,7 +240,7 @@ FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Ve
     return faces;
 }
 
-Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
+Mesh findLookingSilhouetteConvexHull( const Mesh& meshRes, Vector3f lookDirection )
 {
     // Find faces that looks in this direction
     FaceBitSet facesLookingInThisDirection( meshRes.topology.faceSize() );
@@ -271,9 +272,18 @@ Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
     } );
 
     // Find silhouette outline
-    auto outline = PlanarTriangulation::getOutline( contours );
+    Contours2f outlines = PlanarTriangulation::getOutline( contours );
+
+    // Compute convex hull for each outline
+    Contours2f chOutlines;
+    chOutlines.reserve( outlines.size() );
+    for ( const auto& outline : outlines )
+    {
+        chOutlines.push_back( makeConvexHull( outline ) );
+    }
+
     // Triangulate outline
-    auto projectedMesh = PlanarTriangulation::triangulateContours( outline );
+    auto projectedMesh = PlanarTriangulation::triangulateContours( chOutlines );
 
     // Project silhouette mesh back to original plane
     projectedMesh.transform( MR::AffineXf3f::linear( fromPlaneRot ) );
@@ -392,7 +402,7 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	function( "exportMeshMemoryViewTest", &MRJS::exportMeshMemoryViewTest );
 
 	function( "findLookingFaces", &MRJS::findLookingFaces );
-	function( "findSilhouetteEdges", &MRJS::findSilhouetteEdges );
+	function( "findLookingSilhouetteConvexHull", &MRJS::findLookingSilhouetteConvexHull );
 }
 
 

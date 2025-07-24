@@ -10415,7 +10415,7 @@ interface EmbindModule {
   surroundingContourEdges(_0: Mesh, _1: VectorEdgeId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
   surroundingContourVertices(_0: Mesh, _1: VectorVertId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
   findLookingFaces(_0: Mesh, _1: AffineXf3f, _2: Vector3f, _3: boolean): FaceBitSet;
-  findSilhouetteEdges(_0: Mesh, _1: Vector3f): Mesh;
+  findLookingSilhouetteConvexHull(_0: Mesh, _1: Vector3f): Mesh;
   unitVector3f(_0: number, _1: number): Vector3f;
   distanceSq3f(_0: Vector3f, _1: Vector3f): number;
   distance3f(_0: Vector3f, _1: Vector3f): number;
