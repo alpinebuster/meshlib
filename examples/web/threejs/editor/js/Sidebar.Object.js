@@ -619,15 +619,14 @@ function SidebarObject( editor ) {
 						-threeWorldDir.z,
 					)
 
-					const e = mesh.topology.findHoleRepresentiveEdges( null );
-					const result = editor.MeshSDK.buildBottom( mesh, e.get(0), upDir, 0.0, null );
+					const result = editor.MeshSDK.createGypsumBaseImpl( mesh, upDir, 0.0, 30.0 );
 					///
 
 
-					const newVertices = result.vertices;
-					const newIndices = result.indices;
+					const newVertices = result.meshMV.vertices;
+					const newIndices = result.meshMV.indices;
 
-					showMesh( newVertices, newIndices );
+					showMesh( mesh, newVertices, newIndices );
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
 					editor.MeshSDK._free( verticesPtr );

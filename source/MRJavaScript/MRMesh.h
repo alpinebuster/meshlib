@@ -38,6 +38,9 @@ using emscripten::val;
 namespace MRJS
 {
 
+val createGypsumBaseImpl( Mesh& mesh, Vector3f dir, float extensionBottom, float extensionBottomToGypsumBase );
+
+
 /**
  * @brief JavaScript-friendly wrapper for the Mesh class
  *

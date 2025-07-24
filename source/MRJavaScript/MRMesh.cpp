@@ -52,6 +52,7 @@
 #include <MRMesh/MRPointOnFace.h>
 #include <MRMesh/MRMeshComponents.h>
 #include <MRMesh/MRUniteManyMeshes.h>
+#include <MRMesh/MRRingIterator.h>
 #include <MRMesh/MRMesh.h>
 
 #include <MRVoxels/MRFixUndercuts.h>
@@ -68,6 +69,66 @@ using namespace MeshBuilder;
 
 namespace MRJS 
 {
+
+/// Mesh Utilities
+val createGypsumBaseImpl( Mesh& mesh, Vector3f dir, float extensionBottom, float extensionBottomToGypsumBase )
+{
+	assert( extensionBottom >= 0 && "extensionBottom must be a positive value or 0" );
+	assert( extensionBottomToGypsumBase > 0 && "extensionBottomToGypsumBase must be a positive value" );
+
+    dir = dir.normalized();
+	// TODO: get largest hole
+	auto e = mesh.topology.findHoleRepresentiveEdges();
+
+	///
+    float min = FLT_MAX;
+    VertId minVert;
+    for ( auto next : leftRing( mesh.topology, e[0] ) )
+    {
+        VertId vid = mesh.topology.org( next );
+        float dist = dot( mesh.points[vid], dir );
+        if ( dist < min )
+        {
+            min = dist;
+            minVert = vid;
+        }
+    }
+	///
+
+	Vector3f transEBottom = mesh.points[minVert] - extensionBottom * dir;
+	extendHole( mesh, e[0], Plane3f::fromDirAndPt( dir, transEBottom ) );
+
+	val obj = val::object();
+	if ( extensionBottomToGypsumBase > 0 )
+	{
+		Vector3f transEBottomToGypsumBase = mesh.points[minVert] - ( extensionBottom + extensionBottomToGypsumBase ) * dir;
+		Mesh mMaxillaBase = findLookingSilhouetteConvexHull( mesh, dir );
+		mMaxillaBase.transform( MR::AffineXf3f::translation( transEBottomToGypsumBase ) );
+		auto eGypsumBase = mMaxillaBase.topology.findHoleRepresentiveEdges();
+		extendHole( mMaxillaBase, eGypsumBase[0], Plane3f::fromDirAndPt( -dir, transEBottom ) );
+
+		// StitchHolesParams stitchParams;
+		// stitchParams.metric = getMinAreaMetric( mMaxillaBase );
+		// buildCylinderBetweenTwoHoles( mMaxillaBase, curREGypsumBase, curRE, stitchParams );
+
+		val meshData = MRJS::exportMeshMemoryView( mMaxillaBase );
+
+		obj.set( "success", true );
+		obj.set( "mesh", mMaxillaBase );
+		obj.set( "meshMV", meshData );
+	}
+	else
+	{
+		val meshData = MRJS::exportMeshMemoryView( mesh );
+
+		obj.set( "success", true );
+		obj.set( "mesh", mesh );
+		obj.set( "meshMV", meshData );
+	}
+	return obj;
+}
+///
+
 
 // ------------------------------------------------------------------------
 // Wrapper for `Mesh`
@@ -840,6 +901,9 @@ EMSCRIPTEN_BINDINGS( MeshWrapperModule )
 
 		// Spatial queries
 		.function( "projectPointImpl", &MRJS::MeshWrapper::projectPointImpl );
+
+
+	function( "createGypsumBaseImpl", &MRJS::createGypsumBaseImpl );
 }
 
 

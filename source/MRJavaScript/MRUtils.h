@@ -57,7 +57,7 @@ MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, 
 /// Finds all triangles of a mesh that having normals oriented toward the camera in this viewport
 // REF `source/MRViewer/MRViewport.cpp`
 MRJS_API FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Vector3f lookDirection, bool orthographic );
-MRJS_API Mesh findSilhouetteEdges( const Mesh& mesh, Vector3f lookDirection );
+MRJS_API Mesh findLookingSilhouetteConvexHull( const Mesh& mesh, Vector3f lookDirection );
 ///
 
 

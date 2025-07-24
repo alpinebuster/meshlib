@@ -10407,6 +10407,7 @@ interface EmbindModule {
   fixUndercutsImplTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsImplThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   closestPointOnLineSegm3f(_0: Vector3f, _1: LineSegm3f): Vector3f;
+  createGypsumBaseImpl(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number, _4: FaceBitSet | null): EdgeId;
   createVerticalStitchMetric(_0: Mesh, _1: Vector3f): FillHoleMetricWrapper;
   projectOnAllWithProgress(_0: Vector3f, _1: AABBTreeObjects, _2: number, _3: any, _4: ObjId): void;
