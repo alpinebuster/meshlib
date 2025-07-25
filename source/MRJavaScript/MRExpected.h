@@ -106,4 +106,4 @@ auto bindExpected( const std::string& className )
 	return cls;
 }
 
-}
+} // namespace MRJS

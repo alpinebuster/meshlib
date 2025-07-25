@@ -413,6 +413,7 @@ function Loader( editor ) {
 				reader.addEventListener( 'load', async function ( event ) {
 					const contents = event.target.result;
 
+					///
 					// NOTE: Wasm Object with emscripten memory views
 					const uint8Array = new Uint8Array( contents );
 					const ptr = editor.MeshSDK._malloc( uint8Array.byteLength );
@@ -425,8 +426,10 @@ function Loader( editor ) {
 						reader.readAsArrayBuffer( file );
 						return; // Exit the current function to avoid further processing
 					}
-					const mrmeshObj = result.meshWrapper;
+					///
 
+
+					///
 					const { STLLoader } = await import( 'three/addons/loaders/STLLoader.js' );
 
 					const geometry = new STLLoader().parse( contents );
@@ -434,8 +437,10 @@ function Loader( editor ) {
 
 					const mesh = new THREE.Mesh( geometry, material );
 					mesh.name = filename;
+					///
 
-					editor.execute( new AddObjectCommand( editor, mesh, null, null, mrmeshObj ) );
+
+					editor.execute( new AddObjectCommand( editor, mesh, null, null, result.mesh ) );
 
 					// NOTE: Remember to free after processing
 					editor.MeshSDK._free( ptr );

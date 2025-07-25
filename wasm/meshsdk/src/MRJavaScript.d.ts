@@ -1137,10 +1137,6 @@ export interface EdgeLengthMesh extends ClassHandle {
   edgeLengthAfterFlip(_0: EdgeId): number | undefined;
 }
 
-export interface EdgeMetricWrapper extends ClassHandle {
-  evaluate(_0: EdgeId): number;
-}
-
 export interface EdgePoint extends ClassHandle {
   e: EdgeId;
   a: SegmPointf;
@@ -1741,10 +1737,6 @@ export interface UndirectedEdgeUndirectedEdge extends ClassHandle {
   equals(_0: UndirectedEdgeUndirectedEdge): boolean;
 }
 
-export interface MeshSegmentation extends ClassHandle {
-  segmentByPoints(_0: StdVectorf, _1: StdVectorf): any;
-}
-
 export interface FillHoleNicelySettings extends ClassHandle {
   triangulateOnly: boolean;
   maxEdgeLen: number;
@@ -2019,29 +2011,6 @@ export interface Matrix4f extends ClassHandle {
 }
 
 export interface Matrix4d extends ClassHandle {
-}
-
-export interface MeshWrapper extends ClassHandle {
-  mesh: Mesh;
-  getBoundingBoxImpl(): any;
-  getVertexCountImpl(): number;
-  getFaceCountImpl(): number;
-  getVolumeImpl(): number;
-  getAreaImpl(): number;
-  findCenterImpl(): any;
-  getVertexPositionImpl(_0: number): any;
-  setVertexPositionImpl(_0: number, _1: any): void;
-  getFaceVerticesImpl(_0: number): any;
-  getFaceNormalImpl(_0: number): any;
-  fillAllHolesImpl(): any;
-  projectPointImpl(_0: any, _1: number): any;
-  getMesh(): Mesh;
-  getMeshPtr(): Mesh | null;
-  thickenMeshImpl(_0: number, _1: GeneralOffsetParameters): any;
-  cutMeshWithPolylineImpl(_0: StdVectorf): any;
-  segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
-  cutMeshByContourImpl(_0: StdVectorf): any;
-  fixUndercutsImpl(_0: Vector3f): any;
 }
 
 export interface Mesh extends ClassHandle {
@@ -3256,6 +3225,41 @@ export interface FaceIdEdgeIdMap extends ClassHandle {
   notEquals(_0: FaceIdEdgeIdMap): boolean;
 }
 
+export interface VoxelIdFaceIdMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: VoxelId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: VoxelId): void;
+  get(_0: FaceId): VoxelId;
+  set(_0: FaceId): VoxelId;
+  getByIndex(_0: FaceId): VoxelId;
+  getByIndexMutable(_0: FaceId): VoxelId;
+  getAt(_0: FaceId): VoxelId;
+  setAt(_0: FaceId, _1: VoxelId): boolean;
+  frontConst(): VoxelId;
+  front(): VoxelId;
+  backConst(): VoxelId;
+  back(): VoxelId;
+  pushBack(_0: VoxelId): void;
+  popBack(): void;
+  emplaceBack(_0: VoxelId): VoxelId;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  autoResizeAt(_0: FaceId): VoxelId;
+  autoResizeSetWithRange(_0: FaceId, _1: number, _2: VoxelId): void;
+  autoResizeSet(_0: FaceId, _1: VoxelId): void;
+  swap(_0: VoxelIdFaceIdMap): void;
+  heapBytes(): number;
+  equals(_0: VoxelIdFaceIdMap): boolean;
+  notEquals(_0: VoxelIdFaceIdMap): boolean;
+}
+
 export interface ModelPointsDataObjIdMap extends ClassHandle {
   size(): number;
   empty(): boolean;
@@ -4171,6 +4175,7 @@ export interface NoDefInitUndirectedEdgeId extends ClassHandle {
 
 export interface BaseShellParameters extends ClassHandle {
   voxelSize: number;
+  callBack: ProgressCallback;
 }
 
 export interface OffsetParameters extends BaseShellParameters {
@@ -4182,6 +4187,7 @@ export interface OffsetParameters extends BaseShellParameters {
 }
 
 export interface SharpOffsetParameters extends OffsetParameters {
+  outSharpEdges: UndirectedEdgeBitSet | null;
   minNewVertDev: number;
   maxNewRank2VertDev: number;
   maxNewRank3VertDev: number;
@@ -6084,6 +6090,14 @@ export interface VectorVert2RegionMap extends ClassHandle {
   size(): number;
   get(_0: number): Vert2RegionMap | undefined;
   set(_0: number, _1: Vert2RegionMap): boolean;
+}
+
+export interface VectorVoxelIdFaceId extends ClassHandle {
+  push_back(_0: VoxelIdFaceIdMap): void;
+  resize(_0: number, _1: VoxelIdFaceIdMap): void;
+  size(): number;
+  get(_0: number): VoxelIdFaceIdMap | undefined;
+  set(_0: number, _1: VoxelIdFaceIdMap): boolean;
 }
 
 export interface VectorVector2f extends ClassHandle {
@@ -8647,11 +8661,6 @@ interface EmbindModule {
     new(): EdgeLengthMesh;
     fromMesh(_0: Mesh): EdgeLengthMesh;
   };
-  EdgeMetricWrapper: {
-    new(_0: EdgeMetricWrapper): EdgeMetricWrapper;
-    createEdgeMetricWrapper(_0: EdgeMetricWrapper): EdgeMetricWrapper;
-  };
-  identityMetric(): EdgeMetricWrapper;
   EdgePoint: {
     new(): EdgePoint;
     new(_0: EdgeId, _1: number): EdgePoint;
@@ -8730,9 +8739,6 @@ interface EmbindModule {
   UndirectedEdgeUndirectedEdge: {
     new(): UndirectedEdgeUndirectedEdge;
     new(_0: UndirectedEdgeId, _1: UndirectedEdgeId): UndirectedEdgeUndirectedEdge;
-  };
-  MeshSegmentation: {
-    new(_0: Mesh): MeshSegmentation;
   };
   FillHoleNicelySettings: {
     new(): FillHoleNicelySettings;
@@ -8873,12 +8879,6 @@ interface EmbindModule {
   Matrix4d: {
     new(): Matrix4d;
   };
-  MeshWrapper: {
-    new(): MeshWrapper;
-    new(_0: Mesh): MeshWrapper;
-    fromTrianglesImpl(_0: any, _1: any): any;
-    fromTrianglesImplWithArray(_0: any, _1: any): any;
-  };
   Mesh: {
     new(): Mesh;
     fromTrianglesMemoryView(_0: any, _1: any, _2: boolean): Mesh;
@@ -8890,10 +8890,6 @@ interface EmbindModule {
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
   findTwinEdges(_0: Mesh, _1: number): EdgeBitSet;
   findTwinUndirectedEdges(_0: Mesh, _1: number): UndirectedEdgeBitSet;
-  edgeLengthMetric(_0: Mesh): EdgeMetricWrapper;
-  discreteAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
-  discreteMinusAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
-  edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetricWrapper;
   smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
   calculateRecommendedVoxelSizeImpl(_0: Mesh, _1: number): number;
   BooleanResult: {
@@ -9266,6 +9262,11 @@ interface EmbindModule {
     new(_0: number): FaceIdEdgeIdMap;
     new(_0: number, _1: FaceId): FaceIdEdgeIdMap;
   };
+  VoxelIdFaceIdMap: {
+    new(): VoxelIdFaceIdMap;
+    new(_0: number): VoxelIdFaceIdMap;
+    new(_0: number, _1: VoxelId): VoxelIdFaceIdMap;
+  };
   ModelPointsDataObjIdMap: {
     new(): ModelPointsDataObjIdMap;
     new(_0: number): ModelPointsDataObjIdMap;
@@ -9432,11 +9433,6 @@ interface EmbindModule {
   MeshTopology: {
     new(): MeshTopology;
   };
-  edgeLengthMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
-  discreteAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
-  discreteMinusAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
-  edgeCurvMetricFromTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number): EdgeMetricWrapper;
-  edgeTableSymMetric(_0: MeshTopology, _1: EdgeMetricWrapper): EdgeMetricWrapper;
   fromSameTriangle(_0: MeshTopology, _1: EdgePoint, _2: EdgePoint): boolean;
   addTriangles(_0: MeshTopology, _1: Triangulation, _2: BuildSettings): void;
   hasFullySelectedComponentFromTopology(_0: MeshTopology, _1: VertBitSet): boolean;
@@ -9489,9 +9485,16 @@ interface EmbindModule {
     new(): GeneralOffsetParameters;
   };
   SignDetectionMode: {Unsigned: SignDetectionModeValue<0>, OpenVDB: SignDetectionModeValue<1>, ProjectionNormal: SignDetectionModeValue<2>, WindingRule: SignDetectionModeValue<3>, HoleWindingRule: SignDetectionModeValue<4>};
-  thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
   suggestVoxelSize(_0: MeshPart, _1: number): number;
   offsetMesh(_0: MeshPart, _1: number, _2: OffsetParameters): ExpectedMesh;
+  doubleOffsetMesh(_0: MeshPart, _1: number, _2: number, _3: OffsetParameters): ExpectedMesh;
+  mcOffsetMesh(_0: MeshPart, _1: number, _2: OffsetParameters, _3: VoxelIdFaceIdMap | null): ExpectedMesh;
+  mcShellMeshRegion(_0: Mesh, _1: FaceBitSet, _2: number, _3: BaseShellParameters, _4: VoxelIdFaceIdMap | null): ExpectedMesh;
+  sharpOffsetMesh(_0: MeshPart, _1: number, _2: SharpOffsetParameters): ExpectedMesh;
+  generalOffsetMesh(_0: MeshPart, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
+  thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
+  offsetOneDirection(_0: MeshPart, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
+  thickenMeshImpl(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
   SortIntersectionsData: {};
   OneMeshContour: {
     new(): OneMeshContour;
@@ -9539,6 +9542,7 @@ interface EmbindModule {
     new(_0: VectorVector3f): Polyline3;
     fromContours(_0: VectorVectorVector3f): Polyline3;
   };
+  offsetPolyline(_0: Polyline3, _1: number, _2: OffsetParameters): ExpectedMesh;
   Polyline2: {
     new(): Polyline2;
     new(_0: VectorVector2f): Polyline2;
@@ -10250,6 +10254,9 @@ interface EmbindModule {
   VectorVert2RegionMap: {
     new(): VectorVert2RegionMap;
   };
+  VectorVoxelIdFaceId: {
+    new(): VectorVoxelIdFaceId;
+  };
   VectorVector2f: {
     new(): VectorVector2f;
   };
@@ -10407,9 +10414,20 @@ interface EmbindModule {
   EdgeMetric: {
     new(): EdgeMetric;
   };
+  identityMetric(): EdgeMetric;
+  edgeLengthMetric(_0: Mesh): EdgeMetric;
+  edgeLengthMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetric;
+  discreteAbsMeanCurvatureMetric(_0: Mesh): EdgeMetric;
+  discreteAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetric;
+  discreteMinusAbsMeanCurvatureMetric(_0: Mesh): EdgeMetric;
+  discreteMinusAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetric;
+  edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetric;
+  edgeCurvMetricFromTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number): EdgeMetric;
+  edgeTableSymMetric(_0: MeshTopology, _1: EdgeMetric): EdgeMetric;
   fillContourLeftByGraphCut(_0: MeshTopology, _1: VectorEdgeId, _2: EdgeMetric): FaceBitSet;
   fillContourLeftByGraphCutByContours(_0: MeshTopology, _1: VectorEdgePath, _2: EdgeMetric): FaceBitSet;
   segmentByGraphCut(_0: MeshTopology, _1: FaceBitSet, _2: FaceBitSet, _3: EdgeMetric): FaceBitSet;
+  segmentByPointsImpl(_0: Mesh, _1: EdgeMetric, _2: StdVectorf, _3: StdVectorf): any;
   UndirectedEdgeMetric: {
     new(): UndirectedEdgeMetric;
   };

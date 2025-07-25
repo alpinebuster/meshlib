@@ -555,8 +555,7 @@ Editor.prototype = {
 			
 			const wasmMesh = this.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
 			try {
-				const wasmMeshWrapper = new this.MeshSDK.MeshWrapper( wasmMesh );
-				if ( wasmMeshWrapper ) this.addWasmObject( curM.uuid, wasmMeshWrapper );
+				if ( wasmMesh ) this.addWasmObject( curM.uuid, wasmMesh );
 			}
 			finally {
 				// IMPORTANT!!!

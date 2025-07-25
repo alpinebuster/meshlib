@@ -4,121 +4,25 @@
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MREdgeMetric.h>
 
-#include "MREdgeMetric.h"
-
 using namespace emscripten;
 using namespace MR;
 
 
-float EdgeMetricWrapper::evaluate( EdgeId edgeId ) const
-{
-	return metric( edgeId );
-}
-
-const EdgeMetric& EdgeMetricWrapper::getMetric() const
-{
-	return metric;
-}
-EdgeMetric& EdgeMetricWrapper::getMetric()
-{
-	return metric;
-}
-
-EdgeMetricWrapper& EdgeMetricWrapper::operator=( const EdgeMetricWrapper& other )
-{
-	if ( this != &other )
-	{
-		metric = other.metric;
-	}
-	return *this;
-}
-
-
-// Factory functions that return wrapped metrics
-EdgeMetricWrapper createIdentityMetric()
-{
-	return EdgeMetricWrapper( identityMetric() );
-}
-
-EdgeMetricWrapper createEdgeLengthMetric( const Mesh& mesh )
-{
-	return EdgeMetricWrapper( edgeLengthMetric( mesh ) );
-}
-
-EdgeMetricWrapper createEdgeLengthMetricFromTopology( const MeshTopology& topology, const VertCoords& points )
-{
-	return EdgeMetricWrapper( edgeLengthMetric( topology, points ) );
-}
-
-EdgeMetricWrapper createDiscreteAbsMeanCurvatureMetric( const Mesh& mesh )
-{
-	return EdgeMetricWrapper( discreteAbsMeanCurvatureMetric( mesh ) );
-}
-
-EdgeMetricWrapper createDiscreteAbsMeanCurvatureMetricFromTopology( const MeshTopology& topology, const VertCoords& points )
-{
-	return EdgeMetricWrapper( discreteAbsMeanCurvatureMetric( topology, points ) );
-}
-
-EdgeMetricWrapper createDiscreteMinusAbsMeanCurvatureMetric( const Mesh& mesh )
-{
-	return EdgeMetricWrapper( discreteMinusAbsMeanCurvatureMetric( mesh ) );
-}
-
-EdgeMetricWrapper createDiscreteMinusAbsMeanCurvatureMetricFromTopology( const MeshTopology& topology, const VertCoords& points )
-{
-	return EdgeMetricWrapper( discreteMinusAbsMeanCurvatureMetric( topology, points ) );
-}
-
-EdgeMetricWrapper createEdgeCurvMetric( const Mesh& mesh, float angleSinFactor = 2.0f, float angleSinForBoundary = 0.0f )
-{
-	return EdgeMetricWrapper( edgeCurvMetric( mesh, angleSinFactor, angleSinForBoundary ) );
-}
-
-EdgeMetricWrapper createEdgeCurvMetricFromTopology( const MeshTopology& topology, const VertCoords& points,
-												   float angleSinFactor = 2.0f, float angleSinForBoundary = 0.0f )
-{
-	return EdgeMetricWrapper( edgeCurvMetric( topology, points, angleSinFactor, angleSinForBoundary ) );
-}
-
-EdgeMetricWrapper createEdgeTableSymMetric( const MeshTopology& topology, const EdgeMetricWrapper& metric )
-{
-	return EdgeMetricWrapper( edgeTableSymMetric( topology, metric.getMetric() ) );
-}
-
-
 EMSCRIPTEN_BINDINGS( EdgeMetricModule )
 {
-	// Register the `EdgeMetricWrapper` class
-	class_<EdgeMetricWrapper>( "EdgeMetricWrapper" )
-		.constructor<const EdgeMetricWrapper&>()
-		.class_function( "createEdgeMetricWrapper",
-			optional_override( [] ( const EdgeMetricWrapper& other )
-			{
-				return EdgeMetricWrapper( other );
-			} ))
+	function( "identityMetric", &identityMetric );
 
-		.function( "evaluate", &EdgeMetricWrapper::evaluate );
+	function( "edgeLengthMetric", select_overload<EdgeMetric( const Mesh& )>( &edgeLengthMetric ) );
+	function( "edgeLengthMetricFromTopology", select_overload<EdgeMetric( const MeshTopology&, const VertCoords& )>( &edgeLengthMetric ) );
 
-	// Register factory functions for creating different types of metrics
-	function( "identityMetric", &createIdentityMetric );
+	function( "discreteAbsMeanCurvatureMetric", select_overload<EdgeMetric( const Mesh& )>( &discreteAbsMeanCurvatureMetric ) );
+	function( "discreteAbsMeanCurvatureMetricFromTopology", select_overload<EdgeMetric( const MeshTopology&, const VertCoords& )>( &discreteAbsMeanCurvatureMetric ) );
 
-	// Edge length metrics
-	function( "edgeLengthMetric", &createEdgeLengthMetric );
-	function( "edgeLengthMetricFromTopology", &createEdgeLengthMetricFromTopology );
+	function( "discreteMinusAbsMeanCurvatureMetric", select_overload<EdgeMetric( const Mesh& )>( &discreteMinusAbsMeanCurvatureMetric ) );
+	function( "discreteMinusAbsMeanCurvatureMetricFromTopology", select_overload<EdgeMetric( const MeshTopology&, const VertCoords& )>( &discreteMinusAbsMeanCurvatureMetric ) );
 
-	// Discrete mean curvature metrics
-	function( "discreteAbsMeanCurvatureMetric", &createDiscreteAbsMeanCurvatureMetric );
-	function( "discreteAbsMeanCurvatureMetricFromTopology", &createDiscreteAbsMeanCurvatureMetricFromTopology );
+	function( "edgeCurvMetric", select_overload<EdgeMetric( const Mesh&, float, float )>( &edgeCurvMetric ) );
+	function( "edgeCurvMetricFromTopology", select_overload<EdgeMetric( const MeshTopology&, const VertCoords&, float, float )>( &edgeCurvMetric ) );
 
-	// Discrete minus mean curvature metrics
-	function( "discreteMinusAbsMeanCurvatureMetric", &createDiscreteMinusAbsMeanCurvatureMetric );
-	function( "discreteMinusAbsMeanCurvatureMetricFromTopology", &createDiscreteMinusAbsMeanCurvatureMetricFromTopology );
-
-	// Edge curvature metrics
-	function( "edgeCurvMetric", &createEdgeCurvMetric );
-	function( "edgeCurvMetricFromTopology", &createEdgeCurvMetricFromTopology );
-
-	// Edge table symmetric metric
-	function( "edgeTableSymMetric", &createEdgeTableSymMetric );
+	function( "edgeTableSymMetric", &edgeTableSymMetric );
 }

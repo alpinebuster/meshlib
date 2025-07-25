@@ -54,7 +54,6 @@
 using namespace emscripten;
 using namespace MR;
 
-
 namespace MRJS
 {
 
@@ -1063,6 +1062,7 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<UndirectedEdge2RegionMap>( "VectorUndirectedEdge2RegionMap" );
 	register_vector<Face2RegionMap>( "VectorFace2RegionMap" );
 	register_vector<Vert2RegionMap>( "VectorVert2RegionMap" );
+	register_vector<Vector<VoxelId, FaceId>>( "VectorVoxelIdFaceId" );
 	///
 
 
@@ -1335,6 +1335,11 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 	register_optional<FacePair>();
 	register_optional<EdgePair>();
 	register_optional<UndirectedEdgePair>();
+	///
+
+
+	///
+	register_optional<Vector<VoxelId, FaceId>>();
 	///
 
 
