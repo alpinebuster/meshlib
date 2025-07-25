@@ -126,7 +126,8 @@ val segmentByPointsImpl( Mesh& mesh_, EdgeMetric& edgeMetric_, const std::vector
 		// Build the result object
 		result.set( "success", true );
 		result.set( "contourEdges", contourEdgesArray );
-		result.set( "mesh", meshData );
+		result.set( "mesh", segMesh );
+		result.set( "meshMV", meshData );
 	}
 	catch ( const std::exception& e )
 	{

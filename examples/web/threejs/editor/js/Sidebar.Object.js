@@ -290,8 +290,6 @@ function SidebarObject( editor ) {
 
 						///
 						floatVec.delete();
-						editor.MeshSDK._free( verticesPtr );
-						editor.MeshSDK._free( indicesPtr );
 						///
 						break;
 
@@ -299,36 +297,43 @@ function SidebarObject( editor ) {
 						const threeWorldDir = new THREE.Vector3();
 						editor.camera.getWorldDirection( threeWorldDir );
 						const upDirArr = [
-							-threeWorldDir.x,
-							-threeWorldDir.y,
-							-threeWorldDir.z,
+							threeWorldDir.x,
+							threeWorldDir.y,
+							threeWorldDir.z,
 						]
 
 						const positionAttr = pointGeo.getAttribute( 'position' );
 						const posi = positionAttr.array;
 						const posiArr = [...posi];
-						const _pArr = new editor.MeshSDK.StdVectorf();
-						const _dArr = new editor.MeshSDK.StdVectorf();
+						const _pointArr = new editor.MeshSDK.StdVectorf();
+						const _dirArr = new editor.MeshSDK.StdVectorf();
 													
 						for (let val of posiArr) {
-							_pArr.push_back(val);
+							_pointArr.push_back(val);
 						}			
 						for (let val_ of upDirArr) {
-							_dArr.push_back(val_);
+							_dirArr.push_back(val_);
 						}
 
-						const metricWrapper = editor.MeshSDK.discreteAbsMeanCurvatureMetric( mesh );
-						const result_ = editor.MeshSDK.segmentByPointsImpl( _pArr, _dArr, metricWrapper );
-						_pArr.delete();
+						const metric = editor.MeshSDK.identityMetric( mesh );
+						const result_ = editor.MeshSDK.segmentByPointsImpl( mesh, metric, _pointArr, _dirArr );
+
 						const newVertices_ = result_.meshMV.vertices;
 						const newIndices_ = result_.meshMV.indices;
 						showMesh( result_.mesh, newVertices_, newIndices_ );
 						
+
+						_pointArr.delete();
+						_dirArr.delete();
 						break;
 
 					default:
 						break;
 				}
+
+				/// IMPORTANT!!!
+				editor.MeshSDK._free( verticesPtr );
+				editor.MeshSDK._free( indicesPtr );
 			}
 		}
 	});
@@ -427,14 +432,27 @@ function SidebarObject( editor ) {
 	const wasmOpSegmentByPoints = new UIButton( strings.getKey( 'sidebar/object/wasmOpSegmentByPoints') ).setMarginLeft( '7px' ).onClick( function () {
 		if ( !editor.selected ) return;
 
-		segmentByPointsEnabled = !segmentByPointsEnabled;
 		if ( segmentByPointsEnabled ) {
-			TOOL_MODE = 'wasmOpSegmentByPoints';
-			wasmOpSegmentByPoints.addClass( 'selected' );
-		} else {
 			TOOL_MODE = 'none';
 			wasmOpSegmentByPoints.removeClass( 'selected' );
+
+			if ( editor.selected.children.length > 0 ) {
+				const subMeshes = editor.selected.children.filter( child => child.isLine || child.isPoints );
+				subMeshes.forEach( ( subMesh, i ) => {
+					editor.execute( new RemoveObjectCommand( editor, subMesh ) );
+				});
+			}
+		} else {
+			TOOL_MODE = 'wasmOpSegmentByPoints';
+			wasmOpSegmentByPoints.addClass( 'selected' );
+			
+			_cur_intersect = null;
+			clicked.length = 0;
+			pointGeo.dispose();
+			pointGeo = new THREE.BufferGeometry();
 		}
+
+		segmentByPointsEnabled = !segmentByPointsEnabled;
 	});
 
 	const wasmOpThickenMesh = new UIButton( strings.getKey( 'sidebar/object/wasmOpThickenMesh') ).setMarginLeft( '7px' ).onClick( function () {
