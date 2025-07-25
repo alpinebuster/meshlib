@@ -12,6 +12,7 @@ using namespace MR;
 
 namespace MRJS {
 
-val thickenMeshWrapper( const Mesh& mesh, float offset, const GeneralOffsetParameters& params );
+val thickenMeshImpl( const Mesh& mesh, float offset, const GeneralOffsetParameters& params );
+val thickenMeshImplFilled( const Mesh& mesh, float offset, const GeneralOffsetParameters& params );
 
 } // namespace MRJS

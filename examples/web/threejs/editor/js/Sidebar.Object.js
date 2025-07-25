@@ -450,7 +450,7 @@ function SidebarObject( editor ) {
 			const meshPart = new editor.MeshSDK.MeshPart( mesh );
 			params.voxelSize = editor.MeshSDK.suggestVoxelSize( meshPart, 5e6 );
 
-			const result = editor.MeshSDK.thickenMeshImpl( mesh, 0.2, params );
+			const result = editor.MeshSDK.thickenMeshImplFilled( mesh, 1.2, params );
 			
 			const newVertices = result.meshMV.vertices;
 			const newIndices = result.meshMV.indices;

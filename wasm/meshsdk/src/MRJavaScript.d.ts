@@ -9495,6 +9495,7 @@ interface EmbindModule {
   thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
   offsetOneDirection(_0: MeshPart, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
   thickenMeshImpl(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
+  thickenMeshImplFilled(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
   SortIntersectionsData: {};
   OneMeshContour: {
     new(): OneMeshContour;
