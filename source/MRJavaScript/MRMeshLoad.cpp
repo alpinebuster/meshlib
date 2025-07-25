@@ -5,11 +5,11 @@
 #include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
-#include <MRMesh/MRMeshLoad.h>
 #include <MRMesh/MRVector3.h>
 #include <MRMesh/MRExpected.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRVectorTraits.h>
+#include <MRMesh/MRMeshLoad.h>
 
 #include "MRMesh.h"
 
@@ -26,12 +26,12 @@ public:
 	// 
 	static val fromFile( const std::string& filePath )
 	{
-		auto result = MeshLoad::fromAnySupportedFormat( filePath );
+		Expected<Mesh> result = MeshLoad::fromAnySupportedFormat( filePath );
 		if ( result.has_value() )
 		{
 			val obj = val::object();
 			obj.set( "success", true );
-			obj.set( "mesh", MRJS::MeshWrapper( result.value() ) );
+			obj.set( "mesh", result.value() );
 			return obj;
 		}
 		else
@@ -119,7 +119,7 @@ public:
 			{
 				val obj = val::object();
 				obj.set( "success", true );
-				obj.set( "meshWrapper", MRJS::MeshWrapper( result.value() ) );
+				obj.set( "mesh", result.value() );
 
 				return obj;
 			}

@@ -1,6 +1,21 @@
 {
     "configurations": [
         {
+            "name": "Emscripten",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:EMSDK}/upstream/emscripten/system/include",
+                "${env:EMSDK}/upstream/emscripten"
+            ],
+            "defines": [
+                "__EMSCRIPTEN__"
+            ],
+            "compilerPath": "/usr/bin/g++-13",
+            "intelliSenseMode": "linux-gcc-x64",
+            "cStandard": "c23",
+            "cppStandard": "c++23"
+        },
+        {
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",

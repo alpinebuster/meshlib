@@ -26,7 +26,8 @@
 #include <MRMesh/MROneMeshContours.h>
 #include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRTriMesh.h>
-#include <MRPch/MRExpected.h>
+#include <MRMesh/MRFaceFace.h>
+#include <MRMesh/MRMeshBoolean.h>
 #include <MRMesh/MRExpected.h>
 
 #include "MRExpected.h"
@@ -55,6 +56,9 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
         {
             return self.error();
         } ) );
+
+    MRJS::bindExpected<std::string>( "ExpectedStdString" );
+    MRJS::bindExpected<bool>( "ExpectedBool" );
     ///
 
 
@@ -73,7 +77,29 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
     MRJS::bindExpected<MeshTexture>( "ExpectedMeshTexture" );
     MRJS::bindExpected<GridSettings>( "ExpectedGridSettings" );
     MRJS::bindExpected<TriMesh>( "ExpectedTriMesh" );
+    MRJS::bindExpected<FaceFace>( "ExpectedFaceFace" );
+    MRJS::bindExpected<BooleanResultPoints>( "ExpectedBooleanResultPoints" );
     ///
+
+
+    ///
+    MRJS::bindExpected<std::vector<FaceFace>>( "ExpectedVectorFaceFace" );
+    ///
+
+	
+	///
+    MRJS::bindExpected<std::pair<VertId, VertId>>( "ExpectedVertIdPair" );
+    MRJS::bindExpected<std::pair<FaceId, FaceId>>( "ExpectedFaceIdPair" );
+    MRJS::bindExpected<std::pair<EdgeId, EdgeId>>( "ExpectedEdgeIdPair" );
+    MRJS::bindExpected<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "ExpectedUndirectedIdPair" );
+    MRJS::bindExpected<std::pair<UndirectedEdgeId, EdgeId>>( "ExpectedUndirectedE2EIdPair" );
+
+    MRJS::bindExpected<std::vector<std::pair<VertId, VertId>>>( "ExpectedVertHashMapEntries" );
+    MRJS::bindExpected<std::vector<std::pair<FaceId, FaceId>>>( "ExpectedFaceHashMapEntries" );
+    MRJS::bindExpected<std::vector<std::pair<EdgeId, EdgeId>>>( "ExpectedEdgeHashMapEntries" );
+    MRJS::bindExpected<std::vector<std::pair<UndirectedEdgeId, UndirectedEdgeId>>>( "ExpectedUndirectedEdgeHashMapEntries" );
+    MRJS::bindExpected<std::vector<std::pair<UndirectedEdgeId, EdgeId>>>( "ExpectedWholeEdgeHashMapEntries" );
+	///
 
 
     ///

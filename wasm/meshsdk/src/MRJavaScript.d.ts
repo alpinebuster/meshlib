@@ -1137,10 +1137,6 @@ export interface EdgeLengthMesh extends ClassHandle {
   edgeLengthAfterFlip(_0: EdgeId): number | undefined;
 }
 
-export interface EdgeMetricWrapper extends ClassHandle {
-  evaluate(_0: EdgeId): number;
-}
-
 export interface EdgePoint extends ClassHandle {
   e: EdgeId;
   a: SegmPointf;
@@ -1221,6 +1217,28 @@ export interface ExpectedVoid extends ClassHandle {
   error(): string;
 }
 
+export interface ExpectedStdString extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): string;
+  get(): string;
+  getValuePtr(): string;
+  valueOr(_0: EmbindString): string;
+}
+
+export interface ExpectedBool extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): boolean;
+  getValuePtr(): boolean;
+  get(): boolean;
+  valueOr(_0: boolean): boolean;
+}
+
 export interface ExpectedMeshTopology extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
@@ -1246,11 +1264,11 @@ export interface ExpectedMesh extends ClassHandle {
 export interface ExpectedEdgeLengthMesh extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): EdgeLengthMesh;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): EdgeLengthMesh | null;
+  value(): EdgeLengthMesh;
   get(): EdgeLengthMesh;
+  getValuePtr(): EdgeLengthMesh | null;
   valueOr(_0: EdgeLengthMesh): EdgeLengthMesh;
 }
 
@@ -1279,42 +1297,42 @@ export interface ExpectedPointCloud extends ClassHandle {
 export interface ExpectedAABBTree extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): AABBTree;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): AABBTree | null;
+  value(): AABBTree;
   get(): AABBTree;
+  getValuePtr(): AABBTree | null;
 }
 
 export interface ExpectedAABBTreePoints extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): AABBTreePoints;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): AABBTreePoints | null;
+  value(): AABBTreePoints;
   get(): AABBTreePoints;
+  getValuePtr(): AABBTreePoints | null;
 }
 
 export interface ExpectedAABBTreeObjects extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): AABBTreeObjects;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): AABBTreeObjects | null;
+  value(): AABBTreeObjects;
   get(): AABBTreeObjects;
+  getValuePtr(): AABBTreeObjects | null;
   valueOr(_0: AABBTreeObjects): AABBTreeObjects;
 }
 
 export interface ExpectedCloudPartMapping extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): CloudPartMapping;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): CloudPartMapping | null;
+  value(): CloudPartMapping;
   get(): CloudPartMapping;
+  getValuePtr(): CloudPartMapping | null;
   valueOr(_0: CloudPartMapping): CloudPartMapping;
 }
 
@@ -1372,146 +1390,284 @@ export interface ExpectedTriMesh extends ClassHandle {
   getValuePtr(): TriMesh | null;
 }
 
+export interface ExpectedFaceFace extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): FaceFace;
+  get(): FaceFace;
+  valueOr(_0: FaceFace): FaceFace;
+  getValuePtr(): FaceFace | null;
+}
+
+export interface ExpectedBooleanResultPoints extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): BooleanResultPoints;
+  get(): BooleanResultPoints;
+  valueOr(_0: BooleanResultPoints): BooleanResultPoints;
+  getValuePtr(): BooleanResultPoints | null;
+}
+
+export interface ExpectedVectorFaceFace extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): VectorFaceFace;
+  get(): VectorFaceFace;
+  valueOr(_0: VectorFaceFace): VectorFaceFace;
+  getValuePtr(): VectorFaceFace | null;
+}
+
+export interface ExpectedVertIdPair extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): VertIdPair;
+  get(): VertIdPair;
+  valueOr(_0: VertIdPair): VertIdPair;
+}
+
+export interface ExpectedFaceIdPair extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): FaceIdPair;
+  get(): FaceIdPair;
+  valueOr(_0: FaceIdPair): FaceIdPair;
+}
+
+export interface ExpectedEdgeIdPair extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): EdgeIdPair;
+  get(): EdgeIdPair;
+  valueOr(_0: EdgeIdPair): EdgeIdPair;
+}
+
+export interface ExpectedUndirectedIdPair extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): UndirectedEdgeIdPair;
+  get(): UndirectedEdgeIdPair;
+  valueOr(_0: UndirectedEdgeIdPair): UndirectedEdgeIdPair;
+}
+
+export interface ExpectedUndirectedE2EIdPair extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): UndirectedE2EIdPair;
+  get(): UndirectedE2EIdPair;
+  valueOr(_0: UndirectedE2EIdPair): UndirectedE2EIdPair;
+}
+
+export interface ExpectedVertHashMapEntries extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): VertHashMapEntries;
+  get(): VertHashMapEntries;
+  valueOr(_0: VertHashMapEntries): VertHashMapEntries;
+  getValuePtr(): VertHashMapEntries | null;
+}
+
+export interface ExpectedFaceHashMapEntries extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): FaceHashMapEntries;
+  get(): FaceHashMapEntries;
+  valueOr(_0: FaceHashMapEntries): FaceHashMapEntries;
+  getValuePtr(): FaceHashMapEntries | null;
+}
+
+export interface ExpectedEdgeHashMapEntries extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): EdgeHashMapEntries;
+  get(): EdgeHashMapEntries;
+  valueOr(_0: EdgeHashMapEntries): EdgeHashMapEntries;
+  getValuePtr(): EdgeHashMapEntries | null;
+}
+
+export interface ExpectedUndirectedEdgeHashMapEntries extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): UndirectedEdgeHashMapEntries;
+  get(): UndirectedEdgeHashMapEntries;
+  valueOr(_0: UndirectedEdgeHashMapEntries): UndirectedEdgeHashMapEntries;
+  getValuePtr(): UndirectedEdgeHashMapEntries | null;
+}
+
+export interface ExpectedWholeEdgeHashMapEntries extends ClassHandle {
+  hasValue(): boolean;
+  opbool(): boolean;
+  error(): string;
+  hasError(): boolean;
+  value(): WholeEdgeHashMapEntries;
+  get(): WholeEdgeHashMapEntries;
+  valueOr(_0: WholeEdgeHashMapEntries): WholeEdgeHashMapEntries;
+  getValuePtr(): WholeEdgeHashMapEntries | null;
+}
+
 export interface ExpectedFaceBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): FaceBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): FaceBitSet | null;
+  value(): FaceBitSet;
   get(): FaceBitSet;
+  getValuePtr(): FaceBitSet | null;
   valueOr(_0: FaceBitSet): FaceBitSet;
 }
 
 export interface ExpectedVertBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): VertBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): VertBitSet | null;
+  value(): VertBitSet;
   get(): VertBitSet;
+  getValuePtr(): VertBitSet | null;
   valueOr(_0: VertBitSet): VertBitSet;
 }
 
 export interface ExpectedEdgeBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): EdgeBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): EdgeBitSet | null;
+  value(): EdgeBitSet;
   get(): EdgeBitSet;
+  getValuePtr(): EdgeBitSet | null;
   valueOr(_0: EdgeBitSet): EdgeBitSet;
 }
 
 export interface ExpectedUndirectedEdgeBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): UndirectedEdgeBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): UndirectedEdgeBitSet | null;
+  value(): UndirectedEdgeBitSet;
   get(): UndirectedEdgeBitSet;
+  getValuePtr(): UndirectedEdgeBitSet | null;
   valueOr(_0: UndirectedEdgeBitSet): UndirectedEdgeBitSet;
 }
 
 export interface ExpectedPixelBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): PixelBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): PixelBitSet | null;
+  value(): PixelBitSet;
   get(): PixelBitSet;
+  getValuePtr(): PixelBitSet | null;
   valueOr(_0: PixelBitSet): PixelBitSet;
 }
 
 export interface ExpectedVoxelBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): VoxelBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): VoxelBitSet | null;
+  value(): VoxelBitSet;
   get(): VoxelBitSet;
+  getValuePtr(): VoxelBitSet | null;
   valueOr(_0: VoxelBitSet): VoxelBitSet;
 }
 
 export interface ExpectedRegionBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): RegionBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): RegionBitSet | null;
+  value(): RegionBitSet;
   get(): RegionBitSet;
+  getValuePtr(): RegionBitSet | null;
   valueOr(_0: RegionBitSet): RegionBitSet;
 }
 
 export interface ExpectedNodeBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): NodeBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): NodeBitSet | null;
+  value(): NodeBitSet;
   get(): NodeBitSet;
+  getValuePtr(): NodeBitSet | null;
   valueOr(_0: NodeBitSet): NodeBitSet;
 }
 
 export interface ExpectedObjBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): ObjBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): ObjBitSet | null;
+  value(): ObjBitSet;
   get(): ObjBitSet;
+  getValuePtr(): ObjBitSet | null;
   valueOr(_0: ObjBitSet): ObjBitSet;
 }
 
 export interface ExpectedTextureBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): TextureBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): TextureBitSet | null;
+  value(): TextureBitSet;
   get(): TextureBitSet;
+  getValuePtr(): TextureBitSet | null;
   valueOr(_0: TextureBitSet): TextureBitSet;
 }
 
 export interface ExpectedGraphVertBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): GraphVertBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): GraphVertBitSet | null;
+  value(): GraphVertBitSet;
   get(): GraphVertBitSet;
+  getValuePtr(): GraphVertBitSet | null;
   valueOr(_0: GraphVertBitSet): GraphVertBitSet;
 }
 
 export interface ExpectedGraphEdgeBitSet extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): GraphEdgeBitSet;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): GraphEdgeBitSet | null;
+  value(): GraphEdgeBitSet;
   get(): GraphEdgeBitSet;
+  getValuePtr(): GraphEdgeBitSet | null;
   valueOr(_0: GraphEdgeBitSet): GraphEdgeBitSet;
 }
 
 export interface ExpectedPackMapping extends ClassHandle {
   hasValue(): boolean;
   opbool(): boolean;
-  value(): PackMapping;
   error(): string;
   hasError(): boolean;
-  getValuePtr(): PackMapping | null;
+  value(): PackMapping;
   get(): PackMapping;
+  getValuePtr(): PackMapping | null;
 }
 
 export interface ExpectedEdgePath extends ClassHandle {
@@ -1569,8 +1725,16 @@ export interface ExpectedSurfacePath extends ClassHandle {
   getValuePtr(): SurfacePath | null;
 }
 
-export interface MeshSegmentation extends ClassHandle {
-  segmentByPoints(_0: StdVectorf, _1: StdVectorf): any;
+export interface FaceFace extends ClassHandle {
+  aFace: FaceId;
+  bFace: FaceId;
+  equals(_0: FaceFace): boolean;
+}
+
+export interface UndirectedEdgeUndirectedEdge extends ClassHandle {
+  aUndirEdge: UndirectedEdgeId;
+  bUndirEdge: UndirectedEdgeId;
+  equals(_0: UndirectedEdgeUndirectedEdge): boolean;
 }
 
 export interface FillHoleNicelySettings extends ClassHandle {
@@ -1849,29 +2013,6 @@ export interface Matrix4f extends ClassHandle {
 export interface Matrix4d extends ClassHandle {
 }
 
-export interface MeshWrapper extends ClassHandle {
-  mesh: Mesh;
-  getBoundingBoxImpl(): any;
-  getVertexCountImpl(): number;
-  getFaceCountImpl(): number;
-  getVolumeImpl(): number;
-  getAreaImpl(): number;
-  findCenterImpl(): any;
-  getVertexPositionImpl(_0: number): any;
-  setVertexPositionImpl(_0: number, _1: any): void;
-  getFaceVerticesImpl(_0: number): any;
-  getFaceNormalImpl(_0: number): any;
-  fillAllHolesImpl(): any;
-  projectPointImpl(_0: any, _1: number): any;
-  getMesh(): Mesh;
-  getMeshPtr(): Mesh | null;
-  thickenMeshImpl(_0: number, _1: GeneralOffsetParameters): any;
-  cutMeshWithPolylineImpl(_0: StdVectorf): any;
-  segmentByPointsImpl(_0: StdVectorf, _1: StdVectorf, _2: EdgeMetricWrapper): any;
-  cutMeshByContourImpl(_0: StdVectorf): any;
-  fixUndercutsImpl(_0: Vector3f): any;
-}
-
 export interface Mesh extends ClassHandle {
   points: VertCoords;
   topology: MeshTopology;
@@ -1952,6 +2093,28 @@ export interface BooleanResult extends ClassHandle {
   set errorString(value: EmbindString);
   valid(): boolean;
   getMesh(): Mesh;
+}
+
+export interface BooleanPreCutResult extends ClassHandle {
+  mesh: Mesh;
+  contours: OneMeshContours;
+}
+
+export interface BooleanParameters extends ClassHandle {
+  rigidB2A: AffineXf3f | null;
+  mapper: BooleanResultMapper | null;
+  outPreCutA: BooleanPreCutResult | null;
+  outPreCutB: BooleanPreCutResult | null;
+  mergeAllNonIntersectingComponents: boolean;
+  forceCut: boolean;
+  outCutEdges: VectorEdgePath | null;
+  cb: ProgressCallback;
+}
+
+export interface BooleanResultPoints extends ClassHandle {
+  meshAVerts: VertBitSet;
+  meshBVerts: VertBitSet;
+  intersectionPoints: VectorVector3f;
 }
 
 export interface UniteCloseParams extends ClassHandle {
@@ -2123,6 +2286,39 @@ export interface MakeBridgeResult extends ClassHandle {
   nb: EdgeId;
   opbool(): boolean;
 }
+
+export interface FixMeshDegeneraciesParams extends ClassHandle {
+  maxDeviation: number;
+  tinyEdgeLength: number;
+  criticalTriAspectRatio: number;
+  maxAngleChange: number;
+  stabilizer: number;
+  region: FaceBitSet | null;
+  mode: FixMeshDegeneraciesMode;
+  cb: ProgressCallback;
+}
+
+export interface FixMeshDegeneraciesModeValue<T extends number> {
+  value: T;
+}
+export type FixMeshDegeneraciesMode = FixMeshDegeneraciesModeValue<0>|FixMeshDegeneraciesModeValue<1>|FixMeshDegeneraciesModeValue<2>;
+
+export interface FixCreasesParams extends ClassHandle {
+  creaseAngle: number;
+  criticalTriAspectRatio: number;
+  maxIters: number;
+}
+
+export interface FindDisorientationParams extends ClassHandle {
+  virtualFillHoles: boolean;
+  mode: RayMode;
+  cb: ProgressCallback;
+}
+
+export interface RayModeValue<T extends number> {
+  value: T;
+}
+export type RayMode = RayModeValue<0>|RayModeValue<1>|RayModeValue<2>;
 
 export interface FilterTypeValue<T extends number> {
   value: T;
@@ -3027,6 +3223,41 @@ export interface FaceIdEdgeIdMap extends ClassHandle {
   heapBytes(): number;
   equals(_0: FaceIdEdgeIdMap): boolean;
   notEquals(_0: FaceIdEdgeIdMap): boolean;
+}
+
+export interface VoxelIdFaceIdMap extends ClassHandle {
+  size(): number;
+  empty(): boolean;
+  clear(): void;
+  capacity(): number;
+  reserve(_0: number): void;
+  resize(_0: number): void;
+  resizeWithValue(_0: number, _1: VoxelId): void;
+  resizeWithReserve(_0: number): void;
+  resizeWithReserveAndValue(_0: number, _1: VoxelId): void;
+  get(_0: FaceId): VoxelId;
+  set(_0: FaceId): VoxelId;
+  getByIndex(_0: FaceId): VoxelId;
+  getByIndexMutable(_0: FaceId): VoxelId;
+  getAt(_0: FaceId): VoxelId;
+  setAt(_0: FaceId, _1: VoxelId): boolean;
+  frontConst(): VoxelId;
+  front(): VoxelId;
+  backConst(): VoxelId;
+  back(): VoxelId;
+  pushBack(_0: VoxelId): void;
+  popBack(): void;
+  emplaceBack(_0: VoxelId): VoxelId;
+  beginId(): FaceId;
+  backId(): FaceId;
+  endId(): FaceId;
+  autoResizeAt(_0: FaceId): VoxelId;
+  autoResizeSetWithRange(_0: FaceId, _1: number, _2: VoxelId): void;
+  autoResizeSet(_0: FaceId, _1: VoxelId): void;
+  swap(_0: VoxelIdFaceIdMap): void;
+  heapBytes(): number;
+  equals(_0: VoxelIdFaceIdMap): boolean;
+  notEquals(_0: VoxelIdFaceIdMap): boolean;
 }
 
 export interface ModelPointsDataObjIdMap extends ClassHandle {
@@ -3944,6 +4175,7 @@ export interface NoDefInitUndirectedEdgeId extends ClassHandle {
 
 export interface BaseShellParameters extends ClassHandle {
   voxelSize: number;
+  callBack: ProgressCallback;
 }
 
 export interface OffsetParameters extends BaseShellParameters {
@@ -3955,6 +4187,7 @@ export interface OffsetParameters extends BaseShellParameters {
 }
 
 export interface SharpOffsetParameters extends OffsetParameters {
+  outSharpEdges: UndirectedEdgeBitSet | null;
   minNewVertDev: number;
   maxNewRank2VertDev: number;
   maxNewRank3VertDev: number;
@@ -4556,17 +4789,41 @@ export type GraphEdgeIdBoolPair = [ GraphEdgeId, boolean ];
 
 export type EdgeIdPair = [ EdgeId, EdgeId ];
 
+export type VertIdPair = [ VertId, VertId ];
+
+export type FaceIdPair = [ FaceId, FaceId ];
+
 export type UndirectedEdgeIdPair = [ UndirectedEdgeId, UndirectedEdgeId ];
 
 export type UndirectedE2EIdPair = [ UndirectedEdgeId, EdgeId ];
 
-export type FaceIdPair = [ FaceId, FaceId ];
-
-export type VertIdPair = [ VertId, VertId ];
-
 export type MeshPair = [ Mesh, Mesh ];
 
 export type Face2RegionMapIntPair = [ Face2RegionMap, number ];
+
+export type FaceBitSetFaceBitSetPair = [ FaceBitSet, FaceBitSet ];
+
+export type VertBitSetVertBitSetPair = [ VertBitSet, VertBitSet ];
+
+export type EdgeBitSetEdgeBitSetPair = [ EdgeBitSet, EdgeBitSet ];
+
+export type UndirectedEdgeBitSetUndirectedEdgeBitSetPair = [ UndirectedEdgeBitSet, UndirectedEdgeBitSet ];
+
+export type PixelBitSetPixelBitSetPair = [ PixelBitSet, PixelBitSet ];
+
+export type VoxelBitSetVoxelBitSetPair = [ VoxelBitSet, VoxelBitSet ];
+
+export type RegionBitSetRegionBitSetPair = [ RegionBitSet, RegionBitSet ];
+
+export type NodeBitSetNodeBitSetPair = [ NodeBitSet, NodeBitSet ];
+
+export type ObjBitSetObjBitSetPair = [ ObjBitSet, ObjBitSet ];
+
+export type TextureBitSetTextureBitSetPair = [ TextureBitSet, TextureBitSet ];
+
+export type GraphVertBitSetGraphVertBitSetPair = [ GraphVertBitSet, GraphVertBitSet ];
+
+export type GraphEdgeBitSetGraphEdgeBitSetPair = [ GraphEdgeBitSet, GraphEdgeBitSet ];
 
 export type FaceBitSetIntPair = [ FaceBitSet, number ];
 
@@ -4875,6 +5132,14 @@ export interface VectorHoleFillPlan extends ClassHandle {
   set(_0: number, _1: HoleFillPlan): boolean;
 }
 
+export interface VectorFaceFace extends ClassHandle {
+  push_back(_0: FaceFace): void;
+  resize(_0: number, _1: FaceFace): void;
+  size(): number;
+  get(_0: number): FaceFace | undefined;
+  set(_0: number, _1: FaceFace): boolean;
+}
+
 export interface VectorVectorMeshPiece extends ClassHandle {
   push_back(_0: VectorMeshPiece): void;
   resize(_0: number, _1: VectorMeshPiece): void;
@@ -4977,6 +5242,14 @@ export interface VectorVectorMeshTriPoint extends ClassHandle {
   size(): number;
   get(_0: number): VectorMeshTriPoint | undefined;
   set(_0: number, _1: VectorMeshTriPoint): boolean;
+}
+
+export interface VectorVectorFaceFace extends ClassHandle {
+  push_back(_0: VectorFaceFace): void;
+  resize(_0: number, _1: VectorFaceFace): void;
+  size(): number;
+  get(_0: number): VectorFaceFace | undefined;
+  set(_0: number, _1: VectorFaceFace): boolean;
 }
 
 export interface VectorArray2Vector2i extends ClassHandle {
@@ -5817,6 +6090,14 @@ export interface VectorVert2RegionMap extends ClassHandle {
   size(): number;
   get(_0: number): Vert2RegionMap | undefined;
   set(_0: number, _1: Vert2RegionMap): boolean;
+}
+
+export interface VectorVoxelIdFaceId extends ClassHandle {
+  push_back(_0: VoxelIdFaceIdMap): void;
+  resize(_0: number, _1: VoxelIdFaceIdMap): void;
+  size(): number;
+  get(_0: number): VoxelIdFaceIdMap | undefined;
+  set(_0: number, _1: VoxelIdFaceIdMap): boolean;
 }
 
 export interface VectorVector2f extends ClassHandle {
@@ -8380,11 +8661,6 @@ interface EmbindModule {
     new(): EdgeLengthMesh;
     fromMesh(_0: Mesh): EdgeLengthMesh;
   };
-  EdgeMetricWrapper: {
-    new(_0: EdgeMetricWrapper): EdgeMetricWrapper;
-    createEdgeMetricWrapper(_0: EdgeMetricWrapper): EdgeMetricWrapper;
-  };
-  identityMetric(): EdgeMetricWrapper;
   EdgePoint: {
     new(): EdgePoint;
     new(_0: EdgeId, _1: number): EdgePoint;
@@ -8409,6 +8685,8 @@ interface EmbindModule {
   UseAABBTree: {No: UseAABBTreeValue<0>, Yes: UseAABBTreeValue<1>, YesIfAlreadyConstructed: UseAABBTreeValue<2>};
   GeodesicPathApprox: {DijkstraBiDir: GeodesicPathApproxValue<0>, DijkstraAStar: GeodesicPathApproxValue<1>, FastMarching: GeodesicPathApproxValue<2>};
   ExpectedVoid: {};
+  ExpectedStdString: {};
+  ExpectedBool: {};
   ExpectedMeshTopology: {};
   ExpectedMesh: {};
   ExpectedEdgeLengthMesh: {};
@@ -8423,6 +8701,19 @@ interface EmbindModule {
   ExpectedMeshTexture: {};
   ExpectedGridSettings: {};
   ExpectedTriMesh: {};
+  ExpectedFaceFace: {};
+  ExpectedBooleanResultPoints: {};
+  ExpectedVectorFaceFace: {};
+  ExpectedVertIdPair: {};
+  ExpectedFaceIdPair: {};
+  ExpectedEdgeIdPair: {};
+  ExpectedUndirectedIdPair: {};
+  ExpectedUndirectedE2EIdPair: {};
+  ExpectedVertHashMapEntries: {};
+  ExpectedFaceHashMapEntries: {};
+  ExpectedEdgeHashMapEntries: {};
+  ExpectedUndirectedEdgeHashMapEntries: {};
+  ExpectedWholeEdgeHashMapEntries: {};
   ExpectedFaceBitSet: {};
   ExpectedVertBitSet: {};
   ExpectedEdgeBitSet: {};
@@ -8441,8 +8732,13 @@ interface EmbindModule {
   ExpectedOneMeshContour: {};
   ExpectedOneMeshContours: {};
   ExpectedSurfacePath: {};
-  MeshSegmentation: {
-    new(_0: Mesh): MeshSegmentation;
+  FaceFace: {
+    new(): FaceFace;
+    new(_0: FaceId, _1: FaceId): FaceFace;
+  };
+  UndirectedEdgeUndirectedEdge: {
+    new(): UndirectedEdgeUndirectedEdge;
+    new(_0: UndirectedEdgeId, _1: UndirectedEdgeId): UndirectedEdgeUndirectedEdge;
   };
   FillHoleNicelySettings: {
     new(): FillHoleNicelySettings;
@@ -8583,12 +8879,6 @@ interface EmbindModule {
   Matrix4d: {
     new(): Matrix4d;
   };
-  MeshWrapper: {
-    new(): MeshWrapper;
-    new(_0: Mesh): MeshWrapper;
-    fromTrianglesImpl(_0: any, _1: any): any;
-    fromTrianglesImplWithArray(_0: any, _1: any): any;
-  };
   Mesh: {
     new(): Mesh;
     fromTrianglesMemoryView(_0: any, _1: any, _2: boolean): Mesh;
@@ -8600,16 +8890,25 @@ interface EmbindModule {
   makeBasisAxes(_0: number, _1: number, _2: number, _3: number, _4: number): Mesh;
   findTwinEdges(_0: Mesh, _1: number): EdgeBitSet;
   findTwinUndirectedEdges(_0: Mesh, _1: number): UndirectedEdgeBitSet;
-  edgeLengthMetric(_0: Mesh): EdgeMetricWrapper;
-  discreteAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
-  discreteMinusAbsMeanCurvatureMetric(_0: Mesh): EdgeMetricWrapper;
-  edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetricWrapper;
   smoothExtractedRegionBoundary(_0: Mesh, _1: number): any;
   calculateRecommendedVoxelSizeImpl(_0: Mesh, _1: number): number;
   BooleanResult: {
     new(): BooleanResult;
   };
-  performBoolean(_0: Mesh, _1: Mesh, _2: BooleanOperation): BooleanResult;
+  BooleanPreCutResult: {
+    new(): BooleanPreCutResult;
+  };
+  BooleanParameters: {
+    new(): BooleanParameters;
+  };
+  BooleanResultPoints: {
+    new(): BooleanResultPoints;
+  };
+  booleanWithParams(_0: Mesh, _1: Mesh, _2: BooleanOperation, _3: BooleanParameters): BooleanResult;
+  booleanByMoveWithParams(_0: Mesh, _1: Mesh, _2: BooleanOperation, _3: BooleanParameters): BooleanResult;
+  selfBoolean(_0: Mesh): ExpectedMesh;
+  getBooleanPoints(_0: Mesh, _1: Mesh, _2: BooleanOperation, _3: AffineXf3f | null): ExpectedBooleanResultPoints;
+  booleanWithCallbackImpl(_0: Mesh, _1: Mesh, _2: BooleanOperation, _3: AffineXf3f | null, _4: BooleanResultMapper | null, _5: any): BooleanResult;
   UniteCloseParams: {
     new(): UniteCloseParams;
   };
@@ -8691,6 +8990,23 @@ interface EmbindModule {
   buildCylinderBetweenTwoHoles(_0: Mesh, _1: StitchHolesParams): boolean;
   fillHoleWithSizeLimitImpl(_0: Mesh, _1: number): Mesh;
   fillAllHolesImpl(_0: Mesh): any;
+  duplicateMultiHoleVertices(_0: Mesh): number;
+  fixMultipleEdges(_0: Mesh): void;
+  FixMeshDegeneraciesParams: {
+    new(): FixMeshDegeneraciesParams;
+  };
+  FixMeshDegeneraciesMode: {Decimate: FixMeshDegeneraciesModeValue<0>, Remesh: FixMeshDegeneraciesModeValue<1>, RemeshPatch: FixMeshDegeneraciesModeValue<2>};
+  fixMeshDegeneracies(_0: Mesh, _1: FixMeshDegeneraciesParams): ExpectedVoid;
+  findHoleComplicatingFaces(_0: Mesh): FaceBitSet;
+  FixCreasesParams: {
+    new(): FixCreasesParams;
+  };
+  fixMeshCreases(_0: Mesh, _1: FixCreasesParams): void;
+  FindDisorientationParams: {
+    new(): FindDisorientationParams;
+  };
+  RayMode: {Positive: RayModeValue<0>, Shallowest: RayModeValue<1>, Both: RayModeValue<2>};
+  findDisorientedFaces(_0: Mesh, _1: FindDisorientationParams): ExpectedFaceBitSet;
   FilterType: {Linear: FilterTypeValue<0>, Discrete: FilterTypeValue<1>};
   WrapType: {Repeat: WrapTypeValue<0>, Mirror: WrapTypeValue<1>, Clamp: WrapTypeValue<2>};
   Reorder: {None: ReorderValue<0>, Lexicographically: ReorderValue<1>, AABBTree: ReorderValue<2>};
@@ -8946,6 +9262,11 @@ interface EmbindModule {
     new(_0: number): FaceIdEdgeIdMap;
     new(_0: number, _1: FaceId): FaceIdEdgeIdMap;
   };
+  VoxelIdFaceIdMap: {
+    new(): VoxelIdFaceIdMap;
+    new(_0: number): VoxelIdFaceIdMap;
+    new(_0: number, _1: VoxelId): VoxelIdFaceIdMap;
+  };
   ModelPointsDataObjIdMap: {
     new(): ModelPointsDataObjIdMap;
     new(_0: number): ModelPointsDataObjIdMap;
@@ -9082,6 +9403,9 @@ interface EmbindModule {
     new(_0: Mesh): MeshPart;
     new(_0: Mesh, _1: FaceBitSet | null): MeshPart;
   };
+  isInside(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null): boolean;
+  isNonIntersectingInside(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null): boolean;
+  isNonIntersectingInsideWithFaceId(_0: Mesh, _1: FaceId, _2: MeshPart, _3: AffineXf3f | null): boolean;
   getComponent(_0: MeshPart, _1: FaceId, _2: FaceIncidence, _3: UndirectedEdgeBitSet | null): FaceBitSet;
   getComponents(_0: MeshPart, _1: FaceBitSet, _2: FaceIncidence, _3: UndirectedEdgeBitSet | null): FaceBitSet;
   getLargeByAreaComponents(_0: MeshPart, _1: number, _2: UndirectedEdgeBitSet | null): FaceBitSet;
@@ -9109,11 +9433,6 @@ interface EmbindModule {
   MeshTopology: {
     new(): MeshTopology;
   };
-  edgeLengthMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
-  discreteAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
-  discreteMinusAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetricWrapper;
-  edgeCurvMetricFromTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number): EdgeMetricWrapper;
-  edgeTableSymMetric(_0: MeshTopology, _1: EdgeMetricWrapper): EdgeMetricWrapper;
   fromSameTriangle(_0: MeshTopology, _1: EdgePoint, _2: EdgePoint): boolean;
   addTriangles(_0: MeshTopology, _1: Triangulation, _2: BuildSettings): void;
   hasFullySelectedComponentFromTopology(_0: MeshTopology, _1: VertBitSet): boolean;
@@ -9121,6 +9440,16 @@ interface EmbindModule {
   makeBridge(_0: MeshTopology, _1: EdgeId, _2: EdgeId, _3: FaceBitSet | null): MakeBridgeResult;
   makeBridgeEdge(_0: MeshTopology, _1: EdgeId, _2: EdgeId): EdgeId;
   splitQuad(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): void;
+  hasMultipleEdges(_0: MeshTopology): boolean;
+  findNRingVerts(_0: MeshTopology, _1: number, _2: VertBitSet | null): VertBitSet;
+  isEdgeBetweenDoubleTris(_0: MeshTopology, _1: EdgeId): boolean;
+  eliminateDoubleTris(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): EdgeId;
+  eliminateDoubleTrisAround(_0: MeshTopology, _1: VertId, _2: FaceBitSet | null): void;
+  isDegree3Dest(_0: MeshTopology, _1: EdgeId): boolean;
+  eliminateDegree3Dest(_0: MeshTopology, _1: EdgeId, _2: FaceBitSet | null): EdgeId;
+  eliminateDegree3Vertices(_0: MeshTopology, _1: VertBitSet, _2: FaceBitSet | null): number;
+  isVertexRepeatedOnHoleBd(_0: MeshTopology, _1: VertId): EdgeId;
+  findRepeatedVertsOnHoleBd(_0: MeshTopology): VertBitSet;
   removeSpikesWithTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number, _4: VertBitSet | null): void;
   hardSmoothTetrahedrons_topology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet | null): void;
   loadMeshDll(): void;
@@ -9156,9 +9485,17 @@ interface EmbindModule {
     new(): GeneralOffsetParameters;
   };
   SignDetectionMode: {Unsigned: SignDetectionModeValue<0>, OpenVDB: SignDetectionModeValue<1>, ProjectionNormal: SignDetectionModeValue<2>, WindingRule: SignDetectionModeValue<3>, HoleWindingRule: SignDetectionModeValue<4>};
-  thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
   suggestVoxelSize(_0: MeshPart, _1: number): number;
   offsetMesh(_0: MeshPart, _1: number, _2: OffsetParameters): ExpectedMesh;
+  doubleOffsetMesh(_0: MeshPart, _1: number, _2: number, _3: OffsetParameters): ExpectedMesh;
+  mcOffsetMesh(_0: MeshPart, _1: number, _2: OffsetParameters, _3: VoxelIdFaceIdMap | null): ExpectedMesh;
+  mcShellMeshRegion(_0: Mesh, _1: FaceBitSet, _2: number, _3: BaseShellParameters, _4: VoxelIdFaceIdMap | null): ExpectedMesh;
+  sharpOffsetMesh(_0: MeshPart, _1: number, _2: SharpOffsetParameters): ExpectedMesh;
+  generalOffsetMesh(_0: MeshPart, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
+  thickenMesh(_0: Mesh, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
+  offsetOneDirection(_0: MeshPart, _1: number, _2: GeneralOffsetParameters): ExpectedMesh;
+  thickenMeshImpl(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
+  thickenMeshImplFilled(_0: Mesh, _1: number, _2: GeneralOffsetParameters): any;
   SortIntersectionsData: {};
   OneMeshContour: {
     new(): OneMeshContour;
@@ -9206,6 +9543,7 @@ interface EmbindModule {
     new(_0: VectorVector3f): Polyline3;
     fromContours(_0: VectorVectorVector3f): Polyline3;
   };
+  offsetPolyline(_0: Polyline3, _1: number, _2: OffsetParameters): ExpectedMesh;
   Polyline2: {
     new(): Polyline2;
     new(_0: VectorVector2f): Polyline2;
@@ -9217,7 +9555,9 @@ interface EmbindModule {
   PolylineMaker: {
     new(_0: PolylineTopology): PolylineMaker;
   };
-  SpacingSettings: {};
+  SpacingSettings: {
+    new(): SpacingSettings;
+  };
   positionVertsSmoothly(_0: Mesh, _1: VertBitSet, _2: EdgeWeights, _3: VertexMass, _4: VertBitSet | null): void;
   positionVertsSmoothlyWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: EdgeWeights, _4: VertexMass, _5: VertBitSet | null): void;
   positionVertsSmoothlySharpBd(_0: Mesh, _1: VertBitSet, _2: VertCoords | null, _3: VertScalars | null): void;
@@ -9227,6 +9567,7 @@ interface EmbindModule {
   inflate(_0: Mesh, _1: VertBitSet, _2: InflateSettings): void;
   inflateWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: InflateSettings): void;
   inflate1WithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: number): void;
+  inflateToothRootImpl(_0: Mesh, _1: InflateSettings): any;
   ConvertToFloatVector: {};
   ConvertToIntVector: {};
   createConvertToIntVector(_0: any): ConvertToIntVector;
@@ -9401,6 +9742,7 @@ interface EmbindModule {
   exportMeshMemoryView(_0: Mesh): any;
   exportMeshMemoryViewTest(_0: Mesh): any;
   getAllComponentsMap(_0: MeshPart, _1: FaceIncidence, _2: UndirectedEdgeBitSet | null): Face2RegionMapIntPair;
+  findCollidingTriangleBitsets(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null): FaceBitSetFaceBitSetPair;
   getLargeByAreaRegions(_0: MeshPart, _1: Face2RegionMap, _2: number, _3: number): FaceBitSetIntPair;
   StdVectori: {
     new(): StdVectori;
@@ -9532,6 +9874,10 @@ interface EmbindModule {
   VectorHoleFillPlan: {
     new(): VectorHoleFillPlan;
   };
+  VectorFaceFace: {
+    new(): VectorFaceFace;
+  };
+  findCollidingTriangles(_0: MeshPart, _1: MeshPart, _2: AffineXf3f | null, _3: boolean): VectorFaceFace;
   VectorVectorMeshPiece: {
     new(): VectorVectorMeshPiece;
   };
@@ -9572,6 +9918,9 @@ interface EmbindModule {
   };
   VectorVectorMeshTriPoint: {
     new(): VectorVectorMeshTriPoint;
+  };
+  VectorVectorFaceFace: {
+    new(): VectorVectorFaceFace;
   };
   VectorArray2Vector2i: {
     new(): VectorArray2Vector2i;
@@ -9878,6 +10227,7 @@ interface EmbindModule {
   VertHashMapEntries: {
     new(): VertHashMapEntries;
   };
+  fixMultipleEdgesByGroup(_0: Mesh, _1: VertHashMapEntries): void;
   VectorVertSpanFaceIdMap: {
     new(): VectorVertSpanFaceIdMap;
   };
@@ -9907,6 +10257,9 @@ interface EmbindModule {
   };
   VectorVert2RegionMap: {
     new(): VectorVert2RegionMap;
+  };
+  VectorVoxelIdFaceId: {
+    new(): VectorVoxelIdFaceId;
   };
   VectorVector2f: {
     new(): VectorVector2f;
@@ -9945,6 +10298,7 @@ interface EmbindModule {
   VectorVectorVector3f: {
     new(): VectorVectorVector3f;
   };
+  findIntersectionContours(_0: Mesh, _1: Mesh, _2: AffineXf3f | null): VectorVectorVector3f;
   makeMovementBuildBody(_0: VectorVectorVector3f, _1: VectorVectorVector3f, _2: MovementBuildBodyParams): Mesh;
   extractMeshContours(_0: OneMeshContours): VectorVectorVector3f;
   getOneMeshIntersectionContours(_0: Mesh, _1: Mesh, _2: ContinuousContours, _3: OneMeshContours | null, _4: OneMeshContours | null, _5: CoordinateConverters, _6: AffineXf3f | null, _7: VectorVectorVector3f | null, _8: boolean): void;
@@ -10022,8 +10376,16 @@ interface EmbindModule {
   verticesGridSampling(_0: MeshPart, _1: number, _2: ProgressCallback): VertBitSet | undefined;
   pointGridSampling(_0: PointCloud, _1: number, _2: ProgressCallback): VertBitSet | undefined;
   multiModelGridSampling(_0: ModelPointsDataObjIdMap, _1: number, _2: ProgressCallback): VectorObjVertId | undefined;
+  boolean(_0: Mesh, _1: Mesh, _2: BooleanOperation, _3: AffineXf3f | null, _4: BooleanResultMapper | null, _5: ProgressCallback): BooleanResult;
+  booleanByMove(_0: Mesh, _1: Mesh, _2: BooleanOperation, _3: AffineXf3f | null, _4: BooleanResultMapper | null, _5: ProgressCallback): BooleanResult;
   fromTriangles(_0: Triangulation, _1: BuildSettings, _2: ProgressCallback): MeshTopology;
   fromFaceSoup(_0: VectorVertId, _1: VertSpanFaceIdMap, _2: BuildSettings, _3: ProgressCallback): MeshTopology;
+  findSelfCollidingTriangles(_0: MeshPart, _1: ProgressCallback, _2: Face2RegionMap | null, _3: boolean): ExpectedVectorFaceFace;
+  findSelfCollidingTrianglesWithFaceFace(_0: MeshPart, _1: VectorFaceFace | null, _2: ProgressCallback, _3: Face2RegionMap | null, _4: boolean): ExpectedBool;
+  findSelfCollidingTrianglesBS(_0: MeshPart, _1: ProgressCallback, _2: Face2RegionMap | null, _3: boolean): ExpectedFaceBitSet;
+  findMultipleEdges(_0: MeshTopology, _1: ProgressCallback): ExpectedVertHashMapEntries;
+  findDegenerateFaces(_0: MeshPart, _1: number, _2: ProgressCallback): ExpectedFaceBitSet;
+  findShortEdges(_0: MeshPart, _1: number, _2: ProgressCallback): ExpectedUndirectedEdgeBitSet;
   relax(_0: Mesh, _1: MeshRelaxParams, _2: ProgressCallback): boolean;
   relaxWithTopology(_0: MeshTopology, _1: VertCoords, _2: MeshRelaxParams, _3: ProgressCallback): boolean;
   equalizeTriAreas(_0: Mesh, _1: MeshEqualizeTriAreasParams, _2: ProgressCallback): boolean;
@@ -10056,6 +10418,20 @@ interface EmbindModule {
   EdgeMetric: {
     new(): EdgeMetric;
   };
+  identityMetric(): EdgeMetric;
+  edgeLengthMetric(_0: Mesh): EdgeMetric;
+  edgeLengthMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetric;
+  discreteAbsMeanCurvatureMetric(_0: Mesh): EdgeMetric;
+  discreteAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetric;
+  discreteMinusAbsMeanCurvatureMetric(_0: Mesh): EdgeMetric;
+  discreteMinusAbsMeanCurvatureMetricFromTopology(_0: MeshTopology, _1: VertCoords): EdgeMetric;
+  edgeCurvMetric(_0: Mesh, _1: number, _2: number): EdgeMetric;
+  edgeCurvMetricFromTopology(_0: MeshTopology, _1: VertCoords, _2: number, _3: number): EdgeMetric;
+  edgeTableSymMetric(_0: MeshTopology, _1: EdgeMetric): EdgeMetric;
+  fillContourLeftByGraphCut(_0: MeshTopology, _1: VectorEdgeId, _2: EdgeMetric): FaceBitSet;
+  fillContourLeftByGraphCutByContours(_0: MeshTopology, _1: VectorEdgePath, _2: EdgeMetric): FaceBitSet;
+  segmentByGraphCut(_0: MeshTopology, _1: FaceBitSet, _2: FaceBitSet, _3: EdgeMetric): FaceBitSet;
+  segmentByPointsImpl(_0: Mesh, _1: EdgeMetric, _2: StdVectorf, _3: StdVectorf): any;
   UndirectedEdgeMetric: {
     new(): UndirectedEdgeMetric;
   };
@@ -10407,6 +10783,9 @@ interface EmbindModule {
   fixUndercutsImplTest(_0: Mesh, _1: Vector3f, _2: number, _3: number): any;
   fixUndercutsImplThrows(_0: Mesh, _1: Vector3f, _2: number, _3: number): void;
   closestPointOnLineSegm3f(_0: Vector3f, _1: LineSegm3f): Vector3f;
+  createMaxillaGypsumBaseImpl(_0: Mesh, _1: EdgeId, _2: VertId, _3: Vector3f, _4: number, _5: number): any;
+  createMaxillaGypsumBaseImplTest(_0: Mesh, _1: EdgeId, _2: VertId, _3: Vector3f, _4: number, _5: number): any;
+  createMandibleGypsumBaseImpl(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number): any;
   buildBottom(_0: Mesh, _1: EdgeId, _2: Vector3f, _3: number, _4: FaceBitSet | null): EdgeId;
   createVerticalStitchMetric(_0: Mesh, _1: Vector3f): FillHoleMetricWrapper;
   projectOnAllWithProgress(_0: Vector3f, _1: AABBTreeObjects, _2: number, _3: any, _4: ObjId): void;
@@ -10415,7 +10794,8 @@ interface EmbindModule {
   surroundingContourEdges(_0: Mesh, _1: VectorEdgeId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
   surroundingContourVertices(_0: Mesh, _1: VectorVertId, _2: EdgeMetric, _3: Vector3f): ExpectedEdgePath;
   findLookingFaces(_0: Mesh, _1: AffineXf3f, _2: Vector3f, _3: boolean): FaceBitSet;
-  findSilhouetteEdges(_0: Mesh, _1: Vector3f): Mesh;
+  findLookingSilhouetteConvexHull(_0: Mesh, _1: Vector3f): Mesh;
+  findBottomPosition(_0: Mesh, _1: Vector3f): any;
   unitVector3f(_0: number, _1: number): Vector3f;
   distanceSq3f(_0: Vector3f, _1: Vector3f): number;
   distance3f(_0: Vector3f, _1: Vector3f): number;

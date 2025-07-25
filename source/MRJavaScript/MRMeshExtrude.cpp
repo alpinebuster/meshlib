@@ -13,6 +13,7 @@
 using namespace emscripten;
 using namespace MR;
 
+
 struct MakeDegenerateBandAroundRegionParamsWrapper {
     std::shared_ptr<FaceBitSet> outNewFaces;
     std::shared_ptr<UndirectedEdgeBitSet> outExtrudedEdges;

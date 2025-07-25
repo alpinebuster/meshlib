@@ -58,7 +58,7 @@ function showMesh( wasmMesh, newVertices, newIndices ) {
 	///
 
 	
-	editor.execute( new AddObjectCommand( editor, newMesh, null, null, new editor.MeshSDK.MeshWrapper( wasmMesh ) ) );
+	editor.execute( new AddObjectCommand( editor, newMesh, null, null, wasmMesh ) );
 	editor.signals.geometryChanged.dispatch( newMesh );
 	editor.select( newMesh );
 }

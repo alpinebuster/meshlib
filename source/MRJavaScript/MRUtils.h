@@ -3,8 +3,6 @@
 #include <optional>
 #include <type_traits>
 
-#include "exports.h"
-
 #include <MRPch/MRWasm.h>
 
 #include <MRMesh/MRMesh.h>
@@ -29,6 +27,8 @@ using namespace MR;
 namespace MRJS
 {
 
+std::function<bool( float )> createProgressCallback( val jsCallback );
+
 Vector3f arrayToVector3f( const val& arr );
 val vector3fToArray( const Vector3f& v );
 val box3fToObject( const Box<Vector3<float>>& box );
@@ -36,10 +36,12 @@ val box3fToObject( const Box<Vector3<float>>& box );
 template<typename T>
 val expectedToJs( const Expected<T>& expected );
 
+
 // Convert C++ vector to JavaScript `Float32Array`
 // REF: [Memory Views](`https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html#memory-views`)
 [[nodiscard]] val verticesToFloat32ArrayMemoryView( const VertCoords& vec );
 [[nodiscard]] val indicesToUint32ArrayMemoryView( const Triangulation& vec );
+
 
 /**
  * @brief Helper function to convert flat coordinate array to Vector3f points
@@ -49,15 +51,21 @@ val expectedToJs( const Expected<T>& expected );
 [[nodiscard]] VertCoords parseJSVertices( const std::vector<float>& coordinates );
 [[nodiscard]] Triangulation parseJSIndices( const std::vector<int>& indices );
 
+
+val findBottomPosition( Mesh& mesh, Vector3f dir);
+
+
 std::pair<Mesh, Mesh> returnParts( Mesh& mesh, const std::vector<EdgePath>& cut );
 std::pair<Mesh, Mesh> returnParts( Mesh& mesh, FaceBitSet& fb );
 
+
 MeshBuilder::VertexIdentifier createVertexIdentifier( const float* verticesPtr, const uint32_t* indicesPtr, int numTris );
+
 
 /// Finds all triangles of a mesh that having normals oriented toward the camera in this viewport
 // REF `source/MRViewer/MRViewport.cpp`
-MRJS_API FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Vector3f lookDirection, bool orthographic );
-MRJS_API Mesh findSilhouetteEdges( const Mesh& mesh, Vector3f lookDirection );
+FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Vector3f lookDirection, bool orthographic );
+Mesh findLookingSilhouetteConvexHull( const Mesh& mesh, Vector3f lookDirection );
 ///
 
 
@@ -76,7 +84,7 @@ struct GeometryBuffer
         size_t pointCount = points_.size();
         size_t vertexElementCount = pointCount * 3;
         const float* pointDataPtr = reinterpret_cast< const float* >( points_.data() );
-        // FIXME
+        // FIXME!!!
         val pointsArray = val( typed_memory_view( vertexElementCount, pointDataPtr ) );
 
         // === Export triangle data ===

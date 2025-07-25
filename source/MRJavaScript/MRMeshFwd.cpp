@@ -108,6 +108,7 @@ EMSCRIPTEN_BINDINGS( MapTypedModule )
     MRJS::bindTypedVector<Vector<EdgeId, VertId>, VertId>( "EdgeIdVertIdMap" );
     MRJS::bindTypedVector<Vector<EdgeId, FaceId>, FaceId>( "EdgeIdFaceIdMap" );
     MRJS::bindTypedVector<Vector<FaceId, EdgeId>, EdgeId>( "FaceIdEdgeIdMap" );
+    MRJS::bindTypedVector<Vector<VoxelId, FaceId>, FaceId>( "VoxelIdFaceIdMap" );
 
     MRJS::bindTypedVector<Vector<ModelPointsData, ObjId>, ObjId>( "ModelPointsDataObjIdMap" );
     MRJS::bindTypedVector<Vector<MeshBuilder::VertSpan, FaceId>, FaceId>( "VertSpanFaceIdMap" );

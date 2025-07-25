@@ -5,6 +5,7 @@
 
 namespace MR
 {
+
 /**
  * \defgroup MeshSegmentationGroup Mesh Segmentation overview
  * \brief A set of functions for selecting segments on a mesh

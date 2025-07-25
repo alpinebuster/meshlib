@@ -54,7 +54,7 @@ if [ $MR_EMSCRIPTEN == "ON" ]; then
 fi
 
 if [ ! -n "$MESHLIB_BUILD_RELEASE" ]; then
-  read -t 5 -p "Build MeshLib Release? Press (n) in 5 seconds to cancel (Y/n)" -rsn 1
+  read -t 5 -p "Build MeshSDK Release? Press (n) in 5 seconds to cancel (Y/n)" -rsn 1
   echo;
   if [[ $REPLY =~ ^[Nn]$ ]]; then
     MESHLIB_BUILD_RELEASE="OFF"
@@ -65,7 +65,7 @@ if [ ! -n "$MESHLIB_BUILD_RELEASE" ]; then
 fi
 
 if [ ! -n "$MESHLIB_BUILD_DEBUG" ]; then
-  read -t 5 -p "Build MeshLib Debug? Press (y) in 5 seconds to build (y/N)" -rsn 1
+  read -t 5 -p "Build MeshSDK Debug? Press (y) in 5 seconds to build (y/N)" -rsn 1
   echo;
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     MESHLIB_BUILD_DEBUG="ON"
@@ -156,7 +156,7 @@ fi
 # exit if any command failed
 set -eo pipefail
 
-# build MeshLib
+# build MeshSDK
 if [ "${MESHLIB_KEEP_BUILD}" != "ON" ]; then
   # Use `rm -rf ./build/*` instead of `rm -rf ./build` to allow delete in docker volume
   rm -rf ./build/*

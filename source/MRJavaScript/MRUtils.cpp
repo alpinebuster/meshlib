@@ -6,8 +6,8 @@
 #include <MRPch/MRWasm.h>
 #include <MRPch/MRTBB.h>
 
-#include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
+#include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshBuilderTypes.h>
 #include <MRMesh/MRMeshBuilder.h>
 #include <MRMesh/MRBitSet.h>
@@ -21,6 +21,7 @@
 #include <MRMesh/MRVector4.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRBuffer.h>
+#include <MRMesh/MRRingIterator.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MREdgePaths.h>
 #include <MRMesh/MRFillContour.h>
@@ -43,6 +44,8 @@
 #include <MRMesh/MR2to3.h>
 #include <MRMesh/MR2DContoursTriangulation.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
+#include <MRMesh/MRConvexHull.h>
+#include <MRMesh/MRFaceFace.h>
 
 #include <MRVoxels/MRTeethMaskToDirectionVolume.h>
 
@@ -51,9 +54,26 @@
 using namespace emscripten;
 using namespace MR;
 
-
 namespace MRJS
 {
+
+std::function<bool( float )> createProgressCallback( val jsCallback )
+{
+	if ( jsCallback.isNull() || jsCallback.isUndefined() )
+	{
+		return {};
+	}
+
+	return [jsCallback] ( float progress ) -> bool
+	{
+		val result = jsCallback( progress );
+		if ( result.isNull() || result.isUndefined() )
+		{
+			return true;
+		}
+		return result.as<bool>();
+	};
+}
 
 Vector3f arrayToVector3f( const val& arr )
 {
@@ -150,6 +170,53 @@ Triangulation parseJSIndices( const std::vector<int>& indices )
 }
 
 
+val findBottomPosition( Mesh& mesh, Vector3f dir)
+{
+	if ( dir.length() != 1.0f ) dir = dir.normalized();
+
+	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
+
+    // Find hole with maximum area
+	EdgeId maxAreaHole;
+	double maxHoleAreaSq = 0.0;
+    for ( const auto& e : holeEdges )
+    {
+        auto areaVec = mesh.holeDirArea( e );
+        double areaSq = areaVec.lengthSq();
+        if ( areaSq > maxHoleAreaSq )
+        {
+            maxHoleAreaSq = areaSq;
+            maxAreaHole = e;
+        }
+    }
+
+
+	///
+    float min = FLT_MAX;
+    VertId minVert;
+    for ( auto next : leftRing( mesh.topology, maxAreaHole ) )
+    {
+        VertId vid = mesh.topology.org( next );
+        float dist = dot( mesh.points[vid], dir );
+        if ( dist < min )
+        {
+            min = dist;
+            minVert = vid;
+        }
+    }
+	///
+
+
+	val data = val::object();
+
+	data.set( "success", true );
+	data.set( "minVert", minVert );
+	data.set( "maxAreaHole", maxAreaHole );
+
+	return data;
+}
+
+
 /**
  *@brief CutMesh with contour and extracting cutted parts
  * 
@@ -239,7 +306,7 @@ FaceBitSet findLookingFaces( const Mesh& mesh, const AffineXf3f& meshToWorld, Ve
     return faces;
 }
 
-Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
+Mesh findLookingSilhouetteConvexHull( const Mesh& meshRes, Vector3f lookDirection )
 {
     // Find faces that looks in this direction
     FaceBitSet facesLookingInThisDirection( meshRes.topology.faceSize() );
@@ -271,9 +338,18 @@ Mesh findSilhouetteEdges( const Mesh& meshRes, Vector3f lookDirection )
     } );
 
     // Find silhouette outline
-    auto outline = PlanarTriangulation::getOutline( contours );
+    Contours2f outlines = PlanarTriangulation::getOutline( contours );
+
+    // Compute convex hull for each outline
+    Contours2f chOutlines;
+    chOutlines.reserve( outlines.size() );
+    for ( const auto& outline : outlines )
+    {
+        chOutlines.push_back( makeConvexHull( outline ) );
+    }
+
     // Triangulate outline
-    auto projectedMesh = PlanarTriangulation::triangulateContours( outline );
+    auto projectedMesh = PlanarTriangulation::triangulateContours( chOutlines );
 
     // Project silhouette mesh back to original plane
     projectedMesh.transform( MR::AffineXf3f::linear( fromPlaneRot ) );
@@ -286,6 +362,7 @@ std::shared_ptr<GeometryBuffer> exportGeometryBuffer( const Mesh& meshToExport )
 {
     return GeometryBuffer::fromMesh(meshToExport);
 }
+
 val exportMeshMemoryView( const Mesh& meshToExport )
 {
 	///
@@ -392,7 +469,8 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 	function( "exportMeshMemoryViewTest", &MRJS::exportMeshMemoryViewTest );
 
 	function( "findLookingFaces", &MRJS::findLookingFaces );
-	function( "findSilhouetteEdges", &MRJS::findSilhouetteEdges );
+	function( "findLookingSilhouetteConvexHull", &MRJS::findLookingSilhouetteConvexHull );
+	function( "findBottomPosition", &MRJS::findBottomPosition );
 }
 
 
@@ -473,6 +551,14 @@ EMSCRIPTEN_BINDINGS( PairTypedModule )
         .element( &std::pair<EdgeId, EdgeId>::first )
         .element( &std::pair<EdgeId, EdgeId>::second );
 
+    value_array<std::pair<VertId, VertId>>( "VertIdPair" )
+        .element( &std::pair<VertId, VertId>::first )
+        .element( &std::pair<VertId, VertId>::second );
+
+    value_array<std::pair<FaceId, FaceId>>( "FaceIdPair" )
+        .element( &std::pair<FaceId, FaceId>::first )
+        .element( &std::pair<FaceId, FaceId>::second );
+
     value_array<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "UndirectedEdgeIdPair" )
         .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::first )
         .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::second );
@@ -480,14 +566,6 @@ EMSCRIPTEN_BINDINGS( PairTypedModule )
     value_array<std::pair<UndirectedEdgeId, EdgeId>>( "UndirectedE2EIdPair" )
         .element( &std::pair<UndirectedEdgeId, EdgeId>::first )
         .element( &std::pair<UndirectedEdgeId, EdgeId>::second );
-
-    value_array<std::pair<FaceId, FaceId>>( "FaceIdPair" )
-        .element( &std::pair<FaceId, FaceId>::first )
-        .element( &std::pair<FaceId, FaceId>::second );
-
-    value_array<std::pair<VertId, VertId>>( "VertIdPair" )
-        .element( &std::pair<VertId, VertId>::first )
-        .element( &std::pair<VertId, VertId>::second );
     ///
 
 
@@ -575,6 +653,57 @@ EMSCRIPTEN_BINDINGS( PairTypedModule )
     value_array<std::pair<std::vector<Face2RegionMap>, int>>( "VectorFace2RegionMapIntPair" )
         .element( &std::pair<std::vector<Face2RegionMap>, int>::first )
         .element( &std::pair<std::vector<Face2RegionMap>, int>::second );
+	///
+
+
+	///
+    value_array<std::pair<FaceBitSet, FaceBitSet>>( "FaceBitSetFaceBitSetPair" )
+        .element( &std::pair<FaceBitSet, FaceBitSet>::first )
+        .element( &std::pair<FaceBitSet, FaceBitSet>::second );
+
+    value_array<std::pair<VertBitSet, VertBitSet>>( "VertBitSetVertBitSetPair" )
+        .element( &std::pair<VertBitSet, VertBitSet>::first )
+        .element( &std::pair<VertBitSet, VertBitSet>::second );
+
+    value_array<std::pair<EdgeBitSet, EdgeBitSet>>( "EdgeBitSetEdgeBitSetPair" )
+        .element( &std::pair<EdgeBitSet, EdgeBitSet>::first )
+        .element( &std::pair<EdgeBitSet, EdgeBitSet>::second );
+
+    value_array<std::pair<UndirectedEdgeBitSet, UndirectedEdgeBitSet>>( "UndirectedEdgeBitSetUndirectedEdgeBitSetPair" )
+        .element( &std::pair<UndirectedEdgeBitSet, UndirectedEdgeBitSet>::first )
+        .element( &std::pair<UndirectedEdgeBitSet, UndirectedEdgeBitSet>::second );
+
+    value_array<std::pair<PixelBitSet, PixelBitSet>>( "PixelBitSetPixelBitSetPair" )
+        .element( &std::pair<PixelBitSet, PixelBitSet>::first )
+        .element( &std::pair<PixelBitSet, PixelBitSet>::second );
+
+    value_array<std::pair<VoxelBitSet, VoxelBitSet>>( "VoxelBitSetVoxelBitSetPair" )
+        .element( &std::pair<VoxelBitSet, VoxelBitSet>::first )
+        .element( &std::pair<VoxelBitSet, VoxelBitSet>::second );
+
+    value_array<std::pair<RegionBitSet, RegionBitSet>>( "RegionBitSetRegionBitSetPair" )
+        .element( &std::pair<RegionBitSet, RegionBitSet>::first )
+        .element( &std::pair<RegionBitSet, RegionBitSet>::second );
+
+    value_array<std::pair<NodeBitSet, NodeBitSet>>( "NodeBitSetNodeBitSetPair" )
+        .element( &std::pair<NodeBitSet, NodeBitSet>::first )
+        .element( &std::pair<NodeBitSet, NodeBitSet>::second );
+
+    value_array<std::pair<ObjBitSet, ObjBitSet>>( "ObjBitSetObjBitSetPair" )
+        .element( &std::pair<ObjBitSet, ObjBitSet>::first )
+        .element( &std::pair<ObjBitSet, ObjBitSet>::second );
+
+    value_array<std::pair<TextureBitSet, TextureBitSet>>( "TextureBitSetTextureBitSetPair" )
+        .element( &std::pair<TextureBitSet, TextureBitSet>::first )
+        .element( &std::pair<TextureBitSet, TextureBitSet>::second );
+
+    value_array<std::pair<GraphVertBitSet, GraphVertBitSet>>( "GraphVertBitSetGraphVertBitSetPair" )
+        .element( &std::pair<GraphVertBitSet, GraphVertBitSet>::first )
+        .element( &std::pair<GraphVertBitSet, GraphVertBitSet>::second );
+
+    value_array<std::pair<GraphEdgeBitSet, GraphEdgeBitSet>>( "GraphEdgeBitSetGraphEdgeBitSetPair" )
+        .element( &std::pair<GraphEdgeBitSet, GraphEdgeBitSet>::first )
+        .element( &std::pair<GraphEdgeBitSet, GraphEdgeBitSet>::second );
 	///
 
 
@@ -752,6 +881,8 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	
 	register_vector<FillHoleItem>( "VectorFillHoleItem" );
 	register_vector<HoleFillPlan>( "VectorHoleFillPlan" );
+
+	register_vector<FaceFace>( "VectorFaceFace" );
 	///
 
 
@@ -774,6 +905,8 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<std::vector<OneMeshContour>>( "VectorOneMeshContours" );
     register_vector<std::vector<OneMeshIntersection>>( "VectorVectorOneMeshIntersection" );
     register_vector<std::vector<MeshTriPoint>>( "VectorVectorMeshTriPoint" );
+
+	register_vector<std::vector<FaceFace>>( "VectorVectorFaceFace" );
 	///
 
 
@@ -930,6 +1063,7 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	register_vector<UndirectedEdge2RegionMap>( "VectorUndirectedEdge2RegionMap" );
 	register_vector<Face2RegionMap>( "VectorFace2RegionMap" );
 	register_vector<Vert2RegionMap>( "VectorVert2RegionMap" );
+	register_vector<Vector<VoxelId, FaceId>>( "VectorVoxelIdFaceId" );
 	///
 
 
@@ -1202,6 +1336,11 @@ EMSCRIPTEN_BINDINGS( OptionalTypedModule )
 	register_optional<FacePair>();
 	register_optional<EdgePair>();
 	register_optional<UndirectedEdgePair>();
+	///
+
+
+	///
+	register_optional<Vector<VoxelId, FaceId>>();
 	///
 
 
