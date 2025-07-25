@@ -2,7 +2,6 @@
 #include <string>
 
 #include <MRPch/MRWasm.h>
-#include <MRPch/MRExpected.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRMeshTopology.h>
@@ -58,7 +57,8 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
             return self.error();
         } ) );
 
-    // MRJS::bindExpected<std::string>( "ExpectedStdString" );
+    MRJS::bindExpected<std::string>( "ExpectedStdString" );
+    MRJS::bindExpected<bool>( "ExpectedBool" );
     ///
 
 

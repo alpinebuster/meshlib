@@ -41,10 +41,6 @@ auto bindExpected( const std::string& className )
 		{
 			return static_cast< bool >( self );
 		} ) )
-		.function( "value", optional_override( [] ( Expected<T>& self ) -> T&
-		{
-			return self.value();
-		} ), return_value_policy::reference() )
 		.function( "error", optional_override( [] ( const Expected<T>& self ) -> const std::string&
 		{
 			return self.error();
@@ -52,15 +48,52 @@ auto bindExpected( const std::string& className )
 		.function( "hasError", optional_override( [] ( const Expected<T>& self )
 		{
 			return !self.has_value();
-		} ) )
-		.function( "getValuePtr", optional_override( [] ( Expected<T>& self ) -> T*
+		} ) );
+
+	// If `T` is bool, return the value, not a reference
+	if constexpr ( std::is_same<T, bool>::value )
+	{
+		cls
+			.function( "value", optional_override( [] ( Expected<T>& self ) -> bool
+			{
+				return self.value();
+			} ) )
+			.function( "getValuePtr", optional_override( [] ( Expected<T>& self ) -> bool
+			{
+				return self.has_value() ? *self : false;
+			} ) )
+			.function( "get", optional_override( [] ( Expected<T>& self ) -> bool
+			{
+				return *self;
+			} ) );
+	}
+	else
+	{
+		cls
+			.function( "value", optional_override( [] ( Expected<T>& self ) -> T&
+			{
+				return self.value();
+			} ), return_value_policy::reference() )
+			.function( "get", optional_override( [] ( Expected<T>& self ) -> T&
+			{
+				return *self;
+			} ), return_value_policy::reference() );
+
+		if constexpr ( !std::is_same<T, std::string>::value )
 		{
-			return self.has_value() ? &( *self ) : nullptr;
-		} ), allow_raw_pointers() )
-		.function( "get", optional_override( [] ( Expected<T>& self ) -> T&
+			cls.function( "getValuePtr", optional_override( [] ( Expected<T>& self ) -> T*
+			{
+				return self.has_value() ? &( *self ) : nullptr;
+			} ), allow_raw_pointers() );
+		}
+		else
 		{
-			return *self;
-		} ), return_value_policy::reference() );
+			cls.function( "getValuePtr", optional_override( [] ( Expected<T>& self ) -> std::string
+			{
+				return self.has_value() ? *self : std::string{};
+			} ) );
+		}
+	}
 
 	// Only bind `valueOr` if T is `is_copy_constructible`
 	if constexpr ( std::is_copy_constructible<T>::value )
