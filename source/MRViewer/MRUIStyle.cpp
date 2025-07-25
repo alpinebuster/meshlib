@@ -65,7 +65,13 @@ private:
 
 bool checkKey( ImGuiKey passedKey )
 {
-    if ( passedKey == ImGuiKey_None || ImGui::GetIO().KeyMods != ImGuiMod_None || ImGui::IsAnyItemActive() || ImGui::GetIO().WantCaptureKeyboard )
+    if ( passedKey == ImGuiKey_None || ImGui::GetIO().KeyMods != ImGuiMod_None )
+        return false;
+
+    // if modal is open ImGui::GetIO().WantCaptureKeyboard will be always true, 
+    // so use special case for modals
+    bool isAnyOpen = bool( ImGui::GetTopMostPopupModal() );
+    if ( ( isAnyOpen && ImGui::IsAnyItemActive() ) || ( !isAnyOpen && ImGui::GetIO().WantCaptureKeyboard ) )
         return false;
 
     reserveKeyEvent( passedKey );
@@ -593,12 +599,12 @@ bool buttonIconEx(
     return res;
 }
 
-bool buttonUniqueIcon( 
-    const std::string& iconName, 
-    const Vector2f& iconSize, 
-    const std::string& text, 
-    const ImVec2& buttonSize, 
-    int* value, 
+bool buttonUniqueIcon(
+    const std::string& iconName,
+    const Vector2f& iconSize,
+    const std::string& text,
+    const ImVec2& buttonSize,
+    int* value,
     int ownValue,
     bool textUnderIcon /*= true*/,
     ImGuiKey key /*= ImGuiKey_None*/ )
@@ -1391,7 +1397,7 @@ bool combo( const char* label, int* v, const std::vector<std::string>& options, 
     assert( tooltips.empty() || tooltips.size() == options.size() );
 
     bool valueOverridden = false;
-    if ( auto opt = TestEngine::createValue( label, std::size_t( *v ) < options.size() ? options[*v] : defaultText, options ) )
+    if ( auto opt = TestEngine::createValue( label, std::size_t( *v ) < options.size() ? options[*v] : defaultText, true, options ) )
     {
         if ( auto it = std::find( options.begin(), options.end(), *opt ); it != options.end() )
         {
@@ -1694,20 +1700,20 @@ static bool shouldExposeTextInputToTestEngine( ImGuiInputTextFlags flags )
 
 static bool basicTextInput( const char* label, std::string& str, ImGuiInputTextFlags flags, auto &&func )
 {
-    std::optional<std::string> valueOverride;
-    if ( shouldExposeTextInputToTestEngine( flags ) )
-    {
-        valueOverride = TestEngine::createValue( label, str );
-        if ( valueOverride )
-            str = std::move( *valueOverride );
-    }
+    if ( detail::isItemActive( label ) && TestEngine::createValueTentative<std::string>( label, false ) )
+        ImGui::ClearActiveID();
 
     bool ret = func();
 
-    if ( valueOverride )
+    if ( shouldExposeTextInputToTestEngine( flags ) )
     {
-        detail::markItemEdited( ImGui::GetID( label ) );
-        ret = true;
+        std::optional<std::string> valueOverride = TestEngine::createValue( label, str );
+        if ( valueOverride )
+        {
+            str = std::move( *valueOverride );
+            detail::markItemEdited( ImGui::GetID( label ) );
+            ret = true;
+        }
     }
 
     return ret;
@@ -1946,7 +1952,7 @@ void notificationFrame( NotificationType type, const std::string& str, float sca
         scaling * StyleConsts::Notification::cTextFrameRounding );
     ImGui::SetCursorPos( pos + StyleConsts::Notification::cTextFramePadding * scaling );
     transparentTextWrapped( "%s", str.c_str() );
-    
+
     auto iconsFont = RibbonFontManager::getFontByTypeStatic( RibbonFontManager::FontType::Icons );
     if ( iconsFont )
     {
