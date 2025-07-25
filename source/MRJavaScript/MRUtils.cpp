@@ -21,6 +21,7 @@
 #include <MRMesh/MRVector4.h>
 #include <MRMesh/MRBox.h>
 #include <MRMesh/MRBuffer.h>
+#include <MRMesh/MRRingIterator.h>
 #include <MRMesh/MRMeshOrPoints.h>
 #include <MRMesh/MREdgePaths.h>
 #include <MRMesh/MRFillContour.h>
@@ -44,6 +45,7 @@
 #include <MRMesh/MR2DContoursTriangulation.h>
 #include <MRMesh/MRMeshCollidePrecise.h>
 #include <MRMesh/MRConvexHull.h>
+#include <MRMesh/MRFaceFace.h>
 
 #include <MRVoxels/MRTeethMaskToDirectionVolume.h>
 
@@ -55,6 +57,24 @@ using namespace MR;
 
 namespace MRJS
 {
+
+std::function<bool( float )> createProgressCallback( val jsCallback )
+{
+	if ( jsCallback.isNull() || jsCallback.isUndefined() )
+	{
+		return {};
+	}
+
+	return [jsCallback] ( float progress ) -> bool
+	{
+		val result = jsCallback( progress );
+		if ( result.isNull() || result.isUndefined() )
+		{
+			return true;
+		}
+		return result.as<bool>();
+	};
+}
 
 Vector3f arrayToVector3f( const val& arr )
 {
@@ -148,6 +168,53 @@ Triangulation parseJSIndices( const std::vector<int>& indices )
     }
 
     return indis_;
+}
+
+
+val findBottomPosition( Mesh& mesh, Vector3f dir)
+{
+	if ( dir.length() != 1.0f ) dir = dir.normalized();
+
+	auto holeEdges = mesh.topology.findHoleRepresentiveEdges();
+
+    // Find hole with maximum area
+	EdgeId maxAreaHole;
+	double maxHoleAreaSq = 0.0;
+    for ( const auto& e : holeEdges )
+    {
+        auto areaVec = mesh.holeDirArea( e );
+        double areaSq = areaVec.lengthSq();
+        if ( areaSq > maxHoleAreaSq )
+        {
+            maxHoleAreaSq = areaSq;
+            maxAreaHole = e;
+        }
+    }
+
+
+	///
+    float min = FLT_MAX;
+    VertId minVert;
+    for ( auto next : leftRing( mesh.topology, maxAreaHole ) )
+    {
+        VertId vid = mesh.topology.org( next );
+        float dist = dot( mesh.points[vid], dir );
+        if ( dist < min )
+        {
+            min = dist;
+            minVert = vid;
+        }
+    }
+	///
+
+
+	val data = val::object();
+
+	data.set( "success", true );
+	data.set( "minVert", minVert );
+	data.set( "maxAreaHole", maxAreaHole );
+
+	return data;
 }
 
 
@@ -403,6 +470,7 @@ EMSCRIPTEN_BINDINGS( UtilsModule )
 
 	function( "findLookingFaces", &MRJS::findLookingFaces );
 	function( "findLookingSilhouetteConvexHull", &MRJS::findLookingSilhouetteConvexHull );
+	function( "findBottomPosition", &MRJS::findBottomPosition );
 }
 
 
@@ -589,6 +657,57 @@ EMSCRIPTEN_BINDINGS( PairTypedModule )
 
 
 	///
+    value_array<std::pair<FaceBitSet, FaceBitSet>>( "FaceBitSetFaceBitSetPair" )
+        .element( &std::pair<FaceBitSet, FaceBitSet>::first )
+        .element( &std::pair<FaceBitSet, FaceBitSet>::second );
+
+    value_array<std::pair<VertBitSet, VertBitSet>>( "VertBitSetVertBitSetPair" )
+        .element( &std::pair<VertBitSet, VertBitSet>::first )
+        .element( &std::pair<VertBitSet, VertBitSet>::second );
+
+    value_array<std::pair<EdgeBitSet, EdgeBitSet>>( "EdgeBitSetEdgeBitSetPair" )
+        .element( &std::pair<EdgeBitSet, EdgeBitSet>::first )
+        .element( &std::pair<EdgeBitSet, EdgeBitSet>::second );
+
+    value_array<std::pair<UndirectedEdgeBitSet, UndirectedEdgeBitSet>>( "UndirectedEdgeBitSetUndirectedEdgeBitSetPair" )
+        .element( &std::pair<UndirectedEdgeBitSet, UndirectedEdgeBitSet>::first )
+        .element( &std::pair<UndirectedEdgeBitSet, UndirectedEdgeBitSet>::second );
+
+    value_array<std::pair<PixelBitSet, PixelBitSet>>( "PixelBitSetPixelBitSetPair" )
+        .element( &std::pair<PixelBitSet, PixelBitSet>::first )
+        .element( &std::pair<PixelBitSet, PixelBitSet>::second );
+
+    value_array<std::pair<VoxelBitSet, VoxelBitSet>>( "VoxelBitSetVoxelBitSetPair" )
+        .element( &std::pair<VoxelBitSet, VoxelBitSet>::first )
+        .element( &std::pair<VoxelBitSet, VoxelBitSet>::second );
+
+    value_array<std::pair<RegionBitSet, RegionBitSet>>( "RegionBitSetRegionBitSetPair" )
+        .element( &std::pair<RegionBitSet, RegionBitSet>::first )
+        .element( &std::pair<RegionBitSet, RegionBitSet>::second );
+
+    value_array<std::pair<NodeBitSet, NodeBitSet>>( "NodeBitSetNodeBitSetPair" )
+        .element( &std::pair<NodeBitSet, NodeBitSet>::first )
+        .element( &std::pair<NodeBitSet, NodeBitSet>::second );
+
+    value_array<std::pair<ObjBitSet, ObjBitSet>>( "ObjBitSetObjBitSetPair" )
+        .element( &std::pair<ObjBitSet, ObjBitSet>::first )
+        .element( &std::pair<ObjBitSet, ObjBitSet>::second );
+
+    value_array<std::pair<TextureBitSet, TextureBitSet>>( "TextureBitSetTextureBitSetPair" )
+        .element( &std::pair<TextureBitSet, TextureBitSet>::first )
+        .element( &std::pair<TextureBitSet, TextureBitSet>::second );
+
+    value_array<std::pair<GraphVertBitSet, GraphVertBitSet>>( "GraphVertBitSetGraphVertBitSetPair" )
+        .element( &std::pair<GraphVertBitSet, GraphVertBitSet>::first )
+        .element( &std::pair<GraphVertBitSet, GraphVertBitSet>::second );
+
+    value_array<std::pair<GraphEdgeBitSet, GraphEdgeBitSet>>( "GraphEdgeBitSetGraphEdgeBitSetPair" )
+        .element( &std::pair<GraphEdgeBitSet, GraphEdgeBitSet>::first )
+        .element( &std::pair<GraphEdgeBitSet, GraphEdgeBitSet>::second );
+	///
+
+
+	///
     value_array<std::pair<FaceBitSet, int>>( "FaceBitSetIntPair" )
         .element( &std::pair<FaceBitSet, int>::first )
         .element( &std::pair<FaceBitSet, int>::second );
@@ -762,6 +881,8 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
 	
 	register_vector<FillHoleItem>( "VectorFillHoleItem" );
 	register_vector<HoleFillPlan>( "VectorHoleFillPlan" );
+
+	register_vector<FaceFace>( "VectorFaceFace" );
 	///
 
 
@@ -784,6 +905,8 @@ EMSCRIPTEN_BINDINGS( VectorTypedModule )
     register_vector<std::vector<OneMeshContour>>( "VectorOneMeshContours" );
     register_vector<std::vector<OneMeshIntersection>>( "VectorVectorOneMeshIntersection" );
     register_vector<std::vector<MeshTriPoint>>( "VectorVectorMeshTriPoint" );
+
+	register_vector<std::vector<FaceFace>>( "VectorVectorFaceFace" );
 	///
 
 

@@ -5,8 +5,6 @@
 #include <exception>
 #include <string>
 
-#include "exports.h"
-
 #include <emscripten/val.h>
 
 #include <MRMesh/MRMesh.h>
@@ -15,6 +13,7 @@
 #include <MRMesh/MRAffineXf3.h>
 #include <MRMesh/MRMeshProject.h>
 #include <MRMesh/MRBox.h>
+#include <MRMesh/MRId.h>
 #include <MRMesh/MRVectorTraits.h>
 
 #include <MRVoxels/MROffset.h>
@@ -25,20 +24,12 @@
 using namespace MR;
 using emscripten::val;
 
-/**
- * @brief MRJS namespace
- *
- * This namespace contains all the `meshlib` wrapper classes and helper functions used for JavaScript bindings.
- * Using a separate namespace helps to:
- *
- *  1. Avoid name conflicts with other libraries
- *  2. Clearly identify which code is specifically designed for JavaScript bindings
- *  3. Facilitate code organization and maintenance
- */
+
 namespace MRJS
 {
 
-val createGypsumBaseImpl( Mesh& mesh, Vector3f dir, float extensionBottom, float extensionBottomToGypsumBase );
+val createMaxillaGypsumBaseImpl( Mesh& mesh, EdgeId maxAreaHole, VertId minVert, Vector3f dir, float extensionBottom, float extensionBottomToGypsumBase );
+val createMandibleGypsumBaseImpl( Mesh& mesh, EdgeId maxAreaHole, Vector3f dir, float extension );
 
 
 /**
@@ -52,7 +43,7 @@ val createGypsumBaseImpl( Mesh& mesh, Vector3f dir, float extensionBottom, float
  * - Provide error handling mechanisms to ensure stability of JavaScript calls
  * - Support for creating, modifying, and querying mesh operations
  */
-class MRJS_CLASS MeshWrapper {
+class MeshWrapper {
 public:
     /// The internally stored grid object
     Mesh mesh;

@@ -2,6 +2,7 @@
 #include <string>
 
 #include <MRPch/MRWasm.h>
+#include <MRPch/MRExpected.h>
 
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MRMeshTopology.h>
@@ -26,7 +27,8 @@
 #include <MRMesh/MROneMeshContours.h>
 #include <MRMesh/MRIntersectionContour.h>
 #include <MRMesh/MRTriMesh.h>
-#include <MRPch/MRExpected.h>
+#include <MRMesh/MRFaceFace.h>
+#include <MRMesh/MRMeshBoolean.h>
 #include <MRMesh/MRExpected.h>
 
 #include "MRExpected.h"
@@ -55,6 +57,8 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
         {
             return self.error();
         } ) );
+
+    // MRJS::bindExpected<std::string>( "ExpectedStdString" );
     ///
 
 
@@ -73,6 +77,13 @@ EMSCRIPTEN_BINDINGS( ExpectedModule )
     MRJS::bindExpected<MeshTexture>( "ExpectedMeshTexture" );
     MRJS::bindExpected<GridSettings>( "ExpectedGridSettings" );
     MRJS::bindExpected<TriMesh>( "ExpectedTriMesh" );
+    MRJS::bindExpected<FaceFace>( "ExpectedFaceFace" );
+    MRJS::bindExpected<BooleanResultPoints>( "ExpectedBooleanResultPoints" );
+    ///
+
+
+    ///
+    MRJS::bindExpected<std::vector<FaceFace>>( "ExpectedVectorFaceFace" );
     ///
 
 
