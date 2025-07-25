@@ -362,6 +362,7 @@ std::shared_ptr<GeometryBuffer> exportGeometryBuffer( const Mesh& meshToExport )
 {
     return GeometryBuffer::fromMesh(meshToExport);
 }
+
 val exportMeshMemoryView( const Mesh& meshToExport )
 {
 	///

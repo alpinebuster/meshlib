@@ -29,7 +29,6 @@ namespace MRJS {
 
 val thickenMeshImplFilled( const Mesh& mesh, float offset, GeneralOffsetParameters &params )
 {
-	// Return the mesh wrapped in an object that indicates success
 	val returnObj = val::object();
 
 	Mesh meshCopy;

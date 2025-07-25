@@ -686,6 +686,46 @@ function SidebarObject( editor ) {
 		}
 	});
 
+	const wasmOpInflateToothRoot = new UIButton( strings.getKey( 'sidebar/object/wasmOpInflateToothRoot') ).setMarginLeft( '7px' ).onClick( function () {
+		if ( !editor.selected ) return;
+
+		const currentUUID = editor.selected.uuid;
+		if ( currentUUID ) {
+			const { verticesPtr, jsVertices, indicesPtr, jsIndices } = createMemoryViewFromGeometry( editor, editor.selected.geometry );
+
+			try {
+				const mesh = editor.MeshSDK.Mesh.fromTrianglesMemoryView( jsVertices, jsIndices, true );
+
+				///
+				const threeWorldDir = new THREE.Vector3();
+				editor.camera.getWorldDirection( threeWorldDir );
+				const upDir = new editor.MeshSDK.Vector3f(
+					-threeWorldDir.x,
+					-threeWorldDir.y,
+					-threeWorldDir.z,
+				)
+
+				const inflateSettings = {
+					pressure: 20,
+					iterations: 1,
+					preSmooth: true,
+					gradualPressureGrowth: true
+				};
+				// const inflateSettings = new editor.MeshSDK.InflateSettings();
+				// inflateSettings.pressure = 50;
+				const result = editor.MeshSDK.inflateToothRootImpl( mesh, inflateSettings );
+				///
+
+
+				showMesh( mesh, result.meshMV.vertices, result.meshMV.indices );
+				showMesh( mesh, result.rootMeshMV.vertices, result.rootMeshMV.indices );
+			} catch ( error ) {
+				console.error( 'Error creating from ThreeJS Mesh:', error.message );
+				editor.MeshSDK._free( verticesPtr );
+				editor.MeshSDK._free( indicesPtr );
+			}
+		}
+	});
 
 	wasmOpsRow.add( new UIText( strings.getKey( 'sidebar/object/wasm' ) ).setClass( 'Label' ) );
 
@@ -713,6 +753,9 @@ function SidebarObject( editor ) {
 	wasmOpsRowGypsum.add( wasmOpBuildMandibleBottom );
 	wasmOpsRowGypsum.add( wasmOpFindSilhouetteEdges );
 
+	const wasmOpsRowToothRoot = new UIRow();
+	wasmOpsRowToothRoot.add( wasmOpInflateToothRoot );
+
 	container.add( wasmOpsRow );
 	container.add( wasmOpsRowLoad );
 	container.add( wasmOpsRowHole );
@@ -720,6 +763,7 @@ function SidebarObject( editor ) {
 	container.add( wasmOpsRowFixUndercuts );
 	container.add( wasmOpsRowThicken );
 	container.add( wasmOpsRowGypsum );
+	container.add( wasmOpsRowToothRoot );
 
 	// fov
 

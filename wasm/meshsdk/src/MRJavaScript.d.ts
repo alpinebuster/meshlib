@@ -9555,7 +9555,9 @@ interface EmbindModule {
   PolylineMaker: {
     new(_0: PolylineTopology): PolylineMaker;
   };
-  SpacingSettings: {};
+  SpacingSettings: {
+    new(): SpacingSettings;
+  };
   positionVertsSmoothly(_0: Mesh, _1: VertBitSet, _2: EdgeWeights, _3: VertexMass, _4: VertBitSet | null): void;
   positionVertsSmoothlyWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: EdgeWeights, _4: VertexMass, _5: VertBitSet | null): void;
   positionVertsSmoothlySharpBd(_0: Mesh, _1: VertBitSet, _2: VertCoords | null, _3: VertScalars | null): void;
@@ -9565,6 +9567,7 @@ interface EmbindModule {
   inflate(_0: Mesh, _1: VertBitSet, _2: InflateSettings): void;
   inflateWithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: InflateSettings): void;
   inflate1WithTopology(_0: MeshTopology, _1: VertCoords, _2: VertBitSet, _3: number): void;
+  inflateToothRootImpl(_0: Mesh, _1: InflateSettings): any;
   ConvertToFloatVector: {};
   ConvertToIntVector: {};
   createConvertToIntVector(_0: any): ConvertToIntVector;

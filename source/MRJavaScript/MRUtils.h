@@ -84,7 +84,7 @@ struct GeometryBuffer
         size_t pointCount = points_.size();
         size_t vertexElementCount = pointCount * 3;
         const float* pointDataPtr = reinterpret_cast< const float* >( points_.data() );
-        // FIXME
+        // FIXME!!!
         val pointsArray = val( typed_memory_view( vertexElementCount, pointDataPtr ) );
 
         // === Export triangle data ===
