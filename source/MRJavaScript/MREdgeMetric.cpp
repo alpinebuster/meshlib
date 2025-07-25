@@ -9,6 +9,7 @@
 using namespace emscripten;
 using namespace MR;
 
+
 float EdgeMetricWrapper::evaluate( EdgeId edgeId ) const
 {
 	return metric( edgeId );
@@ -85,7 +86,7 @@ EdgeMetricWrapper createEdgeTableSymMetric( const MeshTopology& topology, const 
 	return EdgeMetricWrapper( edgeTableSymMetric( topology, metric.getMetric() ) );
 }
 
-// Emscripten binding code
+
 EMSCRIPTEN_BINDINGS( EdgeMetricModule )
 {
 	// Register the `EdgeMetricWrapper` class

@@ -551,6 +551,14 @@ EMSCRIPTEN_BINDINGS( PairTypedModule )
         .element( &std::pair<EdgeId, EdgeId>::first )
         .element( &std::pair<EdgeId, EdgeId>::second );
 
+    value_array<std::pair<VertId, VertId>>( "VertIdPair" )
+        .element( &std::pair<VertId, VertId>::first )
+        .element( &std::pair<VertId, VertId>::second );
+
+    value_array<std::pair<FaceId, FaceId>>( "FaceIdPair" )
+        .element( &std::pair<FaceId, FaceId>::first )
+        .element( &std::pair<FaceId, FaceId>::second );
+
     value_array<std::pair<UndirectedEdgeId, UndirectedEdgeId>>( "UndirectedEdgeIdPair" )
         .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::first )
         .element( &std::pair<UndirectedEdgeId, UndirectedEdgeId>::second );
@@ -558,14 +566,6 @@ EMSCRIPTEN_BINDINGS( PairTypedModule )
     value_array<std::pair<UndirectedEdgeId, EdgeId>>( "UndirectedE2EIdPair" )
         .element( &std::pair<UndirectedEdgeId, EdgeId>::first )
         .element( &std::pair<UndirectedEdgeId, EdgeId>::second );
-
-    value_array<std::pair<FaceId, FaceId>>( "FaceIdPair" )
-        .element( &std::pair<FaceId, FaceId>::first )
-        .element( &std::pair<FaceId, FaceId>::second );
-
-    value_array<std::pair<VertId, VertId>>( "VertIdPair" )
-        .element( &std::pair<VertId, VertId>::first )
-        .element( &std::pair<VertId, VertId>::second );
     ///
 
 

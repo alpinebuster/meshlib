@@ -1,10 +1,14 @@
 #include <MRPch/MRWasm.h>
 
-#include <MRMesh/MRSurroundingContour.h>
-#include <MRMesh/MRFillContourByGraphCut.h>
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRMeshFwd.h>
 #include <MRMesh/MREdgeMetric.h>
+#include <MRMesh/MREdgePaths.h>
+#include <MRMesh/MRMeshTopology.h>
+#include <MRMesh/MRRingIterator.h>
+#include <MRMesh/MRBitSet.h>
+#include <MRMesh/MRSurroundingContour.h>
+#include <MRMesh/MRFillContourByGraphCut.h>
 
 #include "MRUtils.h"
 
@@ -120,11 +124,10 @@ public:
 			Vector3f meshDir = Vector3f{ mesh_.dirArea() };
 			Vector3f pointsDir = mesh_.points[keyVertices[0]] - mesh_.points[keyVertices[1]];
 
-			Vector3f guessDir = cross(cross(pointsDir, meshDir), pointsDir);
+			Vector3f guessDir = cross( cross( pointsDir, meshDir ), pointsDir );
 
 			// Direction Correction
-			if (dot(guessDir, meshDir) < 0)
-				guessDir = -guessDir;
+			if ( dot( guessDir, meshDir ) < 0 ) guessDir = -guessDir;
 
 			Vector3f direction = guessDir.normalized();
 			///
@@ -175,10 +178,14 @@ public:
 };
 
 
-EMSCRIPTEN_BINDINGS( MeshSegmentationModule )
+EMSCRIPTEN_BINDINGS( FillContourByGraphCutModule )
 {
 	class_<MeshSegmentation>( "MeshSegmentation" )
 		.constructor<const Mesh&>()
-
 		.function( "segmentByPoints", &MeshSegmentation::segmentByPoints );
+
+
+	function( "fillContourLeftByGraphCut", select_overload<FaceBitSet (const MeshTopology &, const EdgePath &, const EdgeMetric &)>( &fillContourLeftByGraphCut ) );
+	function( "fillContourLeftByGraphCutByContours", select_overload<FaceBitSet (const MeshTopology &, const std::vector<EdgePath> &, const EdgeMetric &)>( &fillContourLeftByGraphCut ) );
+	function( "segmentByGraphCut", &segmentByGraphCut );
 }

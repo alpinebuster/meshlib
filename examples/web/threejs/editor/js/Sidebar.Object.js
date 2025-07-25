@@ -619,7 +619,24 @@ function SidebarObject( editor ) {
 						-threeWorldDir.z,
 					)
 
-					const result = editor.MeshSDK.createGypsumBaseImpl( mesh, upDir, 0.0, 30.0 );
+
+					const bottomPosition = editor.MeshSDK.findBottomPosition( mesh, upDir );
+					// const result = editor.MeshSDK.createMaxillaGypsumBaseImpl( 
+					// 	mesh,
+					// 	bottomPosition.maxAreaHole,
+					// 	bottomPosition.minVert,
+					// 	upDir,
+					// 	0.0,
+					// 	9.0,
+					// );
+					const result = editor.MeshSDK.createMaxillaGypsumBaseImplTest( 
+						mesh,
+						bottomPosition.maxAreaHole,
+						bottomPosition.minVert,
+						upDir,
+						0.0,
+						9.0,
+					);
 					///
 
 
@@ -627,6 +644,13 @@ function SidebarObject( editor ) {
 					const newIndices = result.meshMV.indices;
 
 					showMesh( mesh, newVertices, newIndices );
+
+
+
+
+					showMesh( mesh, result.mMaxillaBaseCopyData.vertices, result.mMaxillaBaseCopyData.indices );
+					showMesh( mesh, result.mMaxillaBaseTransformedCopyData.vertices, result.mMaxillaBaseTransformedCopyData.indices );
+					showMesh( mesh, result.mMaxillaBaseTransformedExtendedHoleCopyData.vertices, result.mMaxillaBaseTransformedExtendedHoleCopyData.indices );
 				} catch ( error ) {
 					console.error( 'Error creating from ThreeJS Mesh:', error.message );
 					editor.MeshSDK._free( verticesPtr );
@@ -654,14 +678,18 @@ function SidebarObject( editor ) {
 					-threeWorldDir.z,
 				)
 
-				const e = mesh.topology.findHoleRepresentiveEdges( null );
-				editor.MeshSDK.buildBottom( mesh, e.get(0), upDir, 0.0, null );
-				const result = editor.MeshSDK.exportMeshMemoryView( mesh );
+				const bottomPosition = editor.MeshSDK.findBottomPosition( mesh, upDir );
+				const result = editor.MeshSDK.createMandibleGypsumBaseImpl( 
+					mesh,
+					bottomPosition.maxAreaHole,
+					upDir,
+					0.0,
+				);
 				///
 
 
-				const newVertices = result.vertices;
-				const newIndices = result.indices;
+				const newVertices = result.meshMV.vertices;
+				const newIndices = result.meshMV.indices;
 				showMesh( mesh, newVertices, newIndices );
 			} catch ( error ) {
 				console.error( 'Error creating from ThreeJS Mesh:', error.message );

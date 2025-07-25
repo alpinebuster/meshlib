@@ -10,7 +10,6 @@
 #include <MRMesh/MRMeshTopology.h>
 #include <MRMesh/MRMesh.h>
 #include <MRMesh/MRId.h>
-#include <MRPch/MRExpected.h>
 #include <MRMesh/MRBitSet.h>
 #include <MRMesh/MRVector.h>
 #include <MRMesh/MRVector2.h>
@@ -79,19 +78,19 @@ auto bindExpected( const std::string& className )
 				return *self;
 			} ), return_value_policy::reference() );
 
-		if constexpr ( !std::is_same<T, std::string>::value )
-		{
-			cls.function( "getValuePtr", optional_override( [] ( Expected<T>& self ) -> T*
-			{
-				return self.has_value() ? &( *self ) : nullptr;
-			} ), allow_raw_pointers() );
-		}
-		else
+		if constexpr ( std::is_same<T, std::string>::value )
 		{
 			cls.function( "getValuePtr", optional_override( [] ( Expected<T>& self ) -> std::string
 			{
 				return self.has_value() ? *self : std::string{};
 			} ) );
+		}
+		else if constexpr ( !requires { typename T::first_type; typename T::second_type; } )
+		{
+			cls.function( "getValuePtr", optional_override( [] ( Expected<T>& self ) -> T*
+			{
+				return self.has_value() ? &( *self ) : nullptr;
+			} ), allow_raw_pointers() );
 		}
 	}
 
